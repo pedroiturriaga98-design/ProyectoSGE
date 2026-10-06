@@ -1,0 +1,119 @@
+{% extends 'base_apoderado.html' %}
+
+{% block content %}
+<!--PORQUE NO Integrar un iframe de Google Calendar es una opción rápida, 
+pero tiene una gran desventaja: perderías el diseño profesional (colores y tipografías)
+ que hemos armado y no podrías conectarlo fácilmente a tu base de datos MySQL más adelante.-->
+<!--PORQUE SI FullCalendar.js. Esta herramienta toma un espacio en blanco y 
+genera un calendario dinámico donde puedes avanzar y retroceder por todos los meses y años.
+ Además, cuando conectemos la base de datos, Django le enviará los eventos directamente a 
+ este calendario.-->
+
+<!-- Importar FullCalendar (CSS y JS) -->
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js'></script>
+
+<style>
+    /* Estilos para adaptar FullCalendar al diseño SGE */
+    .calendar-container { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6; margin-bottom: 25px; }
+    
+    /* Personalización de la barra superior del calendario */
+    .fc .fc-toolbar-title { font-size: 1.2rem; font-weight: 600; color: #111827; text-transform: capitalize; }
+    .fc .fc-button-primary { background-color: #f97316; border-color: #f97316; text-transform: capitalize; }
+    .fc .fc-button-primary:hover { background-color: #ea580c; border-color: #ea580c; }
+    .fc .fc-button-primary:not(:disabled):active, .fc .fc-button-primary:not(:disabled).fc-button-active { background-color: #c2410c; border-color: #c2410c; }
+    
+    /* Días y eventos */
+    .fc-theme-standard th { padding: 8px 0; font-size: 0.85rem; color: #6b7280; text-transform: uppercase; background-color: #f9fafb; }
+    .fc-daygrid-day-number { font-size: 0.9rem; color: #4b5563; font-weight: 500; }
+    .fc-event { border-radius: 4px; padding: 2px 4px; font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; }
+
+    /* Estilos de Próximos Eventos (Inferior) */
+    .events-list-container { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6; }
+    .events-list-title { color: #111827; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
+    .event-list-item { display: flex; align-items: center; gap: 20px; padding: 15px 20px; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 12px; }
+    .event-list-item:last-child { margin-bottom: 0; }
+    .event-date-badge { padding: 8px 15px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; min-width: 140px; text-align: center; }
+    
+    .date-bg-orange { background-color: #fff7ed; color: #ea580c; }
+    .date-bg-blue { background-color: #eff6ff; color: #2563eb; }
+    .date-bg-red { background-color: #fef2f2; color: #dc2626; }
+    .date-bg-green { background-color: #ecfdf5; color: #059669; }
+
+    .event-details h4 { font-size: 0.95rem; color: #111827; margin-bottom: 4px; }
+    .event-details p { font-size: 0.85rem; color: #6b7280; }
+</style>
+
+<!-- SECCIÓN 1: CALENDARIO DINÁMICO (FullCalendar) -->
+<div class="calendar-container">
+    <!-- Este div vacío es donde Javascript dibujará el calendario interactivo -->
+    <div id="calendar"></div>
+</div>
+
+<!-- SECCIÓN 2: LISTA DE PRÓXIMOS EVENTOS -->
+<div class="events-list-container">
+    <h3 class="events-list-title">Próximos Eventos</h3>
+
+    <div class="event-list-item">
+        <div class="event-date-badge date-bg-orange">Lunes 7 Sep</div>
+        <div class="event-details">
+            <h4>Reunión de apoderados</h4>
+            <p>Reunión mensual obligatoria de inicio de semestre para coordinar actividades.</p>
+        </div>
+    </div>
+    <div class="event-list-item">
+        <div class="event-date-badge date-bg-blue">Miércoles 16 Sep</div>
+        <div class="event-details">
+            <h4>Feria de ciencias SGE</h4>
+            <p>Exposición de proyectos tecnológicos y científicos preparados por los alumnos.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Inicializar el calendario cuando la página cargue
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'es', // Forzar idioma español
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek'
+            },
+            buttonText: {
+                today: 'Hoy',
+                month: 'Mes',
+                week: 'Semana'
+            },
+            height: 550,
+            // Eventos estáticos de prueba (luego vendrán de Django)
+            events: [
+                {
+                    title: 'Reunión Apod.',
+                    start: '2026-09-07',
+                    backgroundColor: '#f97316' // Naranja
+                },
+                {
+                    title: 'Feria Ciencias',
+                    start: '2026-09-16',
+                    backgroundColor: '#3b82f6' // Azul
+                },
+                {
+                    title: 'Sin clases',
+                    start: '2026-09-18',
+                    backgroundColor: '#ef4444' // Rojo
+                },
+                {
+                    title: 'Entrega Inform.',
+                    start: '2026-09-24',
+                    backgroundColor: '#10b981' // Verde
+                }
+            ]
+        });
+        calendar.render();
+    });
+</script>
+{% endblock %}

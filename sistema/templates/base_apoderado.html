@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Apoderados - SGE</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { display: flex; height: 100vh; background-color: #f3f4f6; color: #374151; }
+
+        /* Barra Lateral Izquierda (Azul oscuro) */
+        .sidebar-left { width: 260px; background-color: #1c2536; color: white; display: flex; flex-direction: column; }
+        .logo-area { padding: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #2d3748; }
+        .logo-badge { background-color: #f97316; padding: 5px 8px; border-radius: 4px; font-weight: bold; }
+        
+        .profile-area { padding: 30px 20px; text-align: center; border-bottom: 1px solid #2d3748; }
+        .profile-pic { width: 80px; height: 80px; background-color: #4b5563; border-radius: 50%; margin: 0 auto 10px; }
+        .profile-area h3 { font-size: 1.1rem; }
+        .profile-area p { font-size: 0.8rem; color: #9ca3af; margin-bottom: 15px; }
+        .btn-outline { background: transparent; border: 1px solid #9ca3af; color: white; padding: 5px 15px; border-radius: 4px; cursor: pointer; }
+
+        .alumnos-area { padding: 20px; }
+        .alumnos-area h4 { font-size: 0.75rem; color: #9ca3af; margin-bottom: 15px; letter-spacing: 1px; }
+        .alumno-card { background-color: #f97316; padding: 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+        .dot { width: 8px; height: 8px; background-color: white; border-radius: 50%; }
+        .alumno-info strong { display: block; font-size: 0.95rem; }
+        .alumno-info span { font-size: 0.75rem; opacity: 0.9; }
+
+        /* Área Central (Contenido dinámico) */
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+        .top-header { background-color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e5e7eb; }
+        .course-badge { background-color: #4d7c0f; color: white; padding: 8px 15px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; }
+        .user-menu { display: flex; align-items: center; gap: 20px; }
+        .user-menu a { color: #dc2626; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+        .content-area { padding: 30px; }
+
+        /* Barra Lateral Derecha (Módulos) */
+        .sidebar-right { width: 280px; background-color: white; border-left: 1px solid #e5e7eb; padding: 30px 20px; }
+        .sidebar-right h4 { font-size: 0.8rem; color: #6b7280; margin-bottom: 20px; letter-spacing: 0.5px; }
+        .menu-nav { display: flex; flex-direction: column; gap: 15px; }
+        .nav-item { padding: 15px; border: 1px solid #e5e7eb; border-radius: 8px; text-decoration: none; color: #374151; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: all 0.2s; }
+        .nav-item:hover { border-color: #f97316; }
+        .nav-item.active { border-color: #f97316; color: #f97316; box-shadow: 0 2px 4px rgba(249, 115, 22, 0.1); }
+        .icon-box { width: 24px; height: 24px; border-radius: 4px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar-left">
+        <div class="logo-area">
+            <span class="logo-badge">SGE</span>
+            <div>
+                <strong>Sistema de Gestión</strong>
+                <div style="font-size: 0.75rem; color: #9ca3af;">Portal de Apoderados</div>
+            </div>
+        </div>
+        
+        <div class="profile-area">
+            <div class="profile-pic"></div>
+            <h3>Rocío Méndez</h3>
+            <p>Apoderado Santa Juliana</p>
+            <button class="btn-outline">Cambiar</button>
+        </div>
+
+        <div class="alumnos-area">
+            <h4>ALUMNOS A CARGO</h4>
+            <div class="alumno-card">
+                <div class="dot"></div>
+                <div class="alumno-info">
+                    <strong>Benjamín Dante</strong>
+                    <span>4º Año H - Sta. Juliana</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="course-badge">2026 Cuarto Año H Liceo Polivalente Santa Juliana</div>
+            <div class="user-menu">
+                <strong>Rocío Méndez</strong>
+                <a href="{% url 'login' %}">⍈ Cerrar sesión</a>
+            </div>
+        </header>
+
+        <div class="content-area">
+            <!-- AQUÍ SE INYECTARÁ EL CONTENIDO DE CADA PANTALLA -->
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <aside class="sidebar-right">
+        <h4>MÓDULOS DE ACCESO</h4>
+        <nav class="menu-nav">
+            <a href="{% url 'apoderado_notas' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_notas' %}active{% endif %}">
+                <span class="icon-box" style="background-color: #f97316;"></span> Notas
+            </a>
+            <a href="{% url 'apoderado_asistencia' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_asistencia' %}active{% endif %}">
+                <span class="icon-box" style="background-color: #10b981;"></span> Asistencia
+            </a>
+            <a href="{% url 'apoderado_calendario' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_calendario' %}active{% endif %}">
+                <span class="icon-box" style="background-color: #3b82f6;"></span> Calendario de eventos
+            </a>
+            <a href="{% url 'apoderado_certificados' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_certificados' %}active{% endif %}">
+                <span class="icon-box" style="background-color: #6b7280;"></span> Certificados
+            </a>
+        </nav>
+    </aside>
+
+</body>
+</html>

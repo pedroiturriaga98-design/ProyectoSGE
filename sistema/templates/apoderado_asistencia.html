@@ -1,0 +1,126 @@
+{% extends 'base_apoderado.html' %}
+
+{% block content %}
+<style>
+    /* Estilos específicos para la vista de Asistencia */
+    .stats-row { display: flex; gap: 20px; margin-bottom: 25px; }
+    .stat-card { background: white; flex: 1; padding: 20px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6; }
+    .stat-title { font-size: 0.75rem; color: #6b7280; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 10px; display: block; }
+    .stat-value-container { display: flex; align-items: baseline; gap: 10px; }
+    .stat-number { font-size: 2.8rem; font-weight: bold; line-height: 1; }
+    .stat-sub { font-size: 0.9rem; color: #9ca3af; }
+
+    .color-orange { color: #f97316; }
+    .color-green { color: #10b981; }
+    .color-red { color: #ef4444; }
+
+    .calendar-card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6; margin-bottom: 25px; }
+    .calendar-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px; margin-bottom: 20px; }
+    .calendar-header h3 { color: #111827; font-size: 1.1rem; }
+    .month-badge { color: #ea580c; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+
+    /* Cuadrícula del mes */
+    .grid-asistencia { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; text-align: center; }
+    .grid-header { font-size: 0.8rem; font-weight: 600; color: #6b7280; margin-bottom: 10px; }
+    
+    .day-box { padding: 15px 10px; border-radius: 8px; font-size: 0.85rem; display: flex; flex-direction: column; gap: 5px; }
+    .day-box strong { font-size: 1.2rem; }
+    
+    .presente { background-color: #d1fae5; color: #059669; }
+    .ausente { background-color: #fee2e2; color: #e11d48; }
+    .vacio { background-color: transparent; }
+
+    .leyenda-card { background: white; border-radius: 12px; padding: 15px 25px; border: 1px solid #f3f4f6; display: flex; align-items: center; gap: 25px; font-size: 0.9rem; color: #4b5563; }
+    .leyenda-item { display: flex; align-items: center; gap: 8px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-presente { background-color: #10b981; }
+    .dot-ausente { background-color: #ef4444; }
+    .dot-feriado { background-color: #e5e7eb; }
+</style>
+
+<!-- TARJETAS SUPERIORES -->
+<div class="stats-row">
+    <div class="stat-card">
+        <span class="stat-title">ASISTENCIA DEL MES</span>
+        <div class="stat-value-container">
+            <span class="stat-number color-orange">92%</span>
+            <span class="stat-sub">Benjamín Dante</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-title">DÍAS ASISTIDOS</span>
+        <div class="stat-value-container">
+            <span class="stat-number color-green">22</span>
+            <span class="stat-sub">Días hábiles</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-title">INASISTENCIAS</span>
+        <div class="stat-value-container">
+            <span class="stat-number color-red">2</span>
+            <span class="stat-sub">Justificadas: 1</span>
+        </div>
+    </div>
+</div>
+
+<!-- CALENDARIO DE ASISTENCIA -->
+<div class="calendar-card">
+    <div class="calendar-header">
+        <h3>Control de Asistencia</h3>
+        <div class="month-badge"><span style="display:inline-block; width:12px; height:12px; background:#ea580c; border-radius:3px;"></span> Agosto 2026</div>
+    </div>
+
+    <div class="grid-asistencia">
+        <!-- Cabeceras de Días -->
+        <div class="grid-header">LUNES</div>
+        <div class="grid-header">MARTES</div>
+        <div class="grid-header">MIÉRCOLES</div>
+        <div class="grid-header">JUEVES</div>
+        <div class="grid-header">VIERNES</div>
+
+        <!-- Fila 1 -->
+        <div class="day-box presente"><strong>3</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>4</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>5</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>6</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>7</strong> <span>ASISTIÓ</span></div>
+
+        <!-- Fila 2 -->
+        <div class="day-box presente"><strong>10</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box ausente"><strong>11</strong> <span>FALTÓ</span></div>
+        <div class="day-box presente"><strong>12</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>13</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>14</strong> <span>ASISTIÓ</span></div>
+
+        <!-- Fila 3 -->
+        <div class="day-box presente"><strong>17</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>18</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>19</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>20</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>21</strong> <span>ASISTIÓ</span></div>
+
+        <!-- Fila 4 -->
+        <div class="day-box presente"><strong>24</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>25</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box ausente"><strong>26</strong> <span>FALTÓ</span></div>
+        <div class="day-box presente"><strong>27</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box presente"><strong>28</strong> <span>ASISTIÓ</span></div>
+
+        <!-- Fila 5 -->
+        <div class="day-box presente"><strong>31</strong> <span>ASISTIÓ</span></div>
+        <div class="day-box vacio"></div>
+        <div class="day-box vacio"></div>
+        <div class="day-box vacio"></div>
+        <div class="day-box vacio"></div>
+    </div>
+</div>
+
+<!-- LEYENDA -->
+<div class="leyenda-card">
+    <strong style="font-size: 0.8rem; letter-spacing: 0.5px;">LEYENDA:</strong>
+    <div class="leyenda-item"><div class="dot dot-presente"></div> Presente (Asistió)</div>
+    <div class="leyenda-item"><div class="dot dot-ausente"></div> Ausente (Inasistencia)</div>
+    <div class="leyenda-item"><div class="dot dot-feriado"></div> Fin de semana / Feriado / Suspendido</div>
+</div>
+
+{% endblock %}

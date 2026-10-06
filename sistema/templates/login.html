@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGE - Iniciar Sesión</title>
+    <style>
+        /* Estilos generales y reseteo */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { display: flex; height: 100vh; background-color: #ffffff; }
+
+        /* Panel Izquierdo (Azul Oscuro) */
+        .left-panel { 
+            flex: 1; 
+            background-color: #1c2536; 
+            color: #ffffff; 
+            padding: 3rem; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .header-left { display: flex; align-items: center; gap: 15px; width: 100%; justify-content: flex-start; }
+        .logo-box { background-color: #f97316; color: white; padding: 8px 12px; border-radius: 6px; font-weight: bold; font-size: 1.2rem;}
+        .titles { text-align: left; }
+        .titles h1 { font-size: 1.1rem; margin-bottom: 2px; }
+        .titles p { font-size: 0.85rem; color: #9ca3af; }
+        
+        .img-placeholder { 
+            width: 100%; 
+            max-width: 450px; 
+            height: 300px; 
+            background-color: #2d3748; 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border: 2px dashed #4b5563; 
+            color: #9ca3af;
+        }
+        
+        .footer-left { text-align: center; }
+        .footer-left h2 { font-size: 1.6rem; margin-bottom: 12px; }
+        .footer-left p { color: #9ca3af; font-size: 0.95rem; max-width: 350px; margin: 0 auto; line-height: 1.5; }
+
+        /* Panel Derecho (Formulario Blanco) */
+        .right-panel { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 3rem; 
+            position: relative; 
+        }
+        .login-box { width: 100%; max-width: 400px; }
+        .login-box h2 { font-size: 2.2rem; color: #111827; margin-bottom: 8px; }
+        .login-box p { color: #6b7280; margin-bottom: 2.5rem; font-size: 0.95rem; }
+        
+        .form-group { margin-bottom: 1.5rem; text-align: left; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 8px; }
+        .form-control { 
+            width: 100%; 
+            padding: 12px 15px; 
+            border: 1px solid #e5e7eb; 
+            border-radius: 6px; 
+            font-size: 0.95rem; 
+            outline: none; 
+            transition: border 0.3s;
+        }
+        .form-control:focus { border-color: #f97316; }
+        
+        .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; font-size: 0.9rem; }
+        .form-options label { color: #4b5563; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .form-options a { color: #f97316; text-decoration: none; }
+        .form-options a:hover { text-decoration: underline; }
+        
+        .btn-submit { 
+            width: 100%; 
+            background-color: #f97316; 
+            color: white; 
+            padding: 14px; 
+            border: none; 
+            border-radius: 6px; 
+            font-size: 1rem; 
+            cursor: pointer; 
+            font-weight: 600; 
+            transition: background 0.3s; 
+        }
+        .btn-submit:hover { background-color: #ea580c; }
+        
+        .footer-right { 
+            position: absolute; 
+            bottom: 1.5rem; 
+            width: 100%; 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 0 3rem; 
+            color: #9ca3af; 
+            font-size: 0.8rem; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mitad Izquierda (Diseño Institucional) -->
+    <div class="left-panel">
+        <div class="header-left">
+            <div class="logo-box">SGE</div>
+            <div class="titles">
+                <h1>Sistema de Gestión Escolar</h1>
+                <p>Colegio Santa Juliana</p>
+            </div>
+        </div>
+
+        <!-- Aquí podrás cambiar el div por la etiqueta <img> con tu render 3D cuando configuremos los archivos estáticos -->
+        <div class="img-placeholder">
+            [Espacio para la imagen 3D de la sala]
+        </div>
+
+        <div class="footer-left">
+            <h2>Todo en un solo lugar</h2>
+            <p>Accede a calificaciones, asistencia, horarios y comunicaciones en tiempo real.</p>
+        </div>
+    </div>
+
+    <!-- Mitad Derecha (Formulario Funcional) -->
+    <div class="right-panel">
+        <div class="login-box">
+            <h2>¡Bienvenido de nuevo!</h2>
+            <p>Ingresa tus credenciales para acceder a la plataforma.</p>
+            
+            <form method="POST" action="">
+                <!-- Token de seguridad obligatorio en Django -->
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label>Correo electrónico o usuario</label>
+                    <input type="text" name="username" class="form-control" placeholder="nombre@colegiosantajuliana.cl" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" name="password" class="form-control" placeholder="••••••••••••" required>
+                </div>
+                
+                <div class="form-options">
+                    <label><input type="checkbox" name="remember"> Recordarme</label>
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                </div>
+                
+                <button type="submit" class="btn-submit">Iniciar sesión &rarr;</button>
+            </form>
+        </div>
+
+        <div class="footer-right">
+            <span>&copy; 2026 SGE. Todos los derechos reservados.</span>
+            <span>Colegio Santa Juliana &middot; Sistema de Gestión Escolar v1.0</span>
+        </div>
+    </div>
+
+</body>
+</html>

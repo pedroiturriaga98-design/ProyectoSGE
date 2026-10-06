@@ -1,0 +1,133 @@
+{% extends 'base_apoderado.html' %}
+
+{% block content %}
+<style>
+    /* Contenedor principal a dos columnas */
+    .cert-container { display: flex; gap: 30px; align-items: flex-start; }
+    
+    /* Columna Izquierda: Vista Previa */
+    .preview-section { flex: 1.2; }
+    .preview-title { font-size: 1.1rem; color: #111827; margin-bottom: 20px; font-weight: 600; }
+    
+    .document-preview { 
+        background: white; 
+        padding: 40px; 
+        border-radius: 12px; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+        border: 1px solid #e5e7eb;
+    }
+    .document-paper {
+        border: 1px dashed #9ca3af;
+        padding: 40px 30px;
+        border-radius: 8px;
+        position: relative;
+    }
+    .doc-header { text-align: center; margin-bottom: 30px; }
+    .doc-header h4 { font-size: 0.8rem; color: #6b7280; letter-spacing: 1px; text-transform: uppercase; }
+    .doc-header h2 { font-size: 1.4rem; color: #111827; margin-top: 5px; }
+    
+    .doc-body { font-size: 0.95rem; color: #374151; line-height: 1.6; margin-bottom: 30px; }
+    
+    .doc-data-box { background-color: #f9fafb; border-radius: 8px; padding: 20px; margin-bottom: 30px; }
+    .doc-data-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+    .doc-data-row:last-child { margin-bottom: 0; }
+    .doc-data-label { color: #6b7280; font-weight: 500; }
+    .doc-data-value { font-weight: 600; color: #111827; }
+    
+    .doc-footer { font-size: 0.85rem; color: #6b7280; font-style: italic; margin-bottom: 40px; }
+    
+    .doc-signatures { display: flex; justify-content: space-between; align-items: flex-end; font-size: 0.75rem; color: #9ca3af; }
+    .stamp-box { text-align: center; }
+    .stamp-circle { width: 60px; height: 60px; border: 2px solid #3b82f6; border-radius: 50%; margin: 0 auto 5px; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-weight: bold; font-size: 0.7rem; transform: rotate(-15deg); }
+
+    /* Columna Derecha: Descargas */
+    .download-section { flex: 1; }
+    .download-title { font-size: 1.1rem; color: #111827; margin-bottom: 20px; font-weight: 600; }
+    
+    .download-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; margin-bottom: 20px; }
+    .download-card h3 { font-size: 1.05rem; color: #111827; margin-bottom: 8px; }
+    .download-card p { font-size: 0.85rem; color: #6b7280; margin-bottom: 20px; line-height: 1.4; }
+    
+    .btn-download { width: 100%; background-color: #ea580c; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .btn-download:hover { background-color: #c2410c; }
+    
+    .semester-toggle { display: flex; gap: 10px; margin-bottom: 15px; }
+    .semester-btn { flex: 1; padding: 10px; text-align: center; border: 1px solid #f97316; background: white; color: #f97316; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .semester-btn.active { background-color: #fff7ed; }
+</style>
+
+<div class="cert-container">
+    
+    <!-- Columna Izquierda: Vista Previa del Documento -->
+    <div class="preview-section">
+        <h3 class="preview-title">Vista previa del documento</h3>
+        
+        <div class="document-preview">
+            <div class="document-paper">
+                <div class="doc-header">
+                    <h4>Liceo Polivalente Santa Juliana</h4>
+                    <h2>CERTIFICADO DE ALUMNO REGULAR</h2>
+                </div>
+                
+                <p class="doc-body">
+                    La Dirección del Liceo Polivalente Santa Juliana certifica que el estudiante individualizado a continuación es alumno regular matriculado en nuestro establecimiento para el período académico 2026:
+                </p>
+                
+                <div class="doc-data-box">
+                    <div class="doc-data-row">
+                        <span class="doc-data-label">Nombre completo:</span>
+                        <span class="doc-data-value">Benjamín Dante Méndez</span>
+                    </div>
+                    <div class="doc-data-row">
+                        <span class="doc-data-label">R.U.T:</span>
+                        <span class="doc-data-value">23.456.789-K</span>
+                    </div>
+                    <div class="doc-data-row">
+                        <span class="doc-data-label">Curso correspondiente:</span>
+                        <span class="doc-data-value">Cuarto Año H</span>
+                    </div>
+                </div>
+                
+                <p class="doc-footer">
+                    Se extiende el presente certificado a petición de la apoderada para los fines pertinentes que estime conveniente.
+                </p>
+                
+                <div class="doc-signatures">
+                    <div>
+                        Código Verificación: 104-D32-SGE<br>
+                        Fecha de emisión: 15/08/2026
+                    </div>
+                    <div class="stamp-box">
+                        <div class="stamp-circle">Sello<br>Oficial</div>
+                        <strong>Secretaría General SGE</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Columna Derecha: Opciones de Descarga -->
+    <div class="download-section">
+        <h3 class="download-title">Descargar certificados</h3>
+        
+        <!-- Tarjeta 1 -->
+        <div class="download-card">
+            <h3>Certificado Alumno Regular</h3>
+            <p>Documento oficial que acredita matrícula vigente para asignaciones y trámites.</p>
+            <a href="#" onclick="alert('Generando y descargando el certificado en PDF...'); return false;" class="btn-download" style="display: block; text-align: center; text-decoration: none;">Descargar PDF</a>
+        </div>
+        
+        <!-- Tarjeta 2 -->
+        <div class="download-card">
+            <h3>Consolidado de Notas</h3>
+            <p>Informe oficial de calificaciones parciales y promedio acumulado del semestre.</p>
+            <div class="semester-toggle">
+                <button class="semester-btn active">Semestre 1</button>
+                <button class="semester-btn">Semestre 2</button>
+            </div>
+            <a href="#" onclick="alert('Generando y descargando el certificado en PDF...'); return false;" class="btn-download" style="display: block; text-align: center; text-decoration: none;">Descargar PDF</a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
