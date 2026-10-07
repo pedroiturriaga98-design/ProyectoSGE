@@ -1,0 +1,120 @@
+{% extends 'base_apoderado.html' %}
+
+{% block content %}
+<style>
+    /* Banner de Bienvenida */
+    .welcome-banner {
+        background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%);
+        border-radius: 12px;
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        border: 1px solid #e5e7eb;
+    }
+    .welcome-text h1 { font-size: 2rem; color: #111827; margin-bottom: 12px; }
+    .welcome-text p { color: #4b5563; font-size: 1rem; margin-bottom: 25px; line-height: 1.5; }
+    
+    .role-badge { 
+        display: inline-flex; 
+        align-items: center; 
+        gap: 8px; 
+        background: white; 
+        padding: 8px 16px; 
+        border-radius: 20px; 
+        font-size: 0.9rem; 
+        font-weight: 500; 
+        color: #6b7280; 
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05); 
+        border: 1px solid #f3f4f6;
+    }
+    .role-badge strong { color: #f97316; }
+
+    .welcome-illustration { font-size: 5rem; }
+
+    /* Sección de Estudiantes */
+    .students-section h3 { 
+        font-size: 1.1rem; 
+        color: #111827; 
+        margin-bottom: 15px; 
+        display: flex; 
+        align-items: center; 
+        gap: 10px; 
+    }
+    
+    .student-card-large {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        border: 1px solid #e5e7eb;
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+    }
+    .student-card-large:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        border-color: #fed7aa;
+    }
+    
+    .student-info-large { display: flex; align-items: center; gap: 20px; }
+    .student-avatar { 
+        width: 50px; 
+        height: 50px; 
+        background-color: #94a3b8; 
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        color: white; 
+        font-size: 1.4rem; 
+    }
+    
+    .student-details h4 { font-size: 1.1rem; color: #111827; margin-bottom: 4px; }
+    .student-details p { font-size: 0.9rem; color: #6b7280; }
+    
+    .btn-view-info { 
+        color: #f97316; 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        background: transparent; 
+        border: none; 
+        text-decoration: none;
+    }
+</style>
+
+<!-- Banner Principal -->
+<div class="welcome-banner">
+    <div class="welcome-text">
+        <h1>¡Bienvenido(a), Rocío!</h1>
+        <p>Aquí podrás acceder a la información académica y<br>administrativa de tu(s) hijo(s).</p>
+        <div class="role-badge">
+            <span>👤</span> Estás en la vista: <strong>Apoderado</strong>
+        </div>
+    </div>
+    <div class="welcome-illustration">
+    </div>
+</div>
+
+<!-- Lista de Estudiantes -->
+<div class="students-section">
+    <h3>👥 Mis estudiantes</h3>
+    
+    <a href="{% url 'apoderado_notas' %}" class="student-card-large">
+        <div class="student-info-large">
+            <div class="student-avatar">👤</div>
+            <div class="student-details">
+                <h4>Benjamín Dante</h4>
+                <p>4º Año H - Sta. Juliana</p>
+            </div>
+        </div>
+        <span class="btn-view-info">Ver información &gt;</span>
+    </a>
+</div>
+
+{% endblock %}

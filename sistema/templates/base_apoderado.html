@@ -94,6 +94,11 @@
     <aside class="sidebar-right">
         <h4>MÓDULOS DE ACCESO</h4>
         <nav class="menu-nav">
+            <!-- BOTÓN DE INICIO -->
+            <a href="{% url 'apoderado_inicio' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_inicio' %}active{% endif %}">
+                <span class="icon-box" style="background-color: #f97316;"></span> Inicio
+            </a>
+            
             <a href="{% url 'apoderado_notas' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_notas' %}active{% endif %}">
                 <span class="icon-box" style="background-color: #f97316;"></span> Notas
             </a>

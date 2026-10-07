@@ -1,0 +1,171 @@
+{% extends 'base_profesor.html' %}
+
+{% block content %}
+<style>
+    /* Banner de Bienvenida */
+    .welcome-banner {
+        background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+        border-radius: 12px;
+        padding: 30px 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        border: 1px solid #e5e7eb;
+    }
+    .welcome-text h1 { font-size: 2rem; color: #111827; margin-bottom: 10px; }
+    .welcome-text p { color: #4b5563; font-size: 1rem; margin-bottom: 20px; line-height: 1.5; }
+    
+    .role-badge { 
+        display: inline-flex; 
+        align-items: center; 
+        gap: 8px; 
+        background: white; 
+        padding: 8px 16px; 
+        border-radius: 20px; 
+        font-size: 0.9rem; 
+        font-weight: 500; 
+        color: #6b7280; 
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05); 
+        border: 1px solid #f3f4f6;
+    }
+    .role-badge strong { color: #f97316; }
+
+    .page-header { margin-bottom: 20px; }
+    .page-header h2 { font-size: 1.3rem; color: #0f172a; margin-bottom: 5px; }
+    .page-header p { color: #64748b; font-size: 0.9rem; }
+
+    /* Grillas de Estadísticas */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 20px; }
+    .stat-card { background: white; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; display: flex; align-items: center; gap: 15px; box-shadow: 0 1px 2px rgba(0,0,0,0.02); }
+    .stat-icon { width: 45px; height: 45px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .stat-info h5 { font-size: 0.75rem; color: #64748b; font-weight: 500; margin-bottom: 4px; }
+    .stat-info span { font-size: 1.5rem; color: #0f172a; font-weight: bold; }
+
+    /* Colores de íconos */
+    .bg-blue { background-color: #eff6ff; color: #3b82f6; }
+    .bg-green { background-color: #f0fdf4; color: #10b981; }
+    .bg-orange { background-color: #fff7ed; color: #ea580c; }
+    .bg-gray { background-color: #f8fafc; color: #64748b; }
+
+    /* Novedades y Actualizaciones */
+    .news-section { margin-top: 30px; }
+    .news-section h3 { font-size: 1.1rem; color: #0f172a; margin-bottom: 15px; }
+    .news-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+    
+    .news-banner { background: white; border-radius: 12px; border: 1px solid #e2e8f0; display: flex; overflow: hidden; }
+    .banner-content { padding: 40px 30px; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+    .banner-badge { background-color: #fff7ed; color: #ea580c; padding: 4px 10px; font-size: 0.7rem; font-weight: bold; border-radius: 4px; margin-bottom: 15px; }
+    .banner-content h2 { font-size: 1.6rem; color: #0f172a; margin-bottom: 20px; line-height: 1.3; }
+    .btn-blue { background-color: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    .banner-image { width: 45%; background: linear-gradient(135deg, #a7f3d0 0%, #fde68a 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+
+    .other-news { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; }
+    .other-news h4 { font-size: 1rem; color: #0f172a; margin-bottom: 20px; }
+    .news-item { display: flex; gap: 15px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; }
+    .news-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .news-icon { background-color: #eff6ff; color: #3b82f6; width: 35px; height: 35px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .news-text span { font-size: 0.7rem; color: #ea580c; font-weight: bold; display: block; margin-bottom: 3px; }
+    .news-text p { font-size: 0.85rem; color: #0f172a; font-weight: 500; }
+</style>
+
+<!-- Banner Principal -->
+<div class="welcome-banner">
+    <div class="welcome-text">
+        <h1>¡Bienvenido(a), Cristian!</h1>
+        <p>Aquí podrás acceder a la información académica y<br>administrativa de tus cursos asignados.</p>
+        <div class="role-badge">
+            <span>👤</span> Estás en la vista: <strong>Profesor</strong>
+        </div>
+    </div>
+</div>
+
+<div class="page-header">
+    <h2>Resumen del día</h2>
+    <p>Información consolidada de la gestión escolar para el día de hoy.</p>
+</div>
+
+<!-- Fila 1: Estadísticas principales -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon bg-blue">👥</div>
+        <div class="stat-info"><h5>Matrícula Total</h5><span>1,245</span></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon bg-green">☑️</div>
+        <div class="stat-info"><h5>Asistencia Hoy</h5><span>92%</span></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon bg-orange">📖</div>
+        <div class="stat-info"><h5>Cursos Activos</h5><span>36</span></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon bg-blue">👤</div>
+        <div class="stat-info"><h5>Profesores</h5><span>58</span></div>
+    </div>
+</div>
+
+<!-- Fila 2: Estadísticas secundarias -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon bg-gray">👤</div>
+        <div class="stat-info"><h5>Alumnos Retirados</h5><span>12</span></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon bg-orange">❗</div>
+        <div class="stat-info"><h5>Anotaciones Hoy</h5><span>5</span></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon bg-blue">🕒</div>
+        <div class="stat-info"><h5>Tareas Pendientes</h5><span>128</span></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon bg-green">📄</div>
+        <div class="stat-info"><h5>Evaluaciones esta semana</h5><span>15</span></div>
+    </div>
+</div>
+
+<!-- Sección Novedades -->
+<div class="news-section">
+    <h3>Novedades y Actualizaciones</h3>
+    <div class="news-grid">
+        
+        <div class="news-banner">
+            <div class="banner-content">
+                <span class="banner-badge">NUEVO MÓDULO</span>
+                <h2>Estamos renovando SGE<br>Santa Juliana</h2>
+                <a href="#" class="btn-blue">Ver más</a>
+            </div>
+            <div class="banner-image">
+                [Imagen Ilustración]
+            </div>
+        </div>
+
+        <div class="other-news">
+            <h4>Otras noticias</h4>
+            
+            <div class="news-item">
+                <div class="news-icon">📄</div>
+                <div class="news-text">
+                    <span>24 ENE</span>
+                    <p>Evaluaciones estandarizadas 2026</p>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-icon">📄</div>
+                <div class="news-text">
+                    <span>18 ENE</span>
+                    <p>Cursos de formación docente</p>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-icon">📄</div>
+                <div class="news-text">
+                    <span>10 ENE</span>
+                    <p>Nuevo proceso de matrícula digital</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
