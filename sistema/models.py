@@ -12,7 +12,10 @@ class Alumno(models.Model):
     rut_alumno = models.CharField(primary_key=True, max_length=12)
     nombre_completo = models.CharField(max_length=100)
     estado_matricula = models.CharField(max_length=20)
-    curso_id_curso = models.ForeignKey('Curso', models.DO_NOTHING, db_column='CURSO_id_curso')  # Field name made lowercase.
+    curso_id_curso = models.ForeignKey('Curso', models.DO_NOTHING, db_column='CURSO_id_curso') # Field name made lowercase.
+    
+    # Aquí está el nuevo puente hacia el apoderado
+    usuario_rut = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='USUARIO_rut', blank=True, null=True)
 
     class Meta:
         managed = False
