@@ -1,0 +1,80 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<style>
+    .page-header { margin-bottom: 25px; }
+    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; font-weight: bold; }
+    .page-header p { color: #64748b; font-size: 0.9rem; }
+
+    .form-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+    .full-width { grid-column: 1 / -1; }
+    
+    .form-group label { display: block; font-size: 0.85rem; color: #0f172a; font-weight: 600; margin-bottom: 8px; }
+    .form-control { width: 100%; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.95rem; color: #334155; transition: 0.2s; }
+    .form-control:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1); }
+    .form-control:disabled { background-color: #f1f5f9; color: #64748b; cursor: not-allowed; }
+
+    .toggle-container { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+    .toggle-switch { position: relative; width: 44px; height: 24px; appearance: none; background: #cbd5e1; outline: none; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+    .toggle-switch:checked { background: #10b981; }
+    .toggle-switch::before { content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%; top: 3px; left: 3px; background: white; transition: 0.3s; }
+    .toggle-switch:checked::before { left: 23px; }
+
+    .form-footer { display: flex; justify-content: flex-end; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 20px; gap: 15px; }
+    .btn-cancel { background: transparent; border: 1px solid #cbd5e1; color: #475569; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .btn-cancel:hover { background: #f8fafc; }
+    .btn-submit { display: inline-block; background-color: #f97316; color: white; text-decoration: none; border: none; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .btn-submit:hover { background-color: #ea580c; }
+</style>
+
+<div class="page-header">
+    <h2>Editar Apoderado</h2>
+    <p>Modifique la información personal y el estado de la cuenta del apoderado.</p>
+</div>
+
+<div class="form-card">
+    <div class="form-grid">
+        <div class="form-group">
+            <label>Nombres</label>
+            <input type="text" class="form-control" value="Carolina">
+        </div>
+        <div class="form-group">
+            <label>RUT</label>
+            <input type="text" class="form-control" value="12.345.678-9" disabled title="El RUT no se puede modificar">
+        </div>
+
+        <div class="form-group">
+            <label>Apellidos</label>
+            <input type="text" class="form-control" value="González Muñoz">
+        </div>
+        <div class="form-group">
+            <label>Email Institucional</label>
+            <input type="email" class="form-control" value="c.gonzalez@santajuliana.cl">
+        </div>
+
+        <div class="form-group">
+            <label>Teléfono de Contacto</label>
+            <input type="text" class="form-control" value="+56 9 1234 5678">
+        </div>
+        <div class="form-group">
+            <label>Estado de la Cuenta</label>
+            <div class="toggle-container">
+                <input type="checkbox" class="toggle-switch" checked>
+                <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Activo y con acceso</span>
+            </div>
+        </div>
+
+        <div class="form-group full-width">
+            <label>Pupilos Vinculados</label>
+            <input type="text" class="form-control" value="Martín González (3° Básico A)" disabled style="background-color: #fffbeb; border-color: #fde68a; color: #b45309;">
+        </div>
+    </div>
+
+    <div class="form-footer">
+        <button class="btn-cancel" onclick="window.history.back()">Cancelar</button>
+        <a class="btn-submit" href="{% url 'admin_gestion_apoderados' %}" onclick="alert('Datos del apoderado actualizados.')">Guardar Cambios</a>
+    </div>
+</div>
+{% endblock %}

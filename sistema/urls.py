@@ -23,6 +23,16 @@ urlpatterns = [
     path('administrador/usuarios/', views.admin_gestion_usuarios, name='admin_gestion_usuarios'),
     path('administrador/usuarios/crear/', views.admin_crear_usuario, name='admin_crear_usuario'),
     path('administrador/usuarios/editar/', views.admin_editar_usuario, name='admin_editar_usuario'),
+    path('administrador/alumnos/', views.admin_alumnos, name='admin_alumnos'),
+    path('administrador/alumnos/editar/', views.admin_editar_alumno, name='admin_editar_alumno'),
+    path('administrador/incidencias/', views.admin_gestion_incidencias, name='admin_gestion_incidencias'),
+    path('administrador/incidencias/editar/', views.admin_editar_incidencia, name='admin_editar_incidencia'),
+    path('administrador/apoderados/', views.admin_gestion_apoderados, name='admin_gestion_apoderados'),
+    path('administrador/apoderados/editar/', views.admin_editar_apoderado, name='admin_editar_apoderado'),
+    path('administrador/profesores/', views.admin_gestion_profesores, name='admin_gestion_profesores'),
+    path('administrador/profesores/editar/', views.admin_editar_profesor, name='admin_editar_profesor'),
+    path('administrador/inventario/', views.admin_gestion_inventario, name='admin_gestion_inventario'),
+    path('administrador/inventario/equipo/', views.admin_editar_equipo, name='admin_editar_equipo'),
 
 
 

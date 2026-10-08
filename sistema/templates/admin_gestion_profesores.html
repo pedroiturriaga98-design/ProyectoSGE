@@ -1,0 +1,163 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<style>
+    .page-header { margin-bottom: 25px; }
+    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; font-weight: bold; }
+    .page-header p { color: #64748b; font-size: 0.9rem; }
+
+    .table-container { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    .table-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
+    .filters-left { display: flex; gap: 10px; flex-wrap: wrap; }
+    
+    .filter-select { padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.85rem; background-color: white; color: #475569; }
+    .search-box { position: relative; width: 280px; }
+    .search-box input { width: 100%; padding: 10px 15px 10px 35px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.85rem; }
+    .search-box::before { content: '🔍'; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: #94a3b8; }
+
+    .btn-create { background-color: #f97316; color: white; text-decoration: none; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+    .btn-create:hover { background-color: #ea580c; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; padding: 15px 10px; font-size: 0.75rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; text-transform: uppercase; }
+    td { padding: 15px 10px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; color: #475569; vertical-align: middle; }
+    
+    .user-info { display: flex; align-items: center; gap: 12px; }
+    .avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; font-size: 0.75rem; }
+    
+    .bg-blue { background-color: #3b82f6; }
+    .bg-green { background-color: #10b981; }
+    .bg-orange { background-color: #f97316; }
+    .bg-teal { background-color: #14b8a6; }
+    .bg-purple { background-color: #8b5cf6; }
+
+    .user-info strong { color: #0f172a; font-weight: 600; }
+    .jefatura-text { font-size: 0.75rem; background-color: #fef08a; color: #854d0e; padding: 2px 8px; border-radius: 12px; font-weight: 600; margin-left: 5px; }
+
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; display: inline-block; text-align: center; }
+    .badge-activo { background-color: #d1fae5; color: #059669; }
+    .badge-inactivo { background-color: #f1f5f9; color: #64748b; }
+
+    .action-btns { display: flex; gap: 6px; }
+    .btn-icon { width: 30px; height: 30px; border-radius: 4px; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; text-decoration: none; transition: 0.2s; font-size: 0.8rem; }
+    .btn-icon:hover { background: #f1f5f9; }
+    .btn-icon.delete { color: #ef4444; border-color: #fecaca; background: #fff5f5; }
+    .btn-icon.delete:hover { background: #fee2e2; }
+</style>
+
+<div class="page-header">
+    <h2>Gestión de Profesores</h2>
+    <p>Administración del cuerpo docente, asignaturas y credenciales de acceso.</p>
+</div>
+
+<div class="table-container">
+    <div class="table-toolbar">
+        <div class="filters-left">
+            <select class="filter-select"><option>Asignatura: Todas</option></select>
+            <select class="filter-select"><option>Estado: Activos</option></select>
+            <div class="search-box">
+                <input type="text" placeholder="Buscar por nombre, RUT o especialidad...">
+            </div>
+        </div>
+        <a class="btn-create" href="{% url 'admin_crear_usuario' %}">+ Nuevo Profesor</a>
+    </div>
+
+    <table id="profesores-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">PROFESOR</th>
+                <th style="width: 12%;">RUT</th>
+                <th style="width: 20%;">ESPECIALIDAD</th>
+                <th style="width: 20%;">CORREO INSTITUCIONAL</th>
+                <th style="width: 10%;">ESTADO</th>
+                <th style="width: 13%;">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar bg-blue">CM</div>
+                        <strong>Cristian Morales Rivas</strong>
+                        <span class="jefatura-text">Jefatura 2°A</span>
+                    </div>
+                </td>
+                <td>14.225.678-9</td>
+                <td>Educación Básica</td>
+                <td>c.morales@santajuliana.cl</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_profesor' %}" aria-label="Editar profesor" title="Editar">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarProfesor(this)" title="Desvincular">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar bg-teal">ML</div>
+                        <strong>María Fernanda López</strong>
+                    </div>
+                </td>
+                <td>15.845.221-K</td>
+                <td>Lenguaje / Historia</td>
+                <td>mf.lopez@santajuliana.cl</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_profesor' %}" aria-label="Editar profesor">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarProfesor(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar bg-orange">RS</div>
+                        <strong>Rodrigo Sanhueza</strong>
+                        <span class="jefatura-text">Jefatura 4°M</span>
+                    </div>
+                </td>
+                <td>12.333.444-5</td>
+                <td>Matemáticas / Física</td>
+                <td>r.sanhueza@santajuliana.cl</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_profesor' %}" aria-label="Editar profesor">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarProfesor(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar bg-purple" style="opacity: 0.5;">CP</div>
+                        <strong style="color: #64748b;">Carlos Plaza</strong>
+                    </div>
+                </td>
+                <td style="color: #94a3b8;">10.987.654-3</td>
+                <td style="color: #94a3b8;">Ciencias Naturales</td>
+                <td style="color: #94a3b8;">c.plaza@santajuliana.cl</td>
+                <td><span class="badge badge-inactivo">Inactivo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_profesor' %}" aria-label="Editar profesor">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarProfesor(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function eliminarProfesor(boton) {
+        if (confirm("¿Estás seguro de que deseas eliminar a este profesor? Se revocarán sus accesos al sistema.")) {
+            boton.closest('tr').remove();
+        }
+    }
+</script>
+{% endblock %}

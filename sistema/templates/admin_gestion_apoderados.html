@@ -1,0 +1,202 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<style>
+    .page-header { margin-bottom: 25px; }
+    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; font-weight: bold; }
+    .page-header p { color: #64748b; font-size: 0.9rem; }
+
+    .table-container { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    .table-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
+    .filters-left { display: flex; gap: 10px; flex-wrap: wrap; }
+    
+    .filter-select { padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.85rem; background-color: white; color: #475569; }
+    .search-box { position: relative; width: 280px; }
+    .search-box input { width: 100%; padding: 10px 15px 10px 35px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.85rem; }
+    .search-box::before { content: '🔍'; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: #94a3b8; }
+
+    .btn-create { background-color: #f97316; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+    .btn-create:hover { background-color: #ea580c; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; padding: 15px 10px; font-size: 0.75rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; text-transform: uppercase; }
+    td { padding: 15px 10px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; color: #475569; vertical-align: middle; }
+    
+    .user-info { display: flex; align-items: center; gap: 12px; }
+    .avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; font-size: 0.75rem; }
+    
+    .bg-blue { background-color: #3b82f6; }
+    .bg-green { background-color: #10b981; }
+    .bg-orange { background-color: #f97316; }
+    .bg-red { background-color: #ef4444; }
+    .bg-purple { background-color: #8b5cf6; }
+
+    .user-info strong { color: #0f172a; font-weight: 600; }
+    
+    .pupil-text { color: #64748b; font-size: 0.8rem; }
+    .pupil-text strong { color: #334155; }
+
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; display: inline-block; text-align: center; }
+    .badge-activo { background-color: #d1fae5; color: #059669; }
+    .badge-inactivo { background-color: #f1f5f9; color: #64748b; }
+
+    .action-btns { display: flex; gap: 6px; }
+    .btn-icon { width: 30px; height: 30px; border-radius: 4px; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; text-decoration: none; transition: 0.2s; font-size: 0.8rem; }
+    .btn-icon:hover { background: #f1f5f9; }
+    .btn-icon.delete { color: #ef4444; border-color: #fecaca; background: #fff5f5; }
+    .btn-icon.delete:hover { background: #fee2e2; }
+
+    .pagination-container { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
+    .pagination-info { font-size: 0.85rem; color: #64748b; }
+    .pagination-buttons { display: flex; gap: 5px; }
+    .page-btn { padding: 6px 12px; border: 1px solid #cbd5e1; background: white; border-radius: 4px; color: #475569; cursor: pointer; font-size: 0.85rem; transition: 0.2s; }
+    .page-btn:hover { background: #f1f5f9; }
+    .page-btn.active { background: #f97316; color: white; border-color: #f97316; font-weight: bold; }
+</style>
+
+<div class="page-header">
+    <h2>Gestión de Apoderados</h2>
+    <p>Administración de cuentas, accesos y estudiantes vinculados.</p>
+</div>
+
+<div class="table-container">
+    <div class="table-toolbar">
+        <div class="filters-left">
+            <select class="filter-select"><option>Enseñanza: Básica</option></select>
+            <select class="filter-select"><option>Curso: Todos</option></select>
+            <select class="filter-select"><option>Sección: Todas</option></select>
+            <div class="search-box">
+                <input type="text" placeholder="Buscar por RUT, nombre o pupilo...">
+            </div>
+        </div>
+        <button class="btn-create">+ Nuevo Apoderado</button>
+    </div>
+
+    <table id="apoderados-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">APODERADO</th>
+                <th style="width: 12%;">RUT</th>
+                <th style="width: 25%;">PUPILO(S) Y CURSO</th>
+                <th style="width: 20%;">EMAIL INSTITUCIONAL</th>
+                <th style="width: 10%;">ESTADO</th>
+                <th style="width: 13%;">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar bg-blue">CG</div>
+                        <strong>Carolina González Muñoz</strong>
+                    </div>
+                </td>
+                <td>12.345.678-9</td>
+                <td class="pupil-text"><strong>Martín González</strong> (3° Básico A)</td>
+                <td>c.gonzalez@santajuliana.cl</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar bg-green">JP</div>
+                        <strong>Jorge Pérez Soto</strong>
+                    </div>
+                </td>
+                <td>15.678.432-1</td>
+                <td class="pupil-text"><strong>Sofía Pérez</strong> (7° B B) - <strong>Tomás Pérez</strong> (1°...)</td>
+                <td>j.perez@santajuliana.cl</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar bg-orange">MR</div>
+                        <strong>María Rodríguez Lagos</strong>
+                    </div>
+                </td>
+                <td>11.222.333-4</td>
+                <td class="pupil-text"><strong>Valentina Rodríguez</strong> (Pre-Kinder A)</td>
+                <td>m.rodriguez@santajuliana.cl</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar bg-red">AF</div>
+                        <strong>Andrés Fuentes Díaz</strong>
+                    </div>
+                </td>
+                <td>9.876.543-2</td>
+                <td class="pupil-text"><strong>Catalina Fuentes</strong> (2° Medio B)</td>
+                <td>a.fuentes@santajuliana.cl</td>
+                <td><span class="badge badge-inactivo">Inactivo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar bg-purple">LS</div>
+                        <strong>Lorena Silva Bravo</strong>
+                    </div>
+                </td>
+                <td>14.567.890-K</td>
+                <td class="pupil-text"><strong>Diego Silva</strong> (4° Bas A) - <strong>Camila Silva</strong> (6...</td>
+                <td>l.silva@santajuliana.cl</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination-container">
+        <div class="pagination-info">Mostrando 1 a 5 de 184 resultados</div>
+        <div class="pagination-buttons">
+            <button class="page-btn">Anterior</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">...</button>
+            <button class="page-btn">31</button>
+            <button class="page-btn">Siguiente</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function eliminarApoderado(boton) {
+        if (confirm("¿Estás seguro de que deseas eliminar a este apoderado? Perderá el acceso al sistema.")) {
+            boton.closest('tr').remove();
+        }
+    }
+</script>
+{% endblock %}

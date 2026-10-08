@@ -1,0 +1,92 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<style>
+    .page-header { margin-bottom: 25px; }
+    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; }
+    .page-header p { color: #64748b; font-size: 0.9rem; }
+
+    .form-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .full-width { grid-column: 1 / -1; }
+    
+    .form-group label { display: block; font-size: 0.85rem; color: #0f172a; font-weight: 600; margin-bottom: 8px; }
+    .form-control { width: 100%; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.95rem; color: #334155; }
+    
+    /* Estilos para campos bloqueados (solo lectura) */
+    .form-control:disabled { background-color: #f8fafc; color: #64748b; border-color: #e2e8f0; cursor: not-allowed; }
+    
+    /* Selector de Estado Destacado */
+    .status-select { border: 2px solid #f97316; font-weight: 600; color: #0f172a; box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1); }
+    .status-select:focus { border-color: #ea580c; }
+
+    .form-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 20px; margin-top: 20px; }
+    .btn-group { display: flex; gap: 15px; }
+    .btn-cancel { background: transparent; border: 1px solid #cbd5e1; color: #475569; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .btn-cancel:hover { background: #f8fafc; }
+    .btn-submit { display: inline-block; background-color: #f97316; color: white; text-decoration: none; border: none; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .btn-submit:hover { background-color: #ea580c; }
+</style>
+
+<div class="page-header">
+    <h2>Evaluar Incidencia: INC-2026-042</h2>
+    <p>Actualice el estado de la solicitud o añada observaciones para el solicitante.</p>
+</div>
+
+<div class="form-card">
+    <div class="form-grid">
+        <!-- Datos de Solo Lectura -->
+        <div class="form-group">
+            <label>Reportante</label>
+            <input type="text" class="form-control" value="María González (Profesora)" disabled>
+        </div>
+        <div class="form-group">
+            <label>Fecha del Reporte</label>
+            <input type="text" class="form-control" value="01/09/2026 10:45 AM" disabled>
+        </div>
+        
+        <div class="form-group">
+            <label>Ubicación / Equipo</label>
+            <input type="text" class="form-control" value="Lab 2 - PC-LAB2-014" disabled>
+        </div>
+        <div class="form-group">
+            <label>Prioridad Asignada</label>
+            <input type="text" class="form-control" value="Alta" disabled>
+        </div>
+
+        <div class="form-group full-width">
+            <label>Descripción del Problema</label>
+            <textarea class="form-control" rows="3" disabled>El computador no enciende, hace un pitido constante al presionar el botón de poder. Se necesita para la clase de programación de la tarde.</textarea>
+        </div>
+
+        <!-- Campos Editables para el Administrador -->
+        <div class="form-group full-width" style="border-top: 1px solid #e2e8f0; padding-top: 20px;">
+            <h3 style="font-size: 1.1rem; color: #0f172a; margin-bottom: 15px;">Resolución del Administrador</h3>
+        </div>
+
+        <div class="form-group">
+            <label>Actualizar Estado</label>
+            <select class="form-control status-select">
+                <option value="revisar" selected>Por revisar</option>
+                <option value="aprobada">Aprobada (En proceso)</option>
+                <option value="rechazada">Rechazada</option>
+                <option value="resuelta">Resuelta</option>
+            </select>
+        </div>
+        
+        <div class="form-group full-width">
+            <label>Observaciones / Respuesta (Opcional)</label>
+            <textarea class="form-control" rows="2" placeholder="Escriba un comentario sobre la aprobación o el rechazo..."></textarea>
+        </div>
+    </div>
+
+    <div class="form-footer">
+        <div style="font-size: 0.85rem; color: #64748b;">La actualización notificará al reportante.</div>
+        <div class="btn-group">
+            <button class="btn-cancel" onclick="window.history.back()">Volver</button>
+            <a class="btn-submit" href="{% url 'admin_gestion_incidencias' %}" onclick="alert('Estado de la incidencia actualizado correctamente.')">Guardar Resolución</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

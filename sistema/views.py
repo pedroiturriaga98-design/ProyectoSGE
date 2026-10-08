@@ -99,3 +99,33 @@ def admin_crear_usuario(request):
 
 def admin_editar_usuario(request):
     return render(request, 'admin_editar_usuario.html')
+
+def admin_alumnos(request):
+    return render(request, 'admin_alumnos.html')
+
+def admin_editar_alumno(request):
+    return render(request, 'admin_editar_alumno.html')
+
+def admin_gestion_incidencias(request):
+    return render(request, 'admin_gestion_incidencias.html')
+
+def admin_editar_incidencia(request):
+    return render(request, 'admin_editar_incidencia.html')
+
+def admin_gestion_apoderados(request):
+    return render(request, 'admin_gestion_apoderados.html')
+
+def admin_editar_apoderado(request):
+    return render(request, 'admin_editar_apoderado.html')
+
+def admin_gestion_profesores(request):
+    return render(request, 'admin_gestion_profesores.html')
+
+def admin_editar_profesor(request):
+    return render(request, 'admin_editar_profesor.html')
+
+def admin_gestion_inventario(request):
+    return render(request, 'admin_gestion_inventario.html')
+
+def admin_editar_equipo(request):
+    return render(request, 'admin_editar_equipo.html')

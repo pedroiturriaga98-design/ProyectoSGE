@@ -60,11 +60,11 @@
         <nav class="nav-menu">
             <a href="{% url 'admin_inicio' %}" class="nav-link {% if request.resolver_match.url_name == 'admin_inicio' %}active-menu{% endif %}">Inicio</a>
             <a href="{% url 'admin_gestion_usuarios' %}" class="nav-link {% if 'usuarios' in request.path %}active-menu{% endif %}">Gestión de Usuarios</a>
-            <a href="javascript:void(0);" class="nav-link">Incidencias</a>
-            <a href="javascript:void(0);" class="nav-link">Alumnos</a>
-            <a href="javascript:void(0);" class="nav-link">Profesores</a>
-            <a href="javascript:void(0);" class="nav-link">Apoderados</a>
-            <a href="javascript:void(0);" class="nav-link">Gestión Inventario</a>
+            <a href="{% url 'admin_gestion_incidencias' %}" class="nav-link {% if 'incidencias' in request.path %}active-menu{% endif %}">Incidencias</a>
+            <a href="{% url 'admin_alumnos' %}" class="nav-link {% if 'alumnos' in request.path %}active-menu{% endif %}">Alumnos</a>
+            <a href="{% url 'admin_gestion_apoderados' %}" class="nav-link {% if 'apoderados' in request.path %}active-menu{% endif %}">Apoderados</a>
+            <a href="{% url 'admin_gestion_profesores' %}" class="nav-link {% if 'profesores' in request.path %}active-menu{% endif %}">Profesores</a>
+            <a href="{% url 'admin_gestion_inventario' %}" class="nav-link {% if 'inventario' in request.path %}active-menu{% endif %}">Gestión Inventario</a>
         </nav>
     </aside>
 

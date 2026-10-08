@@ -1,0 +1,110 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<style>
+    .page-header { margin-bottom: 25px; }
+    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; font-weight: bold; }
+    .page-header p { color: #64748b; font-size: 0.9rem; }
+
+    .form-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 25px; }
+    .section-title { font-size: 1.1rem; color: #0f172a; font-weight: 600; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+    
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .full-width { grid-column: 1 / -1; }
+    
+    .form-group label { display: block; font-size: 0.85rem; color: #0f172a; font-weight: 600; margin-bottom: 8px; }
+    .form-control { width: 100%; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.95rem; color: #334155; transition: 0.2s; }
+    .form-control:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1); }
+    .form-control:disabled { background-color: #f1f5f9; color: #64748b; cursor: not-allowed; border-color: #e2e8f0; }
+
+    .toggle-container { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+    .toggle-switch { position: relative; width: 44px; height: 24px; appearance: none; background: #cbd5e1; outline: none; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+    .toggle-switch:checked { background: #10b981; }
+    .toggle-switch::before { content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%; top: 3px; left: 3px; background: white; transition: 0.3s; }
+    .toggle-switch:checked::before { left: 23px; }
+
+    .password-note { font-size: 0.8rem; color: #94a3b8; margin-top: 5px; display: block; }
+
+    .form-footer { display: flex; justify-content: flex-end; align-items: center; padding-top: 10px; gap: 15px; }
+    .btn-cancel { background: transparent; border: 1px solid #cbd5e1; color: #475569; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .btn-cancel:hover { background: #f8fafc; }
+    .btn-submit { display: inline-block; background-color: #f97316; color: white; text-decoration: none; border: none; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .btn-submit:hover { background-color: #ea580c; }
+</style>
+
+<div class="page-header">
+    <h2>Editar Profesor</h2>
+    <p>Modifique la información académica, personal y de acceso del docente.</p>
+</div>
+
+<!-- Tarjeta 1: Datos Generales -->
+<div class="form-card">
+    <div class="section-title">Datos Personales y Académicos</div>
+    <div class="form-grid">
+        <div class="form-group">
+            <label>Nombres</label>
+            <input type="text" class="form-control" value="Cristian">
+        </div>
+        <div class="form-group">
+            <label>RUT</label>
+            <input type="text" class="form-control" value="14.225.678-9" disabled title="El RUT no se puede modificar">
+        </div>
+
+        <div class="form-group">
+            <label>Apellidos</label>
+            <input type="text" class="form-control" value="Morales Rivas">
+        </div>
+        <div class="form-group">
+            <label>Especialidad / Asignatura Principal</label>
+            <input type="text" class="form-control" value="Educación Básica">
+        </div>
+
+        <div class="form-group">
+            <label>Email Institucional</label>
+            <input type="email" class="form-control" value="c.morales@santajuliana.cl">
+        </div>
+        <div class="form-group">
+            <label>Asignación de Jefatura</label>
+            <select class="form-control">
+                <option>Sin Jefatura</option>
+                <option selected>2° Básico A</option>
+                <option>3° Básico A</option>
+                <option>4° Medio M</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Teléfono de Contacto</label>
+            <input type="text" class="form-control" value="+56 9 8765 4321">
+        </div>
+        <div class="form-group">
+            <label>Estado de la Cuenta</label>
+            <div class="toggle-container">
+                <input type="checkbox" class="toggle-switch" checked>
+                <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Profesor Activo</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjeta 2: Seguridad y Contraseña -->
+<div class="form-card">
+    <div class="section-title" style="color: #ea580c;">Seguridad y Acceso</div>
+    <div class="form-grid">
+        <div class="form-group">
+            <label>Nueva Contraseña</label>
+            <input type="password" class="form-control" placeholder="Escriba la nueva contraseña">
+            <span class="password-note">Deje este campo en blanco si no desea cambiar la contraseña actual.</span>
+        </div>
+        <div class="form-group">
+            <label>Confirmar Nueva Contraseña</label>
+            <input type="password" class="form-control" placeholder="Repita la nueva contraseña">
+        </div>
+    </div>
+</div>
+
+<div class="form-footer">
+    <button class="btn-cancel" onclick="window.history.back()">Cancelar</button>
+    <a class="btn-submit" href="{% url 'admin_gestion_profesores' %}" onclick="alert('Perfil del profesor y accesos actualizados correctamente.')">Guardar Cambios</a>
+</div>
+{% endblock %}
