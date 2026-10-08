@@ -1,0 +1,84 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<style>
+    /* Tarjeta de Bienvenida */
+    .welcome-card { background: linear-gradient(to right, #f8fafc, #f1f5f9); border: 1px solid #e2e8f0; border-radius: 12px; padding: 40px; margin-bottom: 40px; }
+    .welcome-card h1 { font-size: 2rem; color: #0f172a; margin-bottom: 10px; }
+    .welcome-card p { color: #475569; font-size: 1.05rem; margin-bottom: 20px; }
+    .badge-role { display: inline-block; background-color: #fff7ed; color: #ea580c; padding: 6px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; border: 1px solid #fed7aa; }
+
+    /* Sección de Resumen (Dashboard) */
+    .section-title { font-size: 1.3rem; color: #0f172a; font-weight: bold; margin-bottom: 5px; }
+    .section-desc { font-size: 0.9rem; color: #64748b; margin-bottom: 20px; }
+
+    /* Cuadrícula de 4 columnas */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+    
+    .stat-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: 0.2s; }
+    .stat-card:hover { border-color: #cbd5e1; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    
+    .stat-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .stat-info p { font-size: 0.75rem; color: #64748b; margin-bottom: 2px; }
+    .stat-info h3 { font-size: 1.6rem; color: #0f172a; font-weight: bold; }
+
+    /* Colores de los íconos */
+    .icon-purple { background-color: #f3e8ff; color: #7e22ce; }
+    .icon-green { background-color: #d1fae5; color: #059669; }
+    .icon-yellow { background-color: #fefce8; color: #ca8a04; }
+    .icon-orange { background-color: #ffedd5; color: #ea580c; }
+    .icon-red { background-color: #fee2e2; color: #e11d48; }
+    .icon-gray { background-color: #f1f5f9; color: #64748b; }
+</style>
+
+<!-- Mensaje de Bienvenida -->
+<div class="welcome-card">
+    <h1>¡Bienvenido(a), Pedro Ignacio!</h1>
+    <p>Aquí podrás administrar cuentas, configurar el año escolar y gestionar el soporte de la plataforma.</p>
+    <div class="badge-role">👤 Estás en la vista: <strong>Administrador</strong></div>
+</div>
+
+<!-- Resumen del día -->
+<div>
+    <h3 class="section-title">Estado de la Plataforma</h3>
+    <p class="section-desc">Métricas consolidadas de usuarios y registros del sistema.</p>
+    
+    <div class="stats-grid">
+        <!-- Fila 1: Cuentas y Usuarios -->
+        <div class="stat-card">
+            <div class="stat-icon icon-green">👥</div>
+            <div class="stat-info"><p>Usuarios Activos</p><h3>1,420</h3></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-purple">🎓</div>
+            <div class="stat-info"><p>Alumnos Activos</p><h3>1,245</h3></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-gray">👨‍👩‍👧</div>
+            <div class="stat-info"><p>Apoderados Vinculados</p><h3>980</h3></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-red">🚫</div>
+            <div class="stat-info"><p>Cuentas Inactivas</p><h3>18</h3></div>
+        </div>
+        
+        <!-- Fila 2: Gestión de Sistema e Incidencias -->
+        <div class="stat-card">
+            <div class="stat-icon icon-yellow">⚠️</div>
+            <div class="stat-info"><p>Incidencias por Revisar</p><h3>12</h3></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-green">✅</div>
+            <div class="stat-info"><p>Incidencias Resueltas</p><h3>45</h3></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-orange">📚</div>
+            <div class="stat-info"><p>Cursos Configurados</p><h3>36</h3></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-purple">💻</div>
+            <div class="stat-info"><p>Inicios de Sesión Hoy</p><h3>845</h3></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

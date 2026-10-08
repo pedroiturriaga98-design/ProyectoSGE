@@ -1,0 +1,151 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<style>
+    .page-header { margin-bottom: 25px; }
+    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; }
+    .page-header p { color: #64748b; font-size: 0.9rem; }
+
+    .table-container { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    .table-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .filters-left { display: flex; gap: 15px; }
+    .search-box input { width: 300px; padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; }
+    .filter-select { padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; background-color: white; }
+    
+    .btn-create { background-color: #f97316; color: white; text-decoration: none; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
+    .btn-create:hover { background-color: #ea580c; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; padding: 15px; font-size: 0.75rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; background-color: #f8fafc; text-transform: uppercase; }
+    td { padding: 15px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; color: #475569; vertical-align: middle; }
+    td strong { color: #0f172a; font-weight: 600; }
+
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; display: inline-block; }
+    .badge-activo { background-color: #d1fae5; color: #059669; }
+    .badge-inactivo { background-color: #e2e8f0; color: #64748b; }
+
+    .action-btns { display: flex; gap: 8px; }
+    .btn-icon { width: 32px; height: 32px; border-radius: 6px; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; text-decoration: none; transition: 0.2s; }
+    .btn-icon:hover { background: #f1f5f9; }
+    .btn-icon.delete:hover { background: #fee2e2; color: #ef4444; border-color: #fecaca; }
+</style>
+
+<div class="page-header">
+    <h2>Gestión de Usuarios</h2>
+    <p>Administra los usuarios del sistema: crea, edita y elimina cuentas.</p>
+</div>
+
+<div class="table-container">
+    <div class="table-toolbar">
+        <div class="filters-left">
+            <div class="search-box">
+                <input type="text" placeholder="🔍 Buscar por nombre, correo o rol...">
+            </div>
+            <select class="filter-select">
+                <option>Filtrar por rol</option>
+            </select>
+        </div>
+        <a class="btn-create" href="{% url 'admin_crear_usuario' %}">
+            + Crear Usuario
+        </a>
+    </div>
+
+    <table id="users-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">NOMBRE</th>
+                <th style="width: 25%;">CORREO ELECTRÓNICO</th>
+                <th style="width: 15%;">ROL</th>
+                <th style="width: 15%;">ESTADO</th>
+                <th style="width: 20%;">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Pedro Ignacio Iturriaga</strong></td>
+                <td>p.iturriaga@colegiosantajuliana.cl</td>
+                <td>Administrador</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>María José Alcocer</strong></td>
+                <td>mj.alcocer@colegiosantajuliana.cl</td>
+                <td>Profesor</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Rodrigo Sanhueza</strong></td>
+                <td>r.sanhueza@colegiosantajuliana.cl</td>
+                <td>Profesor</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Consuelo Valenzuela</strong></td>
+                <td>c.valenzuela@apoderados.cl</td>
+                <td>Apoderado</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Ignacio Javier Muñoz</strong></td>
+                <td>i.munoz@alumnosantajuliana.cl</td>
+                <td>Alumno</td>
+                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Esteban Retamal</strong></td>
+                <td>e.retamal@colegiosantajuliana.cl</td>
+                <td>Apoderado</td>
+                <td><span class="badge badge-inactivo">Inactivo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function eliminarUsuario(boton) {
+        // Preguntar al usuario antes de borrar
+        if (confirm("¿Estás seguro de que deseas eliminar este usuario? Esta acción no se puede deshacer.")) {
+            // Encontrar la fila (tr) a la que pertenece el botón y eliminarla del HTML
+            let fila = boton.closest('tr');
+            fila.remove();
+        }
+    }
+</script>
+{% endblock %}

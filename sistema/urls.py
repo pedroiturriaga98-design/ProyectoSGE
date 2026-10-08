@@ -17,6 +17,11 @@ urlpatterns = [
     path('profesor/incidencias/revisar/', views.profesor_revisar_incidencias, name='profesor_revisar_incidencias'),
     path('profesor/alumnos/', views.profesor_alumnos, name='profesor_alumnos'),
     path('profesor/alumnos/perfil/', views.profesor_perfil_alumno, name='profesor_perfil_alumno'),
+    # Rutas para el Administrador
+    path('administrador/', views.admin_inicio, name='admin_inicio'),
+    path('administrador/usuarios/', views.admin_gestion_usuarios, name='admin_gestion_usuarios'),
+    path('administrador/usuarios/crear/', views.admin_crear_usuario, name='admin_crear_usuario'),
+    path('administrador/usuarios/editar/', views.admin_editar_usuario, name='admin_editar_usuario'),
 
 
 

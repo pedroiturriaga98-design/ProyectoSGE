@@ -1,0 +1,96 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<style>
+    .page-header { margin-bottom: 25px; }
+    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; }
+    .page-header p { color: #64748b; font-size: 0.9rem; }
+
+    .form-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+    
+    .form-group label { display: block; font-size: 0.85rem; color: #0f172a; font-weight: 600; margin-bottom: 8px; }
+    .form-group label span { color: #ef4444; } 
+    .form-control { width: 100%; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.95rem; color: #334155; transition: 0.2s; }
+    .form-control:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1); }
+    
+    .toggle-container { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+    .toggle-switch { position: relative; width: 44px; height: 24px; appearance: none; background: #cbd5e1; outline: none; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+    .toggle-switch:checked { background: #10b981; }
+    .toggle-switch::before { content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%; top: 3px; left: 3px; background: white; transition: 0.3s; }
+    .toggle-switch:checked::before { left: 23px; }
+
+    .form-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 20px; }
+    .required-note { font-size: 0.85rem; color: #64748b; }
+    
+    .btn-group { display: flex; gap: 15px; }
+    .btn-cancel { background: transparent; border: 1px solid #cbd5e1; color: #475569; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .btn-cancel:hover { background: #f8fafc; }
+    .btn-submit { display: inline-block; background-color: #2563eb; color: white; text-decoration: none; border: none; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .btn-submit:hover { background-color: #1d4ed8; }
+</style>
+
+<div class="page-header">
+    <h2>Editar Usuario</h2>
+    <p>Modifique los datos del usuario registrado en el sistema.</p>
+</div>
+
+<div class="form-card">
+    <div class="form-grid">
+        <div class="form-group">
+            <label>Nombre <span>*</span></label>
+            <!-- value="" muestra el texto pre-escrito -->
+            <input type="text" class="form-control" value="María José">
+        </div>
+        <div class="form-group">
+            <label>Correo electrónico <span>*</span></label>
+            <input type="email" class="form-control" value="mj.alcocer@colegiosantajuliana.cl">
+        </div>
+
+        <div class="form-group">
+            <label>Apellido Paterno <span>*</span></label>
+            <input type="text" class="form-control" value="Alcocer">
+        </div>
+        <div class="form-group">
+            <label>Rol <span>*</span></label>
+            <select class="form-control">
+                <option>Administrador</option>
+                <option selected>Profesor</option>
+                <option>Apoderado</option>
+                <option>Alumno</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Apellido Materno</label>
+            <input type="text" class="form-control" value="Ríos">
+        </div>
+        <div class="form-group">
+            <label>Estado</label>
+            <div class="toggle-container">
+                <!-- checked indica que está activo -->
+                <input type="checkbox" class="toggle-switch" checked>
+                <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Activo</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>R.U.T. <span>*</span></label>
+            <input type="text" class="form-control" value="15.845.221-K" disabled style="background-color: #f1f5f9; cursor: not-allowed;" title="El RUT no se puede modificar">
+        </div>
+        <div class="form-group">
+            <label>Teléfono</label>
+            <input type="text" class="form-control" value="+56 9 8765 4321">
+        </div>
+    </div>
+
+    <div class="form-footer">
+        <div class="required-note">ID de Usuario: #USR-0042</div>
+        <div class="btn-group">
+            <button class="btn-cancel" onclick="window.history.back()">Cancelar</button>
+            <a class="btn-submit" href="{% url 'admin_gestion_usuarios' %}" onclick="alert('Cambios actualizados exitosamente en la maqueta.')">Actualizar Usuario</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

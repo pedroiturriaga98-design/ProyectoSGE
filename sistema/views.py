@@ -42,3 +42,17 @@ def profesor_alumnos(request):
 
 def profesor_perfil_alumno(request):
     return render(request, 'profesor_perfil_alumno.html')
+
+# Vistas para el portal de Administrador
+
+def admin_inicio(request):
+    return render(request, 'admin_inicio.html')
+
+def admin_gestion_usuarios(request):
+    return render(request, 'admin_gestion_usuarios.html')
+
+def admin_crear_usuario(request):
+    return render(request, 'admin_crear_usuario.html')
+
+def admin_editar_usuario(request):
+    return render(request, 'admin_editar_usuario.html')

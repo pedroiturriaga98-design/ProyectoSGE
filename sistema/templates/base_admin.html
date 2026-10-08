@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Administrador - SGE</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { display: flex; height: 100vh; background-color: #f8fafc; color: #374151; }
+
+        /* Barra Lateral Izquierda */
+        .sidebar-left { width: 260px; background-color: #1c2536; color: white; display: flex; flex-direction: column; }
+        .logo-area { padding: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #2d3748; }
+        .logo-badge { background-color: #f97316; padding: 5px 8px; border-radius: 4px; font-weight: bold; }
+        
+        .sidebar-controls { padding: 20px; border-bottom: 1px solid #2d3748; }
+        .select-year { width: 100%; padding: 10px; background-color: #2d3748; color: white; border: none; border-radius: 6px; margin-bottom: 15px; outline: none; }
+        .search-bar { width: 100%; padding: 10px 10px 10px 15px; background-color: #111827; color: white; border: 1px solid #374151; border-radius: 6px; outline: none; font-size: 0.85rem; }
+        
+        .nav-menu { padding: 20px 0; display: flex; flex-direction: column; gap: 5px; }
+        .nav-link { padding: 12px 20px; color: #cbd5e1; text-decoration: none; display: flex; align-items: center; transition: 0.2s; font-size: 0.95rem; margin: 0 10px; border-radius: 6px; }
+        .nav-link:hover { color: white; background-color: #2d3748; }
+        .nav-link.active-menu { background-color: #f97316; color: white; font-weight: 600; }
+
+        /* Área Central */
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+        
+        /* Cabecera Superior */
+        .top-header { background-color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+        .last-access { color: #64748b; font-size: 0.85rem; }
+        .user-profile { display: flex; align-items: center; gap: 20px; }
+        .user-info { display: flex; align-items: center; gap: 10px; text-align: right; }
+        .user-info img { width: 40px; height: 40px; border-radius: 50%; background-color: #cbd5e1; }
+        .user-details h4 { font-size: 0.9rem; color: #0f172a; margin-bottom: 2px; }
+        .user-details p { font-size: 0.75rem; color: #64748b; }
+        .btn-logout { color: #ea580c; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
+
+        /* Contenedor dinámico */
+        .content-area { padding: 30px; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar-left">
+        <div class="logo-area">
+            <span class="logo-badge">SGE</span>
+            <div>
+                <strong>Sistema de Gestión</strong>
+                <div style="font-size: 0.7rem; color: #9ca3af;">Colegio Santa Juliana</div>
+            </div>
+        </div>
+
+        <div class="sidebar-controls">
+            <select class="select-year">
+                <option>Año Escolar 2026</option>
+            </select>
+            <input type="text" class="search-bar" placeholder="Buscar alumno, profesor...">
+        </div>
+
+        <nav class="nav-menu">
+            <a href="{% url 'admin_inicio' %}" class="nav-link {% if request.resolver_match.url_name == 'admin_inicio' %}active-menu{% endif %}">Inicio</a>
+            <a href="{% url 'admin_gestion_usuarios' %}" class="nav-link {% if 'usuarios' in request.path %}active-menu{% endif %}">Gestión de Usuarios</a>
+            <a href="javascript:void(0);" class="nav-link">Incidencias</a>
+            <a href="javascript:void(0);" class="nav-link">Alumnos</a>
+            <a href="javascript:void(0);" class="nav-link">Profesores</a>
+            <a href="javascript:void(0);" class="nav-link">Apoderados</a>
+            <a href="javascript:void(0);" class="nav-link">Gestión Inventario</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="last-access">Último acceso: Hoy, 08:15 AM</div>
+            <div class="user-profile">
+                <div class="user-info">
+                    <div class="user-details">
+                        <h4>Pedro Ignacio Iturriaga</h4>
+                        <p>Administrador</p>
+                    </div>
+                    <img src="" alt="Avatar">
+                </div>
+                <a href="{% url 'login' %}" class="btn-logout">⍈ Cerrar sesión</a>
+            </div>
+        </header>
+
+        <div class="content-area">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+</body>
+</html>
