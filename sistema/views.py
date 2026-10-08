@@ -74,3 +74,15 @@ def admin_gestion_apoderados(request):
 
 def admin_editar_apoderado(request):
     return render(request, 'admin_editar_apoderado.html')
+
+def admin_gestion_profesores(request):
+    return render(request, 'admin_gestion_profesores.html')
+
+def admin_editar_profesor(request):
+    return render(request, 'admin_editar_profesor.html')
+
+def admin_gestion_inventario(request):
+    return render(request, 'admin_gestion_inventario.html')
+
+def admin_editar_equipo(request):
+    return render(request, 'admin_editar_equipo.html')

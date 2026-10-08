@@ -1,0 +1,174 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<style>
+    .page-header { margin-bottom: 25px; }
+    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; font-weight: bold; }
+    .page-header p { color: #64748b; font-size: 0.9rem; }
+
+    /* Tarjetas de Resumen */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 25px; }
+    .stat-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+    .stat-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .stat-info p { font-size: 0.75rem; color: #64748b; margin-bottom: 2px; }
+    .stat-info h3 { font-size: 1.4rem; color: #0f172a; font-weight: bold; }
+    
+    .bg-blue-light { background-color: #e0f2fe; color: #0284c7; }
+    .bg-green-light { background-color: #dcfce7; color: #16a34a; }
+    .bg-orange-light { background-color: #ffedd5; color: #ea580c; }
+    .bg-yellow-light { background-color: #fef9c3; color: #ca8a04; }
+
+    /* Contenedor de Tabla */
+    .table-container { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    .table-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
+    .filters-left { display: flex; gap: 10px; flex-wrap: wrap; }
+    
+    .filter-select { padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.85rem; background-color: white; color: #475569; }
+    .search-box { position: relative; width: 250px; }
+    .search-box input { width: 100%; padding: 10px 15px 10px 35px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.85rem; }
+    .search-box::before { content: '🔍'; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: #94a3b8; }
+
+    .btn-create { background-color: #f97316; color: white; text-decoration: none; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+    .btn-create:hover { background-color: #ea580c; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; padding: 15px 10px; font-size: 0.75rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; text-transform: uppercase; }
+    td { padding: 15px 10px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; color: #475569; vertical-align: middle; }
+    
+    .codigo-text { font-weight: 600; color: #f97316; }
+
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; display: inline-block; text-align: center; }
+    .badge-operativo { background-color: #dcfce7; color: #16a34a; }
+    .badge-mantencion { background-color: #fef08a; color: #ca8a04; }
+
+    .action-btns { display: flex; gap: 6px; }
+    .btn-icon { width: 30px; height: 30px; border-radius: 4px; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; text-decoration: none; transition: 0.2s; font-size: 0.8rem; }
+    .btn-icon:hover { background: #f1f5f9; }
+    .btn-icon.delete { color: #ef4444; border-color: #fecaca; background: #fff5f5; }
+    .btn-icon.delete:hover { background: #fee2e2; }
+</style>
+
+<div class="page-header">
+    <h2>Gestión de Inventario Tecnológico</h2>
+    <p>Administración y control de equipos tecnológicos del establecimiento.</p>
+</div>
+
+<!-- Tarjetas de Resumen -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon bg-blue-light">💻</div>
+        <div class="stat-info"><p>Total Equipos</p><h3>162</h3></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon bg-green-light">🖥️</div>
+        <div class="stat-info"><p>PCs Laboratorios</p><h3>126/126 Operativos</h3></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon bg-orange-light">📱</div>
+        <div class="stat-info"><p>Estaciones Sala</p><h3>36</h3></div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon bg-yellow-light">🔧</div>
+        <div class="stat-info"><p>En Mantención</p><h3>4</h3></div>
+    </div>
+</div>
+
+<div class="table-container">
+    <div class="table-toolbar">
+        <div class="filters-left">
+            <div class="search-box">
+                <input type="text" placeholder="Buscar por código, dispositivo...">
+            </div>
+            <select class="filter-select"><option>Ubicación</option></select>
+            <select class="filter-select"><option>Estado</option></select>
+            <select class="filter-select"><option>Tipo</option></select>
+        </div>
+        <a class="btn-create" href="{% url 'admin_editar_equipo' %}">+ Nuevo Equipo</a>
+    </div>
+
+    <table id="inventario-table">
+        <thead>
+            <tr>
+                <th style="width: 15%;">CÓDIGO</th>
+                <th style="width: 15%;">DISPOSITIVO</th>
+                <th style="width: 15%;">MARCA/MODELO</th>
+                <th style="width: 15%;">UBICACIÓN</th>
+                <th style="width: 15%;">IP</th>
+                <th style="width: 10%;">ESTADO</th>
+                <th style="width: 15%;">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="codigo-text">PC-LAB1-024</td>
+                <td>All-in-One</td>
+                <td>HP ProOne 440</td>
+                <td>Laboratorio 1</td>
+                <td>192.168.1.24</td>
+                <td><span class="badge badge-operativo">Operativo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <button class="btn-icon">📄</button>
+                        <a class="btn-icon" href="{% url 'admin_editar_equipo' %}" aria-label="Editar equipo">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarEquipo(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="codigo-text">PROY-S08</td>
+                <td>Proyector</td>
+                <td>Epson PowerLite</td>
+                <td>Sala 8</td>
+                <td>192.168.1.108</td>
+                <td><span class="badge badge-operativo">Operativo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <button class="btn-icon">📄</button>
+                        <a class="btn-icon" href="{% url 'admin_editar_equipo' %}" aria-label="Editar equipo">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarEquipo(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="codigo-text">PC-LAB2-011</td>
+                <td>All-in-One</td>
+                <td>HP ProOne 440</td>
+                <td>Laboratorio 2</td>
+                <td>192.168.2.11</td>
+                <td><span class="badge badge-mantencion">En Mantención</span></td>
+                <td>
+                    <div class="action-btns">
+                        <button class="btn-icon">📄</button>
+                        <a class="btn-icon" href="{% url 'admin_editar_equipo' %}" aria-label="Editar equipo">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarEquipo(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="codigo-text">LAP-DOC-003</td>
+                <td>Notebook</td>
+                <td>Lenovo ThinkPad</td>
+                <td>Sala Profesores</td>
+                <td>192.168.0.45</td>
+                <td><span class="badge badge-operativo">Operativo</span></td>
+                <td>
+                    <div class="action-btns">
+                        <button class="btn-icon">📄</button>
+                        <a class="btn-icon" href="{% url 'admin_editar_equipo' %}" aria-label="Editar equipo">✎</a>
+                        <button class="btn-icon delete" onclick="eliminarEquipo(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function eliminarEquipo(boton) {
+        if (confirm("¿Estás seguro de que deseas dar de baja este equipo del inventario?")) {
+            boton.closest('tr').remove();
+        }
+    }
+</script>
+{% endblock %}

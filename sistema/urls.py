@@ -28,6 +28,10 @@ urlpatterns = [
     path('administrador/incidencias/editar/', views.admin_editar_incidencia, name='admin_editar_incidencia'),
     path('administrador/apoderados/', views.admin_gestion_apoderados, name='admin_gestion_apoderados'),
     path('administrador/apoderados/editar/', views.admin_editar_apoderado, name='admin_editar_apoderado'),
+    path('administrador/profesores/', views.admin_gestion_profesores, name='admin_gestion_profesores'),
+    path('administrador/profesores/editar/', views.admin_editar_profesor, name='admin_editar_profesor'),
+    path('administrador/inventario/', views.admin_gestion_inventario, name='admin_gestion_inventario'),
+    path('administrador/inventario/equipo/', views.admin_editar_equipo, name='admin_editar_equipo'),
 
 
 

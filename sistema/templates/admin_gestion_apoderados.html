@@ -42,7 +42,7 @@
     .badge-inactivo { background-color: #f1f5f9; color: #64748b; }
 
     .action-btns { display: flex; gap: 6px; }
-    .btn-icon { width: 30px; height: 30px; border-radius: 4px; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; transition: 0.2s; font-size: 0.8rem; }
+    .btn-icon { width: 30px; height: 30px; border-radius: 4px; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; text-decoration: none; transition: 0.2s; font-size: 0.8rem; }
     .btn-icon:hover { background: #f1f5f9; }
     .btn-icon.delete { color: #ef4444; border-color: #fecaca; background: #fff5f5; }
     .btn-icon.delete:hover { background: #fee2e2; }
@@ -98,7 +98,7 @@
                 <td><span class="badge badge-activo">Activo</span></td>
                 <td>
                     <div class="action-btns">
-                        <button class="btn-icon" onclick="window.location.href='{% url 'admin_editar_apoderado' %}'">✎</button>
+                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
                         <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
                     </div>
                 </td>
@@ -116,7 +116,7 @@
                 <td><span class="badge badge-activo">Activo</span></td>
                 <td>
                     <div class="action-btns">
-                        <button class="btn-icon" onclick="window.location.href='{% url 'admin_editar_apoderado' %}'">✎</button>
+                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
                         <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
                     </div>
                 </td>
@@ -134,7 +134,7 @@
                 <td><span class="badge badge-activo">Activo</span></td>
                 <td>
                     <div class="action-btns">
-                        <button class="btn-icon" onclick="window.location.href='{% url 'admin_editar_apoderado' %}'">✎</button>
+                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
                         <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
                     </div>
                 </td>
@@ -152,7 +152,7 @@
                 <td><span class="badge badge-inactivo">Inactivo</span></td>
                 <td>
                     <div class="action-btns">
-                        <button class="btn-icon" onclick="window.location.href='{% url 'admin_editar_apoderado' %}'">✎</button>
+                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
                         <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
                     </div>
                 </td>
@@ -170,7 +170,7 @@
                 <td><span class="badge badge-activo">Activo</span></td>
                 <td>
                     <div class="action-btns">
-                        <button class="btn-icon" onclick="window.location.href='{% url 'admin_editar_apoderado' %}'">✎</button>
+                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
                         <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
                     </div>
                 </td>
