@@ -1,0 +1,137 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<style>
+    .page-header { margin-bottom: 25px; }
+    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; font-weight: bold; }
+    .page-header p { color: #64748b; font-size: 0.9rem; }
+
+    .table-container { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    .table-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .filters-left { display: flex; gap: 15px; }
+    .search-box { position: relative; width: 250px; }
+    .search-box input { width: 100%; padding: 10px 15px 10px 35px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; }
+    .search-box::before { content: '🔍'; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: #94a3b8; }
+    .filter-select { padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; background-color: white; }
+
+    .btn-create { background-color: #f97316; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
+    .btn-create:hover { background-color: #ea580c; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; padding: 15px 10px; font-size: 0.75rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; text-transform: uppercase; }
+    td { padding: 15px 10px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; color: #475569; vertical-align: middle; }
+    
+    .ticket-id { font-weight: 600; color: #f97316; }
+
+    /* Badges de Prioridad y Estado */
+    .badge { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; display: inline-block; text-align: center; }
+    .badge-rounded { border-radius: 20px; min-width: 80px; }
+    
+    .bg-critica { background-color: #fee2e2; color: #ef4444; }
+    .bg-alta { background-color: #fef08a; color: #ca8a04; }
+    .bg-media { background-color: #e0e7ff; color: #4f46e5; }
+    .bg-baja { background-color: #f1f5f9; color: #64748b; }
+    
+    .bg-revisar { background-color: #fef08a; color: #ca8a04; }
+    .bg-aprobada { background-color: #d1fae5; color: #059669; }
+    .bg-resuelta { background-color: #e0e7ff; color: #4f46e5; }
+    .bg-rechazada { background-color: #fee2e2; color: #ef4444; }
+
+    .action-btns { display: flex; gap: 6px; }
+    .btn-icon { width: 30px; height: 30px; border-radius: 4px; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; text-decoration: none; transition: 0.2s; font-size: 0.8rem; }
+    .btn-icon:hover { background: #f1f5f9; }
+    .btn-icon.delete { color: #ef4444; border-color: #fecaca; background: #fff5f5; }
+    .btn-icon.delete:hover { background: #fee2e2; }
+</style>
+
+<div class="page-header">
+    <h2>Gestión de Incidencias</h2>
+    <p>Monitorea, aprueba y resuelve reportes de fallas técnicas.</p>
+</div>
+
+<div class="table-container">
+    <div class="table-toolbar">
+        <div class="filters-left">
+            <div class="search-box">
+                <input type="text" placeholder="Buscar por sala, equipo...">
+            </div>
+            <select class="filter-select"><option>Estado: Todos</option></select>
+            <select class="filter-select"><option>Prioridad: Todas</option></select>
+        </div>
+        <button class="btn-create">+ Registrar Incidencia</button>
+    </div>
+
+    <table id="incidencias-table">
+        <thead>
+            <tr>
+                <th style="width: 12%;">ID TICKET</th>
+                <th style="width: 12%;">FECHA</th>
+                <th style="width: 20%;">UBICACIÓN / EQUIPO</th>
+                <th style="width: 20%;">REPORTANTE</th>
+                <th style="width: 10%;">PRIORIDAD</th>
+                <th style="width: 12%;">ESTADO</th>
+                <th style="width: 14%;">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="ticket-id">INC-2026-042</td>
+                <td>01/09/2026</td>
+                <td>Lab 2 - PC-LAB2-014</td>
+                <td>María González (Profesora)</td>
+                <td><span class="badge bg-alta">Alta</span></td>
+                <!-- Por defecto en Por revisar -->
+                <td><span class="badge badge-rounded bg-revisar">Por revisar</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_incidencia' %}" aria-label="Evaluar o editar incidencia" title="Evaluar/Editar">✎</a>
+                        <button class="btn-icon" title="Ver detalles">📄</button>
+                        <button class="btn-icon delete" onclick="eliminarIncidencia(this)" title="Eliminar">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="ticket-id">INC-2026-041</td>
+                <td>31/08/2026</td>
+                <td>Sala 3A - Proyector</td>
+                <td>Juan Pérez (Asistente)</td>
+                <td><span class="badge bg-media">Media</span></td>
+                <!-- Cambiado a Por revisar por defecto -->
+                <td><span class="badge badge-rounded bg-revisar">Por revisar</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_incidencia' %}" aria-label="Editar incidencia">✎</a>
+                        <button class="btn-icon">📄</button>
+                        <button class="btn-icon delete" onclick="eliminarIncidencia(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="ticket-id">INC-2026-040</td>
+                <td>30/08/2026</td>
+                <td>Lab 1 - PC-LAB1-008</td>
+                <td>Carlos Muñoz (Profesor)</td>
+                <td><span class="badge bg-critica">Crítica</span></td>
+                <!-- Por defecto en Por revisar -->
+                <td><span class="badge badge-rounded bg-revisar">Por revisar</span></td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_incidencia' %}" aria-label="Editar incidencia">✎</a>
+                        <button class="btn-icon">📄</button>
+                        <button class="btn-icon delete" onclick="eliminarIncidencia(this)">🗑</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function eliminarIncidencia(boton) {
+        if (confirm("¿Eliminar este reporte de incidencia?")) {
+            boton.closest('tr').remove();
+        }
+    }
+</script>
+{% endblock %}
