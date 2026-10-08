@@ -1,8 +1,44 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Usuario # Importamos tu tabla de usuarios
 
-# Vista para el Login
+# Vista para el Login (Actualizada con lógica de validación)
 def login_view(request):
+    if request.method == 'POST':
+        # Capturamos lo que el usuario escribió en el HTML
+        rut_ingresado = request.POST.get('username') 
+        password_ingresada = request.POST.get('password')
+
+        try:
+            # 1. Buscamos al usuario en la base de datos
+            usuario = Usuario.objects.get(rut=rut_ingresado)
+
+            # 2. Comparamos la contraseña 
+            if usuario.password_hash == password_ingresada:
+                
+                # 3. Guardamos su sesión (el "ticket" del navegador)
+                request.session['usuario_rut'] = usuario.rut
+                request.session['rol_id'] = usuario.rol_id_rol.id_rol
+
+                # 4. Redirigimos según el Rol usando los nombres de tus vistas
+                rol = usuario.rol_id_rol.id_rol
+                if rol == 1: # Administrador
+                    return redirect('admin_inicio')
+                elif rol == 2: # Profesor
+                    return redirect('profesor_inicio')
+                elif rol == 3: # Apoderado
+                    return redirect('apoderado_inicio')
+                else:
+                    messages.error(request, 'El usuario no tiene un rol válido asignado.')
+            else:
+                messages.error(request, 'Contraseña incorrecta.')
+                
+        except Usuario.DoesNotExist:
+            messages.error(request, 'El usuario ingresado no existe en el sistema.')
+
+    # Si entra por primera vez (GET), muestra la página normal
     return render(request, 'login.html')
+
 
 # Vistas para el portal de apoderados
 
@@ -49,7 +85,14 @@ def admin_inicio(request):
     return render(request, 'admin_inicio.html')
 
 def admin_gestion_usuarios(request):
-    return render(request, 'admin_gestion_usuarios.html')
+    # Extraemos todos los usuarios y traemos los datos de su rol asociado
+    lista_usuarios = Usuario.objects.select_related('rol_id_rol').all()
+    
+    # Empaquetamos los datos en un "contexto" para mandarlos al HTML
+    context = {
+        'usuarios': lista_usuarios
+    }
+    return render(request, 'admin_gestion_usuarios.html', context)
 
 def admin_crear_usuario(request):
     return render(request, 'admin_crear_usuario.html')

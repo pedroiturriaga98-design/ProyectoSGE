@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    
     path('', views.login_view, name='login'),
     # Rutas para el Portal de apoderado
     path('apoderado/', views.apoderado_inicio, name='apoderado_inicio'),

@@ -54,19 +54,23 @@
     <table id="users-table">
         <thead>
             <tr>
-                <th style="width: 25%;">NOMBRE</th>
-                <th style="width: 25%;">CORREO ELECTRÓNICO</th>
-                <th style="width: 15%;">ROL</th>
-                <th style="width: 15%;">ESTADO</th>
-                <th style="width: 20%;">ACCIONES</th>
+                <th style="width: 30%;">RUT USUARIO</th>
+                <th style="width: 25%;">ROL</th>
+                <th style="width: 20%;">ESTADO</th>
+                <th style="width: 25%;">ACCIONES</th>
             </tr>
         </thead>
         <tbody>
+            {% for u in usuarios %}
             <tr>
-                <td><strong>Pedro Ignacio Iturriaga</strong></td>
-                <td>p.iturriaga@colegiosantajuliana.cl</td>
-                <td>Administrador</td>
+                <!-- Mostramos el RUT ya que es el identificador principal en tu BD -->
+                <td><strong>{{ u.rut }}</strong></td>
+                
+                <!-- Mostramos el nombre del rol -->
+                <td>{{ u.rol_id_rol.nombre_rol }}</td>
+                
                 <td><span class="badge badge-activo">Activo</span></td>
+                
                 <td>
                     <div class="action-btns">
                         <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
@@ -74,66 +78,11 @@
                     </div>
                 </td>
             </tr>
+            {% empty %}
             <tr>
-                <td><strong>María José Alcocer</strong></td>
-                <td>mj.alcocer@colegiosantajuliana.cl</td>
-                <td>Profesor</td>
-                <td><span class="badge badge-activo">Activo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
-                    </div>
-                </td>
+                <td colspan="4" style="text-align: center; padding: 20px;">No hay usuarios registrados en el sistema.</td>
             </tr>
-            <tr>
-                <td><strong>Rodrigo Sanhueza</strong></td>
-                <td>r.sanhueza@colegiosantajuliana.cl</td>
-                <td>Profesor</td>
-                <td><span class="badge badge-activo">Activo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><strong>Consuelo Valenzuela</strong></td>
-                <td>c.valenzuela@apoderados.cl</td>
-                <td>Apoderado</td>
-                <td><span class="badge badge-activo">Activo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><strong>Ignacio Javier Muñoz</strong></td>
-                <td>i.munoz@alumnosantajuliana.cl</td>
-                <td>Alumno</td>
-                <td><span class="badge badge-activo">Activo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td><strong>Esteban Retamal</strong></td>
-                <td>e.retamal@colegiosantajuliana.cl</td>
-                <td>Apoderado</td>
-                <td><span class="badge badge-inactivo">Inactivo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
