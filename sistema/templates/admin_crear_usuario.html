@@ -39,67 +39,76 @@
 </div>
 
 <div class="form-card">
-    <div class="form-grid">
-        <div class="form-group">
-            <label>Nombre <span>*</span></label>
-            <input type="text" class="form-control" placeholder="Ingrese nombre">
-        </div>
-        <div class="form-group">
-            <label>Correo electrónico <span>*</span></label>
-            <input type="email" class="form-control" placeholder="ejemplo@colegiosantajuliana.cl">
-        </div>
+    <!-- 1. Agregamos la etiqueta form y el método POST -->
+    <form method="POST">
+        {% csrf_token %} <!-- 2. Token de seguridad obligatorio de Django -->
+        
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Nombre <span>*</span></label>
+                <!-- 3. Agregamos los name="..." a todos los inputs -->
+                <input type="text" class="form-control" name="nombre" placeholder="Ingrese nombre" required>
+            </div>
+            <div class="form-group">
+                <label>Correo electrónico <span>*</span></label>
+                <input type="email" class="form-control" name="correo" placeholder="ejemplo@colegiosantajuliana.cl" required>
+            </div>
 
-        <div class="form-group">
-            <label>Apellido Paterno <span>*</span></label>
-            <input type="text" class="form-control" placeholder="Ingrese apellido paterno">
-        </div>
-        <div class="form-group">
-            <label>Rol <span>*</span></label>
-            <select class="form-control">
-                <option>Administrador</option>
-                <option>Profesor</option>
-                <option>Apoderado</option>
-                <option>Alumno</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label>Apellido Paterno <span>*</span></label>
+                <input type="text" class="form-control" name="apellido_paterno" placeholder="Ingrese apellido paterno" required>
+            </div>
+            <div class="form-group">
+                <label>Rol <span>*</span></label>
+                <!-- 4. Le ponemos el name="rol_id_rol" en minúsculas y agregamos los value -->
+                <select class="form-control" name="rol_id_rol" required>
+                    <option value="" disabled selected>Seleccione un rol...</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Profesor</option>
+                    <option value="3">Apoderado</option>
+                    <option value="4">Alumno</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label>Apellido Materno</label>
-            <input type="text" class="form-control" placeholder="Ingrese apellido materno">
-        </div>
-        <div class="form-group">
-            <label>Estado</label>
-            <div class="toggle-container">
-                <input type="checkbox" class="toggle-switch" checked>
-                <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Activo</span>
+            <div class="form-group">
+                <label>Apellido Materno</label>
+                <input type="text" class="form-control" name="apellido_materno" placeholder="Ingrese apellido materno">
+            </div>
+            <div class="form-group">
+                <label>Estado</label>
+                <div class="toggle-container">
+                    <input type="checkbox" class="toggle-switch" name="estado" checked>
+                    <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Activo</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>R.U.T. <span>*</span></label>
+                <input type="text" class="form-control" name="rut" placeholder="12.345.678-9" required>
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="text" class="form-control" name="telefono" placeholder="+56 9 1234 5678">
+            </div>
+
+            <div class="form-group">
+                <label>Fecha de nacimiento</label>
+                <input type="date" class="form-control" name="fecha_nacimiento">
+            </div>
+            <div class="form-group">
+                <label>Dirección</label>
+                <input type="text" class="form-control" name="direccion" placeholder="Av. Providencia 1234, Santiago">
             </div>
         </div>
 
-        <div class="form-group">
-            <label>R.U.T. <span>*</span></label>
-            <input type="text" class="form-control" placeholder="12.345.678-9">
+        <div class="form-footer">
+            <div class="required-note">Los campos marcados con <span>*</span> son obligatorios</div>
+            <div class="btn-group">
+                <button type="button" class="btn-cancel" onclick="window.history.back()">Cancelar</button>
+                <!-- 5. Cambiamos el botón a type="submit" y quitamos el alert -->
+                <button type="submit" class="btn-submit">Guardar Usuario</button>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Teléfono</label>
-            <input type="text" class="form-control" placeholder="+56 9 1234 5678">
-        </div>
-
-        <div class="form-group">
-            <label>Fecha de nacimiento</label>
-            <input type="date" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Dirección</label>
-            <input type="text" class="form-control" placeholder="Av. Providencia 1234, Santiago">
-        </div>
-    </div>
-
-    <div class="form-footer">
-        <div class="required-note">Los campos marcados con <span>*</span> son obligatorios</div>
-        <div class="btn-group">
-            <button class="btn-cancel" onclick="window.history.back()">Cancelar</button>
-            <button class="btn-submit" onclick="alert('Funcionalidad Frontend lista. Más adelante este botón guardará el usuario en MySQL.')">Guardar Usuario</button>
-        </div>
-    </div>
+    </form>
 </div>
 {% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Usuario # Importamos tu tabla de usuarios
 
@@ -95,10 +95,70 @@ def admin_gestion_usuarios(request):
     return render(request, 'admin_gestion_usuarios.html', context)
 
 def admin_crear_usuario(request):
+    if request.method == 'POST':
+        # Capturamos todos los datos del HTML
+        rut_form = request.POST.get('rut')
+        rol_id = request.POST.get('rol_id_rol') # Minúsculas
+        nombre_form = request.POST.get('nombre')
+        correo_form = request.POST.get('correo')
+        ap_paterno_form = request.POST.get('apellido_paterno')
+        ap_materno_form = request.POST.get('apellido_materno')
+        telefono_form = request.POST.get('telefono')
+        direccion_form = request.POST.get('direccion')
+        fecha_nac_form = request.POST.get('fecha_nacimiento')
+        
+        # Contraseña inicial usando el RUT
+        password_defecto = rut_form.replace("-", "").replace(".", "")
+
+        # Guardamos en la base de datos
+        Usuario.objects.create(
+            rut=rut_form,
+            password_hash=password_defecto,
+            rol_id_rol_id=rol_id, # Django le agrega automáticamente el _id al final
+            nombre=nombre_form,
+            correo=correo_form,
+            apellido_paterno=ap_paterno_form,
+            apellido_materno=ap_materno_form,
+            telefono=telefono_form,
+            direccion=direccion_form,
+            fecha_nacimiento=fecha_nac_form if fecha_nac_form else None
+        )
+        
+        messages.success(request, 'Usuario creado correctamente con todos sus datos.')
+        return redirect('admin_gestion_usuarios') 
+
     return render(request, 'admin_crear_usuario.html')
 
-def admin_editar_usuario(request):
-    return render(request, 'admin_editar_usuario.html')
+def admin_editar_usuario(request, rut):
+    # 1. Buscamos al usuario en la BD usando el RUT
+    usuario = get_object_or_404(Usuario, rut=rut)
+
+    # 2. Si el formulario se envió (alguien apretó "Actualizar Usuario")
+    if request.method == 'POST':
+        usuario.nombre = request.POST.get('nombre')
+        usuario.apellido_paterno = request.POST.get('apellido_paterno')
+        usuario.apellido_materno = request.POST.get('apellido_materno')
+        usuario.correo = request.POST.get('correo')
+        usuario.telefono = request.POST.get('telefono')
+        usuario.direccion = request.POST.get('direccion')
+        
+        # Validamos si mandó fecha (a veces los navegadores la mandan vacía)
+        fecha_nac_form = request.POST.get('fecha_nacimiento')
+        if fecha_nac_form:
+            usuario.fecha_nacimiento = fecha_nac_form
+            
+        usuario.rol_id_rol_id = request.POST.get('rol_id_rol')
+        
+        # Opcional: Podrías manejar el estado activo/inactivo aquí si lo agregaste a tu BD
+        
+        # Guardamos en la base de datos
+        usuario.save()
+        
+        # Redirigimos a la tabla principal
+        return redirect('admin_gestion_usuarios')
+
+    # 3. Si alguien solo entró a la página a mirar, le mostramos el HTML
+    return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
 
 def admin_alumnos(request):
     return render(request, 'admin_alumnos.html')

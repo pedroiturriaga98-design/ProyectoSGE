@@ -252,7 +252,17 @@ class TicketSoporte(models.Model):
 class Usuario(models.Model):
     rut = models.CharField(primary_key=True, max_length=12)
     password_hash = models.CharField(max_length=255)
-    rol_id_rol = models.ForeignKey(Rol, models.DO_NOTHING, db_column='ROL_id_rol')  # Field name made lowercase.
+    # Llave foránea en minúsculas
+    rol_id_rol = models.ForeignKey('Rol', models.DO_NOTHING, db_column='rol_id_rol')
+    
+    # Nuevos campos
+    nombre = models.CharField(max_length=100, blank=True, null=True)
+    apellido_paterno = models.CharField(max_length=100, blank=True, null=True)
+    apellido_materno = models.CharField(max_length=100, blank=True, null=True)
+    correo = models.CharField(max_length=150, blank=True, null=True)
+    telefono = models.CharField(max_length=20, blank=True, null=True)
+    direccion = models.CharField(max_length=255, blank=True, null=True)
+    fecha_nacimiento = models.DateField(blank=True, null=True)
 
     class Meta:
         managed = False

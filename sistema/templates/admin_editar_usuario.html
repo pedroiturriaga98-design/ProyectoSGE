@@ -37,60 +37,76 @@
 </div>
 
 <div class="form-card">
-    <div class="form-grid">
-        <div class="form-group">
-            <label>Nombre <span>*</span></label>
-            <!-- value="" muestra el texto pre-escrito -->
-            <input type="text" class="form-control" value="María José">
-        </div>
-        <div class="form-group">
-            <label>Correo electrónico <span>*</span></label>
-            <input type="email" class="form-control" value="mj.alcocer@colegiosantajuliana.cl">
-        </div>
+    <!-- El formulario que envuelve todo -->
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Nombre <span>*</span></label>
+                <!-- Atributo name es clave. Y el value trae lo de la base de datos -->
+                <input type="text" class="form-control" name="nombre" value="{{ usuario.nombre|default_if_none:'' }}" required>
+            </div>
+            <div class="form-group">
+                <label>Correo electrónico <span>*</span></label>
+                <input type="email" class="form-control" name="correo" value="{{ usuario.correo|default_if_none:'' }}" required>
+            </div>
 
-        <div class="form-group">
-            <label>Apellido Paterno <span>*</span></label>
-            <input type="text" class="form-control" value="Alcocer">
-        </div>
-        <div class="form-group">
-            <label>Rol <span>*</span></label>
-            <select class="form-control">
-                <option>Administrador</option>
-                <option selected>Profesor</option>
-                <option>Apoderado</option>
-                <option>Alumno</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label>Apellido Paterno <span>*</span></label>
+                <input type="text" class="form-control" name="apellido_paterno" value="{{ usuario.apellido_paterno|default_if_none:'' }}" required>
+            </div>
+            <div class="form-group">
+                <label>Rol <span>*</span></label>
+                <select class="form-control" name="rol_id_rol" required>
+                    <option value="1" {% if usuario.rol_id_rol_id == 1 %}selected{% endif %}>Administrador</option>
+                    <option value="2" {% if usuario.rol_id_rol_id == 2 %}selected{% endif %}>Profesor</option>
+                    <option value="3" {% if usuario.rol_id_rol_id == 3 %}selected{% endif %}>Apoderado</option>
+                    <option value="4" {% if usuario.rol_id_rol_id == 4 %}selected{% endif %}>Alumno</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label>Apellido Materno</label>
-            <input type="text" class="form-control" value="Ríos">
-        </div>
-        <div class="form-group">
-            <label>Estado</label>
-            <div class="toggle-container">
-                <!-- checked indica que está activo -->
-                <input type="checkbox" class="toggle-switch" checked>
-                <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Activo</span>
+            <div class="form-group">
+                <label>Apellido Materno</label>
+                <input type="text" class="form-control" name="apellido_materno" value="{{ usuario.apellido_materno|default_if_none:'' }}">
+            </div>
+            <div class="form-group">
+                <label>Estado</label>
+                <div class="toggle-container">
+                    <!-- Si tuvieras un campo de estado en BD, esto sería dinámico -->
+                    <input type="checkbox" class="toggle-switch" name="estado" checked>
+                    <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Activo</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>R.U.T. <span>*</span></label>
+                <!-- Mostrar el rut de verdad, y no dejar que lo edite -->
+                <input type="text" class="form-control" value="{{ usuario.rut }}" disabled style="background-color: #f1f5f9; cursor: not-allowed;" title="El RUT no se puede modificar">
+                <!-- Se envía oculto para que no dé problemas -->
+                <input type="hidden" name="rut" value="{{ usuario.rut }}">
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="text" class="form-control" name="telefono" value="{{ usuario.telefono|default_if_none:'' }}">
+            </div>
+             <div class="form-group">
+                <label>Fecha de nacimiento</label>
+                <input type="date" class="form-control" name="fecha_nacimiento" value="{{ usuario.fecha_nacimiento|date:'Y-m-d' }}">
+            </div>
+            <div class="form-group">
+                <label>Dirección</label>
+                <input type="text" class="form-control" name="direccion" value="{{ usuario.direccion|default_if_none:'' }}">
             </div>
         </div>
 
-        <div class="form-group">
-            <label>R.U.T. <span>*</span></label>
-            <input type="text" class="form-control" value="15.845.221-K" disabled style="background-color: #f1f5f9; cursor: not-allowed;" title="El RUT no se puede modificar">
+        <div class="form-footer">
+            <div class="required-note">ID de Usuario: #{{ usuario.rut }}</div> <!-- Un detalle coqueto -->
+            <div class="btn-group">
+                <button type="button" class="btn-cancel" onclick="window.history.back()">Cancelar</button>
+                <!-- Botón de tipo submit para que envíe el formulario. Y le quité el onclick con el alert falso. -->
+                <button type="submit" class="btn-submit">Actualizar Usuario</button>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Teléfono</label>
-            <input type="text" class="form-control" value="+56 9 8765 4321">
-        </div>
-    </div>
-
-    <div class="form-footer">
-        <div class="required-note">ID de Usuario: #USR-0042</div>
-        <div class="btn-group">
-            <button class="btn-cancel" onclick="window.history.back()">Cancelar</button>
-            <a class="btn-submit" href="{% url 'admin_gestion_usuarios' %}" onclick="alert('Cambios actualizados exitosamente en la maqueta.')">Actualizar Usuario</a>
-        </div>
-    </div>
+    </form>
 </div>
 {% endblock %}

@@ -54,33 +54,45 @@
     <table id="users-table">
         <thead>
             <tr>
-                <th style="width: 30%;">RUT USUARIO</th>
-                <th style="width: 25%;">ROL</th>
-                <th style="width: 20%;">ESTADO</th>
-                <th style="width: 25%;">ACCIONES</th>
+                <th style="width: 15%;">RUT USUARIO</th>
+                <th style="width: 25%;">NOMBRE COMPLETO</th>
+                <th style="width: 25%;">CORREO</th>
+                <th style="width: 15%;">ROL</th>
+                <th style="width: 10%;">ESTADO</th>
+                <th style="width: 10%;">ACCIONES</th>
             </tr>
         </thead>
         <tbody>
             {% for u in usuarios %}
             <tr>
-                <!-- Mostramos el RUT ya que es el identificador principal en tu BD -->
+                <!-- 1. RUT -->
                 <td><strong>{{ u.rut }}</strong></td>
                 
-                <!-- Mostramos el nombre del rol -->
+                <!-- 2. Nombre Completo -->
+                <td>{{ u.nombre }} {{ u.apellido_paterno }} {{ u.apellido_materno }}</td>
+                
+                <!-- 3. Correo -->
+                <td>{{ u.correo }}</td>
+                
+                <!-- 4. Rol (usando tu propiedad nombre_rol) -->
                 <td>{{ u.rol_id_rol.nombre_rol }}</td>
                 
+                <!-- 5. Estado -->
                 <td><span class="badge badge-activo">Activo</span></td>
                 
+                <!-- 6. Acciones -->
                 <td>
                     <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_usuario' %}" aria-label="Editar usuario">✎</a>
+                        <!-- Cambia esta línea: -->
+                        <a class="btn-icon" href="{% url 'admin_editar_usuario' u.rut %}" aria-label="Editar usuario">✎</a>
                         <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
                     </div>
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="4" style="text-align: center; padding: 20px;">No hay usuarios registrados en el sistema.</td>
+                <!-- Cambiamos a colspan="6" para que cubra toda la tabla -->
+                <td colspan="6" style="text-align: center; padding: 20px;">No hay usuarios registrados en el sistema.</td>
             </tr>
             {% endfor %}
         </tbody>
