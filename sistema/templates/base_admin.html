@@ -74,12 +74,16 @@
             <div class="user-profile">
                 <div class="user-info">
                     <div class="user-details">
-                        <h4>Pedro Ignacio Iturriaga</h4>
-                        <p>Administrador</p>
+                        <!-- Muestra el nombre y apellido del usuario logueado -->
+                        <h4>{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}</h4>
+                        <!-- Muestra el cargo del usuario -->
+                        <p>{{ request.session.rol_nombre }}</p>
                     </div>
-                    <img src="" alt="Avatar">
+                    <!-- Volvemos a poner la imagen del avatar que se te borró -->
+                    <img src="https://ui-avatars.com/api/?name={{ request.session.nombre_usuario }}+{{ request.session.apellido_usuario }}&background=e2e8f0&color=0f172a" alt="Avatar">
                 </div>
-                <a href="{% url 'login' %}" class="btn-logout">⍈ Cerrar sesión</a>
+                <!-- El botón de cerrar sesión también lo ajusté visualmente -->
+                <a href="{% url 'login' %}" class="btn-logout" style="margin-left: 15px;">⍈ Cerrar sesión</a>
             </div>
         </header>
 

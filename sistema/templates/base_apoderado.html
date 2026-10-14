@@ -58,7 +58,7 @@
         
         <div class="profile-area">
             <div class="profile-pic"></div>
-            <h3>Rocío Méndez</h3>
+            <h3>{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}</h3>
             <p>Apoderado Santa Juliana</p>
             <button class="btn-outline">Cambiar</button>
         </div>
@@ -79,7 +79,7 @@
         <header class="top-header">
             <div class="course-badge">2026 Cuarto Año H Liceo Polivalente Santa Juliana</div>
             <div class="user-menu">
-                <strong>Rocío Méndez</strong>
+                <strong>{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}</strong>
                 <a href="{% url 'login' %}">⍈ Cerrar sesión</a>
             </div>
         </header>
