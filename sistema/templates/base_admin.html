@@ -7,6 +7,7 @@
     <title>Portal Administrador - SGE</title>
     <link rel="stylesheet" href="{% static 'css/base_admin.css' %}">
 </head>
+
 <body>
 
     <aside class="sidebar-left">
@@ -47,13 +48,22 @@
                         <!-- Muestra el cargo del usuario -->
                         <p>{{ request.session.rol_nombre }}</p>
                     </div>
-                    <!-- Volvemos a poner la imagen del avatar que se te borró -->
                     <img src="https://ui-avatars.com/api/?name={{ request.session.nombre_usuario }}+{{ request.session.apellido_usuario }}&background=e2e8f0&color=0f172a" alt="Avatar">
                 </div>
-                <!-- El botón de cerrar sesión también lo ajusté visualmente -->
+                <!-- El botón de cerrar sesión-->
                 <a href="{% url 'login' %}" class="btn-logout" style="margin-left: 15px;">⍈ Cerrar sesión</a>
             </div>
         </header>
+        {% if messages %}
+        <div style="margin-bottom: 15px;">
+        {% for message in messages %}
+        <div style="padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 500;
+                  background-color: #fee2e2; color: #b91c1c; border: 1px solid #f87171; margin-bottom: 8px;">
+        {{ message }}
+        </div>
+        {% endfor %}
+        </div>
+        {% endif %}
 
         <div class="content-area">
             {% block content %}

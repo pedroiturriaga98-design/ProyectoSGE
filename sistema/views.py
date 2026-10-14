@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from functools import wraps # Importante para hacer decoradores
 from .models import Usuario
+from django.db import IntegrityError
 
 def require_role(roles_permitidos):
     def decorator(view_func):
@@ -143,35 +144,57 @@ def admin_gestion_usuarios(request):
 def admin_crear_usuario(request):
     if request.method == 'POST':
         # Capturamos todos los datos del HTML
-        rut_form = request.POST.get('rut')
-        rol_id = request.POST.get('rol_id_rol') # Minúsculas
-        nombre_form = request.POST.get('nombre')
-        correo_form = request.POST.get('correo')
-        ap_paterno_form = request.POST.get('apellido_paterno')
-        ap_materno_form = request.POST.get('apellido_materno')
-        telefono_form = request.POST.get('telefono')
-        direccion_form = request.POST.get('direccion')
+        rut_form = request.POST.get('rut', '').strip()
+        rol_id = request.POST.get('rol_id_rol')
+        nombre_form = request.POST.get('nombre', '').strip()
+        correo_form = request.POST.get('correo', '').strip()
+        ap_paterno_form = request.POST.get('apellido_paterno', '').strip()
+        ap_materno_form = request.POST.get('apellido_materno', '').strip()
+        telefono_form = request.POST.get('telefono', '').strip()
+        direccion_form = request.POST.get('direccion', '').strip()
         fecha_nac_form = request.POST.get('fecha_nacimiento')
-        
-        # Contraseña inicial usando el RUT
-        password_defecto = rut_form.replace("-", "").replace(".", "")
 
-        # Guardamos en la base de datos
-        Usuario.objects.create(
-            rut=rut_form,
-            password_hash=password_defecto,
-            rol_id_rol_id=rol_id, # Django le agrega automáticamente el _id al final
-            nombre=nombre_form,
-            correo=correo_form,
-            apellido_paterno=ap_paterno_form,
-            apellido_materno=ap_materno_form,
-            telefono=telefono_form,
-            direccion=direccion_form,
-            fecha_nacimiento=fecha_nac_form if fecha_nac_form else None
-        )
-        
-        messages.success(request, 'Usuario creado correctamente con todos sus datos.')
-        return redirect('admin_gestion_usuarios') 
+        # Normalizamos el formato del RUT para consultar si ya existe en la BD
+        rut_limpio = rut_form.replace(".", "").replace("-", "").strip().upper()
+        if len(rut_limpio) >= 2:
+            rut_estandar = f"{rut_limpio[:-1]}-{rut_limpio[-1]}"
+        else:
+            rut_estandar = rut_form
+
+        # 1. Validación previa: comprobar si el RUT ya está en uso
+        if Usuario.objects.filter(rut=rut_estandar).exists():
+            messages.error(request, f'El RUT {rut_estandar} ya se encuentra registrado en el sistema.')
+            return render(request, 'admin_crear_usuario.html')
+
+        # 2. Validación previa: comprobar si el correo ya existe (si es que ingresaron uno manual)
+        if correo_form and Usuario.objects.filter(correo=correo_form.lower()).exists():
+            messages.error(request, f'El correo {correo_form} ya pertenece a otro usuario.')
+            return render(request, 'admin_crear_usuario.html')
+
+        # Contraseña inicial usando los dígitos del RUT limpio
+        password_defecto = rut_limpio
+
+        try:
+            # Guardamos en la base de datos (el método save() del modelo se encargará del resto)
+            Usuario.objects.create(
+                rut=rut_estandar,
+                password_hash=password_defecto,
+                rol_id_rol_id=rol_id,
+                nombre=nombre_form,
+                correo=correo_form if correo_form else None,
+                apellido_paterno=ap_paterno_form,
+                apellido_materno=ap_materno_form,
+                telefono=telefono_form,
+                direccion=direccion_form,
+                fecha_nacimiento=fecha_nac_form if fecha_nac_form else None
+            )
+
+            messages.success(request, 'Usuario creado correctamente con todos sus datos.')
+            return redirect('admin_gestion_usuarios')
+
+        except IntegrityError:
+            messages.error(request, 'Error de integridad: El usuario o un dato único ya existe en el sistema.')
+            return render(request, 'admin_crear_usuario.html')
 
     return render(request, 'admin_crear_usuario.html')
 
@@ -182,29 +205,37 @@ def admin_editar_usuario(request, rut):
 
     # 2. Si el formulario se envió (alguien apretó "Actualizar Usuario")
     if request.method == 'POST':
-        usuario.nombre = request.POST.get('nombre')
-        usuario.apellido_paterno = request.POST.get('apellido_paterno')
-        usuario.apellido_materno = request.POST.get('apellido_materno')
-        usuario.correo = request.POST.get('correo')
-        usuario.telefono = request.POST.get('telefono')
-        usuario.direccion = request.POST.get('direccion')
+        correo_form = request.POST.get('correo', '').strip()
+
+        # Validación: si ingresó un correo, verificar que no pertenezca a OTRO usuario
+        if correo_form and Usuario.objects.filter(correo=correo_form.lower()).exclude(rut=usuario.rut).exists():
+            messages.error(request, f'El correo {correo_form} ya está asignado a otro usuario.')
+            return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
+
+        usuario.nombre = request.POST.get('nombre', '').strip()
+        usuario.apellido_paterno = request.POST.get('apellido_paterno', '').strip()
+        usuario.apellido_materno = request.POST.get('apellido_materno', '').strip()
+        usuario.correo = correo_form if correo_form else None
+        usuario.telefono = request.POST.get('telefono', '').strip()
+        usuario.direccion = request.POST.get('direccion', '').strip()
         
-        # Validamos si mandó fecha (a veces los navegadores la mandan vacía)
+        # Fecha de nacimiento (si viene vacía, se deja None)
         fecha_nac_form = request.POST.get('fecha_nacimiento')
-        if fecha_nac_form:
-            usuario.fecha_nacimiento = fecha_nac_form
+        usuario.fecha_nacimiento = fecha_nac_form if fecha_nac_form else None
             
         usuario.rol_id_rol_id = request.POST.get('rol_id_rol')
-        
-        # Opcional: Podrías manejar el estado activo/inactivo aquí si lo agregaste a tu BD
-        
-        # Guardamos en la base de datos
-        usuario.save()
-        
-        # Redirigimos a la tabla principal
-        return redirect('admin_gestion_usuarios')
 
-    # 3. Si alguien solo entró a la página a mirar, le mostramos el HTML
+        try:
+            # Guardamos en la base de datos (aplica .title(), minúsculas y reglas de models.py)
+            usuario.save()
+            messages.success(request, f'Usuario {usuario.rut} actualizado exitosamente.')
+            return redirect('admin_gestion_usuarios')
+
+        except IntegrityError:
+            messages.error(request, 'Error al actualizar: los datos entran en conflicto con otro registro.')
+            return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
+
+    # 3. Vista GET normal
     return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
 
 @require_role([1])

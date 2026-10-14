@@ -111,4 +111,44 @@
         </div>
     </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const inputNombre = document.querySelector('input[name="nombre"]');
+    const inputPaterno = document.querySelector('input[name="apellido_paterno"]');
+    const inputCorreo = document.querySelector('input[name="correo"]');
+
+    function limpiarTexto(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    }
+
+    function sugerirCorreo() {
+        // Solo autocompleta si el usuario no ha editado el correo manualmente
+        if (!inputCorreo.dataset.manualEdit) {
+            const nom = limpiarTexto(inputNombre.value.trim());
+            const pat = limpiarTexto(inputPaterno.value.trim());
+
+            if (nom && pat) {
+                const inicial = nom.charAt(0);
+                inputCorreo.value = `${inicial}${pat}@santajuliana.cl`;
+            } else {
+                inputCorreo.value = '';
+            }
+        }
+    }
+
+    // Detectar si el usuario modifica el correo a mano para respetarlo
+    inputCorreo.addEventListener('input', function() {
+        if (this.value.trim() !== '') {
+            this.dataset.manualEdit = "true";
+        } else {
+            delete this.dataset.manualEdit;
+        }
+    });
+
+    inputNombre.addEventListener('input', sugerirCorreo);
+    inputPaterno.addEventListener('input', sugerirCorreo);
+});
+</script>
+
 {% endblock %}

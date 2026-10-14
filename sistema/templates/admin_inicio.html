@@ -33,7 +33,7 @@
 
 <!-- Mensaje de Bienvenida -->
 <div class="welcome-card">
-    <h1>¡Bienvenido(a), Pedro Ignacio!</h1>
+    <h1>¡Bienvenido(a), {{ request.session.nombre_usuario }}!</h1>
     <p>Aquí podrás administrar cuentas, configurar el año escolar y gestionar el soporte de la plataforma.</p>
     <div class="badge-role">👤 Estás en la vista: <strong>Administrador</strong></div>
 </div>

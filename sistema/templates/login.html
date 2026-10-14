@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGE - Iniciar Sesión</title>
+    
     <style>
         /* Estilos generales y reseteo */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
@@ -101,6 +103,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Mitad Izquierda (Diseño Institucional) -->
@@ -113,9 +116,9 @@
             </div>
         </div>
 
-        <!-- Aquí podrás cambiar el div por la etiqueta <img> con tu render 3D cuando configuremos los archivos estáticos -->
-        <div class="img-placeholder">
-            [Espacio para la imagen 3D de la sala]
+        
+        <div style="width: 100%; max-width: 480px; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
+            <img src="{% static 'imagenes/colegio.png' %}" alt="Colegio Santa Juliana" style="width: 100%; height: auto; border-radius: 12px; object-fit: contain;">
         </div>
 
         <div class="footer-left">
@@ -143,7 +146,16 @@
                     <label>Contraseña</label>
                     <input type="password" name="password" class="form-control" placeholder="••••••••••••" required>
                 </div>
-                
+                {% if messages %}
+                 <div style="margin-bottom: 15px;">
+                {% for message in messages %}
+                <div style="padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 500;
+                  background-color: #fee2e2; color: #b91c1c; border: 1px solid #f87171; margin-bottom: 8px;">
+                 {{ message }}
+                 </div>
+                 {% endfor %}
+                 </div>
+                 {% endif %}
                 <div class="form-options">
                     <label><input type="checkbox" name="remember"> Recordarme</label>
                     <a href="#">¿Olvidaste tu contraseña?</a>

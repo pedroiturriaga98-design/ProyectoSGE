@@ -35,7 +35,16 @@
     <h2>Editar Usuario</h2>
     <p>Modifique los datos del usuario registrado en el sistema.</p>
 </div>
-
+{% if messages %}
+  <div style="margin-bottom: 15px;">
+    {% for message in messages %}
+      <div style="padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 500;
+                  background-color: #fee2e2; color: #b91c1c; border: 1px solid #f87171; margin-bottom: 8px;">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
 <div class="form-card">
     <!-- El formulario que envuelve todo -->
     <form method="POST">

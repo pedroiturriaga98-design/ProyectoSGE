@@ -5,7 +5,16 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+import unicodedata
 from django.db import models
+
+
+def normalizar_texto(texto: str) -> str:
+    """Quita tildes, eñes y caracteres especiales, dejando solo caracteres a-z."""
+    if not texto:
+        return ""
+    texto = unicodedata.normalize('NFKD', texto).encode('ASCII', 'ignore').decode('utf-8')
+    return "".join(c for c in texto.lower() if c.isalnum())
 
 
 class Alumno(models.Model):
@@ -263,6 +272,61 @@ class Usuario(models.Model):
     telefono = models.CharField(max_length=20, blank=True, null=True)
     direccion = models.CharField(max_length=255, blank=True, null=True)
     fecha_nacimiento = models.DateField(blank=True, null=True)
+
+    def generar_correo_institucional(self) -> str:
+        dominio = "santajuliana.cl"
+        nom = normalizar_texto(self.nombre)
+        ape_pat = normalizar_texto(self.apellido_paterno)
+        ape_mat = normalizar_texto(self.apellido_materno)
+
+        if not nom or not ape_pat:
+            return self.correo or ""
+
+        inicial_nom = nom[0]
+        # Intento 1: inicial_nombre + apellido_paterno (ej: ccolon@santajuliana.cl)
+        sugerencia = f"{inicial_nom}{ape_pat}@{dominio}"
+
+        existe = Usuario.objects.filter(correo=sugerencia).exclude(rut=self.rut).exists()
+        if not existe:
+            return sugerencia
+
+        # Intento 2: si ya existe y hay apellido materno, suma su inicial (ej: ccolong@santajuliana.cl)
+        if ape_mat:
+            sugerencia_mat = f"{inicial_nom}{ape_pat}{ape_mat[0]}@{dominio}"
+            if not Usuario.objects.filter(correo=sugerencia_mat).exclude(rut=self.rut).exists():
+                return sugerencia_mat
+
+        # Intento 3: si sigue existiendo, añade un correlativo numérico
+        contador = 2
+        base = f"{inicial_nom}{ape_pat}{ape_mat[0] if ape_mat else ''}"
+        while Usuario.objects.filter(correo=f"{base}{contador}@{dominio}").exclude(rut=self.rut).exists():
+            contador += 1
+        return f"{base}{contador}@{dominio}"
+
+    def save(self, *args, **kwargs):
+        # 1. Estandarizar RUT (ej: 11111111-1)
+        if self.rut:
+            limpio = self.rut.replace(".", "").replace("-", "").strip().upper()
+            if len(limpio) >= 2:
+                cuerpo = limpio[:-1]
+                dv = limpio[-1]
+                self.rut = f"{cuerpo}-{dv}"
+
+        # 2. Capitalizar nombres y apellidos a formato título
+        if self.nombre:
+            self.nombre = self.nombre.strip().title()
+        if self.apellido_paterno:
+            self.apellido_paterno = self.apellido_paterno.strip().title()
+        if self.apellido_materno:
+            self.apellido_materno = self.apellido_materno.strip().title()
+
+        # 3. Correo institucional automático o limpieza a minúsculas
+        if not self.correo:
+            self.correo = self.generar_correo_institucional()
+        else:
+            self.correo = self.correo.strip().lower()
+
+        super().save(*args, **kwargs)
 
     class Meta:
         managed = False
