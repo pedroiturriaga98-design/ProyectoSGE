@@ -85,7 +85,8 @@
                     <div class="action-btns">
                         <!-- Cambia esta línea: -->
                         <a class="btn-icon" href="{% url 'admin_editar_usuario' u.rut %}" aria-label="Editar usuario">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarUsuario(this)">🗑</button>
+                        <!-- Reemplaza tu botón <button class="btn-icon delete"...> por este enlace -->
+                        <a href="{% url 'admin_eliminar_usuario' u.rut %}" class="btn-icon btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar a este usuario de la base de datos? Esta acción es permanente.');">🗑</a>
                     </div>
                 </td>
             </tr>
@@ -98,15 +99,4 @@
         </tbody>
     </table>
 </div>
-
-<script>
-    function eliminarUsuario(boton) {
-        // Preguntar al usuario antes de borrar
-        if (confirm("¿Estás seguro de que deseas eliminar este usuario? Esta acción no se puede deshacer.")) {
-            // Encontrar la fila (tr) a la que pertenece el botón y eliminarla del HTML
-            let fila = boton.closest('tr');
-            fila.remove();
-        }
-    }
-</script>
 {% endblock %}

@@ -23,6 +23,7 @@ urlpatterns = [
     path('administrador/usuarios/', views.admin_gestion_usuarios, name='admin_gestion_usuarios'),
     path('administrador/usuarios/crear/', views.admin_crear_usuario, name='admin_crear_usuario'),
     path('administrador/usuarios/editar/<str:rut>/', views.admin_editar_usuario, name='admin_editar_usuario'),
+    path('administrador/usuarios/eliminar/<str:rut>/', views.admin_eliminar_usuario, name='admin_eliminar_usuario'),
     path('administrador/alumnos/', views.admin_alumnos, name='admin_alumnos'),
     path('administrador/alumnos/editar/<str:rut>/', views.admin_editar_alumno, name='admin_editar_alumno'),
     path('administrador/incidencias/', views.admin_gestion_incidencias, name='admin_gestion_incidencias'),

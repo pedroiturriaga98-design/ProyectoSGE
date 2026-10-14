@@ -1,17 +1,42 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Usuario # Importamos tu tabla de usuarios
+from functools import wraps # Importante para hacer decoradores
+from .models import Usuario
 
-# Vista para el Login (Actualizada con lógica de validación)
+def require_role(roles_permitidos):
+    def decorator(view_func):
+        @wraps(view_func)
+        def _wrapped_view(request, *args, **kwargs):
+            # 1. Revisamos si el usuario inició sesión
+            if 'usuario_rut' not in request.session:
+                messages.error(request, 'Debes iniciar sesión para acceder a esta página.')
+                return redirect('login') # Lo mandamos pa' fuera
+            
+            # 2. Revisamos si su rol está en la lista de permitidos
+            rol_actual = request.session.get('rol_id')
+            if rol_actual not in roles_permitidos:
+                # Si es profe (rol 2) y trata de entrar a admin (rol 1)
+                messages.error(request, 'No tienes permisos para ver esta sección.')
+                # Lo devolvemos a su menú principal (o lo que consideres)
+                return redirect('login') 
+            
+            # Si todo está OK, lo dejamos pasar a la vista original
+            return view_func(request, *args, **kwargs)
+        return _wrapped_view
+    return decorator
+
 def login_view(request):
     if request.method == 'POST':
-        # Capturamos lo que el usuario escribió en el HTML
-        rut_ingresado = request.POST.get('username') 
+        # Le cambié el nombre a la variable para que tenga más sentido
+        credencial_ingresada = request.POST.get('username') 
         password_ingresada = request.POST.get('password')
 
         try:
-            # 1. Buscamos al usuario en la base de datos
-            usuario = Usuario.objects.get(rut=rut_ingresado)
+            # 1. Buscamos al usuario de forma inteligente (por correo o por RUT)
+            if '@' in credencial_ingresada:
+                usuario = Usuario.objects.get(correo=credencial_ingresada)
+            else:
+                usuario = Usuario.objects.get(rut=credencial_ingresada)
 
             # 2. Comparamos la contraseña 
             if usuario.password_hash == password_ingresada:
@@ -19,6 +44,12 @@ def login_view(request):
                 # 3. Guardamos su sesión (el "ticket" del navegador)
                 request.session['usuario_rut'] = usuario.rut
                 request.session['rol_id'] = usuario.rol_id_rol.id_rol
+                
+                # ¡AQUÍ ESTÁ LA MAGIA PARA EL HEADER! Guardamos estos datos extra:
+                request.session['nombre_usuario'] = usuario.nombre
+                request.session['apellido_usuario'] = usuario.apellido_paterno
+                # Asumo que la columna en tu modelo Rol se llama nombre_rol. Si se llama distinto, ajústalo.
+                request.session['rol_nombre'] = usuario.rol_id_rol.nombre_rol 
 
                 # 4. Redirigimos según el Rol usando los nombres de tus vistas
                 rol = usuario.rol_id_rol.id_rol
@@ -34,7 +65,7 @@ def login_view(request):
                 messages.error(request, 'Contraseña incorrecta.')
                 
         except Usuario.DoesNotExist:
-            messages.error(request, 'El usuario ingresado no existe en el sistema.')
+            messages.error(request, 'El usuario o correo ingresado no existe en el sistema.')
 
     # Si entra por primera vez (GET), muestra la página normal
     return render(request, 'login.html')
@@ -42,48 +73,62 @@ def login_view(request):
 
 # Vistas para el portal de apoderados
 
+@require_role([3])
 def apoderado_inicio(request):
     return render(request, 'apoderado_inicio.html')
 
+@require_role([3])
 def apoderado_notas(request):
     return render(request, 'apoderado_notas.html')
 
+@require_role([3])
 def apoderado_asistencia(request):
     return render(request, 'apoderado_asistencia.html')
 
+@require_role([3])
 def apoderado_calendario(request):
     return render(request, 'apoderado_calendario.html')
 
+@require_role([3])
 def apoderado_certificados(request):
     return render(request, 'apoderado_certificados.html')
 
 # Vistas para el portal de Profesores
+@require_role([2])
 def profesor_inicio(request):
     return render(request, 'profesor_inicio.html')
 
+@require_role([2])
 def profesor_notas(request):
     return render(request, 'profesor_notas.html')
 
+@require_role([2])
 def profesor_asistencia(request):
     return render(request, 'profesor_asistencia.html')
 
+@require_role([2])
 def profesor_agregar_incidencia(request):
     return render(request, 'profesor_agregar_incidencia.html')
 
+@require_role([2])
 def profesor_revisar_incidencias(request):
     return render(request, 'profesor_revisar_incidencias.html')
 
+@require_role([2])
 def profesor_alumnos(request):
     return render(request, 'profesor_alumnos.html')
 
+@require_role([2])
 def profesor_perfil_alumno(request):
     return render(request, 'profesor_perfil_alumno.html')
 
 # Vistas para el portal de Administrador
 
+@require_role([1])
 def admin_inicio(request):
     return render(request, 'admin_inicio.html')
 
+@require_role([1])
 def admin_gestion_usuarios(request):
     # Extraemos todos los usuarios y traemos los datos de su rol asociado
     lista_usuarios = Usuario.objects.select_related('rol_id_rol').all()
@@ -94,6 +139,7 @@ def admin_gestion_usuarios(request):
     }
     return render(request, 'admin_gestion_usuarios.html', context)
 
+@require_role([1])
 def admin_crear_usuario(request):
     if request.method == 'POST':
         # Capturamos todos los datos del HTML
@@ -129,6 +175,7 @@ def admin_crear_usuario(request):
 
     return render(request, 'admin_crear_usuario.html')
 
+@require_role([1])
 def admin_editar_usuario(request, rut):
     # 1. Buscamos al usuario en la BD usando el RUT
     usuario = get_object_or_404(Usuario, rut=rut)
@@ -160,32 +207,56 @@ def admin_editar_usuario(request, rut):
     # 3. Si alguien solo entró a la página a mirar, le mostramos el HTML
     return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
 
+@require_role([1])
+def admin_eliminar_usuario(request, rut):
+    # Buscamos al usuario o tiramos error 404 si no existe
+    usuario = get_object_or_404(Usuario, rut=rut)
+    
+    # Lo eliminamos de la base de datos
+    usuario.delete()
+    
+    # Opcional: un mensaje de éxito
+    messages.success(request, 'Usuario eliminado correctamente.')
+    
+    # Redirigimos de vuelta a la tabla principal
+    return redirect('admin_gestion_usuarios')
+
+@require_role([1])
 def admin_alumnos(request):
     return render(request, 'admin_alumnos.html')
 
-def admin_editar_alumno(request):
+@require_role([1])
+def admin_editar_alumno(request, rut):
     return render(request, 'admin_editar_alumno.html')
 
+@require_role([1])
 def admin_gestion_incidencias(request):
     return render(request, 'admin_gestion_incidencias.html')
 
+@require_role([1])
 def admin_editar_incidencia(request):
     return render(request, 'admin_editar_incidencia.html')
 
+@require_role([1])
 def admin_gestion_apoderados(request):
     return render(request, 'admin_gestion_apoderados.html')
 
+@require_role([1])
 def admin_editar_apoderado(request):
     return render(request, 'admin_editar_apoderado.html')
 
+@require_role([1])
 def admin_gestion_profesores(request):
     return render(request, 'admin_gestion_profesores.html')
 
+@require_role([1])
 def admin_editar_profesor(request):
     return render(request, 'admin_editar_profesor.html')
 
+@require_role([1])
 def admin_gestion_inventario(request):
     return render(request, 'admin_gestion_inventario.html')
 
+@require_role([1])
 def admin_editar_equipo(request):
     return render(request, 'admin_editar_equipo.html')
