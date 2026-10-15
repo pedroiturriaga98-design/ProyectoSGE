@@ -71,6 +71,42 @@ def login_view(request):
     # Si entra por primera vez (GET), muestra la página normal
     return render(request, 'login.html')
 
+def validar_rut(rut_str):
+    if not rut_str:
+        return False
+
+    # Limpiamos puntos, guiones y espacios
+    rut_limpio = str(rut_str).replace(".", "").replace("-", "").strip().upper()
+    
+    # Un RUN chileno tiene entre 8 y 9 caracteres (ej: 8572314K o 195723141)
+    if len(rut_limpio) < 8 or len(rut_limpio) > 9:
+        return False
+    
+    cuerpo = rut_limpio[:-1]
+    dv = rut_limpio[-1]
+    
+    # El cuerpo debe contener únicamente dígitos
+    if not cuerpo.isdigit():
+        return False
+    
+    # Algoritmo Módulo 11
+    suma = 0
+    multiplicador = 2
+    for digit in reversed(cuerpo):
+        suma += int(digit) * multiplicador
+        multiplicador = 2 if multiplicador == 7 else multiplicador + 1
+    
+    resto = suma % 11
+    resultado = 11 - resto
+    
+    if resultado == 11:
+        dv_esperado = '0'
+    elif resultado == 10:
+        dv_esperado = 'K'
+    else:
+        dv_esperado = str(resultado)
+        
+    return dv == dv_esperado
 
 # Vistas para el portal de apoderados
 
@@ -154,19 +190,30 @@ def admin_crear_usuario(request):
         direccion_form = request.POST.get('direccion', '').strip()
         fecha_nac_form = request.POST.get('fecha_nacimiento')
 
-        # Normalizamos el formato del RUT para consultar si ya existe en la BD
+        # 1. Validación de RUT mediante algoritmo Módulo 11
+        if not validar_rut(rut_form):
+            messages.error(request, 'El RUN ingresado no es válido. Verifique los dígitos e intente nuevamente.')
+            return render(request, 'admin_crear_usuario.html')
+
+        # 2. Normalización y formateo con puntos (ej: 19.572.314-1)
         rut_limpio = rut_form.replace(".", "").replace("-", "").strip().upper()
         if len(rut_limpio) >= 2:
-            rut_estandar = f"{rut_limpio[:-1]}-{rut_limpio[-1]}"
+            cuerpo = rut_limpio[:-1]
+            dv = rut_limpio[-1]
+            try:
+                cuerpo_con_puntos = f"{int(cuerpo):,}".replace(",", ".")
+                rut_estandar = f"{cuerpo_con_puntos}-{dv}"
+            except ValueError:
+                rut_estandar = rut_form
         else:
             rut_estandar = rut_form
 
-        # 1. Validación previa: comprobar si el RUT ya está en uso
+        # 3. Comprobar si el RUT con formato tradicional ya existe en la BD
         if Usuario.objects.filter(rut=rut_estandar).exists():
             messages.error(request, f'El RUT {rut_estandar} ya se encuentra registrado en el sistema.')
             return render(request, 'admin_crear_usuario.html')
 
-        # 2. Validación previa: comprobar si el correo ya existe (si es que ingresaron uno manual)
+        # 4. Comprobar si el correo ya existe
         if correo_form and Usuario.objects.filter(correo=correo_form.lower()).exists():
             messages.error(request, f'El correo {correo_form} ya pertenece a otro usuario.')
             return render(request, 'admin_crear_usuario.html')
@@ -174,14 +221,14 @@ def admin_crear_usuario(request):
         # Contraseña inicial usando los dígitos del RUT limpio
         password_defecto = rut_limpio
 
+        # 5. Creación y persistencia del usuario en la base de datos
         try:
-            # Guardamos en la base de datos (el método save() del modelo se encargará del resto)
             Usuario.objects.create(
                 rut=rut_estandar,
                 password_hash=password_defecto,
                 rol_id_rol_id=rol_id,
                 nombre=nombre_form,
-                correo=correo_form if correo_form else None,
+                correo=correo_form.lower() if correo_form else None,
                 apellido_paterno=ap_paterno_form,
                 apellido_materno=ap_materno_form,
                 telefono=telefono_form,

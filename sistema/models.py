@@ -304,29 +304,33 @@ class Usuario(models.Model):
         return f"{base}{contador}@{dominio}"
 
     def save(self, *args, **kwargs):
-        # 1. Estandarizar RUT (ej: 11111111-1)
-        if self.rut:
-            limpio = self.rut.replace(".", "").replace("-", "").strip().upper()
-            if len(limpio) >= 2:
-                cuerpo = limpio[:-1]
-                dv = limpio[-1]
-                self.rut = f"{cuerpo}-{dv}"
+        # 1. Estandarizar RUT con puntos y guión (ej: 19.572.314-1)
+            if self.rut:
+                limpio = str(self.rut).replace(".", "").replace("-", "").strip().upper()
+                if len(limpio) >= 2:
+                    cuerpo = limpio[:-1]
+                    dv = limpio[-1]
+                    try:
+                        cuerpo_con_puntos = f"{int(cuerpo):,}".replace(",", ".")
+                        self.rut = f"{cuerpo_con_puntos}-{dv}"
+                    except ValueError:
+                        self.rut = f"{cuerpo}-{dv}"
 
         # 2. Capitalizar nombres y apellidos a formato título
-        if self.nombre:
-            self.nombre = self.nombre.strip().title()
-        if self.apellido_paterno:
-            self.apellido_paterno = self.apellido_paterno.strip().title()
-        if self.apellido_materno:
-            self.apellido_materno = self.apellido_materno.strip().title()
+            if self.nombre:
+                self.nombre = self.nombre.strip().title()
+            if self.apellido_paterno:
+                self.apellido_paterno = self.apellido_paterno.strip().title()
+            if self.apellido_materno:
+                self.apellido_materno = self.apellido_materno.strip().title()
 
         # 3. Correo institucional automático o limpieza a minúsculas
-        if not self.correo:
-            self.correo = self.generar_correo_institucional()
-        else:
-            self.correo = self.correo.strip().lower()
+            if not self.correo:
+                self.correo = self.generar_correo_institucional()
+            else:
+                self.correo = self.correo.strip().lower()
 
-        super().save(*args, **kwargs)
+            super().save(*args, **kwargs)
 
     class Meta:
         managed = False

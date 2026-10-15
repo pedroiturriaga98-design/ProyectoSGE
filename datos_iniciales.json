@@ -1,0 +1,1573 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$XotGvhYN6QFr7BzGOLouLF$S8E4G97NTT6uEBULwFrw9Op6wgr+9H4cStWmC7ef13w=",
+    "last_login": "2026-10-14T22:58:30.704Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-10-08T02:16:35.858Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add alumno",
+    "content_type": 7,
+    "codename": "add_alumno"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change alumno",
+    "content_type": 7,
+    "codename": "change_alumno"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete alumno",
+    "content_type": 7,
+    "codename": "delete_alumno"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view alumno",
+    "content_type": 7,
+    "codename": "view_alumno"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add asignatura",
+    "content_type": 8,
+    "codename": "add_asignatura"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change asignatura",
+    "content_type": 8,
+    "codename": "change_asignatura"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete asignatura",
+    "content_type": 8,
+    "codename": "delete_asignatura"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view asignatura",
+    "content_type": 8,
+    "codename": "view_asignatura"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add asignatura curso",
+    "content_type": 9,
+    "codename": "add_asignaturacurso"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change asignatura curso",
+    "content_type": 9,
+    "codename": "change_asignaturacurso"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete asignatura curso",
+    "content_type": 9,
+    "codename": "delete_asignaturacurso"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view asignatura curso",
+    "content_type": 9,
+    "codename": "view_asignaturacurso"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add auth group",
+    "content_type": 10,
+    "codename": "add_authgroup"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change auth group",
+    "content_type": 10,
+    "codename": "change_authgroup"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete auth group",
+    "content_type": 10,
+    "codename": "delete_authgroup"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view auth group",
+    "content_type": 10,
+    "codename": "view_authgroup"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add auth group permissions",
+    "content_type": 11,
+    "codename": "add_authgrouppermissions"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change auth group permissions",
+    "content_type": 11,
+    "codename": "change_authgrouppermissions"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete auth group permissions",
+    "content_type": 11,
+    "codename": "delete_authgrouppermissions"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view auth group permissions",
+    "content_type": 11,
+    "codename": "view_authgrouppermissions"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add auth permission",
+    "content_type": 12,
+    "codename": "add_authpermission"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change auth permission",
+    "content_type": 12,
+    "codename": "change_authpermission"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete auth permission",
+    "content_type": 12,
+    "codename": "delete_authpermission"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view auth permission",
+    "content_type": 12,
+    "codename": "view_authpermission"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add auth user",
+    "content_type": 13,
+    "codename": "add_authuser"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change auth user",
+    "content_type": 13,
+    "codename": "change_authuser"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete auth user",
+    "content_type": 13,
+    "codename": "delete_authuser"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view auth user",
+    "content_type": 13,
+    "codename": "view_authuser"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add auth user groups",
+    "content_type": 14,
+    "codename": "add_authusergroups"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change auth user groups",
+    "content_type": 14,
+    "codename": "change_authusergroups"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete auth user groups",
+    "content_type": 14,
+    "codename": "delete_authusergroups"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view auth user groups",
+    "content_type": 14,
+    "codename": "view_authusergroups"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 57,
+  "fields": {
+    "name": "Can add auth user user permissions",
+    "content_type": 15,
+    "codename": "add_authuseruserpermissions"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 58,
+  "fields": {
+    "name": "Can change auth user user permissions",
+    "content_type": 15,
+    "codename": "change_authuseruserpermissions"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 59,
+  "fields": {
+    "name": "Can delete auth user user permissions",
+    "content_type": 15,
+    "codename": "delete_authuseruserpermissions"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 60,
+  "fields": {
+    "name": "Can view auth user user permissions",
+    "content_type": 15,
+    "codename": "view_authuseruserpermissions"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 61,
+  "fields": {
+    "name": "Can add calificacion",
+    "content_type": 16,
+    "codename": "add_calificacion"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 62,
+  "fields": {
+    "name": "Can change calificacion",
+    "content_type": 16,
+    "codename": "change_calificacion"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 63,
+  "fields": {
+    "name": "Can delete calificacion",
+    "content_type": 16,
+    "codename": "delete_calificacion"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 64,
+  "fields": {
+    "name": "Can view calificacion",
+    "content_type": 16,
+    "codename": "view_calificacion"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 65,
+  "fields": {
+    "name": "Can add curso",
+    "content_type": 17,
+    "codename": "add_curso"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 66,
+  "fields": {
+    "name": "Can change curso",
+    "content_type": 17,
+    "codename": "change_curso"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 67,
+  "fields": {
+    "name": "Can delete curso",
+    "content_type": 17,
+    "codename": "delete_curso"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 68,
+  "fields": {
+    "name": "Can view curso",
+    "content_type": 17,
+    "codename": "view_curso"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 69,
+  "fields": {
+    "name": "Can add detalle insumo",
+    "content_type": 18,
+    "codename": "add_detalleinsumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 70,
+  "fields": {
+    "name": "Can change detalle insumo",
+    "content_type": 18,
+    "codename": "change_detalleinsumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 71,
+  "fields": {
+    "name": "Can delete detalle insumo",
+    "content_type": 18,
+    "codename": "delete_detalleinsumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 72,
+  "fields": {
+    "name": "Can view detalle insumo",
+    "content_type": 18,
+    "codename": "view_detalleinsumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 73,
+  "fields": {
+    "name": "Can add django admin log",
+    "content_type": 19,
+    "codename": "add_djangoadminlog"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 74,
+  "fields": {
+    "name": "Can change django admin log",
+    "content_type": 19,
+    "codename": "change_djangoadminlog"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 75,
+  "fields": {
+    "name": "Can delete django admin log",
+    "content_type": 19,
+    "codename": "delete_djangoadminlog"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 76,
+  "fields": {
+    "name": "Can view django admin log",
+    "content_type": 19,
+    "codename": "view_djangoadminlog"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 77,
+  "fields": {
+    "name": "Can add django content type",
+    "content_type": 20,
+    "codename": "add_djangocontenttype"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 78,
+  "fields": {
+    "name": "Can change django content type",
+    "content_type": 20,
+    "codename": "change_djangocontenttype"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 79,
+  "fields": {
+    "name": "Can delete django content type",
+    "content_type": 20,
+    "codename": "delete_djangocontenttype"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 80,
+  "fields": {
+    "name": "Can view django content type",
+    "content_type": 20,
+    "codename": "view_djangocontenttype"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 81,
+  "fields": {
+    "name": "Can add django migrations",
+    "content_type": 21,
+    "codename": "add_djangomigrations"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 82,
+  "fields": {
+    "name": "Can change django migrations",
+    "content_type": 21,
+    "codename": "change_djangomigrations"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 83,
+  "fields": {
+    "name": "Can delete django migrations",
+    "content_type": 21,
+    "codename": "delete_djangomigrations"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 84,
+  "fields": {
+    "name": "Can view django migrations",
+    "content_type": 21,
+    "codename": "view_djangomigrations"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 85,
+  "fields": {
+    "name": "Can add django session",
+    "content_type": 22,
+    "codename": "add_djangosession"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 86,
+  "fields": {
+    "name": "Can change django session",
+    "content_type": 22,
+    "codename": "change_djangosession"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 87,
+  "fields": {
+    "name": "Can delete django session",
+    "content_type": 22,
+    "codename": "delete_djangosession"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 88,
+  "fields": {
+    "name": "Can view django session",
+    "content_type": 22,
+    "codename": "view_djangosession"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 89,
+  "fields": {
+    "name": "Can add equipo ti",
+    "content_type": 23,
+    "codename": "add_equipoti"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 90,
+  "fields": {
+    "name": "Can change equipo ti",
+    "content_type": 23,
+    "codename": "change_equipoti"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 91,
+  "fields": {
+    "name": "Can delete equipo ti",
+    "content_type": 23,
+    "codename": "delete_equipoti"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 92,
+  "fields": {
+    "name": "Can view equipo ti",
+    "content_type": 23,
+    "codename": "view_equipoti"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 93,
+  "fields": {
+    "name": "Can add insumo",
+    "content_type": 24,
+    "codename": "add_insumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 94,
+  "fields": {
+    "name": "Can change insumo",
+    "content_type": 24,
+    "codename": "change_insumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 95,
+  "fields": {
+    "name": "Can delete insumo",
+    "content_type": 24,
+    "codename": "delete_insumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 96,
+  "fields": {
+    "name": "Can view insumo",
+    "content_type": 24,
+    "codename": "view_insumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 97,
+  "fields": {
+    "name": "Can add registro asistencia",
+    "content_type": 25,
+    "codename": "add_registroasistencia"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 98,
+  "fields": {
+    "name": "Can change registro asistencia",
+    "content_type": 25,
+    "codename": "change_registroasistencia"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 99,
+  "fields": {
+    "name": "Can delete registro asistencia",
+    "content_type": 25,
+    "codename": "delete_registroasistencia"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 100,
+  "fields": {
+    "name": "Can view registro asistencia",
+    "content_type": 25,
+    "codename": "view_registroasistencia"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 101,
+  "fields": {
+    "name": "Can add rol",
+    "content_type": 26,
+    "codename": "add_rol"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 102,
+  "fields": {
+    "name": "Can change rol",
+    "content_type": 26,
+    "codename": "change_rol"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 103,
+  "fields": {
+    "name": "Can delete rol",
+    "content_type": 26,
+    "codename": "delete_rol"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 104,
+  "fields": {
+    "name": "Can view rol",
+    "content_type": 26,
+    "codename": "view_rol"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 105,
+  "fields": {
+    "name": "Can add solicitud insumo",
+    "content_type": 27,
+    "codename": "add_solicitudinsumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 106,
+  "fields": {
+    "name": "Can change solicitud insumo",
+    "content_type": 27,
+    "codename": "change_solicitudinsumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 107,
+  "fields": {
+    "name": "Can delete solicitud insumo",
+    "content_type": 27,
+    "codename": "delete_solicitudinsumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 108,
+  "fields": {
+    "name": "Can view solicitud insumo",
+    "content_type": 27,
+    "codename": "view_solicitudinsumo"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 109,
+  "fields": {
+    "name": "Can add ticket soporte",
+    "content_type": 28,
+    "codename": "add_ticketsoporte"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 110,
+  "fields": {
+    "name": "Can change ticket soporte",
+    "content_type": 28,
+    "codename": "change_ticketsoporte"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 111,
+  "fields": {
+    "name": "Can delete ticket soporte",
+    "content_type": 28,
+    "codename": "delete_ticketsoporte"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 112,
+  "fields": {
+    "name": "Can view ticket soporte",
+    "content_type": 28,
+    "codename": "view_ticketsoporte"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 113,
+  "fields": {
+    "name": "Can add usuario",
+    "content_type": 29,
+    "codename": "add_usuario"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 114,
+  "fields": {
+    "name": "Can change usuario",
+    "content_type": 29,
+    "codename": "change_usuario"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 115,
+  "fields": {
+    "name": "Can delete usuario",
+    "content_type": 29,
+    "codename": "delete_usuario"
+  }
+},
+{
+  "model": "sistema.authpermission",
+  "pk": 116,
+  "fields": {
+    "name": "Can view usuario",
+    "content_type": 29,
+    "codename": "view_usuario"
+  }
+},
+{
+  "model": "sistema.authuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$XotGvhYN6QFr7BzGOLouLF$S8E4G97NTT6uEBULwFrw9Op6wgr+9H4cStWmC7ef13w=",
+    "last_login": "2026-10-14T22:58:30.704Z",
+    "is_superuser": 1,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": 1,
+    "is_active": 1,
+    "date_joined": "2026-10-08T02:16:35.858Z"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "sistema",
+    "model": "alumno"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "sistema",
+    "model": "asignatura"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "sistema",
+    "model": "asignaturacurso"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "sistema",
+    "model": "authgroup"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "sistema",
+    "model": "authgrouppermissions"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "sistema",
+    "model": "authpermission"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "sistema",
+    "model": "authuser"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 14,
+  "fields": {
+    "app_label": "sistema",
+    "model": "authusergroups"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 15,
+  "fields": {
+    "app_label": "sistema",
+    "model": "authuseruserpermissions"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 16,
+  "fields": {
+    "app_label": "sistema",
+    "model": "calificacion"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 17,
+  "fields": {
+    "app_label": "sistema",
+    "model": "curso"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 18,
+  "fields": {
+    "app_label": "sistema",
+    "model": "detalleinsumo"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 19,
+  "fields": {
+    "app_label": "sistema",
+    "model": "djangoadminlog"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 20,
+  "fields": {
+    "app_label": "sistema",
+    "model": "djangocontenttype"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 21,
+  "fields": {
+    "app_label": "sistema",
+    "model": "djangomigrations"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 22,
+  "fields": {
+    "app_label": "sistema",
+    "model": "djangosession"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 23,
+  "fields": {
+    "app_label": "sistema",
+    "model": "equipoti"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 24,
+  "fields": {
+    "app_label": "sistema",
+    "model": "insumo"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 25,
+  "fields": {
+    "app_label": "sistema",
+    "model": "registroasistencia"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 26,
+  "fields": {
+    "app_label": "sistema",
+    "model": "rol"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 27,
+  "fields": {
+    "app_label": "sistema",
+    "model": "solicitudinsumo"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 28,
+  "fields": {
+    "app_label": "sistema",
+    "model": "ticketsoporte"
+  }
+},
+{
+  "model": "sistema.djangocontenttype",
+  "pk": 29,
+  "fields": {
+    "app_label": "sistema",
+    "model": "usuario"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 1,
+  "fields": {
+    "app": "contenttypes",
+    "name": "0001_initial",
+    "applied": "2026-10-08T02:13:42.277Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 2,
+  "fields": {
+    "app": "auth",
+    "name": "0001_initial",
+    "applied": "2026-10-08T02:13:43.066Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 3,
+  "fields": {
+    "app": "admin",
+    "name": "0001_initial",
+    "applied": "2026-10-08T02:13:43.266Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 4,
+  "fields": {
+    "app": "admin",
+    "name": "0002_logentry_remove_auto_add",
+    "applied": "2026-10-08T02:13:43.283Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 5,
+  "fields": {
+    "app": "admin",
+    "name": "0003_logentry_add_action_flag_choices",
+    "applied": "2026-10-08T02:13:43.293Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 6,
+  "fields": {
+    "app": "contenttypes",
+    "name": "0002_remove_content_type_name",
+    "applied": "2026-10-08T02:13:43.433Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 7,
+  "fields": {
+    "app": "auth",
+    "name": "0002_alter_permission_name_max_length",
+    "applied": "2026-10-08T02:13:43.516Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 8,
+  "fields": {
+    "app": "auth",
+    "name": "0003_alter_user_email_max_length",
+    "applied": "2026-10-08T02:13:43.607Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 9,
+  "fields": {
+    "app": "auth",
+    "name": "0004_alter_user_username_opts",
+    "applied": "2026-10-08T02:13:43.619Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 10,
+  "fields": {
+    "app": "auth",
+    "name": "0005_alter_user_last_login_null",
+    "applied": "2026-10-08T02:13:43.697Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 11,
+  "fields": {
+    "app": "auth",
+    "name": "0006_require_contenttypes_0002",
+    "applied": "2026-10-08T02:13:43.699Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 12,
+  "fields": {
+    "app": "auth",
+    "name": "0007_alter_validators_add_error_messages",
+    "applied": "2026-10-08T02:13:43.699Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 13,
+  "fields": {
+    "app": "auth",
+    "name": "0008_alter_user_username_max_length",
+    "applied": "2026-10-08T02:13:43.798Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 14,
+  "fields": {
+    "app": "auth",
+    "name": "0009_alter_user_last_name_max_length",
+    "applied": "2026-10-08T02:13:43.882Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 15,
+  "fields": {
+    "app": "auth",
+    "name": "0010_alter_group_name_max_length",
+    "applied": "2026-10-08T02:13:43.960Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 16,
+  "fields": {
+    "app": "auth",
+    "name": "0011_update_proxy_permissions",
+    "applied": "2026-10-08T02:13:43.966Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 17,
+  "fields": {
+    "app": "auth",
+    "name": "0012_alter_user_first_name_max_length",
+    "applied": "2026-10-08T02:13:44.049Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 18,
+  "fields": {
+    "app": "sessions",
+    "name": "0001_initial",
+    "applied": "2026-10-08T02:13:44.099Z"
+  }
+},
+{
+  "model": "sistema.djangomigrations",
+  "pk": 19,
+  "fields": {
+    "app": "sistema",
+    "name": "0001_initial",
+    "applied": "2026-10-09T03:59:22.672Z"
+  }
+},
+{
+  "model": "sistema.djangosession",
+  "pk": "fspv300t54ys2qk63yyt5tyx9lrr8boq",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQRO_iGlkbE_8o6TmDtV6vcQDZUpxUiLuTSCmgGmnem3mLgOtSwtp5DlMSFzGI028XkZ5cd5AeWO9NUqvLPEW5K_KgXd5a4tf1cP8OCvayrUcySkefU7ZwJuMjOjRkEucM2WnnkgavtgTWkK1GO4zEFowCB8pY8fkC7b83Ww:1xH7va:lC8uuOM7IQXIq4OY3ZXL7QOQFDHTsxRRsLCcDQWc2fI",
+    "expire_date": "2026-10-28T22:58:30.705Z"
+  }
+},
+{
+  "model": "sistema.djangosession",
+  "pk": "u2pt3n9kq2h32jfy8dsphuo9tnuxsun2",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQRO_iGlkbE_8o6TmDtV6vcQDZUpxUiLuTSCmgGmnem3mLgOtSwtp5DlMSFzGI028XkZ5cd5AeWO9NUqvLPEW5K_KgXd5a4tf1cP8OCvayrUcySkefU7ZwJuMjOjRkEucM2WnnkgavtgTWkK1GO4zEFowCB8pY8fkC7b83Ww:1xEdhb:clMqFcrXQvhWYkeS7hC6jzcAUDNyLXyHszzoM_pv-OE",
+    "expire_date": "2026-10-22T02:17:47.549Z"
+  }
+},
+{
+  "model": "sistema.djangosession",
+  "pk": "yjhx3ynsy0l4ooxvkic4hnrlo75dsh50",
+  "fields": {
+    "session_data": ".eJxNzD0KgDAMQOG7ZFYx_iC6ueglhFJth0BtJNpF8e4WdHB-H--CsActxErCAR1gm9VNkZVYpQgJCDtFBjpMwPM6i1Ufj3QQ7ReOSG_WOTL8ayP7cwp5btHZ8_u8gxh7s5Kn_RBtWOB-APXDLBk:1xH9mf:TSqeQTZ0yJ_7cqAGiIeO4wTCuqB8HNbOOYYXYapWFlE",
+    "expire_date": "2026-10-29T00:57:25.207Z"
+  }
+},
+{
+  "model": "sistema.rol",
+  "pk": 1,
+  "fields": {
+    "nombre_rol": "Administrador"
+  }
+},
+{
+  "model": "sistema.rol",
+  "pk": 2,
+  "fields": {
+    "nombre_rol": "Profesor"
+  }
+},
+{
+  "model": "sistema.rol",
+  "pk": 3,
+  "fields": {
+    "nombre_rol": "Apoderado"
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "19.572.314-1",
+  "fields": {
+    "password_hash": "195723141",
+    "rol_id_rol": 1,
+    "nombre": "Franco",
+    "apellido_paterno": "González",
+    "apellido_materno": "Gaete",
+    "correo": "fgonzalez@santajuliana.cl",
+    "telefono": "+929090909",
+    "direccion": "Av. San Carlos 123, Puente Alto",
+    "fecha_nacimiento": "1997-02-19"
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.339-3",
+  "fields": {
+    "password_hash": "200413393",
+    "rol_id_rol": 1,
+    "nombre": "Pedro",
+    "apellido_paterno": "Iturriaga",
+    "apellido_materno": "Gomez",
+    "correo": "piturriaga@santajuliana.cl",
+    "telefono": "+929090909",
+    "direccion": "Av. San Carlos 123, Puente Alto",
+    "fecha_nacimiento": "1998-10-29"
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "21.244.451-0",
+  "fields": {
+    "password_hash": "212444510",
+    "rol_id_rol": 1,
+    "nombre": "Iván",
+    "apellido_paterno": "Carrasco",
+    "apellido_materno": "González",
+    "correo": "icarrasco@santajuliana.cl",
+    "telefono": "+929090909",
+    "direccion": "Av. San Carlos 123, Puente Alto",
+    "fecha_nacimiento": "2004-04-13"
+  }
+}
+]
