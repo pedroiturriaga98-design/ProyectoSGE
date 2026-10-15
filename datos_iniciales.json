@@ -21,6 +21,28 @@
   }
 },
 {
+  "model": "sistema.rol",
+  "pk": 4,
+  "fields": {
+    "nombre_rol": "Alumno"
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "11.111.111-1",
+  "fields": {
+    "password_hash": "111111111",
+    "rol_id_rol": 2,
+    "nombre": "Juan",
+    "apellido_paterno": "Perez",
+    "apellido_materno": "Pereira",
+    "correo": "jperez@santajuliana.cl",
+    "telefono": "",
+    "direccion": "",
+    "fecha_nacimiento": "1997-10-11"
+  }
+},
+{
   "model": "sistema.usuario",
   "pk": "19.572.314-1",
   "fields": {
