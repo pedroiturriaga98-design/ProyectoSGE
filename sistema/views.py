@@ -247,42 +247,62 @@ def admin_crear_usuario(request):
 
 @require_role([1])
 def admin_editar_usuario(request, rut):
-    # 1. Buscamos al usuario en la BD usando el RUT
-    usuario = get_object_or_404(Usuario, rut=rut)
+    # 1. Normalizamos el RUT recibido en la URL para buscarlo en la BD (ej: 19.572.314-1)
+    rut_limpio = str(rut).replace(".", "").replace("-", "").strip().upper()
+    if len(rut_limpio) >= 2:
+        cuerpo = rut_limpio[:-1]
+        dv = rut_limpio[-1]
+        try:
+            cuerpo_con_puntos = f"{int(cuerpo):,}".replace(",", ".")
+            rut_estandar = f"{cuerpo_con_puntos}-{dv}"
+        except ValueError:
+            rut_estandar = rut
+    else:
+        rut_estandar = rut
 
-    # 2. Si el formulario se envió (alguien apretó "Actualizar Usuario")
+    # Obtenemos el usuario o lanzamos 404 si no existe
+    usuario = get_object_or_404(Usuario, rut=rut_estandar)
+
     if request.method == 'POST':
+        # Capturamos los datos editables del formulario
+        nombre_form = request.POST.get('nombre', '').strip()
+        ap_paterno_form = request.POST.get('apellido_paterno', '').strip()
+        ap_materno_form = request.POST.get('apellido_materno', '').strip()
         correo_form = request.POST.get('correo', '').strip()
-
-        # Validación: si ingresó un correo, verificar que no pertenezca a OTRO usuario
-        if correo_form and Usuario.objects.filter(correo=correo_form.lower()).exclude(rut=usuario.rut).exists():
-            messages.error(request, f'El correo {correo_form} ya está asignado a otro usuario.')
-            return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
-
-        usuario.nombre = request.POST.get('nombre', '').strip()
-        usuario.apellido_paterno = request.POST.get('apellido_paterno', '').strip()
-        usuario.apellido_materno = request.POST.get('apellido_materno', '').strip()
-        usuario.correo = correo_form if correo_form else None
-        usuario.telefono = request.POST.get('telefono', '').strip()
-        usuario.direccion = request.POST.get('direccion', '').strip()
-        
-        # Fecha de nacimiento (si viene vacía, se deja None)
+        rol_id = request.POST.get('rol_id_rol')
+        telefono_form = request.POST.get('telefono', '').strip()
+        direccion_form = request.POST.get('direccion', '').strip()
         fecha_nac_form = request.POST.get('fecha_nacimiento')
-        usuario.fecha_nacimiento = fecha_nac_form if fecha_nac_form else None
-            
-        usuario.rol_id_rol_id = request.POST.get('rol_id_rol')
+
+        # 2. Validar que el correo no pertenezca a OTRO usuario
+        if correo_form:
+            correo_lower = correo_form.lower()
+            existe_correo = Usuario.objects.filter(correo=correo_lower).exclude(rut=usuario.rut).exists()
+            if existe_correo:
+                messages.error(request, f'El correo {correo_form} ya pertenece a otro usuario registrado.')
+                return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
 
         try:
-            # Guardamos en la base de datos (aplica .title(), minúsculas y reglas de models.py)
+            # 3. Actualizamos los campos
+            usuario.nombre = nombre_form
+            usuario.apellido_paterno = ap_paterno_form
+            usuario.apellido_materno = ap_materno_form
+            usuario.correo = correo_lower if correo_form else None
+            usuario.rol_id_rol_id = rol_id
+            usuario.telefono = telefono_form
+            usuario.direccion = direccion_form
+            usuario.fecha_nacimiento = fecha_nac_form if fecha_nac_form else None
+
+            # Al llamar a save(), se ejecutan las reglas del modelo (capitalización, etc.)
             usuario.save()
-            messages.success(request, f'Usuario {usuario.rut} actualizado exitosamente.')
+
+            messages.success(request, f'Usuario {usuario.rut} actualizado correctamente.')
             return redirect('admin_gestion_usuarios')
 
         except IntegrityError:
-            messages.error(request, 'Error al actualizar: los datos entran en conflicto con otro registro.')
+            messages.error(request, 'Error de integridad al intentar actualizar los datos.')
             return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
 
-    # 3. Vista GET normal
     return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
 
 @require_role([1])
