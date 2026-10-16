@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from functools import wraps # Importante para hacer decoradores
-from .models import Usuario
-from django.db import IntegrityError
+from .models import Usuario, Curso, Alumno, AsignaturaCurso
+from django.db import IntegrityError, transaction
 
 def require_role(roles_permitidos):
     def decorator(view_func):
@@ -151,9 +151,70 @@ def profesor_agregar_incidencia(request):
 def profesor_revisar_incidencias(request):
     return render(request, 'profesor_revisar_incidencias.html')
 
+
 @require_role([2])
 def profesor_alumnos(request):
-    return render(request, 'profesor_alumnos.html')
+
+    # Profesor que inició sesión
+    profesor_rut = request.session.get('usuario_rut')
+
+    # Cursos asignados directamente al profesor
+    cursos_directos = Curso.objects.filter(
+        usuario_rut_id=profesor_rut
+    ).values_list('id_curso', flat=True)
+
+    # Cursos donde el profesor imparte alguna asignatura
+    cursos_asignaturas = AsignaturaCurso.objects.filter(
+        usuario_rut_id=profesor_rut
+    ).values_list('curso_id_curso_id', flat=True)
+
+    # Unificar los cursos que le corresponden
+    cursos = Curso.objects.filter(
+        id_curso__in=cursos_directos
+    ) | Curso.objects.filter(
+        id_curso__in=cursos_asignaturas
+    )
+
+    cursos = cursos.distinct().order_by('id_curso')
+
+    # Curso seleccionado desde el formulario
+    curso_id = request.GET.get('curso', '').strip()
+
+    curso_seleccionado = None
+    alumnos = Alumno.objects.none()
+
+    if curso_id:
+        if curso_id.isdigit():
+            curso_seleccionado = cursos.filter(
+                id_curso=int(curso_id)
+            ).first()
+
+        if curso_seleccionado:
+            alumnos = Alumno.objects.filter(
+                curso_id_curso=curso_seleccionado
+            ).select_related(
+                'usuario_rut'
+            ).order_by('nombre_completo')
+
+        else:
+            messages.error(
+                request,
+                'El curso seleccionado no existe o no está asignado a tu usuario.'
+            )
+
+    context = {
+        'cursos': cursos,
+        'curso_seleccionado': curso_seleccionado,
+        'alumnos': alumnos,
+        'total_alumnos': alumnos.count()
+    }
+
+    return render(
+        request,
+        'profesor_alumnos.html',
+        context
+    )
+
 
 @require_role([2])
 def profesor_perfil_alumno(request):
@@ -321,11 +382,281 @@ def admin_eliminar_usuario(request, rut):
 
 @require_role([1])
 def admin_alumnos(request):
-    return render(request, 'admin_alumnos.html')
+    alumnos = Alumno.objects.select_related(
+        'curso_id_curso'
+    ).order_by('nombre_completo')
+
+    cursos = Curso.objects.all().order_by('id_curso')
+
+    curso_seleccionado = request.GET.get('curso', '')
+
+    if curso_seleccionado:
+        alumnos = alumnos.filter(
+            curso_id_curso_id=curso_seleccionado
+        )
+
+    context = {
+        'alumnos': alumnos,
+        'cursos': cursos,
+        'curso_seleccionado': curso_seleccionado,
+    }
+
+    return render(request, 'admin_alumnos.html', context)
+
+@require_role([1])
+def admin_crear_alumno(request):
+
+    cursos = Curso.objects.all().order_by('id_curso')
+
+    apoderados = Usuario.objects.filter(
+        rol_id_rol_id=3
+    ).order_by('nombre', 'apellido_paterno')
+
+    context = {
+        'cursos': cursos,
+        'apoderados': apoderados,
+    }
+
+    if request.method == 'POST':
+
+        rut_form = request.POST.get('rut_alumno', '').strip()
+        nombre = request.POST.get('nombre_completo', '').strip()
+        curso_id = request.POST.get('curso', '').strip()
+        estado = request.POST.get('estado_matricula', '').strip()
+        apoderado_rut = request.POST.get('apoderado', '').strip()
+
+        context['datos'] = request.POST
+
+        # Validar RUT
+        if not validar_rut(rut_form):
+            messages.error(request, 'El RUT del alumno no es válido.')
+            return render(request, 'admin_crear_alumno.html', context)
+
+        # Normalizar RUT al formato usado por el sistema
+        rut_limpio = rut_form.replace('.', '').replace('-', '').upper()
+        cuerpo = rut_limpio[:-1]
+        dv = rut_limpio[-1]
+
+        rut_estandar = f"{int(cuerpo):,}".replace(',', '.') + '-' + dv
+
+        # Validar duplicados
+        if Alumno.objects.filter(rut_alumno=rut_estandar).exists():
+            messages.error(request, 'Este alumno ya está registrado.')
+            return render(request, 'admin_crear_alumno.html', context)
+
+        if not nombre:
+            messages.error(request, 'Debes ingresar el nombre completo.')
+            return render(request, 'admin_crear_alumno.html', context)
+
+        # Validar curso existente
+        curso = Curso.objects.filter(id_curso=curso_id).first() if curso_id.isdigit() else None
+
+        if curso is None:
+            messages.error(request, 'Debes seleccionar un curso válido.')
+            return render(request, 'admin_crear_alumno.html', context)
+
+        if estado not in ['Activo', 'Inactivo']:
+            messages.error(request, 'Selecciona un estado de matrícula válido.')
+            return render(request, 'admin_crear_alumno.html', context)
+
+        # El apoderado es opcional por ahora
+        apoderado = None
+
+        if apoderado_rut:
+            apoderado = Usuario.objects.filter(
+                rut=apoderado_rut,
+                rol_id_rol_id=3
+            ).first()
+
+            if apoderado is None:
+                messages.error(request, 'El apoderado seleccionado no es válido.')
+                return render(request, 'admin_crear_alumno.html', context)
+
+        try:
+            with transaction.atomic():
+                Alumno.objects.create(
+                    rut_alumno=rut_estandar,
+                    nombre_completo=nombre,
+                    curso_id_curso=curso,
+                    estado_matricula=estado,
+                    usuario_rut=apoderado
+                )
+
+            messages.success(
+                request,
+                f'El alumno {nombre} fue registrado correctamente.'
+            )
+
+            return redirect('admin_alumnos')
+
+        except IntegrityError:
+            messages.error(
+                request,
+                'No se pudo registrar el alumno. Verifica que sus datos no estén duplicados.'
+            )
+
+    return render(request, 'admin_crear_alumno.html', context)
+
 
 @require_role([1])
 def admin_editar_alumno(request, rut):
-    return render(request, 'admin_editar_alumno.html')
+
+    # Buscar el alumno mediante su RUT
+    alumno = get_object_or_404(
+        Alumno.objects.select_related(
+            'curso_id_curso',
+            'usuario_rut'
+        ),
+        rut_alumno=rut
+    )
+
+    # Obtener cursos y apoderados desde MySQL
+    cursos = Curso.objects.all().order_by('id_curso')
+
+    apoderados = Usuario.objects.filter(
+        rol_id_rol_id=3
+    ).order_by('nombre', 'apellido_paterno')
+
+    context = {
+        'alumno': alumno,
+        'cursos': cursos,
+        'apoderados': apoderados
+    }
+
+    if request.method == 'POST':
+
+        nombre = request.POST.get(
+            'nombre_completo', ''
+        ).strip()
+
+        curso_id = request.POST.get(
+            'curso', ''
+        ).strip()
+
+        estado = request.POST.get(
+            'estado_matricula', ''
+        ).strip()
+
+        apoderado_rut = request.POST.get(
+            'apoderado', ''
+        ).strip()
+
+        # Conservar datos ingresados si hay errores
+        context['datos'] = request.POST
+
+        # Validar nombre
+        if not nombre:
+            messages.error(
+                request,
+                'El nombre completo es obligatorio.'
+            )
+            return render(
+                request,
+                'admin_editar_alumno.html',
+                context
+            )
+
+        # Validar curso
+        curso = (
+            Curso.objects.filter(
+                id_curso=curso_id
+            ).first()
+            if curso_id.isdigit()
+            else None
+        )
+
+        if curso is None:
+            messages.error(
+                request,
+                'Selecciona un curso válido.'
+            )
+            return render(
+                request,
+                'admin_editar_alumno.html',
+                context
+            )
+
+        # Validar estado
+        if estado not in ['Activo', 'Inactivo']:
+            messages.error(
+                request,
+                'Selecciona un estado válido.'
+            )
+            return render(
+                request,
+                'admin_editar_alumno.html',
+                context
+            )
+
+        # Validar apoderado
+        apoderado = None
+
+        if apoderado_rut:
+            apoderado = Usuario.objects.filter(
+                rut=apoderado_rut,
+                rol_id_rol_id=3
+            ).first()
+
+            if apoderado is None:
+                messages.error(
+                    request,
+                    'El apoderado seleccionado no es válido.'
+                )
+                return render(
+                    request,
+                    'admin_editar_alumno.html',
+                    context
+                )
+
+        # MySQL exige que el alumno tenga apoderado
+        # No permitimos guardar NULL en USUARIO_rut
+        if apoderado is None:
+            messages.error(
+                request,
+                'Debes seleccionar un apoderado para el alumno.'
+            )
+            return render(
+                request,
+                'admin_editar_alumno.html',
+                context
+            )
+
+        try:
+            # Actualizar campos
+            alumno.nombre_completo = nombre
+            alumno.curso_id_curso = curso
+            alumno.estado_matricula = estado
+            alumno.usuario_rut = apoderado
+
+            # Guardar cambios en MySQL
+            alumno.save(
+                update_fields=[
+                    'nombre_completo',
+                    'curso_id_curso',
+                    'estado_matricula',
+                    'usuario_rut'
+                ]
+            )
+
+            messages.success(
+                request,
+                f'El alumno {nombre} fue actualizado correctamente.'
+            )
+
+            return redirect('admin_alumnos')
+
+        except IntegrityError:
+            messages.error(
+                request,
+                'No se pudo actualizar el alumno. Revisa los datos ingresados.'
+            )
+
+    return render(
+        request,
+        'admin_editar_alumno.html',
+        context
+    )
+
 
 @require_role([1])
 def admin_gestion_incidencias(request):

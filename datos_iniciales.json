@@ -44,6 +44,51 @@
 },
 {
   "model": "sistema.usuario",
+  "pk": "12.345.678-5",
+  "fields": {
+    "password_hash": "123456785",
+    "rol_id_rol": 2,
+    "nombre": "Marcelo",
+    "apellido_paterno": "Canales",
+    "apellido_materno": "Perez",
+    "correo": "mcanales@santajuliana.cl",
+    "telefono": "+56 9 12457878",
+    "direccion": "av. tobalaba",
+    "fecha_nacimiento": "1977-02-01"
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "14.131.328-2",
+  "fields": {
+    "password_hash": "141313282",
+    "rol_id_rol": 2,
+    "nombre": "Juan",
+    "apellido_paterno": "Albornoz",
+    "apellido_materno": "Perez",
+    "correo": "jalbornoz@santajuliana.cl",
+    "telefono": "+56 9 12457878",
+    "direccion": "av. calor 123",
+    "fecha_nacimiento": "1977-10-19"
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "14.201.451-3",
+  "fields": {
+    "password_hash": "142014513",
+    "rol_id_rol": 3,
+    "nombre": "Patricio",
+    "apellido_paterno": "Perez",
+    "apellido_materno": "Perez",
+    "correo": "pperez@santajuliana.cl",
+    "telefono": "+56 9 12457878",
+    "direccion": "av. tobalaba",
+    "fecha_nacimiento": "1981-06-18"
+  }
+},
+{
+  "model": "sistema.usuario",
   "pk": "19.572.314-1",
   "fields": {
     "password_hash": "195723141",
@@ -85,6 +130,250 @@
     "telefono": "+929090909",
     "direccion": "Av. San Carlos 123, Puente Alto",
     "fecha_nacimiento": "2004-04-13"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 1,
+  "fields": {
+    "nombre_curso": "1° Básico A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 2,
+  "fields": {
+    "nombre_curso": "1° Básico B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 3,
+  "fields": {
+    "nombre_curso": "2° Básico A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 4,
+  "fields": {
+    "nombre_curso": "2° Básico B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 5,
+  "fields": {
+    "nombre_curso": "3° Básico A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 6,
+  "fields": {
+    "nombre_curso": "3° Básico B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 7,
+  "fields": {
+    "nombre_curso": "4° Básico A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 8,
+  "fields": {
+    "nombre_curso": "4° Básico B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 9,
+  "fields": {
+    "nombre_curso": "5° Básico A",
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 10,
+  "fields": {
+    "nombre_curso": "5° Básico B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 11,
+  "fields": {
+    "nombre_curso": "6° Básico A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 12,
+  "fields": {
+    "nombre_curso": "6° Básico B",
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 13,
+  "fields": {
+    "nombre_curso": "7° Básico A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 14,
+  "fields": {
+    "nombre_curso": "7° Básico B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 15,
+  "fields": {
+    "nombre_curso": "8° Básico A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 16,
+  "fields": {
+    "nombre_curso": "8° Básico B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 17,
+  "fields": {
+    "nombre_curso": "1° Medio A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 18,
+  "fields": {
+    "nombre_curso": "1° Medio B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 19,
+  "fields": {
+    "nombre_curso": "1° Medio C",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 20,
+  "fields": {
+    "nombre_curso": "2° Medio A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 21,
+  "fields": {
+    "nombre_curso": "2° Medio B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 22,
+  "fields": {
+    "nombre_curso": "2° Medio C",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 23,
+  "fields": {
+    "nombre_curso": "3° Medio A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 24,
+  "fields": {
+    "nombre_curso": "3° Medio B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 25,
+  "fields": {
+    "nombre_curso": "3° Medio C",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 26,
+  "fields": {
+    "nombre_curso": "4° Medio A",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 27,
+  "fields": {
+    "nombre_curso": "4° Medio B",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.curso",
+  "pk": 28,
+  "fields": {
+    "nombre_curso": "4° Medio C",
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.alumno",
+  "pk": "21.439.719-6",
+  "fields": {
+    "nombre_completo": "Elisa Gonzáles",
+    "estado_matricula": "Activo",
+    "curso_id_curso": 9,
+    "usuario_rut": "14.201.451-3"
+  }
+},
+{
+  "model": "sistema.alumno",
+  "pk": "26.759.471-6",
+  "fields": {
+    "nombre_completo": "Thiare reyes olea",
+    "estado_matricula": "Activo",
+    "curso_id_curso": 12,
+    "usuario_rut": "14.201.451-3"
   }
 }
 ]

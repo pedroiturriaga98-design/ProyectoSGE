@@ -1,96 +1,307 @@
+
 {% extends 'base_admin.html' %}
 
 {% block content %}
 <style>
-    .page-header { margin-bottom: 25px; }
-    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; }
-    .page-header p { color: #64748b; font-size: 0.9rem; }
+    .page-header {
+        margin-bottom: 25px;
+    }
 
-    .form-card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
-    
-    .form-group label { display: block; font-size: 0.85rem; color: #0f172a; font-weight: 600; margin-bottom: 8px; }
-    .form-group label span { color: #ef4444; } 
-    .form-control { width: 100%; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.95rem; color: #334155; transition: 0.2s; }
-    .form-control:focus { border-color: #f97316; box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1); }
-    .form-control:disabled { background-color: #f1f5f9; cursor: not-allowed; color: #64748b; }
-    
-    .toggle-container { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
-    .toggle-switch { position: relative; width: 44px; height: 24px; appearance: none; background: #cbd5e1; outline: none; border-radius: 20px; cursor: pointer; transition: 0.3s; }
-    .toggle-switch:checked { background: #10b981; }
-    .toggle-switch::before { content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%; top: 3px; left: 3px; background: white; transition: 0.3s; }
-    .toggle-switch:checked::before { left: 23px; }
+    .page-header h2 {
+        font-size: 1.5rem;
+        color: #0f172a;
+        margin-bottom: 5px;
+    }
 
-    .form-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 20px; }
-    .required-note { font-size: 0.85rem; color: #64748b; }
-    
-    .btn-group { display: flex; gap: 15px; }
-    .btn-cancel { background: transparent; border: 1px solid #cbd5e1; color: #475569; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
-    .btn-cancel:hover { background: #f8fafc; }
-    .btn-submit { display: inline-block; background-color: #2563eb; color: white; text-decoration: none; border: none; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
-    .btn-submit:hover { background-color: #1d4ed8; }
+    .page-header p {
+        color: #64748b;
+        font-size: 0.9rem;
+    }
+
+    .form-card {
+        background: white;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        padding: 30px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 0.85rem;
+        color: #0f172a;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .form-group label span {
+        color: #ef4444;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        outline: none;
+        font-size: 0.95rem;
+        color: #334155;
+        transition: 0.2s;
+        box-sizing: border-box;
+    }
+
+    .form-control:focus {
+        border-color: #f97316;
+        box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+    }
+
+    .form-control:disabled {
+        background-color: #f1f5f9;
+        cursor: not-allowed;
+        color: #64748b;
+    }
+
+    .form-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #f1f5f9;
+        padding-top: 20px;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .required-note {
+        font-size: 0.85rem;
+        color: #64748b;
+    }
+
+    .btn-group {
+        display: flex;
+        gap: 15px;
+    }
+
+    .btn-cancel {
+        background: transparent;
+        border: 1px solid #cbd5e1;
+        color: #475569;
+        padding: 10px 25px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .btn-cancel:hover {
+        background: #f8fafc;
+    }
+
+    .btn-submit {
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .btn-submit:hover {
+        background-color: #1d4ed8;
+    }
+
+    .info-note {
+        margin-top: 6px;
+        font-size: 0.78rem;
+        color: #64748b;
+    }
+
+    @media (max-width: 768px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
 
 <div class="page-header">
     <h2>Editar Alumno</h2>
-    <p>Modifique los datos personales y académicos del estudiante matriculado.</p>
+    <p>
+        Modifique los datos personales y académicos
+        del estudiante matriculado.
+    </p>
 </div>
 
 <div class="form-card">
-    <div class="form-grid">
-        <div class="form-group">
-            <label>Nombres <span>*</span></label>
-            <input type="text" class="form-control" value="Benjamín Dante">
-        </div>
-        <div class="form-group">
-            <label>Apellidos <span>*</span></label>
-            <input type="text" class="form-control" value="Méndez">
-        </div>
 
-        <div class="form-group">
-            <label>N° de Matrícula</label>
-            <input type="text" class="form-control" value="MAT-2026-1102" disabled title="La matrícula no se puede editar">
-        </div>
-        <div class="form-group">
-            <label>Curso Asignado <span>*</span></label>
-            <select class="form-control">
-                <option>1º Año A</option>
-                <option>2º Año B</option>
-                <option>3º Año A</option>
-                <option selected>4º Año H</option>
-                <option>5º Año A</option>
-            </select>
-        </div>
+    <form method="POST">
+        {% csrf_token %}
 
-        <div class="form-group">
-            <label>Fecha de Nacimiento <span>*</span></label>
-            <input type="date" class="form-control" value="2010-03-15">
-        </div>
-        <div class="form-group">
-            <label>Estado de Matrícula</label>
-            <div class="toggle-container">
-                <input type="checkbox" class="toggle-switch" checked>
-                <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Activo</span>
+        <div class="form-grid">
+
+            <!-- RUT NO EDITABLE -->
+            <div class="form-group">
+                <label>RUT del Alumno</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    value="{{ alumno.rut_alumno }}"
+                    disabled
+                >
+                <div class="info-note">
+                    El RUT es el identificador del alumno y no se puede modificar.
+                </div>
             </div>
+
+            <!-- NOMBRE COMPLETO -->
+            <div class="form-group">
+                <label for="nombre_completo">
+                    Nombre Completo <span>*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre_completo"
+                    name="nombre_completo"
+                    class="form-control"
+                    maxlength="100"
+                    value="{{ datos.nombre_completo|default:alumno.nombre_completo }}"
+                    required
+                >
+            </div>
+
+            <!-- CURSO -->
+            <div class="form-group">
+                <label for="curso">
+                    Curso Asignado <span>*</span>
+                </label>
+
+                <select
+                    id="curso"
+                    name="curso"
+                    class="form-control"
+                    required
+                >
+                    {% for curso in cursos %}
+                        <option
+                            value="{{ curso.id_curso }}"
+                            {% if datos %}
+                                {% if datos.curso == curso.id_curso|stringformat:"s" %}
+                                    selected
+                                {% endif %}
+                            {% elif alumno.curso_id_curso_id == curso.id_curso %}
+                                selected
+                            {% endif %}
+                        >
+                            {{ curso.nombre_curso }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- ESTADO -->
+            <div class="form-group">
+                <label for="estado_matricula">
+                    Estado de Matrícula <span>*</span>
+                </label>
+
+                <select
+                    id="estado_matricula"
+                    name="estado_matricula"
+                    class="form-control"
+                    required
+                >
+                    <option
+                        value="Activo"
+                        {% if datos %}
+                            {% if datos.estado_matricula == 'Activo' %}selected{% endif %}
+                        {% elif alumno.estado_matricula == 'Activo' %}
+                            selected
+                        {% endif %}
+                    >
+                        Activo
+                    </option>
+
+                    <option
+                        value="Inactivo"
+                        {% if datos %}
+                            {% if datos.estado_matricula == 'Inactivo' %}selected{% endif %}
+                        {% elif alumno.estado_matricula == 'Inactivo' %}
+                            selected
+                        {% endif %}
+                    >
+                        Inactivo
+                    </option>
+                </select>
+            </div>
+
+            <!-- APODERADO -->
+            <div class="form-group">
+                <label for="apoderado">
+                    Apoderado Vinculado <span>*</span>
+                </label>
+
+                <select
+                    id="apoderado"
+                    name="apoderado"
+                    class="form-control"
+                    required
+                >
+                    <option value="">Seleccionar apoderado</option>
+
+                    {% for apoderado in apoderados %}
+                        <option
+                            value="{{ apoderado.rut }}"
+                            {% if datos %}
+                                {% if datos.apoderado == apoderado.rut %}
+                                    selected
+                                {% endif %}
+                            {% elif alumno.usuario_rut_id == apoderado.rut %}
+                                selected
+                            {% endif %}
+                        >
+                            {{ apoderado.nombre }}
+                            {{ apoderado.apellido_paterno }}
+                            - {{ apoderado.rut }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <div class="info-note">
+                    Se muestran los usuarios registrados con rol Apoderado.
+                </div>
+            </div>
+
         </div>
 
-        <div class="form-group">
-            <label>Apoderado Vinculado</label>
-            <input type="text" class="form-control" value="Rocío Méndez">
-        </div>
-        <div class="form-group">
-            <label>Dirección</label>
-            <input type="text" class="form-control" value="Av. Providencia 1240, Depto 402">
-        </div>
-    </div>
+        <div class="form-footer">
 
-    <div class="form-footer">
-        <div class="required-note">Los campos marcados con <span>*</span> son obligatorios</div>
-        <div class="btn-group">
-            <button class="btn-cancel" onclick="window.history.back()">Cancelar</button>
-            <a class="btn-submit" href="{% url 'admin_alumnos' %}" onclick="alert('Datos del alumno actualizados en la maqueta.')">Actualizar Alumno</a>
+            <div class="required-note">
+                Los campos marcados con * son obligatorios.
+            </div>
+
+            <div class="btn-group">
+                <a
+                    href="{% url 'admin_alumnos' %}"
+                    class="btn-cancel"
+                >
+                    Cancelar
+                </a>
+
+                <button type="submit" class="btn-submit">
+                    Actualizar Alumno
+                </button>
+            </div>
+
         </div>
-    </div>
+    </form>
+
 </div>
+
 {% endblock %}
