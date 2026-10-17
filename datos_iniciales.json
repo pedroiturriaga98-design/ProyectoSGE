@@ -136,7 +136,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.001-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Elhs9zcdsPPbkOlywO8I06$y/27F7ZI7k8/3PvQ+oxjgkQID9/mUYpdBKe64NEY/Tc=",
+    "password_hash": "pbkdf2_sha256$870000$1RHcF1lWIt65HQX5cApJPc$eqxigHoOmvbd0Th945CjTJYkzrY65o9SCPn8UmdzOjA=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Munoz",
@@ -151,7 +151,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.002-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$73SCI07vSosXWFnNRPS42W$/9XAKESCbiuCvYsdIpBUfZjckqhtaOYpQTVBPGf8ZIA=",
+    "password_hash": "pbkdf2_sha256$870000$52XEqrr8DnDLilwPWIUUcX$dB5pYMnqbMX4o6tnBMM1+CB0r6ftU3dzfekjcaZakhk=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Rojas",
@@ -166,7 +166,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.003-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qd4ByLJ9f4GyDKUNiQnMt6$X3a+JdJsOPA0YG6VfgYN44Cw1ko6zJHdBkojuGeoECY=",
+    "password_hash": "pbkdf2_sha256$870000$95pvPd1KhRXQA9CZx8NQQz$JC3sjlcW8uWCqoYe4sGrwqW2PRmaxo4a1MS/1BchdxY=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Diaz",
@@ -181,7 +181,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.004-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$O67U35skYsMnzw0Oo0UPVl$GrGFs+78UzY5t+ITAZiFVeOp1z/CEO7H4sNYwP/x3tk=",
+    "password_hash": "pbkdf2_sha256$870000$r8uErJLJlWMVWh00ZL6MyR$U0YICXWqz7s2YP/jVbJiJ01jCoSvaa2hxoz7zU+F1+c=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Perez",
@@ -196,7 +196,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.005-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$LOHuFRrXcodBHp7pWRhTI8$5qAFszTbF0CBMZe5Aac+KGQS3curXHhR3ZWGrlyl2vQ=",
+    "password_hash": "pbkdf2_sha256$870000$roQdi2dYXTEbSGpdwFVBSu$y/5+CfylumD8AdFzhMuSeqgSoXVl05JdXad6clREB5I=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Soto",
@@ -211,7 +211,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.006-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$eYD1Kz2hBQ4pKcLcZ3nHsD$y7hXqJslULL1ICsKjolwu2K+4W96yAWJm5npTV7wsgY=",
+    "password_hash": "pbkdf2_sha256$870000$RmZJyckscGQsdqnsnO4LHx$lBkBOajKOg1wgxwa/EdngWSauS3FhRFRsKVARKZcuYA=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Contreras",
@@ -226,7 +226,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.007-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Yci4mhxFBRiCvOxvZMode4$XRf/9cwk+6Xe/C5xU1MpNtgvfnXLnt5zmblrvVSk/TI=",
+    "password_hash": "pbkdf2_sha256$870000$Tw3l66XVLVBBc1cBJQfkD4$RemHl98q5IgsIV2IgqKebrW9xP/aHaOb7tB/ZNtjQ2k=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Silva",
@@ -241,7 +241,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.008-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$dnOhMV69PCV6GvRlwSpWIO$dkTbruCyjaBMJbrWJAweMrhna9kgMKNBcyLBqr9VONQ=",
+    "password_hash": "pbkdf2_sha256$870000$o6e1OuYzbLRMtKLBx6JQiP$FK/wKU6p/n5xHjWMj8ElmZ3rKYQbK8r2qGN7+Ndt3tc=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Martinez",
@@ -256,7 +256,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.009-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$BXpabpKvJ1OaXiwYIyoTam$QfHR2LZqmFBxtg7fCmETNbEEi+5AW6g+JLnzXk8YNr8=",
+    "password_hash": "pbkdf2_sha256$870000$i4a2uORRiYL7dRx3hL3GW9$5pp+WX9NNQFYO57bdN4lL3Owjhj4fHojpxh5PMBtxDo=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Sepulveda",
@@ -271,7 +271,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.010-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$lZpXvScferV35z5a3HfpoM$gAX4ggl7sExXvlCMdn7ra8DYpc4q7MEMbZ4k1wyMBjI=",
+    "password_hash": "pbkdf2_sha256$870000$Pu64IixXaJIXIj2teIQHOJ$AXMBktqrDMu5YMNB2qPjILjGl3kHjvOH8TAzUhRRj4c=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Morales",
@@ -286,7 +286,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.011-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$IbWpHQZRk3rTK5gyQKOVY5$ulB+xk2YBRfZFnt5+edmEJJpS7SCGRxR1w5XUdNRl1g=",
+    "password_hash": "pbkdf2_sha256$870000$TruEE76v7VpNjIzry2wR4q$7lQtUaXvaEnaZOGd4dy9nqTG0h06SfwZo/KnGqrUDpQ=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -301,7 +301,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.012-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$tsfmWQpxZDLA1oDspgY2sv$DL0X3LZAmkwbFmXQulju3OujpVJmaWeAequ/qRvay4c=",
+    "password_hash": "pbkdf2_sha256$870000$1A38zZ836pEuCaYFGbBUjJ$9+FqEKBCNTVeSnhsT30V7x0kruBkHcAAJL2vVlLriaA=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -316,7 +316,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.013-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$tRoPA7gkIWdmipJMQJH6i6$WHftGjg2cE4604gB4KOzej1QBHbtdKRHSqIw2sDe8os=",
+    "password_hash": "pbkdf2_sha256$870000$eNmiV3p8z7V1CEW8UlqKQ0$CUVPsJLyxrIBv2R+sAzSbudU6zk04Wok1iEz++XhtrA=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -331,7 +331,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.014-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$fzX3w9qNDmsvliAOkZj1sj$8EkXUeNLnqJUUbTomlc4vdWZsXQwPe/MrtKUHc317yU=",
+    "password_hash": "pbkdf2_sha256$870000$LgiVxqZBJJJlV7BNoqQjTt$BnHlv5FK0l/+O4GqeKl23LtXu9PvZ8VnWTt9jw/+4T4=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -346,7 +346,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.015-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ABKbYh47sVI9LDMhX74o8r$CRFZtujljUNWrVCOF1nE/fCzQ7FNCp0AQpJOBkGgclo=",
+    "password_hash": "pbkdf2_sha256$870000$L2PfQ7FmXtICNX69Uxzntt$hPEw2aqRDwHuPCBgpcrhcr6LNMh9046JQkFQ8Z7RMGk=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -361,7 +361,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.016-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$lpMhA0Mkp3M2nih54Pcypo$z0s/BdR73MGw/kybZT2zsyxZTxzZNqrrv3WamuGdW2c=",
+    "password_hash": "pbkdf2_sha256$870000$rukAjNCkXLpxunaneOY1ME$BVvQKO7/IHoU5hQbmjkESlcls/NAKry3M3pHE1iXht0=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -376,7 +376,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.017-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$OiteeicdesaCaE6BG1tiOL$EwUjj9cCNTbXRYmb8SrLMAOA0ZKlqparACuYo99wUCs=",
+    "password_hash": "pbkdf2_sha256$870000$zt6I2mWDW9O3tEvscfDahX$4/Ztv/Q+Bv34Q+AGxjAPaCJqq3buaSrkVx/l6qUpEHA=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -391,7 +391,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.018-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$0yYxFeG2tBCEZAfwjsZmhm$yIOz1TToYA1ga4dRFeUOX8QaviEF/Pnhn9P4pVFBQiA=",
+    "password_hash": "pbkdf2_sha256$870000$WUSxbCzwOxqzvkLY4G6XPO$Mg+QtHlLZldePwVAlcxUp3fiAzngARfJt781u+OCEhs=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -406,7 +406,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.019-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$3gVPRh67IrYUTGaeJDU2Hq$CPevqwXRxqQfTGW8IMAy0KpzdiXQCfMlf8TQF2UDtHE=",
+    "password_hash": "pbkdf2_sha256$870000$HETFBOnOSC2C4Pey9vaAAg$7ZKcyYY9yPSypFRW/mxoZyizi8Uc7MTyBg5hSZaSjss=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -421,7 +421,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.020-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$DR84IZb8nsjyDbUkyvFvKD$7Nob94IDIwAygsTFvsimL+joYlSXOqTgOcSnVx0nsM8=",
+    "password_hash": "pbkdf2_sha256$870000$FYkkdCudpWqAyobQa8NdVG$AcD4IWKWrdANnRMwnaSRQ3TCu2ndT2umZvRcVBhx0ho=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -436,7 +436,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.021-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$0IouHxFDSkltGcxARO5QjG$YXUvczdc1QrA6+dJJVbMuzhnADru7jtTWAJXr4LDPDE=",
+    "password_hash": "pbkdf2_sha256$870000$1kRNmRCoN4yUpAOB7WZh5P$/sOxqbi2QqtkXcIxJ+7rBai+Aq1iD6Hf5zEzB33D3ag=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -451,7 +451,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.022-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$7k3Zdv0gBZZEc7HFB2Eqe8$15Z+czwJhokvVrfgESV33+9ES/CZ5DRpf0TF1aWHpI4=",
+    "password_hash": "pbkdf2_sha256$870000$OdRNrR25VbptxO2qDVXRRH$Iyt5RI1BV/FxvjncQ+FlKLpUdghHYBKvtxjuCGYwLJM=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -466,7 +466,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.023-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$itrBwz06JVvLD5Sn60fWrP$iRH+IKZWBR+3/JLY3zbR5N4JpCuawskfSf/LjwZep1s=",
+    "password_hash": "pbkdf2_sha256$870000$FXWaZS1oyNIrHRo4qLLJDO$YpiRGHbzAYWPh+ImDRXs1fYQDnfjdpNI/QbhZlXu90o=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -481,7 +481,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.024-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Eyu3hkTdATmuE3jxaXG2uO$lIuqazORllkQZoM3brcSKOfnbHWJniDFgYgLg2/Er/g=",
+    "password_hash": "pbkdf2_sha256$870000$6E2uV08cI4JysFGOYlSptm$Y1trXxYzvEE/rmeDUQzRMZbQ4HxViqWIIX+I/9Eb2EU=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -496,7 +496,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.025-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$25St931fZslMXzHozVdSwq$FMzTKoVK1c1+/K4PIEQH98nxS+wmJjrJFGgfx9AI6j4=",
+    "password_hash": "pbkdf2_sha256$870000$X2Hu2Ame0LQxlkF8SIqj1p$VvuUqJdAYNPnHdFuQI9KUZJN0KLT6vlXcRBGuYCE8cQ=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -511,7 +511,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.026-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$J8QKVJEwJnIynrFcbtK1kK$TgL/8IT2IfAJ5C/aT92bcmXpccWnChdRhALSp8NLjSU=",
+    "password_hash": "pbkdf2_sha256$870000$W3LpcYvU0jI7OI6GvkndHW$HSc0S7TodUR3M2+Gxkn+dZ74ax1jxpbnhIv2Px94Hl4=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -526,7 +526,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.027-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$wnI84gHuPHWfH9q8OHWcV5$VYo28XKtJefQIxBIiQPhEh4ogUriuaKiJgaHb1jVBqA=",
+    "password_hash": "pbkdf2_sha256$870000$AUTapWOQhgZ2yFvbJoBhH5$fGzxZbqp25lHbXiJDFpfzN4SuYxq2t+ajagWmA+LzKs=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -541,7 +541,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.028-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$WcFkMhaJNYfmS8YDYLaJtK$KdKJHpOR3dLGCQvYLajoKtGleRtFxj4z4ifXPJRxOgU=",
+    "password_hash": "pbkdf2_sha256$870000$ZhWO6KEiYc6UzvXE5MWY9O$qNn1BdO2J47+9uTe1wy+dly6KbuOS4B1qsfM34mGXOA=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -556,7 +556,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.029-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qVIS0pqHn5U8FWwatOR4Mm$ad/Vrx9IlNKsQ2rOAmQThcQ3z6155eu+Zqdad6xV1ec=",
+    "password_hash": "pbkdf2_sha256$870000$VKMmthfqSyglOS4HGeR2kR$wAWfxYYCZvCs30Or6ofYVl3HnRTIOTtpbMXnRMdP9Dg=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -571,7 +571,7 @@
   "model": "sistema.usuario",
   "pk": "40.000.030-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$UcFcwxdCA5pfyZYvUMJi8h$Yc2/GtPIAanRZQK4jsnF64QHVU0/2PZDg4IfOlOdOeo=",
+    "password_hash": "pbkdf2_sha256$870000$NWUo7uRi22NT5BiT5iJldo$R3NBeGD4bAFsejtitzfiW2k30/Qc+iZgKSHJQu7crY0=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -586,7 +586,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.001-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$JlbdwM7noYW49ckwIPb3hQ$9dTwNf9bwEb83MHXXOLrab8LM79kAz/HYnXQTauRe4I=",
+    "password_hash": "pbkdf2_sha256$870000$0n5FDzyY9uiACQrZE3gK9d$L3bDr9Cma+jnmZNVSHcj+CvUoHKXKfK3NDjoGKHBfQQ=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Rojas",
@@ -601,7 +601,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.002-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ECJEQdIeP2347nFqp4OIbG$MErQqZtz6IhHNHWqAhbRVZdBrkTyCe0Q0Q27RQdnuLc=",
+    "password_hash": "pbkdf2_sha256$870000$KTi2lpC0AY041ArCm6ecsl$5XX02C0zR3Rfz3u+KzbRaNajXMYl/VLJfMDI2pPi1tk=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Diaz",
@@ -616,7 +616,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.003-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$lh3qDuV27VNnH2vsf2n2Ir$AdNgT+32ElFKdxjNBSe4yTF49yUaqnKZH/MV1yGABCs=",
+    "password_hash": "pbkdf2_sha256$870000$w1UJef2WLDOjtV1qBPjmfc$6seh2dcpXXG9nr0VxKfCzVFyg1WxFOIsSHCAG/AgbpQ=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Perez",
@@ -631,7 +631,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.004-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$F4qisXMIciogBd1VsphzFk$Yhob33xRc34l7ek5DGj4YKhjDFfIW2raywd+U35N7tY=",
+    "password_hash": "pbkdf2_sha256$870000$RsMgaoch5RG8hjlrUTCemH$4o1R2kkBzgaxaQ4flDzv7F26zti1k4S2YU3wPN+KOMw=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Soto",
@@ -646,7 +646,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.005-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$mMUZouSkA6wuykB89jmP3j$eHeyACVZhyUbKv8hhlNB3bWMVB8oaHdC8Pl1Zp0jjKo=",
+    "password_hash": "pbkdf2_sha256$870000$l27QlEK2qHhiXd2vqiH8yI$c4J20a07oP0lYI7qcLiTtRCYhcw1yzlWwwMZXzjx9Ck=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Contreras",
@@ -661,7 +661,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.006-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$eJywYpa1QNqog8W9cC2jxx$rqUbc/ugPNo3f32Gersm8xAOYB7DFot1IV5gO6FOpmk=",
+    "password_hash": "pbkdf2_sha256$870000$dYrDqyRZgyn5h1uhU01a3v$k2E/lzyj6lEDuMYE+oY/yDQXaBF5Ow1LMWE1qTy6sMI=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Silva",
@@ -676,7 +676,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.007-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$6yQEVqEtuOW2bxaYe8YDGj$1igF+sDRXf77NVqUvn9IXHM0ZvKIjWMAv20uM/YWa+8=",
+    "password_hash": "pbkdf2_sha256$870000$qcNSJfG6DHNrnLIJKdfQry$o/GPRlAh+HTL5rFjHz33VKRmmwmSPIUhucMHOWxAlh4=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Martinez",
@@ -691,7 +691,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.008-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$dtqOvzB4saLY6PFpuqsb0n$jdMI39JpMSGwFY2BataiNac0R8/QufQxY/AGSpL60EQ=",
+    "password_hash": "pbkdf2_sha256$870000$pdNzENZr7G720UszKzM2iI$I1VzxEbF1mPCBtLq4lC/y0RtGyvZjh70qkUPD8w99+w=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Sepulveda",
@@ -706,7 +706,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.009-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$tkIe6hLIDfiUO7w6oqvdqC$KeJRIbwFMS44t1AlNJR2/MiXKw2dFFlWLF61RBMpICE=",
+    "password_hash": "pbkdf2_sha256$870000$hYIgXubBisq10iJm0g9J2N$S6hzo9s24qwkn9bn6oWU/yOYgME5UixbM6u5reyOYBQ=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Morales",
@@ -721,7 +721,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.010-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$QwARd5e09JcvCU4EJsRdjB$+TS+vZOxm6iRmj3cT5Zo2cqXAUWjVrYfmKiQFB2MiUc=",
+    "password_hash": "pbkdf2_sha256$870000$ApgOWA7VyMQ96MBRCHle55$2zuN+WU/Zzb7zubkJuoyoIi948oDmlgEK04XgVKTLOM=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -736,7 +736,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.011-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$fuSVSgGYlbcRJxg5ZPq7YV$Z5tKEgK3PDgBrSvJ6PL97csf29ZJzlgA0bv77WtXjho=",
+    "password_hash": "pbkdf2_sha256$870000$SY9Ggzvgea6Vq0UA7DhTef$LpVZCC+9qZaxAP9GoF+ttOqX8wXcrlrIkn11xDVS2+c=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -751,7 +751,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.012-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$emYatdRXrMCp4q13y1Ap9V$L3lJXmOIqVsvM0zlYOLpSqv0fKsC4GRAM9zG+jj+Hxo=",
+    "password_hash": "pbkdf2_sha256$870000$ilAKoh0ibfvbHL5UgSdd1b$sK+m0JWIc7vThMKm1idzK3iwc+n1BNYRahyXQCvNJiM=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -766,7 +766,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.013-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$9uxVcYUepFZdzvJEtbvTN4$xBX/C+L19pmFiQnG0wfjYeJXCIiL4ARCfegwzCH1lAE=",
+    "password_hash": "pbkdf2_sha256$870000$ePcRy9mLH0XID5BvTCfkqj$lgF9W3JI0/WGQZUdJbXA7u9VhuBodvCVRbmGQjrDo/A=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -781,7 +781,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.014-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$e28blqbePNXFjeH4gnKCa7$W3OcUGX2fLFj3svrZuGqCYeoYfdT6ZZ+A3PSlr4eZKU=",
+    "password_hash": "pbkdf2_sha256$870000$GR1fP77oRZLYMuNSUNEBmu$ZyWlLU5yi5ZuvZFqoHvx0wWo2/0tx+lScCyaqooELpQ=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -796,7 +796,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.015-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$9XBzuWILo6GpOaUb3TgMgh$oWhtUjn3s13vLJgRH3GkjDLp3j2RbNQZ/RuLX5Wx/ME=",
+    "password_hash": "pbkdf2_sha256$870000$xDfKLP5mvXtRIggJZpQsWv$7HT2Tuenk5hYwflury5dtwYEWWonO5IYinyR82z1+QE=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -811,7 +811,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.016-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$NnaQXrACQar2aMLyIauohF$S4Xw+aKw3fiu98k6hWj1rPjMI0VXy4B24McBtz3RBmM=",
+    "password_hash": "pbkdf2_sha256$870000$TVgnzR8F8uZnt8uh9vv2xn$YgRpAFUVi2xfe9HkgifrmRb3WdIiWpo1BGQCEimCDfQ=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -826,7 +826,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.017-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$YeODCux9RGHDHdqHUztuZC$0LKQa2h1wN5z/KvwL4/WwSNdpcv5Ydikt5YhNQFCtHI=",
+    "password_hash": "pbkdf2_sha256$870000$isQMwDFmclCVNUL0NaeVYM$JTR4jjrC28e/c9PhJMzmM/j7zLu9sCWGRLjH/hOqomM=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -841,7 +841,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.018-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$I4pxHwoVXrvyLfLFMLZEQd$U8iaOmAf8HLrl3pyfw93T7pMZ4VLG1Dpb88aShVSb70=",
+    "password_hash": "pbkdf2_sha256$870000$ENRohs3zyumJdQkF6TQcoL$J97bA4x5iPwlPJwnKXCMlY9EPE2RUh13uz53PznO07o=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -856,7 +856,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.019-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$meFyE90UDN56H7emGmFWjx$3iCS8rvMhtgONU8jGNPmrpeZo8Z1uiJ8qvDyztqHPRw=",
+    "password_hash": "pbkdf2_sha256$870000$WeIuXJupoga9Os7sElvIjk$7rXxugyWr03kLbfTkmcDYWMClZ0AAnfWqSe3UAZ7JO0=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -871,7 +871,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.020-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$fIfmtfIypd78WM7h3YN5VY$7SKBYqa+vmB2cEDAMdO2j5UzvRuV5ov9Zo7+KksWmMg=",
+    "password_hash": "pbkdf2_sha256$870000$k8HtzYLHba0wVE9K0gMxBO$GKpNHrFQsDivSze5t/jXjqxZigen0igDN5BnltSETV8=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -886,7 +886,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.021-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$faks9RS5avQmeMziAXFCFE$eTrRfMf8kFpGwiiuW40clpc7UfTTckMN5JjFRvGQq2Q=",
+    "password_hash": "pbkdf2_sha256$870000$xdG4gMW4UCpUjHrN7i727X$sEwp+6G+ncifB0WX3dXEww/R0tKvj3mjuuWzddABO+Q=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -901,7 +901,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.022-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$SxKvhd5Zy4nut37fbmlWOZ$GwfhJ2ajMKv5eO96X5XllhxbAhcvk/5JnT7tPK3TQZ4=",
+    "password_hash": "pbkdf2_sha256$870000$GDz2ybjJfIq3XNUY73VCWe$DZn7mn/24/auqfnHVK42BIAP6m3/jKRKfDV3fu9mCY0=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -916,7 +916,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.023-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$K5NZC35VIRZ5WubANpgSK0$0gYpqwHkq362aKMUTZ9c/YbEsVrUiwzWeFSjdyr+5t8=",
+    "password_hash": "pbkdf2_sha256$870000$SdbbgbX1CYV2QmxJV8YRjv$hNnYI5HCFEEOCy5g8i1WJuOekiMNyLFplt5ytJ+MoG0=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -931,7 +931,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.024-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$cEeG2MCAcbPcfnWzlFPBnv$BRvzoccrqo4j8bcJ9wYpEAKZVjae8QmsnO364amZhQ8=",
+    "password_hash": "pbkdf2_sha256$870000$PJ33Q6WWV4ivAxZInTpwRG$fnDR/s4GaitNRxI9xyvngBtbBq/B5aFwZZZWwdYekrU=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -946,7 +946,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.025-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$0AmbKGoScXzWxEOxN1Y4de$VVD9hkVG+NeBYe+TYP31+k/rPy7RXIWzaXTm3KdwNng=",
+    "password_hash": "pbkdf2_sha256$870000$l2uwV59JrXlSbpf680kBKI$uewrlA9K9LtzOrsZQ6eZB3duqFolzLQtenI3gH20bSE=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -961,7 +961,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.026-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$pa2xLf4UI1xz2QPLb4CePs$IU/kqQ4TVEcrtUv1V5Q/7wQcPsVvmx48xSnr4aAKnmM=",
+    "password_hash": "pbkdf2_sha256$870000$cdi1S00oCNxiya9BJlCWyl$YgRGPM5eWuctj1cbvU8WjJ3NUeRk1PMv4zyROidCmYY=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -976,7 +976,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.027-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$plhytrEV79FDMv7OPHoTHh$BllAWwkhN1U1uHxDKUSjVx1O/YHJBdZmyVwegfoeQi8=",
+    "password_hash": "pbkdf2_sha256$870000$f2nGXzhScMYi5j4Ov2vBZv$7VSwtKO5g4W6Ns7DE8I8h947tK/hsFmfwIyxayxa8sw=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -991,7 +991,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.028-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$LekzdCmy5yM4dwTxvgtMeZ$+z1g8kEvyNpwEVp3YH4QNO/esosFRblOOxB+jSx7+XU=",
+    "password_hash": "pbkdf2_sha256$870000$XH9TpQ5s5Pt0tiQV1cHKIB$pN2IFyjZk1efg3SO4Qj+KvRn1X8C5eiBW/3PZinB7Fo=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -1006,7 +1006,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.029-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$T5HPaK0a1l5liqVUI5CMia$Q5CMuAbpqY9yXoSkrMgIfJpDmzCcpMGlc+J4aCV9+CU=",
+    "password_hash": "pbkdf2_sha256$870000$rufuzNJQefeNrA0iD3X7ro$GajEJXH4juKfJTqsm09t5/+Lll9aeiLLPV5qycLTHwY=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -1021,7 +1021,7 @@
   "model": "sistema.usuario",
   "pk": "40.001.030-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$IGVtHqLfuUVkHKhbt4FfiX$J2EC+FpilgWJ98fVj5dry0P6Vj5ywQxDrT4zqB5BL6o=",
+    "password_hash": "pbkdf2_sha256$870000$g8XBRil6F0PTBuZ6zU2yJq$4BYeeodfg/bXheIRKP6BdBQNQz5TkO20uCRKxuXpJJE=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -1036,7 +1036,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.001-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$3Pm6LB2ODQpH7iBAYztqQ2$IxxCjRFBwJry9KwomwLlExC6zCmWwZphL9uJbBmfBQQ=",
+    "password_hash": "pbkdf2_sha256$870000$zgvg4fpIsfhHYXijE5qeYO$+zu6HJfR2tdhpvZS9CnpZXA+dywb10VCXdT9mFHU49A=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Diaz",
@@ -1051,7 +1051,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.002-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$D98jBfl4xD9MaMOtMz0dAt$kb0GXlu41bjVZHx47GSj2UNWclSm0Q8gqh4H0UBBSTQ=",
+    "password_hash": "pbkdf2_sha256$870000$1YJQctlNdB8eBYUfweAubV$MHlkiAAOK4LLhLhN/3YZ3ggvMLJNZ1a0cfEsWi9cl8M=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Perez",
@@ -1066,7 +1066,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.003-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$8kFGY73TRJ4Bazu2UHLX0H$lLlGPIiTgYikRq6GPZRdHOOMB0mkMYAa5q3HuxcGJlI=",
+    "password_hash": "pbkdf2_sha256$870000$OVad4ZKQ5z7xkfOQPQlXJW$Mful+CfNzWCCUXjam3g1NhSyaEVE9ogfr7Kz/m+J0o8=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Soto",
@@ -1081,7 +1081,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.004-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$r83y3m1Mm2UE1LCZFCrjdl$h0/0Qa5Wo/BNNlaO4IVVHKh1tIYl6Rpih4Ctove8qi0=",
+    "password_hash": "pbkdf2_sha256$870000$awm5Cw9S0MXAbNiCIUb4hQ$unsZInmIVjdyuG67qWiNbEtin5+AntICOIvzqwxBXMo=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Contreras",
@@ -1096,7 +1096,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.005-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ISZbGSKQu2Qtpui7oVMOfs$t76fKunNWh2GIDTZ/mRfIh2VF/Wfqa734jEyjPEKdTM=",
+    "password_hash": "pbkdf2_sha256$870000$xnatCbkd7Ur47l6OrNnbS6$ApEDxOKTyBIocdDTIY+dw9S81btKkrOKkOSHSGkdYPs=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Silva",
@@ -1111,7 +1111,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.006-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$30oPBlqrKjRD4R26BJ6UeA$CZdSkYKFqEOvA4fTXsCtVYQ9y2CkWw2oN7n72GfQGx8=",
+    "password_hash": "pbkdf2_sha256$870000$7HvrYiLDC4DXehLaxp28Yj$MRTRLC1iqDqC504Chv9QuVo4n/nZxSUh4PZYs6JI+P0=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Martinez",
@@ -1126,7 +1126,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.007-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$BqGTQiUqMKec1tAoBqQxHJ$4zuHskdydER0bwdIw98CUSxDryjEnvmgWbBeE3fOm4g=",
+    "password_hash": "pbkdf2_sha256$870000$94AJjTbzhjEafWmBkPaZmU$iOWd878r0I0DbLkuwJUaCt7nGppP2OQDR64B/uMuRh8=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Sepulveda",
@@ -1141,7 +1141,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.008-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ktNZjPYtigMIY4zCq5MLy1$HxKrUILcZihu5zuDsQ+GF5BZaGE4/FZKff+B9XqHgY0=",
+    "password_hash": "pbkdf2_sha256$870000$V4ZeCIgVaRvgll136h4tHy$EJrNDlK8wwD/9btzgb/jyT1jgMmOCwuFdogmnFjm6Os=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Morales",
@@ -1156,7 +1156,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.009-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$e0AlIi7MNX1PH1p1sPqqYo$twDIx9LLPP42Zrcq7DllQHFRoYMLRoTUx8SUGJSL+gY=",
+    "password_hash": "pbkdf2_sha256$870000$7km8FLTSsdHEJFz9EXbnnm$F+9fD9gMnxLtI4lmrNf4M18VNo2ELhK4yEs2p+kS3ek=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -1171,7 +1171,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.010-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$rPv9cPdYT8FeBupvssFwkd$ZblEEUOfCd6B86Nin8CDVChsVeiCB6ctD0CH+CMq9SA=",
+    "password_hash": "pbkdf2_sha256$870000$JLESTl3wyTqcY6n68Eq2jb$PTVISqy5sRO+KTntDDp73FHOAHt4Rdksgg4ktUIsmC8=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -1186,7 +1186,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.011-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$sOAlI4QpHG6N3dhekypPWl$yDANqklxTHfanIqY3lcvS7z/o7iN3u967fIUUarq6/E=",
+    "password_hash": "pbkdf2_sha256$870000$EZYwtFdpGrBHDePTWKviGH$J22cvJJRK0rS9nTnBXOk6flgc/5IoOyH83fhEzEHmzM=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -1201,7 +1201,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.012-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$xQmRZ5qpWc0ht3IzjIPcx3$c/QmzdQA9ndmUjRIOsfqCa2MpkKlLdvi8uAPdgXM+Q8=",
+    "password_hash": "pbkdf2_sha256$870000$OmB8RfYlAK3kbZqUvD5arR$YVy8YyPwv9VLQg/aH/VXjwaG/N5qSMA9MP/YgqDK+Og=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -1216,7 +1216,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.013-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Q2qqCdhWFCGsIsHUCQiCEF$X2W6kuZElzPCJUZiXhpuZ+gbz0qciiw7MWteF3oDtjU=",
+    "password_hash": "pbkdf2_sha256$870000$9c1Re2w2hIWrUvqKZ9t1lq$GmiK0DuCJxhdAZhM/bdc4vn5oMI3kJ+HASXz18Td+8k=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -1231,7 +1231,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.014-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$HqdCqAoJMI4OdizMZGJxZo$B1dluSYNrGT29yz4qYWLAwTSmC8U+winLcd5ZdQgc58=",
+    "password_hash": "pbkdf2_sha256$870000$3ysLHaYDnVknY2St6V64O1$Grr7S+ktii2sZKw7OFrY0wv27pF6zWj3VlYRvbzG6J4=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -1246,7 +1246,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.015-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$IkPHIYILBRybnVCRXIWGSx$DmXk5pPivNEiuLz9crFF/zZtR8IxDC/V4INC3j37qCo=",
+    "password_hash": "pbkdf2_sha256$870000$OnysFq2vdWZBhQUPkIlpzd$AzFgqP4j0skkgtcAZ1GyjEZ3ApcBep5s7Ry4eVia77M=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -1261,7 +1261,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.016-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$EX5Z8UVRrFBEBipjZf0E1n$LUevqC/FVpf+zu6ABJbb8zOQamZz2tpqgWD3+hMDz2s=",
+    "password_hash": "pbkdf2_sha256$870000$YEaisAiZK9wmt4t8eem3uZ$MoidJK51HbZkJmp6kVYHeHiD4UmHgW+QRACgWk9wvlM=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -1276,7 +1276,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.017-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$TU9EJYGXyVzRtX2cYGmw6B$hxVYd2MfcsemPv+rfYd7DmWBc9xTe0pdiIgyPwqD10s=",
+    "password_hash": "pbkdf2_sha256$870000$1QVEIl2gb3cz43VFuWqWc0$J8DXE8535Ntuz40C6J55SHyg7NqV7ThSGb4ncBnun9Q=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -1291,7 +1291,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.018-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$499x4i2BAUs3AaLo0TZq5S$9yMsuEUw7m6OqyY/5FQ30Z5KRP1qsZrYDwyPOyGDkZE=",
+    "password_hash": "pbkdf2_sha256$870000$NamjNkpRutLbp9citeGMXS$tTS23M6kW64tZlN8ud1AwwTXlb2oFAIbArnbPyp3yd0=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -1306,7 +1306,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.019-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$nz9bLR8m6aLVWATJKSAxUj$4lnSyqB1j39kqsh8fqBjyKC6vWjR427douBjIIHcOUM=",
+    "password_hash": "pbkdf2_sha256$870000$BA0cGjleuPdjL4wEnHnvou$oHqQITd4OU4MjXLGONq2iXTyq4JWTLYVDHn6jFiTvGk=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -1321,7 +1321,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.020-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$32gStf6xcN5B1jbgS2wdRi$NIMiE3y6o4NHkRNd4/+Nof8VfcIWq1xfswraqVSJhtk=",
+    "password_hash": "pbkdf2_sha256$870000$qzGOBxKhbPLVVyBrSanovs$79iLZz7uIzpJbK/PqZ3xBDXALqnsvQJZL1E77+b6miE=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -1336,7 +1336,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.021-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$vyTykmlkKCwQAo6HC9AeIT$irmuGNR/w49bFFJX8uqBHdsVWr0Z3T3vm+Ihs6Mxkic=",
+    "password_hash": "pbkdf2_sha256$870000$Zib3xjCUe3ACHWzRAKn1Zy$SN/IM3WYzxo3r2B9GEvSbkfeBUNtqrdY1RgZL2oBTB4=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -1351,7 +1351,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.022-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$bfJKOnDj2btz0TuPrLSJtZ$wCza6uPtvaXT2/lJjVOnmVt9UsrOV31xMpl906ZJwF4=",
+    "password_hash": "pbkdf2_sha256$870000$ZPn1qy7ivA2R4JEgbou3NC$QaAk0qb+wPwzOYdzFsYnQ6PP6unOhEpuEgPIcOgW7vQ=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -1366,7 +1366,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.023-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$OkQ08mRmfFmvH466bZePkr$0FY7Md4vcqWNEYTW4spEEJNaJLqV2G0JkNCVniZ9M7A=",
+    "password_hash": "pbkdf2_sha256$870000$rRFqaxRxs2eqi5akx3TQm2$cx7oyXi0Xf873FbfJsucnKiw2w9WLJKLGI8y1cK0XAA=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -1381,7 +1381,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.024-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$VeiXKb97QqrrNnf5jrmFLd$1vVzcScwjLNHHjpSNmy06R/jFtgxPlUo/6GAFIxDdTk=",
+    "password_hash": "pbkdf2_sha256$870000$unAtqN7GutfMfhO9KtZceD$to2Vkbc4d+g2HK1FNneUfKQvqN3EWubWCHE26hsSm8A=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -1396,7 +1396,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.025-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$DaljthpKRCwUOHGMJrJW0f$hIdyGMje++oz1R3XBDtDtlSEtI7y9E6QPzAgTCGj4+I=",
+    "password_hash": "pbkdf2_sha256$870000$ateOqV47BpwkxJRUGwBNsR$G+b9kI38j7pLs8QBE3Qh9O9mrihWERftHVpl9rFeuqc=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -1411,7 +1411,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.026-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$THtFKu6VITcvW2s3gYekWH$eEs2Llz2V7LVEVFGfXMTkQh52CUWewlTw9jDLNjgBjM=",
+    "password_hash": "pbkdf2_sha256$870000$Jr6S1YQidxp53GHg8HBunx$tPRxUEpqBpOQv4vq/UFl+vugJQVJnujHr5TFBz9RgnY=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -1426,7 +1426,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.027-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$6j3PnUf6dy56uBZUWNedil$eng8ODTwXTSt9s8LAJK3PyD2dZdXwZTUCdzGfYL/YLk=",
+    "password_hash": "pbkdf2_sha256$870000$LGIocboPrnbKL0wZNhX8Bf$fWKz/ApxjuJlj9JkIWEBeajIupuEBYbO0qeK4Okm6j4=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -1441,7 +1441,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.028-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$KmbXlCuc5qvXSGopcJLcxY$MODFOQ3EJhp/8Sw9q1wqpAF0IiLU4CzAadsoHg81pgc=",
+    "password_hash": "pbkdf2_sha256$870000$WDHJsgCNaDGIpryXzbUJKG$NDUaX8bEgGJnWiBQ3KmTkWPSGfozvMi4Sn6laDaIULE=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -1456,7 +1456,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.029-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$jQ3IJ4YBvtbeA1yw7qiBrU$EkKRBS8QR/EX+FXhxFEhm3kD2L7ExLitIXuqMMAobpc=",
+    "password_hash": "pbkdf2_sha256$870000$HPstlPBnvVPuLeio7t4Y3i$SODM1bXrDghRQoz0JjkIc/ySzosLqYarOxbUmW8wvtI=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -1471,7 +1471,7 @@
   "model": "sistema.usuario",
   "pk": "40.002.030-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Fa33uzjHFMGXcvNw7hyuQr$iCr97I1R+9Cz3wbgVbxLwKR8wu/2tnAM8riT4dQy9Io=",
+    "password_hash": "pbkdf2_sha256$870000$NZ8GP8mNjEgwG694XzhATr$3Q8RI4TiU4aJ3ZCACzYF5ldrf1T1/JGM5G0dN7p2YVw=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -1486,7 +1486,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.001-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$La1m9w5nN3rFylXN8EQhXW$aLJLaCB8S3n/Za0hxcAgctWHRmvtp6/YbzyMWHXZNyQ=",
+    "password_hash": "pbkdf2_sha256$870000$dc4tPyOisMhAFC5ujPNQmL$O7EUudaR/JG8dbu77f3e+e/m9tCGwxQhnYAjYbgTDMs=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Perez",
@@ -1501,7 +1501,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.002-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ncpoltl1XYUY6tuCgCgXnw$OJHZM7ea3dC/mXN5wUWDJZk/dyasuCsitvM/h1L8jJc=",
+    "password_hash": "pbkdf2_sha256$870000$dtDLZDhl4tPNMYn4nr4Fev$u121zMSFt42mCoilFpb3trLf2bFIe3IeO83XEd9E2rQ=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Soto",
@@ -1516,7 +1516,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.003-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$PVj2CusxqlJiPmerJR3DMV$l13Wtw5ZAPg6LC5Ti9vr6jgMX9u5kbOY+qEZ0uHHBkc=",
+    "password_hash": "pbkdf2_sha256$870000$6bYiH3SCAGFOzLgSHIEmaQ$sbe9J76D4CH6bTWuVZUIGh5pU3nlZAbgM+H2teLRmDk=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Contreras",
@@ -1531,7 +1531,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.004-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$wtb0DInWbaB0TjcF2pyBSe$urBla/qQDSMIZLFMk+Rz7jKWTvF3UaWMcjkA6Z+UDNs=",
+    "password_hash": "pbkdf2_sha256$870000$ku3g51iWEu72QW45B9L8u9$F5Ia4HqnknYZntjzWCpM5pkji3SCA+fcC8HFF9+F85M=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Silva",
@@ -1546,7 +1546,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.005-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$kvzjkx0e9U8IJs6aZubOiw$TXMg1kuJNE3cVSGzoCVoKuGPyCwWerbaKWvwsO7baCY=",
+    "password_hash": "pbkdf2_sha256$870000$P1pMPHQKBmfuPxeVPNhLKk$Xp0xDdGRGeIyuvLTMi+p9TstfdSLGZQmC9ZQfj6pBig=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Martinez",
@@ -1561,7 +1561,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.006-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$GJFPid9v39rPUy4V6VFvj9$+Ouj+xuVqgihFRpFdnBywdPq5npZo7ZMNey7DB4cRXU=",
+    "password_hash": "pbkdf2_sha256$870000$ziVTNANuNveqzeFPD9pmzh$jjC79hrGPHnZh6wHD55m8xvasK8yu6rm3TI4MGmP7b0=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Sepulveda",
@@ -1576,7 +1576,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.007-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$BF56dsTi9engCLP721DjdW$/XHXRfEICG1leyhHh3XyX8+T66kUfA1/nh6gHnQRsY4=",
+    "password_hash": "pbkdf2_sha256$870000$QCgBjOSzf9mbHjRFZJfeBR$bBH2+t9yaD1crZzVPI94DHZRa58PaARNTgjqtvnfvNI=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Morales",
@@ -1591,7 +1591,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.008-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$UEjEv26Yo6WTf8h4KViehQ$8fr8g7BvaGyu48J2vh6uJ6A39HrpsxUwKiDycEGekFs=",
+    "password_hash": "pbkdf2_sha256$870000$42b8hqclOo1tuagULDo8DZ$CwBE9UqF/rbvMI3MQ1OtWpbSlfEMfG3L/fDjqB4fdCU=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -1606,7 +1606,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.009-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$plZtJMCd4mFKOJQXM1TX8V$SpFsBwtpnNmuvanf7jvRCs2oNH46keKu2rv2j1BPOl0=",
+    "password_hash": "pbkdf2_sha256$870000$9B60CBaXk7ouLwGeiAnoki$GSDZc3GM615oLieZa+kz7hcM2h9XyjSGnEFlFHfFupE=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -1621,7 +1621,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.010-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$sL3fmC0blXlO7Sv4Glt08E$VuVysTv0ZC8V4bDb01bXz2fnhC/ifK2c76xgV+rR+1o=",
+    "password_hash": "pbkdf2_sha256$870000$tQB2iPOFynr04IbKCvuyEO$fuaKrII5b+hDhGfrLe8/TfRKBXhVKWlo2KpxuXGIu5Q=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -1636,7 +1636,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.011-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$MeGuULL8EIHgPQatwQWQIt$g892H8YLsHeU1CGGUw3sz2q8cqbzvanALRe0vFKyv1A=",
+    "password_hash": "pbkdf2_sha256$870000$H818OV4xpKDgx48myUdhjj$L45qrMdYnDlBNMSTYZLJreMspBwTMqQRDDSpdyDniw8=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -1651,7 +1651,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.012-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$DQyj5WHoA1ulWJx7irodj4$XDUMj5RVC6VC0Brd5Bnv1xudnQjZLmLsKunr3ifSWT8=",
+    "password_hash": "pbkdf2_sha256$870000$Q5asUSedNjbwZim0DemOOb$PCPaaTCqq2zr4kjeALUixoNqe5a7jljG/CkwFrgX5bQ=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -1666,7 +1666,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.013-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$tRTr9fSalFZTvDDMRb7I8N$+taQQ12H2PX3FPkeSEqqSvgHsPW/9DpHe7W4KsFxZ+k=",
+    "password_hash": "pbkdf2_sha256$870000$AfdcS6U081xVvB4zkiuywV$sGcrH3o8mhD20cAi2WEW2qJZwxQ709JjTLnPQYz0W2I=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -1681,7 +1681,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.014-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$TmZyHYZc5ebRT70ah0g5aT$bVvcmUZJibk8U7KpoQ183cBrU1OFeMg2sao/szDW5/w=",
+    "password_hash": "pbkdf2_sha256$870000$yG3nlLk29QOdl7ZCcgxT4B$Hitbn19pRq+rWm427DrVbvu7gbDevpphyul3NObJ2Lg=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -1696,7 +1696,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.015-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$AdOzpe70rMN4yB8gMs0R6w$txn2G3qlHXykVfxMbFw/G42Eel8CYN+fKcarxsVmoBU=",
+    "password_hash": "pbkdf2_sha256$870000$aype6oJqSOL0C1uuU1bNB6$vz5l+szvDD5eqbSRaC83V+qVQdYssOmcHKJIDC0FgVk=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -1711,7 +1711,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.016-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Le53AZQ76qGw5X3mi2h4Xq$G5IiijcGzdHFrGyLcEwSAhl+idJN3YJsdOS1Rwy+4kU=",
+    "password_hash": "pbkdf2_sha256$870000$ZNAm326wF1CGLX27QJex3U$oNjV2eolKraLW4NcHUJJRM9+3tbcg7U6ZS/SyCSJiqk=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -1726,7 +1726,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.017-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$b1EPemhhHDYn8mlQSbm1aV$NOmuGQwLHtRlh9LG+lHkXaTycyvGRPGMpj6y4BGrzpI=",
+    "password_hash": "pbkdf2_sha256$870000$y4nmvKOauOzVm1wgYwVaLT$6GhmT9HXDTqPdDrhOfoMJPJIoAeMtpjqIsS6YNgq93o=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -1741,7 +1741,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.018-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$FSPIB7MtMUxiK6KGuIquX9$YxFL58ihTDawFq/BBT6w6wOmHwOSLOpKqABp7nNq+dc=",
+    "password_hash": "pbkdf2_sha256$870000$vzsAnuKGFFcpvu1P7JBxup$iNr0Zjwo3fnjkPtbqHV5wXD1HH0u4bUumXmdndAmlbI=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -1756,7 +1756,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.019-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$WceCJ7asTmYrlQKQRHFxc6$ncRxOIfb3ODGXSGMG6TGsUzQRfFGmaT0HBhgPmRhCss=",
+    "password_hash": "pbkdf2_sha256$870000$5x8Jav7oK4Kn28DxUtuvKw$4YZl6gICGJPS43mL5n0Eyg0G1iBh7vGCi5kMOdOts8o=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -1771,7 +1771,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.020-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$8F6cQfFxfVxMikBweARFlc$nRA4PPAxlPN7zS6A+DRZ6d6Og9wtJYW+AVP6jzarveU=",
+    "password_hash": "pbkdf2_sha256$870000$IPK4eooe1CVxb1DfsrwY4o$vtllhz1KUKCdYi1QJwiZNlm2U/2Or7yPbpGCW/YKUmc=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -1786,7 +1786,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.021-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$BsNru0cKWdWGV7r8RYZbDp$+pSH/Ncj7NphKOCNiKBYB+NNM2W+dBA6LwrELgXtca4=",
+    "password_hash": "pbkdf2_sha256$870000$4F0w17JYq2AV2j6vk0wQfy$dogzeQek0B7A/AloR4DMLHMAsA/UQkvmejdheExhPQI=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -1801,7 +1801,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.022-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$MbNk4r8aq9uoAxbtpQIYXW$wAL+NbwJMc6Pb7jHRrdYbBJ6TewAAhhQ9o6umQoUVF8=",
+    "password_hash": "pbkdf2_sha256$870000$3Wwq06W0bDOybbH2GdEdmp$GZsjqSm4QStP5Dgk40Df5R20wyHXVgxJTJKRPQrnemE=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -1816,7 +1816,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.023-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$plq3k8IaadNLaJaGzng6cL$Dqlqia14IGk8DIZgzY2WZCWbGHhBbD1aUrqwGvgoxEs=",
+    "password_hash": "pbkdf2_sha256$870000$DtPrtcP2cSkYPDww0O6o2b$AHsrh20HX4Cq8kseMA95zoYvp3Mx55hY8oJWpyNMyW0=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -1831,7 +1831,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.024-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$TYVYjaAi4E49xq5HBLReeP$3RyHfT8tN62+2ufMpnoQMHCkhkudRyzBFlaeiNwVG1A=",
+    "password_hash": "pbkdf2_sha256$870000$RJruBBSTVMa5uf5dy3q1v3$hCi9fwZigJ5JKcbfOP6q+m6ZLZVfq8sxR7PQtqYDl3w=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -1846,7 +1846,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.025-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$9YKkhfPcJ6g2RW1LZCxA5y$GaAwe9X8YXESQ3hLhOW3a+6e+eWyIg5EOfKYPuA0NVg=",
+    "password_hash": "pbkdf2_sha256$870000$23VXZ9wy4eUafGghJLvY7L$0K9f2NSGFOzZXkHOs8su74XI9QSW4N9JEIs7eHsvzdk=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -1861,7 +1861,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.026-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$fSCj7qd5XjevKLLdBtdblE$U3LT+TGI8ycv0chCChkHznvI5DUqeJe+S1d6gjrUwDg=",
+    "password_hash": "pbkdf2_sha256$870000$qFv5k8CrcSQiOa4K9jg6L8$SmrCcV0bdjWm1VkRXWwPwVinl8PoGHCoWT+Kz4F6aOY=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -1876,7 +1876,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.027-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$5LxOBSreupIopXqPe9e4RR$LMPPigwv9GbtrZznZx0Zl0pejmy4vt2m0e2Vr2y7ZJU=",
+    "password_hash": "pbkdf2_sha256$870000$ivc0nZM8jVlAHM4YzoKKwN$Joedt0rUmqZXN58uXvPBk9s+ZrRJKnz5Mrt4fhE1Arg=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -1891,7 +1891,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.028-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$lPIXx5TzKm4Am10I0tCK8s$Iu+QEvwJVF2t8bcLMflGryVjl+tigFymWIgJ5P67b/s=",
+    "password_hash": "pbkdf2_sha256$870000$PT4FbRPZNZUON84IsTyKKb$tBRKEvGNdVXTvcc7llyPbsC3x/6wAReU9glSxjUCgtU=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -1906,7 +1906,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.029-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$At7WQoQcTQ1K1QG45AfvyC$oDHIHHfK+l3WO4XtgmZBwKQdlGjdrVX16XLdFpQmfLU=",
+    "password_hash": "pbkdf2_sha256$870000$Qiv3ZF3NOpefnoA88J0L0L$HB80DoYHnE/YAasLrznhpnF+fZ0bae0Mze6zHGed6Ig=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -1921,7 +1921,7 @@
   "model": "sistema.usuario",
   "pk": "40.003.030-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$b6CSbX3kDBG7zkMY0GUHCd$GfFqzfg82te+sn+f9EvgtI/o2EdEsqnqn6mwk1nwNUo=",
+    "password_hash": "pbkdf2_sha256$870000$hgJBBVSPuMTqpGnso6zzO5$Anq+eXICH8qLFQ8oUWATsGcoIVJ0oC7O82AlpNdvtDM=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -1936,7 +1936,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.001-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$rz4sp6Ean73anwWhh52dyl$xUHMHLqTPw0JVUlxATPT1gtfUxTsbh4prdxUd1RsheM=",
+    "password_hash": "pbkdf2_sha256$870000$BWxzOUUGEcsDznjCaajmIw$o+7h2PR6Pil0pgTJ0TD4Wo6DRSU/afMzPNsqnbW1Cdo=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Soto",
@@ -1951,7 +1951,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.002-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$EGx7c0oxEHomhQ37Tk2mDk$fCkVR2SqqWFr1gmKhl4K4AQyucNUnMCzKcjQLDA5rtc=",
+    "password_hash": "pbkdf2_sha256$870000$nkOUIG2BAf9ZH4Vyuq3AvT$LwE4fWj7kV4OkZgbBgrTr8Xy7iwxQddLaV8zsU2k2hE=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Contreras",
@@ -1966,7 +1966,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.003-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$bOBKnpq8ybBFWfTBVnRWz6$ab4HaLxHmu1puo9vbiDqhuk/U399LHzeipaQWgGZS0I=",
+    "password_hash": "pbkdf2_sha256$870000$kHzY1AMPlJAaZlXabVyfIQ$OVZOkXJqNMLHp+SFjak0mTw2esKW/9JJTJkAfXI63jo=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Silva",
@@ -1981,7 +1981,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.004-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$h6zRhgCwa1DCxighAhadIq$AvXV5zgezRKvRsAcqwnGR5/3OWF2TyyiIgKsaOOJHn4=",
+    "password_hash": "pbkdf2_sha256$870000$uQ0VunwdFWl7TduuKs4ep2$i6Q1xEVLXAOvKnQ+zlU39XRS4fbYmqvX0mITSYUB6Qc=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Martinez",
@@ -1996,7 +1996,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.005-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$IfhuSbs6VvnAEvNvO1QiLh$OV5w1yZwgRwlVXay3zVnjJ0Ggdb4OgYzfhdu5MYd4yI=",
+    "password_hash": "pbkdf2_sha256$870000$Cba4Avn9UI54zaQRpoR1Pr$dT4HDC+5o3rhc70qRmwqYIbEx6KGuulgdWYLpED1VOI=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Sepulveda",
@@ -2011,7 +2011,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.006-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$gPzEPqttaocSU2ND0hk3Qp$6r0Q/n5IZktuSuVYMKZolXkVmAdb47mBj6+ghaHzqMY=",
+    "password_hash": "pbkdf2_sha256$870000$99TuE0WfqqncZxdfPemZg9$zJjaGQq31ytARPPm7zFHX3TGsjGX1DF4GZHK/iYGrz8=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Morales",
@@ -2026,7 +2026,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.007-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$PTk0CF4umdhXUczPCD6eZa$mVTCoPT0W2ZA5fVKGv9hwpc8eCS9ooyu2TgCDI/a4NY=",
+    "password_hash": "pbkdf2_sha256$870000$fRyOeCozHbbzZEwMfGL6xh$CJikcl74Xg1MZGdGGDWwX449+DUcSmLsfq4ukzh3G2A=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -2041,7 +2041,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.008-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$cKLDEZSxN0C2W4SVm9iBi3$W+giL4D8PX+qZTjwZlSq4x6TtVk2k4QFGGjaiFLFVpo=",
+    "password_hash": "pbkdf2_sha256$870000$7l0VFkDIlXNti6XponRN75$62d/speRdAJfS31k9J+J2T6ypUSYV8zNBoDRV4gpU0k=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -2056,7 +2056,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.009-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$aPmEhNTfsw0HksPnDJi9AG$j7R8FRTjYiqOi1EERWUu3jlVLrFSj2VCvLOLCic+ncY=",
+    "password_hash": "pbkdf2_sha256$870000$wHHQNFI1YmuGCNHyBgpTtn$9yWizy3/KPh2+nWkZ7i/M6i/wdu57YyTj0/g/TnrL8E=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -2071,7 +2071,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.010-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$S6pOJFYuBomRV6XCaA0h2S$ei3jpUZLK7XJtxhVUfXfxtJ25K60NxmmILco+W86lj4=",
+    "password_hash": "pbkdf2_sha256$870000$mslX8wHVX4TIgF5OakTSuw$0y7U5zhLlf8YPk0ioFOEThiElrIBG65mawpu/owC6Lc=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -2086,7 +2086,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.011-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$zJisoSoZWnf5Yj80Q2Co2t$eH64Sn1TiRRbKj4G8y+9hiXh2ERk2XKIirhUnEE+ewQ=",
+    "password_hash": "pbkdf2_sha256$870000$zdXOd47LIrTTht9mzLCsh0$N+xdC67cV6EfxlNO8BOmq0jd+oSSgsTcvINedYMgzj0=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -2101,7 +2101,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.012-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$GXPz9bi6m3U0m5agFaEe2C$sEHYhhsYiHG+wh33X/xYIJIC+M07mojuhVUxoe9Ma9E=",
+    "password_hash": "pbkdf2_sha256$870000$hKNvzgBPPnxA0Oiwt39uT0$f58K7vS1giePpW+GfOiCnQjRM5Nn9qxODz24qT/U7wQ=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -2116,7 +2116,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.013-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$bwnrSvDslWQ1AQpcOwvJ0m$B9Mmdxm5QmpIq1sQgJfYohPBlsII5F5KC8NTlxlwmcI=",
+    "password_hash": "pbkdf2_sha256$870000$sP1eJLEUX43j2NSam6mwyE$s0nZRerXH+A1DjgNt5Sph5qaTcVPx+EwotQcUhBmpR0=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -2131,7 +2131,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.014-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$cGpoLiuVwC4jXa5kiDXsgC$VNl8zy2mPWO7OLFf9DBMCY1rHrEbG8SIByxztjb2xcU=",
+    "password_hash": "pbkdf2_sha256$870000$VGXEN31zxF31dumcHsXKvK$qHx/y4FOjVx6TM0bv6zTSWe2+fNlVQA5fmEVbjcQ9EY=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -2146,7 +2146,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.015-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$CoV5Zqk78bjs4BzpYU62j1$NB31qxmCr0cKI8/tieZ8AgTNWc1f34UbSD2x62Ut7rM=",
+    "password_hash": "pbkdf2_sha256$870000$dPsNIjXmU8HI9oNZNBJK96$P7pJVoQGPPS9QTr8dtwn4eeYqj9Cuois6dYCcKLHFfA=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -2161,7 +2161,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.016-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$95V5shp3Vc09TKEHscnAxx$ZG00fxTlWFOFJjW6sCv5OuuIfXvdopQMrGDupNg9O/Q=",
+    "password_hash": "pbkdf2_sha256$870000$jFO1bjrcE7FR95FOzhCJYy$IzHYP+63v/6C8DHDNqHFY15xv2D4dwgLHkz+63AKM8o=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -2176,7 +2176,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.017-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$PPDgCLwL5mpdYxCV2su4GF$m3yVpMVRkdyAqlLZJzm8h8rdMXvty04OyN5SNlNo6ig=",
+    "password_hash": "pbkdf2_sha256$870000$KeZrmoUP7IWwkKh3E8Q6vg$mC3HM3EYGNKaAlsZYFVui3js+k+A/H0k2fnsf5fA/D0=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -2191,7 +2191,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.018-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$cDh0EsJVfgRR6vzfoXJOWv$nmHBAc0YPiPrYp5KZyH29EF363Bp5+qNtkIPTrbDpU8=",
+    "password_hash": "pbkdf2_sha256$870000$gVyjkPd8oM81Ks9I1gz5PR$vY5wds6ipAW6RqbrRAmsppZUtMMDHEA/FWoUDkkyW5w=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -2206,7 +2206,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.019-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Tj1RFse03BvZr8MyzOCuTo$e5auSNrbqGGa2hsMyqT74U/VZh+k4JPoJsV+Zk3ByuM=",
+    "password_hash": "pbkdf2_sha256$870000$MJ1XjBwHMjilcm4MMplkCc$RxwJGPOHgw1lxpMf3KfqRvSvWxaGg0nJkC3X7z8qBjQ=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -2221,7 +2221,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.020-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$fGNsGKNPhVROYapT8VjfKF$UxtFYM9pRyzzWhwUT0GT6yaxpXl+dkki+v1VbwvoHJY=",
+    "password_hash": "pbkdf2_sha256$870000$kaiRZTPW2BvAn62amSabY7$OONmijsxZrI24MQ70gd14XnfUOqkTwm/NVX0OkErQvc=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -2236,7 +2236,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.021-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$TJdOQYk5C1kAa1RrQDiRkU$nrsgiPMb4LHbH1KhxBZimJybdPWVU6ofD13Ls97lJDg=",
+    "password_hash": "pbkdf2_sha256$870000$7GulayWEnYfyI3AuxebaYV$6SVKVvw+g2WXH9NdDnGHyBY5OmlmatVwkxDOtL6zhZ8=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -2251,7 +2251,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.022-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qptJDSGyanQ8BEdTDT6vVS$+h4W91kufljv12TTwO73HbNlY8UekpaLnEQPEIQvJQU=",
+    "password_hash": "pbkdf2_sha256$870000$2SSjZo0Y7fEeSzZIpcedd4$u5C1fTnROXJ+Rcg2PlU3v9hAH21P0kVsmedlptuBj48=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -2266,7 +2266,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.023-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$bOf4CSSfIAkaKxxRtcb6T2$1gtVl229Bi/1gaOC4HG0OwaVrXBaz3TdsJlfLdBUTvw=",
+    "password_hash": "pbkdf2_sha256$870000$J5jyGbhaEr0RW8X80k0CiI$bKwVqpbfue0wbBHhnnbLcAljijPdEeViD+aRXD0OWcs=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -2281,7 +2281,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.024-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$pgMR8u2Umw3K3c8FuZg4yt$/sCBMUOsK0LgjdYeUvm5TJzgRTOB5EhzHkuk+fwjVUw=",
+    "password_hash": "pbkdf2_sha256$870000$sf1dFLLniDB36YcisFF0ha$oQWX7sfVu7XSkBw31FznEUlOBp5FJNmYtElJOmlmFx8=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -2296,7 +2296,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.025-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$GmEgs4nncwF5MT0hQPl68t$5zqEgiphg0jkolhmHWvsEvMugIRBco9glYGRdmEnrPs=",
+    "password_hash": "pbkdf2_sha256$870000$VoMNwuEdOV5MriagI9sbw0$ujAtVrghwgMGb/Ce97P0fYpQvlfTylynkKDrOyRNdH4=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -2311,7 +2311,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.026-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$rth93PFet3qpwZWzBYJy9w$30oNF6TS74ZG8alNIt7yKieMCor5OLSaP/IwrJcVF14=",
+    "password_hash": "pbkdf2_sha256$870000$oLFdB4Lobt8OGC77YQFE6l$Wn4PXbXka8LQQzBaQgW3j5LzbfAyNCQOfjVZsCy5TX4=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -2326,7 +2326,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.027-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$XBMsOslpoeonIMaGsai7SH$Hpk40ikaUHO8FhmQWUX5LJae+j9BCACWXRHHyPisTR8=",
+    "password_hash": "pbkdf2_sha256$870000$CMTqe0APwn41ZEFC0IWpkY$W+A23XwMUIxQ2/au4Qv8Cb2KQXimdk8Jx+G1cPomqB0=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -2341,7 +2341,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.028-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$GpZNrApCb0Qq72ISCXtkvd$+Z+IEvoNJjrKxrv6a0cfDdMxJAxLPQcRn6dT7hYbRcg=",
+    "password_hash": "pbkdf2_sha256$870000$KcPqTA8PHrKGsGvJ0QVGrr$gLoE/q2W9DvTzBos2LGe7PAX51iE9NefP91mM9K/vxI=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -2356,7 +2356,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.029-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$yE48vWyOcKIKk9QP5WuQRQ$BZcFre0MEssl2Qw88yOrht1i01fvmr+jGhANe4zllrc=",
+    "password_hash": "pbkdf2_sha256$870000$1gU3r95ZpBXImAwXVgessT$+8/fbqH+gOkQQ+yt13WNPklPArWByyAMWY1K2mIO8rM=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -2371,7 +2371,7 @@
   "model": "sistema.usuario",
   "pk": "40.004.030-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Gyb7ZRpvH9C7xscJSchN4d$PO+APvfKb4fiZ4VXARDzXhROv60XbGt1Zc/jC/XPmjE=",
+    "password_hash": "pbkdf2_sha256$870000$QbJoevTirpX3TiJXT2O07F$h0skQifbda+/y85uBdPzF9DPDTEOuD0msY69DKi0/ug=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Perez",
@@ -2386,7 +2386,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.001-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$f7YlvImpU4yDw9zzH8UAGb$O6rZ4zYDhhFRBQjTs1i69LJa/ZORxei4qioLln4a6zk=",
+    "password_hash": "pbkdf2_sha256$870000$ZYyrgzR1p124vaAiYOweTg$0RnKzBkQObhROCjXcEvmYGiuNBqRQXkjf1Qor5SWNb8=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Contreras",
@@ -2401,7 +2401,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.002-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$2CFETP1jIZqzLqNcdT8hvW$nZ/SvV0qIi8BPIEtgnYfNAQoGItMR6UrPMEk9vP8pmE=",
+    "password_hash": "pbkdf2_sha256$870000$YdFzJZaSVH8B6YQiYdcGoP$fQ1FJl3VUDMrYeeMp2xCbBULgJpPoMg3Y1zrQmabEyQ=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Silva",
@@ -2416,7 +2416,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.003-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$yl7n72en5vPt8J64iyf3Jx$2ZLDfoZoI2Uh7Ls9NGXR5EQpQF6j803ETuPCrg5VGh8=",
+    "password_hash": "pbkdf2_sha256$870000$hvrOlaHW7jhafjHsEgKVQL$vI3KyW8Ys26OrS7Mu72Kii+UaQ8s4AaqNRXbiNOdBi8=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Martinez",
@@ -2431,7 +2431,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.004-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$GkIY8BzzGa9gHGFpgDRfHQ$TaSBJN2fN3ZJfHs0XMDTt+2fbpFzd6vpSSnc6O2N28Q=",
+    "password_hash": "pbkdf2_sha256$870000$wFmc5OB1xjRvX53tTKWzDh$wGwO7ZLVoYOxZAb0kH8dxTdtUBQ3forSxEYGwU89iXs=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Sepulveda",
@@ -2446,7 +2446,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.005-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$xzzXV2Cr9lf65y5pdDhpCp$pufYLLuHQRNpqG4IbnG6lQ3GEIlIxEZDfXFxIsmN+dw=",
+    "password_hash": "pbkdf2_sha256$870000$lHiMW7A0fVRonwLceOrb0y$9S2YroK+jhgZohkP/YW9Ps5flwraJ1dbbSbkKswoWi8=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Morales",
@@ -2461,7 +2461,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.006-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$KqkUFDHODpT2z9TNcn7z63$Afoqj0f+1O3V9dXjELU/fYI6F/kDhG8nlJzBTASaHf0=",
+    "password_hash": "pbkdf2_sha256$870000$IlEdcEhRTJ6l7rYDy9VdUS$6Pk5n3871SvEyQY+EG4LQjA6Zaph8w5k9Fd9pXFnsGo=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -2476,7 +2476,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.007-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$XbDDfiCOKaUCcyVu1ctSXI$udTkAgsZPU/KYXm1tcPlZQWPDnAHuTQlPCpx2QdE8YE=",
+    "password_hash": "pbkdf2_sha256$870000$I3CObcuj9jLrEoEcG0hw4C$/Y38Qs/M9nqYAJhJTJqv8/F20VpaewTh8lmyXSXGoI0=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -2491,7 +2491,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.008-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$6tuW5oWpijEhewBdqZnxEB$lcpclW6PMEF4xodgZd+o94gg3j/C6nS8EHY66kouQYQ=",
+    "password_hash": "pbkdf2_sha256$870000$fAlTkMydeE1jzEvDIcBwiD$SbkUWFU1RifuCl606Wgjeebx+Gykuy6VXfgD75g9yrQ=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -2506,7 +2506,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.009-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$9Y3ypwnGvSazzggm4wVnCW$2Df+q2cG8SVjk00aqx5lARwJ8VoQlq+t2EH9eVSe0kE=",
+    "password_hash": "pbkdf2_sha256$870000$Cd9ng9xOPOfo67jVO5fhtG$Q5wWd+uxlZXHgAj/xaZSAdO/fEVFEeKbQwYCxPCVggw=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -2521,7 +2521,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.010-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$TxortUxHWaDofWBRf8ynOk$rBrOI63UZF53Iei9BgGvS3hI+yihbbbGgOsuc/JUo0Y=",
+    "password_hash": "pbkdf2_sha256$870000$nkpsBkqiPZ7P9Ox9sUXfbV$GMDErRdPRk57aID5y1znDk+Ngr771nPWXsMIqxiaMg4=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -2536,7 +2536,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.011-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$gsuCFKirB8eqY5FU6RzEjz$oiFnhrqDpFmbeHveQv74Sd6reJgwHwFgdLa67khQKRM=",
+    "password_hash": "pbkdf2_sha256$870000$izGYqVcfyrJjMfh5UGmEwK$bzvEiBp5q3qy096t4KuwANdH2Mt41+DRRjFv+XxaEkI=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -2551,7 +2551,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.012-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$TZTBFhwot2KffbDUUncnSS$RzDRdwyjzqRRbClpL95sAK63U/p4ar++k5EAX4EVuhU=",
+    "password_hash": "pbkdf2_sha256$870000$ipGlGswqKtWVuM2JFXNmJ1$OclmI6//7YVqJNRyMk3lJcNjdUdOLGW3S2Z8doxAm/4=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -2566,7 +2566,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.013-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$akXVPD8s7UHGEPTb6RaVf4$xCF6jXtjDLv+5xNllwD7ZJcw4CYI8YBVY0khORAevSM=",
+    "password_hash": "pbkdf2_sha256$870000$7UaC3sZOtNTMJjLeTRMLdf$TIOeuj/+CNwx2AkXqS3xjMq1YS9g+Q5wevWmgcF6tdM=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -2581,7 +2581,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.014-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$gknlbmkZEXgCF6KpVimXhz$qIoSDXnC7mI6Ix5ucDX+4TcrHiyPlTGnwAOn0k6Bso0=",
+    "password_hash": "pbkdf2_sha256$870000$53QiT25snU9oomVQZ7lePt$WUa1l6jv+gRsEO41VCMd6VaPNB+JfvMgMQBMV8Ofrcg=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -2596,7 +2596,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.015-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$1OcpWkhNFEDogzGMUtp92h$svWwVrGCF+uJTHqS/3UL0q4oq5qvfGSmTd2uXcUKB4I=",
+    "password_hash": "pbkdf2_sha256$870000$jybIcRPz1zVQxeamwokCkX$brACyD4NQK4RhhHRzRlZJM9T3x0YqniuG0B6L8fKKm4=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -2611,7 +2611,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.016-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$89YBHO2oDaZOZoXYqKPXVL$m3uNglIiHs64X1/7LCGh0scshLKatP/gbVhY2ri1d1I=",
+    "password_hash": "pbkdf2_sha256$870000$LaVEV1J1FywmiUAqBN1TcO$8KvatLp7DB+jK99kjBFySKlgo9i0b5NeuljuaYeW1PE=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -2626,7 +2626,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.017-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$uIoYTJAuOF3eXvgYMBDvoN$1uyRxODGvjMXMUbvMsRsH3oNUHhKUINU9psZ0WKgRcw=",
+    "password_hash": "pbkdf2_sha256$870000$ZV2rFZKpN8xAK5462OrCur$5Vkr8mh8Sa9lF7NbmDtvFxLBTtq6H/3HW3WbfMxGz6U=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -2641,7 +2641,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.018-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$mLDuiDwdtGmfkcpk5fZ3LM$Bdz0GU0UFTKTYr3CtFlEXEVI8RrZAJHKT4mioU4E0SU=",
+    "password_hash": "pbkdf2_sha256$870000$XSYFhR914zYymH7YHzu8UL$A6Bp1FO/Z501aIuOgTNtbQCa19DHrkT2pHXpd81mAO0=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -2656,7 +2656,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.019-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$8wYtmb3jDXCGiNJEZBa7BJ$2L2SljWDhMejFeqzs1n80oBZWu2nMTToVl/OxdwjiBw=",
+    "password_hash": "pbkdf2_sha256$870000$h1nLTgz1BNVC5cwS0uJeRw$PD4hZeYZfl9ykZogLlkeK++UOAvQKzOCufY2pHQZ0yc=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -2671,7 +2671,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.020-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$l3yPvKuNSlDNKnSsP4rO62$EBOKU0uH0Y+KzxhaN4zqJxJ7JHWwmSDwCJZbpdXh1cs=",
+    "password_hash": "pbkdf2_sha256$870000$ipI67exDYoKHZdJpFd0Zie$UhIvfWJROvk/fRaQ0XWKWOgYK/kaVse94EldMHZq91c=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -2686,7 +2686,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.021-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$zNoXCzJGioJp9rdDyZYmAc$juzqCL6K63QToMYxg1QxSRMm+PRGeZ0Hmo2kKrYkWuk=",
+    "password_hash": "pbkdf2_sha256$870000$Uti2t6Wvp4bsdgS10TYeL2$ZsqdCyTQkkkyDRZSbi3mPuDigmwuc/FTjmP0IdhzOW4=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -2701,7 +2701,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.022-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Dg2b5VW0BiZd07HS7g8cEm$U3CRRS43XJ7j8PTbd1LFMzrqPUP/toTwFHXhvN8SMFg=",
+    "password_hash": "pbkdf2_sha256$870000$WRMPOrNGaKrONcjsKVsc7A$+gZW2bBMbKF9JeafEJ6RCmLEeR8S5n1BbrJzonmB2W0=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -2716,7 +2716,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.023-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$LvxpkvxgwK5MynUwvo87S8$VkqR9Dqn2/9bZnJz0BPvWraEkDifTUD2YbYe1fDbOqI=",
+    "password_hash": "pbkdf2_sha256$870000$V4kYG4RitKGFVxA0gOUSNp$0W2OR2WTA7X9NN2XGgMFyvtRkwVzr8YXqv9XUrjjlPk=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -2731,7 +2731,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.024-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ySRT0yI70SVNGCSuGfd3Zm$12/lTrB7BvORQg7ti66GBfKCCectWk0NBOQvPeDRap4=",
+    "password_hash": "pbkdf2_sha256$870000$wiWsRPkYW7zT9vq3BieIy5$7ZOdIh+A9JLYUqoBck0qosUbzb8yabxAwFMwqQrcfDU=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -2746,7 +2746,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.025-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$dN4ELROm6BaluFW40nrlzW$7WzAVilJcEgc0KSwTst2C8e20CaotSbDfWAEKHzsjSk=",
+    "password_hash": "pbkdf2_sha256$870000$I8IRma95JAmzVk953aqKW2$jcTfdizcpoiwmA/4wWMHtjfsz374IKtrE4f0XGK0wIg=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -2761,7 +2761,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.026-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$QsXBz3EobRtimkxPGY6WM6$5VkH8b4RyeiEfjyHvKzPukCZ1+k6J33Wy8MgLtxhaow=",
+    "password_hash": "pbkdf2_sha256$870000$XitjAPt4sAowTvYHNM65tL$RtEnoEabjZFt4P/7bOMGDpZ7Zmj5yQvj1MBgEnSr0Pc=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -2776,7 +2776,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.027-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$dW3jLLbxT8B9ucyRfuTM9S$qUtj6V0qqu2a2Fpl/CNp3StUI9dxvKSPqFreqgaCrgI=",
+    "password_hash": "pbkdf2_sha256$870000$syDv89uGV2UwXz7adLOQeu$RSol2PxCPswGp19ZUZqkwshVpS0AxU0BDxU8xCwoYKA=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -2791,7 +2791,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.028-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$kEHeDOm58O3CGf0QFVMLwI$5CkpEZM1jqetUzbLNHcuAiwcxwvR+HLIK5de+1e+2jc=",
+    "password_hash": "pbkdf2_sha256$870000$ZLod9MGahoQKqUAMuDtRyp$9b+5WBGXh5sW46z2OmzdhvmhtNEionyxWv948WOJ2bw=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -2806,7 +2806,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.029-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$SpjLTs4RZ2EMsL4Ncmzzo7$ysrJqW5YWG/0xGJap6x9d6nMuDh9W2caWIowPx4BIkw=",
+    "password_hash": "pbkdf2_sha256$870000$wiAHqeciBb3HrqCPgC2nr1$n35pdTGwpetLPjt8Yfdlbk+gWpQKF2VzMJxcIwTwDuA=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Perez",
@@ -2821,7 +2821,7 @@
   "model": "sistema.usuario",
   "pk": "40.005.030-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ebBskXhep3yxc6NKmIWhBi$+F+GW/RF+0uNo8t8bTq11vbqVBjwU8zjL0c2xKYQZtA=",
+    "password_hash": "pbkdf2_sha256$870000$Uj62rcQKNVi6zdBplKpLGD$9Gji84i6LxgvOgnlbrabW4nth5pFi5yxZIbrZNRbr8c=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Soto",
@@ -2836,7 +2836,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.001-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Guoxx9kgMqB8HozKXjVMD6$A+Rc/cVQcgBdv8BTBnNYER7YfSzTrpBDIBZNunuxDug=",
+    "password_hash": "pbkdf2_sha256$870000$5rniKa6dsmat3heZNCn6j7$3RWf3vhuQHIO45eQP2f9jdsdJg0XXTJELiYwQpmu7uY=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Silva",
@@ -2851,7 +2851,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.002-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Qxml3rQXty2PL3nrTMOtps$1ZIGDjgWPJwd6ZPYW1r9kf3Fp1JDPberkOHxXMeXSBI=",
+    "password_hash": "pbkdf2_sha256$870000$M9urD3IV6Hi7EMpU1LDSsH$p1KF7EwlkSLrO+Rkh6ccleweBL7TrHO0+DMsA50KjOw=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Martinez",
@@ -2866,7 +2866,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.003-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$RH1e1TMvtiw1B8YATvjahk$OSaoKJAcl7FoX440fYcTwR/GSRCxTC9oEJrkOFK8xY0=",
+    "password_hash": "pbkdf2_sha256$870000$7nQzhAaCeIWsBCP2oPhn77$ws8P+sVsDJ9gwWTMlfQEIgsThx77PNlJZEhDtXOq1TY=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Sepulveda",
@@ -2881,7 +2881,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.004-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$tWj3Dn41EY3tGouuo8n7ms$UoF2TkJ77A7v94xth5dp3y/7TbOJSjXfUkB205RLdjs=",
+    "password_hash": "pbkdf2_sha256$870000$yWWbOBwQtt9mFieMLKo83c$Qa7fmMJcyd6M4ypKNaD+v/qsQ9hcKm5DAbbERlwgnxE=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Morales",
@@ -2896,7 +2896,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.005-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$LVcTqqKaIUyDbu2nTtBWRX$4vUh71ufFQtEfqZej/wKwFEIGzQ5eOrd0IbGmK3m8fo=",
+    "password_hash": "pbkdf2_sha256$870000$UZnvW3VN7GHRWXBHe3g1AU$vM0zRiAoLnDoFYOCsodAqsJktVp0T7HRNTViib2yMUI=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -2911,7 +2911,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.006-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$lG06AqZP4vKqvWv6Fkl30I$TQZTsw2+XxoOBTj1VCVqj4mnPl/L4D6gWgDvDb6jp1g=",
+    "password_hash": "pbkdf2_sha256$870000$mwbV4BBZ0wYdOQ3dxPNYNe$2lSt9YIBgeLIuzFOXAXKNV6Gxo8DP85RcZsQQ3FRlwk=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -2926,7 +2926,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.007-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$9aAhfqxGRnP5nW09Ozm75n$/ry2cYPntKIzQeqtvs5mdZWbHjgOZHPUVJarbrArodc=",
+    "password_hash": "pbkdf2_sha256$870000$jveku4ZigW9B8mS62wodUW$//UYIwY+Kl9qSMF0o5FXtbr3VIUB1mooP8ewEHFVKt8=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -2941,7 +2941,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.008-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$tPKYvHiIph5OFHS05bhoCJ$GYVHVYpeQ5knJi25Zv/mAw/vq2qv3QsFM7XHmAU2Bug=",
+    "password_hash": "pbkdf2_sha256$870000$9jQJJMCS6h0c6R4On6HbLK$AgsBM+S1m50I28MAAW0KXyX70pngV8b0g+/0DyMlQks=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -2956,7 +2956,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.009-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$IzLYkpLhdK3jQcWEr5IvIp$wdHAoKUzjjNqaSSl5NoIwruogVYqBA0vT+hHxm/S0RA=",
+    "password_hash": "pbkdf2_sha256$870000$FvMupgVBUSF25OUTD7RELd$jBc1p83Nbqo7RLuAYu9a1z9uC3Wu1ZQUDXeoYzLyIHo=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -2971,7 +2971,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.010-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$mzoifM9W5INtmMvmW4nFBO$4qW02f7tKBPOGeONw09Ic87bG4H6D6yCsFu/38xvOpQ=",
+    "password_hash": "pbkdf2_sha256$870000$aYKxgbyk5SbOfJjXjyFGRQ$kiMcDprcpv0Twg3I7edM7wQsgxwWAqxY2ny+1kIw2Ns=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -2986,7 +2986,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.011-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$BhsRiMX8uQBO7ZCzvMAjSS$tPoK0YfZkJK4MbLSU7GYrI7m4GGtcq5fZSvKyLFxUL4=",
+    "password_hash": "pbkdf2_sha256$870000$QtvUJAsQWG0jRCPNioZ9xQ$BgVXpVZ41ugwSIIAw3FxuyRo1Kxja3iR9ELq3YognKY=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -3001,7 +3001,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.012-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qX4fRmdOZesedbp0tGK5Oh$hilaV+lfdg6sbONY4aq4a9O09xvsfol0gZQhCYT/BBo=",
+    "password_hash": "pbkdf2_sha256$870000$wSRPRHYNaSxrw9KSC2g5XY$mQCPB/MM1Uf71Y/Wa5x98P6syGh+OUV6aErBhqjDLfs=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -3016,7 +3016,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.013-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$w1t5PlRFPtfARnLNEzRaBy$T9qjxmthwxRIEcpbGjpTgmnoDevfHKtBq2GVXuBHjBs=",
+    "password_hash": "pbkdf2_sha256$870000$kHMJ1HA6xwrc89WDyxapWr$6pPlW4TlGxoDNQGQzbd8k3vnb+EC0MSWEKvZux+Egn8=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -3031,7 +3031,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.014-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qu2NL6PVpW2YQ1cOEAIKFq$iI1TEns1ZUYtoHIKWPcdKDTsGrEyWGBh4SjBDrjTmvQ=",
+    "password_hash": "pbkdf2_sha256$870000$GdZY5aLG2wmZ2AfnVpMJAB$PoaQfWAQHOdFVr1g03flW1wcAUe9fFXUKlWPrcoktqY=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -3046,7 +3046,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.015-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ojkuL0gT1VePKCTt9dstya$557VN9Q/kfLCooVhTQe+l1PNhFZJ8blAXPjCHrv1v0Y=",
+    "password_hash": "pbkdf2_sha256$870000$x83y5jn4Wp4FPem90HOogZ$DzS6pDdut0lW/klzmvQMlccgicRfm55wxry/Wu1J5Dk=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -3061,7 +3061,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.016-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Zk8FkqwUuF56VyTa4azpXi$P+Z5c574lS/slgXxBhEprWbWrTQmH7iu9sMVarAeLVo=",
+    "password_hash": "pbkdf2_sha256$870000$5UBNCXiAvNi1DHBTtcK1Ze$PHskwuQ/EGCQKwQVxaNqJ/GfEaSNtwlBr27VZLKVfbo=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -3076,7 +3076,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.017-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$HqITHKqKTfSz6UDcSU2OH7$2vS605UAenUvNOBdJETPnXqh+GWXMg1A8SjMI3WSarc=",
+    "password_hash": "pbkdf2_sha256$870000$A7MhztfWMb6pYkxOohMUAq$ML+HS2HNHOMTHM9UqOKI13YenBSs8sXuK2YmiLcU81k=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -3091,7 +3091,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.018-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$x92avyqMV4CpnSdjDyFLLm$zENECDCDscfmJq2rYe/yPCZbuoBpxDcX6zMHiUeABc8=",
+    "password_hash": "pbkdf2_sha256$870000$SMLIzLEKd342XkBPpEahug$T7zYJnLNpimpy2bjWROozr0jI9+l6mpgjv0HP2dF6U4=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -3106,7 +3106,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.019-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$bMAnDFx4xnZt72QBv9gyYk$K2s2n2bKi2hWQ1h7F8nVOTRKFRNPZtXePL52LWWf78g=",
+    "password_hash": "pbkdf2_sha256$870000$cRRq71dATIwd9wrJCZeas4$xehvu5amMEVwuVov8VyVebF4cokCTWewn1uzfwlkmvY=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -3121,7 +3121,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.020-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$rjqrkdB84BIm1zIWhnKleh$cdkdcHuMQ3UxzAnOZ0RxbQJdpEChLoRe1+8BwGZtZDs=",
+    "password_hash": "pbkdf2_sha256$870000$BJ2HOOzH5iiOD2yjR2nQ3Z$7qaY8SS+84Lb68gpKmiEFilhNqeD5sTWlcRkIXEreOw=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -3136,7 +3136,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.021-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$o9uLkbnE8vHgmVOdNf235V$APZVogybhqy/IvotxHowxVoXLGdXLmMl0q97U6RpGFQ=",
+    "password_hash": "pbkdf2_sha256$870000$lrWrtjizWqY2zDYYsTeGnZ$URO8y39TsnQfJRlbOGHmvrdgNTGpVjZwEFY0UEv33gI=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -3151,7 +3151,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.022-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$PEBuVgYXDcKHQ8jMWvgP6t$j+GTgKLQ8QSRyw8pufxaRJsyS6UJakgrxXv/Ssg2xnI=",
+    "password_hash": "pbkdf2_sha256$870000$W4TiYGyoKeP9ujtfDygX58$lFTY2KBucJhwkxt93vWWB+oh5fZmx15GZdJO6JUZkNU=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -3166,7 +3166,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.023-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$LpS1uVBrKKsCbuEMMMBvNg$TcgiwuoeZBZLWkLDVGVd4HiGsx/djxZEeQ0TQK/9wvM=",
+    "password_hash": "pbkdf2_sha256$870000$ClKg1MySP7IgMkj6YFjB7z$AQZLdYsfYxKkv4hnOG4s8muSWJD5A3uzcieWCtbDAyk=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -3181,7 +3181,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.024-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$eARkilNTREFpFydCLw6gmq$Ln/Ci8R2KF+NZEE1jhCoHE6tZ+Ej2F5x2BJwDv6/WdI=",
+    "password_hash": "pbkdf2_sha256$870000$qAbuvm6hhFmSZ0Ja2cOrY8$UqwExfA1R3sAyg7s7MKL0fv5t4k2hkC4uIVr1eyXkQg=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -3196,7 +3196,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.025-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$5u92eGXXQq0gaczG4oWM87$DUbWQzd0RxK2B7InAvmLfHK8xh5bJHjOVY2vgb1AhwQ=",
+    "password_hash": "pbkdf2_sha256$870000$SV5KIHOtkTkbay9rp4Y8O1$lRiOm7YjljIggqaAGUNsle5Mn8YRUhrHD18CbDbLVWU=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -3211,7 +3211,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.026-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$6yTQuksyfEKcq6DezvM5J4$5hryxmkGBP4jq333CAlKXnLRZW2wqWUxngSxP+yKZ0M=",
+    "password_hash": "pbkdf2_sha256$870000$U5472tZPwknA0A6bOEzBvB$fwkAvUBxd6mp1i8u/3w//Q6QCxruBio3Pt7tQWghOu4=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -3226,7 +3226,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.027-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$WrwBFmjCtubYSnG5rbg7FY$DdTFmSA6m+QBBvqstIDWqCpjYI9TlCwBCMcuoz8R/sI=",
+    "password_hash": "pbkdf2_sha256$870000$LQSbBpFUsp9LfwFPJqWDe1$tNB4/0zn/D6xOyQ5fbjC2CIwH0PdEbzdwcT9xOMiqy0=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -3241,7 +3241,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.028-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$JeK8RtjKsW9kfwWPE3EV00$u3bzKuVNuhzuVzsGpmHreXY39dltVSXJNGZogpJYAWk=",
+    "password_hash": "pbkdf2_sha256$870000$7lEYoc8QAbBJyF3g6iagdn$dd0e8X5DR1hfQoTrT0XC4VdJq5hfQsl1Vd4rymMxh/g=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Perez",
@@ -3256,7 +3256,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.029-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$dms80rsugc4B7bnTiw5ipd$47+ctYg4WLR900IX1OJ69VgBQTwwHKD0lZDOUAsqL4M=",
+    "password_hash": "pbkdf2_sha256$870000$d4GGTbvlwSOpyQq3TbXV5W$DWyOmFhtSh4yONpFtSSfA610WoejTyRlMv89CWAxB2c=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Soto",
@@ -3271,7 +3271,7 @@
   "model": "sistema.usuario",
   "pk": "40.006.030-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$NaVnB41frNHrSbibVvPTKN$HG5N8wZZwQDDBFzKx3L/lSP/mo4033L8EKtxxdZmmzQ=",
+    "password_hash": "pbkdf2_sha256$870000$o8cHJZElp2Z1UuXT4TXEsx$/g3D4YzVFz1qCvv4DQ4b9jPVRBeS08ijmhp+fFA+A/s=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Contreras",
@@ -3286,7 +3286,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.001-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ShVmFf8o0M2b2HFIdm2roA$F2SmR8ZFA2l4i1bSljFlGeFym9sbHcxip2qjDDUMg1o=",
+    "password_hash": "pbkdf2_sha256$870000$7uWmKzA8G7fCfuWtv0wnld$3IYjZ4AugungyhpnI8sQwAQUM2H/BThyvoBSQHf06e0=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Martinez",
@@ -3301,7 +3301,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.002-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$pp09fz5LH1HANGjjGHFSk6$pcPvJoFCKFgG8CMD4mQpPS3U4C4rG3YEFhYlJM7M/C8=",
+    "password_hash": "pbkdf2_sha256$870000$5YUGpNLiTiAyhLzep9z9WX$Myu1TQxRqS+6tAq1XOPwBv9KVQ9p/AItaBKdkP71bPk=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Sepulveda",
@@ -3316,7 +3316,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.003-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$CU5uiF9NMxhlpquPMaE2rb$2Z81srcpOQ+eosd6It3+/8pWR/XVaRvNomMUoMFU0/M=",
+    "password_hash": "pbkdf2_sha256$870000$4K0mP1iRUwbMWZcrG1sktC$gqWl9XTuOPYf2AGlS/IyGTi4irqKHdRtoNaxUFvvJ14=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Morales",
@@ -3331,7 +3331,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.004-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$09VTTr7NRx7EDhdpO6KJi8$H37sOWmORxSkMvqcLUFQ8F6tN2LVvs6X6/DemZdyhhs=",
+    "password_hash": "pbkdf2_sha256$870000$SmYfrJqGXjIM9WESw67f1G$uCw/tqCnuN+/7iSrJCworwyLmZwwWlfvHlneWOc7vOo=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -3346,7 +3346,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.005-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$eSZfyLAX4KF31lJqNLUwRK$AF92hgUl6eF56UQ03mb8QqCDvqTwAafCcgOxXRbNPJw=",
+    "password_hash": "pbkdf2_sha256$870000$sq5ctj0l1DKY196qa0x57D$KGyoxXcaD8sQE0E+O7OH0xEMkpwP042pP46tSv+yG7s=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -3361,7 +3361,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.006-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$dP2MvgrR1nHWVIXuAeI8Ic$SlZxaEpspX3c1ACq3FGgiR/Bo9yYt9ZbD8VmEHddDGo=",
+    "password_hash": "pbkdf2_sha256$870000$I9VSSBbRPm4E9JN4fSTvm6$89w9c/9W5trpQloyUV5kCUJIjAPWYffIq+HldHjrC7E=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -3376,7 +3376,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.007-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ctf9b0sAPh8VrWUER0UuXV$+FFZ27RJPeJrsBkU/lxC57XrlXzORll1Xfjbq5l0ljM=",
+    "password_hash": "pbkdf2_sha256$870000$7KX0AeuuDXWpdhqgqCOVXa$78i4kZ7fUSenLCT4szj9iHmxI1YmAh1bvRF2ZaD5D4k=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -3391,7 +3391,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.008-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$17jZqOCQdDVzn9nQxSB48U$4KBKSHBiv8xYrH3lhUpE/gv+fGligETDXd5kCrydgjE=",
+    "password_hash": "pbkdf2_sha256$870000$73FyOsSgHmKyHZ7J0EeIDJ$X5EN3iuowY065zBCoF///yzSHY6EJyR6s5oFPC8lvAo=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -3406,7 +3406,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.009-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$WTdkOGyblrfa8nM9KxEZG0$L5/CCTIeYRMpZvhouqwksqB5XaMRZr2LRzdGmo/HakE=",
+    "password_hash": "pbkdf2_sha256$870000$wK9AEpEAztVVx9UbizpLg1$THSUvQSvSKByvL+/smdmZsQzzubDT9NfPn3sY70fm+c=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -3421,7 +3421,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.010-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$dTKDPM0VWAOJhhUsRZunkc$VYNfvrybPBAoRHC/UOjyPXNK6JA5I6elMjLJ9E6KB6s=",
+    "password_hash": "pbkdf2_sha256$870000$qDpQtoqVZMAANZgL2QKyVS$Z0ApsP8GzMlGaMOt4UT+2tyFnm9c1sQPp/5MChsqysc=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -3436,7 +3436,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.011-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$tizy7NFePCnwOVV1Lf1F1T$4jolBHgSpDc0XMzo8n0Nh84oL/zx3NJpaSPG95lN1wc=",
+    "password_hash": "pbkdf2_sha256$870000$mJbxnfKZCwuubq2S2GoHpw$B1+Uk3ftMLuJyg1d6WpqnwEgg69N4AUIsQJ0ebcNqjY=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -3451,7 +3451,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.012-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$6AsQqiE8RX7AtpeWMdLDQn$susCSXyHJmTkXd5L5Wc1o+AIbJMrzBMeWgXzRgJHjbk=",
+    "password_hash": "pbkdf2_sha256$870000$UEtMIvmqAj6vcq90dLrWQk$kY32mJAVcNPPTELZef8vB81UHFNjWlDuoltrW+3CPHQ=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -3466,7 +3466,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.013-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$78S1yOWSh4LIrlgEntkeIP$YwjuG5xwemvXzCOHkL4UPLF6HegL8XXbMXZsX8xLYBI=",
+    "password_hash": "pbkdf2_sha256$870000$8TA870dN8QmHGUqFkheOXl$zQrxhZnU49+1y/ZWb/ttqB//8fIrW5vqQ11ajySnC8s=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -3481,7 +3481,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.014-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$alR2DiyIOndP9pNN4bCBPE$pCHl5hFq9Xb/VbuoJjYAmUvFbzMbZa5Y9OPAfsr1p9w=",
+    "password_hash": "pbkdf2_sha256$870000$xSPt2u5MW9sH1TtX1xMUQD$2piyJ37daIr+Hiei4l36smPApMWC7OcpiuBAI1MF3DE=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -3496,7 +3496,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.015-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$agjtaGpV0g7PlgZmBKsO0H$pZph+f/EbYSMzj3/mxHi5XyvxbVWuW1Az5OXWycUv/I=",
+    "password_hash": "pbkdf2_sha256$870000$gSEYYJobt4zTPykqU6j7cI$aKja5nvM2Mo0m0L+hhn7ZkMNxX6j17UoDI9wySmD/E0=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -3511,7 +3511,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.016-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$C0V6GBFBTvWlO6N4D6DfBj$X6IIFxDQcMURZtB4+3olZLpunxUJ1fmL/kjIATXQMSs=",
+    "password_hash": "pbkdf2_sha256$870000$3kjcmCDOikKziuTNg6Bmlf$iYX0O0JaMeEaxgnKyw3uSvxDh1XAG42ys/I+M7WDFbQ=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -3526,7 +3526,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.017-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$uBwAl4zPvw8aVVkVrAMtKU$wPtFtjzQppdC+zLwU7F1HDAtdcXfPDeYZm3los2UM+M=",
+    "password_hash": "pbkdf2_sha256$870000$C3GmODy4BN3jow8sOQeYOD$fSWu4G04UHV9RFd+I4VTs7xnhQd2FpEs2RbCO8jRgKo=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -3541,7 +3541,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.018-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$X6zFpbG3Lpkg6wwlfKWzP7$Htj6cCzhPbpLX9FAJ36d3T1FTF/BtZCn+byz1fqpNCk=",
+    "password_hash": "pbkdf2_sha256$870000$UcBCk1HZmkNRVW9ofmtKww$LkTc8kf3EmCkwT3WlvFODASdCrYwOfYGMhgUKVLaZow=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -3556,7 +3556,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.019-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ImpNM0KmIN70JyAQY4j59q$Cj4W2ikcZMEaxvucnEgqSKiKRI3bVhjCvj0CFjwcYgc=",
+    "password_hash": "pbkdf2_sha256$870000$qg8x3HAldT16oyNCELbQeJ$eXrfAloYJAWoVshG4+2UIKSnDjgZbraSQ5EXfcIyfPI=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -3571,7 +3571,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.020-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$kseo4birfc589AofSjzgxA$5jEcmD5ManDFJ0VaXJjq0jvIydHY3HBstxre7oqQI8U=",
+    "password_hash": "pbkdf2_sha256$870000$vUexM7eJAdgZLGzHaxvR9L$zlR//dfXeBrtGhVmDVpKaD4x38nQq8dA0oMV+wGyRbM=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -3586,7 +3586,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.021-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$niW4HI2i1miIU3IMSHU0SX$GwD0LSy8m5wH3sfGilCBeBYsPRj5homcsnN8rnVhhJM=",
+    "password_hash": "pbkdf2_sha256$870000$hYE6bMIJXfiQQmhYd89WVN$nXgVo1CmHeGmKiI+TxAYTW7kiHsAuH82W6tuStwOOPw=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -3601,7 +3601,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.022-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$BFiZNCQgB9fbaPr2lrzYoV$WN30JQQhR0UzBM6y0/PEdai8R7IqoYNVnwF/1+zbAB0=",
+    "password_hash": "pbkdf2_sha256$870000$ALdaekDmr9C3c4HDmc6rGR$FQQJGXBo+NH5Fa5c2JUypzT6GJRDAUdNceUtkMPCGpY=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -3616,7 +3616,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.023-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$FgXPQVOG9Z2MlX1wJ831LN$tU46Cg4wmxMeJxCQTASnZMAyFaM2bD8FrK23xb46HTw=",
+    "password_hash": "pbkdf2_sha256$870000$GgD67W74vORwvtsLmiJprT$qJNJ0hsEpaIaxk4JgmpUYXn+Rk5YziVl9Uy+hrGF5E8=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -3631,7 +3631,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.024-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Osixq7MPwZxPp11Gg8zZKH$bLKB8bwSdyY4wezs0s3wQfw/eDWTSUUSPj0UMuPqR9M=",
+    "password_hash": "pbkdf2_sha256$870000$vtTjEsVRCI1NZ9r1a96EOb$hiaD00eaRsIZRtWhJMKlIQK66INKfACO/9yXL4LIn0c=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -3646,7 +3646,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.025-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ZNtcGTxFR2L5jldsP1AYyH$qIiZ5O+AYfMxZnO4QUuQVsijdX2PulEIeSeOuUHr6GM=",
+    "password_hash": "pbkdf2_sha256$870000$br3l5xng62GXhkMEhWKdlV$DL0//Kp8catsosu7qyvG6QdfjpdVaY+VYVyyx3ZnKFU=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -3661,7 +3661,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.026-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$3LEjxaYsRcvj0sqn9zL493$iBUacnW8jjy80Wj/y3CSizv6hkYYWsif+9kYovhO+eU=",
+    "password_hash": "pbkdf2_sha256$870000$HZ2ihQ3SNXar9al48rbHpM$auom7VivN84ESaCyJMuTx/5V8erzunHMoAeERcwg07I=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -3676,7 +3676,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.027-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qBcksYS4kRm32hA1CJwTr5$Yp2G+AR/yQbtGfICYOYLqcUb6BTNSH1vwLkhvjfFTUc=",
+    "password_hash": "pbkdf2_sha256$870000$PElNqyTDsDuyCEcfm3RU88$chQoysTajkQXsaNBDB23pN3aEI0nx7wNviWizZz0y/Q=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Perez",
@@ -3691,7 +3691,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.028-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$156D00UGlzmQFez8Bl9NDH$c3Yo7Kwb46C7wlnt6vcW69CTFJPjjP+zq0DrrBRwygE=",
+    "password_hash": "pbkdf2_sha256$870000$COKeeHnoCB9zHs8dfzhBOh$EKdhpadoUCcfd3MHgEE0QLK5TDTqZgnKB1n8ILOHs9Q=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Soto",
@@ -3706,7 +3706,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.029-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$mrmvVlnPYyPKLPoh6aOyUS$8KV4iaPi3VDJpc7uDX9CGLuUV5RFJ5shJv/1Hd+9GIY=",
+    "password_hash": "pbkdf2_sha256$870000$MHP4Cwx0G3nEohQBAtyOd9$wMXvbq1/XoxpzRJpWUCKdMfiE6PkIRLbgyjJ1AAn81Y=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Contreras",
@@ -3721,7 +3721,7 @@
   "model": "sistema.usuario",
   "pk": "40.007.030-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$CDPZ6SNaFOqknOtwQqqPlX$BZYsLHnKk7YKV1in1JepNLBOhe1l85jaVo8ihgYOXBo=",
+    "password_hash": "pbkdf2_sha256$870000$RscJouaFtK7OxQLdOeEDw6$b03/YTGiwGryzoxQy69LMtS12KU+N7M8baB85r/pYdc=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Silva",
@@ -3736,7 +3736,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.001-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$A4XqJRsLNIGsT0dv3rpcYF$RB8a1jV7raAklgZ4/+KSM71cPVrut1UjrbEeEdgu60M=",
+    "password_hash": "pbkdf2_sha256$870000$RnulW0OquqHxHtpd9xWBEr$8yNHmSMYKOXe1bGI1ySiqqm+XCXR5e2SggOzVJljSg4=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Sepulveda",
@@ -3751,7 +3751,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.002-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$MYPehvCAfQC4xMgucak9LJ$Twt6WOtrWnkm5MdFD+BDGBmhpHZGCqwRLkDgy3QTlWc=",
+    "password_hash": "pbkdf2_sha256$870000$ypQHzCSPPXKEzkOPIgEcuV$de/YhjX/0G2WknrYwAQOr4jdqiK1HRKRnNJmf66p1VQ=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Morales",
@@ -3766,7 +3766,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.003-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$mW4b1oz32gOFA4vcZRO18i$NOdgf0XKNYukOo4DlMy+HpTXD1vBWOVwcC4UC9mVuyY=",
+    "password_hash": "pbkdf2_sha256$870000$wlRLoUB1hUWBVc3503ffEN$hRuqg6RP1YcVd9aAPRXeg/yS/NkJ6AAvw5hRv/nx3jM=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -3781,7 +3781,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.004-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$sZtIf1OvcizebYOESgiGSI$OE4DmWUQUrPj2cClAFrFBow0zVaM+OOD5N3qs8u2SLg=",
+    "password_hash": "pbkdf2_sha256$870000$AeXmz3mb348qDVa5USZkNb$Hl4qwcKXyI8/wGokz9eiNR3f/Uep/f4Q/mWnDwuJpb8=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -3796,7 +3796,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.005-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$0DCUNd2Xmv4MfsiTg0bn7s$k7So/oec5Tc4a2avtlGrHUmZZ7tUFKsplsLRlCh/IGE=",
+    "password_hash": "pbkdf2_sha256$870000$24PFMUZEfA2ZTATH8eCY6H$AVSRpzeDo5Ydv4uGuabUwRZG8dZixSrL60A+WDtFmP8=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -3811,7 +3811,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.006-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$sSOGVBDuj7YWira8OrGoff$3YaubiEDKL3p7/38i22CjiY+vRkD1MlAyD00Q9cY8ys=",
+    "password_hash": "pbkdf2_sha256$870000$rqTpVdgPmu44eAR9LhMjdd$C2Mo3zsh2VsXS5o0U0bENlzWCZZNSRD/Q3f2AHxy4eU=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -3826,7 +3826,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.007-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$aJMxpjWDkjNXj6ZdESHznM$0GwmzihhSRYuhGGXHNsrodN6aIxKjA2mT6B3SAuLDMY=",
+    "password_hash": "pbkdf2_sha256$870000$UGBr0rpJtnejuztr2xccdu$Nyjz46BUMZ8GRPjw4KEmkb0EpoG2d+j2eOyfsXLOI10=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -3841,7 +3841,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.008-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$0jJxoqPQeMBBwtFQhcom4T$yzX0LMZ6ZJXW/K0iy+lzaZ978ciA1KsNwTFZ2gw9pts=",
+    "password_hash": "pbkdf2_sha256$870000$4WsoiPJFUHI9M07r0l6Ezx$2bXmy4S/jQnzu3Re5WT+cnKGcxRSZiFE/kpR5UKvZOw=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -3856,7 +3856,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.009-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$CLQRHG1kHdO7fjFpSxZ1E2$oanO1DicVtH/AnvzAorVegauCZG+gh1YeqOL8/qVYT8=",
+    "password_hash": "pbkdf2_sha256$870000$rlCr9AAkBAhT8WKmwTK1od$4rud2ZYW4+KKzaOKswLG2Wk++wcxRcN76UNpYfRctkc=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -3871,7 +3871,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.010-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$J6AR70PK9r95S3HFInV0He$VK0sAKe446HroSbxYEEtQMOLJg8nKA2gFql1gSIksYw=",
+    "password_hash": "pbkdf2_sha256$870000$We2Vjr1d9G3QOoWR6MNi2l$FJl4zdeNpzIL6ZTAhVdkOvzuP7VeOdb/TLrvCBOBg1o=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -3886,7 +3886,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.011-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$mKZXUhtOlDKuARRXjkmY2L$0NyWhFMHe5aVibpHjFsde0bU9R7S7gVv6WLRImO60Ns=",
+    "password_hash": "pbkdf2_sha256$870000$gsTs5dtiDA8WdnHrmx9Qs2$vRO84adk41/vTQKNpE1V+DB9FWf24IXXHrVbizRlvtk=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -3901,7 +3901,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.012-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$aQddHBcBgAqpSa0JaqDYr7$UofA2l+eDwbTkKYq3D4eG1GnMtSBfDaAPorDvs3N+Q0=",
+    "password_hash": "pbkdf2_sha256$870000$7qHbQtHmM03KvxofvvIzdN$tWe74yFvfuVvFDnpZq4ziY0BCdddOgKTzFm/TDlL+Hc=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -3916,7 +3916,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.013-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$zCQTuftwSRC4CeeySj7IgB$7kpTJ4Yfg1QNp7b3STQgs17G8iZfDwezV4WMDr0hlMY=",
+    "password_hash": "pbkdf2_sha256$870000$ab1vVc54L87B7ghHY6Jwba$0IC9BqZggAgSDOSl+7sqB+ir4IDyNcsSf8rcCAQqUnQ=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -3931,7 +3931,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.014-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$C21hRNQ3UrB32JT9mkAloI$u64wJfkmE+VqMfZZ5wdMq8csidW5FiTALbWv9ljVElg=",
+    "password_hash": "pbkdf2_sha256$870000$8jYvfr3ylgHaNlZjFzy3U8$OwJ5EfZAFjRKDKd2JL6cgAx06lfUHULrgwaEYeL1bWo=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -3946,7 +3946,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.015-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ayGSZI6GGzhuP7qxrjZYNA$T8fiB++Wij72Xtm8BAsmJ38N+n1ld8/vsDU6rieyT2U=",
+    "password_hash": "pbkdf2_sha256$870000$lBv0jqK5g3z6jwTjsYdntx$IfEfkwGb7N/VxuAHt1xGErBx/gi4iF9OrfajEFzfYKQ=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -3961,7 +3961,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.016-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Bufeuaj1Kg73gulX1glaWg$XDxoTRhU7UYUrhu1ofDiCvT4b91qU49qX4gFzps94Gw=",
+    "password_hash": "pbkdf2_sha256$870000$MhcdbksPVZZmsZEN5K0v88$535sFvQ0wXarkATwBp4DWwEQvHpfBfLJKFu8eyGPa0A=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -3976,7 +3976,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.017-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$1sqpehgYhrlIzp0C7naGEp$EkLmzdK5Zqyl4yZRhq7Z2qefrl5LyXNZHQAtRwvEUc0=",
+    "password_hash": "pbkdf2_sha256$870000$mrpW5lGpXTvA9N2yzjqbYw$YIv3OFIzk7/FfpOqU2W9XQbt0XudYQB4fq/pOOaFxTE=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -3991,7 +3991,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.018-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$XO6Vcaj3v48YAqBW2d7WJz$VFiYVmSFSzSYmyfx5VVQMrbBQ34vAiY1WloanHOcBcE=",
+    "password_hash": "pbkdf2_sha256$870000$VzSyDRNkXZ8vqNzJPIGxq0$VVsOM1XNqrWg4YYjiLL2sP/2rL574MS1iLc4R7fwbcI=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -4006,7 +4006,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.019-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$2xusfed1WBJjKBqCnPhlJ6$kGZQ2GS6b3ZO6DsGCJ3xmUvOa8fpPiptKui4T4yMDI4=",
+    "password_hash": "pbkdf2_sha256$870000$Erc042z7jlsw1DlxRywfDm$pYYprOO9atEqUXUndN9Z1pvv2O+3SXpAF/dOpA92mVY=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -4021,7 +4021,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.020-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$DLo26nJPpUgh9rFPaXCL63$Mi/82qTPxIp6FOd6AF+xG5P1NqF6xI3pycSOBAakr6o=",
+    "password_hash": "pbkdf2_sha256$870000$hh9ZUufN0lZAmZmN8uqP9r$V2hQWyWxgkNEVnU8PBy036KJkPofMJFsWMw79Bdv0B0=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -4036,7 +4036,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.021-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$YOGmt5cBhIB5VEkHWCquNq$paCuWnqJqkJIsPXEZh26IvrvvJJniOIkoa9E4a/e+7Y=",
+    "password_hash": "pbkdf2_sha256$870000$9N9WCzjtW24SczRYUTXYsB$qX6FYuNFkrgv04RA1309hpfuSqtxb7KGXPCOfi93+D0=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -4051,7 +4051,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.022-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$5nDAodpCkJkJDHnE2yZ5T2$oMfDsRQ94cClkTToANrJS4Z7TE+XZVBef7dxlK81E3Q=",
+    "password_hash": "pbkdf2_sha256$870000$nWJet8mVNg5gCSiTasX0lg$8+MPDQumaCD6h7c3G08TEmTW1ZG7mGII08QJfuBEcqA=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -4066,7 +4066,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.023-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$PgsUGqJCJDIQ8WuPHeoWJf$F7DsyM1xLzBDN6MQSLakn0tWi4LPJ5q6NZkbunkbgmA=",
+    "password_hash": "pbkdf2_sha256$870000$OZlLfvZ4NMfPzOXym4Pgwn$vhbMyvZXct4ZsyIdA3Q1n0tBu9NkC7YqWMmeb35hBm0=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -4081,7 +4081,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.024-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$SFTf2pK55FghEZ9t8T42o5$XgN5zkE+TlHLjHhz95oKeQPSYp1HaRrragplV1E1WvQ=",
+    "password_hash": "pbkdf2_sha256$870000$navKk9JvaudDAUO61JiawK$KT9/kR7ItDR2XvHAn6zvhSu0vwL1Wy0SuIMrL+L16s4=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -4096,7 +4096,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.025-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$DRCvAQuN3Z6DVVmYHuHYqD$6vJ1zR3VMnajSsfnp8RnuFLiOtmCxFnyRS6VvyFbw6w=",
+    "password_hash": "pbkdf2_sha256$870000$qje1NUhDcAxW1mdqzyODv6$Rgb6HFFgEwHwl4JZ726x4TQltj559OQHnasWhi6++k0=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -4111,7 +4111,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.026-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$nb4EE8vCsfJKQKQ6lGbdbo$dtXdtRUcEg5Z/tegb0304awPpxJ/1Fz78xiBO6KGa6s=",
+    "password_hash": "pbkdf2_sha256$870000$xsZqJqXWdp04V1zWsVOg4p$emXeLLnl08qwng20q8YTOpjJhDAi5Fz2DhZR+vcBgSw=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Perez",
@@ -4126,7 +4126,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.027-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$N38rcU5AXTdPcWatHxPneR$YTZf53LkRQNods5eAInqS3HIbCZpRaYKPGMEH7l2eKY=",
+    "password_hash": "pbkdf2_sha256$870000$7sjHfoIheCJDOdibDTcLP2$EtFX5IqOPBmIX1LFyjQKiSpYHRUnNG4zN9DPjO60ox4=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Soto",
@@ -4141,7 +4141,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.028-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$mrdzLJ5AjnSUhxUcMcEbt5$5oMFpFqhsQLhYNZ+7D3sZjGL9QCow9ncy9KgJ7r8M9s=",
+    "password_hash": "pbkdf2_sha256$870000$Qb8QlTlpeyLitFB0HQF8CV$ovfB/Cu0sGeBu2xmx3sDAtz6Y28Tat12lp2Nsccvwv4=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Contreras",
@@ -4156,7 +4156,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.029-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$T94IMIxPpbeIjxbwwGiinJ$UX2bdj90xD+jonnBktlC+WCEL3vrY7kbkj/Q/9LyVoA=",
+    "password_hash": "pbkdf2_sha256$870000$vmYeJbQjEiAw8zgKJTdvSC$CxsvNvBl3IXEmiDpysVmKPibSOb0fIBmtVm4SmOLENQ=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Silva",
@@ -4171,7 +4171,7 @@
   "model": "sistema.usuario",
   "pk": "40.008.030-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$wZgOa9eDylWGjbXy0aOHs4$8gHTbN4ee/7AkgY0wQL1QAT+CbUi+0KEioUobjzeFqI=",
+    "password_hash": "pbkdf2_sha256$870000$G1xalnqWc2kUDAb5FocUzK$IFU5M7sIqeWWKFUfQC7M1LbqoKWosLYmuSwmdJ1NcqA=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Martinez",
@@ -4186,7 +4186,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.001-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$UlOwns8iKB4k8ysw0E9kRq$DXjxee/6492wSBQlMEBZEu1Bc/4MXUYhskvYd8Pnzy8=",
+    "password_hash": "pbkdf2_sha256$870000$acBgtZrmUCwrL2X31Cpq2T$8f25xs2FCAeHbATczRM9D1ybzRby4pLz5lQnNAjxQPA=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Morales",
@@ -4201,7 +4201,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.002-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$5c2o1B6WbHXULxmuM0Wb7O$lqdt/y6hUPvkOzCwtLAVtE1mCn3/YFhYBhtRssXgK1Q=",
+    "password_hash": "pbkdf2_sha256$870000$SYj6ydu9rqQPG4zCWdN4rx$aywX+rXQ8cc9cdQjDeiVgtrdZElGN0aatp4DzGxfH5o=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -4216,7 +4216,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.003-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$9r4jst4xWP8SOLXmkRoh1H$/HQIVGy41IGLf71wMjU7Zt/IPqRoRLyBmHYr/uIWYok=",
+    "password_hash": "pbkdf2_sha256$870000$xyvhPNMTkUBZL6nljoy2uA$eumHXiQbAtfLm+c5ZCIJPzBs+uJD7Ktslcm9+h1STY8=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -4231,7 +4231,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.004-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$OV3abcITaSfRO2TqMuumS9$ViM2C4FYaYzLPFqsTm9jxAZkmo02qgAaY5MwVPZoSSk=",
+    "password_hash": "pbkdf2_sha256$870000$ycBoImvsXRkcDXCjNFAa9S$dcuJz3LmMwVrlJwBtgpbfoQGaVU9G0Hw/+Z2S63NeeQ=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -4246,7 +4246,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.005-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$z3evXzoB2ZpRXbgPS8St1e$3ntGohJfoqa1SaYk4STNVpYG3u38LSCyJnfRjaTCs8k=",
+    "password_hash": "pbkdf2_sha256$870000$IcNVXcZLjEnctAkmxB4Jf7$ZbWR+35S7wG4Z787kEH9wLM4xCiLbvxb4pxT7iEg0iA=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -4261,7 +4261,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.006-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$J6NDm5v9urvDhWLvR3M26B$3KEXumrhkOSi1p2yGRoly7fZx1I2+K1BVVydGixhJcQ=",
+    "password_hash": "pbkdf2_sha256$870000$x1jqKXseq8I6iZFqy3CiEE$oMfCsWD40z7ooWytVvDvjpsuNmmUbrW3hBVLka4jiHA=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -4276,7 +4276,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.007-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$h1PjKzfAgvZJvLRZDXUnUQ$MvS8WMbJgm8fPC23GwrtEqCa9wywKQ6JnrYSFFo0G8c=",
+    "password_hash": "pbkdf2_sha256$870000$Q1BhgagcGHGfswjK0kl5Z3$JVQhBNKb1STD2oeeQC8+URPaoNEb+I8mBLHlUCjj/4I=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -4291,7 +4291,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.008-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$2hNClIPL5b2vqPKwZH1jqE$KMchdrvbvDpehAGb4JnZ+LZcL/RQAjAoAJ/7KV5ECHU=",
+    "password_hash": "pbkdf2_sha256$870000$gB7oZW889IGo5goGUdbGAb$1IG9r15oP8lDESvS3Ge3miu9AqcIrCeTnXHwrCRELmE=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -4306,7 +4306,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.009-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$W3nhKS8jCaX0NlBi7L7y7S$NYtx1WeP9/m6aXUOdJ92iWDizrnSwftsZkj5qkHq6TU=",
+    "password_hash": "pbkdf2_sha256$870000$WUPUlW8QW8mzfLxEYmHj4H$neflx4T8u1JjdEfuYRo+qz9/6jFmaVIR2X2U4n+H708=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -4321,7 +4321,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.010-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$k5xWwVS4NCbfO3FxgBVxLc$fvxbnqagyaMS5puXXikGiXnnKI1ezTGNRrsq5vY2IsA=",
+    "password_hash": "pbkdf2_sha256$870000$xeX4VoKhirZpE2zRYtQcGY$Rtx1Z8lO0mig/EC3mbNSGpgSqwpsiGm6erb2Sh/khLU=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -4336,7 +4336,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.011-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$3MGF2duVHUvHqdjG6p6pof$B+PLOXrKKdYHdCDmG6fA2Md72+GcmrZB2b3AO1DkMTg=",
+    "password_hash": "pbkdf2_sha256$870000$rD4UACEc5CjkoXjN8ojtOV$y0GGN+Z3AiRYCTDtL6ho2X3u1g5EHyYoRvOMJoW2bUY=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -4351,7 +4351,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.012-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$DyKws1KONTjxUfbxnHgkO5$3XjnEfvZ9vs309DT540mvluvrrs86wTElZxZB5vPyzY=",
+    "password_hash": "pbkdf2_sha256$870000$vlwlzKqfHzKuPDliDgfDHR$S0zyp4AkD6JsHNN26qRSJMDL1rhiPEer3RVP9h8H3w8=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -4366,7 +4366,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.013-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$f7ukXyqBPMt3j6t7Ux9JN8$04exF+rGgvfIpovnlAceolFgvsysYEkQmKg/wTtAvp8=",
+    "password_hash": "pbkdf2_sha256$870000$O6poUU1L7jShR2G62YfcJR$yYeJbiYsSpIIsldeR+unBqPNp7EH2210JuK7ZG/9pDU=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -4381,7 +4381,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.014-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Ae9HublgxoaPXELHkgBfaI$b+kay4oR/P+Enm6nHITTYF7NvA+qvjbs6J++WcgpDOI=",
+    "password_hash": "pbkdf2_sha256$870000$69CImacwHm0eOnePQEGPu8$s749xkw62TyVej2KF7sFNo2ABGzInBUiiBQsFxQ+XOc=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -4396,7 +4396,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.015-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$hykNgzZa25TPTfNeC5KOFY$UtBxRqPJbet7P/gGAxvDGrN8B5MxDDYBU1rO9fHAe8Y=",
+    "password_hash": "pbkdf2_sha256$870000$OUYoHAGltfTTmhKkW4K6YY$9BPCXv+dYxcrilvcjmXVJ19NT4JH73jSRgI+mC6eO7U=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -4411,7 +4411,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.016-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$4OrdL7FHgFbbbVfuj78xg8$H0/hbNGyYHEcPjMk6t+wm3BWYYT0lz2ChKduw9RjLm4=",
+    "password_hash": "pbkdf2_sha256$870000$UJHiUosIJjlztLSW0UojLU$E8JE2seOExA1jxkl4keeQ1L5JYl5uCenrjLTD4dLnDc=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -4426,7 +4426,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.017-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qn8sFy0QLnY6YtnY1pYgD4$KHUv0Jueq30wySvOMOl59rrZQWoaI2+H/xICAXMK/2c=",
+    "password_hash": "pbkdf2_sha256$870000$ttrydPv7boBreYfQP66nwb$YmgncYV0Y7FVEoNaiOjdRhyipyr6lYnhTd43ZAbwZAU=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -4441,7 +4441,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.018-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$wA9YpIx8TrlwBIymPxqiqi$eZtxnj81GqQBPzigW2IxvENq12xiAKXMhNj2sz9YeBE=",
+    "password_hash": "pbkdf2_sha256$870000$YJ99NFKW2ZHRVQfh0fRrX7$NuYyTX3Dx+9pGKxxbLf6RiBogUipcx/eIlb4eDHIcW0=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -4456,7 +4456,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.019-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$lzeaPwPCr1vb0KP6yCy7iL$EGbAhvhsr3ZBDXaCY41ABkrlohAZoXcTFJ/Gu/VDz4s=",
+    "password_hash": "pbkdf2_sha256$870000$2DzsyEOosepwJksu1aBkCq$vUzFqIb/zBVBFGF1Uu8CSdMzYef3OhbmJpj9c6z9Kvo=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -4471,7 +4471,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.020-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$DsKBsaW5HejrWdZuaXZ4Cw$QFhtvyYxq0cgY8ssyY5thfoodcIYGbyS6pyflTx4MKE=",
+    "password_hash": "pbkdf2_sha256$870000$Jp4Qty8wx07NQNyhbdL0op$qGmSSiIJZhV9cd/NuVLOz9GAjMMkr3UH1FbFddnozqA=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -4486,7 +4486,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.021-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$MbofvYH8pCmU5Butre6Q0E$sjuhRt29W/f9J382V+JKhp9l/rgIselOCibhiB5z3FE=",
+    "password_hash": "pbkdf2_sha256$870000$vnzj30A0OX44mHecPZa5Eo$xFNzGQ8eT7A9bqKMsey5RoR9KRDw4bFLdaMCTiVTsMk=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -4501,7 +4501,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.022-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$usFXCTtXPUS1kTTWPG4SdC$s6oDWNDqf1I9jDb0ayeRgZBJ7JMF6tOnTN+wEGQay6U=",
+    "password_hash": "pbkdf2_sha256$870000$uxu1WHJniNr3gywhsBBjww$zfRNpEKTxihf1Qm/EXL1YpyWVO8xy9l+UjTNMY3PN/w=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -4516,7 +4516,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.023-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$FLiBOsnw7EYjk0voXEov4O$m1yzxgOX0oq9Zo1WkHLOzGhB1Y/0Lw9fTU3gjvoMsxA=",
+    "password_hash": "pbkdf2_sha256$870000$PcLowEAuiLLmsAGeaZqkqp$NvKCeT2CGRuEyqMIjlXQtGDBEIpjNNsvU5IZTn6lXPw=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -4531,7 +4531,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.024-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$hgFugs2MjsAjoSK9c1DXkW$/eU971x+JFnzz3AY32HsxWY3E1g8lb0m8fq/7Kp3av4=",
+    "password_hash": "pbkdf2_sha256$870000$rt7DFHIFHl2Rstay1yJNDW$4eAaw62UYdWN8XoVUHgs9iEZqAP4GKYYzLx3oSm7P9E=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -4546,7 +4546,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.025-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$BzFzxJlaxJ9hc3vSa4rpxX$OYSSr52REclK3av61suMQaGHXXRXRi/y6TtlvUpCgCE=",
+    "password_hash": "pbkdf2_sha256$870000$72CyQjYPfTLibn9ujWJACv$NJ3LjWr2nGRDmPdWKsPyBtl0M07cewgt/qWmduivrzk=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Perez",
@@ -4561,7 +4561,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.026-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$5QFE99NaP9H39YPrO80fsI$UKpSlt0I0aYlmIKGoEuAJA/F++/V5THU1hszoopLEtE=",
+    "password_hash": "pbkdf2_sha256$870000$5qI1aw1xmMqupCi9GKEWT4$ozXELXLtC5SauC0nSezVESr2HSOx1T0r5hwU1Ne2WMg=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Soto",
@@ -4576,7 +4576,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.027-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$X8baZrv0jOF6xgv6ltFxz7$b/nzcI92yiwvLIuEcFeL5SnM0o+McONI+30H6WBNslk=",
+    "password_hash": "pbkdf2_sha256$870000$nQfZC15ulsKVtTvHHfuZoz$BZ+I+mcfGvgJQe3TAzaGBUmYXdYlevbUirUQYeb+eFY=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Contreras",
@@ -4591,7 +4591,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.028-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$jQEKANS9L8f4DQoKAF0Dim$LpwbtB29o6fTv4bOABThzbZ1TZieZrL0W7hRMcI7gEA=",
+    "password_hash": "pbkdf2_sha256$870000$uvcTDCtj3a6w2jjH5kEhs8$750EhemICw1ElhV6Zn5GFAmfNYxlWB0NYYvBLVYTUw8=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Silva",
@@ -4606,7 +4606,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.029-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$UdUC1e4zC4qChXXkj6fjhS$OBmEXOTdyX524q6SQ69Rhk7XzxQ5LdP2RLQv7MhVIdw=",
+    "password_hash": "pbkdf2_sha256$870000$sWKx9ZqJBciLtNx3JSbOGO$JXLlfO7wCxRsC6jYG8xk9FwpiKbULidnT0Kh9j1DN+M=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Martinez",
@@ -4621,7 +4621,7 @@
   "model": "sistema.usuario",
   "pk": "40.009.030-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$8oTf0x4uKNYmLjZ51BuEcG$JUiHRk/vO1CXlgpk4b0ceDa4CJ3WypfQelAdNqpKvhA=",
+    "password_hash": "pbkdf2_sha256$870000$kx2baiW9kWbR6BNanxR2PT$SpGPJA7qzYbk72SWO0vnFxCxDG48qXtBm9qYOWpCgeI=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Sepulveda",
@@ -4636,7 +4636,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.001-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qgyt2YfDkDj5ieKFg46WSs$+lEHTbaWi+VWSvPpdB5l4Avs0EQ5mbu+rQrGp46eOek=",
+    "password_hash": "pbkdf2_sha256$870000$SGODGH47viZ3JuPrtz4gKE$63eeGUde92hT86hIk5poqsuO1gYvyBIavRtr1a+i3do=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Rodriguez",
@@ -4651,7 +4651,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.002-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$2vI7VGVaunfo7JJg5cqgqi$eroqEZ7KSqfa8vly7GdWxlgGQBn1AfO6rF/h3yyydCo=",
+    "password_hash": "pbkdf2_sha256$870000$9iri6H0csT5V6wLL3qcQvm$ZpY4r4NWhZ1ibymVo3VxNEJYJCcgbPK4iIWTMXKWPsk=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -4666,7 +4666,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.003-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$j6p361B0u9fQyJ1I1D6Xme$IJUeSZ6AGUB+nH+UUDaB4yXZHZtLKTlF4FFkwpc7VLA=",
+    "password_hash": "pbkdf2_sha256$870000$eTGTY0LVA33iFrl6Nc8kOw$vbGsYSjMZnuPNLq7dj7E73GtJhxkuy4ZF8YCGGssa/s=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -4681,7 +4681,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.004-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$G7VWLzEbbkIauSxNYHDR85$DWcspUj0SRFCUdKLrKR63UEJBYO9/mBXgMJfLtB31Xc=",
+    "password_hash": "pbkdf2_sha256$870000$iCsmsfp7yMVlxSWeSAE93z$/R9ukGkBUBWS4mMmD8PVShoa8RgnTVCfKxsbaQ6lTIY=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -4696,7 +4696,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.005-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$aFhoFc3200BD8UlAF7tkTu$0WDUPVmQfCbFAPC2XLLOt88Zp7bA2a4BZXTSFN6oQUY=",
+    "password_hash": "pbkdf2_sha256$870000$3VX16X2aToKciyUENR9wuC$5l/5ob8uRGpxlCGGP/DkWIOo7N5QCDrx64kNNm3ieYk=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -4711,7 +4711,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.006-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$bC4CqkJnNHceTZhzJ6g7kB$tkcAOjdYuZQ1i2nqBBOGqj4KE2br/aZnDvaT/lw7etk=",
+    "password_hash": "pbkdf2_sha256$870000$4JfzLh87nuLRS7mmZ9uG23$CbxsaAfwDRX0qcZ5+R2j58W17lkk9CTZ4FSUuGbzQCU=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -4726,7 +4726,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.007-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$mIk1ruN0DWGOi6t9dOxbgJ$eQOSA5zA7+E3DGfuPSGObMBo9QIKg5gxmR0wcK1KzQU=",
+    "password_hash": "pbkdf2_sha256$870000$bbxWxjb8mdFFexlv4Oxna4$gQ9QjgRlpQGApXC8TdB08JLRi19mhVju2Z8KTjqZ0Ao=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -4741,7 +4741,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.008-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$x7yIihpNVspNBHBHVEC2Za$MzXwA1K4L3w5KL6i0/IvkuFuRPqb+7LMdqKs38qTm8Q=",
+    "password_hash": "pbkdf2_sha256$870000$Lzal0VHmo76nyshTw1JizK$ybuylWAVpuv6xo2DQedsLsSwNn7Q6iMerClkkrqM80Y=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -4756,7 +4756,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.009-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$FxVtpUkkMROg1Ybj0Nswon$LJ27Tsf7ratGPNlNnjXxtjv46MUpMOqlzNq8GG3T3ig=",
+    "password_hash": "pbkdf2_sha256$870000$RlENGVjcUhra76KXEfV7Vv$o30VT64Xcu/Q38rc/F4JVyaOiQx/HAjRalV/aw+0AQ4=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -4771,7 +4771,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.010-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$6mQfrdRKXGGkDBqXh0WaNj$uSdvBrnkTK6q9v9Z3q5F2UATZ3loqNBqtg4QFmBgab0=",
+    "password_hash": "pbkdf2_sha256$870000$jgUAN6tJZgpM9WIDROJIP6$A1ifP37MIob7PTesa3vdbHidbddwsh9dpMMeUx0uSqM=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -4786,7 +4786,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.011-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ZQzmNDxfkJJtaq0FpL2kGn$mse/qG5nMWRLhUwkexArvwX6HhLTZWSqEM5tWIS7Tus=",
+    "password_hash": "pbkdf2_sha256$870000$4jfRSTdmfHzeJuQPrmHxFv$qbC01gLFHFDkYTMPuUy/Iq9rm6zMAJpr1gcXw2/Mxxs=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -4801,7 +4801,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.012-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$PHZZH36WpNEPQlAAcBazR2$8K3b1klfwXCbycibLINzAPO9KwJb3OxVFj+2nqBkBnw=",
+    "password_hash": "pbkdf2_sha256$870000$W8OX5OifEtBhi6hCfzYlfn$FnFVTmoGNHCH9lFdi7BKSkhLmZ4wyBDOFvsSsuYrcUo=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -4816,7 +4816,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.013-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$XC2jaRdBGjpJ9ZyR4nD42A$lpD8ymP//gBafRT8QNkZdKaQyVvJvmtWPUbHvJeblF8=",
+    "password_hash": "pbkdf2_sha256$870000$aRsS04Ar4wSp8VxfC1T0oz$80IANTzdEymNAv8Nr9WMqeW246ZH12JQ6VcgOsyuCz0=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -4831,7 +4831,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.014-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$1XmdETUnGusAqQsITF86ws$MYXREa3RrBgjGqBWW38pXshTyGvXqQcmx0By/xYBXKs=",
+    "password_hash": "pbkdf2_sha256$870000$A4WBqHG5cdTXre2lAECcTD$2/GLiGwUOyOUL3EH2p2LnCSv8tgzyPvQ5dY5i583ikg=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -4846,7 +4846,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.015-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$NnQWApycSgrgY1yWnsc37h$5ZLzNuWgrhsoTOBmqQqKoKEmOdbQmJ2wBVjM2eXTBT0=",
+    "password_hash": "pbkdf2_sha256$870000$2W2T927j7wUbAeZIBzz2kg$H2g01coyhFV/Xu6aNW4xKaX0N2WkLKSjZj2rjVu16Bo=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -4861,7 +4861,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.016-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$WIIST2MTjYCOOPHTlvwFur$H8D2JcvEGTK2YvKaiWN8+IARhnjuSeCXysEh+m98MrE=",
+    "password_hash": "pbkdf2_sha256$870000$ugFMmBhYOJuX56m4TYo8Ql$//LOTARZ++kjj1k0Qc+AO2sZCE0/H0YNejnXsZH8U90=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -4876,7 +4876,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.017-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$TWvaZtOSlWMgZqXli0wx4A$XACy786OOc4WHHaIYI+GbfM9KuXyE3mlYhgYnVknJww=",
+    "password_hash": "pbkdf2_sha256$870000$CA7gV4JmaWb3fgNhwdfFs1$rtSdUP/DlMgDlrmyCA2bex+69xMOZZG3OTazeEx0F7o=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -4891,7 +4891,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.018-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$0MKk3mzuuLDUyXpjOqcULo$KEvQ2rQLlFDvs4D7zlBr/04wXJikxlfhaOjsohCgjhY=",
+    "password_hash": "pbkdf2_sha256$870000$YOHN7EH4IiQ35z4YKtvWvh$A4rQmseXlI0+GhZC4dd9JMbo4KLuV4hRYZcDwvoHFW0=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -4906,7 +4906,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.019-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$EVBy1teqdXkyu8A397H8on$X1hl4hYpSAUGiGLk1vNWdN4xV6Ky0uJgyto5c6NB7t0=",
+    "password_hash": "pbkdf2_sha256$870000$cc1mkExtq47EkOpCPaf8XT$xk6/Debm5wzdvVGZbv0V1NYXZfD48bqw9iW8mpuG1c8=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -4921,7 +4921,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.020-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$8VaLCUsOptbEEtHu95sS3b$MeEBXvyWYlrallMfQe3XLY8B4eYM5UkHyTlASAhMJQg=",
+    "password_hash": "pbkdf2_sha256$870000$xKkXDFWczmlJwtwXYE3SZR$Cyw7NTeofDjLGbzskGmPjR9TU62a2P7IG6VdxSv3fqg=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -4936,7 +4936,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.021-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$cF8ae2SyPfaqhj2mEcrdYZ$Hq/mOM43oWqjcENJm4cDvCQEn1yWGpwJSKqHABnNjGI=",
+    "password_hash": "pbkdf2_sha256$870000$6TFoojrJYd8CltZddxtXqC$lS6bN4ta4O1c8FG7YxJKeLjJwZYti5Ecii5Rjb+kD3I=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -4951,7 +4951,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.022-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$AyyfstNOVR2ZrVIyaqGtB2$38cVlW+a2T2rhCMgP0EJ3LMFvUYzgtuBThZX1WUP2XY=",
+    "password_hash": "pbkdf2_sha256$870000$ISa6ATxoFvtT5nuntnXk8i$lyhyF7yANsfPoJiFXE8uJzSojenrIpuShrHlhPRGYwI=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -4966,7 +4966,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.023-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$NukUlKp0mi2Ok5FG0Ksxcc$XOmD2nIxm/vWAAHaO3wMpgFABuYe86Wz5R+e6VyaqdM=",
+    "password_hash": "pbkdf2_sha256$870000$X4mGXKct5sSLf4NIO8yWnl$9ZV80z7/EdQA9UQaeWKKy2ySqY9PdkQZz0sczOB363A=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -4981,7 +4981,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.024-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$uCj1g25Y2coYa9oMtmWR70$vrP/iiADuRMbnc8maNMxjkVSsP3uvDUbkzkgmb3K9i0=",
+    "password_hash": "pbkdf2_sha256$870000$tQAl2tBIE7uuJXQ2brm4RS$0HVO8y3+1uvpAqwhWYg1labmkN9ZumIXjir8DQ+kY+k=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Perez",
@@ -4996,7 +4996,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.025-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$12WcX1s6ypkRIiwYxU9smA$7yL+KqSEO+eHRDZ4vsLq2wsxGIf2qffJnd1d2E/2ybY=",
+    "password_hash": "pbkdf2_sha256$870000$ViGKl3oeDxBhWDpNp13j0J$UQ8yLZJzcBf8nXGY5NyXKf/MAYoqSAkw4ZjXHqByVRQ=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Soto",
@@ -5011,7 +5011,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.026-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$pZw3gJ2UT9iKFj1VU2mgxJ$pnZHIN1ime7AxYQKJZQn9LCLAvEpWP94lAZLzt6oSUU=",
+    "password_hash": "pbkdf2_sha256$870000$fAaNxnN1ZMNIgYKqswrLG6$A9oRNErLJy5ysCrR47lOlnnrS1448EGAtqQBp57X3y0=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Contreras",
@@ -5026,7 +5026,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.027-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$XxKF9kBtjl8voRQCRCw4lv$NLpAGttxyZYGlndKfefwWVqEe99J84LqWQ9LX/cGGDA=",
+    "password_hash": "pbkdf2_sha256$870000$dQg4tYq1gdQuiwIiLG6P5U$sHykF/TByfpsAdtREEK70JAf3xehtQ4UofmBx26hAf0=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Silva",
@@ -5041,7 +5041,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.028-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$3ByWYbvQMcSkXAVjT78VYn$1Of/EqDNFTBJpol67BaUIPFZEAzeQuKXT+PC1OpMFVw=",
+    "password_hash": "pbkdf2_sha256$870000$kMfAJQlsuUSdX8i3ENTrm4$V3jFq5FNFUS0NO3E3wGWzClMUGUZmzsYcIQNe13grGM=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Martinez",
@@ -5056,7 +5056,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.029-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$uJ02g7BY4dxU0tE5A1rB4B$3CyZAdebjYFiGp2MdCCgjR4Z62r81eICV0hL14HEtuQ=",
+    "password_hash": "pbkdf2_sha256$870000$FFwFWgDMr9R9JxIYmLRqRL$dIOEapSP5gFERlNEOZ/sPXJAv/TQjKr3CNHfgCPdFQA=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Sepulveda",
@@ -5071,7 +5071,7 @@
   "model": "sistema.usuario",
   "pk": "40.010.030-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$dadSrXFdoedcUFrWxWoU8q$VeFNqSC4798wydSsUGhsBoGyE84Fn9PJH5WeWaOp44s=",
+    "password_hash": "pbkdf2_sha256$870000$Ap2xfKCkOlW6x6obCKSxIN$K+xMeGdq8M0GCTTOW8KWRoT/RDsYV611cufChRynwvk=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Morales",
@@ -5086,7 +5086,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.001-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$5lp9o2ZVgmmcyeocvzLgyW$zZ+3rn4+BEQgoSjOszfAaBjGfeltQFcyO25d9Ova58s=",
+    "password_hash": "pbkdf2_sha256$870000$ZMO6WoViWm8MObifYFpSo3$fjHuxdvbpS9mZo+Tzs/iQwOE0zYGMHeqaaMFcr8PHQU=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Lopez",
@@ -5101,7 +5101,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.002-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ciWB1lSUxuJsQlnXtcONQE$s86VBfxIaYZpokh62bI29FvR6KudIyblciWoU20oxHU=",
+    "password_hash": "pbkdf2_sha256$870000$gR56aj2Sg69Jvd2WulvJgr$xml6e4q+t74GUXIhGJIdFxgbZ/vc7cLWXeDz7bfNmdY=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -5116,7 +5116,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.003-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$zV3MoHbinRCi3BT2OJGUHR$8/9L/R30kcNVsUAo73YTa/nFLssMWOhwmiBczH2l9cw=",
+    "password_hash": "pbkdf2_sha256$870000$mIeQ1VIv7wpa1DOZ760kLk$2e/x0crrfpWy+dgxZh7/s5q3QjSFzrE3NRubWN4vBJ8=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -5131,7 +5131,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.004-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$wHrLjezT2sl3R3M0VLbObH$2OXEjjVPMYs6d3Zi3BxelMA+jsBrDCZKNJ9e50l82ys=",
+    "password_hash": "pbkdf2_sha256$870000$xQv3SKdilyUTx7Dx8eXQEI$SPDoM6A8uh9ZUG9/LrxjZgDpYL5Sn13JmQ5StqHR4EQ=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -5146,7 +5146,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.005-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$PJYKU2mmuyiZanC0zH1BLy$vcRBI0BTtTP6BnIgCQNB43EZAkZKTEBP1GrVX/ONsN4=",
+    "password_hash": "pbkdf2_sha256$870000$FpA6jJoT31GrZiX4biFXv8$CmPYhw6SD90u0F4bLLFYlG7ljL1lNkQ5vUUpoyZQzAw=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -5161,7 +5161,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.006-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$DsSTW0L7Ib5GAdG9E5ql3x$ppmBLYTT8E1bslbqPmt6BXz7Hko9cWPKN8UK7d5T0Ag=",
+    "password_hash": "pbkdf2_sha256$870000$7gmZgeq0ABrc8vy2YqCy1M$wvKYMTBImFmr3xpgMC9Lu1LYkNU7gf5kNFM2SYoJQIY=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -5176,7 +5176,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.007-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$hSdSfEXAjFEyHqKgsyPUDA$/hd6Pvu2IPHtwlmW1wKCC34X+0VQP0drJ+Ph1AAaxVA=",
+    "password_hash": "pbkdf2_sha256$870000$nZyUm8wqhhp4H4z6Bn3gI0$n8UhqEaq7feIzOl5VY7c5bp7zfG5D67OOKIyzAX0GbY=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -5191,7 +5191,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.008-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$5Uy4qMU5gqbTiyiwGzkFbt$FR4EEaHhvo+sneBB5D75i81ULPe2MA94EZeJpG2qMI4=",
+    "password_hash": "pbkdf2_sha256$870000$YSfWUAzgLGLWQ6RV26QM0r$OjNcKVWmy+CKZLvKZ+BiXDwpGaT70iPMREkkOlFEF1I=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -5206,7 +5206,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.009-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$sfpQ7Of6IbIGh4wHDtXmTe$iGo/89x0db8pQaTRWJX/Dn8IA/O6/OV7VLh3i5gGnsU=",
+    "password_hash": "pbkdf2_sha256$870000$7y29fKey7255tdjF4h7HcI$BvIGPQ+RU3IilXCmsD12GcZ4jN1P/ty1qqevacZb8xk=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -5221,7 +5221,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.010-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$eaMd5aEjd0XvCsudwgWVCh$fdmoV6r1ywYMYoUAHe74WAOCTh+swE1cEF4XgwILFho=",
+    "password_hash": "pbkdf2_sha256$870000$Y6kFzQRXbYf8MTOKwRze8V$V/QoPcDl8W37quA5QBzc/ezwF7lKC7QK11Dq5lC7er0=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -5236,7 +5236,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.011-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$DkW38g2NCPL1B861a3hMuL$IRwtaJoNAScsWYJShRWalgAcoKiH898y1Vsy645cVdI=",
+    "password_hash": "pbkdf2_sha256$870000$XWFDaO84Ncc2ZAMZ1V0xHs$uEszcGuFjU+G0Xch1eUVGnBfuw+gEfuhrtdL2YrDHSw=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -5251,7 +5251,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.012-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$u5aQkFNqonOC19StjQ66Cs$W+5DqMpcJRqYN6ip/pnJnBIp+FnU2hqgdDp1JZYs7VI=",
+    "password_hash": "pbkdf2_sha256$870000$0wIOdzwfbxuGNiakotUBvh$KSxYz59StBOns3YkDGtP4vH5BnhZp3FV1gF4Oz8CTdM=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -5266,7 +5266,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.013-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ZytXPm3XRGcWaHO6zgUO2D$Lhgq9sXWeVYAbdURWohkP1mavGhIRmWOFRBeuaCIXPk=",
+    "password_hash": "pbkdf2_sha256$870000$kWjAjfQcPf1I5WdvyVoyP7$dBvxM6v5cmVF2cq44E6NRSX4lgRw0mYrGQ7Ui+t9WmY=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -5281,7 +5281,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.014-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qExQ3kzns96G0qt5GLTzKe$/9tHy+vcY+RzHtxc24V23Vv0MT3MJTkXQ1HOhWK019g=",
+    "password_hash": "pbkdf2_sha256$870000$tSubJV2zCeFhe7K5wYIJxh$ettusWU+ZFNy9w63fj7Kr+G5E/dTE0atZoRVuepsU8s=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -5296,7 +5296,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.015-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qtNYE7QRHnMzUddVFqASFS$626kzAo+uZs499AKVINLhGpWvq7AzYfeGGqZb6i4hu0=",
+    "password_hash": "pbkdf2_sha256$870000$fSDxyO5Zotbrg3DPKcsgky$xG4734zWONr3J3c8kT9KSYC6LB2WiSZlRcNd2tMBmr8=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -5311,7 +5311,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.016-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$aFd72lST0IIFCoeOhyX6YZ$80eEiM8Rsh1gN8SoRNcIWZb2pU6tFceG+lNcpyrKtCo=",
+    "password_hash": "pbkdf2_sha256$870000$WG4P1U2opKWsZHYpDfuf14$w81ioijZYoXKVGYHH0/tM1XsIihzjjJbCdALYDw1KgM=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -5326,7 +5326,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.017-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$5sFykqZcLuTFv2HtK9sPER$mhKx0Qm8rMRa8TOUCgbUdn0Bo5PePoNxeSE8IXhf7bs=",
+    "password_hash": "pbkdf2_sha256$870000$YTfWcArRitgsfDs62wuq6S$eCvDM7oO2QVIRcHUQGIqgRsRwvMnMezy3+Oh2w8WlKI=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -5341,7 +5341,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.018-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$7QFOD7kjo7cmAWHmoKLFoe$4oK7bO4oEn32kx8+ikjaKwHk7/eMlqtC7lpHl4kmFyw=",
+    "password_hash": "pbkdf2_sha256$870000$3GFwe40QesNFaWZfPR5w8Z$Yly+7gSMGlPrZ/GnU/sTMsrYL9Zk+O/++LA9Co0i8JM=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -5356,7 +5356,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.019-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$YWNFmJBL0mxcGR6NiGqeyX$j8mgMnMaGz82LUZSfl2e58hxE8WBA8cGS3eC6SpfLRU=",
+    "password_hash": "pbkdf2_sha256$870000$4rgqxeacdjx1DbCusofzwQ$FBpCNCRzTuaecmPuXVA+mfzuyRv2TtTeS8CsFHIOEY4=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -5371,7 +5371,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.020-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$tk62Sr8o4lN7o9s7A1qmoR$j2UV2HWUDppqyrsfMDS31n+U86SD6HJXSaBcU5bX3Os=",
+    "password_hash": "pbkdf2_sha256$870000$WkVDrnqldvGCx9XJFvfCom$aLmXGM0qoyzrt3dVIDGR+5J65NUpi0UHZdlcgZFSsxg=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -5386,7 +5386,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.021-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Cbuor0B8dhv5nQ1r0R6ldB$F+g+Emctll2ESjgRRjTSFN7PU2e687C8yTbMPtyLstw=",
+    "password_hash": "pbkdf2_sha256$870000$R4Ff5UP1i6Wpu9PD3PvMMQ$JMQL+ZmK6BO/LN811C2KRICw9ggKy2HRVdNGeemXxTI=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -5401,7 +5401,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.022-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$WfYcq0tMUWn9XgtQRKk2wG$YlFr3gIIjk//MinBlmgzympvaBLLjROy1l+8wg6Qf/s=",
+    "password_hash": "pbkdf2_sha256$870000$WJmiKJFowIrGbizAf5x9FM$5ktKlJHt3Oie4nsbTNNvR5Xlab3wQq5MV196tfZQ+0A=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -5416,7 +5416,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.023-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qE9hTN7qnJf7Tpu48mo6Tk$9CtwEbE9NRmV3Ya5hmtXlPxKYcaW0uexohSDuYCkGjA=",
+    "password_hash": "pbkdf2_sha256$870000$5utBSXCTYa5w4THT34pPwV$rQfYhOjjDQpH/4pX23pYoNakcA8n1BA+sFNq29bVEeA=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Perez",
@@ -5431,7 +5431,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.024-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$cAUzyY8gCJ3SL7mBjuIsLD$gVBZPgHkdg8ZWfxvlT7KBLVOFNeJe0eB9uNxv2zg/EM=",
+    "password_hash": "pbkdf2_sha256$870000$9crssxGKJeSxzmG5ybXLxo$2Dc3+DnHQrdnbmHCkrIzMFE4yKJjX3408Zg6EFQrHaY=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Soto",
@@ -5446,7 +5446,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.025-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$MrAqMohL4q5hgX7vK3tFhM$GxTm2k4NzRifaC1llnf5WZtXvF9vtdV7UXD5UqWX0xc=",
+    "password_hash": "pbkdf2_sha256$870000$k3NSKoUtDd7ev0Zr0FBSQb$17oYP9BaixUxYc8DVawYADQBIIiW6OB4mzNlooGPwig=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Contreras",
@@ -5461,7 +5461,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.026-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$XHiS0arfJZbPKDpUyNFCNM$3lhJf5MrMNupdjBQ1FL8jIVcSqvvDaS41yymMIylls0=",
+    "password_hash": "pbkdf2_sha256$870000$h7k8UrWbqJOMpVR8DmencR$dmjBjHprKdl5EuSIgWyoRsRig8zYRG64aPKNizb2sGM=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Silva",
@@ -5476,7 +5476,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.027-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$dN9jxC5Be8zFBml8a3dZ0p$ENuCN59zjTICSQ8gyrsmthA+sBP2eWFSgdyONsp2LYg=",
+    "password_hash": "pbkdf2_sha256$870000$owFPkWzl0sBhQaL0iGE0hD$W4OGf9+4o1AY/nr7ZlfrQ8rVtZVz3tJJxpr4UxFzryU=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Martinez",
@@ -5491,7 +5491,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.028-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$l9MOZmA2S695aB2pF1OiJo$ixfTMExZ3g2vaSmVsUeugvmhxuq9Tt/Jeb/lZDIaSc4=",
+    "password_hash": "pbkdf2_sha256$870000$oAWDfY2sKu4OMGUnOVmiaG$PxahM0Q+PDfCwSf1vAhwcEVoUv3jdpFTCF0RNRHpp88=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Sepulveda",
@@ -5506,7 +5506,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.029-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$tlxUNsAWGUNmdM2caQGaTI$jcbGsUe0rQoGo6ZR21jWZO/BgHtScIVdvL3dJMaWhvA=",
+    "password_hash": "pbkdf2_sha256$870000$Th8mXogxfVdw6rqGoMBTWC$ch0pMuJLNmlc4ITP7J80MjWWdkJzDmVxstsRhIAGIV8=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Morales",
@@ -5521,7 +5521,7 @@
   "model": "sistema.usuario",
   "pk": "40.011.030-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$RmGTGCN6hikePewDXn88ed$/kVW39iRB4z6mCliE+y71ysnSuNq003luRtE82zD3xE=",
+    "password_hash": "pbkdf2_sha256$870000$DQLw2Ke72GyOk4WqyxQI9X$+35mGocJZk0Jywjh5t8cLEcTshyABPvHW40uGGqh1u4=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Rodriguez",
@@ -5536,7 +5536,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.001-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$s6tJ6OY7zRCerO1b9zNan1$dqvGDOEU0UZ5sjLqmWv4gwVjzhYNO8GvSyla3yL02bE=",
+    "password_hash": "pbkdf2_sha256$870000$GhEnBsf9N0EITPX0SRS6NG$zBk6qVg8XNutzfuMqbMOLszEBVAY+DnYl0rrVNFy8gw=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Fuentes",
@@ -5551,7 +5551,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.002-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$wtGR0cCReK7gOhRR1m8DaU$1ngDfZi74P5jIaZ5s1tBcUYj5msvfyvt04aEnhbWYTQ=",
+    "password_hash": "pbkdf2_sha256$870000$4LGhzOQ6a9PE5rOzPGGWzs$KvIYWu59BaDpSoQhRH5SM1nO3tx/4izoonGXnh9pQk0=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -5566,7 +5566,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.003-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$H6X6792m0evuoBGbajxQgE$0ZiaXTONwsSxW5pnqz6uysFbsCSF6mjKDkIZt9DrK6w=",
+    "password_hash": "pbkdf2_sha256$870000$vhv246SIy4t17U3pbloDas$50HwvfRUVre6mpWDoBvTjIxYQvR/yJfLRUKCq1yV4BQ=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -5581,7 +5581,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.004-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Zfb7DXKEn5sfJmQvqnfEYe$lxfWNv1rmNqashS96iS8xJ94Vvm4iK1Sg3Q+gYxJ9+Q=",
+    "password_hash": "pbkdf2_sha256$870000$puutCPjAS0r3TA117uXDb1$Czpvme6EulfCZUc5yPp4HQrX1zmrNJsNZ64IcPnnseM=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -5596,7 +5596,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.005-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$MHtgk8nPpReemzsY4BHzlQ$dYGuTkzRP/p9sIgYlj+UiaEwH79qxuYrWzf/An1e85Y=",
+    "password_hash": "pbkdf2_sha256$870000$g5wtlYvexshBMgBHKDzUd2$npyyRcUWi2+gYe9DBK5XPYc25EDHR+MJNirfxoE6UZs=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -5611,7 +5611,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.006-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$WS90YYkmLWRLnjR7LgX1Tb$5EuY2YQuBjSuaF9sNBNKnPgPZWDhYY81ZdCnG/Zj8C8=",
+    "password_hash": "pbkdf2_sha256$870000$K4hmv2RnNVVsH5ogp4bNWi$nbKd7Ud2dsM+N080SaPMGapG0yf73MU1yysZMifayXI=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -5626,7 +5626,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.007-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$yP6KC57UKa7NisWyioHC3Y$rvNzbe8BwVOWuGxmzcGfykCuJx/b3NDy/t+X2wfDWcM=",
+    "password_hash": "pbkdf2_sha256$870000$oRXUSZHc10KtM8DSI0GqMQ$6CmmzYnFeeRG/xEK5jZpoa3vRASiwE4+qasZagoi7yQ=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -5641,7 +5641,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.008-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$X6OeL8l6CixmqGNxzkNqBN$GltmMsRYzI3ZZ2gRkQ+yBA8fbQwH7mRtW7PPV2YwYuo=",
+    "password_hash": "pbkdf2_sha256$870000$5I58kahtXkROrGhyRm2hCK$RdFZLz8WYPC+9scfAWjMG6Gz6/r+JcY/tOD0wNSi4po=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -5656,7 +5656,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.009-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$zeEs8uOXBFMyIogkrpVBUU$2+zgZ47YuktyLB0qRO9ETTmhzVQ3UICdTvj7FAFxVU0=",
+    "password_hash": "pbkdf2_sha256$870000$QKm4Ur5yOaFuY7mq3SZkVJ$rmjnOaMxd/UhfdUkSsBmhMTpqIDtci7F0CFloK0c918=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -5671,7 +5671,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.010-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$0BQDkrDXEzYsxuhb0rNHyE$TGN9CrCOgCRHPblijgiViW4oDUPnxjzldJMa+SBIjZ0=",
+    "password_hash": "pbkdf2_sha256$870000$JCD6fKeNQqwDYIovz9npAW$MNBKHwhIKIjQSH3YCZVZpaDDP9gIj9DBe00W+XbZM38=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -5686,7 +5686,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.011-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$rcuiO1kC0n6C9PFskpMXhu$wwjLk0LQdfk2UcnL5pHHSyGzpxEbVsSlqEEQdYQz81g=",
+    "password_hash": "pbkdf2_sha256$870000$FA03RGkPEh1sNVggwH6fV9$OTc2yUCelvRaH+pA3/90GMziAln1DbMskWtAotqteSs=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -5701,7 +5701,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.012-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$vlFAaAyAU9wtJPsr5rtRhA$N1Yiwt7xvZaIYLD5Y26SPPoQyCGfeXk9+8FlOeXshLo=",
+    "password_hash": "pbkdf2_sha256$870000$j6U8DCCF3PDEOKBt9jHAVo$hdG1e5BWsgba8m7MdKnJexMQm8VZoy0MXno4RiBofU8=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -5716,7 +5716,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.013-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$feHYYj82FrbDfJwme9rZJz$d80h1OpiUF0qFuomBS8gsZYA/wOk/vZMfOJjXYbUib0=",
+    "password_hash": "pbkdf2_sha256$870000$9Cf8LEe9IFJ8fUQ4DnmB5Z$pAPvJzquc4gmQZeJr/vKOrZNo00NnGXtLCjoc9zcA00=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -5731,7 +5731,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.014-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$vWt6U8ObSynMjCFBRBRc4Q$JzoFx/E24+Qwi8HuAYvDAO98rMt0F1NjHsuUMGLbzbY=",
+    "password_hash": "pbkdf2_sha256$870000$6lRgFmC1pbb4QrxEti7V9X$euk/4i2+7LzLoYRhHZK7R92gRIQKemroJafWD3D4okY=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -5746,7 +5746,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.015-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$vFRLkhkos09sZ4bwHkSq4f$c/P0Je1ORl9hP8BDYRJh3ZlnemNPEyO7kJmZpL8U+A4=",
+    "password_hash": "pbkdf2_sha256$870000$Mo7Ijho0mcIEi8yJLttbdo$nokPae/hq/Xb1DbF712fnWvLa97HzToLOowRAKeh/DA=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -5761,7 +5761,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.016-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ZXRjCeLppda1BAIYhC43Ta$GoLgezUPXW7/GbdSBLOj/X6EtYj9RmA9zGVqgWUdXF8=",
+    "password_hash": "pbkdf2_sha256$870000$aq04Qeh9jMXt4E98o6KCQA$pfVm6r9A10yRj8EsHwOFNEtkFqwHnzbz364NolS+Lio=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -5776,7 +5776,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.017-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$bo10SbJzbaAEmPfjb0hKHj$tDem47LdxLFRbR0/QMeUtfaLMjsGnjypYiCaJWzcpfQ=",
+    "password_hash": "pbkdf2_sha256$870000$UisnpGmNmzQqL7D6BFwFxo$PYJGcLkWHLFooo2izKZcpRXwmrSS3q2UqjD5wNSNYPI=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -5791,7 +5791,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.018-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$gQ8hpj62JiLmdS9eNrpDSF$vlr/7Q/NsTC3NAeZ7VItc+3OZu9FwAYoepiyDUkntZ8=",
+    "password_hash": "pbkdf2_sha256$870000$UGZzXCykawwduFzCZKMs9i$ltShRv4zidwkZvBibYSt/cMVP3o0BxgjZKRgRgj4+Es=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -5806,7 +5806,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.019-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$nlVSUUzTd03I2f9DwII2F3$FtEgWGpO2VdhMpPuW3BIhUqEIku96t39XV+cZnXuS1A=",
+    "password_hash": "pbkdf2_sha256$870000$KMCgXCTPkOwyX7abUEfZ11$Wr9VT93J3aL1awEGFyhn+r/SHy3PYuHTiRF0o6otw/4=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -5821,7 +5821,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.020-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$bhgb3nDrNY0LU3Apgl8Lsj$c4fPaYVJMPtPKF5aNxzVXFS5OmooVEosIpI4XaX3Zk0=",
+    "password_hash": "pbkdf2_sha256$870000$us8rZrjAY12iS8A1A893IV$pYVaJMwgDi90ggykbvrAZMHdbisTvICDF85qwC32q+o=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -5836,7 +5836,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.021-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ZF1HAh1h5rrYkRtfTPfJ2t$r5AkdyWDGjBm0UeVpnc3OtqxJekY0rVjuILuhAxG454=",
+    "password_hash": "pbkdf2_sha256$870000$NzynsbqxCs6dcCIfn6n5CN$zajp8ffTQRaozT5DUA/hp1fbpPwpUXH3behSZb2fgzU=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -5851,7 +5851,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.022-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$jNl4cQTZlWoRmcHMQGfEGR$/KMvamnnfD2Q8ite/QYAPDNFgWlFGJktc8l9lQyQG34=",
+    "password_hash": "pbkdf2_sha256$870000$Y5K5Fdsr1gEgMQyWemN3j1$NnoVCeP1yx4DuTL59BymgpR+6fPUekcl5CUwIWtfGMM=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Perez",
@@ -5866,7 +5866,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.023-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$NjhAq299h1vzICAgxNFss0$xjIGmgl12kJC8x9bmQ7tfgGmb0zzobhVYuLYmAAt1n0=",
+    "password_hash": "pbkdf2_sha256$870000$5vFXeis2UkMExyvbM04VVK$qDlKO4NajneDfReT2RC2aSf8laCMsCFIA1IuYWdikIU=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Soto",
@@ -5881,7 +5881,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.024-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$KjDnjoZckfrKaPD6kJvgNX$XZ6VwlXr61gF+Htk15+FsmXV6CPNaKCbIf3Bj/0cpyA=",
+    "password_hash": "pbkdf2_sha256$870000$jVyhiSjsEDPDH1PCMqMEGi$/6ZiJ5QqEphWcxrwM80Rbt54DSNnBLshQElbel3E8FA=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Contreras",
@@ -5896,7 +5896,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.025-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$G6fuYbVoPOTkOG5dCnsCkG$dLe2lwf6RPKwukY0L1m4NMaJ/A3VV62zyT52tOQu8DU=",
+    "password_hash": "pbkdf2_sha256$870000$HXekVcuFyrYrHMx6k5FHOe$tdaXvhxaLG9YsC46R/LJKdSxS7nYIUUgOxPj4vLQDHA=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Silva",
@@ -5911,7 +5911,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.026-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$EbgQkRU1dhQUu5GRL2xV2N$PahsNxWnYUZGB+UOAUEbT4f9E7LrhvptxMmoFW3HGDU=",
+    "password_hash": "pbkdf2_sha256$870000$YYoq4wSbJmICS6HOe2AtL7$axpNlG0emHPUVKW1gxgq2jcQvH4mA5FTgfyFh9PAmZc=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Martinez",
@@ -5926,7 +5926,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.027-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$vsHDi4S0Sn5Ujs4IXge5WD$GRNODKMknZgXhXMWEvcCPr8fwLhu/b1QsWTmDEPi+tg=",
+    "password_hash": "pbkdf2_sha256$870000$ePBYqtQa0Cil27Xils6eGa$XqqBA83QZGXvbwDH3gknr6+cMxNCANhBsGaQxc7l8GQ=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Sepulveda",
@@ -5941,7 +5941,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.028-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$Xv9boIjik60uBKiX1Nbo95$sETduufGU9Km1qlJc1/iJPy0z9jWDDzkMcZuEDSxQWI=",
+    "password_hash": "pbkdf2_sha256$870000$ygcEDztbgHW5VoSLteBmp4$uCcNDDOorjSDy99ZzHXt+/ZF7JwZsjemlH5KqtXydGY=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Morales",
@@ -5956,7 +5956,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.029-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$oaiyDgxhwmWdmTobWx8YFQ$sxdweTVzB+1zf3ITu0irSPIg5QdnNoWc57mMXB3fIWM=",
+    "password_hash": "pbkdf2_sha256$870000$LZ84ShiQbtba3lvPbCCbiI$Mvw70ZmBJ1iKUHsM3q82PIN2o5GWWbAOw4iuediMGLQ=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Rodriguez",
@@ -5971,7 +5971,7 @@
   "model": "sistema.usuario",
   "pk": "40.012.030-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$wYw89WSHc7ybLqLezfbIci$Jxoxs7fsgoeQvcWOBeu6wIBz64t6q40NGKaW74omIkg=",
+    "password_hash": "pbkdf2_sha256$870000$EQSZk3CiETNmr7zibqAoEf$tbL0BRDljmnlrauQC+sGO4+ptZALMfn5X5AIJ9kO3js=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Lopez",
@@ -5986,7 +5986,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.001-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$49gn2FJtSKJLuHZMqj9rv0$1PCICwtLvOuROGIEMTFckM8ktqA9iIE0SG+q8y6e1gg=",
+    "password_hash": "pbkdf2_sha256$870000$cySvX5rUZdY0Ae1PRFmi9R$XIzJ4riHhRfWALxIXqClyujYEDzaiiIdf1qJlTm7L4Y=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Torres",
@@ -6001,7 +6001,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.002-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$tQUmiZXQmuuHiF2v50eMxD$CT7MVQyAiU4fCemHwlD9o6JUz1+ZUvNunD+4y1qzyOA=",
+    "password_hash": "pbkdf2_sha256$870000$O3d5AwnCznhusAqUSEXMiy$bmfyTOw4xi8rSQsZMHS9wjAtokp949YL7A64jyYEE78=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Gonzalez",
@@ -6016,7 +6016,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.003-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$TUaw7KCX1fNGWqICbxyWM3$iyOZtb8vxJ2qqRmfBQvd/e+pWIp/Mh83Kv28CgcSx2k=",
+    "password_hash": "pbkdf2_sha256$870000$AoXYUrECbLhNWDTRoUJLLg$iQr/Q4m8Z0mL+wpHZW2OIdNJo/9zqYLQZ+4mS/f+zdw=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Munoz",
@@ -6031,7 +6031,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.004-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$J7VE7Rf5vnPg1NmGmpB743$B+3GPEPr/LXtATUTkNmIH+k0u7jO69uSTmVW71P0SvY=",
+    "password_hash": "pbkdf2_sha256$870000$KVD4CM50d1J8GOp3l0gxZl$wvD848GKbh9CsgcuJR0IxdhzksVMAb4OHDKfTdes/eE=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Rojas",
@@ -6046,7 +6046,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.005-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$vVz7ODRch4MISm6MVqHkwL$SKMoSdqVwqjiwsm+d1XKC2q7vlOU0zHP5mtwnnD0on0=",
+    "password_hash": "pbkdf2_sha256$870000$Vi15WjRSbJwUbfqoeLLl7e$yqBFjOXIYACmt24FO8i/02Df0ZFzBXGyLP39Yp0ROjk=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Diaz",
@@ -6061,7 +6061,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.006-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$kXqKrfNu2S8GZsmYMClU4e$jXvV56EpUyb21UDoWLDdxCIFuu5txLjS1jVrrJDDYm0=",
+    "password_hash": "pbkdf2_sha256$870000$xaAvnIt1Q0vfgfIIAycucD$H6A6xB4xgQUB/SS4KSM+DzUf+HDYA7E8F/h/bVcvvSE=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Perez",
@@ -6076,7 +6076,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.007-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ib7aK54eU1a1CIOCygnYPZ$xQ3iyoLUsqxJjrHmd3fPzWKwPU+ZktgLD1AY3iJgcHo=",
+    "password_hash": "pbkdf2_sha256$870000$zM9F45pZXBRS6Yg19tsiVf$Q8zTmp1JK1k3kRjFSdjeY6HqVdCgnHhdC0ERecjOZd4=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Soto",
@@ -6091,7 +6091,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.008-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ACBQMtulgxKMxQAHkRqIYQ$QaiEIfR7duxk6xTDHUT3+Fhy/aAbqrH5Fqf2O3A23fQ=",
+    "password_hash": "pbkdf2_sha256$870000$KMFtNXaLLBxQ7XOBn82rPO$Yw0UNaV5zmmFoduM5Y5BkM3xbndkmr7F/WWr0n6uSpo=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -6106,7 +6106,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.009-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$LAQcTXeaeGkCQ5poBcjbcP$OeHhD390C3wzgbUusyziCYMVOlcnU4FUsGDi+vjQTaE=",
+    "password_hash": "pbkdf2_sha256$870000$zQiEuYOQh5MGbM93TvPqxM$7saZIhwqmitgUjBlm1Az53w3gPyQ7V0c5VJQ6ZpL6B8=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Silva",
@@ -6121,7 +6121,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.010-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$O3SO4UUbvThYcJOVdWFVCJ$SvsznDaqzG1zw2GZCfCTwsjpFD54UdzD2Hzo6gAuc7U=",
+    "password_hash": "pbkdf2_sha256$870000$gEK4tF7rBFX1waTUwAakl3$A1cdQE9RkTmIIm93wsuV7CXc03WXjDeTQceNXHmLajE=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Martinez",
@@ -6136,7 +6136,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.011-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$dEFVovWe4S764taCCzxlQD$EXE8N7YcIIObAxelWCxgditKfr/ZRyqPUOez9hnv6lY=",
+    "password_hash": "pbkdf2_sha256$870000$0QW9FiZL8kCuCcLYmmfv3Z$lyIeft/CUs5XrjA1Ianjc5T+9YB84uHxt9MZXyqo9YE=",
     "rol_id_rol": 3,
     "nombre": "Vicente",
     "apellido_paterno": "Sepulveda",
@@ -6151,7 +6151,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.012-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$0h5LeiFXPcXBWUmSJSX3o5$X6zYgwid31S+mbGqkvzvF51bJy4I9rRPMalWyIL1R+w=",
+    "password_hash": "pbkdf2_sha256$870000$ZZglAGr8WxRCnEBCfaJpYo$fnI7dVdY0UKNE7+CQn8b80+ds654i+tMVs4XJgK1RLM=",
     "rol_id_rol": 3,
     "nombre": "Florencia",
     "apellido_paterno": "Morales",
@@ -6166,7 +6166,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.013-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$eiwSER8MkMuKAHRFLPxmXr$aJrSDhUjKSeTlqeFt8occ8n7lc1l0VKCJ0jPhKOG9Iw=",
+    "password_hash": "pbkdf2_sha256$870000$Mypck3L3BLHt2UrK3hSTkj$hKlIAdfitZ1fAtsACyVwwdBwlrw6zgeOcPwCWdZxCRk=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Rodriguez",
@@ -6181,7 +6181,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.014-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$NiUJWIp3gGeGOXLg7439Eh$SjPJ6Tc6tKiGCC9JmCy+Ai0Wi7Heopvvag+ab+saOWA=",
+    "password_hash": "pbkdf2_sha256$870000$fH5d0b4ZXXUqyWHeaEPWRl$jD+KwsDhPx2sKvNkjlv7ZPwIZ2uYLtPVCACcLxkRiXA=",
     "rol_id_rol": 3,
     "nombre": "Catalina",
     "apellido_paterno": "Lopez",
@@ -6196,7 +6196,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.015-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$G9mselIZNddJNrLqTE7MEi$IZtmOSI+EWidLzYuazSwBUgb6wB2dTozFxrgTM/3q7E=",
+    "password_hash": "pbkdf2_sha256$870000$0r4rgxvXVahuqlejteK22G$pQNOhJu9VNx5hThiw9hrfVbesanPoTCIksiylXDzKGk=",
     "rol_id_rol": 3,
     "nombre": "Martin",
     "apellido_paterno": "Fuentes",
@@ -6211,7 +6211,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.016-7",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$S81pD1lM421lTdg9AW9Spb$5YqjgbrhhlR3MWuwNWe2TvMUoTHw/IyhdforonVUsIc=",
+    "password_hash": "pbkdf2_sha256$870000$mfafCTsduIpBw1yG5BZQqJ$LGuN1m8Emmb6fqzxyLS26VAnzks7ZR6PsBT3C0rQ+Wg=",
     "rol_id_rol": 3,
     "nombre": "Antonia",
     "apellido_paterno": "Torres",
@@ -6226,7 +6226,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.017-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$8PvjKvWNC65FCSqYzpSd9K$AIzzObDEnAEo5obyW8nKkq8gUpl2Lm9bQnsU1TOsRSw=",
+    "password_hash": "pbkdf2_sha256$870000$PLLW0W8nV7mFXLZjluBA4W$6uWboOihQ35X3GWXZpEDmjSPI5EC/vmFTJG1TXa+HBE=",
     "rol_id_rol": 3,
     "nombre": "Joaquin",
     "apellido_paterno": "Gonzalez",
@@ -6241,7 +6241,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.018-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$xBYQjMSrvTmY7nKXdNOLLI$M8zvY71A6bVgK61CKyfv1VLyTx8VjzvjGJI8+234TwQ=",
+    "password_hash": "pbkdf2_sha256$870000$q1R2BKWRNBaHPAkPXrihiJ$PH828ulggqtSWJOug0wksxoWXXD/oEpEJno6bynb3uc=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
@@ -6256,7 +6256,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.019-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$undJt1xZx1dTxZMZiD042d$5gTULUaw2Yyo14ZaagTUINUPRWeDgjSKN1fp1Zji7xY=",
+    "password_hash": "pbkdf2_sha256$870000$Z1YpK0zo72Y7ODKriI6Dgr$JoaDCnn3C9OLOzcqoGsK0SXC5a4zTSBbHStql8Jzfw8=",
     "rol_id_rol": 3,
     "nombre": "Lucas",
     "apellido_paterno": "Rojas",
@@ -6271,7 +6271,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.020-5",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$SHqWxddvLTSy7f6MZz1fSl$UgEh6tO+vy5tOWw9RnRfkK3vaIAGiJlKShDMcFc1bB4=",
+    "password_hash": "pbkdf2_sha256$870000$Mm1NwWJEWI27QCSOBlLBbi$t5aIkb+nmRtFZlLO3onMV2AnjAlGbdyC7o+IiOLUm78=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -6286,7 +6286,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.021-3",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$a7DldiOCPsJ0I7V9vsDwI9$Pxh0hJHcTIS+rqZFLOw7rGTZywi23f4KBn+Iz1iGyBs=",
+    "password_hash": "pbkdf2_sha256$870000$AiZUmMAtR8nToquSctUlA8$/LO8gGJOgcbStSS9xRruatsrZd7Ot7lKhYO94LNPppE=",
     "rol_id_rol": 3,
     "nombre": "Maximiliano",
     "apellido_paterno": "Perez",
@@ -6301,7 +6301,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.022-1",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$YUVAIoPfDYg1GD9f7NyW8P$KtG3r5uXwCSAkh+2DOwDzcqBDQ2QJo1ASBSv3eqd/rs=",
+    "password_hash": "pbkdf2_sha256$870000$OQYqlyew70k0gd6wCsP7LW$+/eYFDVssSD3Wl1xJ8oqoQhWYmmDQTUVnI8lf4tP3f0=",
     "rol_id_rol": 3,
     "nombre": "Amanda",
     "apellido_paterno": "Soto",
@@ -6316,7 +6316,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.023-K",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$qzLt7NVhvGaFWbfoXrbpmR$uHpOGfyoQd5vbvCBcDezu/TnUPTlVwXZnpclKvx0bF8=",
+    "password_hash": "pbkdf2_sha256$870000$4xzMzAHgukikXxq00jBOmd$0WlRwBUTASZpJAhIqXMVGOyFqz/HXbmqrMM82KOOL9o=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Contreras",
@@ -6331,7 +6331,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.024-8",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$mSmnYKtT51go2AMSx1QTN3$S5PO88e4FDAxyjazCYDR7OzccLBjawoka/i3FQIzMy0=",
+    "password_hash": "pbkdf2_sha256$870000$8ywXnb8RIUWohaWuJCqneK$RqtbbD+BzAaFJGJw7E7Z03GCtmcv1pN3gF/QFvJI4Do=",
     "rol_id_rol": 3,
     "nombre": "Sofia",
     "apellido_paterno": "Silva",
@@ -6346,7 +6346,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.025-6",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$hH2pJq46IOuSLaaY04Cg0m$ZNAwcWznvoTTfoM/ZnsspkU6/4yfigIKdCPe6oX5lCc=",
+    "password_hash": "pbkdf2_sha256$870000$tYrygsRbirP2r2Aqrea3Pi$6IW1ey2VoLWTUwG7NER9Ve7JmtdrOyFiv44Yjp4HBpY=",
     "rol_id_rol": 3,
     "nombre": "Mateo",
     "apellido_paterno": "Martinez",
@@ -6361,7 +6361,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.026-4",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$ORI7iiUfsarAbzmGnFWWH2$7deX5cOxofTAKjQ7GNKj5MP3FfiWxVIFpQB8VQWvoa0=",
+    "password_hash": "pbkdf2_sha256$870000$ScuZ6srAbIJvNnVwfUTL86$IbT5C4L6g15cHVNiq7AkLO2SJi4ka244sMSBnhX36gc=",
     "rol_id_rol": 3,
     "nombre": "Valentina",
     "apellido_paterno": "Sepulveda",
@@ -6376,7 +6376,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.027-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$UAdgfiv6FLp7NSd3htdhjK$l3fgcJBiEzU0Hk9qxxNFl9+rDL/KiJerpvwdAxkESdg=",
+    "password_hash": "pbkdf2_sha256$870000$ONuzp0UmfPZLZ8dWD9OvcT$SE0tdqZL6AWkxE3N/R39hwlj078mAU9P7EhbeHqVQ08=",
     "rol_id_rol": 3,
     "nombre": "Benjamin",
     "apellido_paterno": "Morales",
@@ -6391,7 +6391,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.028-0",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$hDc9OnYyOqx9eediYiIPT5$ZG6bWv0YO3BXQjTHjSjIC2OuMuZ7xuc8HTibR559iEQ=",
+    "password_hash": "pbkdf2_sha256$870000$MvndNrFhucnaIPKQCS21u3$9iDf0wgSSgnWPJGE71ko3lBBP30e+sqLjwW43CIUEPg=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Rodriguez",
@@ -6406,7 +6406,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.029-9",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$B1ykErst7nzQjO0l6cA7KK$bBuNfDFIPqhoHsNconk4aFkO1cF1bAc0/0b5fHADBPw=",
+    "password_hash": "pbkdf2_sha256$870000$O2mJrPhyW5TMY8vt9whoxU$ASnOv/DD0jOl9NIoPhHB5DhKpnyf98mCayLsA/+v8e0=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Lopez",
@@ -6421,7 +6421,7 @@
   "model": "sistema.usuario",
   "pk": "40.013.030-2",
   "fields": {
-    "password_hash": "pbkdf2_sha256$870000$CmLjcAsGkPqhPnnYopUFab$c5hYoM8czpEqHaSTUYeKTtmiv2xvm1vhGbdGJjbJ5a8=",
+    "password_hash": "pbkdf2_sha256$870000$2y0Wo9yr1RGuoFFLjnyGBT$5Hfhgz4TZCel1W99O6Y1ZksizH2e3JQy06fAgJX3eBE=",
     "rol_id_rol": 3,
     "nombre": "Emilia",
     "apellido_paterno": "Fuentes",
