@@ -3,6 +3,7 @@ from django.contrib import messages
 from functools import wraps # Importante para hacer decoradores
 from .models import Usuario, Curso, Alumno, AsignaturaCurso
 from django.db import IntegrityError, transaction
+from django.contrib.auth.hashers import check_password, make_password, identify_hasher
 
 def require_role(roles_permitidos):
     def decorator(view_func):
@@ -26,49 +27,111 @@ def require_role(roles_permitidos):
         return _wrapped_view
     return decorator
 
+
 def login_view(request):
     if request.method == 'POST':
-        # Le cambié el nombre a la variable para que tenga más sentido
-        credencial_ingresada = request.POST.get('username') 
-        password_ingresada = request.POST.get('password')
+        credencial_ingresada = (
+            request.POST.get('username') or ''
+        ).strip()
+
+        password_ingresada = request.POST.get('password') or ''
+
+        if not credencial_ingresada or not password_ingresada:
+            messages.error(
+                request,
+                'Debes ingresar tu correo o RUT y contraseña.'
+            )
+            return render(request, 'login.html')
 
         try:
-            # 1. Buscamos al usuario de forma inteligente (por correo o por RUT)
+            # 1. Buscar al usuario por correo o RUT
             if '@' in credencial_ingresada:
-                usuario = Usuario.objects.get(correo=credencial_ingresada)
+                usuario = Usuario.objects.get(
+                    correo__iexact=credencial_ingresada
+                )
             else:
-                usuario = Usuario.objects.get(rut=credencial_ingresada)
+                usuario = Usuario.objects.get(
+                    rut=credencial_ingresada
+                )
 
-            # 2. Comparamos la contraseña 
-            if usuario.password_hash == password_ingresada:
-                
-                # 3. Guardamos su sesión (el "ticket" del navegador)
+            # 2. Comprobar si la contraseña está cifrada
+            try:
+                identify_hasher(usuario.password_hash)
+                password_cifrada = True
+            except ValueError:
+                password_cifrada = False
+
+            # 3. Validar la contraseña
+            if password_cifrada:
+                acceso_valido = check_password(
+                    password_ingresada,
+                    usuario.password_hash
+                )
+            else:
+                # Compatibilidad con cuentas antiguas
+                acceso_valido = (
+                    usuario.password_hash == password_ingresada
+                )
+
+                # Cifrar la contraseña antigua si es correcta
+                if acceso_valido:
+                    usuario.password_hash = make_password(
+                        password_ingresada
+                    )
+                    usuario.save(
+                        update_fields=['password_hash']
+                    )
+
+            # 4. Guardar la sesión y redirigir
+            if acceso_valido:
+                request.session.flush()
+
                 request.session['usuario_rut'] = usuario.rut
                 request.session['rol_id'] = usuario.rol_id_rol.id_rol
-                
-                # ¡AQUÍ ESTÁ LA MAGIA PARA EL HEADER! Guardamos estos datos extra:
                 request.session['nombre_usuario'] = usuario.nombre
-                request.session['apellido_usuario'] = usuario.apellido_paterno
-                # Asumo que la columna en tu modelo Rol se llama nombre_rol. Si se llama distinto, ajústalo.
-                request.session['rol_nombre'] = usuario.rol_id_rol.nombre_rol 
+                request.session['apellido_usuario'] = (
+                    usuario.apellido_paterno
+                )
+                request.session['rol_nombre'] = (
+                    usuario.rol_id_rol.nombre_rol
+                )
 
-                # 4. Redirigimos según el Rol usando los nombres de tus vistas
                 rol = usuario.rol_id_rol.id_rol
-                if rol == 1: # Administrador
-                    return redirect('admin_inicio')
-                elif rol == 2: # Profesor
-                    return redirect('profesor_inicio')
-                elif rol == 3: # Apoderado
-                    return redirect('apoderado_inicio')
-                else:
-                    messages.error(request, 'El usuario no tiene un rol válido asignado.')
-            else:
-                messages.error(request, 'Contraseña incorrecta.')
-                
-        except Usuario.DoesNotExist:
-            messages.error(request, 'El usuario o correo ingresado no existe en el sistema.')
 
-    # Si entra por primera vez (GET), muestra la página normal
+                if rol == 1:
+                    return redirect('admin_inicio')
+
+                elif rol == 2:
+                    return redirect('profesor_inicio')
+
+                elif rol == 3:
+                    return redirect('apoderado_inicio')
+
+                else:
+                    request.session.flush()
+                    messages.error(
+                        request,
+                        'El usuario no tiene un rol válido asignado.'
+                    )
+
+            else:
+                messages.error(
+                    request,
+                    'Contraseña incorrecta.'
+                )
+
+        except Usuario.DoesNotExist:
+            messages.error(
+                request,
+                'El usuario o correo ingresado no existe.'
+            )
+
+        except Usuario.MultipleObjectsReturned:
+            messages.error(
+                request,
+                'Hay más de una cuenta con ese correo. Contacta al administrador.'
+            )
+
     return render(request, 'login.html')
 
 def validar_rut(rut_str):
@@ -152,34 +215,13 @@ def profesor_revisar_incidencias(request):
     return render(request, 'profesor_revisar_incidencias.html')
 
 
+
 @require_role([2])
 def profesor_alumnos(request):
+    # Todos los cursos disponibles, sin filtrar por profesor
+    cursos = Curso.objects.all().order_by('id_curso')
 
-    # Profesor que inició sesión
-    profesor_rut = request.session.get('usuario_rut')
-
-    # Cursos asignados directamente al profesor
-    cursos_directos = Curso.objects.filter(
-        usuario_rut_id=profesor_rut
-    ).values_list('id_curso', flat=True)
-
-    # Cursos donde el profesor imparte alguna asignatura
-    cursos_asignaturas = AsignaturaCurso.objects.filter(
-        usuario_rut_id=profesor_rut
-    ).values_list('curso_id_curso_id', flat=True)
-
-    # Unificar los cursos que le corresponden
-    cursos = Curso.objects.filter(
-        id_curso__in=cursos_directos
-    ) | Curso.objects.filter(
-        id_curso__in=cursos_asignaturas
-    )
-
-    cursos = cursos.distinct().order_by('id_curso')
-
-    # Curso seleccionado desde el formulario
     curso_id = request.GET.get('curso', '').strip()
-
     curso_seleccionado = None
     alumnos = Alumno.objects.none()
 
@@ -190,30 +232,25 @@ def profesor_alumnos(request):
             ).first()
 
         if curso_seleccionado:
-            alumnos = Alumno.objects.filter(
-                curso_id_curso=curso_seleccionado
-            ).select_related(
-                'usuario_rut'
-            ).order_by('nombre_completo')
-
+            alumnos = (
+                Alumno.objects.filter(
+                    curso_id_curso=curso_seleccionado
+                )
+                .select_related('usuario_rut')
+                .order_by('nombre_completo')
+            )
         else:
             messages.error(
                 request,
-                'El curso seleccionado no existe o no está asignado a tu usuario.'
+                'El curso seleccionado no existe.'
             )
 
-    context = {
+    return render(request, 'profesor_alumnos.html', {
         'cursos': cursos,
         'curso_seleccionado': curso_seleccionado,
         'alumnos': alumnos,
-        'total_alumnos': alumnos.count()
-    }
-
-    return render(
-        request,
-        'profesor_alumnos.html',
-        context
-    )
+        'total_alumnos': alumnos.count(),
+    })
 
 
 @require_role([2])
