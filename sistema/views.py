@@ -84,7 +84,7 @@ def login_view(request):
                         update_fields=['password_hash']
                     )
 
-            # 4. Guardar la sesión y redirigir según los 6 roles
+            # 4. Guardar la sesión y redirigir según los 5 roles oficiales
             if acceso_valido:
                 request.session.flush()
 
@@ -98,23 +98,25 @@ def login_view(request):
                     usuario.rol_id_rol.nombre_rol
                 )
 
+
                 rol = usuario.rol_id_rol.id_rol
-                if rol == 1: # Administrador
+
+                if rol == 1:  # Administrador
                     return redirect('admin_inicio')
-                elif rol == 2: # Jefe de Departamento TI
-                    return redirect('admin_inicio')
-                elif rol == 3: # Personal de Aseo
-                    return redirect('admin_gestion_inventario')
-                elif rol == 4: # Profesor
+
+                elif rol == 2:  # Profesor
                     return redirect('profesor_inicio')
-                elif rol in [5, 6]: # 5: Apoderado, 6: Alumno
+
+                elif rol == 3:  # Apoderado
                     return redirect('apoderado_inicio')
-                else:
-                    request.session.flush()
-                    messages.error(
-                        request,
-                        'El usuario no tiene un rol válido asignado.'
-                    )
+
+                elif rol == 5:  # Jefe de Departamento TI
+                    return redirect('admin_inicio')
+
+                elif rol == 6:  # Personal de Aseo
+                    return redirect('admin_gestion_inventario')
+
+
 
             else:
                 messages.error(
@@ -175,23 +177,23 @@ def validar_rut(rut_str):
 
 # Vistas para el portal de apoderados
 
-@require_role([3, 4])
+@require_role([3])
 def apoderado_inicio(request):
     return render(request, 'apoderado_inicio.html')
 
-@require_role([3, 4])
+@require_role([3])
 def apoderado_notas(request):
     return render(request, 'apoderado_notas.html')
 
-@require_role([3, 4])
+@require_role([3])
 def apoderado_asistencia(request):
     return render(request, 'apoderado_asistencia.html')
 
-@require_role([3, 4])
+@require_role([3])
 def apoderado_calendario(request):
     return render(request, 'apoderado_calendario.html')
 
-@require_role([3, 4])
+@require_role([3])
 def apoderado_certificados(request):
     return render(request, 'apoderado_certificados.html')
 
@@ -200,9 +202,118 @@ def apoderado_certificados(request):
 def profesor_inicio(request):
     return render(request, 'profesor_inicio.html')
 
+
+import json
+from decimal import Decimal, InvalidOperation
+from django.db import transaction, connection
+from django.http import JsonResponse
+from django.shortcuts import render
+from django.views.decorators.http import require_http_methods
+from django.utils import timezone
+from sistema.models import Curso, Alumno, AsignaturaCurso, Evaluacion, Calificacion
+
 @require_role([2])
+@require_http_methods(['GET', 'POST'])
 def profesor_notas(request):
-    return render(request, 'profesor_notas.html')
+    if request.method == 'POST':
+        try:
+            payload = json.loads(request.body)
+            curso_id = int(payload['curso_id'])
+            relacion_id = int(payload['asignatura_id'])
+            columnas = payload['columnas']
+            notas = payload['notas']
+            if not isinstance(columnas, list) or not columnas or len(columnas) > 40 or not isinstance(notas, dict):
+                raise ValueError('Datos inválidos.')
+            if columnas != list(range(1, len(columnas) + 1)):
+                raise ValueError('Las evaluaciones deben ser consecutivas.')
+        except (ValueError, KeyError, TypeError, json.JSONDecodeError):
+            return JsonResponse({'ok': False, 'error': 'Datos de solicitud inválidos.'}, status=400)
+
+        relacion = AsignaturaCurso.objects.filter(id_asig_curso=relacion_id, curso_id_curso_id=curso_id).first()
+        if not relacion:
+            return JsonResponse({'ok': False, 'error': 'Curso o asignatura inválidos.'}, status=400)
+        ruts_validos = set(Alumno.objects.filter(curso_id_curso_id=curso_id).values_list('rut_alumno', flat=True))
+        if set(notas) != ruts_validos:
+            return JsonResponse({'ok': False, 'error': 'La lista de alumnos no corresponde al curso.'}, status=400)
+        parsed = {}
+        for rut, valores in notas.items():
+            if not isinstance(valores, list) or len(valores) != len(columnas):
+                return JsonResponse({'ok': False, 'error': 'Cantidad de notas inválida.'}, status=400)
+            for numero, valor in enumerate(valores, 1):
+                if valor in ('', None):
+                    continue
+                try:
+                    numero_nota = Decimal(str(valor).replace(',', '.'))
+                except InvalidOperation:
+                    return JsonResponse({'ok': False, 'error': f'Nota inválida de {rut}.'}, status=400)
+                if not numero_nota.is_finite() or not (Decimal('1.0') <= numero_nota <= Decimal('7.0')) or numero_nota.as_tuple().exponent < -1:
+                    return JsonResponse({'ok': False, 'error': f'Las notas deben estar entre 1.0 y 7.0, con un decimal ({rut}).'}, status=400)
+                parsed[(rut, numero)] = float(numero_nota)
+
+        try:
+            with transaction.atomic():
+                # Serializa los guardados de esta asignatura para evitar IDs repetidos.
+                with connection.cursor() as cursor:
+                    cursor.execute('SELECT id_asig_curso FROM asignatura_curso WHERE id_asig_curso = %s FOR UPDATE', [relacion_id])
+                    cursor.execute('SELECT COALESCE(MAX(id_calificacion), 0) FROM calificacion')
+                    max_id = cursor.fetchone()[0]
+                existentes = {e.numero_evaluacion: e for e in Evaluacion.objects.filter(asignatura_curso_id_asig_curso_id=relacion_id)}
+                # Mantener IDs de evaluaciones existentes; crear solo las faltantes.
+                for numero in columnas:
+                    if numero not in existentes:
+                        existentes[numero] = Evaluacion.objects.create(asignatura_curso_id_asig_curso_id=relacion_id, numero_evaluacion=numero)
+                for numero, evaluacion in list(existentes.items()):
+                    if numero not in columnas:
+                        Calificacion.objects.filter(evaluacion_id_evaluacion_id=evaluacion.id_evaluacion).delete()
+                        evaluacion.delete()
+                        del existentes[numero]
+                actuales = {}
+                for c in Calificacion.objects.filter(asignatura_curso_id_asig_curso_id=relacion_id, alumno_rut_alumno_id__in=ruts_validos, evaluacion_id_evaluacion__isnull=False).order_by('id_calificacion'):
+                    clave = (c.alumno_rut_alumno_id, c.evaluacion_id_evaluacion.numero_evaluacion)
+                    if clave in actuales:
+                        raise ValueError('Hay notas duplicadas en la base de datos. Revisar antes de guardar.')
+                    actuales[clave] = c
+                for clave, nota in parsed.items():
+                    if clave in actuales:
+                        c = actuales.pop(clave)
+                        if c.valor_nota != nota:
+                            c.valor_nota = nota
+                            c.fecha_ingreso = timezone.localdate()
+                            c.save(update_fields=['valor_nota', 'fecha_ingreso'])
+                    else:
+                        max_id += 1
+                        Calificacion.objects.create(id_calificacion=max_id, valor_nota=nota, fecha_ingreso=timezone.localdate(), alumno_rut_alumno_id=clave[0], asignatura_curso_id_asig_curso_id=relacion_id, evaluacion_id_evaluacion_id=existentes[clave[1]].id_evaluacion)
+                for c in actuales.values():
+                    c.delete()
+        except Exception as exc:
+            return JsonResponse({'ok': False, 'error': f'No se pudieron guardar las notas: {exc}'}, status=500)
+        return JsonResponse({'ok': True, 'mensaje': 'Calificaciones guardadas correctamente.'})
+
+    cursos = Curso.objects.all().order_by('id_curso')
+    curso_id = request.GET.get('curso', '')
+    asignatura_curso_id = request.GET.get('asignatura', '')
+    curso_seleccionado = cursos.filter(id_curso=int(curso_id)).first() if curso_id.isdigit() else None
+    relaciones = AsignaturaCurso.objects.select_related('asignatura_id_asignatura').order_by('asignatura_id_asignatura__nombre_asignatura')
+    asignaturas_por_curso = {}
+    for relacion in relaciones:
+        asignaturas_por_curso.setdefault(str(relacion.curso_id_curso_id), []).append({'id': str(relacion.id_asig_curso), 'nombre': relacion.asignatura_id_asignatura.nombre_asignatura})
+    asignatura_seleccionada = None
+    alumnos = []
+    columnas = [1, 2, 3]
+    notas_guardadas = {}
+    if curso_seleccionado and asignatura_curso_id.isdigit():
+        asignatura_seleccionada = relaciones.filter(curso_id_curso=curso_seleccionado, id_asig_curso=int(asignatura_curso_id)).first()
+        if asignatura_seleccionada:
+            alumnos = list(Alumno.objects.filter(curso_id_curso=curso_seleccionado).order_by('nombre_completo', 'rut_alumno'))
+            evaluaciones = list(Evaluacion.objects.filter(asignatura_curso_id_asig_curso=asignatura_seleccionada).order_by('numero_evaluacion'))
+            if evaluaciones:
+                columnas = list(range(1, max(3, max(e.numero_evaluacion for e in evaluaciones)) + 1))
+            numeros = {e.id_evaluacion: e.numero_evaluacion for e in evaluaciones}
+            for calificacion in Calificacion.objects.filter(asignatura_curso_id_asig_curso=asignatura_seleccionada, evaluacion_id_evaluacion_id__in=numeros):
+                notas_guardadas.setdefault(calificacion.alumno_rut_alumno_id, {})[str(numeros[calificacion.evaluacion_id_evaluacion_id])] = f'{calificacion.valor_nota:.1f}'
+    return render(request, 'profesor_notas.html', {'cursos': cursos, 'asignaturas_por_curso': asignaturas_por_curso, 'curso_seleccionado': curso_seleccionado, 'asignatura_seleccionada': asignatura_seleccionada, 'alumnos': alumnos, 'columnas': columnas, 'notas_guardadas': notas_guardadas})
+
+
 
 @require_role([2])
 def profesor_asistencia(request):
@@ -261,7 +372,7 @@ def profesor_perfil_alumno(request):
 
 # Vistas para el portal de Administrador
 
-@require_role([1, 5,])
+@require_role([1, 4])
 def admin_inicio(request):
     return render(request, 'admin_inicio.html')
 
@@ -345,8 +456,8 @@ def admin_crear_usuario(request):
             messages.error(request, f'El correo {correo_form} ya pertenece a otro usuario.')
             return render(request, 'admin_crear_usuario.html', {'roles': roles})
 
-        # Contraseña inicial usando los dígitos del RUT limpio
-        password_defecto = rut_limpio
+        # Contraseña inicial cifrada usando los dígitos del RUT limpio
+        password_defecto = make_password(rut_limpio)
 
         # 6. Creación y persistencia del usuario en la base de datos
         try:
@@ -388,8 +499,9 @@ def admin_editar_usuario(request, rut):
     else:
         rut_estandar = rut
 
-    # Obtenemos el usuario o lanzamos 404 si no existe
+    # Obtenemos el usuario y la lista de los 5 roles de la base de datos
     usuario = get_object_or_404(Usuario, rut=rut_estandar)
+    roles = Rol.objects.all().order_by('id_rol')
 
     if request.method == 'POST':
         # Capturamos los datos editables del formulario
@@ -408,7 +520,7 @@ def admin_editar_usuario(request, rut):
             existe_correo = Usuario.objects.filter(correo=correo_lower).exclude(rut=usuario.rut).exists()
             if existe_correo:
                 messages.error(request, f'El correo {correo_form} ya pertenece a otro usuario registrado.')
-                return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
+                return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 
         try:
             # 3. Actualizamos los campos
@@ -421,7 +533,6 @@ def admin_editar_usuario(request, rut):
             usuario.direccion = direccion_form
             usuario.fecha_nacimiento = fecha_nac_form if fecha_nac_form else None
 
-            # Al llamar a save(), se ejecutan las reglas del modelo (capitalización, etc.)
             usuario.save()
 
             messages.success(request, f'Usuario {usuario.rut} actualizado correctamente.')
@@ -429,10 +540,9 @@ def admin_editar_usuario(request, rut):
 
         except IntegrityError:
             messages.error(request, 'Error de integridad al intentar actualizar los datos.')
-            return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
+            return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 
-    return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
-
+    return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 @require_role([1])
 def admin_eliminar_usuario(request, rut):
     # Buscamos al usuario o tiramos error 404 si no existe
@@ -526,18 +636,19 @@ def admin_crear_alumno(request):
             messages.error(request, 'Selecciona un estado de matrícula válido.')
             return render(request, 'admin_crear_alumno.html', context)
 
-        # El apoderado es opcional por ahora
-        apoderado = None
+        # Validar que sí o sí hayan seleccionado un apoderado (MySQL no permite NULL en USUARIO_rut)
+        if not apoderado_rut:
+            messages.error(request, 'Debes seleccionar un apoderado para el alumno.')
+            return render(request, 'admin_crear_alumno.html', context)
 
-        if apoderado_rut:
-            apoderado = Usuario.objects.filter(
-                rut=apoderado_rut,
-                rol_id_rol_id=3
-            ).first()
+        apoderado = Usuario.objects.filter(
+            rut=apoderado_rut,
+            rol_id_rol_id=3
+        ).first()
 
-            if apoderado is None:
-                messages.error(request, 'El apoderado seleccionado no es válido.')
-                return render(request, 'admin_crear_alumno.html', context)
+        if apoderado is None:
+            messages.error(request, 'El apoderado seleccionado no es válido.')
+            return render(request, 'admin_crear_alumno.html', context)
 
         try:
             with transaction.atomic():
@@ -563,7 +674,6 @@ def admin_crear_alumno(request):
             )
 
     return render(request, 'admin_crear_alumno.html', context)
-
 
 @require_role([1])
 def admin_editar_alumno(request, rut):
@@ -725,11 +835,11 @@ def admin_editar_alumno(request, rut):
     )
 
 
-@require_role([1, 5])
+@require_role([1, 4])
 def admin_gestion_incidencias(request):
     return render(request, 'admin_gestion_incidencias.html')
 
-@require_role([1, 5])
+@require_role([1, 4])
 def admin_editar_incidencia(request):
     return render(request, 'admin_editar_incidencia.html')
 
@@ -749,10 +859,10 @@ def admin_gestion_profesores(request):
 def admin_editar_profesor(request):
     return render(request, 'admin_editar_profesor.html')
 
-@require_role([1, 5, 6])
+@require_role([1, 4, 5])
 def admin_gestion_inventario(request):
     return render(request, 'admin_gestion_inventario.html')
 
-@require_role([1, 5])
+@require_role([1, 4])
 def admin_editar_equipo(request):
     return render(request, 'admin_editar_equipo.html')

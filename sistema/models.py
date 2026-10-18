@@ -51,6 +51,28 @@ class AsignaturaCurso(models.Model):
         db_table = 'asignatura_curso'
 
 
+class Evaluacion(models.Model):
+    id_evaluacion = models.AutoField(primary_key=True)
+
+    asignatura_curso_id_asig_curso = models.ForeignKey(
+        'AsignaturaCurso',
+        models.DO_NOTHING,
+        db_column='ASIGNATURA_CURSO_id_asig_curso'
+    )
+
+    numero_evaluacion = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'evaluacion'
+        unique_together = (
+            ('asignatura_curso_id_asig_curso', 'numero_evaluacion'),
+        )
+
+    def __str__(self):
+        return f"Nota {self.numero_evaluacion}"
+
+
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
@@ -117,16 +139,43 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
+
 class Calificacion(models.Model):
     id_calificacion = models.IntegerField(primary_key=True)
+
     valor_nota = models.FloatField()
+
     fecha_ingreso = models.DateField()
-    alumno_rut_alumno = models.ForeignKey(Alumno, models.DO_NOTHING, db_column='ALUMNO_rut_alumno')  # Field name made lowercase.
-    asignatura_curso_id_asig_curso = models.ForeignKey(AsignaturaCurso, models.DO_NOTHING, db_column='ASIGNATURA_CURSO_id_asig_curso')  # Field name made lowercase.
+
+    alumno_rut_alumno = models.ForeignKey(
+        Alumno,
+        models.DO_NOTHING,
+        db_column='ALUMNO_rut_alumno'
+    )
+
+    asignatura_curso_id_asig_curso = models.ForeignKey(
+        AsignaturaCurso,
+        models.DO_NOTHING,
+        db_column='ASIGNATURA_CURSO_id_asig_curso'
+    )
+
+    evaluacion_id_evaluacion = models.ForeignKey(
+        Evaluacion,
+        models.DO_NOTHING,
+        db_column='EVALUACION_id_evaluacion',
+        blank=True,
+        null=True
+    )
 
     class Meta:
         managed = False
         db_table = 'calificacion'
+
+    def __str__(self):
+        return (
+            f"{self.alumno_rut_alumno_id} - "
+            f"Nota: {self.valor_nota}"
+        )
 
 
 class Curso(models.Model):
