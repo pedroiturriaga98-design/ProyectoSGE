@@ -1,35 +1,6 @@
 {% extends 'base_admin.html' %}
 
 {% block content %}
-<style>
-    .page-header { margin-bottom: 25px; }
-    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; }
-    .page-header p { color: #64748b; font-size: 0.9rem; }
-
-    .table-container { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    
-    .table-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .filters-left { display: flex; gap: 15px; }
-    .search-box input { width: 300px; padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; }
-    .filter-select { padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; background-color: white; }
-    
-    .btn-create { background-color: #f97316; color: white; text-decoration: none; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
-    .btn-create:hover { background-color: #ea580c; }
-
-    table { width: 100%; border-collapse: collapse; }
-    th { text-align: left; padding: 15px; font-size: 0.75rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; background-color: #f8fafc; text-transform: uppercase; }
-    td { padding: 15px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; color: #475569; vertical-align: middle; }
-    td strong { color: #0f172a; font-weight: 600; }
-
-    .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; display: inline-block; }
-    .badge-activo { background-color: #d1fae5; color: #059669; }
-    .badge-inactivo { background-color: #e2e8f0; color: #64748b; }
-
-    .action-btns { display: flex; gap: 8px; }
-    .btn-icon { width: 32px; height: 32px; border-radius: 6px; border: 1px solid #e2e8f0; background: white; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; text-decoration: none; transition: 0.2s; }
-    .btn-icon:hover { background: #f1f5f9; }
-    .btn-icon.delete:hover { background: #fee2e2; color: #ef4444; border-color: #fecaca; }
-</style>
 
 <div class="page-header">
     <h2>Gestión de Usuarios</h2>
