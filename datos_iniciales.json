@@ -15070,5 +15070,3134 @@
     "curso_id_curso": 28,
     "usuario_rut": "40.013.030-2"
   }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 1,
+  "fields": {
+    "nombre_asignatura": "Lenguaje y Comunicación"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 2,
+  "fields": {
+    "nombre_asignatura": "Matemática"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 3,
+  "fields": {
+    "nombre_asignatura": "Ciencias Naturales"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 4,
+  "fields": {
+    "nombre_asignatura": "Historia, Geografía y Ciencias Sociales"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 5,
+  "fields": {
+    "nombre_asignatura": "Inglés"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 6,
+  "fields": {
+    "nombre_asignatura": "Educación Física y Salud"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 7,
+  "fields": {
+    "nombre_asignatura": "Artes Visuales"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 8,
+  "fields": {
+    "nombre_asignatura": "Música"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 9,
+  "fields": {
+    "nombre_asignatura": "Tecnología"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 10,
+  "fields": {
+    "nombre_asignatura": "Orientación"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 11,
+  "fields": {
+    "nombre_asignatura": "Religión"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 12,
+  "fields": {
+    "nombre_asignatura": "Lengua y Literatura"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 13,
+  "fields": {
+    "nombre_asignatura": "Biología"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 14,
+  "fields": {
+    "nombre_asignatura": "Física"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 15,
+  "fields": {
+    "nombre_asignatura": "Química"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 16,
+  "fields": {
+    "nombre_asignatura": "Educación Ciudadana"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 17,
+  "fields": {
+    "nombre_asignatura": "Filosofía"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 18,
+  "fields": {
+    "nombre_asignatura": "Ciencias para la Ciudadanía"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 19,
+  "fields": {
+    "nombre_asignatura": "Probabilidades y Estadística"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 20,
+  "fields": {
+    "nombre_asignatura": "Geografía y Problemas Ambientales"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 21,
+  "fields": {
+    "nombre_asignatura": "Participación y Argumentación en Democracia"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 22,
+  "fields": {
+    "nombre_asignatura": "Preparación de insumos y equipos de cocina"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 23,
+  "fields": {
+    "nombre_asignatura": "Elaboración de platos calientes y fríos"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 24,
+  "fields": {
+    "nombre_asignatura": "Pastelería y repostería"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 25,
+  "fields": {
+    "nombre_asignatura": "Cálculo y registro de remuneraciones (sueldos)"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 26,
+  "fields": {
+    "nombre_asignatura": "Contabilidad básica y sistemas contables"
+  }
+},
+{
+  "model": "sistema.asignatura",
+  "pk": 27,
+  "fields": {
+    "nombre_asignatura": "Emprendimiento y empleabilidad"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 1,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 2,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 3,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 4,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 5,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 6,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 7,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 8,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 9,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 10,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 11,
+  "fields": {
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 12,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 13,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 14,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 15,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 16,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 17,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 18,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 19,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 20,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 21,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 22,
+  "fields": {
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 23,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 24,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 25,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 26,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 27,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 28,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 29,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 30,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 31,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 32,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 33,
+  "fields": {
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 34,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 35,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 36,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 37,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 38,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 39,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 40,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 41,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 42,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 43,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 44,
+  "fields": {
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 45,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 46,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 47,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 48,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 49,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 50,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 51,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 52,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 53,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 54,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 55,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 56,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 57,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 58,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 59,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 60,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 61,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 62,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 63,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 64,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 65,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 66,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 67,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 68,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 69,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 70,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 71,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 72,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 73,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 74,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 75,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 76,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 77,
+  "fields": {
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 78,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 79,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 80,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 81,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 82,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 83,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 84,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 85,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 86,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 87,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 88,
+  "fields": {
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 89,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 90,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 91,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 92,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 93,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 94,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 95,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 96,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 97,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 98,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 99,
+  "fields": {
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 100,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 101,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 102,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 103,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 104,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 105,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 106,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 107,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 108,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 109,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 110,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 111,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 112,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 113,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 114,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 115,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 116,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 117,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 118,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 119,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 120,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 121,
+  "fields": {
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 122,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 123,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 124,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 125,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 126,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 127,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 128,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 129,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 130,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 131,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 132,
+  "fields": {
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "12.345.678-5"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 133,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 134,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 135,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 136,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 137,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 138,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 139,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 140,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 141,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 142,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 143,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 144,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 145,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 146,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 147,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 148,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 149,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 150,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 151,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 152,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 153,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 154,
+  "fields": {
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 155,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 156,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 157,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 158,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 159,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 160,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 161,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 162,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 163,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 164,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 165,
+  "fields": {
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 166,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 167,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 168,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 169,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 170,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 171,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 172,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 173,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 174,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 175,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 176,
+  "fields": {
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 177,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 178,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 179,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 13,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 180,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 181,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 182,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 183,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 184,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 185,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 186,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 187,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 188,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 189,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 13,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 190,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 191,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 192,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 193,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 194,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 195,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 196,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 197,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 198,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 199,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 13,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 200,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 201,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 202,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 203,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 204,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 205,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 206,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 207,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 208,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 209,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 13,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 210,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 211,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 212,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 213,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 214,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 215,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 216,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 217,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 218,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 219,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 13,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 220,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 221,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 222,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 223,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 224,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 225,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 226,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 227,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 228,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 229,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 13,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 230,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 231,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 232,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 233,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 234,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 235,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 236,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 237,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 238,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 239,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 16,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 240,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 241,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 242,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 243,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 244,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 245,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 21,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 246,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 247,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 248,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 16,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 249,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 250,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 251,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 252,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 22,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 253,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 23,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 254,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 24,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 255,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 256,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 257,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 16,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 258,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 259,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 260,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 261,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 262,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 263,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 264,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 265,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 266,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 16,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 267,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 268,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 269,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 270,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 271,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 272,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 21,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 273,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 274,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 275,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 16,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 276,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 277,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 278,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 279,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 22,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 280,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 23,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 281,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 24,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 282,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 283,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 284,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 16,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 285,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 286,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 287,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 288,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 289,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 290,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 1,
+  "fields": {
+    "valor_nota": 1.5,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.018-5",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 2,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.007-K",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 3,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.027-4",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 4,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.001-0",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 5,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.021-5",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 6,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.012-6",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 7,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.019-3",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 8,
+  "fields": {
+    "valor_nota": 6.2,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.028-2",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 9,
+  "fields": {
+    "valor_nota": 5.5,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.008-8",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 10,
+  "fields": {
+    "valor_nota": 2.4,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.015-0",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 11,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.017-7",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 12,
+  "fields": {
+    "valor_nota": 5.5,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.013-4",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 13,
+  "fields": {
+    "valor_nota": 5.6,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.022-3",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 14,
+  "fields": {
+    "valor_nota": 4.2,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.002-9",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 15,
+  "fields": {
+    "valor_nota": 5.3,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.023-1",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 16,
+  "fields": {
+    "valor_nota": 4.6,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.003-7",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 17,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.004-5",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 18,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.024-K",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 19,
+  "fields": {
+    "valor_nota": 6.1,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.020-7",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 20,
+  "fields": {
+    "valor_nota": 6.2,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.010-K",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 21,
+  "fields": {
+    "valor_nota": 6.5,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.026-6",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 22,
+  "fields": {
+    "valor_nota": 4.1,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.006-1",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 23,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.029-0",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 24,
+  "fields": {
+    "valor_nota": 3.2,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.009-6",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 25,
+  "fields": {
+    "valor_nota": 3.5,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "26.759.471-6",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 26,
+  "fields": {
+    "valor_nota": 3.7,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.014-2",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 27,
+  "fields": {
+    "valor_nota": 3.9,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.025-8",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 28,
+  "fields": {
+    "valor_nota": 1.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.005-3",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 29,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.011-8",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 30,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.016-9",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
 }
 ]
