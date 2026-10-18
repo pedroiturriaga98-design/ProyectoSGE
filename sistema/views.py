@@ -84,7 +84,7 @@ def login_view(request):
                         update_fields=['password_hash']
                     )
 
-            # 4. Guardar la sesión y redirigir según los 6 roles
+            # 4. Guardar la sesión y redirigir según los 5 roles oficiales
             if acceso_valido:
                 request.session.flush()
 
@@ -116,13 +116,6 @@ def login_view(request):
                 elif rol == 6:  # Personal de Aseo
                     return redirect('admin_gestion_inventario')
 
-                else:
-                    # Rol 4 (Alumno) u otro rol no autorizado
-                    request.session.flush()
-                    messages.error(
-                        request,
-                        'Este usuario no tiene acceso al sistema.'
-                    )
 
 
             else:
@@ -184,23 +177,23 @@ def validar_rut(rut_str):
 
 # Vistas para el portal de apoderados
 
-@require_role([3, 4])
+@require_role([3])
 def apoderado_inicio(request):
     return render(request, 'apoderado_inicio.html')
 
-@require_role([3, 4])
+@require_role([3])
 def apoderado_notas(request):
     return render(request, 'apoderado_notas.html')
 
-@require_role([3, 4])
+@require_role([3])
 def apoderado_asistencia(request):
     return render(request, 'apoderado_asistencia.html')
 
-@require_role([3, 4])
+@require_role([3])
 def apoderado_calendario(request):
     return render(request, 'apoderado_calendario.html')
 
-@require_role([3, 4])
+@require_role([3])
 def apoderado_certificados(request):
     return render(request, 'apoderado_certificados.html')
 
@@ -379,7 +372,7 @@ def profesor_perfil_alumno(request):
 
 # Vistas para el portal de Administrador
 
-@require_role([1, 5,])
+@require_role([1, 4])
 def admin_inicio(request):
     return render(request, 'admin_inicio.html')
 
@@ -463,8 +456,8 @@ def admin_crear_usuario(request):
             messages.error(request, f'El correo {correo_form} ya pertenece a otro usuario.')
             return render(request, 'admin_crear_usuario.html', {'roles': roles})
 
-        # Contraseña inicial usando los dígitos del RUT limpio
-        password_defecto = rut_limpio
+        # Contraseña inicial cifrada usando los dígitos del RUT limpio
+        password_defecto = make_password(rut_limpio)
 
         # 6. Creación y persistencia del usuario en la base de datos
         try:
@@ -506,8 +499,9 @@ def admin_editar_usuario(request, rut):
     else:
         rut_estandar = rut
 
-    # Obtenemos el usuario o lanzamos 404 si no existe
+    # Obtenemos el usuario y la lista de los 5 roles de la base de datos
     usuario = get_object_or_404(Usuario, rut=rut_estandar)
+    roles = Rol.objects.all().order_by('id_rol')
 
     if request.method == 'POST':
         # Capturamos los datos editables del formulario
@@ -526,7 +520,7 @@ def admin_editar_usuario(request, rut):
             existe_correo = Usuario.objects.filter(correo=correo_lower).exclude(rut=usuario.rut).exists()
             if existe_correo:
                 messages.error(request, f'El correo {correo_form} ya pertenece a otro usuario registrado.')
-                return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
+                return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 
         try:
             # 3. Actualizamos los campos
@@ -539,7 +533,6 @@ def admin_editar_usuario(request, rut):
             usuario.direccion = direccion_form
             usuario.fecha_nacimiento = fecha_nac_form if fecha_nac_form else None
 
-            # Al llamar a save(), se ejecutan las reglas del modelo (capitalización, etc.)
             usuario.save()
 
             messages.success(request, f'Usuario {usuario.rut} actualizado correctamente.')
@@ -547,10 +540,9 @@ def admin_editar_usuario(request, rut):
 
         except IntegrityError:
             messages.error(request, 'Error de integridad al intentar actualizar los datos.')
-            return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
+            return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 
-    return render(request, 'admin_editar_usuario.html', {'usuario': usuario})
-
+    return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 @require_role([1])
 def admin_eliminar_usuario(request, rut):
     # Buscamos al usuario o tiramos error 404 si no existe
@@ -644,18 +636,19 @@ def admin_crear_alumno(request):
             messages.error(request, 'Selecciona un estado de matrícula válido.')
             return render(request, 'admin_crear_alumno.html', context)
 
-        # El apoderado es opcional por ahora
-        apoderado = None
+        # Validar que sí o sí hayan seleccionado un apoderado (MySQL no permite NULL en USUARIO_rut)
+        if not apoderado_rut:
+            messages.error(request, 'Debes seleccionar un apoderado para el alumno.')
+            return render(request, 'admin_crear_alumno.html', context)
 
-        if apoderado_rut:
-            apoderado = Usuario.objects.filter(
-                rut=apoderado_rut,
-                rol_id_rol_id=3
-            ).first()
+        apoderado = Usuario.objects.filter(
+            rut=apoderado_rut,
+            rol_id_rol_id=3
+        ).first()
 
-            if apoderado is None:
-                messages.error(request, 'El apoderado seleccionado no es válido.')
-                return render(request, 'admin_crear_alumno.html', context)
+        if apoderado is None:
+            messages.error(request, 'El apoderado seleccionado no es válido.')
+            return render(request, 'admin_crear_alumno.html', context)
 
         try:
             with transaction.atomic():
@@ -681,7 +674,6 @@ def admin_crear_alumno(request):
             )
 
     return render(request, 'admin_crear_alumno.html', context)
-
 
 @require_role([1])
 def admin_editar_alumno(request, rut):
@@ -843,11 +835,11 @@ def admin_editar_alumno(request, rut):
     )
 
 
-@require_role([1, 5])
+@require_role([1, 4])
 def admin_gestion_incidencias(request):
     return render(request, 'admin_gestion_incidencias.html')
 
-@require_role([1, 5])
+@require_role([1, 4])
 def admin_editar_incidencia(request):
     return render(request, 'admin_editar_incidencia.html')
 
@@ -867,10 +859,10 @@ def admin_gestion_profesores(request):
 def admin_editar_profesor(request):
     return render(request, 'admin_editar_profesor.html')
 
-@require_role([1, 5, 6])
+@require_role([1, 4, 5])
 def admin_gestion_inventario(request):
     return render(request, 'admin_gestion_inventario.html')
 
-@require_role([1, 5])
+@require_role([1, 4])
 def admin_editar_equipo(request):
     return render(request, 'admin_editar_equipo.html')
