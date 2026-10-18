@@ -3,7 +3,6 @@
 
 {% block content %}
 
-
 <div class="page-header">
     <div>
         <h2>Gestión de Alumnos</h2>
@@ -25,7 +24,7 @@
                 <input
                     type="text"
                     id="buscarAlumno"
-                    placeholder="🔍 Buscar por nombre o RUT..."
+                    placeholder="Buscar por nombre o RUT..."
                     autocomplete="off"
                 >
             </span>
@@ -105,14 +104,8 @@
 
                     <td>
                         <div class="action-btns">
-                            <a
-                                href="{% url 'admin_editar_alumno' alumno.rut_alumno %}"
-                                class="btn-icon"
-                                title="Editar alumno"
-                                aria-label="Editar alumno"
-                            >
-                                ✏️
-                            </a>
+                            <a href="{% url 'admin_editar_alumno' alumno.rut_alumno %}" class="btn-icon" title="Editar">✎</a>
+                            <a href="#" class="btn-icon delete" title="Eliminar">🗑</a>
                         </div>
                     </td>
 
