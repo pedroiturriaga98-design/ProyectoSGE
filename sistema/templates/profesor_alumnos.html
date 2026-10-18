@@ -1,3 +1,4 @@
+
 {% extends 'base_profesor.html' %}
 
 {% block content %}
@@ -6,119 +7,286 @@
     .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; }
     .page-header p { color: #64748b; font-size: 0.9rem; }
 
-    /* Filtros Unificados */
-    .filters-card { background: white; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; display: flex; gap: 20px; align-items: flex-end; margin-bottom: 25px; box-shadow: 0 1px 2px rgba(0,0,0,0.02); }
-    .filter-group { flex: 1; display: flex; flex-direction: column; gap: 8px; }
-    .filter-group label { font-size: 0.8rem; color: #64748b; font-weight: 600; }
-    .filter-group select { padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; color: #334155; }
-    .btn-search { background-color: #1c2536; color: white; border: none; padding: 10px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; height: 42px; transition: 0.2s; display: flex; align-items: center; gap: 8px;}
-    .btn-search:hover { background-color: #0f172a; }
+    .filters-card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        display: flex;
+        gap: 20px;
+        align-items: flex-end;
+        margin-bottom: 25px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        flex-wrap: wrap;
+    }
 
-    /* Contenedor de Tabla */
-    .table-container { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    .table-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; }
-    .table-title h3 { font-size: 1.1rem; color: #0f172a; margin-bottom: 4px; }
-    .table-info { font-size: 0.85rem; color: #64748b; }
+    .filter-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        min-width: 180px;
+    }
 
-    /* Tabla Interactiva */
-    table { width: 100%; border-collapse: collapse; }
-    th { text-align: left; padding: 15px; font-size: 0.75rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; text-transform: uppercase; }
-    td { padding: 15px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; color: #475569; vertical-align: middle; }
-    
-    .row-clickable { cursor: pointer; transition: background-color 0.2s; }
-    .row-clickable:hover { background-color: #f8fafc; }
-    .row-clickable td strong { color: #0f172a; font-weight: 600; }
+    .filter-group label {
+        font-size: 0.8rem;
+        color: #64748b;
+        font-weight: 600;
+    }
 
-    /* Badges de Estado */
-    .badge { padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-align: center; display: inline-block; width: 80px; }
-    .badge-activo { background-color: #d1fae5; color: #059669; }
-    .badge-retirado { background-color: #fee2e2; color: #e11d48; }
+    .filter-group select {
+        padding: 10px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        outline: none;
+        font-size: 0.9rem;
+        color: #334155;
+        background: white;
+    }
+
+    .btn-search {
+        background-color: #1c2536;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        height: 42px;
+    }
+
+    .btn-search:hover {
+        background-color: #0f172a;
+    }
+
+    .table-container {
+        background: white;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        padding: 25px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .table-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 20px;
+        gap: 12px;
+    }
+
+    .table-title h3 {
+        font-size: 1.1rem;
+        color: #0f172a;
+        margin-bottom: 4px;
+    }
+
+    .table-info {
+        font-size: 0.85rem;
+        color: #64748b;
+    }
+
+    .table-scroll {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        text-align: left;
+        padding: 15px;
+        font-size: 0.75rem;
+        color: #64748b;
+        font-weight: 600;
+        border-bottom: 2px solid #e2e8f0;
+        text-transform: uppercase;
+    }
+
+    td {
+        padding: 15px;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 0.85rem;
+        color: #475569;
+        vertical-align: middle;
+    }
+
+    .student-name {
+        color: #0f172a;
+        font-weight: 600;
+    }
+
+    .badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-align: center;
+        display: inline-block;
+        min-width: 80px;
+    }
+
+    .badge-activo {
+        background-color: #d1fae5;
+        color: #059669;
+    }
+
+    .badge-retirado {
+        background-color: #fee2e2;
+        color: #e11d48;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 35px;
+        color: #64748b;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+        .filters-card {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .filter-group {
+            width: 100%;
+        }
+
+        .table-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
 </style>
 
 <div class="page-header">
     <h2>Alumnos por Curso</h2>
-    <p>Seleccione un curso para ver el listado completo de alumnos inscritos</p>
+    <p>Seleccione un curso para ver el listado completo de alumnos inscritos.</p>
 </div>
 
-<!-- Filtros -->
-<div class="filters-card">
-    <div class="filter-group">
-        <label>Curso o Clase</label>
-        <select><option>2º Básico A</option></select>
-    </div>
-    <div class="filter-group">
-        <label>Asignatura</label>
-        <select><option>Matemáticas</option></select>
-    </div>
-    <div class="filter-group">
-        <label>Período</label>
-        <select><option>Nro. 2 Semestre</option></select>
-    </div>
-    <button class="btn-search">🔍 Buscar</button>
-</div>
+<!-- FILTROS -->
+<form method="GET" action="{% url 'profesor_alumnos' %}" class="filters-card">
 
-<!-- Tabla -->
+    <div class="filter-group">
+        <label for="curso">Curso o Clase</label>
+
+        <select name="curso" id="curso" required>
+            <option value="">Seleccione un curso</option>
+
+            {% for curso in cursos %}
+                <option
+                    value="{{ curso.id_curso }}"
+                    {% if curso_seleccionado.id_curso == curso.id_curso %}
+                        selected
+                    {% endif %}
+                >
+                    {{ curso.nombre_curso }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <label for="asignatura">Asignatura</label>
+        <select id="asignatura" disabled>
+            <option>Próximamente</option>
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <label for="periodo">Período</label>
+        <select id="periodo" disabled>
+            <option>Año Escolar 2026</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn-search">
+        🔍 Buscar
+    </button>
+</form>
+
+<!-- TABLA -->
 <div class="table-container">
+
     <div class="table-header">
-        <div class="table-title"><h3>Alumnos en 2º Básico A</h3></div>
-        <div class="table-info">Mostrando 6 alumnos de 28</div>
+        <div class="table-title">
+            <h3>
+                {% if curso_seleccionado %}
+                    Alumnos en {{ curso_seleccionado.nombre_curso }}
+                {% else %}
+                    Listado de Alumnos
+                {% endif %}
+            </h3>
+        </div>
+
+        <div class="table-info">
+            Mostrando {{ total_alumnos }} alumno{{ total_alumnos|pluralize }}
+        </div>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 20%;">Nombre</th>
-                <th style="width: 20%;">Apellido</th>
-                <th style="width: 15%;">Matrícula</th>
-                <th style="width: 30%;">Correo Electrónico</th>
-                <th style="width: 15%; text-align: center;">Estado</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Fila interactiva que redirige al perfil -->
-            <tr class="row-clickable" data-url="{% url 'profesor_perfil_alumno' %}" onclick="window.location.href = this.dataset.url">
-                <td><strong>María Fernanda</strong></td>
-                <td>López García</td>
-                <td>MAT-2026-0847</td>
-                <td>maria.lopez@santajuliana.cl</td>
-                <td style="text-align: center;"><span class="badge badge-activo">Activo</span></td>
-            </tr>
-            <tr class="row-clickable" data-url="{% url 'profesor_perfil_alumno' %}" onclick="window.location.href = this.dataset.url">
-                <td><strong>Diego Andrés</strong></td>
-                <td>Mendoza Plaza</td>
-                <td>MAT-2026-0391</td>
-                <td>diego.mendoza@santajuliana.cl</td>
-                <td style="text-align: center;"><span class="badge badge-activo">Activo</span></td>
-            </tr>
-            <tr class="row-clickable" data-url="{% url 'profesor_perfil_alumno' %}" onclick="window.location.href = this.dataset.url">
-                <td><strong>Catalina Sofía</strong></td>
-                <td>Torres Castro</td>
-                <td>MAT-2026-0921</td>
-                <td>catalina.torres@santajuliana.cl</td>
-                <td style="text-align: center;"><span class="badge badge-activo">Activo</span></td>
-            </tr>
-            <tr class="row-clickable" data-url="{% url 'profesor_perfil_alumno' %}" onclick="window.location.href = this.dataset.url">
-                <td><strong>Juan Pablo</strong></td>
-                <td>Rojas Silva</td>
-                <td>MAT-2026-0412</td>
-                <td>juan.rojas@santajuliana.cl</td>
-                <td style="text-align: center;"><span class="badge badge-retirado">Retirado</span></td>
-            </tr>
-            <tr class="row-clickable" data-url="{% url 'profesor_perfil_alumno' %}" onclick="window.location.href = this.dataset.url">
-                <td><strong>Camila Belén</strong></td>
-                <td>Plaza Venegas</td>
-                <td>MAT-2026-1102</td>
-                <td>camila.plaza@santajuliana.cl</td>
-                <td style="text-align: center;"><span class="badge badge-activo">Activo</span></td>
-            </tr>
-            <tr class="row-clickable" data-url="{% url 'profesor_perfil_alumno' %}" onclick="window.location.href = this.dataset.url">
-                <td><strong>Benjamín Ignacio</strong></td>
-                <td>Herrera Soto</td>
-                <td>MAT-2026-0743</td>
-                <td>benjamin.herrera@santajuliana.cl</td>
-                <td style="text-align: center;"><span class="badge badge-activo">Activo</span></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Nombre Completo</th>
+                    <th style="width: 20%;">RUT Alumno</th>
+                    <th style="width: 30%;">Apoderado</th>
+                    <th style="width: 20%; text-align: center;">Estado</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for alumno in alumnos %}
+                    <tr>
+                        <td>
+                            <strong class="student-name">
+                                {{ alumno.nombre_completo }}
+                            </strong>
+                        </td>
+
+                        <td>{{ alumno.rut_alumno }}</td>
+
+                        <td>
+                            {% if alumno.usuario_rut %}
+                                {{ alumno.usuario_rut.nombre }}
+                                {{ alumno.usuario_rut.apellido_paterno }}
+                            {% else %}
+                                Sin apoderado
+                            {% endif %}
+                        </td>
+
+                        <td style="text-align: center;">
+                            {% if alumno.estado_matricula == 'Activo' %}
+                                <span class="badge badge-activo">
+                                    Activo
+                                </span>
+                            {% else %}
+                                <span class="badge badge-retirado">
+                                    {{ alumno.estado_matricula }}
+                                </span>
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="empty-state">
+                            {% if curso_seleccionado %}
+                                No hay alumnos registrados en este curso.
+                            {% else %}
+                                Selecciona un curso para consultar sus alumnos.
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 </div>
 {% endblock %}

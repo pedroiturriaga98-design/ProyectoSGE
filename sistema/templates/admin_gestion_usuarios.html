@@ -9,11 +9,11 @@
     .table-container { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
     
     .table-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .filters-left { display: flex; gap: 15px; }
+    .filters-left { display: flex; gap: 15px; align-items: center; width: 100%; }
     .search-box input { width: 300px; padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; }
-    .filter-select { padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; background-color: white; }
+    .filter-select { padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; background-color: white; cursor: pointer; }
     
-    .btn-create { background-color: #f97316; color: white; text-decoration: none; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
+    .btn-create { background-color: #f97316; color: white; text-decoration: none; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
     .btn-create:hover { background-color: #ea580c; }
 
     table { width: 100%; border-collapse: collapse; }
@@ -37,19 +37,33 @@
 </div>
 
 <div class="table-container">
-    <div class="table-toolbar">
+    <!-- FORMULARIO DE FILTROS Y BÚSQUEDA -->
+    <form method="GET" action="" class="table-toolbar">
         <div class="filters-left">
+            <!-- Input de búsqueda por texto -->
             <div class="search-box">
-                <input type="text" placeholder="🔍 Buscar por nombre, correo o rol...">
+                <input type="text" name="q" value="{{ query }}" placeholder="🔍 Buscar por nombre, correo o RUT...">
             </div>
-            <select class="filter-select">
-                <option>Filtrar por rol</option>
+
+            <!-- Selector desplegable de roles dinámico -->
+            <select name="rol" class="filter-select" onchange="this.form.submit()">
+                <option value="">Todos los roles</option>
+                {% for r in roles %}
+                    <option value="{{ r.id_rol }}" {% if rol_filtro == r.id_rol|stringformat:"s" %}selected{% endif %}>
+                        {{ r.nombre_rol }}
+                    </option>
+                {% endfor %}
             </select>
+
+            <button type="submit" style="padding: 10px 15px; background-color: #0f172a; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">
+                Filtrar
+            </button>
         </div>
+
         <a class="btn-create" href="{% url 'admin_crear_usuario' %}">
             + Crear Usuario
         </a>
-    </div>
+    </form>
 
     <table id="users-table">
         <thead>
@@ -74,7 +88,7 @@
                 <!-- 3. Correo -->
                 <td>{{ u.correo }}</td>
                 
-                <!-- 4. Rol (usando tu propiedad nombre_rol) -->
+                <!-- 4. Rol -->
                 <td>{{ u.rol_id_rol.nombre_rol }}</td>
                 
                 <!-- 5. Estado -->
@@ -83,17 +97,14 @@
                 <!-- 6. Acciones -->
                 <td>
                     <div class="action-btns">
-                        <!-- Cambia esta línea: -->
                         <a class="btn-icon" href="{% url 'admin_editar_usuario' u.rut %}" aria-label="Editar usuario">✎</a>
-                        <!-- Reemplaza tu botón <button class="btn-icon delete"...> por este enlace -->
                         <a href="{% url 'admin_eliminar_usuario' u.rut %}" class="btn-icon btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar a este usuario de la base de datos? Esta acción es permanente.');">🗑</a>
                     </div>
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <!-- Cambiamos a colspan="6" para que cubra toda la tabla -->
-                <td colspan="6" style="text-align: center; padding: 20px;">No hay usuarios registrados en el sistema.</td>
+                <td colspan="6" style="text-align: center; padding: 20px;">No hay usuarios registrados que coincidan con la búsqueda.</td>
             </tr>
             {% endfor %}
         </tbody>

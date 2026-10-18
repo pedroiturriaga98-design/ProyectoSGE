@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from functools import wraps # Importante para hacer decoradores
-from .models import Usuario, Rol
-from django.db import IntegrityError
+from .models import Usuario, Rol, Alumno, Curso, AsignaturaCurso
+from django.db import IntegrityError, transaction
 from django.db.models import Q
+from django.contrib.auth.hashers import check_password, make_password, identify_hasher
+
 
 def require_role(roles_permitidos):
     def decorator(view_func):
@@ -27,33 +29,75 @@ def require_role(roles_permitidos):
         return _wrapped_view
     return decorator
 
+
 def login_view(request):
     if request.method == 'POST':
-        # Le cambié el nombre a la variable para que tenga más sentido
-        credencial_ingresada = request.POST.get('username') 
-        password_ingresada = request.POST.get('password')
+        credencial_ingresada = (
+            request.POST.get('username') or ''
+        ).strip()
+
+        password_ingresada = request.POST.get('password') or ''
+
+        if not credencial_ingresada or not password_ingresada:
+            messages.error(
+                request,
+                'Debes ingresar tu correo o RUT y contraseña.'
+            )
+            return render(request, 'login.html')
 
         try:
-            # 1. Buscamos al usuario de forma inteligente (por correo o por RUT)
+            # 1. Buscar al usuario por correo o RUT
             if '@' in credencial_ingresada:
-                usuario = Usuario.objects.get(correo=credencial_ingresada)
+                usuario = Usuario.objects.get(
+                    correo__iexact=credencial_ingresada
+                )
             else:
-                usuario = Usuario.objects.get(rut=credencial_ingresada)
+                usuario = Usuario.objects.get(
+                    rut=credencial_ingresada
+                )
 
-            # 2. Comparamos la contraseña 
-            if usuario.password_hash == password_ingresada:
-                
-                # 3. Guardamos su sesión (el "ticket" del navegador)
+            # 2. Comprobar si la contraseña está cifrada
+            try:
+                identify_hasher(usuario.password_hash)
+                password_cifrada = True
+            except ValueError:
+                password_cifrada = False
+
+            # 3. Validar la contraseña
+            if password_cifrada:
+                acceso_valido = check_password(
+                    password_ingresada,
+                    usuario.password_hash
+                )
+            else:
+                # Compatibilidad con cuentas antiguas
+                acceso_valido = (
+                    usuario.password_hash == password_ingresada
+                )
+
+                # Cifrar la contraseña antigua si es correcta
+                if acceso_valido:
+                    usuario.password_hash = make_password(
+                        password_ingresada
+                    )
+                    usuario.save(
+                        update_fields=['password_hash']
+                    )
+
+            # 4. Guardar la sesión y redirigir según los 6 roles
+            if acceso_valido:
+                request.session.flush()
+
                 request.session['usuario_rut'] = usuario.rut
                 request.session['rol_id'] = usuario.rol_id_rol.id_rol
-                
-                # ¡AQUÍ ESTÁ LA MAGIA PARA EL HEADER! Guardamos estos datos extra:
                 request.session['nombre_usuario'] = usuario.nombre
-                request.session['apellido_usuario'] = usuario.apellido_paterno
-                # Asumo que la columna en tu modelo Rol se llama nombre_rol. Si se llama distinto, ajústalo.
-                request.session['rol_nombre'] = usuario.rol_id_rol.nombre_rol 
+                request.session['apellido_usuario'] = (
+                    usuario.apellido_paterno
+                )
+                request.session['rol_nombre'] = (
+                    usuario.rol_id_rol.nombre_rol
+                )
 
-                # 4. Redirigimos según el Rol usando los nombres de tus vistas
                 rol = usuario.rol_id_rol.id_rol
                 if rol == 1: # Administrador
                     return redirect('admin_inicio')
@@ -66,14 +110,30 @@ def login_view(request):
                 elif rol in [5, 6]: # 5: Apoderado, 6: Alumno
                     return redirect('apoderado_inicio')
                 else:
-                    messages.error(request, 'El usuario no tiene un rol válido asignado.')
-            else:
-                messages.error(request, 'Contraseña incorrecta.')
-                
-        except Usuario.DoesNotExist:
-            messages.error(request, 'El usuario o correo ingresado no existe en el sistema.')
+                    request.session.flush()
+                    messages.error(
+                        request,
+                        'El usuario no tiene un rol válido asignado.'
+                    )
 
-    # Si entra por primera vez (GET), muestra la página normal
+            else:
+                messages.error(
+                    request,
+                    'Contraseña incorrecta.'
+                )
+
+        except Usuario.DoesNotExist:
+            messages.error(
+                request,
+                'El usuario o correo ingresado no existe en el sistema.'
+            )
+
+        except Usuario.MultipleObjectsReturned:
+            messages.error(
+                request,
+                'Hay más de una cuenta con ese correo. Contacta al administrador.'
+            )
+
     return render(request, 'login.html')
 
 def validar_rut(rut_str):
@@ -115,28 +175,28 @@ def validar_rut(rut_str):
 
 # Vistas para el portal de apoderados
 
-@require_role([5, 6])
+@require_role([3, 4])
 def apoderado_inicio(request):
     return render(request, 'apoderado_inicio.html')
 
-@require_role([3])
+@require_role([3, 4])
 def apoderado_notas(request):
     return render(request, 'apoderado_notas.html')
 
-@require_role([3])
+@require_role([3, 4])
 def apoderado_asistencia(request):
     return render(request, 'apoderado_asistencia.html')
 
-@require_role([3])
+@require_role([3, 4])
 def apoderado_calendario(request):
     return render(request, 'apoderado_calendario.html')
 
-@require_role([3])
+@require_role([3, 4])
 def apoderado_certificados(request):
     return render(request, 'apoderado_certificados.html')
 
 # Vistas para el portal de Profesores
-@require_role([4])
+@require_role([2])
 def profesor_inicio(request):
     return render(request, 'profesor_inicio.html')
 
@@ -156,9 +216,44 @@ def profesor_agregar_incidencia(request):
 def profesor_revisar_incidencias(request):
     return render(request, 'profesor_revisar_incidencias.html')
 
+
+
 @require_role([2])
 def profesor_alumnos(request):
-    return render(request, 'profesor_alumnos.html')
+    # Todos los cursos disponibles, sin filtrar por profesor
+    cursos = Curso.objects.all().order_by('id_curso')
+
+    curso_id = request.GET.get('curso', '').strip()
+    curso_seleccionado = None
+    alumnos = Alumno.objects.none()
+
+    if curso_id:
+        if curso_id.isdigit():
+            curso_seleccionado = cursos.filter(
+                id_curso=int(curso_id)
+            ).first()
+
+        if curso_seleccionado:
+            alumnos = (
+                Alumno.objects.filter(
+                    curso_id_curso=curso_seleccionado
+                )
+                .select_related('usuario_rut')
+                .order_by('nombre_completo')
+            )
+        else:
+            messages.error(
+                request,
+                'El curso seleccionado no existe.'
+            )
+
+    return render(request, 'profesor_alumnos.html', {
+        'cursos': cursos,
+        'curso_seleccionado': curso_seleccionado,
+        'alumnos': alumnos,
+        'total_alumnos': alumnos.count(),
+    })
+
 
 @require_role([2])
 def profesor_perfil_alumno(request):
@@ -166,7 +261,7 @@ def profesor_perfil_alumno(request):
 
 # Vistas para el portal de Administrador
 
-@require_role([1, 2, 3])
+@require_role([1, 5,])
 def admin_inicio(request):
     return render(request, 'admin_inicio.html')
 
@@ -207,6 +302,9 @@ def admin_gestion_usuarios(request):
 
 @require_role([1])
 def admin_crear_usuario(request):
+    # 1. Obtenemos siempre los roles de la base de datos para pasarlos al formulario
+    roles = Rol.objects.all()
+
     if request.method == 'POST':
         # Capturamos todos los datos del HTML
         rut_form = request.POST.get('rut', '').strip()
@@ -219,12 +317,12 @@ def admin_crear_usuario(request):
         direccion_form = request.POST.get('direccion', '').strip()
         fecha_nac_form = request.POST.get('fecha_nacimiento')
 
-        # 1. Validación de RUT mediante algoritmo Módulo 11
+        # 2. Validación de RUT mediante algoritmo Módulo 11
         if not validar_rut(rut_form):
             messages.error(request, 'El RUN ingresado no es válido. Verifique los dígitos e intente nuevamente.')
-            return render(request, 'admin_crear_usuario.html')
+            return render(request, 'admin_crear_usuario.html', {'roles': roles})
 
-        # 2. Normalización y formateo con puntos (ej: 19.572.314-1)
+        # 3. Normalización y formateo con puntos (ej: 19.572.314-1)
         rut_limpio = rut_form.replace(".", "").replace("-", "").strip().upper()
         if len(rut_limpio) >= 2:
             cuerpo = rut_limpio[:-1]
@@ -237,20 +335,20 @@ def admin_crear_usuario(request):
         else:
             rut_estandar = rut_form
 
-        # 3. Comprobar si el RUT con formato tradicional ya existe en la BD
+        # 4. Comprobar si el RUT con formato tradicional ya existe en la BD
         if Usuario.objects.filter(rut=rut_estandar).exists():
             messages.error(request, f'El RUT {rut_estandar} ya se encuentra registrado en el sistema.')
-            return render(request, 'admin_crear_usuario.html')
+            return render(request, 'admin_crear_usuario.html', {'roles': roles})
 
-        # 4. Comprobar si el correo ya existe
+        # 5. Comprobar si el correo ya existe
         if correo_form and Usuario.objects.filter(correo=correo_form.lower()).exists():
             messages.error(request, f'El correo {correo_form} ya pertenece a otro usuario.')
-            return render(request, 'admin_crear_usuario.html')
+            return render(request, 'admin_crear_usuario.html', {'roles': roles})
 
         # Contraseña inicial usando los dígitos del RUT limpio
         password_defecto = rut_limpio
 
-        # 5. Creación y persistencia del usuario en la base de datos
+        # 6. Creación y persistencia del usuario en la base de datos
         try:
             Usuario.objects.create(
                 rut=rut_estandar,
@@ -270,9 +368,10 @@ def admin_crear_usuario(request):
 
         except IntegrityError:
             messages.error(request, 'Error de integridad: El usuario o un dato único ya existe en el sistema.')
-            return render(request, 'admin_crear_usuario.html')
+            return render(request, 'admin_crear_usuario.html', {'roles': roles})
 
-    return render(request, 'admin_crear_usuario.html')
+    # Si entra por primera vez (GET), enviamos los roles al HTML
+    return render(request, 'admin_crear_usuario.html', {'roles': roles})
 
 @require_role([1])
 def admin_editar_usuario(request, rut):
@@ -350,17 +449,287 @@ def admin_eliminar_usuario(request, rut):
 
 @require_role([1])
 def admin_alumnos(request):
-    return render(request, 'admin_alumnos.html')
+    alumnos = Alumno.objects.select_related(
+        'curso_id_curso'
+    ).order_by('nombre_completo')
+
+    cursos = Curso.objects.all().order_by('id_curso')
+
+    curso_seleccionado = request.GET.get('curso', '')
+
+    if curso_seleccionado:
+        alumnos = alumnos.filter(
+            curso_id_curso_id=curso_seleccionado
+        )
+
+    context = {
+        'alumnos': alumnos,
+        'cursos': cursos,
+        'curso_seleccionado': curso_seleccionado,
+    }
+
+    return render(request, 'admin_alumnos.html', context)
+
+@require_role([1])
+def admin_crear_alumno(request):
+
+    cursos = Curso.objects.all().order_by('id_curso')
+
+    apoderados = Usuario.objects.filter(
+        rol_id_rol_id=3
+    ).order_by('nombre', 'apellido_paterno')
+
+    context = {
+        'cursos': cursos,
+        'apoderados': apoderados,
+    }
+
+    if request.method == 'POST':
+
+        rut_form = request.POST.get('rut_alumno', '').strip()
+        nombre = request.POST.get('nombre_completo', '').strip()
+        curso_id = request.POST.get('curso', '').strip()
+        estado = request.POST.get('estado_matricula', '').strip()
+        apoderado_rut = request.POST.get('apoderado', '').strip()
+
+        context['datos'] = request.POST
+
+        # Validar RUT
+        if not validar_rut(rut_form):
+            messages.error(request, 'El RUT del alumno no es válido.')
+            return render(request, 'admin_crear_alumno.html', context)
+
+        # Normalizar RUT al formato usado por el sistema
+        rut_limpio = rut_form.replace('.', '').replace('-', '').upper()
+        cuerpo = rut_limpio[:-1]
+        dv = rut_limpio[-1]
+
+        rut_estandar = f"{int(cuerpo):,}".replace(',', '.') + '-' + dv
+
+        # Validar duplicados
+        if Alumno.objects.filter(rut_alumno=rut_estandar).exists():
+            messages.error(request, 'Este alumno ya está registrado.')
+            return render(request, 'admin_crear_alumno.html', context)
+
+        if not nombre:
+            messages.error(request, 'Debes ingresar el nombre completo.')
+            return render(request, 'admin_crear_alumno.html', context)
+
+        # Validar curso existente
+        curso = Curso.objects.filter(id_curso=curso_id).first() if curso_id.isdigit() else None
+
+        if curso is None:
+            messages.error(request, 'Debes seleccionar un curso válido.')
+            return render(request, 'admin_crear_alumno.html', context)
+
+        if estado not in ['Activo', 'Inactivo']:
+            messages.error(request, 'Selecciona un estado de matrícula válido.')
+            return render(request, 'admin_crear_alumno.html', context)
+
+        # El apoderado es opcional por ahora
+        apoderado = None
+
+        if apoderado_rut:
+            apoderado = Usuario.objects.filter(
+                rut=apoderado_rut,
+                rol_id_rol_id=3
+            ).first()
+
+            if apoderado is None:
+                messages.error(request, 'El apoderado seleccionado no es válido.')
+                return render(request, 'admin_crear_alumno.html', context)
+
+        try:
+            with transaction.atomic():
+                Alumno.objects.create(
+                    rut_alumno=rut_estandar,
+                    nombre_completo=nombre,
+                    curso_id_curso=curso,
+                    estado_matricula=estado,
+                    usuario_rut=apoderado
+                )
+
+            messages.success(
+                request,
+                f'El alumno {nombre} fue registrado correctamente.'
+            )
+
+            return redirect('admin_alumnos')
+
+        except IntegrityError:
+            messages.error(
+                request,
+                'No se pudo registrar el alumno. Verifica que sus datos no estén duplicados.'
+            )
+
+    return render(request, 'admin_crear_alumno.html', context)
+
 
 @require_role([1])
 def admin_editar_alumno(request, rut):
-    return render(request, 'admin_editar_alumno.html')
 
-@require_role([1, 2])
+    # Buscar el alumno mediante su RUT
+    alumno = get_object_or_404(
+        Alumno.objects.select_related(
+            'curso_id_curso',
+            'usuario_rut'
+        ),
+        rut_alumno=rut
+    )
+
+    # Obtener cursos y apoderados desde MySQL
+    cursos = Curso.objects.all().order_by('id_curso')
+
+    apoderados = Usuario.objects.filter(
+        rol_id_rol_id=3
+    ).order_by('nombre', 'apellido_paterno')
+
+    context = {
+        'alumno': alumno,
+        'cursos': cursos,
+        'apoderados': apoderados
+    }
+
+    if request.method == 'POST':
+
+        nombre = request.POST.get(
+            'nombre_completo', ''
+        ).strip()
+
+        curso_id = request.POST.get(
+            'curso', ''
+        ).strip()
+
+        estado = request.POST.get(
+            'estado_matricula', ''
+        ).strip()
+
+        apoderado_rut = request.POST.get(
+            'apoderado', ''
+        ).strip()
+
+        # Conservar datos ingresados si hay errores
+        context['datos'] = request.POST
+
+        # Validar nombre
+        if not nombre:
+            messages.error(
+                request,
+                'El nombre completo es obligatorio.'
+            )
+            return render(
+                request,
+                'admin_editar_alumno.html',
+                context
+            )
+
+        # Validar curso
+        curso = (
+            Curso.objects.filter(
+                id_curso=curso_id
+            ).first()
+            if curso_id.isdigit()
+            else None
+        )
+
+        if curso is None:
+            messages.error(
+                request,
+                'Selecciona un curso válido.'
+            )
+            return render(
+                request,
+                'admin_editar_alumno.html',
+                context
+            )
+
+        # Validar estado
+        if estado not in ['Activo', 'Inactivo']:
+            messages.error(
+                request,
+                'Selecciona un estado válido.'
+            )
+            return render(
+                request,
+                'admin_editar_alumno.html',
+                context
+            )
+
+        # Validar apoderado
+        apoderado = None
+
+        if apoderado_rut:
+            apoderado = Usuario.objects.filter(
+                rut=apoderado_rut,
+                rol_id_rol_id=3
+            ).first()
+
+            if apoderado is None:
+                messages.error(
+                    request,
+                    'El apoderado seleccionado no es válido.'
+                )
+                return render(
+                    request,
+                    'admin_editar_alumno.html',
+                    context
+                )
+
+        # MySQL exige que el alumno tenga apoderado
+        # No permitimos guardar NULL en USUARIO_rut
+        if apoderado is None:
+            messages.error(
+                request,
+                'Debes seleccionar un apoderado para el alumno.'
+            )
+            return render(
+                request,
+                'admin_editar_alumno.html',
+                context
+            )
+
+        try:
+            # Actualizar campos
+            alumno.nombre_completo = nombre
+            alumno.curso_id_curso = curso
+            alumno.estado_matricula = estado
+            alumno.usuario_rut = apoderado
+
+            # Guardar cambios en MySQL
+            alumno.save(
+                update_fields=[
+                    'nombre_completo',
+                    'curso_id_curso',
+                    'estado_matricula',
+                    'usuario_rut'
+                ]
+            )
+
+            messages.success(
+                request,
+                f'El alumno {nombre} fue actualizado correctamente.'
+            )
+
+            return redirect('admin_alumnos')
+
+        except IntegrityError:
+            messages.error(
+                request,
+                'No se pudo actualizar el alumno. Revisa los datos ingresados.'
+            )
+
+    return render(
+        request,
+        'admin_editar_alumno.html',
+        context
+    )
+
+
+@require_role([1, 5])
 def admin_gestion_incidencias(request):
     return render(request, 'admin_gestion_incidencias.html')
 
-@require_role([1, 2])
+@require_role([1, 5])
 def admin_editar_incidencia(request):
     return render(request, 'admin_editar_incidencia.html')
 
@@ -380,10 +749,10 @@ def admin_gestion_profesores(request):
 def admin_editar_profesor(request):
     return render(request, 'admin_editar_profesor.html')
 
-@require_role([1, 2, 3])
+@require_role([1, 5, 6])
 def admin_gestion_inventario(request):
     return render(request, 'admin_gestion_inventario.html')
 
-@require_role([1, 2, 3])
+@require_role([1, 5])
 def admin_editar_equipo(request):
     return render(request, 'admin_editar_equipo.html')

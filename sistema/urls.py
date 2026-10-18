@@ -25,6 +25,7 @@ urlpatterns = [
     path('administrador/usuarios/editar/<str:rut>/', views.admin_editar_usuario, name='admin_editar_usuario'),
     path('administrador/usuarios/eliminar/<str:rut>/', views.admin_eliminar_usuario, name='admin_eliminar_usuario'),
     path('administrador/alumnos/', views.admin_alumnos, name='admin_alumnos'),
+    path('administrador/alumnos/crear/', views.admin_crear_alumno, name='admin_crear_alumno'),
     path('administrador/alumnos/editar/<str:rut>/', views.admin_editar_alumno, name='admin_editar_alumno'),
     path('administrador/incidencias/', views.admin_gestion_incidencias, name='admin_gestion_incidencias'),
     path('administrador/incidencias/editar/', views.admin_editar_incidencia, name='admin_editar_incidencia'),
