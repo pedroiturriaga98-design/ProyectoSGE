@@ -29,6 +29,21 @@
 },
 {
   "model": "sistema.usuario",
+  "pk": "10.307.638-2",
+  "fields": {
+    "password_hash": "103076382",
+    "rol_id_rol": 1,
+    "nombre": "Asdasda",
+    "apellido_paterno": "Asdadas",
+    "apellido_materno": "Asdasdsa",
+    "correo": "aasdadas@santajuliana.cl",
+    "telefono": "qeqweqea",
+    "direccion": "",
+    "fecha_nacimiento": "1998-10-12"
+  }
+},
+{
+  "model": "sistema.usuario",
   "pk": "11.111.111-1",
   "fields": {
     "password_hash": "111111111",

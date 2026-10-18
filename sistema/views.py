@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from functools import wraps # Importante para hacer decoradores
-from .models import Usuario
+from .models import Usuario, Rol
 from django.db import IntegrityError
+from django.db.models import Q
 
 def require_role(roles_permitidos):
     def decorator(view_func):
@@ -56,9 +57,13 @@ def login_view(request):
                 rol = usuario.rol_id_rol.id_rol
                 if rol == 1: # Administrador
                     return redirect('admin_inicio')
-                elif rol == 2: # Profesor
+                elif rol == 2: # Jefe de Departamento TI
+                    return redirect('admin_inicio')
+                elif rol == 3: # Personal de Aseo
+                    return redirect('admin_gestion_inventario')
+                elif rol == 4: # Profesor
                     return redirect('profesor_inicio')
-                elif rol == 3: # Apoderado
+                elif rol in [5, 6]: # 5: Apoderado, 6: Alumno
                     return redirect('apoderado_inicio')
                 else:
                     messages.error(request, 'El usuario no tiene un rol válido asignado.')
@@ -110,7 +115,7 @@ def validar_rut(rut_str):
 
 # Vistas para el portal de apoderados
 
-@require_role([3])
+@require_role([5, 6])
 def apoderado_inicio(request):
     return render(request, 'apoderado_inicio.html')
 
@@ -131,7 +136,7 @@ def apoderado_certificados(request):
     return render(request, 'apoderado_certificados.html')
 
 # Vistas para el portal de Profesores
-@require_role([2])
+@require_role([4])
 def profesor_inicio(request):
     return render(request, 'profesor_inicio.html')
 
@@ -161,18 +166,42 @@ def profesor_perfil_alumno(request):
 
 # Vistas para el portal de Administrador
 
-@require_role([1])
+@require_role([1, 2, 3])
 def admin_inicio(request):
     return render(request, 'admin_inicio.html')
 
 @require_role([1])
 def admin_gestion_usuarios(request):
-    # Extraemos todos los usuarios y traemos los datos de su rol asociado
+    # 1. Extraemos todos los usuarios y traemos los datos de su rol asociado
     lista_usuarios = Usuario.objects.select_related('rol_id_rol').all()
     
-    # Empaquetamos los datos en un "contexto" para mandarlos al HTML
+    # 2. Capturamos lo que venga del buscador ('q') y del select ('rol')
+    query = request.GET.get('q', '').strip()
+    rol_filtro = request.GET.get('rol', '').strip()
+
+    # 3. Si escribieron algo en el buscador, filtramos por nombre, apellidos, correo o RUT
+    if query:
+        lista_usuarios = lista_usuarios.filter(
+            Q(nombre__icontains=query) |
+            Q(apellido_paterno__icontains=query) |
+            Q(apellido_materno__icontains=query) |
+            Q(correo__icontains=query) |
+            Q(rut__icontains=query)
+        )
+
+    # 4. Si seleccionaron un rol en el desplegable, filtramos por ese ID de rol
+    if rol_filtro:
+        lista_usuarios = lista_usuarios.filter(rol_id_rol_id=rol_filtro)
+
+    # 5. Traemos todos los roles de la BD para llenar el <select> del HTML
+    roles = Rol.objects.all()
+
+    # Empaquetamos todo en el contexto
     context = {
-        'usuarios': lista_usuarios
+        'usuarios': lista_usuarios,
+        'roles': roles,
+        'query': query,
+        'rol_filtro': rol_filtro,
     }
     return render(request, 'admin_gestion_usuarios.html', context)
 
@@ -327,11 +356,11 @@ def admin_alumnos(request):
 def admin_editar_alumno(request, rut):
     return render(request, 'admin_editar_alumno.html')
 
-@require_role([1])
+@require_role([1, 2])
 def admin_gestion_incidencias(request):
     return render(request, 'admin_gestion_incidencias.html')
 
-@require_role([1])
+@require_role([1, 2])
 def admin_editar_incidencia(request):
     return render(request, 'admin_editar_incidencia.html')
 
@@ -351,10 +380,10 @@ def admin_gestion_profesores(request):
 def admin_editar_profesor(request):
     return render(request, 'admin_editar_profesor.html')
 
-@require_role([1])
+@require_role([1, 2, 3])
 def admin_gestion_inventario(request):
     return render(request, 'admin_gestion_inventario.html')
 
-@require_role([1])
+@require_role([1, 2, 3])
 def admin_editar_equipo(request):
     return render(request, 'admin_editar_equipo.html')
