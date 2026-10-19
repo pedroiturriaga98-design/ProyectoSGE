@@ -17878,6 +17878,30 @@
   }
 },
 {
+  "model": "sistema.evaluacion",
+  "pk": 1,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 128,
+    "numero_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 2,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 128,
+    "numero_evaluacion": 2
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 3,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 128,
+    "numero_evaluacion": 3
+  }
+},
+{
   "model": "sistema.calificacion",
   "pk": 1,
   "fields": {
