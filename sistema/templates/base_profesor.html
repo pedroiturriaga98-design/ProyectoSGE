@@ -1,50 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Profesor - SGE</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { display: flex; height: 100vh; background-color: #f8fafc; color: #374151; }
-
-        /* Barra Lateral Izquierda */
-        .sidebar-left { width: 260px; background-color: #1c2536; color: white; display: flex; flex-direction: column; }
-        .logo-area { padding: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #2d3748; }
-        .logo-badge { background-color: #f97316; padding: 5px 8px; border-radius: 4px; font-weight: bold; }
-        
-        .sidebar-controls { padding: 20px; border-bottom: 1px solid #2d3748; }
-        .select-year { width: 100%; padding: 10px; background-color: #2d3748; color: white; border: none; border-radius: 6px; margin-bottom: 15px; outline: none; }
-        .search-bar { width: 100%; padding: 10px 10px 10px 15px; background-color: #111827; color: white; border: 1px solid #374151; border-radius: 6px; outline: none; font-size: 0.85rem; }
-        
-        .nav-menu { padding: 20px 0; display: flex; flex-direction: column; }
-        .nav-link { padding: 12px 20px; color: #cbd5e1; text-decoration: none; display: flex; justify-content: space-between; align-items: center; transition: 0.2s; font-size: 0.95rem; }
-        .nav-link:hover { color: white; background-color: #2d3748; }
-        .nav-link.active-menu { background-color: #2d3748; color: white; font-weight: 600; border-left: 4px solid #f97316; }
-        
-        .sub-menu { background-color: #111827; padding: 10px 0; display: flex; flex-direction: column; transition: all 0.3s ease; }
-        .sub-link { padding: 8px 20px 8px 30px; color: #9ca3af; text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
-        .sub-link:hover { color: white; }
-        .sub-link.active-sub { color: white; background-color: #f97316; margin: 0 10px; border-radius: 6px; padding-left: 20px; }
-        
-        .arrow-icon { transition: transform 0.3s ease; font-size: 0.8rem; display: inline-block; }
-
-        /* Área Central */
-        .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
-        
-        /* Cabecera Superior */
-        .top-header { background-color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
-        .last-access { color: #64748b; font-size: 0.85rem; }
-        .user-profile { display: flex; align-items: center; gap: 20px; }
-        .user-info { display: flex; align-items: center; gap: 10px; text-align: right; }
-        .user-info img { width: 40px; height: 40px; border-radius: 50%; background-color: #cbd5e1; }
-        .user-details h4 { font-size: 0.9rem; color: #0f172a; margin-bottom: 2px; }
-        .user-details p { font-size: 0.75rem; color: #64748b; }
-        .btn-logout { color: #ea580c; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
-
-        /* Contenedor dinámico */
-        .content-area { padding: 30px; }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/base_profesor.css' %}">
 </head>
 <body>
 
@@ -124,7 +85,6 @@
 
     <!-- Script de Acordeón para menús desplegables -->
     <script>
-        // Seleccionamos todos los botones que abren menús
         const toggleButtons = document.querySelectorAll('.toggle-menu');
 
         toggleButtons.forEach(button => {
@@ -135,10 +95,8 @@
                 const targetSubmenu = document.getElementById(targetId);
                 const targetArrow = this.querySelector('.arrow-icon');
                 
-                // Verificamos si el menú que clickeamos ya estaba abierto
                 const isAlreadyOpen = targetSubmenu.style.display === 'flex';
 
-                // Paso 1: Cerramos TODOS los submenús y reiniciamos TODAS las flechas
                 document.querySelectorAll('.sub-menu').forEach(menu => {
                     menu.style.display = 'none';
                 });
@@ -146,7 +104,6 @@
                     arrow.style.transform = 'rotate(0deg)';
                 });
 
-                // Paso 2: Si el que clickeamos estaba cerrado, lo abrimos
                 if (!isAlreadyOpen) {
                     targetSubmenu.style.display = 'flex';
                     targetArrow.style.transform = 'rotate(180deg)';
@@ -154,7 +111,6 @@
             });
         });
 
-        // Abrir automáticamente el menú activo al cargar la página
         document.addEventListener("DOMContentLoaded", function() {
             const currentUrl = window.location.href;
             

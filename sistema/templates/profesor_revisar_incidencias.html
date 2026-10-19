@@ -1,34 +1,6 @@
 {% extends 'base_profesor.html' %}
 
 {% block content %}
-<style>
-    .page-header { margin-bottom: 25px; }
-    .page-header h2 { font-size: 1.5rem; color: #0f172a; margin-bottom: 5px; }
-    .page-header p { color: #64748b; font-size: 0.9rem; }
-
-    .table-container { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    
-    /* Barra de herramientas de tabla */
-    .table-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .search-box { position: relative; width: 350px; }
-    .search-box input { width: 100%; padding: 10px 15px 10px 35px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; }
-    .search-box::before { content: '🔍'; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: #94a3b8; }
-    
-    .filter-select { padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 0.9rem; color: #334155; background-color: white; }
-
-    /* Tabla */
-    table { width: 100%; border-collapse: collapse; }
-    th { text-align: left; padding: 15px; font-size: 0.75rem; color: #64748b; font-weight: 600; border-bottom: 2px solid #e2e8f0; background-color: #f8fafc; text-transform: uppercase; }
-    td { padding: 15px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; color: #475569; vertical-align: middle; }
-    td strong { color: #0f172a; font-weight: 600; }
-
-    /* Etiquetas de Estado */
-    .badge { padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; display: inline-block; text-align: center; width: 100px; }
-    .badge-revisar { background-color: #fefce8; color: #ca8a04; border: 1px solid #fef08a; }
-    .badge-aprobada { background-color: #d1fae5; color: #059669; border: 1px solid #a7f3d0; }
-    .badge-rechazada { background-color: #fee2e2; color: #e11d48; border: 1px solid #fecaca; }
-</style>
-
 <div class="page-header">
     <h2>Revisar Incidencias</h2>
     <p>Listado de solicitudes de materiales y reportes de problemas</p>

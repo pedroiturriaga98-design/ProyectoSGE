@@ -14,36 +14,6 @@ genera un calendario dinámico donde puedes avanzar y retroceder por todos los m
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js'></script>
 
-<style>
-    /* Estilos para adaptar FullCalendar al diseño SGE */
-    .calendar-container { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6; margin-bottom: 25px; }
-    
-    /* Personalización de la barra superior del calendario */
-    .fc .fc-toolbar-title { font-size: 1.2rem; font-weight: 600; color: #111827; text-transform: capitalize; }
-    .fc .fc-button-primary { background-color: #f97316; border-color: #f97316; text-transform: capitalize; }
-    .fc .fc-button-primary:hover { background-color: #ea580c; border-color: #ea580c; }
-    .fc .fc-button-primary:not(:disabled):active, .fc .fc-button-primary:not(:disabled).fc-button-active { background-color: #c2410c; border-color: #c2410c; }
-    
-    /* Días y eventos */
-    .fc-theme-standard th { padding: 8px 0; font-size: 0.85rem; color: #6b7280; text-transform: uppercase; background-color: #f9fafb; }
-    .fc-daygrid-day-number { font-size: 0.9rem; color: #4b5563; font-weight: 500; }
-    .fc-event { border-radius: 4px; padding: 2px 4px; font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; }
-
-    /* Estilos de Próximos Eventos (Inferior) */
-    .events-list-container { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #f3f4f6; }
-    .events-list-title { color: #111827; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
-    .event-list-item { display: flex; align-items: center; gap: 20px; padding: 15px 20px; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 12px; }
-    .event-list-item:last-child { margin-bottom: 0; }
-    .event-date-badge { padding: 8px 15px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; min-width: 140px; text-align: center; }
-    
-    .date-bg-orange { background-color: #fff7ed; color: #ea580c; }
-    .date-bg-blue { background-color: #eff6ff; color: #2563eb; }
-    .date-bg-red { background-color: #fef2f2; color: #dc2626; }
-    .date-bg-green { background-color: #ecfdf5; color: #059669; }
-
-    .event-details h4 { font-size: 0.95rem; color: #111827; margin-bottom: 4px; }
-    .event-details p { font-size: 0.85rem; color: #6b7280; }
-</style>
 
 <!-- SECCIÓN 1: CALENDARIO DINÁMICO (FullCalendar) -->
 <div class="calendar-container">
