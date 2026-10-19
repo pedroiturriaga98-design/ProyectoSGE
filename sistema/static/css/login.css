@@ -1,0 +1,233 @@
+/* ==========================================================================
+   MÓDULO DE AUTENTICACIÓN / LOGIN (login.css)
+   ========================================================================== */
+
+/* Reseteo y Estructura Base */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+}
+
+body { 
+    display: flex; 
+    height: 100vh; 
+    background-color: #ffffff; 
+}
+
+/* Panel Izquierdo (Branding / Institucional) */
+.left-panel { 
+    flex: 1; 
+    background-color: #1c2536; 
+    color: #ffffff; 
+    padding: 3rem; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.header-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    width: 100%; 
+    justify-content: flex-start; 
+}
+
+.logo-box { 
+    background-color: #f97316; 
+    color: white; 
+    padding: 8px 12px; 
+    border-radius: 6px; 
+    font-weight: bold; 
+    font-size: 1.2rem;
+}
+
+.titles { 
+    text-align: left; 
+}
+
+.titles h1 { 
+    font-size: 1.1rem; 
+    margin-bottom: 2px; 
+}
+
+.titles p { 
+    font-size: 0.85rem; 
+    color: #9ca3af; 
+}
+
+/* Contenedor e Imagen del Colegio */
+.school-img-container {
+    width: 100%; 
+    max-width: 480px; 
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.school-img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 12px; 
+    object-fit: contain;
+}
+
+.footer-left { 
+    text-align: center; 
+}
+
+.footer-left h2 { 
+    font-size: 1.6rem; 
+    margin-bottom: 12px; 
+}
+
+.footer-left p { 
+    color: #9ca3af; 
+    font-size: 0.95rem; 
+    max-width: 350px; 
+    margin: 0 auto; 
+    line-height: 1.5; 
+}
+
+/* Panel Derecho (Formulario Funcional) */
+.right-panel { 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 3rem; 
+    position: relative; 
+}
+
+.login-box { 
+    width: 100%; 
+    max-width: 400px; 
+}
+
+.login-box h2 { 
+    font-size: 2.2rem; 
+    color: #111827; 
+    margin-bottom: 8px; 
+}
+
+.login-box p { 
+    color: #6b7280; 
+    margin-bottom: 2.5rem; 
+    font-size: 0.95rem; 
+}
+
+/* Campos del Formulario */
+.form-group { 
+    margin-bottom: 1.5rem; 
+    text-align: left; 
+}
+
+.form-group label { 
+    display: block; 
+    font-size: 0.85rem; 
+    font-weight: 600; 
+    color: #374151; 
+    margin-bottom: 8px; 
+}
+
+.form-control { 
+    width: 100%; 
+    padding: 12px 15px; 
+    border: 1px solid #e5e7eb; 
+    border-radius: 6px; 
+    font-size: 0.95rem; 
+    outline: none; 
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus { 
+    border-color: #f97316; 
+}
+
+/* Alertas y Mensajes de Django */
+.messages-container {
+    margin-bottom: 15px;
+}
+
+.alert-message {
+    padding: 10px 14px; 
+    border-radius: 6px; 
+    font-size: 13px; 
+    font-weight: 500;
+    background-color: #fee2e2; 
+    color: #b91c1c; 
+    border: 1px solid #f87171; 
+    margin-bottom: 8px;
+}
+
+/* Opciones y Botones */
+.form-options { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 2rem; 
+    font-size: 0.9rem; 
+}
+
+.form-options label { 
+    color: #4b5563; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    cursor: pointer; 
+}
+
+.form-options a { 
+    color: #f97316; 
+    text-decoration: none; 
+}
+
+.form-options a:hover { 
+    text-decoration: underline; 
+}
+
+.btn-submit { 
+    width: 100%; 
+    background-color: #f97316; 
+    color: white; 
+    padding: 14px; 
+    border: none; 
+    border-radius: 6px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    font-weight: 600; 
+    transition: background-color 0.3s ease; 
+}
+
+.btn-submit:hover { 
+    background-color: #ea580c; 
+}
+
+.footer-right { 
+    position: absolute; 
+    bottom: 1.5rem; 
+    width: 100%; 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 0 3rem; 
+    color: #9ca3af; 
+    font-size: 0.8rem; 
+}
+
+/* Adaptabilidad Responsiva */
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+    }
+    .left-panel {
+        display: none; /* Se oculta el banner en pantallas de teléfono */
+    }
+    .right-panel {
+        padding: 2rem;
+    }
+}
