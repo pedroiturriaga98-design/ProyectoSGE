@@ -315,9 +315,309 @@ def profesor_notas(request):
 
 
 
+
+
 @require_role([2])
 def profesor_asistencia(request):
-    return render(request, 'profesor_asistencia.html')
+    import json
+    from datetime import date
+    from django.db import transaction
+    from django.db.models import Max
+    from django.http import JsonResponse
+    from django.utils import timezone
+    from .models import RegistroAsistencia
+
+    hoy = timezone.localdate()
+
+    # ========================================
+    # GUARDAR ASISTENCIA
+    # ========================================
+    if request.method == 'POST':
+        try:
+            datos = json.loads(request.body)
+
+            fecha = date.fromisoformat(datos['fecha'])
+            curso_id = int(datos['curso_id'])
+            asignatura_id = int(datos['asignatura_id'])
+            estados = datos['estados']
+
+            if fecha != timezone.localdate():
+                return JsonResponse({
+                    'ok': False,
+                    'error': 'Solo puedes registrar o modificar la asistencia del día actual.'
+                }, status=400)
+
+            if not isinstance(estados, dict):
+                raise ValueError('Formato de asistencia inválido.')
+
+            asignatura = AsignaturaCurso.objects.filter(
+                id_asig_curso=asignatura_id,
+                curso_id_curso_id=curso_id
+            ).first()
+
+            if asignatura is None:
+                return JsonResponse({
+                    'ok': False,
+                    'error': 'La asignatura no pertenece al curso seleccionado.'
+                }, status=400)
+
+            ruts = set(
+                Alumno.objects.filter(
+                    curso_id_curso_id=curso_id
+                ).values_list('rut_alumno', flat=True)
+            )
+
+            if not ruts or set(estados.keys()) != ruts:
+                return JsonResponse({
+                    'ok': False,
+                    'error': 'Debes registrar la asistencia de todos los alumnos del curso.'
+                }, status=400)
+
+            if any(
+                type(estado) is not int or estado not in (0, 1)
+                for estado in estados.values()
+            ):
+                return JsonResponse({
+                    'ok': False,
+                    'error': 'Todos los alumnos deben estar marcados como presentes o ausentes.'
+                }, status=400)
+
+            with transaction.atomic():
+
+                # Bloquear el curso durante el guardado.
+                Curso.objects.select_for_update().get(
+                    id_curso=curso_id
+                )
+
+                # Buscar asistencias de HOY en TODAS
+                # las asignaturas del mismo curso.
+                registros = list(
+                    RegistroAsistencia.objects.select_for_update().filter(
+                        fecha=fecha,
+                        alumno_rut_alumno_id__in=ruts,
+                        asignatura_curso_id_asig_curso__curso_id_curso_id=curso_id
+                    )
+                )
+
+                registros_por_alumno = {}
+
+                for registro in registros:
+                    rut = registro.alumno_rut_alumno_id
+
+                    registros_por_alumno.setdefault(
+                        rut, []
+                    ).append(registro)
+
+                siguiente_id = (
+                    RegistroAsistencia.objects.aggregate(
+                        max_id=Max('id_asistencia')
+                    )['max_id'] or 0
+                )
+
+                # Una sola asistencia diaria por alumno
+                # en el flujo nuevo.
+                for rut, estado in estados.items():
+
+                    existentes = registros_por_alumno.get(
+                        rut, []
+                    )
+
+                    if existentes:
+                        # Sincronizar los registros antiguos
+                        # que puedan existir en otras asignaturas.
+                        for registro in existentes:
+                            if registro.presente != estado:
+                                registro.presente = estado
+                                registro.save(
+                                    update_fields=['presente']
+                                )
+
+                    else:
+                        siguiente_id += 1
+
+                        RegistroAsistencia.objects.create(
+                            id_asistencia=siguiente_id,
+                            fecha=fecha,
+                            presente=estado,
+                            alumno_rut_alumno_id=rut,
+                            asignatura_curso_id_asig_curso=asignatura
+                        )
+
+            return JsonResponse({
+                'ok': True,
+                'mensaje': 'Asistencia del curso guardada correctamente. Se reflejará en todas las asignaturas.'
+            })
+
+        except (
+            ValueError,
+            KeyError,
+            TypeError,
+            json.JSONDecodeError
+        ) as error:
+            return JsonResponse({
+                'ok': False,
+                'error': str(error)
+            }, status=400)
+
+        except Exception:
+            return JsonResponse({
+                'ok': False,
+                'error': 'No fue posible guardar la asistencia. Revisa la conexión o los registros existentes.'
+            }, status=500)
+
+    # ========================================
+    # CONSULTAR ASISTENCIA
+    # ========================================
+    cursos = Curso.objects.all().order_by('id_curso')
+
+    curso_id = request.GET.get('curso', '').strip()
+    asignatura_id = request.GET.get(
+        'asignatura', ''
+    ).strip()
+
+    fecha_texto = request.GET.get('fecha', '').strip()
+
+    try:
+        fecha = (
+            date.fromisoformat(fecha_texto)
+            if fecha_texto
+            else hoy
+        )
+    except ValueError:
+        fecha = hoy
+        messages.error(
+            request,
+            'La fecha ingresada no es válida.'
+        )
+
+    curso_seleccionado = None
+    asignatura_seleccionada = None
+
+    asignaturas = AsignaturaCurso.objects.none()
+    alumnos = []
+
+    presentes = 0
+    ausentes = 0
+    asistencia_guardada = False
+    asistencia_completa = False
+    registros_inconsistentes = False
+
+    if curso_id.isdigit():
+
+        curso_seleccionado = cursos.filter(
+            id_curso=int(curso_id)
+        ).first()
+
+        if curso_seleccionado:
+
+            asignaturas = (
+                AsignaturaCurso.objects.filter(
+                    curso_id_curso=curso_seleccionado
+                )
+                .select_related(
+                    'asignatura_id_asignatura'
+                )
+                .order_by(
+                    'asignatura_id_asignatura__nombre_asignatura'
+                )
+            )
+
+            if asignatura_id.isdigit():
+                asignatura_seleccionada = asignaturas.filter(
+                    id_asig_curso=int(asignatura_id)
+                ).first()
+
+            if asignatura_seleccionada:
+
+                alumnos = list(
+                    Alumno.objects.filter(
+                        curso_id_curso=curso_seleccionado
+                    ).order_by(
+                        'nombre_completo',
+                        'rut_alumno'
+                    )
+                )
+
+                ruts = [
+                    alumno.rut_alumno
+                    for alumno in alumnos
+                ]
+
+                # Leer TODAS las asignaturas del curso.
+                registros = (
+                    RegistroAsistencia.objects.filter(
+                        fecha=fecha,
+                        alumno_rut_alumno_id__in=ruts,
+                        asignatura_curso_id_asig_curso__curso_id_curso=curso_seleccionado
+                    )
+                    .order_by('-id_asistencia')
+                )
+
+                estados_guardados = {}
+                estados_encontrados = {}
+
+                for registro in registros:
+                    rut = registro.alumno_rut_alumno_id
+
+                    estados_encontrados.setdefault(
+                        rut, set()
+                    ).add(registro.presente)
+
+                    # Si existen registros anteriores
+                    # en varias asignaturas, mostrar
+                    # provisionalmente el de mayor ID.
+                    if rut not in estados_guardados:
+                        estados_guardados[rut] = registro.presente
+
+                registros_inconsistentes = any(
+                    len(estados) > 1
+                    for estados in estados_encontrados.values()
+                )
+
+                for alumno in alumnos:
+                    alumno.estado_asistencia = (
+                        estados_guardados.get(
+                            alumno.rut_alumno
+                        )
+                    )
+
+                    if alumno.estado_asistencia == 1:
+                        presentes += 1
+
+                    elif alumno.estado_asistencia == 0:
+                        ausentes += 1
+
+                asistencia_guardada = bool(
+                    estados_guardados
+                )
+
+                asistencia_completa = (
+                    len(estados_guardados) == len(alumnos)
+                    and len(alumnos) > 0
+                    and not registros_inconsistentes
+                )
+
+    return render(
+        request,
+        'profesor_asistencia.html',
+        {
+            'cursos': cursos,
+            'curso_seleccionado': curso_seleccionado,
+            'asignaturas': asignaturas,
+            'asignatura_seleccionada': asignatura_seleccionada,
+            'fecha_seleccionada': fecha.isoformat(),
+            'fecha_actual': hoy.isoformat(),
+            'alumnos': alumnos,
+            'total_alumnos': len(alumnos),
+            'presentes': presentes,
+            'ausentes': ausentes,
+            'asistencia_guardada': asistencia_guardada,
+            'asistencia_completa': asistencia_completa,
+            'registros_inconsistentes': registros_inconsistentes,
+        }
+    )
+
+
 
 @require_role([2])
 def profesor_agregar_incidencia(request):
@@ -329,20 +629,27 @@ def profesor_revisar_incidencias(request):
 
 
 
+
 @require_role([2])
 def profesor_alumnos(request):
-    # Todos los cursos disponibles, sin filtrar por profesor
+    from django.db.models import Avg, OuterRef, Subquery
+    from .models import Calificacion
+
     cursos = Curso.objects.all().order_by('id_curso')
 
     curso_id = request.GET.get('curso', '').strip()
-    curso_seleccionado = None
-    alumnos = Alumno.objects.none()
+    asignatura_id = request.GET.get('asignatura', '').strip()
 
-    if curso_id:
-        if curso_id.isdigit():
-            curso_seleccionado = cursos.filter(
-                id_curso=int(curso_id)
-            ).first()
+    curso_seleccionado = None
+    asignatura_seleccionada = None
+
+    alumnos = Alumno.objects.none()
+    asignaturas = AsignaturaCurso.objects.none()
+
+    if curso_id.isdigit():
+        curso_seleccionado = cursos.filter(
+            id_curso=int(curso_id)
+        ).first()
 
         if curso_seleccionado:
             alumnos = (
@@ -352,23 +659,119 @@ def profesor_alumnos(request):
                 .select_related('usuario_rut')
                 .order_by('nombre_completo')
             )
-        else:
-            messages.error(
-                request,
-                'El curso seleccionado no existe.'
+
+            asignaturas = (
+                AsignaturaCurso.objects.filter(
+                    curso_id_curso=curso_seleccionado
+                )
+                .select_related('asignatura_id_asignatura')
+                .order_by(
+                    'asignatura_id_asignatura__nombre_asignatura'
+                )
             )
+
+            if asignatura_id.isdigit():
+                asignatura_seleccionada = asignaturas.filter(
+                    id_asig_curso=int(asignatura_id)
+                ).first()
+
+                if asignatura_seleccionada:
+                    promedio_subconsulta = (
+                        Calificacion.objects.filter(
+                            alumno_rut_alumno_id=OuterRef('rut_alumno'),
+                            asignatura_curso_id_asig_curso=asignatura_seleccionada
+                        )
+                        .values('alumno_rut_alumno_id')
+                        .annotate(promedio=Avg('valor_nota'))
+                        .values('promedio')[:1]
+                    )
+
+                    alumnos = alumnos.annotate(
+                        promedio_asignatura=Subquery(
+                            promedio_subconsulta
+                        )
+                    )
+
+    elif curso_id:
+        messages.error(
+            request,
+            'El curso seleccionado no es válido.'
+        )
 
     return render(request, 'profesor_alumnos.html', {
         'cursos': cursos,
         'curso_seleccionado': curso_seleccionado,
+        'asignaturas': asignaturas,
+        'asignatura_seleccionada': asignatura_seleccionada,
         'alumnos': alumnos,
         'total_alumnos': alumnos.count(),
     })
 
 
+
 @require_role([2])
-def profesor_perfil_alumno(request):
-    return render(request, 'profesor_perfil_alumno.html')
+def profesor_perfil_alumno(request, rut):
+    from django.db.models import Avg, Count
+    from .models import Calificacion, RegistroAsistencia
+
+    alumno = get_object_or_404(
+        Alumno.objects.select_related('curso_id_curso__usuario_rut', 'usuario_rut'),
+        rut_alumno=rut,
+    )
+    apoderado = alumno.usuario_rut
+    profesor_jefe = alumno.curso_id_curso.usuario_rut
+
+    notas = (
+        Calificacion.objects
+        .filter(alumno_rut_alumno=alumno)
+        .values('asignatura_curso_id_asig_curso__asignatura_id_asignatura__nombre_asignatura')
+        .annotate(promedio=Avg('valor_nota'), cantidad=Count('id_calificacion'))
+        .order_by('asignatura_curso_id_asig_curso__asignatura_id_asignatura__nombre_asignatura')
+    )
+    promedios = [
+        {
+            'asignatura': fila['asignatura_curso_id_asig_curso__asignatura_id_asignatura__nombre_asignatura'],
+            'promedio': fila['promedio'],
+            'cantidad': fila['cantidad'],
+        }
+        for fila in notas
+    ]
+    # Promedio de todas las calificaciones registradas, sin inventar semestres.
+    promedio_general = (
+        Calificacion.objects.filter(alumno_rut_alumno=alumno)
+        .aggregate(promedio=Avg('valor_nota'))['promedio']
+    )
+
+    asistencias = RegistroAsistencia.objects.filter(alumno_rut_alumno=alumno)
+    total_clases = asistencias.count()
+    presentes = asistencias.filter(presente=1).count()
+    ausentes = total_clases - presentes
+    porcentaje_asistencia = round(presentes * 100 / total_clases, 1) if total_clases else None
+    historial = (
+        asistencias.select_related('asignatura_curso_id_asig_curso__asignatura_id_asignatura')
+        .order_by('-fecha', '-id_asistencia')[:15]
+    )
+
+    nombre_apoderado = ' '.join(filter(None, [
+        apoderado.nombre, apoderado.apellido_paterno, apoderado.apellido_materno
+    ])) if apoderado else ''
+    nombre_profesor = ' '.join(filter(None, [
+        profesor_jefe.nombre, profesor_jefe.apellido_paterno, profesor_jefe.apellido_materno
+    ])) if profesor_jefe else ''
+
+    return render(request, 'profesor_perfil_alumno.html', {
+        'alumno': alumno,
+        'apoderado': apoderado,
+        'nombre_apoderado': nombre_apoderado,
+        'nombre_profesor': nombre_profesor,
+        'promedios': promedios,
+        'promedio_general': promedio_general,
+        'total_clases': total_clases,
+        'presentes': presentes,
+        'ausentes': ausentes,
+        'porcentaje_asistencia': porcentaje_asistencia,
+        'historial_asistencia': historial,
+    })
 
 # Vistas para el portal de Administrador
 

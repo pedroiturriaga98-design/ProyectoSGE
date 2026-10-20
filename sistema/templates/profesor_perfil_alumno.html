@@ -1,130 +1,279 @@
+
 {% extends 'base_profesor.html' %}
 
 {% block content %}
+
+<!-- Volver al listado de alumnos -->
+<div style="margin-bottom: 18px;">
+    <a
+        href="{% url 'profesor_alumnos' %}?curso={{ alumno.curso_id_curso_id }}"
+        style="color: #d97706; text-decoration: none; font-weight: 600;"
+    >
+        ← Volver al listado de alumnos
+    </a>
+</div>
+
 <!-- Banner Superior -->
 <div class="profile-banner">
-    <div class="profile-avatar-large">MF</div>
+    <div class="profile-avatar-large">
+        {{ alumno.nombre_completo|slice:':1'|upper }}
+    </div>
+
     <div class="profile-titles">
-        <h2>María Fernanda López García <span class="badge-activo">Activo</span></h2>
-        <p><strong>Curso:</strong> 2º Básico A | <strong>Matrícula:</strong> MAT-2026-0847 | <strong>Profesor Jefe:</strong> Cristian Morales R.</p>
+        <h2>
+            {{ alumno.nombre_completo }}
+            <span class="badge-activo">
+                {{ alumno.estado_matricula }}
+            </span>
+        </h2>
+
+        <p>
+            <strong>RUT:</strong> {{ alumno.rut_alumno }} |
+            <strong>Curso:</strong>
+            {{ alumno.curso_id_curso.nombre_curso }} |
+            <strong>Profesor Jefe:</strong>
+            {{ nombre_profesor|default:'No registrado' }}
+        </p>
     </div>
 </div>
 
 <div class="profile-grid">
-    <!-- Columna Izquierda: Info Personal -->
+
+    <!-- Columna Izquierda: Información Personal -->
     <div class="card">
-        <div class="card-title">Información Personal</div>
-        
-        <div class="info-block">
-            <label>Fecha de Nacimiento</label>
-            <p>14 de Julio de 2018 (7 años)</p>
+        <div class="card-title">
+            Información Personal
         </div>
+
         <div class="info-block">
-            <label>Dirección</label>
-            <p>Av. Providencia 1240, Depto 402, Santiago</p>
+            <label>RUT del Alumno</label>
+            <p>{{ alumno.rut_alumno }}</p>
         </div>
+
+        <div class="info-block">
+            <label>Curso</label>
+            <p>{{ alumno.curso_id_curso.nombre_curso }}</p>
+        </div>
+
+        <div class="info-block">
+            <label>Estado de Matrícula</label>
+            <p>{{ alumno.estado_matricula }}</p>
+        </div>
+
         <div class="info-block">
             <label>Apoderado Responsable</label>
-            <p>Fernanda García Plaza (Madre)</p>
+            <p>
+                {{ nombre_apoderado|default:'No registrado' }}
+            </p>
         </div>
+
+        <div class="info-block">
+            <label>Dirección de Contacto (Apoderado)</label>
+            <p>
+                {% if apoderado and apoderado.direccion %}
+                    {{ apoderado.direccion }}
+                {% else %}
+                    No registrada
+                {% endif %}
+            </p>
+        </div>
+
         <div class="info-block">
             <label>Teléfono del Apoderado</label>
-            <p>+56 9 8765 4321</p>
+            <p>
+                {% if apoderado and apoderado.telefono %}
+                    {{ apoderado.telefono }}
+                {% else %}
+                    No registrado
+                {% endif %}
+            </p>
         </div>
+
         <div class="info-block">
             <label>Email del Apoderado</label>
-            <p>fernanda.garcia@gmail.com</p>
+            <p>
+                {% if apoderado and apoderado.correo %}
+                    {{ apoderado.correo }}
+                {% else %}
+                    No registrado
+                {% endif %}
+            </p>
         </div>
     </div>
 
     <!-- Columna Derecha -->
     <div>
-        <!-- Rendimiento -->
+
+        <!-- Rendimiento Académico -->
         <div class="card">
-            <div class="card-title">Rendimiento Académico Semestral</div>
+            <div class="card-title">
+                Rendimiento Académico
+            </div>
+
             <div class="grades-flex">
-                <div class="grade-box">
-                    <h5>Lenguaje</h5>
-                    <div class="score">6.2</div>
-                    <div class="desc">Excelente</div>
-                </div>
-                <div class="grade-box">
-                    <h5>Matemáticas</h5>
-                    <div class="score">5.8</div>
-                    <div class="desc">Bueno</div>
-                </div>
-                <div class="grade-box">
-                    <h5>Ciencias Naturales</h5>
-                    <div class="score">6.5</div>
-                    <div class="desc">Excelente</div>
-                </div>
-                <div class="grade-box">
-                    <h5>Historia y Geografía</h5>
-                    <div class="score">5.5</div>
-                    <div class="desc">Aprobado</div>
-                </div>
+
+                {% for item in promedios %}
+
+                    <div class="grade-box">
+                        <h5>{{ item.asignatura }}</h5>
+
+                        <div class="score">
+                            {{ item.promedio|floatformat:1 }}
+                        </div>
+
+                        <div class="desc">
+                            {{ item.cantidad }}
+                            nota{{ item.cantidad|pluralize }}
+                        </div>
+                    </div>
+
+                {% empty %}
+
+                    <p>
+                        No hay calificaciones registradas
+                        para este alumno.
+                    </p>
+
+                {% endfor %}
+
+                <!-- Promedio General -->
                 <div class="grade-box box-promedio">
                     <h5>Promedio General</h5>
-                    <div class="score">6.0</div>
-                    <div class="desc">Destacado</div>
+
+                    <div class="score">
+                        {% if promedio_general != None %}
+                            {{ promedio_general|floatformat:1 }}
+                        {% else %}
+                            —
+                        {% endif %}
+                    </div>
+
+                    <div class="desc">
+                        Según las notas registradas
+                    </div>
                 </div>
+
             </div>
         </div>
 
-        <!-- Asistencia -->
+        <!-- Registro de Asistencia -->
         <div class="card">
-            <div class="card-title">Registro de Asistencia</div>
-            
-            <div class="attendance-stats">
-                <div class="att-stat stat-total">
-                    <h5>Total Clases</h5><div class="num">180</div>
-                </div>
-                <div class="att-stat stat-presente">
-                    <h5>Asistencias</h5><div class="num">168</div>
-                </div>
-                <div class="att-stat stat-ausente">
-                    <h5>Inasistencias</h5><div class="num">8</div>
-                </div>
-                <div class="att-stat stat-justificado">
-                    <h5>Justificadas</h5><div class="num">4</div>
-                </div>
-                <div class="att-stat stat-porcentaje">
-                    <h5>Porcentaje</h5><div class="num">93.3%</div>
-                </div>
+            <div class="card-title">
+                Registro de Asistencia
             </div>
 
+            <div class="attendance-stats">
+
+                <!-- Total Clases -->
+                <div class="att-stat stat-total">
+                    <h5>Total Clases</h5>
+
+                    <div class="num">
+                        {{ total_clases }}
+                    </div>
+                </div>
+
+                <!-- Asistencias -->
+                <div class="att-stat stat-presente">
+                    <h5>Asistencias</h5>
+
+                    <div class="num">
+                        {{ presentes }}
+                    </div>
+                </div>
+
+                <!-- Inasistencias -->
+                <div class="att-stat stat-ausente">
+                    <h5>Inasistencias</h5>
+
+                    <div class="num">
+                        {{ ausentes }}
+                    </div>
+                </div>
+
+                <!-- Porcentaje -->
+                <div class="att-stat stat-porcentaje">
+                    <h5>Porcentaje</h5>
+
+                    <div class="num">
+                        {% if porcentaje_asistencia != None %}
+                            {{ porcentaje_asistencia }}%
+                        {% else %}
+                            —
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Historial de Asistencia -->
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 25%;">FECHA</th>
-                        <th style="width: 50%;">ASIGNATURA</th>
-                        <th style="width: 25%; text-align: right;">ESTADO</th>
+                        <th style="width: 25%;">
+                            FECHA
+                        </th>
+
+                        <th style="width: 50%;">
+                            ASIGNATURA
+                        </th>
+
+                        <th style="width: 25%; text-align: right;">
+                            ESTADO
+                        </th>
                     </tr>
                 </thead>
+
                 <tbody>
-                    <tr>
-                        <td>12/06/2026</td>
-                        <td>Matemáticas</td>
-                        <td style="text-align: right;"><span class="badge-att b-pres">Presente</span></td>
-                    </tr>
-                    <tr>
-                        <td>11/06/2026</td>
-                        <td>Lenguaje</td>
-                        <td style="text-align: right;"><span class="badge-att b-pres">Presente</span></td>
-                    </tr>
-                    <tr>
-                        <td>10/06/2026</td>
-                        <td>Ciencias Naturales</td>
-                        <td style="text-align: right;"><span class="badge-att b-aus">Ausente</span></td>
-                    </tr>
-                    <tr>
-                        <td>09/06/2026</td>
-                        <td>Historia y Geografía</td>
-                        <td style="text-align: right;"><span class="badge-att b-just">Justificado</span></td>
-                    </tr>
+
+                    {% for registro in historial_asistencia %}
+
+                        <tr>
+                            <td>
+                                {{ registro.fecha|date:'d/m/Y' }}
+                            </td>
+
+                            <td>
+                                {{ registro.asignatura_curso_id_asig_curso.asignatura_id_asignatura.nombre_asignatura }}
+                            </td>
+
+                            <td style="text-align: right;">
+
+                                {% if registro.presente == 1 %}
+
+                                    <span class="badge-att b-pres">
+                                        Presente
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="badge-att b-aus">
+                                        Ausente
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+                        </tr>
+
+                    {% empty %}
+
+                        <tr>
+                            <td
+                                colspan="3"
+                                style="text-align: center; padding: 20px;"
+                            >
+                                No hay registros de asistencia.
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
                 </tbody>
             </table>
         </div>
+
     </div>
 </div>
+
 {% endblock %}

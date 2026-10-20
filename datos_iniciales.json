@@ -68,7 +68,7 @@
   "model": "sistema.usuario",
   "pk": "12.345.678-5",
   "fields": {
-    "password_hash": "123456785",
+    "password_hash": "pbkdf2_sha256$870000$N0AWbEq2TGVs1TYzy1KDk5$35SSDj3YdZmQI3LF0HJfDvPALRMQcmIOOsJQ1FeSUr0=",
     "rol_id_rol": 2,
     "nombre": "Marcelo",
     "apellido_paterno": "Canales",
@@ -164,9 +164,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "imunoz@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56953304919",
+    "direccion": "Los Maitenes 3973, La Reina, Santiago",
+    "fecha_nacimiento": "1961-10-23"
   }
 },
 {
@@ -179,9 +179,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "trojas@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56936398817",
+    "direccion": "Los Aromos 3085, Puente Alto, Santiago",
+    "fecha_nacimiento": "1968-04-26"
   }
 },
 {
@@ -194,9 +194,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "ediaz@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56980423495",
+    "direccion": "Los Alamos 3648, San Ramón, Santiago",
+    "fecha_nacimiento": "1982-07-05"
   }
 },
 {
@@ -209,9 +209,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56920083873",
+    "direccion": "Los Pinos 289, La Florida, Santiago",
+    "fecha_nacimiento": "1967-09-20"
   }
 },
 {
@@ -224,9 +224,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "fsoto@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56917074092",
+    "direccion": "Las Higueras 2079, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1978-12-27"
   }
 },
 {
@@ -239,9 +239,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "acontreras@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56943871826",
+    "direccion": "Las Palmas 177, San Bernardo, Santiago",
+    "fecha_nacimiento": "1994-11-16"
   }
 },
 {
@@ -254,9 +254,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "csilva@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56951884445",
+    "direccion": "Las Rosas 685, San Ramón, Santiago",
+    "fecha_nacimiento": "1994-11-21"
   }
 },
 {
@@ -269,9 +269,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56967650619",
+    "direccion": "Los Eucaliptos 2742, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1997-03-31"
   }
 },
 {
@@ -284,9 +284,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "asepulveda@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56962507679",
+    "direccion": "Las Palmas 999, La Pintana, Santiago",
+    "fecha_nacimiento": "1996-05-12"
   }
 },
 {
@@ -299,9 +299,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "jmorales@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56931661830",
+    "direccion": "Los Maitenes 2371, La Pintana, Santiago",
+    "fecha_nacimiento": "1984-02-09"
   }
 },
 {
@@ -314,9 +314,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56988365272",
+    "direccion": "Los Robles 554, San Ramón, Santiago",
+    "fecha_nacimiento": "1998-07-25"
   }
 },
 {
@@ -329,9 +329,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56932730375",
+    "direccion": "Las Rosas 1262, San Joaquín, Santiago",
+    "fecha_nacimiento": "1982-04-05"
   }
 },
 {
@@ -344,9 +344,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56951830646",
+    "direccion": "Las Palmas 1443, Providencia, Santiago",
+    "fecha_nacimiento": "1970-10-10"
   }
 },
 {
@@ -359,9 +359,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56975183308",
+    "direccion": "Los Cipreses 3367, Puente Alto, Santiago",
+    "fecha_nacimiento": "1960-05-25"
   }
 },
 {
@@ -374,9 +374,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56959620648",
+    "direccion": "Los Maitenes 803, Peñalolén, Santiago",
+    "fecha_nacimiento": "1997-01-13"
   }
 },
 {
@@ -389,9 +389,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56971958470",
+    "direccion": "Las Palmas 2770, La Florida, Santiago",
+    "fecha_nacimiento": "1975-08-13"
   }
 },
 {
@@ -404,9 +404,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56937618290",
+    "direccion": "Los Copihues 1022, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1979-07-13"
   }
 },
 {
@@ -419,9 +419,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56916662922",
+    "direccion": "Las Jacarandas 1357, La Florida, Santiago",
+    "fecha_nacimiento": "1961-07-23"
   }
 },
 {
@@ -434,9 +434,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56972707116",
+    "direccion": "Las Palmas 186, La Pintana, Santiago",
+    "fecha_nacimiento": "1968-04-26"
   }
 },
 {
@@ -449,9 +449,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56960324397",
+    "direccion": "Los Queules 1375, San Ramón, Santiago",
+    "fecha_nacimiento": "1975-10-07"
   }
 },
 {
@@ -464,9 +464,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56947392740",
+    "direccion": "Los Queules 3690, El Bosque, Santiago",
+    "fecha_nacimiento": "1979-11-11"
   }
 },
 {
@@ -479,9 +479,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56929463437",
+    "direccion": "Las Palmas 387, San Joaquín, Santiago",
+    "fecha_nacimiento": "1995-12-01"
   }
 },
 {
@@ -494,9 +494,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56985324983",
+    "direccion": "Los Alamos 3166, La Pintana, Santiago",
+    "fecha_nacimiento": "1961-09-07"
   }
 },
 {
@@ -509,9 +509,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56980886907",
+    "direccion": "Los Robles 2301, Santiago, Santiago",
+    "fecha_nacimiento": "1975-04-13"
   }
 },
 {
@@ -524,9 +524,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56995823448",
+    "direccion": "Las Acacias 3425, La Florida, Santiago",
+    "fecha_nacimiento": "1971-09-02"
   }
 },
 {
@@ -539,9 +539,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56928035041",
+    "direccion": "Los Robles 2907, Macul, Santiago",
+    "fecha_nacimiento": "1980-06-04"
   }
 },
 {
@@ -554,9 +554,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56962651399",
+    "direccion": "Los Cerezos 1045, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1981-06-22"
   }
 },
 {
@@ -569,9 +569,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56931429125",
+    "direccion": "Los Guindos 737, La Granja, Santiago",
+    "fecha_nacimiento": "1965-07-24"
   }
 },
 {
@@ -584,9 +584,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56978198902",
+    "direccion": "Los Cipreses 1749, San Ramón, Santiago",
+    "fecha_nacimiento": "1984-08-13"
   }
 },
 {
@@ -599,9 +599,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56997645542",
+    "direccion": "Los Sauces 3755, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1988-04-04"
   }
 },
 {
@@ -614,9 +614,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "trojas2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56915008883",
+    "direccion": "Los Eucaliptos 686, El Bosque, Santiago",
+    "fecha_nacimiento": "1978-06-04"
   }
 },
 {
@@ -629,9 +629,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "ediaz2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56923677959",
+    "direccion": "Los Maitenes 478, Santiago, Santiago",
+    "fecha_nacimiento": "1987-01-12"
   }
 },
 {
@@ -644,9 +644,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56992595977",
+    "direccion": "Los Robles 1433, Macul, Santiago",
+    "fecha_nacimiento": "1978-03-29"
   }
 },
 {
@@ -659,9 +659,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "fsoto2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56984444578",
+    "direccion": "Los Robles 3413, Peñalolén, Santiago",
+    "fecha_nacimiento": "1969-09-18"
   }
 },
 {
@@ -674,9 +674,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "acontreras2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935114993",
+    "direccion": "Las Rosas 3074, Peñalolén, Santiago",
+    "fecha_nacimiento": "1966-12-29"
   }
 },
 {
@@ -689,9 +689,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "csilva2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56987719335",
+    "direccion": "Los Eucaliptos 1052, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1978-01-21"
   }
 },
 {
@@ -704,9 +704,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56975598776",
+    "direccion": "Los Álamos 2502, El Bosque, Santiago",
+    "fecha_nacimiento": "1970-10-05"
   }
 },
 {
@@ -719,9 +719,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "asepulveda2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56964763257",
+    "direccion": "Los Robles 1392, La Reina, Santiago",
+    "fecha_nacimiento": "1980-06-19"
   }
 },
 {
@@ -734,9 +734,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "jmorales2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56959130475",
+    "direccion": "Los Álamos 806, Las Condes, Santiago",
+    "fecha_nacimiento": "1970-05-15"
   }
 },
 {
@@ -749,9 +749,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56993749108",
+    "direccion": "Los Nogales 4038, Macul, Santiago",
+    "fecha_nacimiento": "1978-08-23"
   }
 },
 {
@@ -764,9 +764,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56921366559",
+    "direccion": "Las Camelias 1018, Las Condes, Santiago",
+    "fecha_nacimiento": "1986-11-08"
   }
 },
 {
@@ -779,9 +779,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56957136658",
+    "direccion": "Los Olmos 1336, Peñalolén, Santiago",
+    "fecha_nacimiento": "1967-11-12"
   }
 },
 {
@@ -794,9 +794,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56971426988",
+    "direccion": "Los Queules 1560, Providencia, Santiago",
+    "fecha_nacimiento": "1964-03-30"
   }
 },
 {
@@ -809,9 +809,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56968026289",
+    "direccion": "Los Cerezos 4201, La Pintana, Santiago",
+    "fecha_nacimiento": "1971-01-12"
   }
 },
 {
@@ -824,9 +824,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56993209002",
+    "direccion": "Los Sauces 1705, Macul, Santiago",
+    "fecha_nacimiento": "1969-02-27"
   }
 },
 {
@@ -839,9 +839,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935819578",
+    "direccion": "Los Pinos 1724, San Ramón, Santiago",
+    "fecha_nacimiento": "1987-08-14"
   }
 },
 {
@@ -854,9 +854,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56975041311",
+    "direccion": "Las Bugambilias 4319, La Florida, Santiago",
+    "fecha_nacimiento": "1992-05-19"
   }
 },
 {
@@ -869,9 +869,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56940143712",
+    "direccion": "Los Cerezos 529, La Cisterna, Santiago",
+    "fecha_nacimiento": "1994-06-04"
   }
 },
 {
@@ -884,9 +884,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56945325627",
+    "direccion": "Los Pinos 1243, San Joaquín, Santiago",
+    "fecha_nacimiento": "1998-06-24"
   }
 },
 {
@@ -899,9 +899,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56985412768",
+    "direccion": "Los Aromos 1544, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1989-04-28"
   }
 },
 {
@@ -914,9 +914,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56923998729",
+    "direccion": "Las Jacarandas 3852, La Cisterna, Santiago",
+    "fecha_nacimiento": "1971-04-17"
   }
 },
 {
@@ -929,9 +929,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56962790081",
+    "direccion": "Los Maitenes 682, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1987-11-06"
   }
 },
 {
@@ -944,9 +944,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56929693119",
+    "direccion": "Los Maitenes 3109, San Ramón, Santiago",
+    "fecha_nacimiento": "1965-11-28"
   }
 },
 {
@@ -959,9 +959,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56961701442",
+    "direccion": "Las Camelias 2059, Santiago, Santiago",
+    "fecha_nacimiento": "1996-03-31"
   }
 },
 {
@@ -974,9 +974,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56912703615",
+    "direccion": "Los Maitenes 3892, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1992-01-15"
   }
 },
 {
@@ -989,9 +989,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56986177879",
+    "direccion": "Los Guindos 1196, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1965-09-03"
   }
 },
 {
@@ -1004,9 +1004,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56954821541",
+    "direccion": "Los Nogales 202, Peñalolén, Santiago",
+    "fecha_nacimiento": "1972-02-25"
   }
 },
 {
@@ -1019,9 +1019,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56954858986",
+    "direccion": "Los Robles 2414, La Cisterna, Santiago",
+    "fecha_nacimiento": "1963-10-10"
   }
 },
 {
@@ -1034,9 +1034,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56967811467",
+    "direccion": "Los Pinos 2001, San Joaquín, Santiago",
+    "fecha_nacimiento": "1983-09-28"
   }
 },
 {
@@ -1049,9 +1049,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56923806886",
+    "direccion": "Los Álamos 584, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1996-07-31"
   }
 },
 {
@@ -1064,9 +1064,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "ediaz3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56995179474",
+    "direccion": "Los Queules 2824, San Joaquín, Santiago",
+    "fecha_nacimiento": "1980-05-11"
   }
 },
 {
@@ -1079,9 +1079,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56969517238",
+    "direccion": "Las Palmas 1203, Vitacura, Santiago",
+    "fecha_nacimiento": "1967-01-24"
   }
 },
 {
@@ -1094,9 +1094,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "fsoto3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56954506756",
+    "direccion": "Los Alamos 1903, La Granja, Santiago",
+    "fecha_nacimiento": "1964-04-02"
   }
 },
 {
@@ -1109,9 +1109,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "acontreras3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56991697902",
+    "direccion": "Las Higueras 4407, La Florida, Santiago",
+    "fecha_nacimiento": "1990-11-28"
   }
 },
 {
@@ -1124,9 +1124,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "csilva3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56943868200",
+    "direccion": "Las Rosas 3325, La Cisterna, Santiago",
+    "fecha_nacimiento": "1966-09-19"
   }
 },
 {
@@ -1139,9 +1139,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56921172866",
+    "direccion": "Los Cipreses 2498, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1966-11-27"
   }
 },
 {
@@ -1154,9 +1154,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "asepulveda3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56943333141",
+    "direccion": "Los Sauces 2483, San Ramón, Santiago",
+    "fecha_nacimiento": "1998-11-11"
   }
 },
 {
@@ -1169,9 +1169,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "jmorales3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56966627333",
+    "direccion": "Los Olmos 3750, Vitacura, Santiago",
+    "fecha_nacimiento": "1980-05-08"
   }
 },
 {
@@ -1184,9 +1184,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56936144933",
+    "direccion": "Las Araucarias 894, La Reina, Santiago",
+    "fecha_nacimiento": "1998-11-30"
   }
 },
 {
@@ -1199,9 +1199,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56930962894",
+    "direccion": "Los Cerezos 653, Providencia, Santiago",
+    "fecha_nacimiento": "1985-07-26"
   }
 },
 {
@@ -1214,9 +1214,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56951291494",
+    "direccion": "Los Álamos 1342, La Pintana, Santiago",
+    "fecha_nacimiento": "1995-11-19"
   }
 },
 {
@@ -1229,9 +1229,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56930378100",
+    "direccion": "Las Acacias 2069, La Reina, Santiago",
+    "fecha_nacimiento": "1994-04-16"
   }
 },
 {
@@ -1244,9 +1244,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56998186560",
+    "direccion": "Los Cipreses 3342, La Reina, Santiago",
+    "fecha_nacimiento": "1960-05-30"
   }
 },
 {
@@ -1259,9 +1259,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56923418310",
+    "direccion": "Las Quillayes 2186, La Florida, Santiago",
+    "fecha_nacimiento": "1978-06-24"
   }
 },
 {
@@ -1274,9 +1274,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56913169293",
+    "direccion": "Las Rosas 2138, La Granja, Santiago",
+    "fecha_nacimiento": "1984-04-04"
   }
 },
 {
@@ -1289,9 +1289,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56960138445",
+    "direccion": "Las Camelias 2453, La Florida, Santiago",
+    "fecha_nacimiento": "1969-05-09"
   }
 },
 {
@@ -1304,9 +1304,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56936573498",
+    "direccion": "Los Guindos 3375, Vitacura, Santiago",
+    "fecha_nacimiento": "1981-02-16"
   }
 },
 {
@@ -1319,9 +1319,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56996554088",
+    "direccion": "Los Olmos 360, Peñalolén, Santiago",
+    "fecha_nacimiento": "1977-02-24"
   }
 },
 {
@@ -1334,9 +1334,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56990184865",
+    "direccion": "Los Robles 702, Las Condes, Santiago",
+    "fecha_nacimiento": "1982-02-15"
   }
 },
 {
@@ -1349,9 +1349,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56969832632",
+    "direccion": "Las Acacias 4322, Peñalolén, Santiago",
+    "fecha_nacimiento": "1997-07-31"
   }
 },
 {
@@ -1364,9 +1364,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56929583407",
+    "direccion": "Las Rosas 3984, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1969-07-04"
   }
 },
 {
@@ -1379,9 +1379,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56914564879",
+    "direccion": "Las Magnolias 1985, Macul, Santiago",
+    "fecha_nacimiento": "1982-06-18"
   }
 },
 {
@@ -1394,9 +1394,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56912767915",
+    "direccion": "Las Acacias 3030, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1970-01-25"
   }
 },
 {
@@ -1409,9 +1409,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56953310615",
+    "direccion": "Las Camelias 1518, San Bernardo, Santiago",
+    "fecha_nacimiento": "1988-04-28"
   }
 },
 {
@@ -1424,9 +1424,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56980219912",
+    "direccion": "Las Quillayes 2653, Las Condes, Santiago",
+    "fecha_nacimiento": "1993-03-06"
   }
 },
 {
@@ -1439,9 +1439,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56929663935",
+    "direccion": "Los Eucaliptos 305, San Joaquín, Santiago",
+    "fecha_nacimiento": "1961-04-14"
   }
 },
 {
@@ -1454,9 +1454,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56960497497",
+    "direccion": "Los Guindos 1089, Las Condes, Santiago",
+    "fecha_nacimiento": "1993-01-19"
   }
 },
 {
@@ -1469,9 +1469,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56944218765",
+    "direccion": "Las Magnolias 4022, San Ramón, Santiago",
+    "fecha_nacimiento": "1960-03-21"
   }
 },
 {
@@ -1484,9 +1484,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56961532908",
+    "direccion": "Las Bugambilias 1200, Puente Alto, Santiago",
+    "fecha_nacimiento": "1988-10-31"
   }
 },
 {
@@ -1499,9 +1499,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56963454446",
+    "direccion": "Los Cerezos 1083, Puente Alto, Santiago",
+    "fecha_nacimiento": "1982-01-23"
   }
 },
 {
@@ -1514,9 +1514,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56952280954",
+    "direccion": "Las Rosas 1368, La Pintana, Santiago",
+    "fecha_nacimiento": "1990-07-05"
   }
 },
 {
@@ -1529,9 +1529,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "fsoto4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56974970506",
+    "direccion": "Los Álamos 843, La Cisterna, Santiago",
+    "fecha_nacimiento": "1982-06-17"
   }
 },
 {
@@ -1544,9 +1544,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "acontreras4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56992348986",
+    "direccion": "Las Araucarias 763, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1995-07-21"
   }
 },
 {
@@ -1559,9 +1559,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "csilva4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56955755567",
+    "direccion": "Las Bugambilias 1984, Peñalolén, Santiago",
+    "fecha_nacimiento": "1975-09-17"
   }
 },
 {
@@ -1574,9 +1574,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56948290090",
+    "direccion": "Las Acacias 2298, Macul, Santiago",
+    "fecha_nacimiento": "1980-05-08"
   }
 },
 {
@@ -1589,9 +1589,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "asepulveda4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56910465405",
+    "direccion": "Los Cipreses 3348, San Ramón, Santiago",
+    "fecha_nacimiento": "1993-02-17"
   }
 },
 {
@@ -1604,9 +1604,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "jmorales4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56945975689",
+    "direccion": "Las Acacias 4080, Las Condes, Santiago",
+    "fecha_nacimiento": "1964-10-03"
   }
 },
 {
@@ -1619,9 +1619,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56957667267",
+    "direccion": "Los Pinos 3015, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1992-12-17"
   }
 },
 {
@@ -1634,9 +1634,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56993535200",
+    "direccion": "Las Quillayes 2493, Providencia, Santiago",
+    "fecha_nacimiento": "1991-01-18"
   }
 },
 {
@@ -1649,9 +1649,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56911052746",
+    "direccion": "Los Maitenes 1740, Las Condes, Santiago",
+    "fecha_nacimiento": "1986-07-03"
   }
 },
 {
@@ -1664,9 +1664,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56944620806",
+    "direccion": "Las Acacias 3957, La Granja, Santiago",
+    "fecha_nacimiento": "1977-01-11"
   }
 },
 {
@@ -1679,9 +1679,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56917222967",
+    "direccion": "Los Guindos 3786, Santiago, Santiago",
+    "fecha_nacimiento": "1995-07-26"
   }
 },
 {
@@ -1694,9 +1694,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56976158802",
+    "direccion": "Los Maitenes 3415, Macul, Santiago",
+    "fecha_nacimiento": "1972-09-20"
   }
 },
 {
@@ -1709,9 +1709,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56920385254",
+    "direccion": "Los Queules 3003, Santiago, Santiago",
+    "fecha_nacimiento": "1977-10-11"
   }
 },
 {
@@ -1724,9 +1724,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56971515373",
+    "direccion": "Las Palmas 2779, La Pintana, Santiago",
+    "fecha_nacimiento": "1983-01-04"
   }
 },
 {
@@ -1739,9 +1739,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56984880128",
+    "direccion": "Las Palmas 3463, San Ramón, Santiago",
+    "fecha_nacimiento": "1960-08-17"
   }
 },
 {
@@ -1754,9 +1754,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56951362602",
+    "direccion": "Las Jacarandas 3179, San Ramón, Santiago",
+    "fecha_nacimiento": "1994-08-14"
   }
 },
 {
@@ -1769,9 +1769,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56969525917",
+    "direccion": "Los Álamos 1830, Providencia, Santiago",
+    "fecha_nacimiento": "1993-07-21"
   }
 },
 {
@@ -1784,9 +1784,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56960866361",
+    "direccion": "Los Álamos 2415, Macul, Santiago",
+    "fecha_nacimiento": "1986-12-26"
   }
 },
 {
@@ -1799,9 +1799,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56936637180",
+    "direccion": "Las Camelias 2848, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1996-09-22"
   }
 },
 {
@@ -1814,9 +1814,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56972223572",
+    "direccion": "Las Bugambilias 1391, La Cisterna, Santiago",
+    "fecha_nacimiento": "1978-07-28"
   }
 },
 {
@@ -1829,9 +1829,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56937514269",
+    "direccion": "Los Nogales 2900, La Pintana, Santiago",
+    "fecha_nacimiento": "1963-06-02"
   }
 },
 {
@@ -1844,9 +1844,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56933962713",
+    "direccion": "Las Palmas 1099, Santiago, Santiago",
+    "fecha_nacimiento": "1976-07-01"
   }
 },
 {
@@ -1859,9 +1859,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56950735767",
+    "direccion": "Las Araucarias 4024, La Granja, Santiago",
+    "fecha_nacimiento": "1984-04-03"
   }
 },
 {
@@ -1874,9 +1874,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56983429783",
+    "direccion": "Las Rosas 3123, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1996-10-31"
   }
 },
 {
@@ -1889,9 +1889,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56981438645",
+    "direccion": "Los Robles 2759, La Granja, Santiago",
+    "fecha_nacimiento": "1964-05-08"
   }
 },
 {
@@ -1904,9 +1904,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56937288369",
+    "direccion": "Los Aromos 174, Las Condes, Santiago",
+    "fecha_nacimiento": "1963-01-06"
   }
 },
 {
@@ -1919,9 +1919,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56973510454",
+    "direccion": "Las Jacarandas 3559, Santiago, Santiago",
+    "fecha_nacimiento": "1979-08-27"
   }
 },
 {
@@ -1934,9 +1934,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56992994314",
+    "direccion": "Las Jacarandas 2936, La Reina, Santiago",
+    "fecha_nacimiento": "1966-04-30"
   }
 },
 {
@@ -1949,9 +1949,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56974618778",
+    "direccion": "Las Quillayes 3355, Santiago, Santiago",
+    "fecha_nacimiento": "1981-07-31"
   }
 },
 {
@@ -1964,9 +1964,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "fsoto5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56956739864",
+    "direccion": "Las Palmas 1206, La Reina, Santiago",
+    "fecha_nacimiento": "1995-02-23"
   }
 },
 {
@@ -1979,9 +1979,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "acontreras5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56979626003",
+    "direccion": "Las Lirios 3146, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1975-07-11"
   }
 },
 {
@@ -1994,9 +1994,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "csilva5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56948926443",
+    "direccion": "Los Álamos 1620, La Pintana, Santiago",
+    "fecha_nacimiento": "1981-03-16"
   }
 },
 {
@@ -2009,9 +2009,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56910954886",
+    "direccion": "Los Nogales 3811, San Ramón, Santiago",
+    "fecha_nacimiento": "1962-10-24"
   }
 },
 {
@@ -2024,9 +2024,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "asepulveda5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56950363500",
+    "direccion": "Los Queules 3027, Providencia, Santiago",
+    "fecha_nacimiento": "1976-11-15"
   }
 },
 {
@@ -2039,9 +2039,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "jmorales5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56911623697",
+    "direccion": "Las Camelias 2949, Providencia, Santiago",
+    "fecha_nacimiento": "1997-05-09"
   }
 },
 {
@@ -2054,9 +2054,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56957138973",
+    "direccion": "Los Guindos 675, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1990-09-29"
   }
 },
 {
@@ -2069,9 +2069,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56911367745",
+    "direccion": "Los Pinos 2710, Las Condes, Santiago",
+    "fecha_nacimiento": "1972-01-25"
   }
 },
 {
@@ -2084,9 +2084,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56917012243",
+    "direccion": "Los Nogales 456, Macul, Santiago",
+    "fecha_nacimiento": "1961-08-25"
   }
 },
 {
@@ -2099,9 +2099,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56963756782",
+    "direccion": "Los Álamos 1728, Vitacura, Santiago",
+    "fecha_nacimiento": "1960-03-20"
   }
 },
 {
@@ -2114,9 +2114,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56931126591",
+    "direccion": "Las Jacarandas 3926, Puente Alto, Santiago",
+    "fecha_nacimiento": "1974-03-15"
   }
 },
 {
@@ -2129,9 +2129,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56953891198",
+    "direccion": "Las Jacarandas 2269, Vitacura, Santiago",
+    "fecha_nacimiento": "1961-11-15"
   }
 },
 {
@@ -2144,9 +2144,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56946854856",
+    "direccion": "Las Magnolias 3056, San Bernardo, Santiago",
+    "fecha_nacimiento": "1970-01-11"
   }
 },
 {
@@ -2159,9 +2159,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56917043746",
+    "direccion": "Los Queules 1033, Providencia, Santiago",
+    "fecha_nacimiento": "1966-07-14"
   }
 },
 {
@@ -2174,9 +2174,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56976913322",
+    "direccion": "Los Guindos 1972, La Reina, Santiago",
+    "fecha_nacimiento": "1991-08-30"
   }
 },
 {
@@ -2189,9 +2189,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56962349349",
+    "direccion": "Los Copihues 1113, La Florida, Santiago",
+    "fecha_nacimiento": "1982-03-11"
   }
 },
 {
@@ -2204,9 +2204,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56991900729",
+    "direccion": "Las Jacarandas 162, La Pintana, Santiago",
+    "fecha_nacimiento": "1985-11-18"
   }
 },
 {
@@ -2219,9 +2219,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56953631283",
+    "direccion": "Los Cipreses 3083, Las Condes, Santiago",
+    "fecha_nacimiento": "1975-01-29"
   }
 },
 {
@@ -2234,9 +2234,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56923114615",
+    "direccion": "Los Nogales 3761, Providencia, Santiago",
+    "fecha_nacimiento": "1984-06-26"
   }
 },
 {
@@ -2249,9 +2249,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56966543568",
+    "direccion": "Las Magnolias 2986, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1974-06-22"
   }
 },
 {
@@ -2264,9 +2264,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56981713433",
+    "direccion": "Los Sauces 1460, La Granja, Santiago",
+    "fecha_nacimiento": "1985-12-23"
   }
 },
 {
@@ -2279,9 +2279,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56982266071",
+    "direccion": "Las Quillayes 1471, La Granja, Santiago",
+    "fecha_nacimiento": "1977-02-20"
   }
 },
 {
@@ -2294,9 +2294,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56998746155",
+    "direccion": "Los Cerezos 437, Peñalolén, Santiago",
+    "fecha_nacimiento": "1961-01-18"
   }
 },
 {
@@ -2309,9 +2309,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56931949360",
+    "direccion": "Los Maitenes 1620, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1971-02-11"
   }
 },
 {
@@ -2324,9 +2324,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56910637415",
+    "direccion": "Las Quillayes 1446, Macul, Santiago",
+    "fecha_nacimiento": "1966-01-04"
   }
 },
 {
@@ -2339,9 +2339,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56983773830",
+    "direccion": "Las Rosas 1066, La Reina, Santiago",
+    "fecha_nacimiento": "1994-07-12"
   }
 },
 {
@@ -2354,9 +2354,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56982976251",
+    "direccion": "Las Acacias 3144, La Cisterna, Santiago",
+    "fecha_nacimiento": "1977-09-27"
   }
 },
 {
@@ -2369,9 +2369,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935665140",
+    "direccion": "Los Olmos 1283, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1992-02-27"
   }
 },
 {
@@ -2384,9 +2384,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56965076351",
+    "direccion": "Los Alamos 1978, La Florida, Santiago",
+    "fecha_nacimiento": "1991-12-25"
   }
 },
 {
@@ -2399,9 +2399,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "mperez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56926280365",
+    "direccion": "Los Alamos 4414, La Reina, Santiago",
+    "fecha_nacimiento": "1990-12-12"
   }
 },
 {
@@ -2414,9 +2414,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "acontreras6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56981803797",
+    "direccion": "Los Guindos 3632, La Florida, Santiago",
+    "fecha_nacimiento": "1962-10-01"
   }
 },
 {
@@ -2429,9 +2429,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "csilva6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56947793397",
+    "direccion": "Los Cerezos 747, La Cisterna, Santiago",
+    "fecha_nacimiento": "1984-07-03"
   }
 },
 {
@@ -2444,9 +2444,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56967271871",
+    "direccion": "Los Sauces 2840, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1979-06-10"
   }
 },
 {
@@ -2459,9 +2459,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "asepulveda6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56934132296",
+    "direccion": "Las Quillayes 189, Macul, Santiago",
+    "fecha_nacimiento": "1987-12-21"
   }
 },
 {
@@ -2474,9 +2474,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "jmorales6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56927179984",
+    "direccion": "Los Queules 781, La Granja, Santiago",
+    "fecha_nacimiento": "1967-10-23"
   }
 },
 {
@@ -2489,9 +2489,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56976671828",
+    "direccion": "Los Maitenes 4233, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1979-01-09"
   }
 },
 {
@@ -2504,9 +2504,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56977662773",
+    "direccion": "Las Magnolias 217, La Cisterna, Santiago",
+    "fecha_nacimiento": "1962-06-17"
   }
 },
 {
@@ -2519,9 +2519,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56992340364",
+    "direccion": "Las Magnolias 2520, Santiago, Santiago",
+    "fecha_nacimiento": "1980-03-04"
   }
 },
 {
@@ -2534,9 +2534,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56995522811",
+    "direccion": "Las Araucarias 286, Puente Alto, Santiago",
+    "fecha_nacimiento": "1960-01-16"
   }
 },
 {
@@ -2549,9 +2549,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56978914868",
+    "direccion": "Las Camelias 3981, Puente Alto, Santiago",
+    "fecha_nacimiento": "1985-08-26"
   }
 },
 {
@@ -2564,9 +2564,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56928105701",
+    "direccion": "Las Bugambilias 1261, Santiago, Santiago",
+    "fecha_nacimiento": "1990-10-21"
   }
 },
 {
@@ -2579,9 +2579,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56970673260",
+    "direccion": "Las Bugambilias 2559, Santiago, Santiago",
+    "fecha_nacimiento": "1988-06-04"
   }
 },
 {
@@ -2594,9 +2594,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56979308520",
+    "direccion": "Los Cipreses 4451, Vitacura, Santiago",
+    "fecha_nacimiento": "1976-05-20"
   }
 },
 {
@@ -2609,9 +2609,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56984205563",
+    "direccion": "Las Higueras 3253, Las Condes, Santiago",
+    "fecha_nacimiento": "1978-12-29"
   }
 },
 {
@@ -2624,9 +2624,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56944030464",
+    "direccion": "Los Cerezos 2638, La Cisterna, Santiago",
+    "fecha_nacimiento": "1962-02-14"
   }
 },
 {
@@ -2639,9 +2639,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56984174592",
+    "direccion": "Las Higueras 1396, San Ramón, Santiago",
+    "fecha_nacimiento": "1991-07-19"
   }
 },
 {
@@ -2654,9 +2654,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56950982132",
+    "direccion": "Los Cerezos 330, La Granja, Santiago",
+    "fecha_nacimiento": "1995-01-10"
   }
 },
 {
@@ -2669,9 +2669,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56992152088",
+    "direccion": "Las Quillayes 869, La Cisterna, Santiago",
+    "fecha_nacimiento": "1995-11-12"
   }
 },
 {
@@ -2684,9 +2684,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56920589563",
+    "direccion": "Los Cipreses 1200, El Bosque, Santiago",
+    "fecha_nacimiento": "1982-12-24"
   }
 },
 {
@@ -2699,9 +2699,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56929719477",
+    "direccion": "Los Nogales 4380, El Bosque, Santiago",
+    "fecha_nacimiento": "1996-02-22"
   }
 },
 {
@@ -2714,9 +2714,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56993543144",
+    "direccion": "Los Robles 2598, San Joaquín, Santiago",
+    "fecha_nacimiento": "1980-09-14"
   }
 },
 {
@@ -2729,9 +2729,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56926391437",
+    "direccion": "Las Rosas 189, La Cisterna, Santiago",
+    "fecha_nacimiento": "1998-07-21"
   }
 },
 {
@@ -2744,9 +2744,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56974971164",
+    "direccion": "Los Guindos 911, Vitacura, Santiago",
+    "fecha_nacimiento": "1992-10-06"
   }
 },
 {
@@ -2759,9 +2759,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56951034547",
+    "direccion": "Los Álamos 3136, Vitacura, Santiago",
+    "fecha_nacimiento": "1976-03-26"
   }
 },
 {
@@ -2774,9 +2774,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56938522855",
+    "direccion": "Las Lirios 892, Providencia, Santiago",
+    "fecha_nacimiento": "1983-01-10"
   }
 },
 {
@@ -2789,9 +2789,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56947683118",
+    "direccion": "Las Quillayes 2679, San Bernardo, Santiago",
+    "fecha_nacimiento": "1980-04-28"
   }
 },
 {
@@ -2804,9 +2804,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56926850266",
+    "direccion": "Las Higueras 2015, San Joaquín, Santiago",
+    "fecha_nacimiento": "1983-05-16"
   }
 },
 {
@@ -2819,9 +2819,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56932451943",
+    "direccion": "Los Olmos 3060, San Ramón, Santiago",
+    "fecha_nacimiento": "1977-02-16"
   }
 },
 {
@@ -2834,9 +2834,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "mperez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56932823950",
+    "direccion": "Los Robles 1298, San Bernardo, Santiago",
+    "fecha_nacimiento": "1985-07-01"
   }
 },
 {
@@ -2849,9 +2849,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "asoto@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56911123833",
+    "direccion": "Los Queules 232, El Bosque, Santiago",
+    "fecha_nacimiento": "1985-05-29"
   }
 },
 {
@@ -2864,9 +2864,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "csilva7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56988902097",
+    "direccion": "Las Magnolias 2866, El Bosque, Santiago",
+    "fecha_nacimiento": "1961-07-11"
   }
 },
 {
@@ -2879,9 +2879,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56996440196",
+    "direccion": "Los Copihues 4294, San Joaquín, Santiago",
+    "fecha_nacimiento": "1981-10-06"
   }
 },
 {
@@ -2894,9 +2894,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "asepulveda7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56977151028",
+    "direccion": "Los Robles 2312, San Bernardo, Santiago",
+    "fecha_nacimiento": "1967-10-11"
   }
 },
 {
@@ -2909,9 +2909,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "jmorales7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56976636857",
+    "direccion": "Los Cerezos 1305, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1973-11-30"
   }
 },
 {
@@ -2924,9 +2924,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56931194495",
+    "direccion": "Los Olmos 751, San Bernardo, Santiago",
+    "fecha_nacimiento": "1963-06-12"
   }
 },
 {
@@ -2939,9 +2939,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56984857581",
+    "direccion": "Las Jacarandas 2287, Vitacura, Santiago",
+    "fecha_nacimiento": "1960-12-08"
   }
 },
 {
@@ -2954,9 +2954,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56955062242",
+    "direccion": "Las Rosas 262, San Ramón, Santiago",
+    "fecha_nacimiento": "1990-08-04"
   }
 },
 {
@@ -2969,9 +2969,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56941451456",
+    "direccion": "Los Pinos 1023, San Joaquín, Santiago",
+    "fecha_nacimiento": "1965-07-28"
   }
 },
 {
@@ -2984,9 +2984,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56983663730",
+    "direccion": "Las Bugambilias 1809, San Ramón, Santiago",
+    "fecha_nacimiento": "1981-04-01"
   }
 },
 {
@@ -2999,9 +2999,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56965063698",
+    "direccion": "Los Álamos 4108, San Bernardo, Santiago",
+    "fecha_nacimiento": "1990-10-07"
   }
 },
 {
@@ -3014,9 +3014,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56947579910",
+    "direccion": "Los Maitenes 1402, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1964-01-27"
   }
 },
 {
@@ -3029,9 +3029,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56924454533",
+    "direccion": "Las Palmas 2490, Providencia, Santiago",
+    "fecha_nacimiento": "1963-11-23"
   }
 },
 {
@@ -3044,9 +3044,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56910564462",
+    "direccion": "Las Jacarandas 2028, La Reina, Santiago",
+    "fecha_nacimiento": "1995-08-22"
   }
 },
 {
@@ -3059,9 +3059,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935346668",
+    "direccion": "Las Acacias 1534, San Joaquín, Santiago",
+    "fecha_nacimiento": "1977-12-14"
   }
 },
 {
@@ -3074,9 +3074,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56968363551",
+    "direccion": "Las Palmas 3488, La Pintana, Santiago",
+    "fecha_nacimiento": "1962-08-06"
   }
 },
 {
@@ -3089,9 +3089,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56996519651",
+    "direccion": "Las Higueras 2359, San Joaquín, Santiago",
+    "fecha_nacimiento": "1991-03-18"
   }
 },
 {
@@ -3104,9 +3104,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56983581763",
+    "direccion": "Los Sauces 2448, Providencia, Santiago",
+    "fecha_nacimiento": "1989-03-18"
   }
 },
 {
@@ -3119,9 +3119,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56963690428",
+    "direccion": "Las Rosas 3410, San Bernardo, Santiago",
+    "fecha_nacimiento": "1968-07-08"
   }
 },
 {
@@ -3134,9 +3134,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56996035269",
+    "direccion": "Los Queules 2045, Las Condes, Santiago",
+    "fecha_nacimiento": "1995-04-03"
   }
 },
 {
@@ -3149,9 +3149,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56910826231",
+    "direccion": "Los Cipreses 1785, El Bosque, Santiago",
+    "fecha_nacimiento": "1994-11-09"
   }
 },
 {
@@ -3164,9 +3164,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56999884131",
+    "direccion": "Los Guindos 1909, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1961-05-19"
   }
 },
 {
@@ -3179,9 +3179,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56928353549",
+    "direccion": "Los Sauces 4035, El Bosque, Santiago",
+    "fecha_nacimiento": "1977-01-02"
   }
 },
 {
@@ -3194,9 +3194,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56915816014",
+    "direccion": "Los Robles 392, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1971-11-18"
   }
 },
 {
@@ -3209,9 +3209,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56947453357",
+    "direccion": "Los Maitenes 1729, San Bernardo, Santiago",
+    "fecha_nacimiento": "1965-11-13"
   }
 },
 {
@@ -3224,9 +3224,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56923181962",
+    "direccion": "Las Magnolias 470, Las Condes, Santiago",
+    "fecha_nacimiento": "1997-10-22"
   }
 },
 {
@@ -3239,9 +3239,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56948453381",
+    "direccion": "Los Álamos 2179, San Joaquín, Santiago",
+    "fecha_nacimiento": "1963-09-03"
   }
 },
 {
@@ -3254,9 +3254,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56979662410",
+    "direccion": "Los Álamos 794, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1961-06-13"
   }
 },
 {
@@ -3269,9 +3269,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "mperez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56928316555",
+    "direccion": "Los Robles 4330, Peñalolén, Santiago",
+    "fecha_nacimiento": "1970-04-18"
   }
 },
 {
@@ -3284,9 +3284,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "asoto2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56947995093",
+    "direccion": "Los Queules 1405, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1976-02-01"
   }
 },
 {
@@ -3299,9 +3299,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "dcontreras@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56947118988",
+    "direccion": "Los Aromos 1920, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1974-08-16"
   }
 },
 {
@@ -3314,9 +3314,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56964569078",
+    "direccion": "Los Cerezos 1413, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1964-06-08"
   }
 },
 {
@@ -3329,9 +3329,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "asepulveda8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56929391592",
+    "direccion": "Las Acacias 1302, La Granja, Santiago",
+    "fecha_nacimiento": "1960-02-18"
   }
 },
 {
@@ -3344,9 +3344,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "jmorales8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56944612872",
+    "direccion": "Los Pinos 1569, El Bosque, Santiago",
+    "fecha_nacimiento": "1985-01-23"
   }
 },
 {
@@ -3359,9 +3359,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56975620075",
+    "direccion": "Las Rosas 3580, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1987-06-20"
   }
 },
 {
@@ -3374,9 +3374,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56930510587",
+    "direccion": "Los Sauces 4194, Peñalolén, Santiago",
+    "fecha_nacimiento": "1994-12-14"
   }
 },
 {
@@ -3389,9 +3389,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56989549527",
+    "direccion": "Los Alamos 136, La Pintana, Santiago",
+    "fecha_nacimiento": "1966-06-19"
   }
 },
 {
@@ -3404,9 +3404,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56945879579",
+    "direccion": "Las Jacarandas 444, Las Condes, Santiago",
+    "fecha_nacimiento": "1964-08-08"
   }
 },
 {
@@ -3419,9 +3419,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56993011037",
+    "direccion": "Las Palmas 1008, La Reina, Santiago",
+    "fecha_nacimiento": "1976-06-01"
   }
 },
 {
@@ -3434,9 +3434,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935670760",
+    "direccion": "Las Camelias 4125, La Pintana, Santiago",
+    "fecha_nacimiento": "1968-04-22"
   }
 },
 {
@@ -3449,9 +3449,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56912690165",
+    "direccion": "Los Maitenes 860, La Florida, Santiago",
+    "fecha_nacimiento": "1991-06-13"
   }
 },
 {
@@ -3464,9 +3464,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56926811166",
+    "direccion": "Los Eucaliptos 856, San Ramón, Santiago",
+    "fecha_nacimiento": "1961-07-15"
   }
 },
 {
@@ -3479,9 +3479,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56981804526",
+    "direccion": "Las Higueras 2513, La Pintana, Santiago",
+    "fecha_nacimiento": "1961-02-14"
   }
 },
 {
@@ -3494,9 +3494,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56916612272",
+    "direccion": "Los Alamos 1061, El Bosque, Santiago",
+    "fecha_nacimiento": "1971-03-20"
   }
 },
 {
@@ -3509,9 +3509,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56916078441",
+    "direccion": "Las Palmas 2132, La Pintana, Santiago",
+    "fecha_nacimiento": "1995-11-01"
   }
 },
 {
@@ -3524,9 +3524,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56978197579",
+    "direccion": "Los Maitenes 3611, La Pintana, Santiago",
+    "fecha_nacimiento": "1989-06-22"
   }
 },
 {
@@ -3539,9 +3539,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56925486731",
+    "direccion": "Los Eucaliptos 3896, Macul, Santiago",
+    "fecha_nacimiento": "1966-08-07"
   }
 },
 {
@@ -3554,9 +3554,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56921600571",
+    "direccion": "Los Alamos 2822, San Ramón, Santiago",
+    "fecha_nacimiento": "1988-03-16"
   }
 },
 {
@@ -3569,9 +3569,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56973522819",
+    "direccion": "Las Quillayes 2847, Puente Alto, Santiago",
+    "fecha_nacimiento": "1967-03-17"
   }
 },
 {
@@ -3584,9 +3584,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56933034496",
+    "direccion": "Los Olmos 1922, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1972-11-04"
   }
 },
 {
@@ -3599,9 +3599,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56911915278",
+    "direccion": "Los Sauces 1435, Peñalolén, Santiago",
+    "fecha_nacimiento": "1977-11-06"
   }
 },
 {
@@ -3614,9 +3614,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56970500966",
+    "direccion": "Los Eucaliptos 1494, La Pintana, Santiago",
+    "fecha_nacimiento": "1996-05-17"
   }
 },
 {
@@ -3629,9 +3629,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56923513401",
+    "direccion": "Las Acacias 1479, Macul, Santiago",
+    "fecha_nacimiento": "1975-05-08"
   }
 },
 {
@@ -3644,9 +3644,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56951525987",
+    "direccion": "Las Lirios 3706, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1980-09-01"
   }
 },
 {
@@ -3659,9 +3659,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56915884084",
+    "direccion": "Las Palmas 2547, La Granja, Santiago",
+    "fecha_nacimiento": "1980-05-10"
   }
 },
 {
@@ -3674,9 +3674,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56956844201",
+    "direccion": "Las Palmas 424, Macul, Santiago",
+    "fecha_nacimiento": "1985-08-13"
   }
 },
 {
@@ -3689,9 +3689,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935716964",
+    "direccion": "Los Eucaliptos 2509, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1993-05-20"
   }
 },
 {
@@ -3704,9 +3704,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "mperez4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56910429747",
+    "direccion": "Los Guindos 661, La Reina, Santiago",
+    "fecha_nacimiento": "1965-11-13"
   }
 },
 {
@@ -3719,9 +3719,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "asoto3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56963998013",
+    "direccion": "Las Acacias 4098, San Ramón, Santiago",
+    "fecha_nacimiento": "1973-07-04"
   }
 },
 {
@@ -3734,9 +3734,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "dcontreras2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56961302021",
+    "direccion": "Los Aromos 3191, Las Condes, Santiago",
+    "fecha_nacimiento": "1973-01-30"
   }
 },
 {
@@ -3749,9 +3749,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "ssilva@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56944879581",
+    "direccion": "Las Magnolias 2551, San Joaquín, Santiago",
+    "fecha_nacimiento": "1997-02-16"
   }
 },
 {
@@ -3764,9 +3764,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "asepulveda9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56940367360",
+    "direccion": "Los Cerezos 3386, La Granja, Santiago",
+    "fecha_nacimiento": "1962-10-23"
   }
 },
 {
@@ -3779,9 +3779,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "jmorales9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56970853525",
+    "direccion": "Los Olmos 2782, Las Condes, Santiago",
+    "fecha_nacimiento": "1987-01-26"
   }
 },
 {
@@ -3794,9 +3794,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56942352094",
+    "direccion": "Las Araucarias 2511, Las Condes, Santiago",
+    "fecha_nacimiento": "1986-05-13"
   }
 },
 {
@@ -3809,9 +3809,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56936038537",
+    "direccion": "Los Robles 1637, El Bosque, Santiago",
+    "fecha_nacimiento": "1993-12-25"
   }
 },
 {
@@ -3824,9 +3824,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935221652",
+    "direccion": "Los Alamos 1359, San Ramón, Santiago",
+    "fecha_nacimiento": "1993-02-25"
   }
 },
 {
@@ -3839,9 +3839,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56945275120",
+    "direccion": "Los Aromos 2688, La Reina, Santiago",
+    "fecha_nacimiento": "1985-02-19"
   }
 },
 {
@@ -3854,9 +3854,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56916932793",
+    "direccion": "Los Eucaliptos 1726, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1965-12-16"
   }
 },
 {
@@ -3869,9 +3869,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56994583239",
+    "direccion": "Los Copihues 2863, Puente Alto, Santiago",
+    "fecha_nacimiento": "1964-03-29"
   }
 },
 {
@@ -3884,9 +3884,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56920312974",
+    "direccion": "Los Guindos 1582, La Cisterna, Santiago",
+    "fecha_nacimiento": "1967-01-23"
   }
 },
 {
@@ -3899,9 +3899,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56916856172",
+    "direccion": "Las Magnolias 4471, San Bernardo, Santiago",
+    "fecha_nacimiento": "1970-11-03"
   }
 },
 {
@@ -3914,9 +3914,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56961046717",
+    "direccion": "Los Cipreses 636, Peñalolén, Santiago",
+    "fecha_nacimiento": "1963-08-25"
   }
 },
 {
@@ -3929,9 +3929,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56924800981",
+    "direccion": "Los Aromos 3168, Macul, Santiago",
+    "fecha_nacimiento": "1994-12-07"
   }
 },
 {
@@ -3944,9 +3944,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56985844881",
+    "direccion": "Los Robles 2906, Vitacura, Santiago",
+    "fecha_nacimiento": "1963-10-24"
   }
 },
 {
@@ -3959,9 +3959,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56939727353",
+    "direccion": "Los Queules 3921, Santiago, Santiago",
+    "fecha_nacimiento": "1983-11-02"
   }
 },
 {
@@ -3974,9 +3974,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56915210002",
+    "direccion": "Los Alamos 1784, Providencia, Santiago",
+    "fecha_nacimiento": "1972-03-10"
   }
 },
 {
@@ -3989,9 +3989,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935162308",
+    "direccion": "Los Cerezos 3814, Las Condes, Santiago",
+    "fecha_nacimiento": "1979-01-14"
   }
 },
 {
@@ -4004,9 +4004,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56992313917",
+    "direccion": "Las Higueras 4466, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1979-02-17"
   }
 },
 {
@@ -4019,9 +4019,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56916148792",
+    "direccion": "Las Jacarandas 1578, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1982-01-11"
   }
 },
 {
@@ -4034,9 +4034,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56925990528",
+    "direccion": "Los Alamos 2432, La Cisterna, Santiago",
+    "fecha_nacimiento": "1986-09-30"
   }
 },
 {
@@ -4049,9 +4049,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56951739367",
+    "direccion": "Los Copihues 3463, Santiago, Santiago",
+    "fecha_nacimiento": "1989-03-20"
   }
 },
 {
@@ -4064,9 +4064,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56996042651",
+    "direccion": "Los Aromos 2840, Macul, Santiago",
+    "fecha_nacimiento": "1961-11-21"
   }
 },
 {
@@ -4079,9 +4079,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56921684009",
+    "direccion": "Los Pinos 4108, La Reina, Santiago",
+    "fecha_nacimiento": "1973-11-23"
   }
 },
 {
@@ -4094,9 +4094,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56936232404",
+    "direccion": "Los Maitenes 1245, El Bosque, Santiago",
+    "fecha_nacimiento": "1986-03-23"
   }
 },
 {
@@ -4109,9 +4109,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56976668512",
+    "direccion": "Los Cipreses 607, San Joaquín, Santiago",
+    "fecha_nacimiento": "1993-09-14"
   }
 },
 {
@@ -4124,9 +4124,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56944472471",
+    "direccion": "Las Higueras 2766, Las Condes, Santiago",
+    "fecha_nacimiento": "1989-04-30"
   }
 },
 {
@@ -4139,9 +4139,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "mperez5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56915683812",
+    "direccion": "Los Alamos 1304, Vitacura, Santiago",
+    "fecha_nacimiento": "1965-04-16"
   }
 },
 {
@@ -4154,9 +4154,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "asoto4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56993685319",
+    "direccion": "Los Alamos 2692, San Bernardo, Santiago",
+    "fecha_nacimiento": "1972-11-16"
   }
 },
 {
@@ -4169,9 +4169,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "dcontreras3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56988133625",
+    "direccion": "Los Álamos 2902, Peñalolén, Santiago",
+    "fecha_nacimiento": "1983-11-09"
   }
 },
 {
@@ -4184,9 +4184,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "ssilva2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56979775282",
+    "direccion": "Las Camelias 976, La Reina, Santiago",
+    "fecha_nacimiento": "1996-05-31"
   }
 },
 {
@@ -4199,9 +4199,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56916447046",
+    "direccion": "Las Bugambilias 2341, La Reina, Santiago",
+    "fecha_nacimiento": "1993-06-26"
   }
 },
 {
@@ -4214,9 +4214,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "jmorales10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56983589209",
+    "direccion": "Los Cerezos 4408, La Granja, Santiago",
+    "fecha_nacimiento": "1995-09-25"
   }
 },
 {
@@ -4229,9 +4229,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56936705711",
+    "direccion": "Las Araucarias 2019, San Joaquín, Santiago",
+    "fecha_nacimiento": "1985-08-27"
   }
 },
 {
@@ -4244,9 +4244,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56912743524",
+    "direccion": "Las Magnolias 269, La Cisterna, Santiago",
+    "fecha_nacimiento": "1982-10-17"
   }
 },
 {
@@ -4259,9 +4259,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56923907989",
+    "direccion": "Los Cerezos 1312, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1976-02-05"
   }
 },
 {
@@ -4274,9 +4274,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56950326803",
+    "direccion": "Los Cipreses 3350, Santiago, Santiago",
+    "fecha_nacimiento": "1997-03-23"
   }
 },
 {
@@ -4289,9 +4289,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56924820856",
+    "direccion": "Las Acacias 1532, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1990-03-03"
   }
 },
 {
@@ -4304,9 +4304,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56968988098",
+    "direccion": "Las Quillayes 4181, Puente Alto, Santiago",
+    "fecha_nacimiento": "1976-09-23"
   }
 },
 {
@@ -4319,9 +4319,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56938406363",
+    "direccion": "Las Magnolias 601, La Cisterna, Santiago",
+    "fecha_nacimiento": "1975-02-08"
   }
 },
 {
@@ -4334,9 +4334,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56990440513",
+    "direccion": "Los Cipreses 201, La Reina, Santiago",
+    "fecha_nacimiento": "1984-12-05"
   }
 },
 {
@@ -4349,9 +4349,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56913080311",
+    "direccion": "Las Palmas 1732, La Reina, Santiago",
+    "fecha_nacimiento": "1972-12-20"
   }
 },
 {
@@ -4364,9 +4364,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56977256042",
+    "direccion": "Los Alamos 2149, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1998-09-13"
   }
 },
 {
@@ -4379,9 +4379,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56998897324",
+    "direccion": "Las Lirios 3604, La Florida, Santiago",
+    "fecha_nacimiento": "1997-04-12"
   }
 },
 {
@@ -4394,9 +4394,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56966704564",
+    "direccion": "Los Álamos 1563, La Cisterna, Santiago",
+    "fecha_nacimiento": "1973-07-03"
   }
 },
 {
@@ -4409,9 +4409,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56960690720",
+    "direccion": "Los Robles 2240, Peñalolén, Santiago",
+    "fecha_nacimiento": "1983-12-27"
   }
 },
 {
@@ -4424,9 +4424,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56940356325",
+    "direccion": "Las Araucarias 2800, El Bosque, Santiago",
+    "fecha_nacimiento": "1985-07-29"
   }
 },
 {
@@ -4439,9 +4439,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56974754553",
+    "direccion": "Los Robles 1030, Peñalolén, Santiago",
+    "fecha_nacimiento": "1996-04-01"
   }
 },
 {
@@ -4454,9 +4454,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56994550149",
+    "direccion": "Los Aromos 3269, La Pintana, Santiago",
+    "fecha_nacimiento": "1961-10-04"
   }
 },
 {
@@ -4469,9 +4469,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56940854693",
+    "direccion": "Las Araucarias 1990, La Pintana, Santiago",
+    "fecha_nacimiento": "1968-11-05"
   }
 },
 {
@@ -4484,9 +4484,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56959641300",
+    "direccion": "Los Eucaliptos 3419, Providencia, Santiago",
+    "fecha_nacimiento": "1976-06-22"
   }
 },
 {
@@ -4499,9 +4499,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56915840163",
+    "direccion": "Las Camelias 1683, Peñalolén, Santiago",
+    "fecha_nacimiento": "1995-05-07"
   }
 },
 {
@@ -4514,9 +4514,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56966866620",
+    "direccion": "Los Maitenes 585, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1991-02-19"
   }
 },
 {
@@ -4529,9 +4529,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56911106118",
+    "direccion": "Los Guindos 4189, La Reina, Santiago",
+    "fecha_nacimiento": "1974-12-24"
   }
 },
 {
@@ -4544,9 +4544,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56981204958",
+    "direccion": "Los Nogales 120, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1976-11-15"
   }
 },
 {
@@ -4559,9 +4559,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56916474767",
+    "direccion": "Las Quillayes 505, Puente Alto, Santiago",
+    "fecha_nacimiento": "1988-02-02"
   }
 },
 {
@@ -4574,9 +4574,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "mperez6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56962373876",
+    "direccion": "Las Bugambilias 3977, La Reina, Santiago",
+    "fecha_nacimiento": "1961-12-08"
   }
 },
 {
@@ -4589,9 +4589,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "asoto5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56974801911",
+    "direccion": "Los Maitenes 1198, La Cisterna, Santiago",
+    "fecha_nacimiento": "1968-04-12"
   }
 },
 {
@@ -4604,9 +4604,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "dcontreras4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935713798",
+    "direccion": "Los Olmos 3942, Macul, Santiago",
+    "fecha_nacimiento": "1983-08-18"
   }
 },
 {
@@ -4619,9 +4619,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "ssilva3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56931246189",
+    "direccion": "Las Jacarandas 3806, El Bosque, Santiago",
+    "fecha_nacimiento": "1994-05-02"
   }
 },
 {
@@ -4634,9 +4634,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56960410489",
+    "direccion": "Los Olmos 365, Macul, Santiago",
+    "fecha_nacimiento": "1975-02-03"
   }
 },
 {
@@ -4649,9 +4649,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56922350614",
+    "direccion": "Las Camelias 3742, Peñalolén, Santiago",
+    "fecha_nacimiento": "1963-07-13"
   }
 },
 {
@@ -4664,9 +4664,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "jrodriguez11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56948519117",
+    "direccion": "Las Higueras 2796, San Bernardo, Santiago",
+    "fecha_nacimiento": "1964-05-08"
   }
 },
 {
@@ -4679,9 +4679,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56988944532",
+    "direccion": "Los Robles 3204, Peñalolén, Santiago",
+    "fecha_nacimiento": "1968-06-25"
   }
 },
 {
@@ -4694,9 +4694,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56973197602",
+    "direccion": "Las Bugambilias 838, Santiago, Santiago",
+    "fecha_nacimiento": "1962-06-20"
   }
 },
 {
@@ -4709,9 +4709,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56942996556",
+    "direccion": "Los Queules 3917, Puente Alto, Santiago",
+    "fecha_nacimiento": "1998-12-21"
   }
 },
 {
@@ -4724,9 +4724,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56942181426",
+    "direccion": "Los Olmos 3242, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1993-11-05"
   }
 },
 {
@@ -4739,9 +4739,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56964508397",
+    "direccion": "Las Araucarias 2691, La Cisterna, Santiago",
+    "fecha_nacimiento": "1986-05-08"
   }
 },
 {
@@ -4754,9 +4754,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56921813505",
+    "direccion": "Los Cipreses 1216, San Bernardo, Santiago",
+    "fecha_nacimiento": "1985-07-15"
   }
 },
 {
@@ -4769,9 +4769,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56975569371",
+    "direccion": "Los Olmos 4003, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1974-04-10"
   }
 },
 {
@@ -4784,9 +4784,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez15@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56980275525",
+    "direccion": "Los Maitenes 4213, Las Condes, Santiago",
+    "fecha_nacimiento": "1978-02-19"
   }
 },
 {
@@ -4799,9 +4799,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56929568516",
+    "direccion": "Los Robles 2901, La Granja, Santiago",
+    "fecha_nacimiento": "1991-09-13"
   }
 },
 {
@@ -4814,9 +4814,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56923694377",
+    "direccion": "Las Acacias 1462, San Bernardo, Santiago",
+    "fecha_nacimiento": "1996-06-06"
   }
 },
 {
@@ -4829,9 +4829,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56997404428",
+    "direccion": "Las Magnolias 589, La Cisterna, Santiago",
+    "fecha_nacimiento": "1986-06-22"
   }
 },
 {
@@ -4844,9 +4844,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56963774731",
+    "direccion": "Los Cipreses 3393, Las Condes, Santiago",
+    "fecha_nacimiento": "1977-07-02"
   }
 },
 {
@@ -4859,9 +4859,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56947570110",
+    "direccion": "Las Lirios 1775, Santiago, Santiago",
+    "fecha_nacimiento": "1982-01-29"
   }
 },
 {
@@ -4874,9 +4874,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56951513946",
+    "direccion": "Las Rosas 1285, La Cisterna, Santiago",
+    "fecha_nacimiento": "1965-03-27"
   }
 },
 {
@@ -4889,9 +4889,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56995300451",
+    "direccion": "Los Queules 829, Vitacura, Santiago",
+    "fecha_nacimiento": "1984-03-02"
   }
 },
 {
@@ -4904,9 +4904,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56954759493",
+    "direccion": "Las Rosas 4452, La Florida, Santiago",
+    "fecha_nacimiento": "1984-11-26"
   }
 },
 {
@@ -4919,9 +4919,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56911361221",
+    "direccion": "Los Cipreses 2343, El Bosque, Santiago",
+    "fecha_nacimiento": "1966-04-30"
   }
 },
 {
@@ -4934,9 +4934,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56941106775",
+    "direccion": "Los Sauces 1545, San Bernardo, Santiago",
+    "fecha_nacimiento": "1987-06-17"
   }
 },
 {
@@ -4949,9 +4949,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56959626513",
+    "direccion": "Los Maitenes 4174, La Reina, Santiago",
+    "fecha_nacimiento": "1973-05-14"
   }
 },
 {
@@ -4964,9 +4964,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56981778449",
+    "direccion": "Los Álamos 260, Vitacura, Santiago",
+    "fecha_nacimiento": "1961-09-20"
   }
 },
 {
@@ -4979,9 +4979,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56926759484",
+    "direccion": "Los Maitenes 394, Las Condes, Santiago",
+    "fecha_nacimiento": "1984-02-22"
   }
 },
 {
@@ -4994,9 +4994,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56960507055",
+    "direccion": "Los Eucaliptos 3345, Puente Alto, Santiago",
+    "fecha_nacimiento": "1963-07-23"
   }
 },
 {
@@ -5009,9 +5009,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "mperez7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56912781828",
+    "direccion": "Las Acacias 2229, Santiago, Santiago",
+    "fecha_nacimiento": "1987-03-12"
   }
 },
 {
@@ -5024,9 +5024,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "asoto6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56913159890",
+    "direccion": "Las Rosas 3343, Providencia, Santiago",
+    "fecha_nacimiento": "1963-09-09"
   }
 },
 {
@@ -5039,9 +5039,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "dcontreras5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56945818084",
+    "direccion": "Los Copihues 403, San Bernardo, Santiago",
+    "fecha_nacimiento": "1987-12-23"
   }
 },
 {
@@ -5054,9 +5054,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "ssilva4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56933333141",
+    "direccion": "Los Álamos 3549, La Reina, Santiago",
+    "fecha_nacimiento": "1988-03-30"
   }
 },
 {
@@ -5069,9 +5069,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56965301195",
+    "direccion": "Los Cipreses 111, San Joaquín, Santiago",
+    "fecha_nacimiento": "1984-04-23"
   }
 },
 {
@@ -5084,9 +5084,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56982336979",
+    "direccion": "Las Camelias 2568, Providencia, Santiago",
+    "fecha_nacimiento": "1984-10-21"
   }
 },
 {
@@ -5099,9 +5099,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "bmorales@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56982180963",
+    "direccion": "Los Cerezos 4456, San Ramón, Santiago",
+    "fecha_nacimiento": "1974-11-17"
   }
 },
 {
@@ -5114,9 +5114,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "llopez12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56949503901",
+    "direccion": "Las Jacarandas 3822, La Granja, Santiago",
+    "fecha_nacimiento": "1987-09-05"
   }
 },
 {
@@ -5129,9 +5129,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56947895980",
+    "direccion": "Los Olmos 331, Vitacura, Santiago",
+    "fecha_nacimiento": "1987-02-23"
   }
 },
 {
@@ -5144,9 +5144,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56972858868",
+    "direccion": "Los Guindos 2235, Puente Alto, Santiago",
+    "fecha_nacimiento": "1986-12-22"
   }
 },
 {
@@ -5159,9 +5159,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56920171223",
+    "direccion": "Los Queules 856, Puente Alto, Santiago",
+    "fecha_nacimiento": "1992-10-30"
   }
 },
 {
@@ -5174,9 +5174,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56979686255",
+    "direccion": "Las Bugambilias 1392, La Cisterna, Santiago",
+    "fecha_nacimiento": "1965-06-18"
   }
 },
 {
@@ -5189,9 +5189,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56912496940",
+    "direccion": "Los Maitenes 2134, La Reina, Santiago",
+    "fecha_nacimiento": "1964-01-12"
   }
 },
 {
@@ -5204,9 +5204,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56970488543",
+    "direccion": "Las Acacias 229, San Bernardo, Santiago",
+    "fecha_nacimiento": "1977-11-27"
   }
 },
 {
@@ -5219,9 +5219,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez16@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56994685139",
+    "direccion": "Las Higueras 3640, Las Condes, Santiago",
+    "fecha_nacimiento": "1968-11-14"
   }
 },
 {
@@ -5234,9 +5234,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56955854294",
+    "direccion": "Los Maitenes 3377, San Joaquín, Santiago",
+    "fecha_nacimiento": "1989-04-15"
   }
 },
 {
@@ -5249,9 +5249,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56947836875",
+    "direccion": "Los Pinos 1984, El Bosque, Santiago",
+    "fecha_nacimiento": "1997-10-20"
   }
 },
 {
@@ -5264,9 +5264,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56923260416",
+    "direccion": "Las Araucarias 2015, La Granja, Santiago",
+    "fecha_nacimiento": "1990-09-04"
   }
 },
 {
@@ -5279,9 +5279,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56926958310",
+    "direccion": "Las Camelias 4140, San Bernardo, Santiago",
+    "fecha_nacimiento": "1968-02-24"
   }
 },
 {
@@ -5294,9 +5294,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56987942030",
+    "direccion": "Los Maitenes 312, La Pintana, Santiago",
+    "fecha_nacimiento": "1987-08-11"
   }
 },
 {
@@ -5309,9 +5309,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56972424192",
+    "direccion": "Las Jacarandas 2884, La Cisterna, Santiago",
+    "fecha_nacimiento": "1996-01-03"
   }
 },
 {
@@ -5324,9 +5324,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56953386930",
+    "direccion": "Los Queules 3484, Puente Alto, Santiago",
+    "fecha_nacimiento": "1969-12-04"
   }
 },
 {
@@ -5339,9 +5339,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56961669282",
+    "direccion": "Los Álamos 3929, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1961-01-06"
   }
 },
 {
@@ -5354,9 +5354,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56978951986",
+    "direccion": "Las Quillayes 2496, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1992-01-21"
   }
 },
 {
@@ -5369,9 +5369,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56954777541",
+    "direccion": "Los Álamos 4358, San Bernardo, Santiago",
+    "fecha_nacimiento": "1994-03-30"
   }
 },
 {
@@ -5384,9 +5384,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56986997602",
+    "direccion": "Los Olmos 4307, La Pintana, Santiago",
+    "fecha_nacimiento": "1964-07-08"
   }
 },
 {
@@ -5399,9 +5399,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56953261384",
+    "direccion": "Las Rosas 2113, Macul, Santiago",
+    "fecha_nacimiento": "1983-02-05"
   }
 },
 {
@@ -5414,9 +5414,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56981407268",
+    "direccion": "Las Lirios 2270, Las Condes, Santiago",
+    "fecha_nacimiento": "1996-01-26"
   }
 },
 {
@@ -5429,9 +5429,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56983469629",
+    "direccion": "Las Rosas 125, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1995-03-04"
   }
 },
 {
@@ -5444,9 +5444,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "mperez8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56976074835",
+    "direccion": "Los Nogales 1601, San Ramón, Santiago",
+    "fecha_nacimiento": "1986-07-15"
   }
 },
 {
@@ -5459,9 +5459,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "asoto7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56929836166",
+    "direccion": "Los Copihues 1988, La Granja, Santiago",
+    "fecha_nacimiento": "1979-03-13"
   }
 },
 {
@@ -5474,9 +5474,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "dcontreras6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56982106793",
+    "direccion": "Los Álamos 2880, Vitacura, Santiago",
+    "fecha_nacimiento": "1963-07-12"
   }
 },
 {
@@ -5489,9 +5489,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "ssilva5@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56961424485",
+    "direccion": "Las Bugambilias 1079, Las Condes, Santiago",
+    "fecha_nacimiento": "1971-09-30"
   }
 },
 {
@@ -5504,9 +5504,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56993378852",
+    "direccion": "Los Eucaliptos 2051, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1960-09-23"
   }
 },
 {
@@ -5519,9 +5519,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda15@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56982184057",
+    "direccion": "Los Cerezos 4407, Puente Alto, Santiago",
+    "fecha_nacimiento": "1984-01-17"
   }
 },
 {
@@ -5534,9 +5534,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "bmorales2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56913846400",
+    "direccion": "Los Robles 1120, San Ramón, Santiago",
+    "fecha_nacimiento": "1998-01-25"
   }
 },
 {
@@ -5549,9 +5549,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "irodriguez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56980169834",
+    "direccion": "Las Bugambilias 2661, El Bosque, Santiago",
+    "fecha_nacimiento": "1991-10-20"
   }
 },
 {
@@ -5564,9 +5564,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "tfuentes13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56991444886",
+    "direccion": "Las Acacias 435, La Reina, Santiago",
+    "fecha_nacimiento": "1977-01-13"
   }
 },
 {
@@ -5579,9 +5579,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56916154887",
+    "direccion": "Los Robles 2285, Las Condes, Santiago",
+    "fecha_nacimiento": "1980-02-13"
   }
 },
 {
@@ -5594,9 +5594,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56911929537",
+    "direccion": "Los Robles 707, La Granja, Santiago",
+    "fecha_nacimiento": "1982-02-19"
   }
 },
 {
@@ -5609,9 +5609,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56952608741",
+    "direccion": "Los Copihues 1473, La Florida, Santiago",
+    "fecha_nacimiento": "1991-03-16"
   }
 },
 {
@@ -5624,9 +5624,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56910781784",
+    "direccion": "Los Queules 2444, La Pintana, Santiago",
+    "fecha_nacimiento": "1976-03-14"
   }
 },
 {
@@ -5639,9 +5639,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56992421277",
+    "direccion": "Los Maitenes 360, Macul, Santiago",
+    "fecha_nacimiento": "1963-02-23"
   }
 },
 {
@@ -5654,9 +5654,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez17@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56915459060",
+    "direccion": "Los Robles 416, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1966-01-30"
   }
 },
 {
@@ -5669,9 +5669,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56945441157",
+    "direccion": "Las Higueras 2551, Providencia, Santiago",
+    "fecha_nacimiento": "1968-08-24"
   }
 },
 {
@@ -5684,9 +5684,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56948896032",
+    "direccion": "Los Pinos 4054, Las Condes, Santiago",
+    "fecha_nacimiento": "1980-06-14"
   }
 },
 {
@@ -5699,9 +5699,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56921022802",
+    "direccion": "Las Quillayes 1908, El Bosque, Santiago",
+    "fecha_nacimiento": "1967-10-12"
   }
 },
 {
@@ -5714,9 +5714,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56982543015",
+    "direccion": "Los Alamos 2811, La Cisterna, Santiago",
+    "fecha_nacimiento": "1974-05-01"
   }
 },
 {
@@ -5729,9 +5729,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda16@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56975356253",
+    "direccion": "Las Camelias 1755, Vitacura, Santiago",
+    "fecha_nacimiento": "1967-02-06"
   }
 },
 {
@@ -5744,9 +5744,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56913706688",
+    "direccion": "Los Maitenes 1114, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1973-03-18"
   }
 },
 {
@@ -5759,9 +5759,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56915094511",
+    "direccion": "Los Robles 543, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1975-11-27"
   }
 },
 {
@@ -5774,9 +5774,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56919458154",
+    "direccion": "Los Aromos 3542, Ñuñoa, Santiago",
+    "fecha_nacimiento": "1989-02-04"
   }
 },
 {
@@ -5789,9 +5789,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56940636681",
+    "direccion": "Las Jacarandas 2072, La Granja, Santiago",
+    "fecha_nacimiento": "1964-04-15"
   }
 },
 {
@@ -5804,9 +5804,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56987575171",
+    "direccion": "Los Copihues 549, San Joaquín, Santiago",
+    "fecha_nacimiento": "1988-09-21"
   }
 },
 {
@@ -5819,9 +5819,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56934069196",
+    "direccion": "Los Copihues 957, Providencia, Santiago",
+    "fecha_nacimiento": "1989-08-12"
   }
 },
 {
@@ -5834,9 +5834,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56910049396",
+    "direccion": "Los Pinos 1375, La Reina, Santiago",
+    "fecha_nacimiento": "1998-12-31"
   }
 },
 {
@@ -5849,9 +5849,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56912279348",
+    "direccion": "Las Bugambilias 1602, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1963-09-29"
   }
 },
 {
@@ -5864,9 +5864,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935273604",
+    "direccion": "Las Acacias 3016, La Cisterna, Santiago",
+    "fecha_nacimiento": "1976-07-25"
   }
 },
 {
@@ -5879,9 +5879,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "mperez9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56928598834",
+    "direccion": "Los Olmos 3564, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1987-07-18"
   }
 },
 {
@@ -5894,9 +5894,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "asoto8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56962632477",
+    "direccion": "Los Guindos 4249, El Bosque, Santiago",
+    "fecha_nacimiento": "1997-05-30"
   }
 },
 {
@@ -5909,9 +5909,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "dcontreras7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56920889316",
+    "direccion": "Los Eucaliptos 3890, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1977-08-29"
   }
 },
 {
@@ -5924,9 +5924,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "ssilva6@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56975240605",
+    "direccion": "Los Maitenes 4092, La Florida, Santiago",
+    "fecha_nacimiento": "1990-03-15"
   }
 },
 {
@@ -5939,9 +5939,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56945000056",
+    "direccion": "Los Cipreses 184, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1986-01-05"
   }
 },
 {
@@ -5954,9 +5954,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda17@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56912841862",
+    "direccion": "Las Acacias 2713, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1983-12-09"
   }
 },
 {
@@ -5969,9 +5969,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "bmorales3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56957756194",
+    "direccion": "Los Maitenes 1228, La Pintana, Santiago",
+    "fecha_nacimiento": "1990-10-12"
   }
 },
 {
@@ -5984,9 +5984,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "irodriguez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56924083907",
+    "direccion": "Las Higueras 641, San Joaquín, Santiago",
+    "fecha_nacimiento": "1960-09-23"
   }
 },
 {
@@ -5999,9 +5999,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "tlopez@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56944046934",
+    "direccion": "Los Maitenes 3235, Puente Alto, Santiago",
+    "fecha_nacimiento": "1998-04-24"
   }
 },
 {
@@ -6014,9 +6014,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "mtorres14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56929293913",
+    "direccion": "Los Robles 246, Santiago, Santiago",
+    "fecha_nacimiento": "1979-04-28"
   }
 },
 {
@@ -6029,9 +6029,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "agonzalez14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56949017552",
+    "direccion": "Los Álamos 3129, Santiago, Santiago",
+    "fecha_nacimiento": "1992-11-21"
   }
 },
 {
@@ -6044,9 +6044,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "dmunoz14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56952597563",
+    "direccion": "Los Maitenes 2701, Santiago, Santiago",
+    "fecha_nacimiento": "1997-11-28"
   }
 },
 {
@@ -6059,9 +6059,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "srojas14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56946499951",
+    "direccion": "Los Guindos 3513, La Granja, Santiago",
+    "fecha_nacimiento": "1974-10-10"
   }
 },
 {
@@ -6074,9 +6074,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "mdiaz14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56945209181",
+    "direccion": "Las Palmas 443, Vitacura, Santiago",
+    "fecha_nacimiento": "1961-07-12"
   }
 },
 {
@@ -6089,9 +6089,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "vperez18@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56964081282",
+    "direccion": "Las Camelias 1092, Providencia, Santiago",
+    "fecha_nacimiento": "1966-01-02"
   }
 },
 {
@@ -6104,9 +6104,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "bsoto14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56938438504",
+    "direccion": "Los Cipreses 394, Peñalolén, Santiago",
+    "fecha_nacimiento": "1961-05-02"
   }
 },
 {
@@ -6119,9 +6119,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "icontreras14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56935467521",
+    "direccion": "Las Rosas 2848, La Reina, Santiago",
+    "fecha_nacimiento": "1969-03-17"
   }
 },
 {
@@ -6134,9 +6134,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "tsilva14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56963531527",
+    "direccion": "Los Pinos 4003, Puente Alto, Santiago",
+    "fecha_nacimiento": "1968-10-28"
   }
 },
 {
@@ -6149,9 +6149,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "emartinez14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56971283096",
+    "direccion": "Los Copihues 4429, Santiago, Santiago",
+    "fecha_nacimiento": "1992-06-30"
   }
 },
 {
@@ -6164,9 +6164,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda18@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56999736555",
+    "direccion": "Las Jacarandas 2934, La Cisterna, Santiago",
+    "fecha_nacimiento": "1994-09-10"
   }
 },
 {
@@ -6179,9 +6179,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "fmorales14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56987506371",
+    "direccion": "Los Sauces 4168, Providencia, Santiago",
+    "fecha_nacimiento": "1974-12-07"
   }
 },
 {
@@ -6194,9 +6194,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "arodriguez14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56943073113",
+    "direccion": "Las Camelias 2667, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1968-10-09"
   }
 },
 {
@@ -6209,9 +6209,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "clopez14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56929923117",
+    "direccion": "Los Alamos 1260, Macul, Santiago",
+    "fecha_nacimiento": "1985-11-22"
   }
 },
 {
@@ -6224,9 +6224,9 @@
     "apellido_paterno": "Fuentes",
     "apellido_materno": "Diaz",
     "correo": "mfuentes14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56965021549",
+    "direccion": "Las Bugambilias 3125, Santiago, Santiago",
+    "fecha_nacimiento": "1987-11-26"
   }
 },
 {
@@ -6239,9 +6239,9 @@
     "apellido_paterno": "Torres",
     "apellido_materno": "Perez",
     "correo": "atorres14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56953077538",
+    "direccion": "Los Copihues 2871, La Granja, Santiago",
+    "fecha_nacimiento": "1977-09-28"
   }
 },
 {
@@ -6254,9 +6254,9 @@
     "apellido_paterno": "Gonzalez",
     "apellido_materno": "Soto",
     "correo": "jgonzalez14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56974059145",
+    "direccion": "Las Rosas 1342, Macul, Santiago",
+    "fecha_nacimiento": "1995-04-07"
   }
 },
 {
@@ -6269,9 +6269,9 @@
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz13@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56953884117",
+    "direccion": "Los Sauces 2519, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1994-12-11"
   }
 },
 {
@@ -6284,9 +6284,9 @@
     "apellido_paterno": "Rojas",
     "apellido_materno": "Silva",
     "correo": "lrojas12@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56960011903",
+    "direccion": "Las Jacarandas 1773, Pedro Aguirre Cerda, Santiago",
+    "fecha_nacimiento": "1961-05-22"
   }
 },
 {
@@ -6299,9 +6299,9 @@
     "apellido_paterno": "Diaz",
     "apellido_materno": "Martinez",
     "correo": "tdiaz11@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56928389931",
+    "direccion": "Los Maitenes 2490, San Joaquín, Santiago",
+    "fecha_nacimiento": "1988-02-15"
   }
 },
 {
@@ -6314,9 +6314,9 @@
     "apellido_paterno": "Perez",
     "apellido_materno": "Sepulveda",
     "correo": "mperez10@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56956921085",
+    "direccion": "Las Jacarandas 4406, La Cisterna, Santiago",
+    "fecha_nacimiento": "1978-09-13"
   }
 },
 {
@@ -6329,9 +6329,9 @@
     "apellido_paterno": "Soto",
     "apellido_materno": "Morales",
     "correo": "asoto9@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56987819031",
+    "direccion": "Los Eucaliptos 3986, Peñalolén, Santiago",
+    "fecha_nacimiento": "1983-09-17"
   }
 },
 {
@@ -6344,9 +6344,9 @@
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "dcontreras8@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56922101469",
+    "direccion": "Los Cerezos 3341, Macul, Santiago",
+    "fecha_nacimiento": "1976-01-19"
   }
 },
 {
@@ -6359,9 +6359,9 @@
     "apellido_paterno": "Silva",
     "apellido_materno": "Lopez",
     "correo": "ssilva7@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56978821969",
+    "direccion": "Los Pinos 2733, El Bosque, Santiago",
+    "fecha_nacimiento": "1971-08-17"
   }
 },
 {
@@ -6374,9 +6374,9 @@
     "apellido_paterno": "Martinez",
     "apellido_materno": "Fuentes",
     "correo": "mmartinez14@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56993430358",
+    "direccion": "Los Pinos 4088, La Pintana, Santiago",
+    "fecha_nacimiento": "1993-03-03"
   }
 },
 {
@@ -6389,9 +6389,9 @@
     "apellido_paterno": "Sepulveda",
     "apellido_materno": "Torres",
     "correo": "vsepulveda19@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56931399205",
+    "direccion": "Los Alamos 2351, La Cisterna, Santiago",
+    "fecha_nacimiento": "1965-04-21"
   }
 },
 {
@@ -6404,9 +6404,9 @@
     "apellido_paterno": "Morales",
     "apellido_materno": "Gonzalez",
     "correo": "bmorales4@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56990944851",
+    "direccion": "Las Jacarandas 2569, Vitacura, Santiago",
+    "fecha_nacimiento": "1992-03-11"
   }
 },
 {
@@ -6419,9 +6419,9 @@
     "apellido_paterno": "Rodriguez",
     "apellido_materno": "Munoz",
     "correo": "irodriguez3@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56922211713",
+    "direccion": "Las Quillayes 4275, Lo Barnechea, Santiago",
+    "fecha_nacimiento": "1983-06-26"
   }
 },
 {
@@ -6434,9 +6434,9 @@
     "apellido_paterno": "Lopez",
     "apellido_materno": "Rojas",
     "correo": "tlopez2@santajuliana.cl",
-    "telefono": null,
-    "direccion": null,
-    "fecha_nacimiento": null
+    "telefono": "+56966671205",
+    "direccion": "Las Palmas 2301, El Bosque, Santiago",
+    "fecha_nacimiento": "1961-03-03"
   }
 },
 {
@@ -18229,6 +18229,1206 @@
     "alumno_rut_alumno": "30.011.016-9",
     "asignatura_curso_id_asig_curso": 128,
     "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 1,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.021-9",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 2,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.001-4",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 3,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.010-3",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 4,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.024-3",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 5,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.004-9",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 6,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.015-4",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 7,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 0,
+    "alumno_rut_alumno": "30.008.002-2",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 8,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 0,
+    "alumno_rut_alumno": "30.008.022-7",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 9,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 0,
+    "alumno_rut_alumno": "30.008.011-1",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 10,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "21.439.719-6",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 11,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.018-9",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 12,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.020-0",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 13,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 0,
+    "alumno_rut_alumno": "30.008.016-2",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 14,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 0,
+    "alumno_rut_alumno": "30.008.005-7",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 15,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 0,
+    "alumno_rut_alumno": "30.008.025-1",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 16,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.026-K",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 17,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.006-5",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 18,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.027-8",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 19,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.007-3",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 20,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.023-5",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 21,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.003-0",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 22,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.013-8",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 23,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.029-4",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 24,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.009-K",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 25,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.012-K",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 26,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.017-0",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 27,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.008-1",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 28,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.028-6",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 29,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.014-6",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 30,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.008.019-7",
+    "asignatura_curso_id_asig_curso": 95
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 31,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.018-5",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 32,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.007-K",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 33,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.027-4",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 34,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 0,
+    "alumno_rut_alumno": "30.011.001-0",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 35,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.021-5",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 36,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.012-6",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 37,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.019-3",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 38,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.028-2",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 39,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.008-8",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 40,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.015-0",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 41,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 0,
+    "alumno_rut_alumno": "30.011.017-7",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 42,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 0,
+    "alumno_rut_alumno": "30.011.013-4",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 43,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 0,
+    "alumno_rut_alumno": "30.011.022-3",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 44,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.002-9",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 45,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.023-1",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 46,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.003-7",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 47,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.004-5",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 48,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.024-K",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 49,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.020-7",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 50,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.010-K",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 51,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.026-6",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 52,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.006-1",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 53,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.029-0",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 54,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.009-6",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 55,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "26.759.471-6",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 56,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 0,
+    "alumno_rut_alumno": "30.011.014-2",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 57,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.025-8",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 58,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.005-3",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 59,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.011-8",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 60,
+  "fields": {
+    "fecha": "2026-10-19",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.016-9",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 61,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.009-6",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 62,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.029-0",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 63,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.018-5",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 64,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.012-6",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 65,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.003-7",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 66,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.023-1",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 67,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.030-4",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 68,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.010-K",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 69,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.019-3",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 70,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.006-1",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 71,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.026-6",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 72,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.028-2",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 73,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.008-8",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 74,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.004-5",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 75,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.024-K",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 76,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.013-4",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 77,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.014-2",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 78,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.015-0",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 79,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.011-8",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 80,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.021-5",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 81,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.001-0",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 82,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.017-7",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 83,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.020-7",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 84,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.025-8",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 85,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.005-3",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 86,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.016-9",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 87,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.002-9",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 88,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.000.022-3",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 89,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 0,
+    "alumno_rut_alumno": "30.000.027-4",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 90,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 0,
+    "alumno_rut_alumno": "30.000.007-K",
+    "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 91,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.018-5",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 92,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 0,
+    "alumno_rut_alumno": "30.011.007-K",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 93,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 0,
+    "alumno_rut_alumno": "30.011.027-4",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 94,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.001-0",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 95,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.021-5",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 96,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.012-6",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 97,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.019-3",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 98,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.028-2",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 99,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.008-8",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 100,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.015-0",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 101,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.017-7",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 102,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.013-4",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 103,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.022-3",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 104,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.002-9",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 105,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.023-1",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 106,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.003-7",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 107,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.004-5",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 108,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.024-K",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 109,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.020-7",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 110,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.010-K",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 111,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.026-6",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 112,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.006-1",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 113,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.029-0",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 114,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.009-6",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 115,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "26.759.471-6",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 116,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.014-2",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 117,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.025-8",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 118,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.005-3",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 119,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.011-8",
+    "asignatura_curso_id_asig_curso": 128
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 120,
+  "fields": {
+    "fecha": "2026-10-20",
+    "presente": 1,
+    "alumno_rut_alumno": "30.011.016-9",
+    "asignatura_curso_id_asig_curso": 128
   }
 }
 ]

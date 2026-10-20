@@ -1,6 +1,8 @@
+
 {% extends 'base_profesor.html' %}
 
 {% block content %}
+
 <div class="page-header">
     <h2>Alumnos por Curso</h2>
     <p>Seleccione un curso para ver el listado completo de alumnos inscritos.</p>
@@ -30,13 +32,30 @@
 
     <div class="filter-group">
         <label for="asignatura">Asignatura</label>
-        <select id="asignatura" disabled>
-            <option>Próximamente</option>
+
+        <select
+            name="asignatura"
+            id="asignatura"
+            {% if not curso_seleccionado %}disabled{% endif %}
+        >
+            <option value="">Todas las asignaturas</option>
+
+            {% for asignatura in asignaturas %}
+                <option
+                    value="{{ asignatura.id_asig_curso }}"
+                    {% if asignatura_seleccionada.id_asig_curso == asignatura.id_asig_curso %}
+                        selected
+                    {% endif %}
+                >
+                    {{ asignatura.asignatura_id_asignatura.nombre_asignatura }}
+                </option>
+            {% endfor %}
         </select>
     </div>
 
     <div class="filter-group">
         <label for="periodo">Período</label>
+
         <select id="periodo" disabled>
             <option>Año Escolar 2026</option>
         </select>
@@ -59,6 +78,13 @@
                     Listado de Alumnos
                 {% endif %}
             </h3>
+
+            {% if asignatura_seleccionada %}
+                <p>
+                    Asignatura:
+                    {{ asignatura_seleccionada.asignatura_id_asignatura.nombre_asignatura }}
+                </p>
+            {% endif %}
         </div>
 
         <div class="table-info">
@@ -70,10 +96,20 @@
         <table>
             <thead>
                 <tr>
-                    <th style="width: 30%;">Nombre Completo</th>
-                    <th style="width: 20%;">RUT Alumno</th>
-                    <th style="width: 30%;">Apoderado</th>
-                    <th style="width: 20%; text-align: center;">Estado</th>
+                    <th>Nombre Completo</th>
+                    <th>RUT Alumno</th>
+                    <th>Apoderado</th>
+                    <th style="text-align: center;">Estado</th>
+
+                    {% if asignatura_seleccionada %}
+                        <th style="text-align: center;">
+                            Promedio
+                        </th>
+                    {% endif %}
+
+                    <th style="text-align: center;">
+                        Acciones
+                    </th>
                 </tr>
             </thead>
 
@@ -86,12 +122,15 @@
                             </strong>
                         </td>
 
-                        <td>{{ alumno.rut_alumno }}</td>
+                        <td>
+                            {{ alumno.rut_alumno }}
+                        </td>
 
                         <td>
                             {% if alumno.usuario_rut %}
                                 {{ alumno.usuario_rut.nombre }}
                                 {{ alumno.usuario_rut.apellido_paterno }}
+                                {{ alumno.usuario_rut.apellido_materno }}
                             {% else %}
                                 Sin apoderado
                             {% endif %}
@@ -108,11 +147,35 @@
                                 </span>
                             {% endif %}
                         </td>
+
+                        {% if asignatura_seleccionada %}
+                            <td style="text-align: center;">
+                                {% if alumno.promedio_asignatura != None %}
+                                    <strong>
+                                        {{ alumno.promedio_asignatura|floatformat:1 }}
+                                    </strong>
+                                {% else %}
+                                    Sin notas
+                                {% endif %}
+                            </td>
+                        {% endif %}
+
+                        <td style="text-align: center;">
+                            <a
+                                href="{% url 'profesor_perfil_alumno' alumno.rut_alumno %}"
+                                class="btn-ver-perfil"
+                            >
+                                Ver perfil
+                            </a>
+                        </td>
                     </tr>
 
                 {% empty %}
                     <tr>
-                        <td colspan="4" class="empty-state">
+                        <td
+                            colspan="6"
+                            class="empty-state"
+                        >
                             {% if curso_seleccionado %}
                                 No hay alumnos registrados en este curso.
                             {% else %}
@@ -124,6 +187,31 @@
             </tbody>
         </table>
     </div>
-
 </div>
+
+<style>
+    .btn-ver-perfil {
+        display: inline-block;
+        padding: 8px 14px;
+        border-radius: 7px;
+        background-color: #f59e0b;
+        color: #ffffff !important;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background-color 0.2s ease;
+    }
+
+    .btn-ver-perfil:hover {
+        background-color: #d97706;
+        text-decoration: none;
+    }
+
+    .btn-ver-perfil:focus-visible {
+        outline: 3px solid #92400e;
+        outline-offset: 2px;
+    }
+</style>
+
 {% endblock %}

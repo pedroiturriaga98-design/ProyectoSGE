@@ -1,218 +1,565 @@
+
 {% extends 'base_profesor.html' %}
 
 {% block content %}
+
 <div class="page-header">
     <h2>Control de Asistencia</h2>
-    <p>Establezca los estados de presencia de los alumnos del curso actual.</p>
+    <p>Registre y consulte la asistencia diaria de los alumnos por curso.</p>
 </div>
 
-<!-- Filtros de Búsqueda Integrados -->
-<div class="filters-card">
+<!-- FILTROS -->
+<form method="GET"
+      action="{% url 'profesor_asistencia' %}"
+      class="filters-card"
+      id="filtros-asistencia">
+
     <div class="filter-group">
         <label for="fecha-asistencia">Fecha de Control</label>
-        <input type="date" id="fecha-asistencia">
+        <input
+            type="date"
+            id="fecha-asistencia"
+            name="fecha"
+            value="{{ fecha_seleccionada }}"
+            required
+        >
     </div>
-    <div class="filter-group">
-        <label>Curso o Clase</label>
-        <select><option>Matemáticas 7mo A</option></select>
-    </div>
-    <div class="filter-group">
-        <label>Asignatura</label>
-        <select><option>Matemáticas</option></select>
-    </div>
-    <div class="filter-group">
-        <label>Período</label>
-        <select><option>Nro. 2 Semestre</option></select>
-    </div>
-    <button class="btn-search">🔍 Buscar</button>
-</div>
 
-<!-- Tarjetas de Resumen -->
+    <div class="filter-group">
+        <label for="curso">Curso o Clase</label>
+        <select id="curso" name="curso" required>
+            <option value="">Seleccione un curso</option>
+
+            {% for curso in cursos %}
+                <option value="{{ curso.id_curso }}"
+                    {% if curso_seleccionado.id_curso == curso.id_curso %}selected{% endif %}>
+                    {{ curso.nombre_curso }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <label for="asignatura">Asignatura</label>
+        <select id="asignatura"
+                name="asignatura"
+                required
+                {% if not curso_seleccionado %}disabled{% endif %}>
+
+            <option value="">Seleccione una asignatura</option>
+
+            {% for asignatura in asignaturas %}
+                <option value="{{ asignatura.id_asig_curso }}"
+                    {% if asignatura_seleccionada.id_asig_curso == asignatura.id_asig_curso %}selected{% endif %}>
+                    {{ asignatura.asignatura_id_asignatura.nombre_asignatura }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <label for="periodo">Período</label>
+        <select id="periodo" disabled>
+            <option>Año Escolar 2026</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn-search">
+        🔍 Buscar
+    </button>
+</form>
+
+<!-- TARJETAS DE RESUMEN -->
 <div class="stats-row">
+
     <div class="stat-card-small">
         <div class="stat-icon-circle icon-gray">👥</div>
         <div class="stat-data">
             <p>Total Alumnos</p>
-            <h3 id="count-total">6 Alumnos</h3>
+            <h3 id="count-total">{{ total_alumnos }} Alumnos</h3>
         </div>
     </div>
+
     <div class="stat-card-small">
         <div class="stat-icon-circle icon-green">✓</div>
         <div class="stat-data">
-            <p>Presentes Hoy</p>
-            <h3 id="count-presente">0 Alumnos</h3>
+            <p>Presentes</p>
+            <h3 id="count-presente">{{ presentes }} Alumnos</h3>
         </div>
     </div>
+
     <div class="stat-card-small">
         <div class="stat-icon-circle icon-red">✖</div>
         <div class="stat-data">
-            <p>Ausentes Hoy</p>
-            <h3 id="count-ausente">0 Alumnos</h3>
+            <p>Ausentes</p>
+            <h3 id="count-ausente">{{ ausentes }} Alumnos</h3>
         </div>
     </div>
-    <div class="stat-card-small">
-        <div class="stat-icon-circle icon-yellow">📖</div>
-        <div class="stat-data">
-            <p>Justificados Hoy</p>
-            <h3 id="count-justificado">0 Alumnos</h3>
-        </div>
-    </div>
+
 </div>
 
-<!-- Lista de Asistencia -->
+<!-- AVISO DEL ESTADO DE ASISTENCIA -->
+{% if asignatura_seleccionada %}
+
+    {% if registros_inconsistentes %}
+        <div class="attendance-notice notice-warning" id="aviso-estado">
+            <span class="notice-icon">⚠</span>
+            <div>
+                <strong>Existen diferencias entre asignaturas</strong>
+                <p>
+                    Se encontraron estados distintos para algunos alumnos
+                    en esta fecha. Revisa los registros antes de guardar.
+                    {% if fecha_seleccionada != fecha_actual %}
+                        Como es una fecha anterior o futura,
+                        no puedes corregirlos desde esta pantalla.
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+    {% elif asistencia_completa %}
+        <div class="attendance-notice notice-success" id="aviso-estado">
+            <span class="notice-icon">✓</span>
+            <div>
+                <strong>Asistencia registrada correctamente</strong>
+                <p>
+                    La asistencia del {{ fecha_seleccionada }} ya está guardada
+                    para este curso y se refleja en todas sus asignaturas.
+                    {% if fecha_seleccionada == fecha_actual %}
+                        Puedes modificarla durante el día de hoy.
+                    {% else %}
+                        Este registro es de solo lectura.
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+    {% elif asistencia_guardada %}
+        <div class="attendance-notice notice-warning" id="aviso-estado">
+            <span class="notice-icon">⚠</span>
+            <div>
+                <strong>Asistencia incompleta</strong>
+                <p>
+                    Algunos alumnos todavía no tienen asistencia registrada
+                    para esta fecha.
+                </p>
+            </div>
+        </div>
+
+    {% elif fecha_seleccionada == fecha_actual %}
+        <div class="attendance-notice notice-info" id="aviso-estado">
+            <span class="notice-icon">ℹ</span>
+            <div>
+                <strong>Asistencia pendiente de registro</strong>
+                <p>
+                    Todavía no se ha guardado la asistencia del curso.
+                    Marca a todos los alumnos y presiona Guardar Asistencia.
+                </p>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="attendance-notice notice-warning" id="aviso-estado">
+            <span class="notice-icon">🔒</span>
+            <div>
+                <strong>Sin asistencia registrada</strong>
+                <p>
+                    No hay registros para esta fecha.
+                    Solo se permite registrar o modificar la asistencia
+                    del día actual.
+                </p>
+            </div>
+        </div>
+    {% endif %}
+
+{% endif %}
+
+<!-- MENSAJE DINÁMICO AL GUARDAR -->
+<div id="mensaje-asistencia"
+     class="attendance-notice"
+     role="status"
+     aria-live="polite"
+     style="display: none;">
+</div>
+
+<!-- LISTADO DE ASISTENCIA -->
 <div class="table-container">
+
     <div class="table-header">
         <div class="table-title">
-            <h3>Listado de Alumnos</h3>
-            <p>Marque la opción correspondiente para cada alumno.</p>
+            <h3>
+                {% if asignatura_seleccionada %}
+                    {{ curso_seleccionado.nombre_curso }} -
+                    {{ asignatura_seleccionada.asignatura_id_asignatura.nombre_asignatura }}
+                {% else %}
+                    Listado de Alumnos
+                {% endif %}
+            </h3>
+            <p>
+                {% if fecha_seleccionada == fecha_actual %}
+                    Marque presente o ausente para cada alumno.
+                {% else %}
+                    Consulta de asistencia. No se permiten modificaciones.
+                {% endif %}
+            </p>
         </div>
-        <button class="btn-save" onclick="alert('Asistencia guardada correctamente. Al sincronizar MySQL, esta información llegará al instante al panel del apoderado.')">
-            ✓ Guardar Asistencia
-        </button>
+
+        {% if asignatura_seleccionada and fecha_seleccionada == fecha_actual %}
+            <button type="button"
+                    class="btn-save"
+                    id="guardar-asistencia">
+                ✓ Guardar Asistencia
+            </button>
+        {% endif %}
     </div>
 
-    <table id="attendance-table">
-        <thead>
-            <tr>
-                <th>N° LISTA</th>
-                <th>ESTUDIANTE</th>
-                <th>ESTADO DE ASISTENCIA</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="student-row">
-                <td>01</td>
-                <td>
-                    <div class="student-profile">
-                        <div class="avatar-initials">AL</div>
-                        <strong>Alonso Díaz Torres</strong>
-                    </div>
-                </td>
-                <td>
-                    <div class="attendance-options">
-                        <button class="btn-att btn-presente" data-state="presente">✓ Presente</button>
-                        <button class="btn-att btn-ausente" data-state="ausente">✖ Ausente</button>
-                        <button class="btn-att btn-justificado" data-state="justificado">📖 Justificado</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="student-row">
-                <td>02</td>
-                <td>
-                    <div class="student-profile">
-                        <div class="avatar-initials">SO</div>
-                        <strong>Sofía Carrasco Lagos</strong>
-                    </div>
-                </td>
-                <td>
-                    <div class="attendance-options">
-                        <button class="btn-att btn-presente" data-state="presente">✓ Presente</button>
-                        <button class="btn-att btn-ausente" data-state="ausente">✖ Ausente</button>
-                        <button class="btn-att btn-justificado" data-state="justificado">📖 Justificado</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="student-row">
-                <td>03</td>
-                <td>
-                    <div class="student-profile">
-                        <div class="avatar-initials">ED</div>
-                        <strong>Eduardo Fuentes Muñoz</strong>
-                    </div>
-                </td>
-                <td>
-                    <div class="attendance-options">
-                        <button class="btn-att btn-presente" data-state="presente">✓ Presente</button>
-                        <button class="btn-att btn-ausente" data-state="ausente">✖ Ausente</button>
-                        <button class="btn-att btn-justificado" data-state="justificado">📖 Justificado</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="student-row">
-                <td>04</td>
-                <td>
-                    <div class="student-profile">
-                        <div class="avatar-initials">MA</div>
-                        <strong>Martina González Vera</strong>
-                    </div>
-                </td>
-                <td>
-                    <div class="attendance-options">
-                        <button class="btn-att btn-presente" data-state="presente">✓ Presente</button>
-                        <button class="btn-att btn-ausente" data-state="ausente">✖ Ausente</button>
-                        <button class="btn-att btn-justificado" data-state="justificado">📖 Justificado</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="student-row">
-                <td>05</td>
-                <td>
-                    <div class="student-profile">
-                        <div class="avatar-initials">IG</div>
-                        <strong>Ignacio Olate Rivas</strong>
-                    </div>
-                </td>
-                <td>
-                    <div class="attendance-options">
-                        <button class="btn-att btn-presente" data-state="presente">✓ Presente</button>
-                        <button class="btn-att btn-ausente" data-state="ausente">✖ Ausente</button>
-                        <button class="btn-att btn-justificado" data-state="justificado">📖 Justificado</button>
-                    </div>
-                </td>
-            </tr>
-            <tr class="student-row">
-                <td>06</td>
-                <td>
-                    <div class="student-profile">
-                        <div class="avatar-initials">FR</div>
-                        <strong>Francisca Silva Ossa</strong>
-                    </div>
-                </td>
-                <td>
-                    <div class="attendance-options">
-                        <button class="btn-att btn-presente" data-state="presente">✓ Presente</button>
-                        <button class="btn-att btn-ausente" data-state="ausente">✖ Ausente</button>
-                        <button class="btn-att btn-justificado" data-state="justificado">📖 Justificado</button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-scroll">
+        <table id="attendance-table">
+            <thead>
+                <tr>
+                    <th>N° LISTA</th>
+                    <th>ESTUDIANTE</th>
+                    <th>RUT</th>
+                    <th>ESTADO DE ASISTENCIA</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for alumno in alumnos %}
+                    <tr class="student-row"
+                        data-rut="{{ alumno.rut_alumno }}">
+
+                        <td>{{ forloop.counter|stringformat:"02d" }}</td>
+
+                        <td>
+                            <div class="student-profile">
+                                <div class="avatar-initials">
+                                    {{ alumno.nombre_completo|slice:":2"|upper }}
+                                </div>
+                                <strong>{{ alumno.nombre_completo }}</strong>
+                            </div>
+                        </td>
+
+                        <td>{{ alumno.rut_alumno }}</td>
+
+                        <td>
+                            <div class="attendance-options">
+
+                                <button type="button"
+                                        class="btn-att btn-presente {% if alumno.estado_asistencia == 1 %}active{% endif %}"
+                                        data-state="1"
+                                        aria-pressed="{% if alumno.estado_asistencia == 1 %}true{% else %}false{% endif %}"
+                                        {% if fecha_seleccionada != fecha_actual %}disabled{% endif %}>
+                                    ✓ Presente
+                                </button>
+
+                                <button type="button"
+                                        class="btn-att btn-ausente {% if alumno.estado_asistencia == 0 %}active{% endif %}"
+                                        data-state="0"
+                                        aria-pressed="{% if alumno.estado_asistencia == 0 %}true{% else %}false{% endif %}"
+                                        {% if fecha_seleccionada != fecha_actual %}disabled{% endif %}>
+                                    ✖ Ausente
+                                </button>
+
+                            </div>
+                        </td>
+                    </tr>
+
+                {% empty %}
+                    <tr>
+                        <td colspan="4"
+                            class="empty-state"
+                            style="text-align: center; padding: 25px;">
+                            {% if asignatura_seleccionada %}
+                                No hay alumnos registrados en este curso.
+                            {% else %}
+                                Seleccione un curso y una asignatura
+                                para consultar los alumnos.
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
+<style>
+    .attendance-notice {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px 24px;
+        margin: 20px 0;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        font-size: 14px;
+    }
+
+    .attendance-notice strong {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .attendance-notice p {
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .notice-icon {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1;
+    }
+
+    .notice-success {
+        background: #ecfdf5;
+        border-color: #a7f3d0;
+        color: #065f46;
+    }
+
+    .notice-warning {
+        background: #fffbeb;
+        border-color: #fcd34d;
+        color: #92400e;
+    }
+
+    .notice-info {
+        background: #eff6ff;
+        border-color: #bfdbfe;
+        color: #1e40af;
+    }
+
+    .notice-error {
+        background: #fef2f2;
+        border-color: #fecaca;
+        color: #991b1b;
+    }
+
+    .btn-att:disabled {
+        cursor: not-allowed;
+        opacity: 0.75;
+    }
+
+    .btn-att.active:disabled {
+        opacity: 1;
+    }
+</style>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById("fecha-asistencia").value = today;
-        updateCounters();
+document.addEventListener('DOMContentLoaded', function () {
+
+    const cursoSelect = document.getElementById('curso');
+    const asignaturaSelect = document.getElementById('asignatura');
+    const formulario = document.getElementById('filtros-asistencia');
+    const botonGuardar = document.getElementById('guardar-asistencia');
+    const mensaje = document.getElementById('mensaje-asistencia');
+    const avisoEstado = document.getElementById('aviso-estado');
+
+    // Al cambiar el curso, cargar sus asignaturas.
+    cursoSelect.addEventListener('change', function () {
+        asignaturaSelect.disabled = true;
+        asignaturaSelect.required = false;
+        asignaturaSelect.value = '';
+        formulario.submit();
     });
 
-    document.querySelectorAll('.attendance-options').forEach(group => {
-        const buttons = group.querySelectorAll('.btn-att');
-        
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                buttons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                updateCounters();
+    // Contadores de asistencia.
+    function actualizarContadores() {
+        const filas = document.querySelectorAll('.student-row');
+        let presentes = 0;
+        let ausentes = 0;
+
+        filas.forEach(function (fila) {
+            const seleccionado = fila.querySelector('.btn-att.active');
+
+            if (!seleccionado) return;
+
+            if (seleccionado.dataset.state === '1') {
+                presentes++;
+            } else if (seleccionado.dataset.state === '0') {
+                ausentes++;
+            }
+        });
+
+        document.getElementById('count-total').textContent =
+            filas.length + ' Alumnos';
+
+        document.getElementById('count-presente').textContent =
+            presentes + ' Alumnos';
+
+        document.getElementById('count-ausente').textContent =
+            ausentes + ' Alumnos';
+    }
+
+    // Seleccionar presente o ausente.
+    document.querySelectorAll('.attendance-options').forEach(function (grupo) {
+        const botones = grupo.querySelectorAll('.btn-att');
+
+        botones.forEach(function (boton) {
+            boton.addEventListener('click', function () {
+                if (boton.disabled) return;
+
+                botones.forEach(function (otro) {
+                    otro.classList.remove('active');
+                    otro.setAttribute('aria-pressed', 'false');
+                });
+
+                boton.classList.add('active');
+                boton.setAttribute('aria-pressed', 'true');
+
+                actualizarContadores();
             });
         });
     });
 
-    function updateCounters() {
-        let presentes = 0;
-        let ausentes = 0;
-        let justificados = 0;
-        const total = document.querySelectorAll('.student-row').length;
+    actualizarContadores();
 
-        document.querySelectorAll('.btn-presente.active').forEach(() => presentes++);
-        document.querySelectorAll('.btn-ausente.active').forEach(() => ausentes++);
-        document.querySelectorAll('.btn-justificado.active').forEach(() => justificados++);
+    // Obtener token CSRF.
+    function obtenerCookie(nombre) {
+        const cookies = document.cookie.split(';');
 
-        document.getElementById('count-total').textContent = total + (total === 1 ? ' Alumno' : ' Alumnos');
-        document.getElementById('count-presente').textContent = presentes + (presentes === 1 ? ' Alumno' : ' Alumnos');
-        document.getElementById('count-ausente').textContent = ausentes + (ausentes === 1 ? ' Alumno' : ' Alumnos');
-        document.getElementById('count-justificado').textContent = justificados + (justificados === 1 ? ' Alumno' : ' Alumnos');
+        for (const cookie of cookies) {
+            const partes = cookie.trim().split('=');
+
+            if (partes[0] === nombre) {
+                return decodeURIComponent(partes.slice(1).join('='));
+            }
+        }
+
+        return '';
     }
+
+    // Mostrar mensajes visibles.
+    function mostrarMensaje(tipo, tituloTexto, descripcionTexto) {
+        mensaje.className = 'attendance-notice notice-' + tipo;
+        mensaje.style.display = 'flex';
+        mensaje.replaceChildren();
+
+        const icono = document.createElement('span');
+        icono.className = 'notice-icon';
+        icono.textContent = tipo === 'success' ? '✓' : '✖';
+
+        const contenido = document.createElement('div');
+
+        const titulo = document.createElement('strong');
+        titulo.textContent = tituloTexto;
+
+        const descripcion = document.createElement('p');
+        descripcion.textContent = descripcionTexto;
+
+        contenido.append(titulo, descripcion);
+        mensaje.append(icono, contenido);
+
+        if (avisoEstado) {
+            avisoEstado.style.display = 'none';
+        }
+
+        mensaje.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }
+
+    // Guardar asistencia.
+    if (botonGuardar) {
+        botonGuardar.addEventListener('click', async function () {
+
+            const filas = document.querySelectorAll('.student-row');
+            const estados = {};
+            let incompletos = 0;
+
+            filas.forEach(function (fila) {
+                const seleccionado = fila.querySelector('.btn-att.active');
+
+                if (!seleccionado) {
+                    incompletos++;
+                    return;
+                }
+
+                estados[fila.dataset.rut] =
+                    Number(seleccionado.dataset.state);
+            });
+
+            if (filas.length === 0) {
+                alert('No hay alumnos para registrar asistencia.');
+                return;
+            }
+
+            if (incompletos > 0) {
+                mostrarMensaje(
+                    'warning',
+                    'Faltan alumnos por registrar',
+                    'Debes marcar presente o ausente para todos. Faltan ' +
+                    incompletos + ' alumnos.'
+                );
+                return;
+            }
+
+            const fecha = document.getElementById('fecha-asistencia').value;
+            const cursoId = cursoSelect.value;
+            const asignaturaId = asignaturaSelect.value;
+
+            if (!fecha || !cursoId || !asignaturaId) {
+                mostrarMensaje(
+                    'error',
+                    'Faltan datos',
+                    'Selecciona fecha, curso y asignatura.'
+                );
+                return;
+            }
+
+            botonGuardar.disabled = true;
+            botonGuardar.textContent = 'Guardando...';
+            mensaje.style.display = 'none';
+
+            try {
+                const respuesta = await fetch(
+                    "{% url 'profesor_asistencia' %}",
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': obtenerCookie('csrftoken')
+                        },
+                        credentials: 'same-origin',
+                        body: JSON.stringify({
+                            fecha: fecha,
+                            curso_id: cursoId,
+                            asignatura_id: asignaturaId,
+                            estados: estados
+                        })
+                    }
+                );
+
+                const resultado = await respuesta.json();
+
+                if (!respuesta.ok || !resultado.ok) {
+                    throw new Error(
+                        resultado.error || 'Error al guardar asistencia.'
+                    );
+                }
+
+                mostrarMensaje(
+                    'success',
+                    'Asistencia guardada correctamente',
+                    resultado.mensaje
+                );
+
+            } catch (error) {
+                mostrarMensaje(
+                    'error',
+                    'No se pudo guardar la asistencia',
+                    error.message
+                );
+            } finally {
+                botonGuardar.disabled = false;
+                botonGuardar.textContent = '✓ Guardar Asistencia';
+            }
+        });
+    }
+});
 </script>
+
 {% endblock %}
