@@ -64,7 +64,7 @@
 
     <main class="main-content">
         <header class="top-header">
-            <div class="last-access">Último acceso: Hoy, 08:15 AM</div>
+            <div class="last-access"><span>Último acceso: {{ request.session.ultimo_acceso|default:"Primer ingreso" }}</span></div>
             <div class="user-profile">
                 <div class="user-info">
                     <div class="user-details">

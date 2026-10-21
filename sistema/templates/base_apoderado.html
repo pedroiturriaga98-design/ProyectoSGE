@@ -39,6 +39,7 @@
 
     <main class="main-content">
         <header class="top-header">
+            <div class="last-access"><span>Último acceso: {{ request.session.ultimo_acceso|default:"Primer ingreso" }}</span></div>
             <div class="course-badge">2026 Cuarto Año H Liceo Polivalente Santa Juliana</div>
             <div class="user-menu">
                 <strong>{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}</strong>

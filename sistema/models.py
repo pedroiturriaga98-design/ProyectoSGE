@@ -308,6 +308,7 @@ class TicketSoporte(models.Model):
 
 
 class Usuario(models.Model):
+    cambiar_password = models.BooleanField(default=True)
     rut = models.CharField(primary_key=True, max_length=12)
     password_hash = models.CharField(max_length=255)
     # Llave foránea en minúsculas

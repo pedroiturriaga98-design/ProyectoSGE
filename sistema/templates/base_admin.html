@@ -27,16 +27,16 @@
         </div>
 
         <nav class="nav-menu">
-            <!-- Visible para Administrador (1), Jefe TI (2) y Personal de Aseo (3) -->
+            <!-- Visible para Administrador (1), Jefe TI (4) y Personal de Aseo (5) -->
             <a href="{% url 'admin_inicio' %}" class="nav-link {% if request.resolver_match.url_name == 'admin_inicio' %}active-menu{% endif %}">Inicio</a>
 
             <!-- EXCLUSIVO ADMINISTRADOR (Rol 1) -->
-            {% if request.session.rol_id == 1 %}
+            {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
                 <a href="{% url 'admin_gestion_usuarios' %}" class="nav-link {% if 'usuarios' in request.path %}active-menu{% endif %}">Gestión de Usuarios</a>
             {% endif %}
 
-            <!-- Visible para Administrador (1) y Jefe de Departamento TI (2) -->
-            {% if request.session.rol_id == 1 or request.session.rol_id == 2 %}
+            <!-- Visible para Administrador (1) y Jefe de Departamento TI (4) -->
+            {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
                 <a href="{% url 'admin_gestion_incidencias' %}" class="nav-link {% if 'incidencias' in request.path %}active-menu{% endif %}">Incidencias</a>
             {% endif %}
 
@@ -47,8 +47,8 @@
                 <a href="{% url 'admin_gestion_profesores' %}" class="nav-link {% if 'profesores' in request.path %}active-menu{% endif %}">Profesores</a>
             {% endif %}
 
-            <!-- Visible para Administrador (1), Jefe TI (2) y Personal de Aseo (3) -->
-            {% if request.session.rol_id == 1 or request.session.rol_id == 2 or request.session.rol_id == 3 %}
+            <!-- Visible para Administrador (1), Jefe TI (4) y Personal de Aseo (5) -->
+            {% if request.session.rol_id == 1 or request.session.rol_id == 4 or request.session.rol_id == 5 %}
                 <a href="{% url 'admin_gestion_inventario' %}" class="nav-link {% if 'inventario' in request.path %}active-menu{% endif %}">Gestión Inventario</a>
             {% endif %}
         </nav>
@@ -56,7 +56,7 @@
 
     <main class="main-content">
         <header class="top-header">
-            <div class="last-access">Último acceso: Hoy, 08:15 AM</div>
+            <div class="last-access"><span>Último acceso: {{ request.session.ultimo_acceso|default:"Primer ingreso" }}</span></div>
             <div class="user-profile">
                 <div class="user-info">
                     <div class="user-details">

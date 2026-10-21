@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from functools import wraps # Importante para hacer decoradores
@@ -84,38 +86,32 @@ def login_view(request):
                         update_fields=['password_hash']
                     )
 
-            # 4. Guardar la sesión y redirigir según los 5 roles oficiales
+            # 4. Guardar la sesión y redirigir según los roles
             if acceso_valido:
+                request.session['ultimo_acceso'] = datetime.now().strftime('%d/%m/%Y a las %H:%M')
                 request.session.flush()
 
                 request.session['usuario_rut'] = usuario.rut
                 request.session['rol_id'] = usuario.rol_id_rol.id_rol
                 request.session['nombre_usuario'] = usuario.nombre
-                request.session['apellido_usuario'] = (
-                    usuario.apellido_paterno
-                )
-                request.session['rol_nombre'] = (
-                    usuario.rol_id_rol.nombre_rol
-                )
+                request.session['apellido_usuario'] = usuario.apellido_paterno
+                request.session['rol_nombre'] = usuario.rol_id_rol.nombre_rol
 
+                # NUEVO: Si el usuario debe cambiar su contraseña obligatoriamente
+                if usuario.cambiar_password:
+                    request.session['debe_cambiar_pass'] = True
+                    return redirect('cambiar_password_obligatorio')
 
+                # Redirección normal si ya cambió su contraseña antes...
                 rol = usuario.rol_id_rol.id_rol
-
-                if rol == 1:  # Administrador
+                if rol in [1, 4]:
                     return redirect('admin_inicio')
-
-                elif rol == 2:  # Profesor
+                elif rol == 2:
                     return redirect('profesor_inicio')
-
-                elif rol == 3:  # Apoderado
+                elif rol == 3:
                     return redirect('apoderado_inicio')
-
-                elif rol == 5:  # Jefe de Departamento TI
-                    return redirect('admin_inicio')
-
-                elif rol == 6:  # Personal de Aseo
+                elif rol == 5:
                     return redirect('admin_gestion_inventario')
-
 
 
             else:
@@ -779,7 +775,7 @@ def profesor_perfil_alumno(request, rut):
 def admin_inicio(request):
     return render(request, 'admin_inicio.html')
 
-@require_role([1])
+@require_role([1, 4])
 def admin_gestion_usuarios(request):
     # 1. Extraemos todos los usuarios y traemos los datos de su rol asociado
     lista_usuarios = Usuario.objects.select_related('rol_id_rol').all()
@@ -814,7 +810,7 @@ def admin_gestion_usuarios(request):
     }
     return render(request, 'admin_gestion_usuarios.html', context)
 
-@require_role([1])
+@require_role([1, 4])
 def admin_crear_usuario(request):
     # 1. Obtenemos siempre los roles de la base de datos para pasarlos al formulario
     roles = Rol.objects.all()
@@ -874,7 +870,8 @@ def admin_crear_usuario(request):
                 apellido_materno=ap_materno_form,
                 telefono=telefono_form,
                 direccion=direccion_form,
-                fecha_nacimiento=fecha_nac_form if fecha_nac_form else None
+                fecha_nacimiento=fecha_nac_form if fecha_nac_form else None,
+                cambiar_password=True
             )
 
             messages.success(request, 'Usuario creado correctamente con todos sus datos.')
@@ -887,7 +884,7 @@ def admin_crear_usuario(request):
     # Si entra por primera vez (GET), enviamos los roles al HTML
     return render(request, 'admin_crear_usuario.html', {'roles': roles})
 
-@require_role([1])
+@require_role([1, 4])
 def admin_editar_usuario(request, rut):
     # 1. Normalizamos el RUT recibido en la URL para buscarlo en la BD (ej: 19.572.314-1)
     rut_limpio = str(rut).replace(".", "").replace("-", "").strip().upper()
@@ -946,7 +943,7 @@ def admin_editar_usuario(request, rut):
             return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 
     return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
-@require_role([1])
+@require_role([1, 4])
 def admin_eliminar_usuario(request, rut):
     # Buscamos al usuario o tiramos error 404 si no existe
     usuario = get_object_or_404(Usuario, rut=rut)
@@ -1269,3 +1266,69 @@ def admin_gestion_inventario(request):
 @require_role([1, 4])
 def admin_editar_equipo(request):
     return render(request, 'admin_editar_equipo.html')
+
+def cambiar_password_obligatorio(request):
+    # Seguridad: si no pasó por el login o no tiene la bandera activa, lo devolvemos
+    if 'usuario_rut' not in request.session or not request.session.get('debe_cambiar_pass'):
+        return redirect('login')
+
+    if request.method == 'POST':
+        nueva_pass = request.POST.get('nueva_password', '').strip()
+        conf_pass = request.POST.get('conf_password', '').strip()
+
+        # 1. Validar longitud mínima (ej: 6 u 8 caracteres)
+        if not nueva_pass or len(nueva_pass) < 6:
+            messages.error(request, 'La nueva contraseña debe tener al menos 6 caracteres.')
+            return render(request, 'cambiar_password.html')
+
+        # 2. Validar reglas de seguridad (Mayúscula, número y símbolo)
+        tiene_mayuscula = any(c.isupper() for c in nueva_pass)
+        tiene_numero = any(c.isdigit() for c in nueva_pass)
+        tiene_simbolo = any(not c.isalnum() for c in nueva_pass)
+
+        if not (tiene_mayuscula and tiene_numero and tiene_simbolo):
+            messages.error(request, 'La contraseña debe contener al menos una letra mayúscula, un número y un símbolo especial.')
+            return render(request, 'cambiar_password.html')
+
+        # 3. Validar coincidencia
+        if nueva_pass != conf_pass:
+            messages.error(request, 'Las contraseñas ingresadas no coinciden.')
+            return render(request, 'cambiar_password.html')
+
+        try:
+            # Buscamos al usuario y actualizamos su clave encriptada
+            usuario = Usuario.objects.get(rut=request.session['usuario_rut'])
+            usuario.password_hash = make_password(nueva_pass)
+            usuario.cambiar_password = False  # Apagamos la bandera
+            usuario.save(update_fields=['password_hash', 'cambiar_password'])
+
+            # ¡MANTENEMOS LA SESIÓN ACTIVA Y CONFIGURAMOS SU HORA DE ACCESO!
+            request.session['ultimo_acceso'] = datetime.now().strftime('%d/%m/%Y a las %H:%M')
+            request.session['usuario_rut'] = usuario.rut
+            request.session['rol_id'] = usuario.rol_id_rol.id_rol
+            request.session['nombre_usuario'] = usuario.nombre
+            request.session['apellido_usuario'] = usuario.apellido_paterno
+            request.session['rol_nombre'] = usuario.rol_id_rol.nombre_rol
+
+            # Borramos la bandera temporal de cambio obligatorio
+            if 'debe_cambiar_pass' in request.session:
+                del request.session['debe_cambiar_pass']
+
+            messages.success(request, '¡Contraseña actualizada con éxito!')
+
+            # REDIRIGIMOS DIRECTO A SU PANEL CORRESPONDIENTE (Adiós al login)
+            rol = usuario.rol_id_rol.id_rol
+            if rol in [1, 4]:
+                return redirect('admin_inicio')
+            elif rol == 2:
+                return redirect('profesor_inicio')
+            elif rol == 3:
+                return redirect('apoderado_inicio')
+            elif rol == 5:
+                return redirect('admin_gestion_inventario')
+
+        except Usuario.DoesNotExist:
+            messages.error(request, 'Ocurrió un error al actualizar la cuenta.')
+            return redirect('login')
+        
+    return render(request, 'cambiar_password.html')
