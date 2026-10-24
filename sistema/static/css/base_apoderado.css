@@ -918,3 +918,64 @@ body {
 .semester-btn.active { 
     background-color: #fff7ed; 
 }
+
+
+/* ==========================================================
+   SELECCIÓN DINÁMICA DE ALUMNOS - APODERADO
+   ========================================================== */
+
+.alumnos-area .alumno-card {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+}
+
+.alumnos-area .alumno-card:not(.active) {
+    background-color: #303b4e;
+    border-color: #475569;
+}
+
+.alumnos-area .alumno-card.active {
+    background-color: #f97316;
+}
+
+.alumnos-area .alumno-card:hover {
+    background-color: #ea580c;
+}
+
+.alumnos-area .alumno-info {
+    min-width: 0;
+}
+
+.alumnos-area .alumno-info strong {
+    overflow-wrap: anywhere;
+}
+
+.alumnos-vacio {
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+.btn-cambiar-alumno {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.students-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.student-card-large {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (max-width: 1100px) {
+    .top-header {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}

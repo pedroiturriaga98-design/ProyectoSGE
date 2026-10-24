@@ -1,3 +1,4 @@
+
 {% extends 'base_profesor.html' %}
 
 {% block content %}
@@ -8,45 +9,156 @@
 </div>
 
 <div class="form-card">
+
     <div class="form-title">Datos de la Incidencia</div>
-    
-    <div class="form-group">
-        <label>Nombre y Apellido</label>
-        <input type="text" class="form-control" value="Cristian Morales Rivas" disabled>
-    </div>
 
-    <div class="form-row">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" style="padding: 12px; margin-bottom: 15px; border-radius: 6px; background: #f1f5f9;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" action="{% url 'profesor_agregar_incidencia' %}">
+        {% csrf_token %}
+
         <div class="form-group">
-            <label>Fecha de la Incidencia *</label>
-            <input type="date" class="form-control" id="fecha-incidencia">
+            <label>Nombre y Apellido</label>
+            <input
+                type="text"
+                class="form-control"
+                value="{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}"
+                disabled
+            >
         </div>
-        <div class="form-group">
-            <label>Tipo de Incidencia *</label>
-            <select class="form-control">
-                <option value="">Seleccione una opción...</option>
-                <option>Solicitud de Material</option>
-                <option>Problema con Equipo</option>
-                <option>Mantenimiento</option>
-                <option>Otro</option>
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label>Fecha de la Incidencia *</label>
+                <input
+                    type="date"
+                    name="fecha"
+                    class="form-control"
+                    value="{{ fecha_actual }}"
+                    required
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label>Tipo de Incidencia *</label>
+
+                <select
+                    name="tipo"
+                    id="tipo-incidencia"
+                    class="form-control"
+                    required
+                >
+                    <option value="">Seleccione una opción...</option>
+
+                    <option value="material">
+                        Solicitud de Material
+                    </option>
+
+                    <option value="reposicion">
+                        Solicitud de Reposición
+                    </option>
+
+                    <option value="equipo">
+                        Problema con Equipo
+                    </option>
+
+                    <option value="mantenimiento">
+                        Mantenimiento
+                    </option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-group" id="grupo-equipo" style="display: none;">
+
+            <label>Equipo involucrado *</label>
+
+            <select
+                name="equipo"
+                id="equipo"
+                class="form-control"
+            >
+                <option value="">Seleccione un equipo...</option>
+
+                {% for equipo in equipos %}
+                    <option value="{{ equipo.codigo_inventario }}">
+                        {{ equipo.nombre_equipo }} -
+                        {{ equipo.codigo_inventario }} -
+                        {{ equipo.ubicacion }}
+                    </option>
+                {% endfor %}
+
             </select>
+
         </div>
-    </div>
 
-    <div class="form-group">
-        <label>Comentario / Descripción Detallada *</label>
-        <textarea class="form-control" placeholder="Describa el material que necesita o el problema encontrado..."></textarea>
-    </div>
+        <div class="form-group">
+            <label>Comentario / Descripción Detallada *</label>
 
-    <div class="form-actions">
-        <button class="btn-cancel" onclick="window.history.back()">Cancelar</button>
-        <button class="btn-submit" onclick="alert('Solicitud enviada correctamente.')">Enviar Solicitud</button>
-    </div>
+            <textarea
+                name="descripcion"
+                class="form-control"
+                rows="5"
+                placeholder="Describa el material que necesita o el problema encontrado..."
+                required
+            ></textarea>
+        </div>
+
+        <div class="form-actions">
+
+            <button
+                type="button"
+                class="btn-cancel"
+                onclick="window.history.back()"
+            >
+                Cancelar
+            </button>
+
+            <button type="submit" class="btn-submit">
+                Enviar Solicitud
+            </button>
+
+        </div>
+
+    </form>
+
 </div>
 
 <script>
-    // Asignar fecha actual automáticamente al campo de fecha
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("fecha-incidencia").value = new Date().toISOString().split('T')[0];
-    });
+document.addEventListener('DOMContentLoaded', function () {
+
+    const tipo = document.getElementById('tipo-incidencia');
+    const grupoEquipo = document.getElementById('grupo-equipo');
+    const equipo = document.getElementById('equipo');
+
+    function actualizarFormulario() {
+
+        const requiereEquipo =
+            tipo.value === 'equipo' ||
+            tipo.value === 'mantenimiento';
+
+        grupoEquipo.style.display = requiereEquipo ? 'block' : 'none';
+
+        equipo.required = requiereEquipo;
+
+        if (!requiereEquipo) {
+            equipo.value = '';
+        }
+    }
+
+    tipo.addEventListener('change', actualizarFormulario);
+
+    actualizarFormulario();
+});
 </script>
+
 {% endblock %}

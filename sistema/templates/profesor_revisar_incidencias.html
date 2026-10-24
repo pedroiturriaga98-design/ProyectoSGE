@@ -1,25 +1,37 @@
+
 {% extends 'base_profesor.html' %}
 
 {% block content %}
+
 <div class="page-header">
     <h2>Revisar Incidencias</h2>
     <p>Listado de solicitudes de materiales y reportes de problemas</p>
 </div>
 
 <div class="table-container">
+
     <div class="table-toolbar">
+
         <div class="search-box">
-            <input type="text" placeholder="Buscar por nombre o comentario...">
+            <input
+                type="text"
+                id="buscar-incidencia"
+                placeholder="Buscar por nombre o comentario..."
+            >
         </div>
-        <select class="filter-select">
-            <option>Tipo: Todos</option>
-            <option>Solicitud de Material</option>
-            <option>Problema con Equipo</option>
-            <option>Mantenimiento</option>
+
+        <select id="filtro-tipo" class="filter-select">
+            <option value="todos">Tipo: Todos</option>
+            <option value="Solicitud de Material">Solicitud de Material</option>
+            <option value="Solicitud de Reposición">Solicitud de Reposición</option>
+            <option value="Problema con Equipo">Problema con Equipo</option>
+            <option value="Mantenimiento">Mantenimiento</option>
         </select>
+
     </div>
 
-    <table>
+    <table id="tabla-incidencias">
+
         <thead>
             <tr>
                 <th style="width: 20%;">Profesor</th>
@@ -29,43 +41,126 @@
                 <th style="width: 15%; text-align: center;">Estado</th>
             </tr>
         </thead>
+
         <tbody>
-            <tr>
-                <td><strong>María Fernanda López</strong></td>
-                <td>12/03/2026</td>
-                <td>Solicitud de Material</td>
-                <td>Necesito 30 marcadores para pizarra.</td>
-                <td style="text-align: center;"><span class="badge badge-revisar">Por Revisar</span></td>
+
+            {% for incidencia in incidencias %}
+
+            <tr class="fila-incidencia">
+
+                <td>
+                    <strong>{{ incidencia.profesor }}</strong>
+                </td>
+
+                <td>
+                    {{ incidencia.fecha|date:"d/m/Y" }}
+                </td>
+
+                <td class="tipo-incidencia">
+                    {{ incidencia.tipo }}
+                </td>
+
+                <td>
+                    {{ incidencia.comentario }}
+                </td>
+
+                <td style="text-align: center;">
+
+                    {% if incidencia.estado == 'Aprobada' or incidencia.estado == 'Aprobado' %}
+
+                        <span class="badge badge-aprobada">
+                            Aprobada
+                        </span>
+
+                    {% elif incidencia.estado == 'Rechazada' or incidencia.estado == 'Rechazado' %}
+
+                        <span class="badge badge-rechazada">
+                            Rechazada
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge badge-revisar">
+                            Por Revisar
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
             </tr>
+
+            {% empty %}
+
             <tr>
-                <td><strong>Carlos Plaza</strong></td>
-                <td>11/03/2026</td>
-                <td>Problema con Equipo</td>
-                <td>Proyector del aula 3B no enciende.</td>
-                <td style="text-align: center;"><span class="badge badge-aprobada">Aprobada</span></td>
+                <td colspan="5" style="text-align: center; padding: 30px;">
+                    No tienes incidencias registradas.
+                </td>
             </tr>
-            <tr>
-                <td><strong>Sebastián Toledo</strong></td>
-                <td>10/03/2026</td>
-                <td>Mantenimiento</td>
-                <td>Sillas rotas en el laboratorio.</td>
-                <td style="text-align: center;"><span class="badge badge-aprobada">Aprobada</span></td>
-            </tr>
-            <tr>
-                <td><strong>Camila Orellana</strong></td>
-                <td>09/03/2026</td>
-                <td>Problema con Equipo</td>
-                <td>Solicitud de material didáctico para ciencias.</td>
-                <td style="text-align: center;"><span class="badge badge-rechazada">Rechazada</span></td>
-            </tr>
-            <tr>
-                <td><strong>Ignacio Castro</strong></td>
-                <td>08/03/2026</td>
-                <td>Mantenimiento</td>
-                <td>Aire acondicionado del aula 2A no funciona.</td>
-                <td style="text-align: center;"><span class="badge badge-revisar">Por Revisar</span></td>
-            </tr>
+
+            {% endfor %}
+
         </tbody>
+
     </table>
+
+    <p
+        id="sin-resultados"
+        style="display: none; text-align: center; padding: 25px; color: #6b7280;"
+    >
+        No se encontraron incidencias con los filtros seleccionados.
+    </p>
+
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const buscador = document.getElementById('buscar-incidencia');
+    const filtroTipo = document.getElementById('filtro-tipo');
+
+    const filas = document.querySelectorAll('.fila-incidencia');
+    const sinResultados = document.getElementById('sin-resultados');
+
+    function filtrarIncidencias() {
+
+        const texto = buscador.value.toLowerCase().trim();
+        const tipoSeleccionado = filtroTipo.value;
+
+        let visibles = 0;
+
+        filas.forEach(function (fila) {
+
+            const contenido = fila.textContent.toLowerCase();
+
+            const tipo = fila.querySelector(
+                '.tipo-incidencia'
+            ).textContent.trim();
+
+            const coincideBusqueda = contenido.includes(texto);
+
+            const coincideTipo =
+                tipoSeleccionado === 'todos' ||
+                tipo === tipoSeleccionado;
+
+            const mostrar = coincideBusqueda && coincideTipo;
+
+            fila.style.display = mostrar ? '' : 'none';
+
+            if (mostrar) {
+                visibles++;
+            }
+
+        });
+
+        sinResultados.style.display =
+            filas.length > 0 && visibles === 0 ? 'block' : 'none';
+    }
+
+    buscador.addEventListener('input', filtrarIncidencias);
+    filtroTipo.addEventListener('change', filtrarIncidencias);
+
+});
+</script>
+
 {% endblock %}

@@ -284,11 +284,24 @@ class Rol(models.Model):
         db_table = 'rol'
 
 
+
 class SolicitudInsumo(models.Model):
     id_solicitud = models.IntegerField(primary_key=True)
     fecha = models.DateField()
     estado_solicitud = models.CharField(max_length=20)
-    usuario_rut = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='USUARIO_rut')  # Field name made lowercase.
+
+    usuario_rut = models.ForeignKey(
+        'Usuario',
+        models.DO_NOTHING,
+        db_column='USUARIO_rut'
+    )
+
+    descripcion = models.TextField(blank=True, null=True)
+    tipo_solicitud = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True
+    )
 
     class Meta:
         managed = False
@@ -299,14 +312,36 @@ class TicketSoporte(models.Model):
     id_ticket = models.IntegerField(primary_key=True)
     fecha_reporte = models.DateField()
     prioridad = models.CharField(max_length=20)
-    usuario_rut = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='USUARIO_rut')  # Field name made lowercase.
-    equipo_ti_codigo_inventario = models.ForeignKey(EquipoTi, models.DO_NOTHING, db_column='EQUIPO_TI_codigo_inventario')  # Field name made lowercase.
+
+    estado_ticket = models.CharField(
+        max_length=20,
+        default='Pendiente'
+    )
+
+    usuario_rut = models.ForeignKey(
+        'Usuario',
+        models.DO_NOTHING,
+        db_column='USUARIO_rut'
+    )
+
+    equipo_ti_codigo_inventario = models.ForeignKey(
+        'EquipoTi',
+        models.DO_NOTHING,
+        db_column='EQUIPO_TI_codigo_inventario'
+    )
+
+    descripcion = models.TextField(blank=True, null=True)
+    tipo_incidencia = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True
+    )
 
     class Meta:
         managed = False
         db_table = 'ticket_soporte'
 
-
+    
 class Usuario(models.Model):
     cambiar_password = models.BooleanField(default=True)
     rut = models.CharField(primary_key=True, max_length=12)

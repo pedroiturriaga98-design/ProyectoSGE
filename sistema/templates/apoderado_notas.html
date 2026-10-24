@@ -1,89 +1,113 @@
+
 {% extends 'base_apoderado.html' %}
 
 {% block content %}
+
 <div class="card-container">
-    
-    <!-- Selector de vistas -->
-    <div class="vista-selector">
-        <label class="vista-option">
-            <input type="radio" name="vista"> Vista resumida
-        </label>
-        <label class="vista-option active">
-            <input type="radio" name="vista" checked> Vista detallada
-        </label>
-    </div>
 
-    <!-- Encabezado -->
-    <div class="table-header">
-        <h3>Tabla de notas</h3>
-        <span class="periodo-tag">Segundo Semestre</span>
-    </div>
+    {% if alumno_seleccionado %}
 
-    <!-- Contenedor responsivo -->
-    <div class="notas-table-wrapper">
-        <table class="notas-table">
-            <thead>
-                <tr>
-                    <th>ASIGNATURA</th>
-                    <th>PP 1</th>
-                    <th>NOTA 1</th>
-                    <th>NOTA 2</th>
-                    <th>PP 2</th>
-                    <th>PF</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% comment %}
-                    -- ESTRUCTURA FUTURA CON DJANGO --
+        <div class="table-header">
+            <div>
+                <h3>Tabla de notas</h3>
+                <p class="notas-alumno-info">
+                    {{ alumno_seleccionado.nombre_completo }}
+                    -
+                    {{ alumno_seleccionado.curso_id_curso.nombre_curso }}
+                </p>
+            </div>
+            <span class="periodo-tag">Registro de calificaciones</span>
+        </div>
+
+        <div class="notas-table-wrapper">
+            <table class="notas-table">
+
+                <thead>
+                    <tr>
+                        <th>ASIGNATURA</th>
+                        <th>EVALUACIONES REGISTRADAS</th>
+                        <th>PROMEDIO</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
                     {% for resumen in resumen_notas %}
-                    <tr>
-                        <td class="asignatura-col">{{ resumen.asignatura.nombre }}</td>
-                        <td class="nota-promedio">{{ resumen.pp1|default:"-" }}</td>
-                        <td class="nota-val">{{ resumen.nota1|default:"-" }}</td>
-                        <td class="nota-val">{{ resumen.nota2|default:"-" }}</td>
-                        <td class="nota-promedio">{{ resumen.pp2|default:"-" }}</td>
-                        <td class="nota-promedio">{{ resumen.pf|default:"-" }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="6" style="text-align: center; color: #9ca3af; padding: 20px;">
-                            No hay notas registradas para este periodo.
-                        </td>
-                    </tr>
-                    {% endfor %}
-                {% endcomment %}
 
-                <!-- DATOS DE PRUEBA (ESTÁTICOS MIENTRAS CONECTAN EL BACKEND) -->
-                 <!-- Lenguaje -->
-                <tr>
-                    <td class="asignatura-col">Lenguaje y comunicación</td>
-                    <td class="nota-promedio nota-azul">6.8</td>
-                    <td class="nota-azul">6.1</td>
-                    <td class="nota-azul">6.6</td>
-                    <td class="nota-promedio nota-azul">6.0</td>
-                    <td class="nota-promedio nota-azul">6.3</td>
-                </tr>
-                <!-- Matemática -->
-                <tr>
-                    <td class="asignatura-col">Matemática</td>
-                    <td class="nota-promedio nota-azul">6.9</td>
-                    <td class="nota-azul">7.0</td>
-                    <td class="nota-vacia">-</td>
-                    <td class="nota-promedio nota-azul">7.0</td>
-                    <td class="nota-promedio nota-azul">6.9</td>
-                </tr>
-                <!-- Ciencias naturales -->
-                <tr>
-                    <td class="asignatura-col">Ciencias naturales</td>
-                    <td class="nota-promedio nota-azul">5.5</td>
-                    <td class="nota-vacia">-</td>
-                    <td class="nota-vacia">-</td>
-                    <td class="nota-vacia">-</td>
-                    <td class="nota-promedio nota-azul">5.5</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                        <tr>
+                            <td class="asignatura-col">
+                                {{ resumen.nombre_asignatura }}
+                            </td>
+
+                            <td>
+                                <div class="notas-lista">
+
+                                    {% for nota in resumen.notas %}
+
+                                        <span class="nota-item {% if nota.valor_nota < 4 %}nota-roja{% else %}nota-azul{% endif %}"
+                                              title="Fecha: {{ nota.fecha_ingreso|date:'d/m/Y' }}">
+
+                                            {% if nota.evaluacion_id_evaluacion %}
+                                                Nota {{ nota.evaluacion_id_evaluacion.numero_evaluacion }}:
+                                            {% else %}
+                                                Nota:
+                                            {% endif %}
+
+                                            {{ nota.valor_nota|floatformat:1 }}
+
+                                        </span>
+
+                                    {% empty %}
+
+                                        <span class="nota-vacia">
+                                            Sin notas registradas
+                                        </span>
+
+                                    {% endfor %}
+
+                                </div>
+                            </td>
+
+                            <td class="nota-promedio">
+
+                                {% if resumen.promedio is not None %}
+
+                                    <span class="{% if resumen.promedio < 4 %}nota-roja{% else %}nota-azul{% endif %}">
+                                        {{ resumen.promedio|floatformat:1 }}
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="nota-vacia">-</span>
+
+                                {% endif %}
+
+                            </td>
+                        </tr>
+
+                    {% empty %}
+
+                        <tr>
+                            <td colspan="3" class="notas-sin-datos">
+                                No hay asignaturas registradas para este curso.
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+        </div>
+
+    {% else %}
+
+        <div class="notas-sin-datos">
+            No tienes estudiantes asociados a tu cuenta.
+        </div>
+
+    {% endif %}
 
 </div>
+
 {% endblock %}
