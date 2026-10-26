@@ -41,8 +41,8 @@
     "cambiar_password": true,
     "password_hash": "103076382",
     "rol_id_rol": 1,
-    "nombre": "Asdasda",
-    "apellido_paterno": "Asdadas",
+    "nombre": "Luisardo",
+    "apellido_paterno": "Asdasd",
     "apellido_materno": "Asdasdsa",
     "correo": "aasdadas@santajuliana.cl",
     "telefono": "qeqweqea",
@@ -70,8 +70,8 @@
   "model": "sistema.usuario",
   "pk": "11.111.111-1",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$9S26JXEPwjS1szbCu7Y4iJ$vNEPibvSEERmhVfQeKvipGGWUdh4IwJg+k449JFDzfA=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$5L9JhhtZHlvaIBcwEM7eBx$SgIgcddiyuuMwcUFTewLNEha6lQvfTs0uQwFpmj7iBA=",
     "rol_id_rol": 2,
     "nombre": "Juan",
     "apellido_paterno": "Perez",
@@ -86,8 +86,8 @@
   "model": "sistema.usuario",
   "pk": "12.345.678-5",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$N0AWbEq2TGVs1TYzy1KDk5$35SSDj3YdZmQI3LF0HJfDvPALRMQcmIOOsJQ1FeSUr0=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$Q5LRQ3mrAeoud9Gze8b7P0$PC7NIykWHQKLIOEkOEB6FuUir6bvr70/HYkY9XkJ2UY=",
     "rol_id_rol": 2,
     "nombre": "Marcelo",
     "apellido_paterno": "Canales",
@@ -151,7 +151,7 @@
   "pk": "20.041.339-3",
   "fields": {
     "cambiar_password": false,
-    "password_hash": "pbkdf2_sha256$870000$tYBFdsapq7ThWiBewxrzZN$yAy5BQucQQMHMMDsBZCA1BVo1nB+OydcXCqrs5woYag=",
+    "password_hash": "pbkdf2_sha256$870000$33JS6dU3R2MCWo5DJMQeKw$fb/mXNT+Oy42HHR/Qh3vD2P4mYd44wZaFmPPUaEE/ro=",
     "rol_id_rol": 1,
     "nombre": "Pedro",
     "apellido_paterno": "Iturriaga",
@@ -176,6 +176,22 @@
     "telefono": "+929090909",
     "direccion": "Av. San Carlos 123, Puente Alto",
     "fecha_nacimiento": "2004-04-13"
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "22.222.222-2",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$IQiFrbtLjdF2aNqvUwFjTI$B5ABY8vgY6fHX7m4+sNdSZRdsQj2F5mkCsyWStONR+s=",
+    "rol_id_rol": 5,
+    "nombre": "Rosa",
+    "apellido_paterno": "Gomez",
+    "apellido_materno": "Farias",
+    "correo": "rgomez@santajuliana.cl",
+    "telefono": "",
+    "direccion": "",
+    "fecha_nacimiento": "1998-10-29"
   }
 },
 {
@@ -662,8 +678,8 @@
   "model": "sistema.usuario",
   "pk": "40.001.001-3",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$JlbdwM7noYW49ckwIPb3hQ$9dTwNf9bwEb83MHXXOLrab8LM79kAz/HYnXQTauRe4I=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$92QOP9QjmHr1uswcgBRVhT$K67qgIcoOXZi5GdkahCQA/LiU63JBEWlfZwlBaiOtLQ=",
     "rol_id_rol": 3,
     "nombre": "Tomas",
     "apellido_paterno": "Rojas",
@@ -21800,7 +21816,8 @@
   "fields": {
     "fecha_reporte": "2026-10-24",
     "prioridad": "Media",
-    "estado_ticket": "Pendiente",
+    "observacion": null,
+    "estado_ticket": "Rechazada",
     "usuario_rut": "14.131.328-2",
     "equipo_ti_codigo_inventario": "PROY-001",
     "descripcion": "no funciona",
@@ -21813,11 +21830,26 @@
   "fields": {
     "fecha_reporte": "2026-10-24",
     "prioridad": "Media",
-    "estado_ticket": "Pendiente",
+    "observacion": "equipo reparado",
+    "estado_ticket": "Resuelta",
     "usuario_rut": "14.131.328-2",
     "equipo_ti_codigo_inventario": "NOTE-003",
     "descripcion": "MALO",
     "tipo_incidencia": "Mantenimiento"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 3,
+  "fields": {
+    "fecha_reporte": "2026-10-26",
+    "prioridad": "Media",
+    "observacion": "se retira equipo de la sala el dia lunes a las 16 horas para revision",
+    "estado_ticket": "Aprobada (En proceso)",
+    "usuario_rut": "12.345.678-5",
+    "equipo_ti_codigo_inventario": "MON-001",
+    "descripcion": "el equipo presenta falla en la imagen",
+    "tipo_incidencia": "Problema con Equipo"
   }
 },
 {
