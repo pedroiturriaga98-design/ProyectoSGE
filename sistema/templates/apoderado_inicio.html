@@ -1,34 +1,78 @@
+
 {% extends 'base_apoderado.html' %}
 
 {% block content %}
 
-<!-- Banner Principal -->
 <div class="welcome-banner">
+
     <div class="welcome-text">
-        <h1>¡Bienvenido(a), {{ request.session.nombre_usuario }}!</h1>
-        <p>Aquí podrás acceder a la información académica y<br>administrativa de tu(s) hijo(s).</p>
+
+        <h1>
+            ¡Bienvenido(a), {{ request.session.nombre_usuario }}!
+        </h1>
+
+        <p>
+            Aquí podrás acceder a la información académica y<br>
+            administrativa de tu(s) hijo(s).
+        </p>
+
         <div class="role-badge">
-            <span>👤</span> Estás en la vista: <strong>Apoderado</strong>
+            <span>👤</span>
+            Estás en la vista:
+            <strong>Apoderado</strong>
         </div>
+
     </div>
-    <div class="welcome-illustration">
-    </div>
+
+    <div class="welcome-illustration"></div>
+
 </div>
 
-<!-- Lista de Estudiantes -->
 <div class="students-section">
+
     <h3>👥 Mis estudiantes</h3>
-    
-    <a href="{% url 'apoderado_notas' %}" class="student-card-large">
-        <div class="student-info-large">
-            <div class="student-avatar">👤</div>
-            <div class="student-details">
-                <h4>Benjamín Dante</h4>
-                <p>4º Año H - Sta. Juliana</p>
+
+    <div class="students-list">
+
+        {% for alumno in apoderado_alumnos %}
+
+            <a href="{% url 'apoderado_notas' %}?alumno={{ alumno.rut_alumno|urlencode }}"
+               class="student-card-large">
+
+                <div class="student-info-large">
+
+                    <div class="student-avatar">👤</div>
+
+                    <div class="student-details">
+                        <h4>{{ alumno.nombre_completo }}</h4>
+
+                        <p>
+                            {{ alumno.curso_id_curso.nombre_curso }}
+                            - Sta. Juliana
+                        </p>
+                    </div>
+
+                </div>
+
+                <span class="btn-view-info">
+                    Ver información &gt;
+                </span>
+
+            </a>
+
+        {% empty %}
+
+            <div class="card-container">
+                <p>
+                    Actualmente no tienes estudiantes asociados
+                    a tu cuenta de apoderado.
+                </p>
             </div>
-        </div>
-        <span class="btn-view-info">Ver información &gt;</span>
-    </a>
+
+        {% endfor %}
+
+    </div>
+
 </div>
 
 {% endblock %}

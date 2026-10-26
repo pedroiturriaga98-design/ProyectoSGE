@@ -173,13 +173,117 @@ def validar_rut(rut_str):
 
 # Vistas para el portal de apoderados
 
+
 @require_role([3])
 def apoderado_inicio(request):
-    return render(request, 'apoderado_inicio.html')
+    from .models import Alumno
+
+    # Obtener el RUT del apoderado que inició sesión.
+    rut_apoderado = request.session.get('usuario_rut')
+
+    # Consultar únicamente los alumnos asociados al apoderado.
+    alumnos = (
+        Alumno.objects
+        .filter(usuario_rut_id=rut_apoderado)
+        .select_related('curso_id_curso')
+        .order_by('nombre_completo')
+    )
+
+    context = {
+        'alumnos': alumnos,
+        'total_alumnos': alumnos.count(),
+    }
+
+    return render(
+        request,
+        'apoderado_inicio.html',
+        context
+    )
+
+
 
 @require_role([3])
 def apoderado_notas(request):
-    return render(request, 'apoderado_notas.html')
+    from django.http import Http404
+    from .models import Alumno, AsignaturaCurso, Calificacion
+
+    rut_apoderado = request.session.get('usuario_rut')
+
+    alumnos = list(
+        Alumno.objects
+        .filter(usuario_rut_id=rut_apoderado)
+        .select_related('curso_id_curso')
+        .order_by('nombre_completo')
+    )
+
+    rut_solicitado = request.GET.get('alumno', '').strip()
+
+    if rut_solicitado:
+        alumno_seleccionado = next(
+            (a for a in alumnos if a.rut_alumno == rut_solicitado),
+            None
+        )
+        if alumno_seleccionado is None:
+            raise Http404('Estudiante no asociado a este apoderado.')
+    else:
+        alumno_seleccionado = alumnos[0] if alumnos else None
+
+    resumen_notas = []
+
+    if alumno_seleccionado:
+        asignaturas = (
+            AsignaturaCurso.objects
+            .filter(curso_id_curso=alumno_seleccionado.curso_id_curso)
+            .select_related('asignatura_id_asignatura')
+            .order_by('asignatura_id_asignatura__nombre_asignatura')
+        )
+
+        calificaciones = (
+            Calificacion.objects
+            .filter(
+                alumno_rut_alumno=alumno_seleccionado,
+                asignatura_curso_id_asig_curso__curso_id_curso=
+                    alumno_seleccionado.curso_id_curso
+            )
+            .select_related('evaluacion_id_evaluacion')
+            .order_by('fecha_ingreso', 'id_calificacion')
+        )
+
+        notas_por_asignatura = {}
+
+        for calificacion in calificaciones:
+            id_asignatura_curso = (
+                calificacion.asignatura_curso_id_asig_curso_id
+            )
+            notas_por_asignatura.setdefault(
+                id_asignatura_curso, []
+            ).append(calificacion)
+
+        for asignatura_curso in asignaturas:
+            notas = notas_por_asignatura.get(
+                asignatura_curso.id_asig_curso, []
+            )
+
+            valores = [nota.valor_nota for nota in notas]
+
+            promedio = (
+                round(sum(valores) / len(valores), 1)
+                if valores else None
+            )
+
+            resumen_notas.append({
+                'nombre_asignatura':
+                    asignatura_curso.asignatura_id_asignatura.nombre_asignatura,
+                'notas': notas,
+                'promedio': promedio,
+            })
+
+    return render(request, 'apoderado_notas.html', {
+        'alumnos': alumnos,
+        'alumno_seleccionado': alumno_seleccionado,
+        'resumen_notas': resumen_notas,
+    })
+
 
 @require_role([3])
 def apoderado_asistencia(request):
@@ -194,9 +298,105 @@ def apoderado_certificados(request):
     return render(request, 'apoderado_certificados.html')
 
 # Vistas para el portal de Profesores
+
+
 @require_role([2])
 def profesor_inicio(request):
-    return render(request, 'profesor_inicio.html')
+    from django.db.models import Count 
+    from django.utils import timezone 
+    from .models import Calificacion
+
+    from .models import (
+        Curso,
+        Alumno,
+        RegistroAsistencia,
+        Evaluacion,
+        SolicitudInsumo,
+        TicketSoporte
+    )
+
+    hoy = timezone.localdate()
+    rut_profesor = request.session.get('usuario_rut')
+
+    # 1. Todos los cursos disponibles del colegio
+    total_cursos = Curso.objects.count()
+
+    # 2. Todos los alumnos registrados
+    total_alumnos = Alumno.objects.count()
+
+    # 3. Asistencia registrada hoy
+    # Una asistencia diaria por alumno, aunque existan
+    # registros asociados a distintas asignaturas.
+    asistencia_hoy = (
+        RegistroAsistencia.objects
+        .filter(fecha=hoy)
+        .values('alumno_rut_alumno_id')
+        .annotate(
+            presente_hoy=Count(
+                'id_asistencia',
+                filter=Q(presente=1)
+            ),
+            ausente_hoy=Count(
+                'id_asistencia',
+                filter=Q(presente=0)
+            )
+        )
+    )
+
+    presentes_hoy = 0
+    ausentes_hoy = 0
+
+    for registro in asistencia_hoy:
+        if registro['ausente_hoy'] > 0:
+            ausentes_hoy += 1
+        elif registro['presente_hoy'] > 0:
+            presentes_hoy += 1
+
+    total_asistencia = presentes_hoy + ausentes_hoy
+
+    porcentaje_asistencia = (
+        round(presentes_hoy * 100 / total_asistencia)
+        if total_asistencia > 0
+        else None
+    )
+
+    total_evaluaciones = Calificacion.objects.filter(
+        valor_nota__isnull=False
+    ).count()
+
+    # 5. Incidencias realizadas por el profesor
+    solicitudes = SolicitudInsumo.objects.filter(
+        usuario_rut_id=rut_profesor
+    )
+
+    tickets = TicketSoporte.objects.filter(
+        usuario_rut_id=rut_profesor
+    )
+
+    total_incidencias = solicitudes.count() + tickets.count()
+
+    incidencias_pendientes = (
+        solicitudes.filter(
+            estado_solicitud__iexact='Pendiente'
+        ).count()
+        +
+        tickets.filter(
+            estado_ticket__iexact='Pendiente'
+        ).count()
+    )
+
+    return render(request, 'profesor_inicio.html', {
+        'total_cursos': total_cursos,
+        'total_alumnos': total_alumnos,
+        'porcentaje_asistencia': porcentaje_asistencia,
+        'presentes_hoy': presentes_hoy,
+        'ausentes_hoy': ausentes_hoy,
+        'total_evaluaciones': total_evaluaciones,
+        'total_incidencias': total_incidencias,
+        'incidencias_pendientes': incidencias_pendientes,
+    })
+
+
 
 
 import json
@@ -615,13 +815,239 @@ def profesor_asistencia(request):
 
 
 
+from datetime import date
+
+from django.contrib import messages
+from django.db import transaction
+from django.db.models import Max
+from django.shortcuts import render, redirect
+from django.utils import timezone
+
+from .models import (
+    Usuario,
+    EquipoTi,
+    SolicitudInsumo,
+    TicketSoporte,
+)
+
+
+
 @require_role([2])
 def profesor_agregar_incidencia(request):
-    return render(request, 'profesor_agregar_incidencia.html')
+    from datetime import date
+    from django.contrib import messages
+    from django.db import transaction
+    from django.db.models import Max
+    from django.shortcuts import redirect, render
+    from django.utils import timezone
+
+    from .models import (
+        Usuario,
+        EquipoTi,
+        SolicitudInsumo,
+        TicketSoporte
+    )
+
+    tipos = {
+        'material': ('insumo', 'Solicitud de Material'),
+        'reposicion': ('insumo', 'Solicitud de Reposición'),
+        'equipo': ('soporte', 'Problema con Equipo'),
+        'mantenimiento': ('soporte', 'Mantenimiento'),
+    }
+
+    equipos = list(
+        EquipoTi.objects.all().order_by('codigo_inventario')
+    )
+
+    tipos_equipos = {
+        'PC': 'Computador',
+        'NOTE': 'Notebook',
+        'MOU': 'Mouse',
+        'TEC': 'Teclado',
+        'PROY': 'Proyector',
+        'IMP': 'Impresora',
+        'USB': 'Pendrive',
+        'ROUT': 'Router',
+        'MON': 'Monitor',
+        'HDMI': 'Cable HDMI',
+        'EXT': 'Alargador eléctrico',
+    }
+
+    for equipo in equipos:
+        prefijo = equipo.codigo_inventario.split('-')[0].upper()
+        equipo.nombre_equipo = tipos_equipos.get(
+            prefijo,
+            'Equipo tecnológico'
+        )
+
+    if request.method == 'POST':
+        fecha_texto = request.POST.get('fecha', '').strip()
+        tipo = request.POST.get('tipo', '').strip()
+        descripcion = request.POST.get('descripcion', '').strip()
+        codigo_equipo = request.POST.get('equipo', '').strip()
+
+        try:
+            fecha = date.fromisoformat(fecha_texto)
+        except ValueError:
+            messages.error(request, 'La fecha ingresada no es válida.')
+            return redirect('profesor_agregar_incidencia')
+
+        if tipo not in tipos:
+            messages.error(request, 'Selecciona un tipo de incidencia válido.')
+            return redirect('profesor_agregar_incidencia')
+
+        if not descripcion:
+            messages.error(request, 'Debes ingresar una descripción.')
+            return redirect('profesor_agregar_incidencia')
+
+        rut_profesor = request.session.get('usuario_rut')
+
+        if not rut_profesor or not Usuario.objects.filter(
+            rut=rut_profesor
+        ).exists():
+            messages.error(request, 'No se encontró el usuario de la sesión.')
+            return redirect('profesor_agregar_incidencia')
+
+        destino, nombre_tipo = tipos[tipo]
+
+        equipo = None
+
+        if destino == 'soporte':
+            if not codigo_equipo:
+                messages.error(
+                    request,
+                    'Debes seleccionar el equipo involucrado.'
+                )
+                return redirect('profesor_agregar_incidencia')
+
+            equipo = EquipoTi.objects.filter(
+                codigo_inventario=codigo_equipo
+            ).first()
+
+            if equipo is None:
+                messages.error(
+                    request,
+                    'El equipo seleccionado no existe.'
+                )
+                return redirect('profesor_agregar_incidencia')
+
+        try:
+            with transaction.atomic():
+                if destino == 'insumo':
+                    ultimo_id = (
+                        SolicitudInsumo.objects.aggregate(
+                            max_id=Max('id_solicitud')
+                        )['max_id'] or 0
+                    )
+
+                    SolicitudInsumo.objects.create(
+                        id_solicitud=ultimo_id + 1,
+                        fecha=fecha,
+                        estado_solicitud='Pendiente',
+                        usuario_rut_id=rut_profesor,
+                        descripcion=descripcion,
+                        tipo_solicitud=nombre_tipo
+                    )
+
+                else:
+                    ultimo_id = (
+                        TicketSoporte.objects.aggregate(
+                            max_id=Max('id_ticket')
+                        )['max_id'] or 0
+                    )
+
+                    TicketSoporte.objects.create(
+                        id_ticket=ultimo_id + 1,
+                        fecha_reporte=fecha,
+                        prioridad='Media',
+                        usuario_rut_id=rut_profesor,
+                        equipo_ti_codigo_inventario=equipo,
+                        descripcion=descripcion,
+                        tipo_incidencia=nombre_tipo
+                    )
+
+        except Exception:
+            messages.error(
+                request,
+                'No se pudo guardar la incidencia. Revisa la base de datos.'
+            )
+            return redirect('profesor_agregar_incidencia')
+
+        messages.success(
+            request,
+            f'{nombre_tipo} registrada correctamente.'
+        )
+
+        return redirect('profesor_agregar_incidencia')
+
+    return render(request, 'profesor_agregar_incidencia.html', {
+        'equipos': equipos,
+        'fecha_actual': timezone.localdate().isoformat()
+    })
+
+
 
 @require_role([2])
 def profesor_revisar_incidencias(request):
-    return render(request, 'profesor_revisar_incidencias.html')
+    from .models import SolicitudInsumo, TicketSoporte, Usuario
+
+    rut_profesor = request.session.get('usuario_rut')
+
+    incidencias = []
+
+    # Solicitudes de material y reposición
+    solicitudes = SolicitudInsumo.objects.filter(
+        usuario_rut_id=rut_profesor
+    )
+
+    # Problemas de equipo y mantenimiento
+    tickets = TicketSoporte.objects.filter(
+        usuario_rut_id=rut_profesor
+    )
+
+    usuario = Usuario.objects.filter(rut=rut_profesor).first()
+
+    nombre_profesor = (
+        f"{request.session.get('nombre_usuario', '')} "
+        f"{request.session.get('apellido_usuario', '')}"
+    ).strip()
+
+    for solicitud in solicitudes:
+        incidencias.append({
+            'id': solicitud.id_solicitud,
+            'origen': 'insumo',
+            'profesor': nombre_profesor,
+            'fecha': solicitud.fecha,
+            'tipo': solicitud.tipo_solicitud or 'Solicitud de Material',
+            'comentario': solicitud.descripcion or '',
+            'estado': solicitud.estado_solicitud or 'Pendiente',
+        })
+
+    for ticket in tickets:
+        incidencias.append({
+            'id': ticket.id_ticket,
+            'origen': 'soporte',
+            'profesor': nombre_profesor,
+            'fecha': ticket.fecha_reporte,
+            'tipo': ticket.tipo_incidencia or 'Problema con Equipo',
+            'comentario': ticket.descripcion or '',
+            'estado': ticket.estado_ticket or 'Pendiente',
+        })
+
+    incidencias.sort(
+        key=lambda incidencia: (
+            incidencia['fecha'],
+            incidencia['id']
+        ),
+        reverse=True
+    )
+
+    return render(
+        request,
+        'profesor_revisar_incidencias.html',
+        {'incidencias': incidencias}
+    )
+
 
 
 

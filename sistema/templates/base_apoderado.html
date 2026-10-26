@@ -1,10 +1,11 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Apoderados - SGE</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'css/base_apoderado.css' %}">
 </head>
 <body>
@@ -14,66 +15,151 @@
             <span class="logo-badge">SGE</span>
             <div>
                 <strong>Sistema de Gestión</strong>
-                <div style="font-size: 0.75rem; color: #9ca3af;">Portal de Apoderados</div>
+                <div style="font-size: 0.75rem; color: #9ca3af;">
+                    Portal de Apoderados
+                </div>
             </div>
         </div>
-        
+
         <div class="profile-area">
             <div class="profile-pic"></div>
-            <h3>{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}</h3>
+
+            <h3>
+                {{ request.session.nombre_usuario }}
+                {{ request.session.apellido_usuario }}
+            </h3>
+
             <p>Apoderado Santa Juliana</p>
-            <button class="btn-outline">Cambiar</button>
+
+            {% if apoderado_alumnos|length > 1 %}
+                <a href="{% url 'apoderado_inicio' %}"
+                   class="btn-outline btn-cambiar-alumno">
+                    Cambiar estudiante
+                </a>
+            {% endif %}
         </div>
 
         <div class="alumnos-area">
             <h4>ALUMNOS A CARGO</h4>
-            <div class="alumno-card">
-                <div class="dot"></div>
-                <div class="alumno-info">
-                    <strong>Benjamín Dante</strong>
-                    <span>4º Año H - Sta. Juliana</span>
-                </div>
-            </div>
+
+            {% for alumno in apoderado_alumnos %}
+
+                <a href="{{ request.path }}?alumno={{ alumno.rut_alumno|urlencode }}"
+                   class="alumno-card {% if apoderado_alumno_actual.rut_alumno == alumno.rut_alumno %}active{% endif %}">
+
+                    <div class="dot"></div>
+
+                    <div class="alumno-info">
+                        <strong>{{ alumno.nombre_completo }}</strong>
+                        <span>
+                            {{ alumno.curso_id_curso.nombre_curso }}
+                            - Sta. Juliana
+                        </span>
+                    </div>
+
+                </a>
+
+            {% empty %}
+
+                <p class="alumnos-vacio">
+                    No tienes alumnos asociados.
+                </p>
+
+            {% endfor %}
         </div>
     </aside>
 
     <main class="main-content">
+
         <header class="top-header">
-            <div class="last-access"><span>Último acceso: {{ request.session.ultimo_acceso|default:"Primer ingreso" }}</span></div>
-            <div class="course-badge">2026 Cuarto Año H Liceo Polivalente Santa Juliana</div>
-            <div class="user-menu">
-                <strong>{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}</strong>
-                <a href="{% url 'login' %}">⍈ Cerrar sesión</a>
+
+            <div class="last-access">
+                <span>
+                    Último acceso:
+                    {{ request.session.ultimo_acceso|default:"Primer ingreso" }}
+                </span>
             </div>
+
+            {% if apoderado_alumno_actual %}
+
+                <div class="course-badge">
+                    {{ apoderado_alumno_actual.curso_id_curso.nombre_curso }}
+                    - Colegio Santa Juliana
+                </div>
+
+            {% else %}
+
+                <div class="course-badge">
+                    Colegio Santa Juliana
+                </div>
+
+            {% endif %}
+
+            <div class="user-menu">
+                <strong>
+                    {{ request.session.nombre_usuario }}
+                    {{ request.session.apellido_usuario }}
+                </strong>
+
+                <a href="{% url 'login' %}">
+                    ⍈ Cerrar sesión
+                </a>
+            </div>
+
         </header>
 
         <div class="content-area">
-            <!-- AQUÍ SE INYECTARÁ EL CONTENIDO DE CADA PANTALLA -->
             {% block content %}
             {% endblock %}
         </div>
+
     </main>
 
     <aside class="sidebar-right">
         <h4>MÓDULOS DE ACCESO</h4>
+
         <nav class="menu-nav">
-            <!-- BOTÓN DE INICIO -->
-            <a href="{% url 'apoderado_inicio' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_inicio' %}active{% endif %}">
-                <span class="icon-box" style="background-color: #f97316;"></span> Inicio
+
+            <a href="{% url 'apoderado_inicio' %}{% if apoderado_alumno_actual %}?alumno={{ apoderado_alumno_actual.rut_alumno|urlencode }}{% endif %}"
+               class="nav-item {% if request.resolver_match.url_name == 'apoderado_inicio' %}active{% endif %}">
+
+                <span class="icon-box"
+                      style="background-color: #f97316;"></span>
+                Inicio
             </a>
-            
-            <a href="{% url 'apoderado_notas' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_notas' %}active{% endif %}">
-                <span class="icon-box" style="background-color: #f97316;"></span> Notas
+
+            <a href="{% url 'apoderado_notas' %}{% if apoderado_alumno_actual %}?alumno={{ apoderado_alumno_actual.rut_alumno|urlencode }}{% endif %}"
+               class="nav-item {% if request.resolver_match.url_name == 'apoderado_notas' %}active{% endif %}">
+
+                <span class="icon-box"
+                      style="background-color: #f97316;"></span>
+                Notas
             </a>
-            <a href="{% url 'apoderado_asistencia' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_asistencia' %}active{% endif %}">
-                <span class="icon-box" style="background-color: #10b981;"></span> Asistencia
+
+            <a href="{% url 'apoderado_asistencia' %}{% if apoderado_alumno_actual %}?alumno={{ apoderado_alumno_actual.rut_alumno|urlencode }}{% endif %}"
+               class="nav-item {% if request.resolver_match.url_name == 'apoderado_asistencia' %}active{% endif %}">
+
+                <span class="icon-box"
+                      style="background-color: #10b981;"></span>
+                Asistencia
             </a>
-            <a href="{% url 'apoderado_calendario' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_calendario' %}active{% endif %}">
-                <span class="icon-box" style="background-color: #3b82f6;"></span> Calendario de eventos
+
+            <a href="{% url 'apoderado_calendario' %}{% if apoderado_alumno_actual %}?alumno={{ apoderado_alumno_actual.rut_alumno|urlencode }}{% endif %}"
+               class="nav-item {% if request.resolver_match.url_name == 'apoderado_calendario' %}active{% endif %}">
+
+                <span class="icon-box"
+                      style="background-color: #3b82f6;"></span>
+                Calendario de eventos
             </a>
-            <a href="{% url 'apoderado_certificados' %}" class="nav-item {% if request.resolver_match.url_name == 'apoderado_certificados' %}active{% endif %}">
-                <span class="icon-box" style="background-color: #6b7280;"></span> Certificados
+
+            <a href="{% url 'apoderado_certificados' %}{% if apoderado_alumno_actual %}?alumno={{ apoderado_alumno_actual.rut_alumno|urlencode }}{% endif %}"
+               class="nav-item {% if request.resolver_match.url_name == 'apoderado_certificados' %}active{% endif %}">
+
+                <span class="icon-box"
+                      style="background-color: #6b7280;"></span>
+                Certificados
             </a>
+
         </nav>
     </aside>
 

@@ -1,105 +1,153 @@
+
 {% extends 'base_profesor.html' %}
 
 {% block content %}
-<!-- Banner Principal -->
+
+<!-- Banner principal -->
 <div class="welcome-banner">
     <div class="welcome-text">
         <h1>¡Bienvenido(a), {{ request.session.nombre_usuario }}!</h1>
-        <p>Aquí podrás acceder a la información académica y<br>administrativa de tus cursos asignados.</p>
+
+        <p>
+            Aquí podrás acceder a la información académica y<br>
+            administrativa de tus cursos asignados.
+        </p>
+
         <div class="role-badge">
-            <span>👤</span> Estás en la vista: <strong>Profesor</strong>
+            <span>👤</span>
+            Estás en la vista:
+            <strong>Profesor</strong>
         </div>
     </div>
 </div>
 
+<!-- Resumen de gestión -->
 <div class="page-header">
-    <h2>Resumen del día</h2>
-    <p>Información consolidada de la gestión escolar para el día de hoy.</p>
+    <h2>Resumen de mi gestión</h2>
+    <p>
+        Información actualizada de tus cursos,
+        alumnos y actividades registradas.
+    </p>
 </div>
 
-<!-- Fila 1: Estadísticas principales -->
+<!-- Estadísticas principales -->
 <div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-icon bg-blue">👥</div>
-        <div class="stat-info"><h5>Matrícula Total</h5><span>1,245</span></div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-icon bg-green">☑️</div>
-        <div class="stat-info"><h5>Asistencia Hoy</h5><span>92%</span></div>
-    </div>
+
     <div class="stat-card">
         <div class="stat-icon bg-orange">📖</div>
-        <div class="stat-info"><h5>Cursos Activos</h5><span>36</span></div>
+        <div class="stat-info">
+            <h5>Mis Cursos</h5>
+            <span>{{ total_cursos }}</span>
+        </div>
     </div>
+
     <div class="stat-card">
-        <div class="stat-icon bg-blue">👤</div>
-        <div class="stat-info"><h5>Profesores</h5><span>58</span></div>
+        <div class="stat-icon bg-blue">👥</div>
+        <div class="stat-info">
+            <h5>Mis Alumnos</h5>
+            <span>{{ total_alumnos }}</span>
+        </div>
     </div>
+
+    <div class="stat-card">
+        <div class="stat-icon bg-green">☑️</div>
+        <div class="stat-info">
+            <h5>Asistencia Hoy</h5>
+            <span>
+                {% if porcentaje_asistencia is not None %}
+                    {{ porcentaje_asistencia }}%
+                {% else %}
+                    —
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon bg-blue">📄</div>
+        <div class="stat-info">
+            <h5>Notas Ingresadas</h5>
+            <span>{{ total_evaluaciones }}</span>
+        </div>
+    </div>
+
 </div>
 
-<!-- Fila 2: Estadísticas secundarias -->
+<!-- Estadísticas de incidencias -->
 <div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-icon bg-gray">👤</div>
-        <div class="stat-info"><h5>Alumnos Retirados</h5><span>12</span></div>
-    </div>
+
     <div class="stat-card">
         <div class="stat-icon bg-orange">❗</div>
-        <div class="stat-info"><h5>Anotaciones Hoy</h5><span>5</span></div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-icon bg-blue">🕒</div>
-        <div class="stat-info"><h5>Tareas Pendientes</h5><span>128</span></div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-icon bg-green">📄</div>
-        <div class="stat-info"><h5>Evaluaciones esta semana</h5><span>15</span></div>
-    </div>
-</div>
-
-<!-- Sección Novedades -->
-<div class="news-section">
-    <h3>Novedades y Actualizaciones</h3>
-    <div class="news-grid">
-        
-        <div class="news-banner">
-            <div class="banner-content">
-                <span class="banner-badge">NUEVO MÓDULO</span>
-                <h2>Estamos renovando SGE<br>Santa Juliana</h2>
-                <a href="#" class="btn-blue">Ver más</a>
-            </div>
-            <div class="banner-image">
-                [Imagen Ilustración]
-            </div>
-        </div>
-
-        <div class="other-news">
-            <h4>Otras noticias</h4>
-            
-            <div class="news-item">
-                <div class="news-icon">📄</div>
-                <div class="news-text">
-                    <span>24 ENE</span>
-                    <p>Evaluaciones estandarizadas 2026</p>
-                </div>
-            </div>
-            
-            <div class="news-item">
-                <div class="news-icon">📄</div>
-                <div class="news-text">
-                    <span>18 ENE</span>
-                    <p>Cursos de formación docente</p>
-                </div>
-            </div>
-            
-            <div class="news-item">
-                <div class="news-icon">📄</div>
-                <div class="news-text">
-                    <span>10 ENE</span>
-                    <p>Nuevo proceso de matrícula digital</p>
-                </div>
-            </div>
+        <div class="stat-info">
+            <h5>Mis Incidencias</h5>
+            <span>{{ total_incidencias }}</span>
         </div>
     </div>
+
+    <div class="stat-card">
+        <div class="stat-icon bg-orange">🕒</div>
+        <div class="stat-info">
+            <h5>Incidencias Pendientes</h5>
+            <span>{{ incidencias_pendientes }}</span>
+        </div>
+    </div> 
+
+
 </div>
+
+<!-- Accesos rápidos -->
+<div class="page-header" style="margin-top: 30px;">
+    <h2>Accesos rápidos</h2>
+    <p>Ingresa directamente a los módulos de gestión.</p>
+</div>
+
+<div class="stats-grid">
+
+    <a href="{% url 'profesor_asistencia' %}"
+       class="stat-card"
+       style="text-decoration: none; color: inherit;">
+
+        <div class="stat-icon bg-green">☑️</div>
+
+        <div class="stat-info">
+            <h5>Asistencia</h5>
+            <span style="font-size: 15px;">
+                Registrar asistencia
+            </span>
+        </div>
+
+    </a>
+
+    <a href="{% url 'profesor_agregar_incidencia' %}"
+       class="stat-card"
+       style="text-decoration: none; color: inherit;">
+
+        <div class="stat-icon bg-orange">➕</div>
+
+        <div class="stat-info">
+            <h5>Agregar Incidencia</h5>
+            <span style="font-size: 15px;">
+                Nueva solicitud
+            </span>
+        </div>
+
+    </a>
+
+    <a href="{% url 'profesor_revisar_incidencias' %}"
+       class="stat-card"
+       style="text-decoration: none; color: inherit;">
+
+        <div class="stat-icon bg-blue">📋</div>
+
+        <div class="stat-info">
+            <h5>Revisar Incidencias</h5>
+            <span style="font-size: 15px;">
+                Consultar mis solicitudes
+            </span>
+        </div>
+
+    </a>
+
+</div>
+
 {% endblock %}
