@@ -2,8 +2,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Agregar CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Portal Profesor - SGE</title>
     <link rel="stylesheet" href="{% static 'css/base_profesor.css' %}">
 </head>
@@ -37,7 +39,7 @@
             </a>
             <div class="sub-menu" id="submenu-incidencias" style="display: none;">
                 <a href="{% url 'profesor_agregar_incidencia' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_agregar_incidencia' %}active-sub{% endif %}">Agregar Incidencia</a>
-                <a href="{% url 'profesor_revisar_incidencias' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_revisar_incidencias' %}active-sub{% endif %}">Revisar Incidencias</a>
+                <a href="{% url 'profesor_gestion_incidencias' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_gestion_incidencias' or request.resolver_match.url_name == 'profesor_detalle_incidencia' %}active-sub{% endif %}">Mis Incidencias</a>
             </div>
 
             <!-- Menú Alumnos (Desplegable) -->
@@ -65,15 +67,38 @@
     <main class="main-content">
         <header class="top-header">
             <div class="last-access"><span>Último acceso: {{ request.session.ultimo_acceso|default:"Primer ingreso" }}</span></div>
-            <div class="user-profile">
-                <div class="user-info">
-                    <div class="user-details">
-                        <h4>{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}</h4>
-                        <p>Profesor</p>
+            <div class="user-profile dropdown">
+                <!-- Botón desplegable -->
+                <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    
+                    <!-- Contenedor en columna (Nombre arriba, Rol abajo) -->
+                    <div class="me-2 text-end" style="display: flex; flex-direction: column; align-items: flex-end;">
+                        <span class="fw-bold text-dark" style="font-size: 0.95rem; line-height: 1.2;">{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}</span>
+                        <span class="text-muted" style="font-size: 0.75rem; line-height: 1.2;">{{ request.session.rol_nombre }}</span>
                     </div>
-                    <img src="https://ui-avatars.com/api/?name={{ request.session.nombre_usuario }}+{{ request.session.apellido_usuario }}&background=e2e8f0&color=0f172a" alt="Avatar">
-                </div>
-                <a href="{% url 'login' %}" class="btn-logout">⍈ Cerrar sesión</a>
+
+                    <!-- Avatar con iniciales -->
+                    <img src="https://ui-avatars.com/api/?name={{ request.session.nombre_usuario }}+{{ request.session.apellido_usuario }}&background=e2e8f0&color=0f172a" alt="Avatar" class="rounded-circle" width="40" height="40">
+                </a>
+
+                <!-- Menú desplegable flotante -->
+                <ul class="dropdown-menu dropdown-menu-end shadow p-2" aria-labelledby="dropdownUser1" style="min-width: 220px;">
+                    <li class="px-3 py-2 border-bottom mb-2">
+                        <span class="d-block fw-bold text-dark">{{ request.session.nombre_usuario }}</span>
+                        <span class="d-block text-muted small">Rol: {{ request.session.rol_nombre }}</span>
+                    </li>
+                    <li>
+                        <a class="dropdown-item rounded py-2" href="{% url 'cambiar_password_perfil' %}">
+                            🔒 Cambiar Clave
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item rounded py-2 text-danger fw-semibold" href="{% url 'login' %}">
+                            ⍈ Cerrar sesión
+                        </a>
+                    </li>
+                </ul>
             </div>
         </header>
 
@@ -126,5 +151,8 @@
             }
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 </body>
 </html>

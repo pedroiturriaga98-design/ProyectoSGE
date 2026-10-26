@@ -3,63 +3,66 @@
 {% block content %}
 
 <div class="page-header">
-    <h2>Evaluar Incidencia: INC-2026-042</h2>
+    <h2>Evaluar Incidencia: INC-2026-{{ ticket.id_ticket|stringformat:"03d" }}</h2>
     <p>Actualice el estado de la solicitud o añada observaciones para el solicitante.</p>
 </div>
 
 <div class="form-card">
-    <div class="form-grid">
-        <!-- Datos de Solo Lectura -->
-        <div class="form-group">
-            <label>Reportante</label>
-            <input type="text" class="form-control" value="María González (Profesora)" disabled>
-        </div>
-        <div class="form-group">
-            <label>Fecha del Reporte</label>
-            <input type="text" class="form-control" value="01/09/2026 10:45 AM" disabled>
-        </div>
-        
-        <div class="form-group">
-            <label>Ubicación / Equipo</label>
-            <input type="text" class="form-control" value="Lab 2 - PC-LAB2-014" disabled>
-        </div>
-        <div class="form-group">
-            <label>Prioridad Asignada</label>
-            <input type="text" class="form-control" value="Alta" disabled>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-grid">
+            <!-- Datos de Solo Lectura -->
+            <div class="form-group">
+                <label>Reportante</label>
+                <input type="text" class="form-control" value="{{ ticket.usuario_rut.nombre }} {{ ticket.usuario_rut.apellido_paterno }} ({{ ticket.usuario_rut.rol_id_rol.nombre_rol }})" disabled>
+            </div>
+            <div class="form-group">
+                <label>Fecha del Reporte</label>
+                <input type="text" class="form-control" value="{{ ticket.fecha_reporte|date:'d/m/Y' }}" disabled>
+            </div>
+            
+            <div class="form-group">
+                <label>Ubicación / Equipo</label>
+                <input type="text" class="form-control" value="{{ ticket.equipo_ti_codigo_inventario.ubicacion }} - {{ ticket.equipo_ti_codigo_inventario.codigo_inventario }}" disabled>
+            </div>
+            <div class="form-group">
+                <label>Prioridad Asignada</label>
+                <input type="text" class="form-control" value="{{ ticket.prioridad }}" disabled>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Descripción del Problema</label>
+                <textarea class="form-control" rows="3" disabled>{{ ticket.descripcion|default:"Sin descripción proporcionada." }}</textarea>
+            </div>
+
+            <!-- Campos Editables para el Administrador -->
+            <div class="form-group full-width" style="border-top: 1px solid #e2e8f0; padding-top: 20px;">
+                <h3 style="font-size: 1.1rem; color: #0f172a; margin-bottom: 15px;">Resolución del Administrador</h3>
+            </div>
+
+            <div class="form-group">
+                <label>Actualizar Estado</label>
+                <select name="estado_ticket" class="form-control status-select">
+                    <option value="Por revisar" {% if ticket.estado_ticket == 'Por revisar' %}selected{% endif %}>Por revisar</option>
+                    <option value="Aprobada (En proceso)" {% if ticket.estado_ticket == 'Aprobada (En proceso)' %}selected{% endif %}>Aprobada (En proceso)</option>
+                    <option value="Rechazada" {% if ticket.estado_ticket == 'Rechazada' %}selected{% endif %}>Rechazada</option>
+                    <option value="Resuelta" {% if ticket.estado_ticket == 'Resuelta' %}selected{% endif %}>Resuelta</option>
+                </select>
+            </div>
+            
+            <div class="form-group full-width">
+                <label>Observaciones / Respuesta (Opcional)</label>
+                <textarea name="observacion" class="form-control" rows="2" placeholder="Escriba un comentario sobre la aprobación o el rechazo...">{{ ticket.observacion|default:"" }}</textarea>
+            </div>
         </div>
 
-        <div class="form-group full-width">
-            <label>Descripción del Problema</label>
-            <textarea class="form-control" rows="3" disabled>El computador no enciende, hace un pitido constante al presionar el botón de poder. Se necesita para la clase de programación de la tarde.</textarea>
+        <div class="form-footer">
+            <div style="font-size: 0.85rem; color: #64748b;">La actualización notificará al reportante.</div>
+            <div class="btn-group">
+                <a href="{% url 'admin_gestion_incidencias' %}" class="btn-cancel text-decoration-none text-center" style="padding-top: 8px;">Volver</a>
+                <button type="submit" class="btn-submit">Guardar Resolución</button>
+            </div>
         </div>
-
-        <!-- Campos Editables para el Administrador -->
-        <div class="form-group full-width" style="border-top: 1px solid #e2e8f0; padding-top: 20px;">
-            <h3 style="font-size: 1.1rem; color: #0f172a; margin-bottom: 15px;">Resolución del Administrador</h3>
-        </div>
-
-        <div class="form-group">
-            <label>Actualizar Estado</label>
-            <select class="form-control status-select">
-                <option value="revisar" selected>Por revisar</option>
-                <option value="aprobada">Aprobada (En proceso)</option>
-                <option value="rechazada">Rechazada</option>
-                <option value="resuelta">Resuelta</option>
-            </select>
-        </div>
-        
-        <div class="form-group full-width">
-            <label>Observaciones / Respuesta (Opcional)</label>
-            <textarea class="form-control" rows="2" placeholder="Escriba un comentario sobre la aprobación o el rechazo..."></textarea>
-        </div>
-    </div>
-
-    <div class="form-footer">
-        <div style="font-size: 0.85rem; color: #64748b;">La actualización notificará al reportante.</div>
-        <div class="btn-group">
-            <button class="btn-cancel" onclick="window.history.back()">Volver</button>
-            <a class="btn-submit" href="{% url 'admin_gestion_incidencias' %}" onclick="alert('Estado de la incidencia actualizado correctamente.')">Guardar Resolución</a>
-        </div>
-    </div>
+    </form>
 </div>
 {% endblock %}

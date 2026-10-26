@@ -312,9 +312,10 @@ class TicketSoporte(models.Model):
     id_ticket = models.IntegerField(primary_key=True)
     fecha_reporte = models.DateField()
     prioridad = models.CharField(max_length=20)
+    observacion = models.TextField(blank=True, null=True)
 
     estado_ticket = models.CharField(
-        max_length=20,
+        max_length=50,
         default='Pendiente'
     )
 

@@ -33,6 +33,12 @@ def require_role(roles_permitidos):
 
 
 def login_view(request):
+    if request.method == 'GET':
+        # Consume y limpia cualquier mensaje viejo que haya quedado en sesión
+        storage = messages.get_messages(request)
+        for _ in storage:
+            pass
+    
     if request.method == 'POST':
         credencial_ingresada = (
             request.POST.get('username') or ''
@@ -96,6 +102,8 @@ def login_view(request):
                 request.session['nombre_usuario'] = usuario.nombre
                 request.session['apellido_usuario'] = usuario.apellido_paterno
                 request.session['rol_nombre'] = usuario.rol_id_rol.nombre_rol
+
+                request.session['ultimo_acceso'] = datetime.now().strftime('%d/%m/%Y a las %H:%M')
 
                 # NUEVO: Si el usuario debe cambiar su contraseña obligatoriamente
                 if usuario.cambiar_password:
@@ -985,72 +993,25 @@ def profesor_agregar_incidencia(request):
         'fecha_actual': timezone.localdate().isoformat()
     })
 
-
-
-@require_role([2])
-def profesor_revisar_incidencias(request):
-    from .models import SolicitudInsumo, TicketSoporte, Usuario
-
+@require_role([2]) # Rol 2: Profesor
+def profesor_gestion_incidencias(request):
     rut_profesor = request.session.get('usuario_rut')
+    incidencias = TicketSoporte.objects.filter(usuario_rut__rut=rut_profesor).order_by('-fecha_reporte', '-id_ticket')
+    
+    context = {
+        'incidencias': incidencias
+    }
+    return render(request, 'profesor_gestion_incidencias.html', context)
 
-    incidencias = []
-
-    # Solicitudes de material y reposición
-    solicitudes = SolicitudInsumo.objects.filter(
-        usuario_rut_id=rut_profesor
-    )
-
-    # Problemas de equipo y mantenimiento
-    tickets = TicketSoporte.objects.filter(
-        usuario_rut_id=rut_profesor
-    )
-
-    usuario = Usuario.objects.filter(rut=rut_profesor).first()
-
-    nombre_profesor = (
-        f"{request.session.get('nombre_usuario', '')} "
-        f"{request.session.get('apellido_usuario', '')}"
-    ).strip()
-
-    for solicitud in solicitudes:
-        incidencias.append({
-            'id': solicitud.id_solicitud,
-            'origen': 'insumo',
-            'profesor': nombre_profesor,
-            'fecha': solicitud.fecha,
-            'tipo': solicitud.tipo_solicitud or 'Solicitud de Material',
-            'comentario': solicitud.descripcion or '',
-            'estado': solicitud.estado_solicitud or 'Pendiente',
-        })
-
-    for ticket in tickets:
-        incidencias.append({
-            'id': ticket.id_ticket,
-            'origen': 'soporte',
-            'profesor': nombre_profesor,
-            'fecha': ticket.fecha_reporte,
-            'tipo': ticket.tipo_incidencia or 'Problema con Equipo',
-            'comentario': ticket.descripcion or '',
-            'estado': ticket.estado_ticket or 'Pendiente',
-        })
-
-    incidencias.sort(
-        key=lambda incidencia: (
-            incidencia['fecha'],
-            incidencia['id']
-        ),
-        reverse=True
-    )
-
-    return render(
-        request,
-        'profesor_revisar_incidencias.html',
-        {'incidencias': incidencias}
-    )
-
-
-
-
+@require_role([2]) # Rol 2: Profesor
+def profesor_detalle_incidencia(request, pk):
+    rut_profesor = request.session.get('usuario_rut')
+    ticket = get_object_or_404(TicketSoporte, pk=pk, usuario_rut__rut=rut_profesor)
+    
+    context = {
+        'ticket': ticket
+    }
+    return render(request, 'profesor_detalle_incidencia.html', context)
 
 @require_role([2])
 def profesor_alumnos(request):
@@ -1369,6 +1330,7 @@ def admin_editar_usuario(request, rut):
             return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 
     return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
+
 @require_role([1, 4])
 def admin_eliminar_usuario(request, rut):
     # Buscamos al usuario o tiramos error 404 si no existe
@@ -1662,12 +1624,44 @@ def admin_editar_alumno(request, rut):
 
 
 @require_role([1, 4])
+@require_role([1, 4])
 def admin_gestion_incidencias(request):
-    return render(request, 'admin_gestion_incidencias.html')
+    # Obtenemos todos los tickets ordenados del más reciente al más antiguo
+    incidencias = TicketSoporte.objects.all().order_by('-fecha_reporte', '-id_ticket')
+    
+    context = {
+        'incidencias': incidencias
+    }
+    return render(request, 'admin_gestion_incidencias.html', context)
+
 
 @require_role([1, 4])
-def admin_editar_incidencia(request):
-    return render(request, 'admin_editar_incidencia.html')
+@require_role([1, 4])
+def admin_editar_incidencia(request, pk):
+    ticket = get_object_or_404(TicketSoporte, pk=pk)
+
+    if request.method == 'POST':
+        nuevo_estado = request.POST.get('estado_ticket')
+        nueva_observacion = request.POST.get('observacion', '').strip()
+        
+        if nuevo_estado:
+            ticket.estado_ticket = nuevo_estado
+            if nueva_observacion:
+                ticket.observacion = nueva_observacion
+            ticket.save(update_fields=['estado_ticket', 'observacion'])
+            
+            messages.success(request, f'¡Incidencia INC-2026-{ticket.id_ticket:03d} actualizada con éxito!')
+            return redirect('admin_gestion_incidencias')
+
+    context = {'ticket': ticket}
+    return render(request, 'admin_editar_incidencia.html', context)
+
+@require_role([1, 4])
+def admin_detalle_incidencia(request, pk):
+    ticket = get_object_or_404(TicketSoporte, pk=pk)
+    return render(request, 'admin_detalle_incidencia.html', {'ticket': ticket})
+
+
 
 @require_role([1])
 def admin_gestion_apoderados(request):
@@ -1740,7 +1734,6 @@ def cambiar_password_obligatorio(request):
             if 'debe_cambiar_pass' in request.session:
                 del request.session['debe_cambiar_pass']
 
-            messages.success(request, '¡Contraseña actualizada con éxito!')
 
             # REDIRIGIMOS DIRECTO A SU PANEL CORRESPONDIENTE (Adiós al login)
             rol = usuario.rol_id_rol.id_rol

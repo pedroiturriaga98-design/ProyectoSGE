@@ -1,0 +1,66 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2>Detalle de Incidencia: INC-2026-{{ ticket.id_ticket|stringformat:"03d" }}</h2>
+    <p>Información completa del reporte y resolución registrada.</p>
+</div>
+
+<div class="form-card">
+    <div class="form-grid">
+        <!-- Datos del Reporte -->
+        <div class="form-group">
+            <label>Reportante</label>
+            <input type="text" class="form-control" value="{{ ticket.usuario_rut.nombre }} {{ ticket.usuario_rut.apellido_paterno }} ({{ ticket.usuario_rut.rol_id_rol.nombre_rol }})" disabled>
+        </div>
+        <div class="form-group">
+            <label>Fecha del Reporte</label>
+            <input type="text" class="form-control" value="{{ ticket.fecha_reporte|date:'d/m/Y' }}" disabled>
+        </div>
+        
+        <div class="form-group">
+            <label>Ubicación / Equipo</label>
+            <input type="text" class="form-control" value="{{ ticket.equipo_ti_codigo_inventario.ubicacion }} - {{ ticket.equipo_ti_codigo_inventario.codigo_inventario }}" disabled>
+        </div>
+        <div class="form-group">
+            <label>Prioridad Asignada</label>
+            <input type="text" class="form-control" value="{{ ticket.prioridad }}" disabled>
+        </div>
+
+        <div class="form-group full-width">
+            <label>Descripción del Problema</label>
+            <textarea class="form-control" rows="3" disabled>{{ ticket.descripcion|default:"Sin descripción proporcionada." }}</textarea>
+        </div>
+
+        <!-- Estado y Resolución -->
+        <div class="form-group full-width" style="border-top: 1px solid #e2e8f0; padding-top: 20px;">
+            <h3 style="font-size: 1.1rem; color: #0f172a; margin-bottom: 15px;">Estado y Resolución</h3>
+        </div>
+
+        <div class="form-group">
+            <label>Estado Actual del Ticket</label>
+            <input type="text" class="form-control fw-bold 
+                {% if ticket.estado_ticket == 'Resuelta' %}text-success
+                {% elif ticket.estado_ticket == 'Aprobada (En proceso)' %}text-primary
+                {% elif ticket.estado_ticket == 'Rechazada' %}text-danger
+                {% else %}text-warning{% endif %}" 
+                value="{{ ticket.estado_ticket }}" disabled>
+        </div>
+        
+        <div class="form-group full-width">
+            <label>Observaciones / Respuesta del Administrador</label>
+            <textarea class="form-control" rows="2" disabled>{{ ticket.observacion|default:"Aún no se han registrado observaciones para esta incidencia." }}</textarea>
+        </div>
+    </div>
+
+    <div class="form-footer mt-4">
+        <div style="font-size: 0.85rem; color: #64748b;">Registro oficial de soporte técnico - Colegio Santa Juliana.</div>
+        <div class="btn-group">
+            <a href="{% url 'admin_gestion_incidencias' %}" class="btn-cancel text-decoration-none text-center" style="padding-top: 8px;">Volver al Listado</a>
+            <a href="{% url 'admin_editar_incidencia' ticket.id_ticket %}" class="btn-submit text-decoration-none text-center" style="padding-top: 8px;">Editar Incidencia</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

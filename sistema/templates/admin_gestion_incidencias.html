@@ -32,54 +32,43 @@
             </tr>
         </thead>
         <tbody>
+            {% for t in incidencias %}
             <tr>
-                <td class="ticket-id">INC-2026-042</td>
-                <td>01/09/2026</td>
-                <td>Lab 2 - PC-LAB2-014</td>
-                <td>María González (Profesora)</td>
-                <td><span class="badge bg-alta">Alta</span></td>
-                <!-- Por defecto en Por revisar -->
-                <td><span class="badge badge-rounded bg-revisar">Por revisar</span></td>
+                <td class="ticket-id">INC-2026-{{ t.id_ticket|stringformat:"03d" }}</td>
+                <td>{{ t.fecha_reporte|date:"d/m/Y" }}</td>
+                <td>{{ t.equipo_ti_codigo_inventario.ubicacion }} - {{ t.equipo_ti_codigo_inventario.codigo_inventario }}</td>
+                <td>{{ t.usuario_rut.nombre }} {{ t.usuario_rut.apellido_paterno }} ({{ t.usuario_rut.rol_id_rol.nombre_rol }})</td>
+                <td>
+                    <span class="badge 
+                        {% if t.prioridad == 'Alta' %}bg-alta
+                        {% elif t.prioridad == 'Media' %}bg-media
+                        {% else %}bg-critica{% endif %}">
+                        {{ t.prioridad }}
+                    </span>
+                </td>
+                <td>
+                    <span class="badge badge-rounded 
+                        {% if t.estado_ticket == 'Resuelta' %}bg-success
+                        {% elif t.estado_ticket == 'Aprobada (En proceso)' %}bg-primary
+                        {% elif t.estado_ticket == 'Rechazada' %}bg-danger
+                        {% else %}bg-revisar{% endif %}">
+                        {{ t.estado_ticket }}
+                    </span>
+                </td>
                 <td>
                     <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_incidencia' %}" aria-label="Evaluar o editar incidencia" title="Evaluar/Editar">✎</a>
-                        <button class="btn-icon" title="Ver detalles">📄</button>
+                        <!-- Botón Editar conectado al ID del ticket -->
+                        <a class="btn-icon" href="{% url 'admin_editar_incidencia' t.id_ticket %}" aria-label="Evaluar o editar incidencia" title="Evaluar/Editar">✎</a>
+                        <a class="btn-icon" href="{% url 'admin_detalle_incidencia' t.id_ticket %}" title="Ver detalles">📄</a>
                         <button class="btn-icon delete" onclick="eliminarIncidencia(this)" title="Eliminar">🗑</button>
                     </div>
                 </td>
             </tr>
+            {% empty %}
             <tr>
-                <td class="ticket-id">INC-2026-041</td>
-                <td>31/08/2026</td>
-                <td>Sala 3A - Proyector</td>
-                <td>Juan Pérez (Asistente)</td>
-                <td><span class="badge bg-media">Media</span></td>
-                <!-- Cambiado a Por revisar por defecto -->
-                <td><span class="badge badge-rounded bg-revisar">Por revisar</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_incidencia' %}" aria-label="Editar incidencia">✎</a>
-                        <button class="btn-icon">📄</button>
-                        <button class="btn-icon delete" onclick="eliminarIncidencia(this)">🗑</button>
-                    </div>
-                </td>
+                <td colspan="7" class="text-center py-4 text-muted">No hay incidencias registradas en el sistema.</td>
             </tr>
-            <tr>
-                <td class="ticket-id">INC-2026-040</td>
-                <td>30/08/2026</td>
-                <td>Lab 1 - PC-LAB1-008</td>
-                <td>Carlos Muñoz (Profesor)</td>
-                <td><span class="badge bg-critica">Crítica</span></td>
-                <!-- Por defecto en Por revisar -->
-                <td><span class="badge badge-rounded bg-revisar">Por revisar</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_incidencia' %}" aria-label="Editar incidencia">✎</a>
-                        <button class="btn-icon">📄</button>
-                        <button class="btn-icon delete" onclick="eliminarIncidencia(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>

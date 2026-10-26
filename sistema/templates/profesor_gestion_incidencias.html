@@ -1,0 +1,60 @@
+{% extends 'base_profesor.html' %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2>Mis Reportes de Incidencias</h2>
+    <p>Consulta el estado de tus solicitudes y las respuestas del departamento de TI.</p>
+</div>
+
+<div class="table-container">
+    <table id="incidencias-table">
+        <thead>
+            <tr>
+                <th style="width: 15%;">ID TICKET</th>
+                <th style="width: 15%;">FECHA</th>
+                <th style="width: 25%;">UBICACIÓN / EQUIPO</th>
+                <th style="width: 15%;">PRIORIDAD</th>
+                <th style="width: 15%;">ESTADO</th>
+                <th style="width: 15%;">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in incidencias %}
+            <tr>
+                <td class="ticket-id">INC-2026-{{ t.id_ticket|stringformat:"03d" }}</td>
+                <td>{{ t.fecha_reporte|date:"d/m/Y" }}</td>
+                <td>{{ t.equipo_ti_codigo_inventario.ubicacion }} - {{ t.equipo_ti_codigo_inventario.codigo_inventario }}</td>
+                <td>
+                    <span class="badge 
+                        {% if t.prioridad == 'Alta' %}bg-alta
+                        {% elif t.prioridad == 'Media' %}bg-media
+                        {% else %}bg-critica{% endif %}">
+                        {{ t.prioridad }}
+                    </span>
+                </td>
+                <td>
+                    <span class="badge badge-rounded 
+                        {% if t.estado_ticket == 'Resuelta' %}bg-success
+                        {% elif t.estado_ticket == 'Aprobada (En proceso)' %}bg-primary
+                        {% elif t.estado_ticket == 'Rechazada' %}bg-danger
+                        {% else %}bg-revisar{% endif %}">
+                        {{ t.estado_ticket }}
+                    </span>
+                </td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'profesor_detalle_incidencia' t.id_ticket %}" title="Ver detalles y resolución">📄</a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center py-4 text-muted">No has registrado incidencias en el sistema.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
