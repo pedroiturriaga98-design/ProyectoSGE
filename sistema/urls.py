@@ -5,6 +5,7 @@ urlpatterns = [
     
     path('', views.login_view, name='login'),
     path('cambiar-password/', views.cambiar_password_obligatorio, name='cambiar_password_obligatorio'),
+    path('mi-cuenta/cambiar-password/', views.cambiar_password_perfil, name='cambiar_password_perfil'),
     # Rutas para el Portal de apoderado
     path('apoderado/', views.apoderado_inicio, name='apoderado_inicio'),
     path('apoderado/notas/', views.apoderado_notas, name='apoderado_notas'),

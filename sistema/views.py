@@ -1332,3 +1332,62 @@ def cambiar_password_obligatorio(request):
             return redirect('login')
         
     return render(request, 'cambiar_password.html')
+
+def cambiar_password_perfil(request):
+    # Seguridad: verificar que haya iniciado sesión
+    if 'usuario_rut' not in request.session:
+        messages.error(request, 'Debes iniciar sesión para realizar esta acción.')
+        return redirect('login')
+
+    if request.method == 'POST':
+        pass_actual = request.POST.get('password_actual', '').strip()
+        nueva_pass = request.POST.get('nueva_password', '').strip()
+        conf_pass = request.POST.get('conf_password', '').strip()
+
+        try:
+            usuario = Usuario.objects.get(rut=request.session['usuario_rut'])
+        except Usuario.DoesNotExist:
+            return redirect('login')
+
+        # 1. Validar que la contraseña actual sea correcta
+        if not check_password(pass_actual, usuario.password_hash):
+            messages.error(request, 'La contraseña actual es incorrecta.')
+            return render(request, 'cambiar_password_perfil.html')
+
+        # 2. Validar longitud mínima
+        if not nueva_pass or len(nueva_pass) < 6:
+            messages.error(request, 'La nueva contraseña debe tener al menos 6 caracteres.')
+            return render(request, 'cambiar_password_perfil.html')
+
+        # 3. Validar reglas de seguridad (Mayúscula, número y símbolo)
+        tiene_mayuscula = any(c.isupper() for c in nueva_pass)
+        tiene_numero = any(c.isdigit() for c in nueva_pass)
+        tiene_simbolo = any(not c.isalnum() for c in nueva_pass)
+
+        if not (tiene_mayuscula and tiene_numero and tiene_simbolo):
+            messages.error(request, 'La contraseña nueva debe contener al menos una letra mayúscula, un número y un símbolo especial.')
+            return render(request, 'cambiar_password_perfil.html')
+
+        # 4. Validar coincidencia
+        if nueva_pass != conf_pass:
+            messages.error(request, 'Las nuevas contraseñas ingresadas no coinciden.')
+            return render(request, 'cambiar_password_perfil.html')
+
+        # 5. Guardar la nueva contraseña cifrada
+        usuario.password_hash = make_password(nueva_pass)
+        usuario.save(update_fields=['password_hash'])
+
+        messages.success(request, '¡Tu contraseña ha sido actualizada con éxito!')
+
+        # Redirigir de vuelta a su panel correspondiente según su rol
+        rol = usuario.rol_id_rol.id_rol
+        if rol in [1, 4]:
+            return redirect('admin_inicio')
+        elif rol == 2:
+            return redirect('profesor_inicio')
+        elif rol == 3:
+            return redirect('apoderado_inicio')
+        elif rol == 5:
+            return redirect('admin_gestion_inventario')
+
+    return render(request, 'cambiar_password_perfil.html')
