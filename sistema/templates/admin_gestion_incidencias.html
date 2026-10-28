@@ -8,16 +8,42 @@
 </div>
 
 <div class="table-container">
-    <div class="table-toolbar">
+    <!-- FORMULARIO DE FILTROS Y BÚSQUEDA -->
+    <form method="GET" action="" class="table-toolbar">
         <div class="filters-left">
+            <!-- Input de búsqueda por texto -->
             <div class="search-box">
-                <input type="text" placeholder="Buscar por sala, equipo...">
+                <input type="text" name="q" value="{{ query }}" placeholder="Buscar por sala, equipo...">
             </div>
-            <select class="filter-select"><option>Estado: Todos</option></select>
-            <select class="filter-select"><option>Prioridad: Todas</option></select>
+
+            <!-- Selector de Estado -->
+            <select name="estado" class="filter-select" onchange="this.form.submit()">
+                <option value="Todos" {% if estado_filtro == 'Todos' or not estado_filtro %}selected{% endif %}>Estado: Todos</option>
+                <option value="Pendiente" {% if estado_filtro == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                <option value="Aprobada (En proceso)" {% if estado_filtro == 'Aprobada (En proceso)' %}selected{% endif %}>Aprobada (En proceso)</option>
+                <option value="Resuelta" {% if estado_filtro == 'Resuelta' %}selected{% endif %}>Resuelta</option>
+                <option value="Rechazada" {% if estado_filtro == 'Rechazada' %}selected{% endif %}>Rechazada</option>
+            </select>
+
+            <!-- Selector de Prioridad -->
+            <select name="prioridad" class="filter-select" onchange="this.form.submit()">
+                <option value="Todas" {% if prioridad_filtro == 'Todas' or not prioridad_filtro %}selected{% endif %}>Prioridad: Todas</option>
+                <option value="Baja" {% if prioridad_filtro == 'Baja' %}selected{% endif %}>Baja</option>
+                <option value="Media" {% if prioridad_filtro == 'Media' %}selected{% endif %}>Media</option>
+                <option value="Alta" {% if prioridad_filtro == 'Alta' %}selected{% endif %}>Alta</option>
+                <option value="Crítica" {% if prioridad_filtro == 'Crítica' %}selected{% endif %}>Crítica</option>
+            </select>
+
+            <button type="submit" style="padding: 10px 15px; background-color: #0f172a; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">
+                Filtrar
+            </button>
         </div>
-        <button class="btn-create">+ Registrar Incidencia</button>
-    </div>
+
+        <!-- Botón Registrar Incidencia conectado a su URL -->
+        <a class="btn-create" href="{% url 'admin_crear_incidencia' %}">
+            + Registrar Incidencia
+        </a>
+    </form>
 
     <table id="incidencias-table">
         <thead>
@@ -57,16 +83,16 @@
                 </td>
                 <td>
                     <div class="action-btns">
-                        <!-- Botón Editar conectado al ID del ticket -->
                         <a class="btn-icon" href="{% url 'admin_editar_incidencia' t.id_ticket %}" aria-label="Evaluar o editar incidencia" title="Evaluar/Editar">✎</a>
                         <a class="btn-icon" href="{% url 'admin_detalle_incidencia' t.id_ticket %}" title="Ver detalles">📄</a>
+                        <!-- Opcional: si prefieres ruta real de eliminación por URL en vez de JS puro -->
                         <button class="btn-icon delete" onclick="eliminarIncidencia(this)" title="Eliminar">🗑</button>
                     </div>
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="7" class="text-center py-4 text-muted">No hay incidencias registradas en el sistema.</td>
+                <td colspan="7" class="text-center py-4 text-muted">No hay incidencias registradas que coincidan con la búsqueda.</td>
             </tr>
             {% endfor %}
         </tbody>

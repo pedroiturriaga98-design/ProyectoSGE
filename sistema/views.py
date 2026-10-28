@@ -410,7 +410,7 @@ def profesor_inicio(request):
 import json
 from decimal import Decimal, InvalidOperation
 from django.db import transaction, connection
-from django.http import JsonResponse
+from django.http import JsonResponse, request
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from django.utils import timezone
@@ -840,7 +840,7 @@ from .models import (
 
 
 
-@require_role([2])
+@require_role([1, 2, 4])
 def profesor_agregar_incidencia(request):
     from datetime import date
     from django.contrib import messages
@@ -1319,7 +1319,7 @@ def admin_editar_usuario(request, rut):
             usuario.telefono = telefono_form
             usuario.direccion = direccion_form
             usuario.fecha_nacimiento = fecha_nac_form if fecha_nac_form else None
-
+            usuario.activo = 1 if 'activo' in request.POST else 0
             usuario.save()
 
             messages.success(request, f'Usuario {usuario.rut} actualizado correctamente.')
@@ -1622,18 +1622,45 @@ def admin_editar_alumno(request, rut):
         context
     )
 
+from django.db.models import Q
 
-@require_role([1, 4])
 @require_role([1, 4])
 def admin_gestion_incidencias(request):
-    # Obtenemos todos los tickets ordenados del más reciente al más antiguo
+    query = request.GET.get('q', '').strip()
+    estado_filtro = request.GET.get('estado', '')
+    prioridad_filtro = request.GET.get('prioridad', '')
+
     incidencias = TicketSoporte.objects.all().order_by('-fecha_reporte', '-id_ticket')
-    
+
+    if query:
+        # Limpiamos el texto por si escriben "INC-2026-002" o solo "2" para extraer el número
+        query_limpio = query.upper().replace('INC', '').replace('2026', '').replace('-', '').strip()
+        
+        condiciones = Q(equipo_ti_codigo_inventario__ubicacion__icontains=query) | \
+                      Q(equipo_ti_codigo_inventario__codigo_inventario__icontains=query) | \
+                      Q(usuario_rut__nombre__icontains=query) | \
+                      Q(usuario_rut__apellido_paterno__icontains=query) | \
+                      Q(descripcion__icontains=query)
+        
+        # Si lo que escribieron se puede pasar a número, permitimos buscar por ID exacto
+        if query_limpio.isdigit():
+            condiciones |= Q(id_ticket=int(query_limpio))
+
+        incidencias = incidencias.filter(condiciones)
+
+    if estado_filtro and estado_filtro != 'Todos':
+        incidencias = incidencias.filter(estado_ticket=estado_filtro)
+
+    if prioridad_filtro and prioridad_filtro != 'Todas':
+        incidencias = incidencias.filter(prioridad=prioridad_filtro)
+
     context = {
-        'incidencias': incidencias
+        'incidencias': incidencias,
+        'query': query,
+        'estado_filtro': estado_filtro,
+        'prioridad_filtro': prioridad_filtro,
     }
     return render(request, 'admin_gestion_incidencias.html', context)
-
 
 @require_role([1, 4])
 @require_role([1, 4])
@@ -1810,3 +1837,115 @@ def cambiar_password_perfil(request):
             return redirect('admin_gestion_inventario')
 
     return render(request, 'cambiar_password_perfil.html')
+
+from datetime import date
+from django.contrib import messages
+from django.db import transaction
+from django.db.models import Max
+from django.shortcuts import redirect, render
+from django.utils import timezone
+from .models import Usuario, EquipoTi, SolicitudInsumo, TicketSoporte, Rol
+
+@require_role([1, 4])  # Solo Administrador y TI
+def admin_crear_incidencia(request):
+    tipos = {
+        'material': ('insumo', 'Solicitud de Material'),
+        'reposicion': ('insumo', 'Solicitud de Reposición'),
+        'equipo': ('soporte', 'Problema con Equipo'),
+        'mantenimiento': ('soporte', 'Mantenimiento'),
+    }
+
+    equipos = list(EquipoTi.objects.all().order_by('codigo_inventario'))
+
+    tipos_equipos = {
+        'PC': 'Computador',
+        'NOTE': 'Notebook',
+        'MOU': 'Mouse',
+        'TEC': 'Teclado',
+        'PROY': 'Proyector',
+        'IMP': 'Impresora',
+        'USB': 'Pendrive',
+        'ROUT': 'Router',
+        'MON': 'Monitor',
+        'HDMI': 'Cable HDMI',
+        'EXT': 'Alargador eléctrico',
+    }
+
+    for equipo in equipos:
+        prefijo = equipo.codigo_inventario.split('-')[0].upper()
+        equipo.nombre_equipo = tipos_equipos.get(prefijo, 'Equipo tecnológico')
+
+    if request.method == 'POST':
+        fecha_texto = request.POST.get('fecha', '').strip()
+        tipo = request.POST.get('tipo', '').strip()
+        descripcion = request.POST.get('descripcion', '').strip()
+        codigo_equipo = request.POST.get('equipo', '').strip()
+
+        try:
+            fecha = date.fromisoformat(fecha_texto)
+        except ValueError:
+            messages.error(request, 'La fecha ingresada no es válida.')
+            return redirect('admin_crear_incidencia')
+
+        if tipo not in tipos:
+            messages.error(request, 'Selecciona un tipo de incidencia válido.')
+            return redirect('admin_crear_incidencia')
+
+        if not descripcion:
+            messages.error(request, 'Debes ingresar una descripción.')
+            return redirect('admin_crear_incidencia')
+
+        rut_admin = request.session.get('usuario_rut')
+
+        if not rut_admin or not Usuario.objects.filter(rut=rut_admin).exists():
+            messages.error(request, 'No se encontró el usuario de la sesión.')
+            return redirect('admin_crear_incidencia')
+
+        destino, nombre_tipo = tipos[tipo]
+        equipo = None
+
+        if destino == 'soporte':
+            if not codigo_equipo:
+                messages.error(request, 'Debes seleccionar el equipo involucrado.')
+                return redirect('admin_crear_incidencia')
+
+            equipo = EquipoTi.objects.filter(codigo_inventario=codigo_equipo).first()
+
+            if equipo is None:
+                messages.error(request, 'El equipo seleccionado no existe.')
+                return redirect('admin_crear_incidencia')
+
+        try:
+            with transaction.atomic():
+                if destino == 'insumo':
+                    ultimo_id = SolicitudInsumo.objects.aggregate(max_id=Max('id_solicitud'))['max_id'] or 0
+                    SolicitudInsumo.objects.create(
+                        id_solicitud=ultimo_id + 1,
+                        fecha=fecha,
+                        estado_solicitud='Pendiente',
+                        usuario_rut_id=rut_admin,
+                        descripcion=descripcion,
+                        tipo_solicitud=nombre_tipo
+                    )
+                else:
+                    ultimo_id = TicketSoporte.objects.aggregate(max_id=Max('id_ticket'))['max_id'] or 0
+                    TicketSoporte.objects.create(
+                        id_ticket=ultimo_id + 1,
+                        fecha_reporte=fecha,
+                        prioridad='Media',
+                        usuario_rut_id=rut_admin,
+                        equipo_ti_codigo_inventario=equipo,
+                        descripcion=descripcion,
+                        tipo_incidencia=nombre_tipo
+                    )
+        except Exception:
+            messages.error(request, 'No se pudo guardar la incidencia. Revisa la base de datos.')
+            return redirect('admin_crear_incidencia')
+
+        messages.success(request, f'{nombre_tipo} registrada correctamente.')
+        return redirect('admin_gestion_incidencias') # Redirige de vuelta al listado de administrador
+
+    return render(request, 'admin_agregar_incidencia.html', {
+        'equipos': equipos,
+        'fecha_actual': timezone.localdate().isoformat()
+    })

@@ -63,7 +63,13 @@
                 <td>{{ u.rol_id_rol.nombre_rol }}</td>
                 
                 <!-- 5. Estado -->
-                <td><span class="badge badge-activo">Activo</span></td>
+                <td>
+                    {% if u.activo %}
+                        <span class="badge" style="background-color: #dcfce7; color: #16a34a;">Activo</span>
+                    {% else %}
+                        <span class="badge" style="background-color: #fee2e2; color: #dc2626;">Inactivo</span>
+                    {% endif %}
+                </td>
                 
                 <!-- 6. Acciones -->
                 <td>

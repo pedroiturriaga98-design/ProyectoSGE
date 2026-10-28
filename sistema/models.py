@@ -359,6 +359,8 @@ class Usuario(models.Model):
     direccion = models.CharField(max_length=255, blank=True, null=True)
     fecha_nacimiento = models.DateField(blank=True, null=True)
 
+    activo = models.IntegerField(default=1)
+
     def generar_correo_institucional(self) -> str:
         dominio = "santajuliana.cl"
         nom = normalizar_texto(self.nombre)

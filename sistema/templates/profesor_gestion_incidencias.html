@@ -2,6 +2,43 @@
 
 {% block content %}
 
+<style>
+    /* Estilos de Prioridad idénticos a la vista de Administrador */
+    .bg-alta {
+        background-color: #fee2e2 !important;
+        color: #dc2626 !important;
+    }
+    .bg-media {
+        background-color: #e0e7ff !important;
+        color: #4f46e5 !important;
+    }
+    .bg-critica, .bg-baja {
+        background-color: #f1f5f9 !important;
+        color: #475569 !important;
+    }
+
+    /* Estilos de Estado y corrección para que el óvalo no corte el texto */
+    .bg-revisar {
+        background-color: #fef3c7 !important;
+        color: #d97706 !important;
+    }
+    .badge, .badge-rounded {
+        display: inline-block !important;
+        width: auto !important;
+        max-width: none !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        padding: 6px 14px !important;
+        border-radius: 50rem !important;
+        font-weight: 600 !important;
+        font-size: 0.8rem !important;
+    }
+    #incidencias-table td {
+        vertical-align: middle;
+    }
+</style>
+
 <div class="page-header">
     <h2>Mis Reportes de Incidencias</h2>
     <p>Consulta el estado de tus solicitudes y las respuestas del departamento de TI.</p>
@@ -11,20 +48,22 @@
     <table id="incidencias-table">
         <thead>
             <tr>
-                <th style="width: 15%;">ID TICKET</th>
-                <th style="width: 15%;">FECHA</th>
-                <th style="width: 25%;">UBICACIÓN / EQUIPO</th>
-                <th style="width: 15%;">PRIORIDAD</th>
-                <th style="width: 15%;">ESTADO</th>
-                <th style="width: 15%;">ACCIONES</th>
+                <th style="width: 14%;">ID TICKET</th>
+                <th style="width: 14%;">FECHA</th>
+                <th style="width: 26%;">UBICACIÓN / EQUIPO</th>
+                <th style="width: 14%;">PRIORIDAD</th>
+                <th style="width: 20%;">ESTADO</th>
+                <th style="width: 12%;">ACCIONES</th>
             </tr>
         </thead>
         <tbody>
             {% for t in incidencias %}
             <tr>
-                <td class="ticket-id">INC-2026-{{ t.id_ticket|stringformat:"03d" }}</td>
+                <td class="ticket-id fw-bold" style="color: #ea580c;">INC-2026-{{ t.id_ticket|stringformat:"03d" }}</td>
                 <td>{{ t.fecha_reporte|date:"d/m/Y" }}</td>
                 <td>{{ t.equipo_ti_codigo_inventario.ubicacion }} - {{ t.equipo_ti_codigo_inventario.codigo_inventario }}</td>
+                
+                <!-- Columna Prioridad -->
                 <td>
                     <span class="badge 
                         {% if t.prioridad == 'Alta' %}bg-alta
@@ -33,11 +72,13 @@
                         {{ t.prioridad }}
                     </span>
                 </td>
+
+                <!-- Columna Estado -->
                 <td>
                     <span class="badge badge-rounded 
-                        {% if t.estado_ticket == 'Resuelta' %}bg-success
-                        {% elif t.estado_ticket == 'Aprobada (En proceso)' %}bg-primary
-                        {% elif t.estado_ticket == 'Rechazada' %}bg-danger
+                        {% if t.estado_ticket == 'Resuelta' %}bg-success text-white
+                        {% elif t.estado_ticket == 'Aprobada (En proceso)' %}bg-primary text-white
+                        {% elif t.estado_ticket == 'Rechazada' %}bg-danger text-white
                         {% else %}bg-revisar{% endif %}">
                         {{ t.estado_ticket }}
                     </span>
