@@ -1331,18 +1331,47 @@ def admin_editar_usuario(request, rut):
 
     return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 
+
+from django.db import transaction, IntegrityError
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect
+from .models import Usuario, SolicitudInsumo, TicketSoporte, AsignaturaCurso, DetalleInsumo, Curso, Evaluacion
+
 @require_role([1, 4])
 def admin_eliminar_usuario(request, rut):
-    # Buscamos al usuario o tiramos error 404 si no existe
     usuario = get_object_or_404(Usuario, rut=rut)
-    
-    # Lo eliminamos de la base de datos
-    usuario.delete()
-    
-    # Opcional: un mensaje de éxito
-    messages.success(request, 'Usuario eliminado correctamente.')
-    
-    # Redirigimos de vuelta a la tabla principal
+    rut_actual = request.session.get('usuario_rut')
+
+    if usuario.rut == rut_actual:
+        messages.error(request, 'No puedes eliminar tu propia cuenta activa.')
+        return redirect('admin_gestion_usuarios')
+
+    try:
+        with transaction.atomic():
+            # 1. Eliminar toda la carga académica asociada al profesor
+            AsignaturaCurso.objects.filter(usuario_rut=usuario).delete()
+
+            # 2. Reasignar jefaturas de curso al admin actual si las tuviera
+            Curso.objects.filter(usuario_rut=usuario).update(usuario_rut_id=rut_actual)
+
+            # 3. Eliminar solicitudes de insumos y tickets de soporte asociados
+            solicitudes_ids = SolicitudInsumo.objects.filter(usuario_rut=usuario).values_list('id_solicitud', flat=True)
+            DetalleInsumo.objects.filter(solicitud_insumo_id_solicitud__in=solicitudes_ids).delete()
+            SolicitudInsumo.objects.filter(usuario_rut=usuario).delete()
+            TicketSoporte.objects.filter(usuario_rut=usuario).delete()
+
+            # 4. Borrar al usuario de forma definitiva
+            usuario.delete()
+            messages.success(request, f'Usuario {usuario.nombre} {usuario.apellido_paterno} eliminado correctamente.')
+    except IntegrityError:
+        # Si por alguna razón queda amarrado a una nota histórica con alumnos, lo dejamos inactivo
+        usuario.activo = 0
+        usuario.save()
+        messages.warning(
+            request,
+            f'El usuario tiene registros históricos inalterables. Su cuenta fue cambiada a estado Inactivo.'
+        )
+
     return redirect('admin_gestion_usuarios')
 
 @require_role([1])
@@ -1690,21 +1719,197 @@ def admin_detalle_incidencia(request, pk):
 
 
 
-@require_role([1])
-def admin_gestion_apoderados(request):
-    return render(request, 'admin_gestion_apoderados.html')
+from django.contrib import messages
+from django.db.models import Q
+from django.shortcuts import get_object_or_404, redirect, render
+from .models import Usuario
 
-@require_role([1])
-def admin_editar_apoderado(request):
-    return render(request, 'admin_editar_apoderado.html')
+# --- GESTIÓN DE PROFESORES ---
 
-@require_role([1])
+from django.db.models import Max, Q
+from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib import messages
+from .models import Usuario, Curso, Asignatura, AsignaturaCurso
+
+@require_role([1, 4])
 def admin_gestion_profesores(request):
-    return render(request, 'admin_gestion_profesores.html')
+    query = request.GET.get('q', '').strip()
+    asignatura_filtro = request.GET.get('asignatura', '').strip()
+    estado_filtro = request.GET.get('estado', '').strip()
 
-@require_role([1])
+    # Traer todos los usuarios con rol 2 (Profesor)
+    profesores = Usuario.objects.filter(rol_id_rol_id=2).order_by('apellido_paterno', 'nombre')
+
+    if query:
+        profesores = profesores.filter(
+            Q(nombre__icontains=query) |
+            Q(apellido_paterno__icontains=query) |
+            Q(apellido_materno__icontains=query) |
+            Q(rut__icontains=query) |
+            Q(correo__icontains=query)
+        )
+
+    if estado_filtro == 'Activos':
+        profesores = profesores.filter(activo=1)
+    elif estado_filtro == 'Inactivos':
+        profesores = profesores.filter(activo=0)
+
+    if asignatura_filtro and asignatura_filtro != 'Todas':
+        ruts_con_asignatura = AsignaturaCurso.objects.filter(
+            asignatura_id_asignatura_id=asignatura_filtro
+        ).values_list('usuario_rut_id', flat=True)
+        profesores = profesores.filter(rut__in=ruts_con_asignatura)
+
+    # Cruzar cada profesor con sus jefaturas y sus asignaciones de ramos/cursos
+    lista_profesores = []
+    for p in profesores:
+        partes_iniciales = f"{(p.nombre or '')[:1]}{(p.apellido_paterno or '')[:1]}".upper()
+        p.iniciales = partes_iniciales if partes_iniciales else "PR"
+        
+        # Cursos donde es Profesor Jefe (tabla curso)
+        p.jefaturas = Curso.objects.filter(usuario_rut=p)
+        
+        # Ramos y cursos que imparte (tabla asignatura_curso)
+        p.asignaciones = AsignaturaCurso.objects.filter(usuario_rut=p).select_related(
+            'curso_id_curso', 'asignatura_id_asignatura'
+        ).order_by('curso_id_curso__nombre_curso', 'asignatura_id_asignatura__nombre_asignatura')
+        
+        lista_profesores.append(p)
+
+    asignaturas_disponibles = Asignatura.objects.all().order_by('nombre_asignatura')
+
+    return render(request, 'admin_gestion_profesores.html', {
+        'profesores': lista_profesores,
+        'asignaturas_disponibles': asignaturas_disponibles,
+        'query': query,
+        'asignatura_filtro': asignatura_filtro,
+        'estado_filtro': estado_filtro,
+    })
+
+
+@require_role([1, 4])
 def admin_editar_profesor(request):
-    return render(request, 'admin_editar_profesor.html')
+    rut_seleccionado = request.GET.get('rut', '').strip() or request.POST.get('profesor_rut', '').strip()
+
+    profesores = Usuario.objects.filter(rol_id_rol_id=2, activo=1).order_by('apellido_paterno', 'nombre')
+    cursos = Curso.objects.all().order_by('id_curso')
+    asignaturas = Asignatura.objects.all().order_by('nombre_asignatura')
+
+    if request.method == 'POST':
+        accion = request.POST.get('accion', 'asignar')
+
+        if accion == 'eliminar':
+            id_asig_curso = request.POST.get('id_asig_curso')
+            asignacion = AsignaturaCurso.objects.filter(id_asig_curso=id_asig_curso).first()
+            if asignacion:
+                rut_prof = asignacion.usuario_rut_id
+                asignacion.delete()
+                messages.success(request, 'Asignación eliminada correctamente.')
+                return redirect(f"/administrador/profesores/editar/?rut={rut_prof}")
+            return redirect('admin_gestion_profesores')
+
+        profesor_rut = request.POST.get('profesor_rut', '').strip()
+        curso_id = request.POST.get('curso_id', '').strip()
+        asignatura_id = request.POST.get('asignatura_id', '').strip()
+        es_jefe = request.POST.get('es_profesor_jefe') == 'on'
+
+        if not profesor_rut or not curso_id or not asignatura_id:
+            messages.error(request, 'Debes seleccionar el profesor, el curso y la asignatura.')
+            return redirect('admin_editar_profesor')
+
+        profesor_obj = get_object_or_404(Usuario, rut=profesor_rut)
+        curso_obj = get_object_or_404(Curso, id_curso=curso_id)
+        asignatura_obj = get_object_or_404(Asignatura, id_asignatura=asignatura_id)
+
+        # Si marcaron el check de Profesor Jefe, actualizamos la tabla curso usando el ID directo
+        if es_jefe:
+            Curso.objects.filter(id_curso=curso_obj.id_curso).update(usuario_rut=profesor_obj)
+
+        # Verificar si ese curso ya tiene asignada esa asignatura
+        existente = AsignaturaCurso.objects.filter(
+            curso_id_curso=curso_obj,
+            asignatura_id_asignatura=asignatura_obj
+        ).first()
+
+        if existente:
+            existente.usuario_rut = profesor_obj
+            existente.save()
+            messages.success(
+                request,
+                f'Se actualizó {asignatura_obj.nombre_asignatura} en {curso_obj.nombre_curso} para {profesor_obj.nombre} {profesor_obj.apellido_paterno}.'
+            )
+        else:
+            ultimo_id = AsignaturaCurso.objects.aggregate(max_id=Max('id_asig_curso'))['max_id'] or 0
+            AsignaturaCurso.objects.create(
+                id_asig_curso=ultimo_id + 1,
+                curso_id_curso=curso_obj,
+                asignatura_id_asignatura=asignatura_obj,
+                usuario_rut=profesor_obj
+            )
+            messages.success(
+                request,
+                f'Asignación creada: {profesor_obj.nombre} {profesor_obj.apellido_paterno} → {asignatura_obj.nombre_asignatura} ({curso_obj.nombre_curso}).'
+            )
+
+        return redirect(f"/administrador/profesores/editar/?rut={profesor_obj.rut}")
+
+    asignaciones_actuales = AsignaturaCurso.objects.select_related(
+        'curso_id_curso', 'asignatura_id_asignatura', 'usuario_rut'
+    ).order_by('curso_id_curso__id_curso', 'asignatura_id_asignatura__nombre_asignatura')
+
+    if rut_seleccionado:
+        asignaciones_actuales = asignaciones_actuales.filter(usuario_rut_id=rut_seleccionado)
+
+    return render(request, 'admin_editar_profesor.html', {
+        'profesores': profesores,
+        'cursos': cursos,
+        'asignaturas': asignaturas,
+        'rut_seleccionado': rut_seleccionado,
+        'asignaciones_actuales': asignaciones_actuales,
+    })
+
+
+# --- GESTIÓN DE APODERADOS (Rol 3) ---
+
+@require_role([1, 4])
+def admin_gestion_apoderados(request):
+    query = request.GET.get('q', '').strip()
+    
+    # El filtro busca únicamente los usuarios con rol_id 3 (Apoderado)
+    apoderados = Usuario.objects.filter(rol_id_rol_id=3).order_by('apellido_paterno')
+
+    if query:
+        apoderados = apoderados.filter(
+            Q(nombre__icontains=query) |
+            Q(apellido_paterno__icontains=query) |
+            Q(rut__icontains=query) |
+            Q(correo__icontains=query)
+        )
+
+    return render(request, 'admin_gestion_apoderados.html', {
+        'apoderados': apoderados,
+        'query': query
+    })
+
+@require_role([1, 4])
+def admin_editar_apoderado(request, rut):
+    apoderado = get_object_or_404(Usuario, rut=rut)
+
+    if request.method == 'POST':
+        apoderado.nombre = request.POST.get('nombre', '').strip()
+        apoderado.apellido_paterno = request.POST.get('apellido_paterno', '').strip()
+        apoderado.apellido_materno = request.POST.get('apellido_materno', '').strip()
+        apoderado.correo = request.POST.get('correo', '').strip()
+        apoderado.telefono = request.POST.get('telefono', '').strip()
+        apoderado.direccion = request.POST.get('direccion', '').strip()
+        apoderado.activo = 1 if 'activo' in request.POST else 0
+
+        apoderado.save()
+        messages.success(request, f"Apoderado {apoderado.nombre} actualizado correctamente.")
+        return redirect('admin_gestion_apoderados')
+
+    return render(request, 'admin_editar_apoderado.html', {'apoderado': apoderado})
+
 
 @require_role([1, 4, 5])
 def admin_gestion_inventario(request):

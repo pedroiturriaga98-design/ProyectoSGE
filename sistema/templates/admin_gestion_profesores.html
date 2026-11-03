@@ -1,119 +1,101 @@
 {% extends 'base_admin.html' %}
 
 {% block content %}
-
 <div class="page-header">
-    <h2>Gestión de Profesores</h2>
-    <p>Administración del cuerpo docente, asignaturas y credenciales de acceso.</p>
+    <h2>Gestión de Profesores y Carga Académica</h2>
+    <p>Administración del cuerpo docente, jefaturas y asignaturas por curso.</p>
 </div>
 
 <div class="table-container">
-    <div class="table-toolbar">
+    <form method="GET" action="" class="table-toolbar">
         <div class="filters-left">
-            <select class="filter-select"><option>Asignatura: Todas</option></select>
-            <select class="filter-select"><option>Estado: Activos</option></select>
-            <div class="search-box">
-                <input type="text" placeholder="Buscar por nombre, RUT o especialidad...">
-            </div>
-        </div>
-        <a class="btn-create" href="{% url 'admin_crear_usuario' %}">+ Nuevo Profesor</a>
-    </div>
+            <select name="asignatura" class="filter-select" onchange="this.form.submit()">
+                <option value="Todas">Asignatura: Todas</option>
+                {% for asig in asignaturas_disponibles %}
+                    <option value="{{ asig.id_asignatura }}" {% if asignatura_filtro == asig.id_asignatura|stringformat:"s" %}selected{% endif %}>
+                        {{ asig.nombre_asignatura }}
+                    </option>
+                {% endfor %}
+            </select>
 
-    <table id="profesores-table">
+            <select name="estado" class="filter-select" onchange="this.form.submit()">
+                <option value="Todos" {% if not estado_filtro or estado_filtro == 'Todos' %}selected{% endif %}>Estado: Todos</option>
+                <option value="Activos" {% if estado_filtro == 'Activos' %}selected{% endif %}>Estado: Activos</option>
+                <option value="Inactivos" {% if estado_filtro == 'Inactivos' %}selected{% endif %}>Estado: Inactivos</option>
+            </select>
+
+            <div class="search-box">
+                <input type="text" name="q" value="{{ query }}" placeholder="Buscar por nombre, RUT o correo...">
+            </div>
+
+            <button type="submit" style="padding: 10px 15px; background-color: #0f172a; color: white; border: none; border-radius: 6px; cursor: pointer;">
+                Filtrar
+            </button>
+        </div>
+
+        <a class="btn-create" href="{% url 'admin_editar_profesor' %}">
+            + Nueva Asignación
+        </a>
+    </form>
+
+    <table>
         <thead>
             <tr>
-                <th style="width: 25%;">PROFESOR</th>
-                <th style="width: 12%;">RUT</th>
-                <th style="width: 20%;">ESPECIALIDAD</th>
-                <th style="width: 20%;">CORREO INSTITUCIONAL</th>
-                <th style="width: 10%;">ESTADO</th>
-                <th style="width: 13%;">ACCIONES</th>
+                <th style="width: 24%;">PROFESOR</th>
+                <th style="width: 14%;">RUT</th>
+                <th style="width: 32%;">ASIGNATURAS Y CURSOS ASIGNADOS</th>
+                <th style="width: 18%;">CORREO INSTITUCIONAL</th>
+                <th style="width: 6%;">ESTADO</th>
+                <th style="width: 6%;">ACCIONES</th>
             </tr>
         </thead>
         <tbody>
+            {% for p in profesores %}
             <tr>
                 <td>
-                    <div class="user-info">
-                        <div class="avatar bg-blue">CM</div>
-                        <strong>Cristian Morales Rivas</strong>
-                        <span class="jefatura-text">Jefatura 2°A</span>
-                    </div>
+                    <strong>{{ p.nombre }} {{ p.apellido_paterno }} {{ p.apellido_materno|default:"" }}</strong>
+                    {% for j in p.jefaturas %}
+                        <span style="display: inline-block; margin-left: 6px; font-size: 0.78rem; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 10px;">
+                            Jefatura {{ j.nombre_curso }}
+                        </span>
+                    {% endfor %}
                 </td>
-                <td>14.225.678-9</td>
-                <td>Educación Básica</td>
-                <td>c.morales@santajuliana.cl</td>
-                <td><span class="badge badge-activo">Activo</span></td>
+                <td>{{ p.rut }}</td>
+                <td>
+                    {% if p.asignaciones %}
+                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                            {% for asig in p.asignaciones %}
+                                <span style="background-color: #e0f2fe; color: #0369a1; padding: 3px 8px; border-radius: 6px; font-size: 0.8rem; font-weight: 500;">
+                                    {{ asig.asignatura_id_asignatura.nombre_asignatura }} ({{ asig.curso_id_curso.nombre_curso }})
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <span style="color: #94a3b8; font-style: italic; font-size: 0.85rem;">Sin carga asignada</span>
+                    {% endif %}
+                </td>
+                <td>{{ p.correo }}</td>
+                <td>
+                    {% if p.activo %}
+                        <span class="badge bg-success">Activo</span>
+                    {% else %}
+                        <span class="badge bg-danger">Inactivo</span>
+                    {% endif %}
+                </td>
                 <td>
                     <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_profesor' %}" aria-label="Editar profesor" title="Editar">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarProfesor(this)" title="Desvincular">🗑</button>
+                        <a class="btn-icon" href="{% url 'admin_editar_profesor' %}?rut={{ p.rut }}" title="Gestionar asignaciones del profesor">✎</a>
                     </div>
                 </td>
             </tr>
+            {% empty %}
             <tr>
-                <td>
-                    <div class="user-info">
-                        <div class="avatar bg-teal">ML</div>
-                        <strong>María Fernanda López</strong>
-                    </div>
-                </td>
-                <td>15.845.221-K</td>
-                <td>Lenguaje / Historia</td>
-                <td>mf.lopez@santajuliana.cl</td>
-                <td><span class="badge badge-activo">Activo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_profesor' %}" aria-label="Editar profesor">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarProfesor(this)">🗑</button>
-                    </div>
+                <td colspan="6" style="text-align: center; padding: 25px; color: #64748b;">
+                    No se encontraron profesores con los criterios seleccionados.
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <div class="user-info">
-                        <div class="avatar bg-orange">RS</div>
-                        <strong>Rodrigo Sanhueza</strong>
-                        <span class="jefatura-text">Jefatura 4°M</span>
-                    </div>
-                </td>
-                <td>12.333.444-5</td>
-                <td>Matemáticas / Física</td>
-                <td>r.sanhueza@santajuliana.cl</td>
-                <td><span class="badge badge-activo">Activo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_profesor' %}" aria-label="Editar profesor">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarProfesor(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="user-info">
-                        <div class="avatar bg-purple" style="opacity: 0.5;">CP</div>
-                        <strong style="color: #64748b;">Carlos Plaza</strong>
-                    </div>
-                </td>
-                <td style="color: #94a3b8;">10.987.654-3</td>
-                <td style="color: #94a3b8;">Ciencias Naturales</td>
-                <td style="color: #94a3b8;">c.plaza@santajuliana.cl</td>
-                <td><span class="badge badge-inactivo">Inactivo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_profesor' %}" aria-label="Editar profesor">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarProfesor(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
-
-<script>
-    function eliminarProfesor(boton) {
-        if (confirm("¿Estás seguro de que deseas eliminar a este profesor? Se revocarán sus accesos al sistema.")) {
-            boton.closest('tr').remove();
-        }
-    }
-</script>
 {% endblock %}

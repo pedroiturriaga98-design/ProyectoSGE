@@ -55,16 +55,16 @@
   "model": "sistema.usuario",
   "pk": "10.393.363-3",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$ANnJjKdAOyhztiyjPXpvCc$8A1lIdybkDKojFK60OmJFr+c/bcUReYFH5hSYdtkWcQ=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$QEtSNnqf964K3fDcjHdln9$SUeWIEnmP4o8aRgCOEpnQdfzA7+0o6SI6R8CE8h10ic=",
     "rol_id_rol": 4,
     "nombre": "Juanito",
-    "apellido_paterno": "Parra",
+    "apellido_paterno": "Asdasd",
     "apellido_materno": "Perez",
-    "correo": "jparra@santajuliana.cl",
-    "telefono": "",
-    "direccion": "",
-    "fecha_nacimiento": "1997-10-28",
+    "correo": "jasdasd@santajuliana.cl",
+    "telefono": "+56 9 12457878",
+    "direccion": "av. tobalaba",
+    "fecha_nacimiento": "1997-12-12",
     "activo": 1
   }
 },
@@ -155,6 +155,159 @@
 },
 {
   "model": "sistema.usuario",
+  "pk": "20.041.330-K",
+  "fields": {
+    "cambiar_password": true,
+    "password_hash": "pbkdf2_sha256$870000$KzNOKuWRSVEzOmTc9FjKeV$ufZlguYJyzNW48IoXQyZwFyHAwX2I/AXFOlzaPxNMFk=",
+    "rol_id_rol": 2,
+    "nombre": "Camila Andrea",
+    "apellido_paterno": "Muñoz",
+    "apellido_materno": "Sepúlveda",
+    "correo": "cmunoz@santajuliana.cl",
+    "telefono": "+56 9 12457878",
+    "direccion": "av. tobalaba",
+    "fecha_nacimiento": "1991-01-19",
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.331-8",
+  "fields": {
+    "cambiar_password": true,
+    "password_hash": "pbkdf2_sha256$870000$9BUbszLdHBLHvVoIHhJ5ix$aIfkqpjosEGEkFIDn2SkMGvLI4dPBODmoRzFsWlJaZg=",
+    "rol_id_rol": 2,
+    "nombre": "Gonzalo",
+    "apellido_paterno": "Morales",
+    "apellido_materno": "Rojas",
+    "correo": "gmorales@santajuliana.cl",
+    "telefono": "+56 9 12457878",
+    "direccion": "av pajaritos 123",
+    "fecha_nacimiento": "1992-10-10",
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.332-6",
+  "fields": {
+    "cambiar_password": true,
+    "password_hash": "pbkdf2_sha256$870000$qSQtsDvPO8SIMwoscxWVgv$I+ueQcJXnJTklwMy9LMzgHpw0zjB4w6UIVDTXyYRHSE=",
+    "rol_id_rol": 2,
+    "nombre": "Javiera Ignacio",
+    "apellido_paterno": "Contreras",
+    "apellido_materno": "Silva",
+    "correo": "jcontreras@santajuliana.cl",
+    "telefono": "+56 9 12457878",
+    "direccion": "av pajaritos 123",
+    "fecha_nacimiento": "1999-10-10",
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.333-4",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Felipe Andrés",
+    "apellido_paterno": "Soto",
+    "apellido_materno": "Castillo",
+    "correo": "fsoto@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.334-2",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Valentina Paz",
+    "apellido_paterno": "Araya",
+    "apellido_materno": "Henríquez",
+    "correo": "varaya@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.335-0",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Tomás Eduardo",
+    "apellido_paterno": "Espinoza",
+    "apellido_materno": "Bravo",
+    "correo": "tespinoza@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.336-9",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Rodrigo Hernán",
+    "apellido_paterno": "Vera",
+    "apellido_materno": "Tapia",
+    "correo": "rvera@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.337-7",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Claudia Marcela",
+    "apellido_paterno": "Reyes",
+    "apellido_materno": "Fuentes",
+    "correo": "creyes@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.338-5",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Sebastián Ignacio",
+    "apellido_paterno": "Castro",
+    "apellido_materno": "Pizarro",
+    "correo": "scastro@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
   "pk": "20.041.339-3",
   "fields": {
     "cambiar_password": false,
@@ -167,6 +320,431 @@
     "telefono": "+929090909",
     "direccion": "Av. San Carlos 123, Puente Alto",
     "fecha_nacimiento": "1998-10-29",
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.340-7",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Matías Nicolás",
+    "apellido_paterno": "Cortés",
+    "apellido_materno": "Navarrete",
+    "correo": "mcortes@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.341-5",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Nicole Elizabeth",
+    "apellido_paterno": "Valenzuela",
+    "apellido_materno": "San Martín",
+    "correo": "nvalenzuela@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.343-1",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Benjamín Alonso",
+    "apellido_paterno": "Gallardo",
+    "apellido_materno": "Figueroa",
+    "correo": "bgallardo@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.344-K",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Francisco Javier",
+    "apellido_paterno": "Guzmán",
+    "apellido_materno": "Salinas",
+    "correo": "fguzman@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.345-8",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Patricia Alejandra",
+    "apellido_paterno": "Molina",
+    "apellido_materno": "Paredes",
+    "correo": "pmolina@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.346-6",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Alejandro José",
+    "apellido_paterno": "Delgado",
+    "apellido_materno": "Riquelme",
+    "correo": "adelgado@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.347-4",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "María Fernanda",
+    "apellido_paterno": "Lagos",
+    "apellido_materno": "Campos",
+    "correo": "mlagos@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.348-2",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Cristóbal Alexis",
+    "apellido_paterno": "Sandoval",
+    "apellido_materno": "Guerrero",
+    "correo": "csandoval@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.349-0",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Paula Ignacia",
+    "apellido_paterno": "Palma",
+    "apellido_materno": "Godoy",
+    "correo": "ppalma@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.350-4",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Diego Alejandro",
+    "apellido_paterno": "Cárdenas",
+    "apellido_materno": "Orellana",
+    "correo": "dcardenas@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.351-2",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Sofía Antonella",
+    "apellido_paterno": "Saavedra",
+    "apellido_materno": "Zúñiga",
+    "correo": "ssaavedra@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.352-0",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Manuel Eugenio",
+    "apellido_paterno": "Olivares",
+    "apellido_materno": "Poblete",
+    "correo": "molivares@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.353-9",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Carmen Gloria",
+    "apellido_paterno": "Farías",
+    "apellido_materno": "Venegas",
+    "correo": "cfarias@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.354-7",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Jorge Luis",
+    "apellido_paterno": "Carvajal",
+    "apellido_materno": "Bustos",
+    "correo": "jcarvajal@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.355-5",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Lorena Beatriz",
+    "apellido_paterno": "Meza",
+    "apellido_materno": "Leiva",
+    "correo": "lmeza@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.356-3",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Gabriel Antonio",
+    "apellido_paterno": "Pino",
+    "apellido_materno": "Medina",
+    "correo": "gpino@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.357-1",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Catalina Constanza",
+    "apellido_paterno": "Paredes",
+    "apellido_materno": "Soto",
+    "correo": "cparedes@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.358-K",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Mauricio Andrés",
+    "apellido_paterno": "Aguilera",
+    "apellido_materno": "Alarcón",
+    "correo": "maguilera@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.359-8",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Natalia Beatriz",
+    "apellido_paterno": "Villegas",
+    "apellido_materno": "Toledo",
+    "correo": "nvillegas@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.360-1",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Ignacio Javier",
+    "apellido_paterno": "Miranda",
+    "apellido_materno": "Donoso",
+    "correo": "imiranda@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.361-K",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Esteban Ignacio",
+    "apellido_paterno": "Valdés",
+    "apellido_materno": "Riquelme",
+    "correo": "evaldes@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.362-8",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Marcela Alejandra",
+    "apellido_paterno": "Carvajal",
+    "apellido_materno": "Soto",
+    "correo": "mcarvajal@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.363-6",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Rodrigo Andrés",
+    "apellido_paterno": "Pizarro",
+    "apellido_materno": "Medina",
+    "correo": "rpizarro@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.364-4",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Francisca Andrea",
+    "apellido_paterno": "Alarcón",
+    "apellido_materno": "Rojas",
+    "correo": "falarcon@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "20.041.365-2",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$dummy$hashgenerico=",
+    "rol_id_rol": 2,
+    "nombre": "Vicente Alonso",
+    "apellido_paterno": "Muñoz",
+    "apellido_materno": "Campos",
+    "correo": "vmunoz@santajuliana.cl",
+    "telefono": "+56912345678",
+    "direccion": "Santiago",
+    "fecha_nacimiento": null,
     "activo": 1
   }
 },
@@ -293,8 +871,8 @@
   "model": "sistema.usuario",
   "pk": "40.000.006-9",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$eYD1Kz2hBQ4pKcLcZ3nHsD$y7hXqJslULL1ICsKjolwu2K+4W96yAWJm5npTV7wsgY=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$P95TmVqzkASKfzVDULysyw$6EqjCmP8MH+cILGdp0Ss3/fIKbqU4aFD6StH1NbiXcs=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Contreras",
@@ -7349,7 +7927,7 @@
   "pk": 1,
   "fields": {
     "nombre_curso": "1° Básico A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
@@ -7357,7 +7935,7 @@
   "pk": 2,
   "fields": {
     "nombre_curso": "1° Básico B",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
@@ -7365,7 +7943,7 @@
   "pk": 3,
   "fields": {
     "nombre_curso": "2° Básico A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "14.131.328-2"
   }
 },
 {
@@ -7373,7 +7951,7 @@
   "pk": 4,
   "fields": {
     "nombre_curso": "2° Básico B",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.334-2"
   }
 },
 {
@@ -7381,7 +7959,7 @@
   "pk": 5,
   "fields": {
     "nombre_curso": "3° Básico A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "12.345.678-5"
   }
 },
 {
@@ -7389,7 +7967,7 @@
   "pk": 6,
   "fields": {
     "nombre_curso": "3° Básico B",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
@@ -7397,7 +7975,7 @@
   "pk": 7,
   "fields": {
     "nombre_curso": "4° Básico A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
@@ -7405,7 +7983,7 @@
   "pk": 8,
   "fields": {
     "nombre_curso": "4° Básico B",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
@@ -7413,7 +7991,7 @@
   "pk": 9,
   "fields": {
     "nombre_curso": "5° Básico A",
-    "usuario_rut": "12.345.678-5"
+    "usuario_rut": "20.041.338-5"
   }
 },
 {
@@ -7421,7 +7999,7 @@
   "pk": 10,
   "fields": {
     "nombre_curso": "5° Básico B",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.332-6"
   }
 },
 {
@@ -7429,7 +8007,7 @@
   "pk": 11,
   "fields": {
     "nombre_curso": "6° Básico A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.340-7"
   }
 },
 {
@@ -7437,7 +8015,7 @@
   "pk": 12,
   "fields": {
     "nombre_curso": "6° Básico B",
-    "usuario_rut": "12.345.678-5"
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
@@ -7445,7 +8023,7 @@
   "pk": 13,
   "fields": {
     "nombre_curso": "7° Básico A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
@@ -7453,7 +8031,7 @@
   "pk": 14,
   "fields": {
     "nombre_curso": "7° Básico B",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
@@ -7461,7 +8039,7 @@
   "pk": 15,
   "fields": {
     "nombre_curso": "8° Básico A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
@@ -7469,7 +8047,7 @@
   "pk": 16,
   "fields": {
     "nombre_curso": "8° Básico B",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
@@ -7477,7 +8055,7 @@
   "pk": 17,
   "fields": {
     "nombre_curso": "1° Medio A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
@@ -7485,7 +8063,7 @@
   "pk": 18,
   "fields": {
     "nombre_curso": "1° Medio B",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
@@ -7493,7 +8071,7 @@
   "pk": 19,
   "fields": {
     "nombre_curso": "1° Medio C",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
@@ -7501,7 +8079,7 @@
   "pk": 20,
   "fields": {
     "nombre_curso": "2° Medio A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
@@ -7509,7 +8087,7 @@
   "pk": 21,
   "fields": {
     "nombre_curso": "2° Medio B",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
@@ -7517,7 +8095,7 @@
   "pk": 22,
   "fields": {
     "nombre_curso": "2° Medio C",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
@@ -7525,7 +8103,7 @@
   "pk": 23,
   "fields": {
     "nombre_curso": "3° Medio A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
@@ -7533,7 +8111,7 @@
   "pk": 24,
   "fields": {
     "nombre_curso": "3° Medio B",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
@@ -7541,7 +8119,7 @@
   "pk": 25,
   "fields": {
     "nombre_curso": "3° Medio C",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.349-0"
   }
 },
 {
@@ -7549,7 +8127,7 @@
   "pk": 26,
   "fields": {
     "nombre_curso": "4° Medio A",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.357-1"
   }
 },
 {
@@ -7565,7 +8143,7 @@
   "pk": 28,
   "fields": {
     "nombre_curso": "4° Medio C",
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
@@ -16162,107 +16740,107 @@
   "pk": 1,
   "fields": {
     "curso_id_curso": 1,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 2,
   "fields": {
-    "curso_id_curso": 1,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 3,
   "fields": {
-    "curso_id_curso": 1,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 4,
   "fields": {
-    "curso_id_curso": 1,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 5,
   "fields": {
-    "curso_id_curso": 1,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 6,
   "fields": {
-    "curso_id_curso": 1,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 7,
   "fields": {
-    "curso_id_curso": 1,
+    "curso_id_curso": 7,
     "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 8,
   "fields": {
-    "curso_id_curso": 1,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 9,
   "fields": {
-    "curso_id_curso": 1,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 10,
   "fields": {
-    "curso_id_curso": 1,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 11,
   "fields": {
-    "curso_id_curso": 1,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 12,
   "fields": {
-    "curso_id_curso": 2,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.358-K"
   }
 },
 {
@@ -16270,143 +16848,143 @@
   "pk": 13,
   "fields": {
     "curso_id_curso": 2,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 14,
   "fields": {
-    "curso_id_curso": 2,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 15,
   "fields": {
-    "curso_id_curso": 2,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 16,
   "fields": {
-    "curso_id_curso": 2,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 17,
   "fields": {
-    "curso_id_curso": 2,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 18,
   "fields": {
-    "curso_id_curso": 2,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 19,
   "fields": {
-    "curso_id_curso": 2,
+    "curso_id_curso": 7,
     "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 20,
   "fields": {
-    "curso_id_curso": 2,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 21,
   "fields": {
-    "curso_id_curso": 2,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 22,
   "fields": {
-    "curso_id_curso": 2,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 23,
   "fields": {
-    "curso_id_curso": 3,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 24,
   "fields": {
-    "curso_id_curso": 3,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 25,
   "fields": {
-    "curso_id_curso": 3,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 26,
   "fields": {
-    "curso_id_curso": 3,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "20.041.364-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 27,
   "fields": {
-    "curso_id_curso": 3,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "14.131.328-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 28,
   "fields": {
-    "curso_id_curso": 3,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "14.131.328-2"
   }
 },
 {
@@ -16414,80 +16992,80 @@
   "pk": 29,
   "fields": {
     "curso_id_curso": 3,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "14.131.328-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 30,
   "fields": {
-    "curso_id_curso": 3,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "14.131.328-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 31,
   "fields": {
-    "curso_id_curso": 3,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "14.131.328-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 32,
   "fields": {
-    "curso_id_curso": 3,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "14.131.328-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 33,
   "fields": {
-    "curso_id_curso": 3,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "14.131.328-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 34,
   "fields": {
-    "curso_id_curso": 4,
+    "curso_id_curso": 8,
     "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "14.131.328-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 35,
   "fields": {
-    "curso_id_curso": 4,
+    "curso_id_curso": 1,
     "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.334-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 36,
   "fields": {
-    "curso_id_curso": 4,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.334-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 37,
   "fields": {
-    "curso_id_curso": 4,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.334-2"
   }
 },
 {
@@ -16495,80 +17073,80 @@
   "pk": 38,
   "fields": {
     "curso_id_curso": 4,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.334-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 39,
   "fields": {
-    "curso_id_curso": 4,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.334-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 40,
   "fields": {
-    "curso_id_curso": 4,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.334-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 41,
   "fields": {
-    "curso_id_curso": 4,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.334-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 42,
   "fields": {
-    "curso_id_curso": 4,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.334-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 43,
   "fields": {
-    "curso_id_curso": 4,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "12.345.678-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 44,
   "fields": {
-    "curso_id_curso": 4,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "12.345.678-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 45,
   "fields": {
-    "curso_id_curso": 5,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "12.345.678-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 46,
   "fields": {
-    "curso_id_curso": 5,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "12.345.678-5"
   }
 },
 {
@@ -16576,98 +17154,44 @@
   "pk": 47,
   "fields": {
     "curso_id_curso": 5,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "12.345.678-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 48,
   "fields": {
-    "curso_id_curso": 5,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "12.345.678-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 49,
   "fields": {
-    "curso_id_curso": 5,
+    "curso_id_curso": 7,
     "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "12.345.678-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 50,
   "fields": {
-    "curso_id_curso": 5,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 51,
-  "fields": {
-    "curso_id_curso": 5,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 52,
-  "fields": {
-    "curso_id_curso": 5,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 53,
-  "fields": {
-    "curso_id_curso": 5,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 54,
-  "fields": {
-    "curso_id_curso": 5,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 55,
-  "fields": {
-    "curso_id_curso": 5,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 56,
-  "fields": {
-    "curso_id_curso": 6,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "12.345.678-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 57,
   "fields": {
-    "curso_id_curso": 6,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
@@ -16676,115 +17200,97 @@
   "fields": {
     "curso_id_curso": 6,
     "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 59,
   "fields": {
-    "curso_id_curso": 6,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 60,
   "fields": {
-    "curso_id_curso": 6,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 61,
-  "fields": {
-    "curso_id_curso": 6,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 62,
-  "fields": {
-    "curso_id_curso": 6,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 63,
   "fields": {
-    "curso_id_curso": 6,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 64,
   "fields": {
-    "curso_id_curso": 6,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 65,
   "fields": {
-    "curso_id_curso": 6,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 66,
   "fields": {
-    "curso_id_curso": 6,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 67,
   "fields": {
-    "curso_id_curso": 7,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 68,
   "fields": {
-    "curso_id_curso": 7,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 69,
   "fields": {
-    "curso_id_curso": 7,
+    "curso_id_curso": 13,
     "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 70,
   "fields": {
-    "curso_id_curso": 7,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "20.041.350-4"
   }
 },
 {
@@ -16792,125 +17298,125 @@
   "pk": 71,
   "fields": {
     "curso_id_curso": 7,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 72,
   "fields": {
-    "curso_id_curso": 7,
+    "curso_id_curso": 1,
     "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 73,
   "fields": {
-    "curso_id_curso": 7,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 74,
   "fields": {
-    "curso_id_curso": 7,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 75,
   "fields": {
-    "curso_id_curso": 7,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 76,
   "fields": {
-    "curso_id_curso": 7,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 77,
   "fields": {
-    "curso_id_curso": 7,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 78,
   "fields": {
-    "curso_id_curso": 8,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 79,
   "fields": {
-    "curso_id_curso": 8,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 80,
   "fields": {
-    "curso_id_curso": 8,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 81,
   "fields": {
-    "curso_id_curso": 8,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 82,
   "fields": {
-    "curso_id_curso": 8,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 83,
   "fields": {
-    "curso_id_curso": 8,
+    "curso_id_curso": 12,
     "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 84,
   "fields": {
-    "curso_id_curso": 8,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "20.041.354-7"
   }
 },
 {
@@ -16918,71 +17424,71 @@
   "pk": 85,
   "fields": {
     "curso_id_curso": 8,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 86,
   "fields": {
-    "curso_id_curso": 8,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 87,
   "fields": {
-    "curso_id_curso": 8,
+    "curso_id_curso": 2,
     "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 88,
   "fields": {
-    "curso_id_curso": 8,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 89,
   "fields": {
-    "curso_id_curso": 9,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 90,
   "fields": {
-    "curso_id_curso": 9,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 91,
   "fields": {
-    "curso_id_curso": 9,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 92,
   "fields": {
-    "curso_id_curso": 9,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
@@ -16990,53 +17496,53 @@
   "pk": 93,
   "fields": {
     "curso_id_curso": 9,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "12.345.678-5"
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 94,
   "fields": {
-    "curso_id_curso": 9,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 95,
   "fields": {
-    "curso_id_curso": 9,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 96,
   "fields": {
-    "curso_id_curso": 9,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 97,
   "fields": {
-    "curso_id_curso": 9,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 98,
   "fields": {
-    "curso_id_curso": 9,
+    "curso_id_curso": 14,
     "asignatura_id_asignatura": 10,
-    "usuario_rut": "12.345.678-5"
+    "usuario_rut": "20.041.362-8"
   }
 },
 {
@@ -17044,8 +17550,8 @@
   "pk": 99,
   "fields": {
     "curso_id_curso": 9,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "12.345.678-5"
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "20.041.338-5"
   }
 },
 {
@@ -17054,61 +17560,25 @@
   "fields": {
     "curso_id_curso": 10,
     "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 101,
-  "fields": {
-    "curso_id_curso": 10,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 102,
-  "fields": {
-    "curso_id_curso": 10,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 103,
-  "fields": {
-    "curso_id_curso": 10,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 104,
-  "fields": {
-    "curso_id_curso": 10,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.338-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 105,
   "fields": {
-    "curso_id_curso": 10,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "20.041.338-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 106,
   "fields": {
-    "curso_id_curso": 10,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "20.041.338-5"
   }
 },
 {
@@ -17116,35 +17586,35 @@
   "pk": 107,
   "fields": {
     "curso_id_curso": 10,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.332-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 108,
   "fields": {
-    "curso_id_curso": 10,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.332-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 109,
   "fields": {
-    "curso_id_curso": 10,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.332-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 110,
   "fields": {
-    "curso_id_curso": 10,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.332-6"
   }
 },
 {
@@ -17152,35 +17622,35 @@
   "pk": 111,
   "fields": {
     "curso_id_curso": 11,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.332-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 112,
   "fields": {
-    "curso_id_curso": 11,
+    "curso_id_curso": 12,
     "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.332-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 113,
   "fields": {
-    "curso_id_curso": 11,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.332-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 114,
   "fields": {
-    "curso_id_curso": 11,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.332-6"
   }
 },
 {
@@ -17189,70 +17659,70 @@
   "fields": {
     "curso_id_curso": 11,
     "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.340-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 116,
   "fields": {
-    "curso_id_curso": 11,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.340-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 117,
   "fields": {
-    "curso_id_curso": 11,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.340-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 118,
   "fields": {
-    "curso_id_curso": 11,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.340-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 119,
   "fields": {
-    "curso_id_curso": 11,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.340-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 120,
   "fields": {
-    "curso_id_curso": 11,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.340-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 121,
   "fields": {
-    "curso_id_curso": 11,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.340-7"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 122,
   "fields": {
-    "curso_id_curso": 12,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 14,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.340-7"
   }
 },
 {
@@ -17260,107 +17730,107 @@
   "pk": 123,
   "fields": {
     "curso_id_curso": 12,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "12.345.678-5"
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 124,
   "fields": {
-    "curso_id_curso": 12,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 125,
   "fields": {
-    "curso_id_curso": 12,
+    "curso_id_curso": 2,
     "asignatura_id_asignatura": 4,
-    "usuario_rut": "12.345.678-5"
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 126,
   "fields": {
-    "curso_id_curso": 12,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 127,
   "fields": {
-    "curso_id_curso": 12,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 128,
   "fields": {
-    "curso_id_curso": 12,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 129,
   "fields": {
-    "curso_id_curso": 12,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 130,
   "fields": {
-    "curso_id_curso": 12,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 131,
   "fields": {
-    "curso_id_curso": 12,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 132,
   "fields": {
-    "curso_id_curso": 12,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "12.345.678-5"
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 133,
   "fields": {
-    "curso_id_curso": 13,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 134,
   "fields": {
-    "curso_id_curso": 13,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
@@ -17368,35 +17838,17 @@
   "pk": 135,
   "fields": {
     "curso_id_curso": 13,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 136,
   "fields": {
-    "curso_id_curso": 13,
+    "curso_id_curso": 14,
     "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 137,
-  "fields": {
-    "curso_id_curso": 13,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
-  }
-},
-{
-  "model": "sistema.asignaturacurso",
-  "pk": 138,
-  "fields": {
-    "curso_id_curso": 13,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.346-6"
   }
 },
 {
@@ -17404,116 +17856,116 @@
   "pk": 139,
   "fields": {
     "curso_id_curso": 13,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 140,
   "fields": {
-    "curso_id_curso": 13,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 1,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 141,
   "fields": {
-    "curso_id_curso": 13,
+    "curso_id_curso": 2,
     "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 142,
   "fields": {
-    "curso_id_curso": 13,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 143,
   "fields": {
-    "curso_id_curso": 13,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 144,
   "fields": {
-    "curso_id_curso": 14,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 145,
   "fields": {
-    "curso_id_curso": 14,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 146,
   "fields": {
-    "curso_id_curso": 14,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 147,
   "fields": {
-    "curso_id_curso": 14,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 148,
   "fields": {
-    "curso_id_curso": 14,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 149,
   "fields": {
-    "curso_id_curso": 14,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 150,
   "fields": {
-    "curso_id_curso": 14,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 151,
   "fields": {
-    "curso_id_curso": 14,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 12,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
@@ -17522,7 +17974,7 @@
   "fields": {
     "curso_id_curso": 14,
     "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.335-0"
   }
 },
 {
@@ -17530,134 +17982,134 @@
   "pk": 153,
   "fields": {
     "curso_id_curso": 14,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 154,
   "fields": {
-    "curso_id_curso": 14,
+    "curso_id_curso": 1,
     "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 155,
   "fields": {
-    "curso_id_curso": 15,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 2,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 156,
   "fields": {
-    "curso_id_curso": 15,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 3,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 157,
   "fields": {
-    "curso_id_curso": 15,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 4,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 158,
   "fields": {
-    "curso_id_curso": 15,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 159,
   "fields": {
-    "curso_id_curso": 15,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 160,
   "fields": {
-    "curso_id_curso": 15,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 7,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 161,
   "fields": {
-    "curso_id_curso": 15,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 8,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 162,
   "fields": {
-    "curso_id_curso": 15,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 9,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 163,
   "fields": {
-    "curso_id_curso": 15,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 164,
   "fields": {
-    "curso_id_curso": 15,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 11,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 165,
   "fields": {
-    "curso_id_curso": 15,
+    "curso_id_curso": 12,
     "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 166,
   "fields": {
-    "curso_id_curso": 16,
-    "asignatura_id_asignatura": 1,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "20.041.353-9"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 167,
   "fields": {
-    "curso_id_curso": 16,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
@@ -17665,134 +18117,134 @@
   "pk": 168,
   "fields": {
     "curso_id_curso": 16,
-    "asignatura_id_asignatura": 3,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 169,
   "fields": {
-    "curso_id_curso": 16,
+    "curso_id_curso": 17,
     "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 170,
   "fields": {
-    "curso_id_curso": 16,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 171,
   "fields": {
-    "curso_id_curso": 16,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 172,
   "fields": {
-    "curso_id_curso": 16,
-    "asignatura_id_asignatura": 7,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 173,
   "fields": {
-    "curso_id_curso": 16,
-    "asignatura_id_asignatura": 8,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 174,
   "fields": {
-    "curso_id_curso": 16,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 175,
   "fields": {
-    "curso_id_curso": 16,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 176,
   "fields": {
-    "curso_id_curso": 16,
-    "asignatura_id_asignatura": 11,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 177,
   "fields": {
-    "curso_id_curso": 17,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 178,
   "fields": {
-    "curso_id_curso": 17,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 179,
   "fields": {
-    "curso_id_curso": 17,
-    "asignatura_id_asignatura": 13,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 180,
   "fields": {
-    "curso_id_curso": 17,
-    "asignatura_id_asignatura": 14,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "20.041.343-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 181,
   "fields": {
-    "curso_id_curso": 17,
-    "asignatura_id_asignatura": 15,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 16,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 182,
   "fields": {
-    "curso_id_curso": 17,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 15,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
@@ -17800,116 +18252,116 @@
   "pk": 183,
   "fields": {
     "curso_id_curso": 17,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 184,
   "fields": {
-    "curso_id_curso": 17,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 185,
   "fields": {
-    "curso_id_curso": 17,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 186,
   "fields": {
-    "curso_id_curso": 17,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 187,
   "fields": {
-    "curso_id_curso": 18,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 188,
   "fields": {
-    "curso_id_curso": 18,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 189,
   "fields": {
-    "curso_id_curso": 18,
-    "asignatura_id_asignatura": 13,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 190,
   "fields": {
-    "curso_id_curso": 18,
-    "asignatura_id_asignatura": 14,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 191,
   "fields": {
-    "curso_id_curso": 18,
-    "asignatura_id_asignatura": 15,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 192,
   "fields": {
-    "curso_id_curso": 18,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 193,
   "fields": {
-    "curso_id_curso": 18,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 194,
   "fields": {
-    "curso_id_curso": 18,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "20.041.344-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 195,
   "fields": {
-    "curso_id_curso": 18,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
@@ -17917,8 +18369,8 @@
   "pk": 196,
   "fields": {
     "curso_id_curso": 18,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
@@ -17927,115 +18379,115 @@
   "fields": {
     "curso_id_curso": 19,
     "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 198,
   "fields": {
-    "curso_id_curso": 19,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 199,
   "fields": {
-    "curso_id_curso": 19,
-    "asignatura_id_asignatura": 13,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 200,
   "fields": {
-    "curso_id_curso": 19,
-    "asignatura_id_asignatura": 14,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 201,
   "fields": {
-    "curso_id_curso": 19,
-    "asignatura_id_asignatura": 15,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 202,
   "fields": {
-    "curso_id_curso": 19,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 203,
   "fields": {
-    "curso_id_curso": 19,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 204,
   "fields": {
-    "curso_id_curso": 19,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 205,
   "fields": {
-    "curso_id_curso": 19,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 206,
   "fields": {
-    "curso_id_curso": 19,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 12,
+    "usuario_rut": "20.041.347-4"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 207,
   "fields": {
-    "curso_id_curso": 20,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 208,
   "fields": {
-    "curso_id_curso": 20,
+    "curso_id_curso": 18,
     "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 209,
   "fields": {
-    "curso_id_curso": 20,
-    "asignatura_id_asignatura": 13,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
@@ -18043,116 +18495,116 @@
   "pk": 210,
   "fields": {
     "curso_id_curso": 20,
-    "asignatura_id_asignatura": 14,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 211,
   "fields": {
-    "curso_id_curso": 20,
-    "asignatura_id_asignatura": 15,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 212,
   "fields": {
-    "curso_id_curso": 20,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 213,
   "fields": {
-    "curso_id_curso": 20,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 214,
   "fields": {
-    "curso_id_curso": 20,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 215,
   "fields": {
-    "curso_id_curso": 20,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 216,
   "fields": {
-    "curso_id_curso": 20,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 217,
   "fields": {
-    "curso_id_curso": 21,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 218,
   "fields": {
-    "curso_id_curso": 21,
+    "curso_id_curso": 28,
     "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.355-5"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 219,
   "fields": {
-    "curso_id_curso": 21,
-    "asignatura_id_asignatura": 13,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 220,
   "fields": {
-    "curso_id_curso": 21,
-    "asignatura_id_asignatura": 14,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 221,
   "fields": {
-    "curso_id_curso": 21,
+    "curso_id_curso": 18,
     "asignatura_id_asignatura": 15,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 222,
   "fields": {
-    "curso_id_curso": 21,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
@@ -18160,161 +18612,161 @@
   "pk": 223,
   "fields": {
     "curso_id_curso": 21,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 224,
   "fields": {
-    "curso_id_curso": 21,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 225,
   "fields": {
-    "curso_id_curso": 21,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 226,
   "fields": {
-    "curso_id_curso": 21,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 227,
   "fields": {
-    "curso_id_curso": 22,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 228,
   "fields": {
-    "curso_id_curso": 22,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 229,
   "fields": {
-    "curso_id_curso": 22,
-    "asignatura_id_asignatura": 13,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 230,
   "fields": {
-    "curso_id_curso": 22,
-    "asignatura_id_asignatura": 14,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 15,
+    "usuario_rut": "20.041.360-1"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 231,
   "fields": {
-    "curso_id_curso": 22,
-    "asignatura_id_asignatura": 15,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 232,
   "fields": {
-    "curso_id_curso": 22,
-    "asignatura_id_asignatura": 4,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 233,
   "fields": {
-    "curso_id_curso": 22,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 234,
   "fields": {
-    "curso_id_curso": 22,
-    "asignatura_id_asignatura": 6,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 235,
   "fields": {
-    "curso_id_curso": 22,
-    "asignatura_id_asignatura": 9,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 236,
   "fields": {
-    "curso_id_curso": 22,
-    "asignatura_id_asignatura": 10,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 237,
   "fields": {
-    "curso_id_curso": 23,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 238,
   "fields": {
-    "curso_id_curso": 23,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 239,
   "fields": {
-    "curso_id_curso": 23,
-    "asignatura_id_asignatura": 16,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 240,
   "fields": {
-    "curso_id_curso": 23,
-    "asignatura_id_asignatura": 17,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
@@ -18322,80 +18774,80 @@
   "pk": 241,
   "fields": {
     "curso_id_curso": 23,
-    "asignatura_id_asignatura": 18,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 242,
   "fields": {
-    "curso_id_curso": 23,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 14,
+    "usuario_rut": "20.041.345-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 243,
   "fields": {
-    "curso_id_curso": 23,
-    "asignatura_id_asignatura": 19,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 244,
   "fields": {
-    "curso_id_curso": 23,
-    "asignatura_id_asignatura": 20,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 245,
   "fields": {
-    "curso_id_curso": 23,
-    "asignatura_id_asignatura": 21,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 246,
   "fields": {
-    "curso_id_curso": 24,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 247,
   "fields": {
-    "curso_id_curso": 24,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 248,
   "fields": {
-    "curso_id_curso": 24,
-    "asignatura_id_asignatura": 16,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 249,
   "fields": {
-    "curso_id_curso": 24,
+    "curso_id_curso": 23,
     "asignatura_id_asignatura": 17,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
@@ -18403,116 +18855,116 @@
   "pk": 250,
   "fields": {
     "curso_id_curso": 24,
-    "asignatura_id_asignatura": 18,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 251,
   "fields": {
-    "curso_id_curso": 24,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 252,
   "fields": {
-    "curso_id_curso": 24,
-    "asignatura_id_asignatura": 22,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 253,
   "fields": {
-    "curso_id_curso": 24,
-    "asignatura_id_asignatura": 23,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 254,
   "fields": {
-    "curso_id_curso": 24,
-    "asignatura_id_asignatura": 24,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 17,
+    "usuario_rut": "20.041.331-8"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 255,
   "fields": {
-    "curso_id_curso": 25,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 256,
   "fields": {
-    "curso_id_curso": 25,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 257,
   "fields": {
-    "curso_id_curso": 25,
-    "asignatura_id_asignatura": 16,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 258,
   "fields": {
-    "curso_id_curso": 25,
-    "asignatura_id_asignatura": 17,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 259,
   "fields": {
-    "curso_id_curso": 25,
+    "curso_id_curso": 20,
     "asignatura_id_asignatura": 18,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 260,
   "fields": {
-    "curso_id_curso": 25,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 261,
   "fields": {
-    "curso_id_curso": 25,
-    "asignatura_id_asignatura": 25,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 262,
   "fields": {
-    "curso_id_curso": 25,
-    "asignatura_id_asignatura": 26,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
@@ -18520,8 +18972,8 @@
   "pk": 263,
   "fields": {
     "curso_id_curso": 25,
-    "asignatura_id_asignatura": 27,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
@@ -18529,116 +18981,116 @@
   "pk": 264,
   "fields": {
     "curso_id_curso": 26,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 265,
   "fields": {
-    "curso_id_curso": 26,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 266,
   "fields": {
-    "curso_id_curso": 26,
-    "asignatura_id_asignatura": 16,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 18,
+    "usuario_rut": "20.041.330-K"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 267,
   "fields": {
-    "curso_id_curso": 26,
-    "asignatura_id_asignatura": 17,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 268,
   "fields": {
-    "curso_id_curso": 26,
-    "asignatura_id_asignatura": 18,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 269,
   "fields": {
-    "curso_id_curso": 26,
+    "curso_id_curso": 18,
     "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 270,
   "fields": {
-    "curso_id_curso": 26,
-    "asignatura_id_asignatura": 19,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 271,
   "fields": {
-    "curso_id_curso": 26,
-    "asignatura_id_asignatura": 20,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 272,
   "fields": {
-    "curso_id_curso": 26,
-    "asignatura_id_asignatura": 21,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 273,
   "fields": {
-    "curso_id_curso": 27,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 274,
   "fields": {
-    "curso_id_curso": 27,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 275,
   "fields": {
-    "curso_id_curso": 27,
-    "asignatura_id_asignatura": 16,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 276,
   "fields": {
-    "curso_id_curso": 27,
-    "asignatura_id_asignatura": 17,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
@@ -18646,116 +19098,116 @@
   "pk": 277,
   "fields": {
     "curso_id_curso": 27,
-    "asignatura_id_asignatura": 18,
-    "usuario_rut": "11.111.111-1"
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 278,
   "fields": {
-    "curso_id_curso": 27,
+    "curso_id_curso": 28,
     "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "usuario_rut": "20.041.365-2"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 279,
   "fields": {
-    "curso_id_curso": 27,
-    "asignatura_id_asignatura": 22,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 280,
   "fields": {
-    "curso_id_curso": 27,
-    "asignatura_id_asignatura": 23,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 281,
   "fields": {
-    "curso_id_curso": 27,
-    "asignatura_id_asignatura": 24,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 282,
   "fields": {
-    "curso_id_curso": 28,
-    "asignatura_id_asignatura": 12,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 283,
   "fields": {
-    "curso_id_curso": 28,
-    "asignatura_id_asignatura": 2,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 284,
   "fields": {
-    "curso_id_curso": 28,
-    "asignatura_id_asignatura": 16,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 285,
   "fields": {
-    "curso_id_curso": 28,
-    "asignatura_id_asignatura": 17,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 286,
   "fields": {
-    "curso_id_curso": 28,
-    "asignatura_id_asignatura": 18,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 287,
   "fields": {
-    "curso_id_curso": 28,
-    "asignatura_id_asignatura": 5,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 288,
   "fields": {
-    "curso_id_curso": 28,
-    "asignatura_id_asignatura": 25,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
   "model": "sistema.asignaturacurso",
   "pk": 289,
   "fields": {
-    "curso_id_curso": 28,
-    "asignatura_id_asignatura": 26,
-    "usuario_rut": "11.111.111-1"
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
   }
 },
 {
@@ -18763,1149 +19215,440 @@
   "pk": 290,
   "fields": {
     "curso_id_curso": 28,
+    "asignatura_id_asignatura": 20,
+    "usuario_rut": "20.041.352-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 291,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 292,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 293,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 294,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 295,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 296,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 297,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 298,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 299,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 300,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 301,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 302,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 26,
+    "usuario_rut": "20.041.349-0"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 303,
+  "fields": {
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 304,
+  "fields": {
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 305,
+  "fields": {
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 306,
+  "fields": {
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 307,
+  "fields": {
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 308,
+  "fields": {
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 309,
+  "fields": {
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 310,
+  "fields": {
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 311,
+  "fields": {
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 312,
+  "fields": {
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 313,
+  "fields": {
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 314,
+  "fields": {
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 25,
+    "usuario_rut": "20.041.357-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 315,
+  "fields": {
+    "curso_id_curso": 27,
     "asignatura_id_asignatura": 27,
     "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 1,
+  "model": "sistema.asignaturacurso",
+  "pk": 316,
   "fields": {
-    "asignatura_curso_id_asig_curso": 128,
-    "numero_evaluacion": 1
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 2,
+  "model": "sistema.asignaturacurso",
+  "pk": 317,
   "fields": {
-    "asignatura_curso_id_asig_curso": 128,
-    "numero_evaluacion": 2
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 3,
+  "model": "sistema.asignaturacurso",
+  "pk": 318,
   "fields": {
-    "asignatura_curso_id_asig_curso": 128,
-    "numero_evaluacion": 3
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 4,
+  "model": "sistema.asignaturacurso",
+  "pk": 319,
   "fields": {
-    "asignatura_curso_id_asig_curso": 95,
-    "numero_evaluacion": 1
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 5,
+  "model": "sistema.asignaturacurso",
+  "pk": 320,
   "fields": {
-    "asignatura_curso_id_asig_curso": 95,
-    "numero_evaluacion": 2
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 6,
+  "model": "sistema.asignaturacurso",
+  "pk": 321,
   "fields": {
-    "asignatura_curso_id_asig_curso": 95,
-    "numero_evaluacion": 3
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 7,
+  "model": "sistema.asignaturacurso",
+  "pk": 322,
   "fields": {
-    "asignatura_curso_id_asig_curso": 7,
-    "numero_evaluacion": 1
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 8,
+  "model": "sistema.asignaturacurso",
+  "pk": 323,
   "fields": {
-    "asignatura_curso_id_asig_curso": 7,
-    "numero_evaluacion": 2
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 9,
+  "model": "sistema.asignaturacurso",
+  "pk": 324,
   "fields": {
-    "asignatura_curso_id_asig_curso": 7,
-    "numero_evaluacion": 3
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 10,
+  "model": "sistema.asignaturacurso",
+  "pk": 325,
   "fields": {
-    "asignatura_curso_id_asig_curso": 15,
-    "numero_evaluacion": 1
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 11,
+  "model": "sistema.asignaturacurso",
+  "pk": 326,
   "fields": {
-    "asignatura_curso_id_asig_curso": 15,
-    "numero_evaluacion": 2
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 27,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
-  "model": "sistema.evaluacion",
-  "pk": 12,
+  "model": "sistema.asignaturacurso",
+  "pk": 327,
   "fields": {
-    "asignatura_curso_id_asig_curso": 15,
-    "numero_evaluacion": 3
+    "curso_id_curso": 28,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 1,
+  "model": "sistema.asignaturacurso",
+  "pk": 328,
   "fields": {
-    "valor_nota": 1.5,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.018-5",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
+    "curso_id_curso": 17,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 2,
+  "model": "sistema.asignaturacurso",
+  "pk": 329,
   "fields": {
-    "valor_nota": 5.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.007-K",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
+    "curso_id_curso": 18,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 3,
+  "model": "sistema.asignaturacurso",
+  "pk": 330,
   "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.027-4",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
+    "curso_id_curso": 19,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 4,
+  "model": "sistema.asignaturacurso",
+  "pk": 331,
   "fields": {
-    "valor_nota": 6.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.001-0",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
+    "curso_id_curso": 20,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 5,
+  "model": "sistema.asignaturacurso",
+  "pk": 332,
   "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.021-5",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
+    "curso_id_curso": 21,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 6,
+  "model": "sistema.asignaturacurso",
+  "pk": 333,
   "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.012-6",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
+    "curso_id_curso": 22,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 7,
+  "model": "sistema.asignaturacurso",
+  "pk": 334,
   "fields": {
-    "valor_nota": 6.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.019-3",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
+    "curso_id_curso": 23,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 8,
+  "model": "sistema.asignaturacurso",
+  "pk": 335,
   "fields": {
-    "valor_nota": 6.2,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.028-2",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
+    "curso_id_curso": 24,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 9,
+  "model": "sistema.asignaturacurso",
+  "pk": 336,
   "fields": {
-    "valor_nota": 5.5,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.008-8",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
+    "curso_id_curso": 25,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 10,
+  "model": "sistema.asignaturacurso",
+  "pk": 337,
   "fields": {
-    "valor_nota": 2.4,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.015-0",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
+    "curso_id_curso": 27,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
-  "model": "sistema.calificacion",
-  "pk": 11,
+  "model": "sistema.asignaturacurso",
+  "pk": 338,
   "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.017-7",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 12,
-  "fields": {
-    "valor_nota": 5.5,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.013-4",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 13,
-  "fields": {
-    "valor_nota": 5.6,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.022-3",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 14,
-  "fields": {
-    "valor_nota": 4.2,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.002-9",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 15,
-  "fields": {
-    "valor_nota": 5.3,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.023-1",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 16,
-  "fields": {
-    "valor_nota": 4.6,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.003-7",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 17,
-  "fields": {
-    "valor_nota": 5.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.004-5",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 18,
-  "fields": {
-    "valor_nota": 6.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.024-K",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 19,
-  "fields": {
-    "valor_nota": 6.1,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.020-7",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 20,
-  "fields": {
-    "valor_nota": 6.2,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.010-K",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 21,
-  "fields": {
-    "valor_nota": 6.5,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.026-6",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 22,
-  "fields": {
-    "valor_nota": 4.1,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.006-1",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 23,
-  "fields": {
-    "valor_nota": 3.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.029-0",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 24,
-  "fields": {
-    "valor_nota": 3.2,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.009-6",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 25,
-  "fields": {
-    "valor_nota": 3.5,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "26.759.471-6",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 26,
-  "fields": {
-    "valor_nota": 3.7,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.014-2",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 27,
-  "fields": {
-    "valor_nota": 3.9,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.025-8",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 28,
-  "fields": {
-    "valor_nota": 1.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.005-3",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 29,
-  "fields": {
-    "valor_nota": 5.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.011-8",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 30,
-  "fields": {
-    "valor_nota": 5.0,
-    "fecha_ingreso": "2026-10-18",
-    "alumno_rut_alumno": "30.011.016-9",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 1
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 31,
-  "fields": {
-    "valor_nota": 5.0,
-    "fecha_ingreso": "2026-10-23",
-    "alumno_rut_alumno": "21.439.719-6",
-    "asignatura_curso_id_asig_curso": 95,
-    "evaluacion_id_evaluacion": 4
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 32,
-  "fields": {
-    "valor_nota": 2.5,
-    "fecha_ingreso": "2026-10-23",
-    "alumno_rut_alumno": "21.439.719-6",
-    "asignatura_curso_id_asig_curso": 95,
-    "evaluacion_id_evaluacion": 5
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 33,
-  "fields": {
-    "valor_nota": 4.5,
-    "fecha_ingreso": "2026-10-23",
-    "alumno_rut_alumno": "21.439.719-6",
-    "asignatura_curso_id_asig_curso": 95,
-    "evaluacion_id_evaluacion": 6
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 34,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-23",
-    "alumno_rut_alumno": "26.759.471-6",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 2
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 35,
-  "fields": {
-    "valor_nota": 6.5,
-    "fecha_ingreso": "2026-10-23",
-    "alumno_rut_alumno": "26.759.471-6",
-    "asignatura_curso_id_asig_curso": 128,
-    "evaluacion_id_evaluacion": 3
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 36,
-  "fields": {
-    "valor_nota": 2.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.009-6",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 37,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.029-0",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 38,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.018-5",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 39,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.012-6",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 40,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.003-7",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 41,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.023-1",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 42,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.030-4",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 43,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.010-K",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 44,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.019-3",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 45,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.006-1",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 46,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.026-6",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 47,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.028-2",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 48,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.008-8",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 49,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.004-5",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 50,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.024-K",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 51,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.013-4",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 52,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.014-2",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 53,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.015-0",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 54,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.011-8",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 55,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.021-5",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 56,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.001-0",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 57,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.017-7",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 58,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.020-7",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 59,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.025-8",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 60,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.005-3",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 61,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.016-9",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 62,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.002-9",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 63,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.022-3",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 64,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.027-4",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 65,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.000.007-K",
-    "asignatura_curso_id_asig_curso": 7,
-    "evaluacion_id_evaluacion": 7
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 66,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.028-8",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 67,
-  "fields": {
-    "valor_nota": 6.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.008-3",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 68,
-  "fields": {
-    "valor_nota": 5.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.017-2",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 69,
-  "fields": {
-    "valor_nota": 4.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.011-3",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 70,
-  "fields": {
-    "valor_nota": 3.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.002-4",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 71,
-  "fields": {
-    "valor_nota": 2.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.022-9",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 72,
-  "fields": {
-    "valor_nota": 1.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.009-1",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 73,
-  "fields": {
-    "valor_nota": 1.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.029-6",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 74,
-  "fields": {
-    "valor_nota": 2.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.018-0",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 75,
-  "fields": {
-    "valor_nota": 3.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.025-3",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 76,
-  "fields": {
-    "valor_nota": 4.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.005-9",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 77,
-  "fields": {
-    "valor_nota": 5.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.027-K",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 78,
-  "fields": {
-    "valor_nota": 6.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.007-5",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 79,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.003-2",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 80,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.023-7",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 81,
-  "fields": {
-    "valor_nota": 6.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.012-1",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 82,
-  "fields": {
-    "valor_nota": 5.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.013-K",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 83,
-  "fields": {
-    "valor_nota": 4.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.014-8",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 84,
-  "fields": {
-    "valor_nota": 3.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.030-K",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 85,
-  "fields": {
-    "valor_nota": 2.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.010-5",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 86,
-  "fields": {
-    "valor_nota": 1.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.020-2",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 87,
-  "fields": {
-    "valor_nota": 1.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.016-4",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 88,
-  "fields": {
-    "valor_nota": 2.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.019-9",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 89,
-  "fields": {
-    "valor_nota": 3.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.004-0",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 90,
-  "fields": {
-    "valor_nota": 4.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.024-5",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 91,
-  "fields": {
-    "valor_nota": 5.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.015-6",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 92,
-  "fields": {
-    "valor_nota": 6.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.021-0",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 93,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.001-6",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 94,
-  "fields": {
-    "valor_nota": 7.0,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.006-7",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
-  }
-},
-{
-  "model": "sistema.calificacion",
-  "pk": 95,
-  "fields": {
-    "valor_nota": 5.5,
-    "fecha_ingreso": "2026-10-24",
-    "alumno_rut_alumno": "30.001.026-1",
-    "asignatura_curso_id_asig_curso": 15,
-    "evaluacion_id_evaluacion": 10
+    "curso_id_curso": 26,
+    "asignatura_id_asignatura": 19,
+    "usuario_rut": "20.041.356-3"
   }
 },
 {
@@ -22006,6 +21749,306 @@
     "presente": 1,
     "alumno_rut_alumno": "30.000.007-K",
     "asignatura_curso_id_asig_curso": 7
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 211,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.027-5",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 212,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.007-0",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 213,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.016-K",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 214,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.030-5",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 215,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.010-0",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 216,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.001-1",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 217,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.021-6",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 218,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.008-9",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 219,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.028-3",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 220,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.017-8",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 221,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.024-0",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 222,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.004-6",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 223,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.026-7",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 224,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.006-2",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 225,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.002-K",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 226,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.022-4",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 227,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.011-9",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 228,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.012-7",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 229,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.013-5",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 230,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.029-1",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 231,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.009-7",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 232,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.019-4",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 233,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.015-1",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 234,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.018-6",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 235,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.003-8",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 236,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.023-2",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 237,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.014-3",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 238,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.020-8",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 239,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.005-4",
+    "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 240,
+  "fields": {
+    "fecha": "2026-10-28",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.025-9",
+    "asignatura_curso_id_asig_curso": 28
   }
 },
 {
@@ -22274,8 +22317,8 @@
   "fields": {
     "fecha_reporte": "2026-10-26",
     "prioridad": "Media",
-    "observacion": "se retira equipo de la sala el dia lunes a las 16 horas para revision",
-    "estado_ticket": "Aprobada (En proceso)",
+    "observacion": "se resolvio xd",
+    "estado_ticket": "Resuelta",
     "usuario_rut": "12.345.678-5",
     "equipo_ti_codigo_inventario": "MON-001",
     "descripcion": "el equipo presenta falla en la imagen",
@@ -22289,7 +22332,7 @@
     "fecha_reporte": "2026-10-28",
     "prioridad": "Media",
     "observacion": null,
-    "estado_ticket": "Pendiente",
+    "estado_ticket": "Aprobada (En proceso)",
     "usuario_rut": "20.041.339-3",
     "equipo_ti_codigo_inventario": "MON-001",
     "descripcion": "monitor en mal estado",
@@ -22317,7 +22360,7 @@
     "fecha_reporte": "2026-10-28",
     "prioridad": "Media",
     "observacion": null,
-    "estado_ticket": "Pendiente",
+    "estado_ticket": "Resuelta",
     "usuario_rut": "20.041.339-3",
     "equipo_ti_codigo_inventario": "PC-001",
     "descripcion": "pc no enciende",

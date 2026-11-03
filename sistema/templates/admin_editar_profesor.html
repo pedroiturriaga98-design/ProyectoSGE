@@ -1,80 +1,119 @@
 {% extends 'base_admin.html' %}
 
 {% block content %}
-
 <div class="page-header">
-    <h2>Editar Profesor</h2>
-    <p>Modifique la información académica, personal y de acceso del docente.</p>
+    <h2>Asignación de Carga Académica</h2>
+    <p>Vincula a cada profesor con los cursos y asignaturas que imparte en el establecimiento.</p>
 </div>
 
-<!-- Tarjeta 1: Datos Generales -->
-<div class="form-card">
-    <div class="section-title">Datos Personales y Académicos</div>
-    <div class="form-grid">
-        <div class="form-group">
-            <label>Nombres</label>
-            <input type="text" class="form-control" value="Cristian">
-        </div>
-        <div class="form-group">
-            <label>RUT</label>
-            <input type="text" class="form-control" value="14.225.678-9" disabled title="El RUT no se puede modificar">
-        </div>
+<div class="form-card" style="margin-bottom: 25px;">
+    <div class="form-title">Registrar / Actualizar Asignación</div>
 
-        <div class="form-group">
-            <label>Apellidos</label>
-            <input type="text" class="form-control" value="Morales Rivas">
-        </div>
-        <div class="form-group">
-            <label>Especialidad / Asignatura Principal</label>
-            <input type="text" class="form-control" value="Educación Básica">
-        </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" style="padding: 12px; margin-bottom: 15px; border-radius: 6px; background: #f1f5f9;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
-        <div class="form-group">
-            <label>Email Institucional</label>
-            <input type="email" class="form-control" value="c.morales@santajuliana.cl">
-        </div>
-        <div class="form-group">
-            <label>Asignación de Jefatura</label>
-            <select class="form-control">
-                <option>Sin Jefatura</option>
-                <option selected>2° Básico A</option>
-                <option>3° Básico A</option>
-                <option>4° Medio M</option>
-            </select>
-        </div>
+    <form method="POST" action="{% url 'admin_editar_profesor' %}">
+        {% csrf_token %}
+        <input type="hidden" name="accion" value="asignar">
 
-        <div class="form-group">
-            <label>Teléfono de Contacto</label>
-            <input type="text" class="form-control" value="+56 9 8765 4321">
-        </div>
-        <div class="form-group">
-            <label>Estado de la Cuenta</label>
-            <div class="toggle-container">
-                <input type="checkbox" class="toggle-switch" checked>
-                <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Profesor Activo</span>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Profesor *</label>
+                <select name="profesor_rut" class="form-control" required onchange="window.location.href='?rut=' + this.value">
+                    <option value="">Seleccione un profesor...</option>
+                    {% for prof in profesores %}
+                        <option value="{{ prof.rut }}" {% if prof.rut == rut_seleccionado %}selected{% endif %}>
+                            {{ prof.nombre }} {{ prof.apellido_paterno }} ({{ prof.rut }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Curso *</label>
+                <select name="curso_id" class="form-control" required>
+                    <option value="">Seleccione un curso...</option>
+                    {% for c in cursos %}
+                        <option value="{{ c.id_curso }}">{{ c.nombre_curso }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Asignatura *</label>
+                <select name="asignatura_id" class="form-control" required>
+                    <option value="">Seleccione una asignatura...</option>
+                    {% for a in asignaturas %}
+                        <option value="{{ a.id_asignatura }}">{{ a.nombre_asignatura }}</option>
+                    {% endfor %}
+                </select>
             </div>
         </div>
-    </div>
+
+        <div class="form-group" style="margin-top: 10px;">
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" name="es_profesor_jefe">
+                <span>Designar también como <strong>Profesor Jefe</strong> de este curso</span>
+            </label>
+        </div>
+
+        <div class="form-actions">
+            <a href="{% url 'admin_gestion_profesores' %}" class="btn-cancel" style="text-decoration: none; display: inline-flex; align-items: center;">
+                Volver al listado
+            </a>
+            <button type="submit" class="btn-submit">
+                Guardar Asignación
+            </button>
+        </div>
+    </form>
 </div>
 
-<!-- Tarjeta 2: Seguridad y Contraseña -->
-<div class="form-card">
-    <div class="section-title" style="color: #ea580c;">Seguridad y Acceso</div>
-    <div class="form-grid">
-        <div class="form-group">
-            <label>Nueva Contraseña</label>
-            <input type="password" class="form-control" placeholder="Escriba la nueva contraseña">
-            <span class="password-note">Deje este campo en blanco si no desea cambiar la contraseña actual.</span>
-        </div>
-        <div class="form-group">
-            <label>Confirmar Nueva Contraseña</label>
-            <input type="password" class="form-control" placeholder="Repita la nueva contraseña">
-        </div>
-    </div>
-</div>
+<div class="table-container">
+    <h3 style="margin-bottom: 15px; font-size: 1.05rem;">
+        {% if rut_seleccionado %}
+            Carga académica del profesor seleccionado
+        {% else %}
+            Todas las asignaciones registradas
+        {% endif %}
+    </h3>
 
-<div class="form-footer">
-    <button class="btn-cancel" onclick="window.history.back()">Cancelar</button>
-    <a class="btn-submit" href="{% url 'admin_gestion_profesores' %}" onclick="alert('Perfil del profesor y accesos actualizados correctamente.')">Guardar Cambios</a>
+    <table>
+        <thead>
+            <tr>
+                <th>PROFESOR</th>
+                <th>CURSO</th>
+                <th>ASIGNATURA</th>
+                <th style="width: 10%;">ACCIÓN</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in asignaciones_actuales %}
+            <tr>
+                <td><strong>{{ item.usuario_rut.nombre }} {{ item.usuario_rut.apellido_paterno }}</strong> ({{ item.usuario_rut.rut }})</td>
+                <td>{{ item.curso_id_curso.nombre_curso }}</td>
+                <td>{{ item.asignatura_id_asignatura.nombre_asignatura }}</td>
+                <td>
+                    <form method="POST" action="{% url 'admin_editar_profesor' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="accion" value="eliminar">
+                        <input type="hidden" name="id_asig_curso" value="{{ item.id_asig_curso }}">
+                        <button type="submit" class="btn-icon delete" title="Quitar asignación" onclick="return confirm('¿Quitar esta asignatura al profesor?')">🗑</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" style="text-align: center; padding: 20px; color: #64748b;">
+                    No hay asignaturas vinculadas todavía.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
