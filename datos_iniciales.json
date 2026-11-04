@@ -157,8 +157,8 @@
   "model": "sistema.usuario",
   "pk": "20.041.330-K",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$KzNOKuWRSVEzOmTc9FjKeV$ufZlguYJyzNW48IoXQyZwFyHAwX2I/AXFOlzaPxNMFk=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$arREVEUfMfrH6J7buQtxZo$cp5T27pjLY4HfXBDzPKcyYj4SrdsIiGim9SHme+OJtI=",
     "rol_id_rol": 2,
     "nombre": "Camila Andrea",
     "apellido_paterno": "Muñoz",
@@ -9703,7 +9703,7 @@
     "nombre_completo": "Agustin Contreras Rodriguez",
     "estado_matricula": "Activo",
     "curso_id_curso": 6,
-    "usuario_rut": "40.002.004-3"
+    "usuario_rut": "40.013.008-6"
   }
 },
 {
@@ -22379,6 +22379,148 @@
     "equipo_ti_codigo_inventario": "PC-004",
     "descripcion": "pc en mal estado",
     "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 8,
+  "fields": {
+    "fecha_reporte": "2026-11-04",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.339-3",
+    "equipo_ti_codigo_inventario": "NOTE-003",
+    "descripcion": "El computador no funciona y es necesario para la clase",
+    "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 9,
+  "fields": {
+    "fecha_reporte": "2026-11-04",
+    "prioridad": "Baja",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.339-3",
+    "equipo_ti_codigo_inventario": "PC-002",
+    "descripcion": "el pc esta con problemas",
+    "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 10,
+  "fields": {
+    "fecha_reporte": "2026-11-04",
+    "prioridad": "Crítica",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.339-3",
+    "equipo_ti_codigo_inventario": "PC-001",
+    "descripcion": "El computador no ha tenido internet en todo el dia",
+    "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 11,
+  "fields": {
+    "fecha_reporte": "2026-11-04",
+    "prioridad": "Alta",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.339-3",
+    "equipo_ti_codigo_inventario": "PROY-003",
+    "descripcion": "El proyector no muestra imagen",
+    "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 12,
+  "fields": {
+    "fecha_reporte": "2026-11-04",
+    "prioridad": "Baja",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.339-3",
+    "equipo_ti_codigo_inventario": "TEC-003",
+    "descripcion": "Al teclado le faltan teclas",
+    "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 13,
+  "fields": {
+    "fecha_reporte": "2026-11-04",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.339-3",
+    "equipo_ti_codigo_inventario": "IMP-001",
+    "descripcion": "La impresora no esta funcionando",
+    "tipo_incidencia": "Mantenimiento"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 14,
+  "fields": {
+    "fecha_reporte": "2026-11-04",
+    "prioridad": "Crítica",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.339-3",
+    "equipo_ti_codigo_inventario": "ROUT-001",
+    "descripcion": "Se programará un mantenimiento para el dia 10/11/2026",
+    "tipo_incidencia": "Mantenimiento"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 15,
+  "fields": {
+    "fecha_reporte": "2026-11-04",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.339-3",
+    "equipo_ti_codigo_inventario": "NOTE-002",
+    "descripcion": "El pc esta muy lento",
+    "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 16,
+  "fields": {
+    "fecha_reporte": "2026-11-04",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.339-3",
+    "equipo_ti_codigo_inventario": "IMP-002",
+    "descripcion": "Se programa mantenimiento para el dia 12/11/2026",
+    "tipo_incidencia": "Mantenimiento"
+  }
+},
+{
+  "model": "sistema.insumo",
+  "pk": 1,
+  "fields": {
+    "nombre_item": "Cloro",
+    "stock_actual": 2
+  }
+},
+{
+  "model": "sistema.insumo",
+  "pk": 2,
+  "fields": {
+    "nombre_item": "Papel higiénico",
+    "stock_actual": 10
   }
 },
 {

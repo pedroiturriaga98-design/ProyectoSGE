@@ -86,5 +86,28 @@
             {% endfor %}
         </tbody>
     </table>
+    <!-- Barra de Paginación -->
+<!-- Barra de Paginación Mejorada (Mantiene los filtros activos) -->
+    <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 10px 0; border-top: 1px solid #e2e8f0; font-size: 0.9rem; color: #64748b;">
+        <div class="pagination-info">
+            Mostrando del <strong>{{ usuarios.start_index }}</strong> al <strong>{{ usuarios.end_index }}</strong> de <strong>{{ paginator.count }}</strong> resultados
+        </div>
+        
+        <div class="pagination-controls" style="display: flex; gap: 5px; align-items: center;">
+            {% if usuarios.has_previous %}
+                <a href="?page=1&q={{ query }}&rol={{ rol_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Primera</a>
+                <a href="?page={{ usuarios.previous_page_number }}&q={{ query }}&rol={{ rol_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Anterior</a>
+            {% endif %}
+
+            <span style="padding: 6px 12px; border: 1px solid #f97316; border-radius: 6px; background-color: #f97316; color: white; font-weight: 500;">
+                {{ usuarios.number }} de {{ usuarios.paginator.num_pages }}
+            </span>
+
+            {% if usuarios.has_next %}
+                <a href="?page={{ usuarios.next_page_number }}&q={{ query }}&rol={{ rol_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Siguiente</a>
+                <a href="?page={{ usuarios.paginator.num_pages }}&q={{ query }}&rol={{ rol_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Última</a>
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -3,68 +3,47 @@
 {% block content %}
 
 <div class="page-header">
-    <h2>Registrar / Editar Equipo</h2>
-    <p>Complete los datos para añadir o modificar un equipo en el inventario tecnológico.</p>
+    <h2>Editar Equipo</h2>
+    <p>Complete los datos para modificar un equipo en el inventario tecnológico.</p>
 </div>
 
-<div class="form-card">
-    <div class="form-grid">
-        <div class="form-group full-width">
-            <label>Código Interno <span>*</span></label>
-            <input type="text" class="form-control" value="PC-LAB3-045">
-        </div>
-        
-        <div class="form-group full-width">
-            <label>Tipo Dispositivo</label>
-            <select class="form-control">
-                <option selected>All-in-One</option>
-                <option>Notebook</option>
-                <option>Proyector</option>
-                <option>Impresora</option>
-            </select>
+<div class="form-card" style="background: white; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            
+            <div class="form-group">
+                <label style="font-weight: 500; font-size: 0.9rem; color: #334155;">Código Interno *</label>
+                <input type="text" name="codigo_inventario" class="form-control" value="{{ equipo.codigo_inventario }}" required style="width: 100%; padding: 9px; border: 1px solid #cbd5e1; border-radius: 6px; margin-top: 5px;">
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: 500; font-size: 0.9rem; color: #334155;">Tipo Dispositivo</label>
+                <input type="text" name="tipo_equipo" class="form-control" value="{{ equipo.tipo_equipo }}" style="width: 100%; padding: 9px; border: 1px solid #cbd5e1; border-radius: 6px; margin-top: 5px;">
+            </div>
+
+            <div class="form-group full-width" style="grid-column: span 2;">
+                <label style="font-weight: 500; font-size: 0.9rem; color: #334155;">Ubicación / Sala</label>
+                <input type="text" name="ubicacion" class="form-control" value="{{ equipo.ubicacion }}" style="width: 100%; padding: 9px; border: 1px solid #cbd5e1; border-radius: 6px; margin-top: 5px;">
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: 500; font-size: 0.9rem; color: #334155;">Estado</label>
+                <select name="estado" class="form-control" style="width: 100%; padding: 9px; border: 1px solid #cbd5e1; border-radius: 6px; margin-top: 5px; background: white;">
+                    <option value="Disponible" {% if equipo.estado == 'Disponible' %}selected{% endif %}>Disponible</option>
+                    <option value="Operativo" {% if equipo.estado == 'Operativo' %}selected{% endif %}>Operativo</option>
+                    <option value="En Mantención" {% if equipo.estado == 'En Mantención' %}selected{% endif %}>En Mantención</option>
+                </select>
+            </div>
+
         </div>
 
-        <div class="form-group">
-            <label>Marca</label>
-            <input type="text" class="form-control" value="HP">
+        <div class="form-footer" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px;">
+            <button type="button" class="btn-cancel" onclick="window.history.back()" style="padding: 9px 16px; border: 1px solid #cbd5e1; background: white; border-radius: 6px; cursor: pointer;">Cancelar</button>
+            <button type="submit" class="btn-submit" style="padding: 9px 18px; background: #f97316; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Guardar Equipo</button>
         </div>
-        <div class="form-group">
-            <label>Modelo</label>
-            <input type="text" class="form-control" value="ProOne 440">
-        </div>
-
-        <div class="form-group full-width">
-            <label>N° Serie</label>
-            <input type="text" class="form-control" value="MXL40938FF82">
-        </div>
-
-        <div class="form-group">
-            <label>Sala/Laboratorio</label>
-            <select class="form-control">
-                <option selected>Laboratorio 3</option>
-                <option>Laboratorio 1</option>
-                <option>Sala Profesores</option>
-                <option>Biblioteca</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Estado</label>
-            <select class="form-control">
-                <option selected>Operativo</option>
-                <option>En Mantención</option>
-                <option>Dado de Baja</option>
-            </select>
-        </div>
-
-        <div class="form-group full-width">
-            <label>Observaciones</label>
-            <textarea class="form-control">Equipo nuevo asignado al tercer laboratorio...</textarea>
-        </div>
-    </div>
-
-    <div class="form-footer">
-        <button class="btn-cancel" onclick="window.history.back()">Cancelar</button>
-        <a class="btn-submit" href="{% url 'admin_gestion_inventario' %}" onclick="alert('Equipo guardado en el inventario correctamente.')">Guardar Equipo</a>
-    </div>
+    </form>
 </div>
+
 {% endblock %}

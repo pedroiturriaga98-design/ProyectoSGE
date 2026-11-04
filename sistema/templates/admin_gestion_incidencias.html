@@ -39,7 +39,7 @@
             </button>
         </div>
 
-        <!-- Botón Registrar Incidencia conectado a su URL -->
+        <!-- Botón Registrar Incidencia -->
         <a class="btn-create" href="{% url 'admin_crear_incidencia' %}">
             + Registrar Incidencia
         </a>
@@ -83,9 +83,8 @@
                 </td>
                 <td>
                     <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_incidencia' t.id_ticket %}" aria-label="Evaluar o editar incidencia" title="Evaluar/Editar">✎</a>
+                        <a class="btn-icon" href="{% url 'admin_editar_incidencia' t.id_ticket %}" title="Evaluar/Editar">✎</a>
                         <a class="btn-icon" href="{% url 'admin_detalle_incidencia' t.id_ticket %}" title="Ver detalles">📄</a>
-                        <!-- Opcional: si prefieres ruta real de eliminación por URL en vez de JS puro -->
                         <button class="btn-icon delete" onclick="eliminarIncidencia(this)" title="Eliminar">🗑</button>
                     </div>
                 </td>
@@ -97,6 +96,30 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <!-- 📌 BARRA DE PAGINACIÓN ADENTRO DEL CONTENEDOR -->
+    <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 15px 10px; border-top: 1px solid #e2e8f0; font-size: 0.9rem; color: #64748b;">
+        <div class="pagination-info">
+            Mostrando del <strong>{{ incidencias.start_index }}</strong> al <strong>{{ incidencias.end_index }}</strong> de <strong>{{ incidencias.paginator.count }}</strong> resultados
+        </div>
+        
+        <div class="pagination-controls" style="display: flex; gap: 5px; align-items: center;">
+            {% if incidencias.has_previous %}
+                <a href="?page=1&q={{ query }}&estado={{ estado_filtro }}&prioridad={{ prioridad_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Primera</a>
+                <a href="?page={{ incidencias.previous_page_number }}&q={{ query }}&estado={{ estado_filtro }}&prioridad={{ prioridad_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Anterior</a>
+            {% endif %}
+
+            <span style="padding: 6px 12px; border: 1px solid #f97316; border-radius: 6px; background-color: #f97316; color: white; font-weight: 500;">
+                {{ incidencias.number }} de {{ incidencias.paginator.num_pages }}
+            </span>
+
+            {% if incidencias.has_next %}
+                <a href="?page={{ incidencias.next_page_number }}&q={{ query }}&estado={{ estado_filtro }}&prioridad={{ prioridad_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Siguiente</a>
+                <a href="?page={{ incidencias.paginator.num_pages }}&q={{ query }}&estado={{ estado_filtro }}&prioridad={{ prioridad_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Última</a>
+            {% endif %}
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -106,4 +129,5 @@
         }
     }
 </script>
+
 {% endblock %}

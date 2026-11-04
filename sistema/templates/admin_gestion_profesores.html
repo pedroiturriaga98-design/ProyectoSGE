@@ -97,5 +97,27 @@
             {% endfor %}
         </tbody>
     </table>
+    <!-- Barra de Paginación para Profesores -->
+    <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 15px 10px; border-top: 1px solid #e2e8f0; font-size: 0.9rem; color: #64748b;">
+        <div class="pagination-info">
+            Mostrando del <strong>{{ profesores.start_index }}</strong> al <strong>{{ profesores.end_index }}</strong> de <strong>{{ profesores.paginator.count }}</strong> resultados
+        </div>
+        
+        <div class="pagination-controls" style="display: flex; gap: 5px; align-items: center;">
+            {% if profesores.has_previous %}
+                <a href="?page=1&q={{ query }}&asignatura={{ asignatura_filtro }}&estado={{ estado_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Primera</a>
+                <a href="?page={{ profesores.previous_page_number }}&q={{ query }}&asignatura={{ asignatura_filtro }}&estado={{ estado_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Anterior</a>
+            {% endif %}
+
+            <span style="padding: 6px 12px; border: 1px solid #f97316; border-radius: 6px; background-color: #f97316; color: white; font-weight: 500;">
+                {{ profesores.number }} de {{ profesores.paginator.num_pages }}
+            </span>
+
+            {% if profesores.has_next %}
+                <a href="?page={{ profesores.next_page_number }}&q={{ query }}&asignatura={{ asignatura_filtro }}&estado={{ estado_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Siguiente</a>
+                <a href="?page={{ profesores.paginator.num_pages }}&q={{ query }}&asignatura={{ asignatura_filtro }}&estado={{ estado_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Última</a>
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}

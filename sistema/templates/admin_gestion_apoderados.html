@@ -3,140 +3,126 @@
 {% block content %}
 
 <div class="page-header">
-    <h2>Gestión de Apoderados</h2>
-    <p>Administración de cuentas, accesos y estudiantes vinculados.</p>
+    <div>
+        <h2>Gestión de Apoderados</h2>
+        <p>Administración de cuentas, accesos y estudiantes vinculados.</p>
+    </div>
+    <a href="#" class="btn-create" style="display: none;">+ Nuevo Apoderado</a>
 </div>
 
 <div class="table-container">
-    <div class="table-toolbar">
-        <div class="filters-left">
-            <select class="filter-select"><option>Enseñanza: Básica</option></select>
-            <select class="filter-select"><option>Curso: Todos</option></select>
-            <select class="filter-select"><option>Sección: Todas</option></select>
-            <div class="search-box">
-                <input type="text" placeholder="Buscar por RUT, nombre o pupilo...">
+    
+    <!-- BUSCADOR INTELIGENTE Y FILTROS -->
+    <div class="table-toolbar" style="margin-bottom: 20px;">
+        <form method="GET" action="" class="filter-form" style="display: flex; gap: 15px; align-items: center; width: 100%;">
+
+            <!-- Input de búsqueda con lupa -->
+            <div class="search-box" style="flex: 1; position: relative; display: flex; align-items: center;">
+                <span style="position: absolute; left: 12px; font-size: 0.95rem; pointer-events: none;">🔍</span>
+                <input
+                    type="text"
+                    name="q"
+                    value="{{ query }}"
+                    placeholder="Buscar por RUT, nombre o apellido..."
+                    autocomplete="off"
+                    class="form-control"
+                    style="width: 100%; padding: 9px 12px 9px 38px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;"
+                >
             </div>
-        </div>
-        <button class="btn-create">+ Nuevo Apoderado</button>
+
+            <button type="submit" style="padding: 9px 18px; background-color: #0f172a; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem;">
+                Filtrar
+            </button>
+
+            {% if query %}
+                <a href="{% url 'admin_gestion_apoderados' %}" style="padding: 9px 15px; background: #e2e8f0; color: #334155; border-radius: 6px; text-decoration: none; font-size: 0.95rem;">Limpiar</a>
+            {% endif %}
+
+        </form>
     </div>
 
-    <table id="apoderados-table">
-        <thead>
-            <tr>
-                <th style="width: 20%;">APODERADO</th>
-                <th style="width: 12%;">RUT</th>
-                <th style="width: 25%;">PUPILO(S) Y CURSO</th>
-                <th style="width: 20%;">EMAIL INSTITUCIONAL</th>
-                <th style="width: 10%;">ESTADO</th>
-                <th style="width: 13%;">ACCIONES</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <div class="user-info">
-                        <div class="avatar bg-blue">CG</div>
-                        <strong>Carolina González Muñoz</strong>
-                    </div>
-                </td>
-                <td>12.345.678-9</td>
-                <td class="pupil-text"><strong>Martín González</strong> (3° Básico A)</td>
-                <td>c.gonzalez@santajuliana.cl</td>
-                <td><span class="badge badge-activo">Activo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="user-info">
-                        <div class="avatar bg-green">JP</div>
-                        <strong>Jorge Pérez Soto</strong>
-                    </div>
-                </td>
-                <td>15.678.432-1</td>
-                <td class="pupil-text"><strong>Sofía Pérez</strong> (7° B B) - <strong>Tomás Pérez</strong> (1°...)</td>
-                <td>j.perez@santajuliana.cl</td>
-                <td><span class="badge badge-activo">Activo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="user-info">
-                        <div class="avatar bg-orange">MR</div>
-                        <strong>María Rodríguez Lagos</strong>
-                    </div>
-                </td>
-                <td>11.222.333-4</td>
-                <td class="pupil-text"><strong>Valentina Rodríguez</strong> (Pre-Kinder A)</td>
-                <td>m.rodriguez@santajuliana.cl</td>
-                <td><span class="badge badge-activo">Activo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="user-info">
-                        <div class="avatar bg-red">AF</div>
-                        <strong>Andrés Fuentes Díaz</strong>
-                    </div>
-                </td>
-                <td>9.876.543-2</td>
-                <td class="pupil-text"><strong>Catalina Fuentes</strong> (2° Medio B)</td>
-                <td>a.fuentes@santajuliana.cl</td>
-                <td><span class="badge badge-inactivo">Inactivo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="user-info">
-                        <div class="avatar bg-purple">LS</div>
-                        <strong>Lorena Silva Bravo</strong>
-                    </div>
-                </td>
-                <td>14.567.890-K</td>
-                <td class="pupil-text"><strong>Diego Silva</strong> (4° Bas A) - <strong>Camila Silva</strong> (6...</td>
-                <td>l.silva@santajuliana.cl</td>
-                <td><span class="badge badge-activo">Activo</span></td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="{% url 'admin_editar_apoderado' %}" aria-label="Editar apoderado">✎</a>
-                        <button class="btn-icon delete" onclick="eliminarApoderado(this)">🗑</button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- TABLA DINÁMICA DE APODERADOS -->
+    <div class="table-responsive">
+        <table id="apoderados-table">
+            <thead>
+                <tr>
+                    <th style="width: 22%;">APODERADO</th>
+                    <th style="width: 14%;">RUT</th>
+                    <th style="width: 26%;">PUPILO(S) Y CURSO</th>
+                    <th style="width: 20%;">EMAIL INSTITUCIONAL</th>
+                    <th style="width: 10%;">ESTADO</th>
+                    <th style="width: 8%;">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for apoderado in apoderados %}
+                <tr>
+                    <td>
+                        <div class="user-info" style="display: flex; align-items: center; gap: 10px;">
+                            <div class="avatar" style="width: 32px; height: 32px; background: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem;">
+                                {{ apoderado.nombre|slice:":1" }}{{ apoderado.apellido_paterno|slice:":1" }}
+                            </div>
+                            <strong>{{ apoderado.nombre }} {{ apoderado.apellido_paterno }} {{ apoderado.apellido_materno|default:"" }}</strong>
+                        </div>
+                    </td>
+                    <td>{{ apoderado.rut }}</td>
+                    <td class="pupil-text">
+                        {% if apoderado.pupilos_str %}
+                            {{ apoderado.pupilos_str }}
+                        {% else %}
+                            <span style="color: #94a3b8; font-style: italic;">Sin pupilos asignados</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ apoderado.correo }}</td>
+                    <td>
+                        {% if apoderado.activo == 1 %}
+                            <span class="badge badge-activo" style="padding: 4px 8px; border-radius: 4px; background: #dcfce7; color: #166534; font-size: 0.8rem;">Activo</span>
+                        {% else %}
+                            <span class="badge badge-inactivo" style="padding: 4px 8px; border-radius: 4px; background: #fee2e2; color: #991b1b; font-size: 0.8rem;">Inactivo</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="action-btns" style="display: flex; gap: 5px;">
+                            <!-- 📌 Enlace de edición apuntando al RUT real del apoderado -->
+                            <a class="btn-icon" href="{% url 'admin_editar_apoderado' apoderado.rut %}" title="Editar apoderado" style="padding: 5px 8px; background: #f1f5f9; border-radius: 4px; text-decoration: none;">✎</a>
+                            <button class="btn-icon delete" onclick="eliminarApoderado(this)" title="Eliminar" style="padding: 5px 8px; background: #fee2e2; color: #991b1b; border: none; border-radius: 4px; cursor: pointer;">🗑</button>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 25px; color: #64748b; font-style: italic;">
+                        No se encontraron apoderados registrados con los criterios de búsqueda.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-    <div class="pagination-bar">
-    <div>Mostrando 1 a 5 de 184 resultados</div>
-        <div class="pagination-controls">
-        <button class="page-link">Anterior</button>
-        <button class="page-link active">1</button>
-        <button class="page-link">2</button>
-        <button class="page-link">3</button>
-        <span class="page-link" style="border:none; background:transparent;">...</span>
-        <button class="page-link">31</button>
-        <button class="page-link">Siguiente</button>
+    <!-- 📌 BARRA DE PAGINACIÓN ESTANDARIZADA -->
+    <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 15px 10px; border-top: 1px solid #e2e8f0; font-size: 0.9rem; color: #64748b;">
+        <div class="pagination-info">
+            Mostrando del <strong>{{ apoderados.start_index|default:0 }}</strong> al <strong>{{ apoderados.end_index|default:0 }}</strong> de <strong>{{ apoderados.paginator.count }}</strong> resultados
+        </div>
+        
+        <div class="pagination-controls" style="display: flex; gap: 5px; align-items: center;">
+            {% if apoderados.has_previous %}
+                <a href="?page=1&q={{ query }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Primera</a>
+                <a href="?page={{ apoderados.previous_page_number }}&q={{ query }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Anterior</a>
+            {% endif %}
+
+            <span style="padding: 6px 12px; border: 1px solid #f97316; border-radius: 6px; background-color: #f97316; color: white; font-weight: 500;">
+                {{ apoderados.number }} de {{ apoderados.paginator.num_pages|default:1 }}
+            </span>
+
+            {% if apoderados.has_next %}
+                <a href="?page={{ apoderados.next_page_number }}&q={{ query }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Siguiente</a>
+                <a href="?page={{ apoderados.paginator.num_pages }}&q={{ query }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Última</a>
+            {% endif %}
         </div>
     </div>
+
 </div>
 
 <script>

@@ -23,13 +23,36 @@
 </div>
 
 <div class="table-container">
-    <div class="table-toolbar">
-        <div class="search-box">
-            <input type="text" placeholder="Buscar por código, dispositivo...">
-        </div>
-        <a class="btn-create" href="{% url 'crear_equipo_ti' %}">
-            + Nuevo Equipo
-        </a>
+    
+    <!-- 📌 FORMULARIO DE BÚSQUEDA Y FILTRO OPERATIVO -->
+    <div class="table-toolbar" style="margin-bottom: 20px;">
+        <form method="GET" action="" class="filter-form" style="display: flex; gap: 15px; align-items: center; width: 100%;">
+            
+            <div class="search-box" style="flex: 1; position: relative; display: flex; align-items: center;">
+                <span style="position: absolute; left: 12px; font-size: 0.95rem; pointer-events: none;">🔍</span>
+                <input
+                    type="text"
+                    name="q"
+                    value="{{ query }}"
+                    placeholder="Buscar por código, dispositivo, ubicación..."
+                    autocomplete="off"
+                    class="form-control"
+                    style="width: 100%; padding: 9px 12px 9px 38px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;"
+                >
+            </div>
+
+            <button type="submit" style="padding: 9px 18px; background-color: #0f172a; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem;">
+                Filtrar
+            </button>
+
+            {% if query %}
+                <a href="{% url 'admin_gestion_inventario' %}" style="padding: 9px 15px; background: #e2e8f0; color: #334155; border-radius: 6px; text-decoration: none; font-size: 0.95rem;">Limpiar</a>
+            {% endif %}
+
+            <a class="btn-create" href="{% url 'crear_equipo_ti' %}" style="padding: 9px 18px; background: #f97316; color: white; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.95rem;">
+                + Nuevo Equipo
+            </a>
+        </form>
     </div>
 
     <table>
@@ -49,26 +72,51 @@
                 <td>{{ equipo.tipo_equipo|default:"Dispositivo TI" }}</td>
                 <td>{{ equipo.ubicacion|default:"Sin asignar" }}</td>
                 <td>
-                    {% if equipo.estado == 'Operativo' %}
-                        <span class="badge" style="background-color: #dcfce7; color: #16a34a;">Operativo</span>
+                    {% if equipo.estado == 'Operativo' or equipo.estado == 'Disponible' %}
+                        <span class="badge" style="background-color: #dcfce7; color: #16a34a; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">{{ equipo.estado }}</span>
                     {% else %}
-                        <span class="badge" style="background-color: #fef3c7; color: #d97706;">{{ equipo.estado }}</span>
+                        <span class="badge" style="background-color: #fef3c7; color: #d97706; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">{{ equipo.estado }}</span>
                     {% endif %}
                 </td>
                 <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="#" title="Editar equipo">✎</a>
+                    <div class="action-btns" style="display: flex; gap: 5px;">
+                        <!-- 📌 Enlace de edición apuntando al código único del equipo TI -->
+                        <a class="btn-icon" href="{% url 'admin_editar_equipo' equipo.codigo_inventario %}" title="Editar equipo" style="padding: 5px 8px; background: #f1f5f9; border-radius: 4px; text-decoration: none;">✎</a>
                     </div>
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="5" style="text-align: center; padding: 25px; color: #64748b;">
-                    No hay equipos tecnológicos registrados en el sistema.
+                <td colspan="5" style="text-align: center; padding: 25px; color: #64748b; font-style: italic;">
+                    No hay equipos tecnológicos que coincidan con la búsqueda.
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <!-- 📌 BARRA DE PAGINACIÓN ESTANDARIZADA -->
+    <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 15px 10px; border-top: 1px solid #e2e8f0; font-size: 0.9rem; color: #64748b;">
+        <div class="pagination-info">
+            Mostrando del <strong>{{ equipos.start_index|default:0 }}</strong> al <strong>{{ equipos.end_index|default:0 }}</strong> de <strong>{{ equipos.paginator.count }}</strong> resultados
+        </div>
+        
+        <div class="pagination-controls" style="display: flex; gap: 5px; align-items: center;">
+            {% if equipos.has_previous %}
+                <a href="?page=1&q={{ query }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Primera</a>
+                <a href="?page={{ equipos.previous_page_number }}&q={{ query }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Anterior</a>
+            {% endif %}
+
+            <span style="padding: 6px 12px; border: 1px solid #f97316; border-radius: 6px; background-color: #f97316; color: white; font-weight: 500;">
+                {{ equipos.number }} de {{ equipos.paginator.num_pages|default:1 }}
+            </span>
+
+            {% if equipos.has_next %}
+                <a href="?page={{ equipos.next_page_number }}&q={{ query }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Siguiente</a>
+                <a href="?page={{ equipos.paginator.num_pages }}&q={{ query }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Última</a>
+            {% endif %}
+        </div>
+    </div>
+
 </div>
 {% endblock %}

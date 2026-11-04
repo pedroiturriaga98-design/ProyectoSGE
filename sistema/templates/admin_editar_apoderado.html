@@ -8,46 +8,74 @@
 </div>
 
 <div class="form-card">
-    <div class="form-grid">
-        <div class="form-group">
-            <label>Nombres</label>
-            <input type="text" class="form-control" value="Carolina">
-        </div>
-        <div class="form-group">
-            <label>RUT</label>
-            <input type="text" class="form-control" value="12.345.678-9" disabled title="El RUT no se puede modificar">
-        </div>
+    <form method="POST">
+        {% csrf_token %}
 
-        <div class="form-group">
-            <label>Apellidos</label>
-            <input type="text" class="form-control" value="González Muñoz">
-        </div>
-        <div class="form-group">
-            <label>Email Institucional</label>
-            <input type="email" class="form-control" value="c.gonzalez@santajuliana.cl">
-        </div>
+        <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Nombres</label>
+                <input type="text" name="nombre" class="form-control" value="{{ apoderado.nombre }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label>RUT</label>
+                <input type="text" class="form-control" value="{{ apoderado.rut }}" disabled title="El RUT no se puede modificar" style="background: #f1f5f9;">
+            </div>
 
-        <div class="form-group">
-            <label>Teléfono de Contacto</label>
-            <input type="text" class="form-control" value="+56 9 1234 5678">
-        </div>
-        <div class="form-group">
-            <label>Estado de la Cuenta</label>
-            <div class="toggle-container">
-                <input type="checkbox" class="toggle-switch" checked>
-                <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Activo y con acceso</span>
+            <div class="form-group">
+                <label>Apellido Paterno</label>
+                <input type="text" name="apellido_paterno" class="form-control" value="{{ apoderado.apellido_paterno }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Apellido Materno</label>
+                <input type="text" name="apellido_materno" class="form-control" value="{{ apoderado.apellido_materno }}">
+            </div>
+
+            <div class="form-group">
+                <label>Email Institucional</label>
+                <input type="email" name="correo" class="form-control" value="{{ apoderado.correo }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono de Contacto</label>
+                <input type="text" name="telefono" class="form-control" value="{{ apoderado.telefono }}">
+            </div>
+
+            <div class="form-group full-width" style="grid-column: span 2;">
+                <label>Dirección</label>
+                <input type="text" name="direccion" class="form-control" value="{{ apoderado.direccion }}">
+            </div>
+
+            <div class="form-group">
+                <label>Estado de la Cuenta</label>
+                <div class="toggle-container" style="display: flex; align-items: center; gap: 10px; margin-top: 8px;">
+                    <input type="checkbox" name="activo" class="toggle-switch" {% if apoderado.activo == 1 %}checked{% endif %}>
+                    <span style="font-size: 0.9rem; color: #0f172a; font-weight: 500;">Activo y con acceso</span>
+                </div>
+            </div>
+
+            <div class="form-group full-width" style="grid-column: span 2;">
+                <label>Pupilos Vinculados</label>
+                <div style="padding: 10px; background-color: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; color: #b45309; font-size: 0.9rem;">
+                    {% if pupilos %}
+                        <ul style="margin: 0; padding-left: 20px;">
+                            {% for alumno in pupilos %}
+                                <li><strong>{{ alumno.nombre_completo }}</strong> - {{ alumno.curso_id_curso.nombre_curso }} (RUT: {{ alumno.rut_alumno }})</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <span style="font-style: italic;">Este apoderado no tiene alumnos vinculados actualmente.</span>
+                    {% endif %}
+                </div>
             </div>
         </div>
 
-        <div class="form-group full-width">
-            <label>Pupilos Vinculados</label>
-            <input type="text" class="form-control" value="Martín González (3° Básico A)" disabled style="background-color: #fffbeb; border-color: #fde68a; color: #b45309;">
+        <div class="form-footer" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px;">
+            <button type="button" class="btn-cancel" onclick="window.history.back()" style="padding: 8px 16px; border: 1px solid #cbd5e1; background: white; border-radius: 6px; cursor: pointer;">Cancelar</button>
+            <button type="submit" class="btn-submit" style="padding: 8px 18px; background: #f97316; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Guardar Cambios</button>
         </div>
-    </div>
-
-    <div class="form-footer">
-        <button class="btn-cancel" onclick="window.history.back()">Cancelar</button>
-        <a class="btn-submit" href="{% url 'admin_gestion_apoderados' %}" onclick="alert('Datos del apoderado actualizados.')">Guardar Cambios</a>
-    </div>
+    </form>
 </div>
+
 {% endblock %}

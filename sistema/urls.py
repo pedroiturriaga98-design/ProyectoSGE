@@ -41,7 +41,7 @@ urlpatterns = [
     path('administrador/apoderados/editar/', views.admin_editar_apoderado, name='admin_editar_apoderado'),
     path('administrador/profesores/', views.admin_gestion_profesores, name='admin_gestion_profesores'),
     path('administrador/profesores/editar/', views.admin_editar_profesor, name='admin_editar_profesor'),
-    path('administrador/inventario/', views.admin_gestion_inventario, name='admin_gestion_inventario'),
+path('administrador/inventario/', views.inventario_ti, name='admin_gestion_inventario'),
     path('administrador/inventario/equipo/', views.admin_editar_equipo, name='admin_editar_equipo'),
     path('inventario/ti/', views.inventario_ti, name='inventario_ti'),
     path('inventario/ti/crear/', views.crear_equipo_ti, name='crear_equipo_ti'),
@@ -50,6 +50,8 @@ urlpatterns = [
     path('aseo/inicio/', views.inicio_supervisor_aseo, name='inicio_supervisor_aseo'),
     path('aseo/incidencias/', views.incidencias_aseo, name='incidencias_aseo'),
     path('aseo/incidencias/crear/', views.crear_incidencia_aseo, name='crear_incidencia_aseo'),
+    path('apoderados/editar/<str:rut>/', views.admin_editar_apoderado, name='admin_editar_apoderado'),
+    path('inventario-ti/editar/<str:codigo>/', views.admin_editar_equipo, name='admin_editar_equipo'),
 
 
 

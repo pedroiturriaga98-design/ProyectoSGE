@@ -62,14 +62,14 @@
             <!-- INVENTARIO TI (Admin 1 y TI 4) -->
             {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
                 <a href="{% url 'inventario_ti' %}" class="nav-link {% if request.resolver_match.url_name == 'inventario_ti' %}active-menu{% endif %}">
-                    Inventario TI 🖥️ 
+                    Inventario "TI" 
                 </a>
             {% endif %}
 
             <!-- INVENTARIO ASEO (Admin 1 y Aseo 5) -->
             {% if request.session.rol_id == 1 or request.session.rol_id == 5 %}
                 <a href="{% url 'inventario_aseo' %}" class="nav-link {% if request.resolver_match.url_name == 'inventario_aseo' %}active-menu{% endif %}">
-                    Gestion Inventario 🧹 
+                    Inventario "Aseo e Insumos"
                 </a>
             {% endif %}
         </nav>

@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from .models import TicketSoporte, EquipoTi, Usuario, Rol
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from functools import wraps # Importante para hacer decoradores
@@ -1162,24 +1162,29 @@ def profesor_perfil_alumno(request, rut):
 def admin_inicio(request):
     return render(request, 'admin_inicio.html')
 
+from django.core.paginator import Paginator
+from django.db.models import Q
+
 @require_role([1, 4])
 def admin_gestion_usuarios(request):
     # 1. Extraemos todos los usuarios y traemos los datos de su rol asociado
-    lista_usuarios = Usuario.objects.select_related('rol_id_rol').all()
+    lista_usuarios = Usuario.objects.select_related('rol_id_rol').all().order_by('apellido_paterno', 'nombre')
     
     # 2. Capturamos lo que venga del buscador ('q') y del select ('rol')
     query = request.GET.get('q', '').strip()
     rol_filtro = request.GET.get('rol', '').strip()
 
-    # 3. Si escribieron algo en el buscador, filtramos por nombre, apellidos, correo o RUT
+    # 3. Búsqueda inteligente multi-palabra por nombre, apellidos, correo o RUT
     if query:
-        lista_usuarios = lista_usuarios.filter(
-            Q(nombre__icontains=query) |
-            Q(apellido_paterno__icontains=query) |
-            Q(apellido_materno__icontains=query) |
-            Q(correo__icontains=query) |
-            Q(rut__icontains=query)
-        )
+        palabras = query.split()
+        for palabra in palabras:
+            lista_usuarios = lista_usuarios.filter(
+                Q(nombre__icontains=palabra) |
+                Q(apellido_paterno__icontains=palabra) |
+                Q(apellido_materno__icontains=palabra) |
+                Q(correo__icontains=palabra) |
+                Q(rut__icontains=palabra)
+            )
 
     # 4. Si seleccionaron un rol en el desplegable, filtramos por ese ID de rol
     if rol_filtro:
@@ -1188,9 +1193,14 @@ def admin_gestion_usuarios(request):
     # 5. Traemos todos los roles de la BD para llenar el <select> del HTML
     roles = Rol.objects.all()
 
+    # 6. Aplicamos la paginación sobre la lista ya filtrada (10 usuarios por página)
+    paginator = Paginator(lista_usuarios, 10)
+    page_number = request.GET.get('page')
+    usuarios = paginator.get_page(page_number)
+
     # Empaquetamos todo en el contexto
     context = {
-        'usuarios': lista_usuarios,
+        'usuarios': usuarios,
         'roles': roles,
         'query': query,
         'rol_filtro': rol_filtro,
@@ -1374,29 +1384,69 @@ def admin_eliminar_usuario(request, rut):
 
     return redirect('admin_gestion_usuarios')
 
-@require_role([1])
+from django.core.paginator import Paginator
+from django.db.models import Q
+
+@require_role([1, 4])
 def admin_alumnos(request):
-    alumnos = Alumno.objects.select_related(
+    # 1. Obtenemos los alumnos con su curso
+    alumnos_qs = Alumno.objects.select_related(
         'curso_id_curso'
     ).order_by('nombre_completo')
 
     cursos = Curso.objects.all().order_by('id_curso')
 
-    curso_seleccionado = request.GET.get('curso', '')
+    # 2. Capturamos los filtros de la URL
+    query = request.GET.get('q', '').strip()
+    curso_seleccionado = request.GET.get('curso', '').strip()
 
+    # 3. Búsqueda inteligente multi-palabra por nombre o RUT
+    if query:
+        palabras = query.split()
+        for palabra in palabras:
+            alumnos_qs = alumnos_qs.filter(
+                Q(nombre_completo__icontains=palabra) |
+                Q(rut_alumno__icontains=palabra)
+            )
+
+    # 4. Filtro por curso seleccionado
     if curso_seleccionado:
-        alumnos = alumnos.filter(
+        alumnos_qs = alumnos_qs.filter(
             curso_id_curso_id=curso_seleccionado
         )
 
+    # 5. Paginación formal: 10 alumnos por página
+    paginator = Paginator(alumnos_qs, 10)
+    page_number = request.GET.get('page')
+    alumnos_paginados = paginator.get_page(page_number)
+
+    # 6. Cruzamos de forma segura el apoderado para cada alumno de la página actual
+    lista_alumnos_procesada = []
+    for alumno in alumnos_paginados:
+        alumno.nombre_apoderado_str = None
+        
+        # Verificamos si tiene un valor en usuario_rut (sea objeto o string de RUT)
+        if hasattr(alumno, 'usuario_rut') and alumno.usuario_rut:
+            if isinstance(alumno.usuario_rut, Usuario):
+                alumno.nombre_apoderado_str = f"{alumno.usuario_rut.nombre} {alumno.usuario_rut.apellido_paterno}"
+            else:
+                # Si está guardado como RUT/string en la BD, lo buscamos en la tabla Usuario
+                apo = Usuario.objects.filter(rut=str(alumno.usuario_rut)).first()
+                if apo:
+                    alumno.nombre_apoderado_str = f"{apo.nombre} {apo.apellido_paterno}"
+                    
+        lista_alumnos_procesada.append(alumno)
+
+    alumnos_paginados.object_list = lista_alumnos_procesada
+
     context = {
-        'alumnos': alumnos,
+        'alumnos': alumnos_paginados,
         'cursos': cursos,
         'curso_seleccionado': curso_seleccionado,
+        'query': query,
     }
 
     return render(request, 'admin_alumnos.html', context)
-
 @require_role([1])
 def admin_crear_alumno(request):
 
@@ -1651,47 +1701,51 @@ def admin_editar_alumno(request, rut):
         context
     )
 
+
+from django.core.paginator import Paginator
+from django.db.models import Q
+from .models import TicketSoporte, EquipoTi, Usuario, Rol  # Importamos TicketSoporte en lugar de Incidencia
+
+from django.core.paginator import Paginator
 from django.db.models import Q
 
 @require_role([1, 4])
 def admin_gestion_incidencias(request):
+    # 1. Consultamos usando TicketSoporte y ordenamos por fecha de reporte descendente
+    lista_incidencias = TicketSoporte.objects.all().order_by('-fecha_reporte', '-id_ticket')
+    
+    # 2. Capturamos los filtros de la URL (búsqueda, estado y prioridad)
     query = request.GET.get('q', '').strip()
-    estado_filtro = request.GET.get('estado', '')
-    prioridad_filtro = request.GET.get('prioridad', '')
+    estado_filtro = request.GET.get('estado', '').strip()
+    prioridad_filtro = request.GET.get('prioridad', '').strip()
 
-    incidencias = TicketSoporte.objects.all().order_by('-fecha_reporte', '-id_ticket')
-
+    # 3. Aplicamos los filtros si el usuario los seleccionó
     if query:
-        # Limpiamos el texto por si escriben "INC-2026-002" o solo "2" para extraer el número
-        query_limpio = query.upper().replace('INC', '').replace('2026', '').replace('-', '').strip()
+        lista_incidencias = lista_incidencias.filter(
+            Q(equipo_ti_codigo_inventario__ubicacion__icontains=query) | 
+            Q(equipo_ti_codigo_inventario__codigo_inventario__icontains=query) | 
+            Q(id_ticket__icontains=query)
+        )
         
-        condiciones = Q(equipo_ti_codigo_inventario__ubicacion__icontains=query) | \
-                      Q(equipo_ti_codigo_inventario__codigo_inventario__icontains=query) | \
-                      Q(usuario_rut__nombre__icontains=query) | \
-                      Q(usuario_rut__apellido_paterno__icontains=query) | \
-                      Q(descripcion__icontains=query)
-        
-        # Si lo que escribieron se puede pasar a número, permitimos buscar por ID exacto
-        if query_limpio.isdigit():
-            condiciones |= Q(id_ticket=int(query_limpio))
-
-        incidencias = incidencias.filter(condiciones)
-
     if estado_filtro and estado_filtro != 'Todos':
-        incidencias = incidencias.filter(estado_ticket=estado_filtro)
-
+        lista_incidencias = lista_incidencias.filter(estado_ticket=estado_filtro)
+        
     if prioridad_filtro and prioridad_filtro != 'Todas':
-        incidencias = incidencias.filter(prioridad=prioridad_filtro)
+        lista_incidencias = lista_incidencias.filter(prioridad=prioridad_filtro)
 
-    context = {
+    # 4. Aplicamos Paginación: 10 incidencias por página
+    paginator = Paginator(lista_incidencias, 10)
+    page_number = request.GET.get('page')
+    incidencias = paginator.get_page(page_number)
+
+    # 5. Empaquetamos todo en el contexto para la plantilla
+    return render(request, 'admin_gestion_incidencias.html', {
         'incidencias': incidencias,
         'query': query,
         'estado_filtro': estado_filtro,
         'prioridad_filtro': prioridad_filtro,
-    }
-    return render(request, 'admin_gestion_incidencias.html', context)
+    })
 
-@require_role([1, 4])
 @require_role([1, 4])
 def admin_editar_incidencia(request, pk):
     ticket = get_object_or_404(TicketSoporte, pk=pk)
@@ -1731,55 +1785,68 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from .models import Usuario, Curso, Asignatura, AsignaturaCurso
 
+from django.core.paginator import Paginator
+from django.db.models import Q
+
 @require_role([1, 4])
 def admin_gestion_profesores(request):
     query = request.GET.get('q', '').strip()
     asignatura_filtro = request.GET.get('asignatura', '').strip()
     estado_filtro = request.GET.get('estado', '').strip()
 
-    # Traer todos los usuarios con rol 2 (Profesor)
-    profesores = Usuario.objects.filter(rol_id_rol_id=2).order_by('apellido_paterno', 'nombre')
+    # 1. Traer todos los usuarios con rol 2 (Profesor)
+    profesores_qs = Usuario.objects.filter(rol_id_rol_id=2).order_by('apellido_paterno', 'nombre')
 
+    # 2. Búsqueda profesional por nombre, apellidos, RUT y correo (soporta múltiples palabras)
     if query:
-        profesores = profesores.filter(
-            Q(nombre__icontains=query) |
-            Q(apellido_paterno__icontains=query) |
-            Q(apellido_materno__icontains=query) |
-            Q(rut__icontains=query) |
-            Q(correo__icontains=query)
-        )
+        palabras = query.split()
+        for palabra in palabras:
+            profesores_qs = profesores_qs.filter(
+                Q(nombre__icontains=palabra) |
+                Q(apellido_paterno__icontains=palabra) |
+                Q(apellido_materno__icontains=palabra) |
+                Q(rut__icontains=palabra) |
+                Q(correo__icontains=palabra)
+            )
 
     if estado_filtro == 'Activos':
-        profesores = profesores.filter(activo=1)
+        profesores_qs = profesores_qs.filter(activo=1)
     elif estado_filtro == 'Inactivos':
-        profesores = profesores.filter(activo=0)
+        profesores_qs = profesores_qs.filter(activo=0)
 
     if asignatura_filtro and asignatura_filtro != 'Todas':
         ruts_con_asignatura = AsignaturaCurso.objects.filter(
             asignatura_id_asignatura_id=asignatura_filtro
         ).values_list('usuario_rut_id', flat=True)
-        profesores = profesores.filter(rut__in=ruts_con_asignatura)
+        profesores_qs = profesores_qs.filter(rut__in=ruts_con_asignatura)
 
-    # Cruzar cada profesor con sus jefaturas y sus asignaciones de ramos/cursos
+    # 3. Aplicar Paginación (10 profesores por página)
+    paginator = Paginator(profesores_qs, 10)
+    page_number = request.GET.get('page')
+    pagina_profesores = paginator.get_page(page_number)
+
+    # 4. Cruzar cada profesor de la página actual con sus jefaturas y asignaciones
     lista_profesores = []
-    for p in profesores:
+    for p in pagina_profesores:
         partes_iniciales = f"{(p.nombre or '')[:1]}{(p.apellido_paterno or '')[:1]}".upper()
         p.iniciales = partes_iniciales if partes_iniciales else "PR"
         
-        # Cursos donde es Profesor Jefe (tabla curso)
+        # Cursos donde es Profesor Jefe
         p.jefaturas = Curso.objects.filter(usuario_rut=p)
         
-        # Ramos y cursos que imparte (tabla asignatura_curso)
+        # Ramos y cursos que imparte
         p.asignaciones = AsignaturaCurso.objects.filter(usuario_rut=p).select_related(
             'curso_id_curso', 'asignatura_id_asignatura'
         ).order_by('curso_id_curso__nombre_curso', 'asignatura_id_asignatura__nombre_asignatura')
         
         lista_profesores.append(p)
 
+    pagina_profesores.object_list = lista_profesores
+
     asignaturas_disponibles = Asignatura.objects.all().order_by('nombre_asignatura')
 
     return render(request, 'admin_gestion_profesores.html', {
-        'profesores': lista_profesores,
+        'profesores': pagina_profesores,
         'asignaturas_disponibles': asignaturas_disponibles,
         'query': query,
         'asignatura_filtro': asignatura_filtro,
@@ -1871,29 +1938,65 @@ def admin_editar_profesor(request):
 
 # --- GESTIÓN DE APODERADOS (Rol 3) ---
 
+from django.core.paginator import Paginator
+from django.db.models import Q
+
 @require_role([1, 4])
 def admin_gestion_apoderados(request):
     query = request.GET.get('q', '').strip()
     
-    # El filtro busca únicamente los usuarios con rol_id 3 (Apoderado)
-    apoderados = Usuario.objects.filter(rol_id_rol_id=3).order_by('apellido_paterno')
+    # 1. Obtenemos todos los apoderados (probando con el campo de rol correcto)
+    # Si en tu modelo de Usuario la relación se llama diferente, asegúrate de mantener tu filtro base (ej. rol_id_rol_id=3 o rol_id_rol=3)
+    try:
+        apoderados_qs = Usuario.objects.filter(rol_id_rol_id=3).order_by('apellido_paterno', 'nombre')
+    except Exception:
+        apoderados_qs = Usuario.objects.filter(rol_id_rol=3).order_by('apellido_paterno', 'nombre')
 
+    # 2. Búsqueda multi-palabra inteligente y segura
     if query:
-        apoderados = apoderados.filter(
-            Q(nombre__icontains=query) |
-            Q(apellido_paterno__icontains=query) |
-            Q(rut__icontains=query) |
-            Q(correo__icontains=query)
-        )
+        palabras = query.split()
+        for palabra in palabras:
+            apoderados_qs = apoderados_qs.filter(
+                Q(nombre__icontains=palabra) |
+                Q(apellido_paterno__icontains=palabra) |
+                Q(apellido_materno__icontains=palabra) |
+                Q(rut__icontains=palabra) |
+                Q(correo__icontains=palabra)
+            )
+
+    # 3. Paginación formal: 10 apoderados por página
+    paginator = Paginator(apoderados_qs, 10)
+    page_number = request.GET.get('page')
+    apoderados_paginados = paginator.get_page(page_number)
+
+    # 4. Cruzamos de forma dinámica los pupilos asociados a cada apoderado
+    lista_procesada = []
+    for apo in apoderados_paginados:
+        # Buscamos los alumnos que tienen este RUT como apoderado
+        pupilos = Alumno.objects.filter(usuario_rut=apo).select_related('curso_id_curso')
+        
+        texto_pupilos = []
+        for alumno in pupilos:
+            curso_nombre = alumno.curso_id_curso.nombre_curso if alumno.curso_id_curso else "Sin curso"
+            texto_pupilos.append(f"{alumno.nombre_completo} ({curso_nombre})")
+            
+        apo.pupilos_str = " - ".join(texto_pupilos) if texto_pupilos else ""
+        lista_procesada.append(apo)
+
+    apoderados_paginados.object_list = lista_procesada
 
     return render(request, 'admin_gestion_apoderados.html', {
-        'apoderados': apoderados,
-        'query': query
+        'apoderados': apoderados_paginados,
+        'query': query,
     })
 
 @require_role([1, 4])
 def admin_editar_apoderado(request, rut):
+    # Buscamos al apoderado por su RUT exacto
     apoderado = get_object_or_404(Usuario, rut=rut)
+    
+    # Buscamos sus pupilos asociados para mostrarlos en la vista
+    pupilos = Alumno.objects.filter(usuario_rut=apoderado).select_related('curso_id_curso')
 
     if request.method == 'POST':
         apoderado.nombre = request.POST.get('nombre', '').strip()
@@ -1908,40 +2011,79 @@ def admin_editar_apoderado(request, rut):
         messages.success(request, f"Apoderado {apoderado.nombre} actualizado correctamente.")
         return redirect('admin_gestion_apoderados')
 
-    return render(request, 'admin_editar_apoderado.html', {'apoderado': apoderado})
+    return render(request, 'admin_editar_apoderado.html', {
+        'apoderado': apoderado,
+        'pupilos': pupilos
+    })
 
 
-@require_role([1, 4, 5])
-def admin_gestion_inventario(request):
-    return render(request, 'admin_gestion_inventario.html')
-
-@require_role([1, 4])
-def admin_editar_equipo(request):
-    return render(request, 'admin_editar_equipo.html')
-
+from django.core.paginator import Paginator
+from django.db.models import Q
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from .models import EquipoTi, Insumo, SolicitudInsumo
-
 
 @require_role([1, 4])
 def inventario_ti(request):
-    equipos = EquipoTi.objects.all().order_by('codigo_inventario')
+    query = request.GET.get('q', '').strip()
     
-    total_equipos = equipos.count()
-    # Cambiamos 'Operativo' por 'Disponible' que es como viene en tu base de datos
-    operativos = equipos.filter(estado__iexact='Disponible').count()
-    en_mantencion = equipos.filter(estado__iexact='En Mantención').count()
+    # 1. Consulta base ordenada por código de inventario
+    equipos_qs = EquipoTi.objects.all().order_by('codigo_inventario')
+
+    # 2. Búsqueda inteligente multi-palabra (por código, ubicación, tipo o estado)
+    if query:
+        palabras = query.split()
+        for palabra in palabras:
+            equipos_qs = equipos_qs.filter(
+                Q(codigo_inventario__icontains=palabra) |
+                Q(ubicacion__icontains=palabra) |
+                Q(tipo_equipo__icontains=palabra) |
+                Q(estado__icontains=palabra)
+            )
+
+    # 3. Contadores totales basados en el total general de la BD
+    todos_equipos = EquipoTi.objects.all()
+    total_equipos = todos_equipos.count()
+    operativos = todos_equipos.filter(estado__iexact='Disponible').count()
+    en_mantencion = todos_equipos.filter(estado__iexact='En Mantención').count()
+
+    # 4. Paginación: 10 equipos por página
+    paginator = Paginator(equipos_qs, 10)
+    page_number = request.GET.get('page')
+    equipos_paginados = paginator.get_page(page_number)
 
     return render(request, 'inventario_ti.html', {
-        'equipos': equipos,
+        'equipos': equipos_paginados,
+        'query': query,
         'total_equipos': total_equipos,
         'operativos': operativos,
         'en_mantencion': en_mantencion,
     })
 
 @require_role([1, 4])
+def admin_editar_equipo(request, codigo):
+    # Buscamos el equipo exacto por su código de inventario
+    equipo = get_object_or_404(EquipoTi, codigo_inventario=codigo)
+
+    if request.method == 'POST':
+        equipo.codigo_inventario = request.POST.get('codigo_inventario', '').strip()
+        equipo.tipo_equipo = request.POST.get('tipo_equipo', '').strip()
+        equipo.ubicacion = request.POST.get('ubicacion', '').strip()
+        equipo.estado = request.POST.get('estado', 'Disponible')
+        # Si tienes campo de observaciones o descripción en tu modelo:
+        # equipo.observaciones = request.POST.get('observaciones', '').strip()
+
+        equipo.save()
+        messages.success(request, f"Equipo {equipo.codigo_inventario} actualizado correctamente.")
+        return redirect('inventario_ti')
+
+    return render(request, 'admin_editar_equipo.html', {
+        'equipo': equipo
+    })
+
+@require_role([1, 4])
 def crear_equipo_ti(request):
     if request.method == 'POST':
-        # Lógica para recibir los datos del formulario y guardar el equipo TI
         codigo_inventario = request.POST.get('codigo_inventario')
         tipo_equipo = request.POST.get('tipo_equipo')
         ubicacion = request.POST.get('ubicacion')
@@ -1967,14 +2109,21 @@ def inventario_aseo(request):
         'insumos_aseo': insumos_aseo,
     })
 
+from django.db.models import Max
+
 @require_role([1, 5])
 def crear_insumo_aseo(request):
     if request.method == 'POST':
         nombre_item = request.POST.get('nombre_item')
         stock_actual = request.POST.get('stock_actual', 0)
         
-        # Guardamos el nuevo insumo en la base de datos
+        # Calculamos el siguiente ID disponible para evitar el error de columna nula
+        ultimo_id = Insumo.objects.aggregate(max_id=Max('id_insumo'))['max_id'] or 0
+        nuevo_id = ultimo_id + 1
+
+        # Guardamos el nuevo insumo incluyendo explícitamente el id_insumo
         Insumo.objects.create(
+            id_insumo=nuevo_id,
             nombre_item=nombre_item,
             stock_actual=stock_actual
         )
@@ -2150,6 +2299,9 @@ def admin_crear_incidencia(request):
         tipo = request.POST.get('tipo', '').strip()
         descripcion = request.POST.get('descripcion', '').strip()
         codigo_equipo = request.POST.get('equipo', '').strip()
+        
+        # 📌 1. AQUÍ CAPTURAMOS LA PRIORIDAD SELECCIONADA EN EL FORMULARIO
+        prioridad = request.POST.get('prioridad', 'Media').strip()
 
         try:
             fecha = date.fromisoformat(fecha_texto)
@@ -2202,7 +2354,7 @@ def admin_crear_incidencia(request):
                     TicketSoporte.objects.create(
                         id_ticket=ultimo_id + 1,
                         fecha_reporte=fecha,
-                        prioridad='Media',
+                        prioridad=prioridad,  # 📌 2. AQUÍ GUARDAMOS LA PRIORIDAD REAL EN VEZ DE 'Media' FIJA
                         usuario_rut_id=rut_admin,
                         equipo_ti_codigo_inventario=equipo,
                         descripcion=descripcion,
@@ -2213,7 +2365,7 @@ def admin_crear_incidencia(request):
             return redirect('admin_crear_incidencia')
 
         messages.success(request, f'{nombre_tipo} registrada correctamente.')
-        return redirect('admin_gestion_incidencias') # Redirige de vuelta al listado de administrador
+        return redirect('admin_gestion_incidencias')
 
     return render(request, 'admin_agregar_incidencia.html', {
         'equipos': equipos,

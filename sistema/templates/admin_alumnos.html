@@ -1,4 +1,3 @@
-
 {% extends 'base_admin.html' %}
 
 {% block content %}
@@ -16,26 +15,32 @@
 
 <div class="table-container">
 
-    <!-- BUSCADOR Y FILTRO -->
-    <div class="table-toolbar">
-        <form method="GET" class="filter-form">
+    <!-- BUSCADOR Y FILTRO ÚNICO -->
+    <div class="table-toolbar" style="margin-bottom: 20px;">
+        <form method="GET" action="" class="filter-form" style="display: flex; gap: 15px; align-items: center; width: 100%;">
 
-            <span class="search-box">
+            <!-- Input de búsqueda por texto con espacio para la lupa -->
+            <div class="search-box" style="flex: 1; position: relative; display: flex; align-items: center;">
+                <span style="position: absolute; left: 12px; font-size: 0.95rem; pointer-events: none;">🔍</span>
                 <input
                     type="text"
-                    id="buscarAlumno"
+                    name="q"
+                    value="{{ query }}"
                     placeholder="Buscar por nombre o RUT..."
                     autocomplete="off"
+                    class="form-control"
+                    style="width: 100%; padding: 9px 12px 9px 38px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;"
                 >
-            </span>
+            </div>
 
+            <!-- Selector de Cursos -->
             <select
                 name="curso"
                 class="filter-select"
                 onchange="this.form.submit()"
+                style="padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: white; font-size: 0.95rem;"
             >
                 <option value="">Todos los cursos</option>
-
                 {% for curso in cursos %}
                     <option
                         value="{{ curso.id_curso }}"
@@ -48,6 +53,10 @@
                 {% endfor %}
             </select>
 
+            <button type="submit" style="padding: 9px 18px; background-color: #0f172a; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem;">
+                Filtrar
+            </button>
+
         </form>
     </div>
 
@@ -56,12 +65,12 @@
         <table id="tablaAlumnos">
             <thead>
                 <tr>
-                    <th>NOMBRE COMPLETO</th>
-                    <th>FECHA DE NACIMIENTO</th>
-                    <th>RUT ALUMNO</th>
-                    <th>CURSO</th>
-                    <th>ESTADO</th>
-                    <th>ACCIONES</th>
+                    <th style="width: 25%;">NOMBRE COMPLETO</th>
+                    <th style="width: 22%;">APODERADO</th>
+                    <th style="width: 15%;">RUT ALUMNO</th>
+                    <th style="width: 15%;">CURSO</th>
+                    <th style="width: 10%;">ESTADO</th>
+                    <th style="width: 13%;">ACCIONES</th>
                 </tr>
             </thead>
 
@@ -70,19 +79,24 @@
                 <tr class="fila-alumno">
 
                     <td>
-                        <div class="student-info">
-                            <div class="avatar-circle">
+                        <div class="student-info" style="display: flex; align-items: center; gap: 10px;">
+                            <div class="avatar-circle" style="width: 32px; height: 32px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #475569; font-size: 0.85rem;">
                                 {{ alumno.nombre_completo|slice:":2"|upper }}
                             </div>
-
                             <strong>
                                 {{ alumno.nombre_completo }}
                             </strong>
                         </div>
                     </td>
 
-                    <!-- Campo pendiente en el modelo Alumno -->
-                    <td>—</td>
+                    <!-- Apoderado asociado -->
+                    <td>
+                        {% if alumno.nombre_apoderado_str %}
+                            {{ alumno.nombre_apoderado_str }}
+                        {% else %}
+                            <span style="color: #94a3b8; font-style: italic;">Sin apoderado</span>
+                        {% endif %}
+                    </td>
 
                     <td>{{ alumno.rut_alumno }}</td>
 
@@ -92,20 +106,20 @@
 
                     <td>
                         {% if alumno.estado_matricula|lower == 'activo' or alumno.estado_matricula|lower == 'vigente' %}
-                            <span class="badge badge-activo">
+                            <span class="badge badge-activo" style="padding: 4px 8px; border-radius: 4px; background: #dcfce7; color: #166534; font-size: 0.8rem;">
                                 {{ alumno.estado_matricula }}
                             </span>
                         {% else %}
-                            <span class="badge badge-inactivo">
+                            <span class="badge badge-inactivo" style="padding: 4px 8px; border-radius: 4px; background: #fee2e2; color: #991b1b; font-size: 0.8rem;">
                                 {{ alumno.estado_matricula }}
                             </span>
                         {% endif %}
                     </td>
 
                     <td>
-                        <div class="action-btns">
-                            <a href="{% url 'admin_editar_alumno' alumno.rut_alumno %}" class="btn-icon" title="Editar">✎</a>
-                            <a href="#" class="btn-icon delete" title="Eliminar">🗑</a>
+                        <div class="action-btns" style="display: flex; gap: 5px;">
+                            <a href="{% url 'admin_editar_alumno' alumno.rut_alumno %}" class="btn-icon" title="Editar" style="padding: 5px 8px; background: #f1f5f9; border-radius: 4px; text-decoration: none;">✎</a>
+                            <a href="#" class="btn-icon delete" title="Eliminar" style="padding: 5px 8px; background: #fee2e2; color: #991b1b; border-radius: 4px; text-decoration: none;">🗑</a>
                         </div>
                     </td>
 
@@ -113,8 +127,8 @@
 
                 {% empty %}
                 <tr>
-                    <td colspan="6" class="empty-state">
-                        No hay alumnos registrados en la base de datos.
+                    <td colspan="6" class="empty-state" style="text-align: center; padding: 20px; color: #64748b;">
+                        No hay alumnos registrados que coincidan con la búsqueda.
                     </td>
                 </tr>
                 {% endfor %}
@@ -122,49 +136,29 @@
         </table>
     </div>
 
-    <!-- CONTADOR -->
-    <div class="pagination-bar">
-        <div id="contadorAlumnos">
-            Mostrando {{ alumnos|length }} alumnos
+    <!-- 📌 BARRA DE PAGINACIÓN ESTANDARIZADA -->
+    <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 15px 10px; border-top: 1px solid #e2e8f0; font-size: 0.9rem; color: #64748b;">
+        <div class="pagination-info">
+            Mostrando del <strong>{{ alumnos.start_index }}</strong> al <strong>{{ alumnos.end_index }}</strong> de <strong>{{ alumnos.paginator.count }}</strong> resultados
+        </div>
+        
+        <div class="pagination-controls" style="display: flex; gap: 5px; align-items: center;">
+            {% if alumnos.has_previous %}
+                <a href="?page=1&q={{ query }}&curso={{ curso_seleccionado }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Primera</a>
+                <a href="?page={{ alumnos.previous_page_number }}&q={{ query }}&curso={{ curso_seleccionado }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Anterior</a>
+            {% endif %}
+
+            <span style="padding: 6px 12px; border: 1px solid #f97316; border-radius: 6px; background-color: #f97316; color: white; font-weight: 500;">
+                {{ alumnos.number }} de {{ alumnos.paginator.num_pages }}
+            </span>
+
+            {% if alumnos.has_next %}
+                <a href="?page={{ alumnos.next_page_number }}&q={{ query }}&curso={{ curso_seleccionado }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Siguiente</a>
+                <a href="?page={{ alumnos.paginator.num_pages }}&q={{ query }}&curso={{ curso_seleccionado }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Última</a>
+            {% endif %}
         </div>
     </div>
 
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-
-    const buscador = document.getElementById('buscarAlumno');
-    const filas = document.querySelectorAll(
-        '#tablaAlumnos tbody tr.fila-alumno'
-    );
-    const contador = document.getElementById('contadorAlumnos');
-
-    buscador.addEventListener('input', function () {
-
-        const texto = buscador.value.toLowerCase().trim();
-        let visibles = 0;
-
-        filas.forEach(function (fila) {
-
-            const nombre = fila.cells[0].textContent.toLowerCase();
-            const rut = fila.cells[2].textContent.toLowerCase();
-
-            const coincide =
-                nombre.includes(texto) ||
-                rut.includes(texto);
-
-            fila.style.display = coincide ? '' : 'none';
-
-            if (coincide) {
-                visibles++;
-            }
-        });
-
-        contador.textContent = 'Mostrando ' + visibles + ' alumnos';
-    });
-
-});
-</script>
 
 {% endblock %}
