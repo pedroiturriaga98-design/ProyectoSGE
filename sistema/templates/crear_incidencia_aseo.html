@@ -1,0 +1,53 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Titular del Formulario -->
+<div style="margin-bottom: 25px;">
+    <h1 style="font-size: 1.8rem; font-weight: bold; color: #0f172a; margin: 0;">Agregar Incidencia</h1>
+    <p style="color: #64748b; margin-top: 4px;">Complete el formulario para reportar una necesidad de material o problema con equipos.</p>
+</div>
+
+<!-- Card Contenedora del Formulario -->
+<div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 30px; max-width: 850px; margin: 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    <h3 style="font-size: 1.25rem; font-weight: bold; color: #0f172a; margin-bottom: 20px;">Datos de la Incidencia</h3>
+
+    <form method="POST" action="{% url 'crear_incidencia_aseo' %}">
+        {% csrf_token %}
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 0.9rem;">Nombre y Apellido</label>
+            <input type="text" value="{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}" readonly disabled style="width: 100%; padding: 10px 14px; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; color: #64748b;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+            <div>
+                <label style="display: block; font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 0.9rem;">Fecha de la Incidencia *</label>
+                <input type="date" name="fecha_incidencia" required style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; color: #334155;">
+            </div>
+            <div>
+                <label style="display: block; font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 0.9rem;">Tipo de Incidencia *</label>
+                <select name="tipo_incidencia" required style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; color: #334155; background-color: white;">
+                    <option value="" disabled selected>Seleccione una opción...</option>
+                    <option value="Solicitud de Material">Solicitud de Material</option>
+                    <option value="Problema con Equipos / Maquinaria">Problema con Equipos / Maquinaria</option>
+                    <option value="Daño en Infraestructura">Daño en Infraestructura</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <label style="display: block; font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 0.9rem;">Comentario / Descripción Detallada *</label>
+            <textarea name="descripcion" rows="5" placeholder="Describa el material que necesita o el problema encontrado..." required style="width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 8px; color: #334155; resize: vertical;"></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px;">
+            <a href="{% url 'incidencias_aseo' %}" style="padding: 10px 22px; border: 1px solid #cbd5e1; border-radius: 8px; background: white; color: #475569; text-decoration: none; font-weight: 600; display: inline-block;">Cancelar</a>
+            <button type="submit" style="padding: 10px 22px; border: none; border-radius: 8px; background-color: #ff6b00; color: white; font-weight: bold; cursor: pointer;">Enviar Solicitud</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

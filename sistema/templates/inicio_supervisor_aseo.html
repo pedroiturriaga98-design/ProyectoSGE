@@ -1,0 +1,50 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Bienvenida -->
+<div class="welcome-card">
+    <h1>¡Bienvenido(a), {{ request.session.nombre_usuario|default:"Supervisor" }}!</h1>
+    <p>Panel de control del módulo de Aseo y Mantenimiento General del establecimiento.</p>
+    <div class="badge-role">🧹 Vista: <strong>Supervisor de Aseo</strong></div>
+</div>
+
+<!-- Resumen Operativo de Aseo -->
+<div>
+    <h3 class="section-title">Resumen de Gestión</h3>
+    <p class="section-desc">Estado actual de insumos, solicitudes e incidencias registradas.</p>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon icon-purple">📦</div>
+            <div class="stat-info">
+                <p>Total de Insumos</p>
+                <h3>{{ total_articulos|default:"0" }}</h3>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-red">⚠️</div>
+            <div class="stat-info">
+                <p>Stock Crítico</p>
+                <h3>{{ stock_critico|default:"0" }}</h3>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-yellow">🕒</div>
+            <div class="stat-info">
+                <p>Solicitudes Pendientes</p>
+                <h3>{{ solicitudes_pendientes|default:"0" }}</h3>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon icon-green">✅</div>
+            <div class="stat-info">
+                <p>Estado General</p>
+                <h3>Operativo</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

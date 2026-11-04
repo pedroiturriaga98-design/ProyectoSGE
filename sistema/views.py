@@ -119,7 +119,7 @@ def login_view(request):
                 elif rol == 3:
                     return redirect('apoderado_inicio')
                 elif rol == 5:
-                    return redirect('admin_gestion_inventario')
+                    return redirect('inicio_supervisor_aseo')
 
 
             else:
@@ -2041,7 +2041,7 @@ def cambiar_password_obligatorio(request):
             elif rol == 3:
                 return redirect('apoderado_inicio')
             elif rol == 5:
-                return redirect('admin_gestion_inventario')
+                return redirect('inicio_supervisor_aseo')
 
         except Usuario.DoesNotExist:
             messages.error(request, 'Ocurrió un error al actualizar la cuenta.')
@@ -2104,7 +2104,7 @@ def cambiar_password_perfil(request):
         elif rol == 3:
             return redirect('apoderado_inicio')
         elif rol == 5:
-            return redirect('admin_gestion_inventario')
+            return redirect('inicio_supervisor_aseo')
 
     return render(request, 'cambiar_password_perfil.html')
 
@@ -2219,3 +2219,54 @@ def admin_crear_incidencia(request):
         'equipos': equipos,
         'fecha_actual': timezone.localdate().isoformat()
     })
+
+@require_role([1, 5])
+def inicio_supervisor_aseo(request):
+    # Métricas enfocadas en el área de Aseo y Mantenimiento
+    total_articulos = Insumo.objects.count()
+    stock_critico = Insumo.objects.filter(stock_actual__lte=5).count()  # Umbral de ejemplo
+    solicitudes_pendientes = TicketSoporte.objects.filter(estado_ticket='Pendiente').count()
+
+    context = {
+        'total_articulos': total_articulos,
+        'stock_critico': stock_critico,
+        'solicitudes_pendientes': solicitudes_pendientes,
+    }
+    return render(request, 'inicio_supervisor_aseo.html', context)
+
+@require_role([1, 5])
+def incidencias_aseo(request):
+    rut_usuario = request.session.get('usuario_rut')
+    
+    # Consulta directo a SolicitudInsumo filtrando por el RUT de sesión
+    incidencias = SolicitudInsumo.objects.filter(usuario_rut=rut_usuario).order_by('-id_solicitud')
+    
+    return render(request, 'incidencias_aseo.html', {'incidencias': incidencias})
+
+
+@require_role([1, 5])
+def crear_incidencia_aseo(request):
+    if request.method == 'POST':
+        tipo_solicitud = request.POST.get('tipo_incidencia')
+        descripcion = request.POST.get('descripcion')
+        fecha_incidencia = request.POST.get('fecha_incidencia') or date.today()
+        rut_usuario = request.session.get('usuario_rut')
+
+        # Buscar el ID máximo actual y sumarle 1 (si la tabla está vacía, parte en 1)
+        max_id = SolicitudInsumo.objects.aggregate(Max('id_solicitud'))['id_solicitud__max']
+        nuevo_id = (max_id or 0) + 1
+
+        # Guardamos la solicitud pasándole el id_solicitud calculado explícitamente
+        SolicitudInsumo.objects.create(
+            id_solicitud=nuevo_id,
+            fecha=fecha_incidencia,
+            estado_solicitud='Pendiente',
+            usuario_rut_id=rut_usuario,
+            descripcion=descripcion,
+            tipo_solicitud=tipo_solicitud
+        )
+
+        messages.success(request, 'Solicitud de insumos enviada con éxito.')
+        return redirect('incidencias_aseo')
+
+    return render(request, 'crear_incidencia_aseo.html')

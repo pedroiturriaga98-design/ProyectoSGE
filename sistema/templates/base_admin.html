@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Administración - SGE</title>
-    <!-- AGREGA ESTA LÍNEA DE BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base_admin.css' %}">
 </head>
@@ -29,17 +28,28 @@
         </div>
 
         <nav class="nav-menu">
-            <!-- Visible para Administrador (1), Jefe TI (4) y Personal de Aseo (5) -->
-            <a href="{% url 'admin_inicio' %}" class="nav-link {% if request.resolver_match.url_name == 'admin_inicio' %}active-menu{% endif %}">Inicio</a>
+            <!-- INICIO DINÁMICO -->
+            {% if request.session.rol_id == 5 %}
+                <a href="{% url 'inicio_supervisor_aseo' %}" class="nav-link {% if request.resolver_match.url_name == 'inicio_supervisor_aseo' %}active-menu{% endif %}">Inicio</a>
+            {% else %}
+                <a href="{% url 'admin_inicio' %}" class="nav-link {% if request.resolver_match.url_name == 'admin_inicio' %}active-menu{% endif %}">Inicio</a>
+            {% endif %}
 
             <!-- EXCLUSIVO ADMINISTRADOR (Rol 1) / TI (4) -->
             {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
                 <a href="{% url 'admin_gestion_usuarios' %}" class="nav-link {% if 'usuarios' in request.path %}active-menu{% endif %}">Gestión de Usuarios</a>
+                <a href="{% url 'admin_gestion_incidencias' %}" class="nav-link {% if 'incidencias' in request.path %}active-menu{% endif %}">Incidencias</a>
             {% endif %}
 
-            <!-- Visible para Administrador (1) y Jefe de Departamento TI (4) -->
-            {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
-                <a href="{% url 'admin_gestion_incidencias' %}" class="nav-link {% if 'incidencias' in request.path %}active-menu{% endif %}">Incidencias</a>
+            <!-- INCIDENCIAS DESPLEGABLE ASEO (Rol 5) -->
+            {% if request.session.rol_id == 5 %}
+                <a href="javascript:void(0);" class="nav-link toggle-menu {% if 'incidencias' in request.path %}active-menu{% endif %}" data-target="submenu-incidencias">
+                    <span>Incidencias</span>
+                </a>
+                <div class="sub-menu" id="submenu-incidencias" style="display: none;">
+                    <a href="{% url 'crear_incidencia_aseo' %}" class="sub-link {% if request.resolver_match.url_name == 'crear_incidencia_aseo' %}active-sub{% endif %}">Agregar Incidencia</a>
+                    <a href="{% url 'incidencias_aseo' %}" class="sub-link {% if request.resolver_match.url_name == 'incidencias_aseo' %}active-sub{% endif %}">Mis Incidencias</a>
+                </div>
             {% endif %}
 
             <!-- EXCLUSIVO ADMINISTRADOR (Rol 1) -->
@@ -49,18 +59,18 @@
                 <a href="{% url 'admin_gestion_profesores' %}" class="nav-link {% if 'profesores' in request.path %}active-menu{% endif %}">Profesores</a>
             {% endif %}
 
-            <!-- INVENTARIO TI (Visible para Admin 1 y TI 4) -->
+            <!-- INVENTARIO TI (Admin 1 y TI 4) -->
             {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
-            <a href="{% url 'inventario_ti' %}" class="nav-link {% if request.resolver_match.url_name == 'inventario_ti' %}active-menu{% endif %}">
-                Inventario TI 🖥️ 
-            </a>
+                <a href="{% url 'inventario_ti' %}" class="nav-link {% if request.resolver_match.url_name == 'inventario_ti' %}active-menu{% endif %}">
+                    Inventario TI 🖥️ 
+                </a>
             {% endif %}
 
-            <!-- INVENTARIO ASEO (Visible para Admin 1 y Aseo 5) -->
+            <!-- INVENTARIO ASEO (Admin 1 y Aseo 5) -->
             {% if request.session.rol_id == 1 or request.session.rol_id == 5 %}
-            <a href="{% url 'inventario_aseo' %}" class="nav-link {% if request.resolver_match.url_name == 'inventario_aseo' %}active-menu{% endif %}">
-                Inventario Aseo 🧹 
-            </a>
+                <a href="{% url 'inventario_aseo' %}" class="nav-link {% if request.resolver_match.url_name == 'inventario_aseo' %}active-menu{% endif %}">
+                    Gestion Inventario 🧹 
+                </a>
             {% endif %}
         </nav>
     </aside>
@@ -69,20 +79,14 @@
         <header class="top-header">
             <div class="last-access"><span>Último acceso: {{ request.session.ultimo_acceso|default:"Primer ingreso" }}</span></div>
             <div class="user-profile dropdown">
-                <!-- Botón desplegable -->
                 <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    
-                    <!-- Contenedor forzado en columna (Nombre arriba, Rol abajo) -->
                     <div class="me-2 text-end" style="display: flex; flex-direction: column; align-items: flex-end;">
                         <span class="fw-bold text-dark" style="font-size: 0.95rem; line-height: 1.2;">{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}</span>
                         <span class="text-muted" style="font-size: 0.75rem; line-height: 1.2;">{{ request.session.rol_nombre }}</span>
                     </div>
-
-                    <!-- Avatar con iniciales -->
                     <img src="https://ui-avatars.com/api/?name={{ request.session.nombre_usuario }}+{{ request.session.apellido_usuario }}&background=e2e8f0&color=0f172a" alt="Avatar" class="rounded-circle" width="40" height="40">
                 </a>
 
-                <!-- Menú desplegable flotante tipo YouTube -->
                 <ul class="dropdown-menu dropdown-menu-end shadow p-2" aria-labelledby="dropdownUser1" style="min-width: 220px;">
                     <li class="px-3 py-2 border-bottom mb-2">
                         <span class="d-block fw-bold text-dark">{{ request.session.nombre_usuario }}</span>
@@ -107,15 +111,11 @@
             <div style="margin-bottom: 15px;">
                 {% for message in messages %}
                     {% if 'success' in message.tags %}
-                        <!-- ESTILO VERDE (ÉXITO) -->
-                        <div style="padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 500;
-                                    background-color: #d1fae5; color: #047857; border: 1px solid #6ee7b7; margin-bottom: 8px;">
+                        <div style="padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; background-color: #d1fae5; color: #047857; border: 1px solid #6ee7b7; margin-bottom: 8px;">
                             {{ message }}
                         </div>
                     {% else %}
-                        <!-- ESTILO ROJO (ERROR / OTROS) -->
-                        <div style="padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 500;
-                                    background-color: #fee2e2; color: #b91c1c; border: 1px solid #f87171; margin-bottom: 8px;">
+                        <div style="padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; background-color: #fee2e2; color: #b91c1c; border: 1px solid #f87171; margin-bottom: 8px;">
                             {{ message }}
                         </div>
                     {% endif %}
@@ -128,6 +128,40 @@
             {% endblock %}
         </div>
     </main>
+
+    <!-- SCRIPT DE ACORDEÓN (Exacto al del Profesor) -->
+    <script>
+        const toggleButtons = document.querySelectorAll('.toggle-menu');
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('data-target');
+                const targetSubmenu = document.getElementById(targetId);
+                
+                if (!targetSubmenu) return;
+
+                const isAlreadyOpen = targetSubmenu.style.display === 'flex';
+
+                document.querySelectorAll('.sub-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+
+                if (!isAlreadyOpen) {
+                    targetSubmenu.style.display = 'flex';
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentUrl = window.location.href;
+            if (currentUrl.includes("incidencias")) {
+                const subInc = document.getElementById('submenu-incidencias');
+                if (subInc) subInc.style.display = 'flex';
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

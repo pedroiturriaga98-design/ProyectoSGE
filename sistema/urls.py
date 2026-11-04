@@ -47,8 +47,9 @@ urlpatterns = [
     path('inventario/ti/crear/', views.crear_equipo_ti, name='crear_equipo_ti'),
     path('inventario/aseo/', views.inventario_aseo, name='inventario_aseo'),
     path('inventario/aseo/crear/', views.crear_insumo_aseo, name='crear_insumo_aseo'),
-
-
+    path('aseo/inicio/', views.inicio_supervisor_aseo, name='inicio_supervisor_aseo'),
+    path('aseo/incidencias/', views.incidencias_aseo, name='incidencias_aseo'),
+    path('aseo/incidencias/crear/', views.crear_incidencia_aseo, name='crear_incidencia_aseo'),
 
 
 
