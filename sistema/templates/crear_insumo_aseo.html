@@ -1,0 +1,29 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Registrar Nuevo Insumo de Aseo</h2>
+    <p>Agrega un nuevo material de limpieza o insumo general al inventario del establecimiento.</p>
+</div>
+
+<div class="form-container" style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); max-width: 600px;">
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="nombre_item" style="display: block; font-weight: 500; margin-bottom: 8px; color: #1e293b;">Nombre del Insumo / Artículo *</label>
+            <input type="text" id="nombre_item" name="nombre_item" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;" placeholder="Ej. Cloro gel 5 litros, Papel higiénico...">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 25px;">
+            <label for="stock_actual" style="display: block; font-weight: 500; margin-bottom: 8px; color: #1e293b;">Stock Inicial / Cantidad *</label>
+            <input type="number" id="stock_actual" name="stock_actual" value="1" min="0" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;">
+        </div>
+
+        <div class="form-actions" style="display: flex; gap: 10px;">
+            <button type="submit" class="btn-create" style="background-color: #f97316; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Guardar Insumo</button>
+            <a href="{% url 'inventario_aseo' %}" class="btn-cancel" style="background-color: #e2e8f0; color: #475569; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 500; display: inline-block;">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -43,6 +43,10 @@ urlpatterns = [
     path('administrador/profesores/editar/', views.admin_editar_profesor, name='admin_editar_profesor'),
     path('administrador/inventario/', views.admin_gestion_inventario, name='admin_gestion_inventario'),
     path('administrador/inventario/equipo/', views.admin_editar_equipo, name='admin_editar_equipo'),
+    path('inventario/ti/', views.inventario_ti, name='inventario_ti'),
+    path('inventario/ti/crear/', views.crear_equipo_ti, name='crear_equipo_ti'),
+    path('inventario/aseo/', views.inventario_aseo, name='inventario_aseo'),
+    path('inventario/aseo/crear/', views.crear_insumo_aseo, name='crear_insumo_aseo'),
 
 
 

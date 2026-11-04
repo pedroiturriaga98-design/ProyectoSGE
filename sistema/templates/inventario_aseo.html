@@ -1,0 +1,60 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Gestión de Inventario de Aseo e Insumos</h2>
+    <p>Control y stock de materiales de limpieza y mantenimiento general del establecimiento.</p>
+</div>
+
+<div class="table-container">
+    <div class="table-toolbar">
+        <div class="search-box">
+            <input type="text" placeholder="Buscar insumo de aseo...">
+        </div>
+        <a class="btn-create" href="{% url 'crear_insumo_aseo' %}">
+            + Nuevo Insumo
+        </a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>CÓDIGO / ID</th>
+                <th>NOMBRE INSUMO</th>
+                <th>CATEGORÍA</th>
+                <th>STOCK DISPONIBLE</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in insumos_aseo %}
+            <tr>
+                <td><strong>{{ item.id_insumo }}</strong></td>
+                <td>{{ item.nombre_item }}</td>
+                <td>Aseo General</td>
+                <td>{{ item.stock_actual }} unidades</td>
+                <td>
+                    {% if item.stock_actual > 5 %}
+                        <span class="badge" style="background-color: #dcfce7; color: #16a34a;">Disponible</span>
+                    {% else %}
+                        <span class="badge" style="background-color: #fee2e2; color: #dc2626;">Stock Crítico</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="#" title="Editar stock">✎</a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" style="text-align: center; padding: 25px; color: #64748b;">
+                    No hay insumos de aseo registrados en el sistema.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}      

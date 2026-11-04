@@ -1,0 +1,74 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Gestión de Inventario Tecnológico</h2>
+    <p>Administración y control de equipos tecnológicos del establecimiento.</p>
+</div>
+
+<!-- Tarjetas de Métricas Superiores -->
+<div class="metrics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 25px;">
+    <div class="metric-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <span style="color: #64748b; font-size: 0.85rem;">Total Equipos</span>
+        <h3 style="margin: 5px 0 0 0; font-size: 1.8rem; color: #1e293b;">{{ total_equipos }}</h3>
+    </div>
+    <div class="metric-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <span style="color: #64748b; font-size: 0.85rem;">Equipos Operativos</span>
+        <h3 style="margin: 5px 0 0 0; font-size: 1.8rem; color: #16a34a;">{{ operativos }}</h3>
+    </div>
+    <div class="metric-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <span style="color: #64748b; font-size: 0.85rem;">En Mantención</span>
+        <h3 style="margin: 5px 0 0 0; font-size: 1.8rem; color: #d97706;">{{ en_mantencion }}</h3>
+    </div>
+</div>
+
+<div class="table-container">
+    <div class="table-toolbar">
+        <div class="search-box">
+            <input type="text" placeholder="Buscar por código, dispositivo...">
+        </div>
+        <a class="btn-create" href="{% url 'crear_equipo_ti' %}">
+            + Nuevo Equipo
+        </a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>CÓDIGO</th>
+                <th>DISPOSITIVO</th>
+                <th>UBICACIÓN</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipo in equipos %}
+            <tr>
+                <td><strong>{{ equipo.codigo_inventario }}</strong></td>
+                <td>{{ equipo.tipo_equipo|default:"Dispositivo TI" }}</td>
+                <td>{{ equipo.ubicacion|default:"Sin asignar" }}</td>
+                <td>
+                    {% if equipo.estado == 'Operativo' %}
+                        <span class="badge" style="background-color: #dcfce7; color: #16a34a;">Operativo</span>
+                    {% else %}
+                        <span class="badge" style="background-color: #fef3c7; color: #d97706;">{{ equipo.estado }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="#" title="Editar equipo">✎</a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" style="text-align: center; padding: 25px; color: #64748b;">
+                    No hay equipos tecnológicos registrados en el sistema.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

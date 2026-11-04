@@ -1,0 +1,43 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Registrar Nuevo Equipo Tecnológico</h2>
+    <p>Agrega un nuevo dispositivo, proyector o componente a la red de inventario TI del establecimiento.</p>
+</div>
+
+<div class="form-container" style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); max-width: 600px;">
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="codigo_inventario" style="display: block; font-weight: 500; margin-bottom: 8px; color: #1e293b;">Código de Inventario *</label>
+            <input type="text" id="codigo_inventario" name="codigo_inventario" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;" placeholder="Ej. PC-LAB1-025, PROY-09...">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="tipo_equipo" style="display: block; font-weight: 500; margin-bottom: 8px; color: #1e293b;">Tipo de Dispositivo *</label>
+            <input type="text" id="tipo_equipo" name="tipo_equipo" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;" placeholder="Ej. All-in-One, Proyector, Notebook...">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="ubicacion" style="display: block; font-weight: 500; margin-bottom: 8px; color: #1e293b;">Ubicación *</label>
+            <input type="text" id="ubicacion" name="ubicacion" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;" placeholder="Ej. Laboratorio 1, Sala Profesores...">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 25px;">
+            <label for="estado" style="display: block; font-weight: 500; margin-bottom: 8px; color: #1e293b;">Estado Inicial *</label>
+            <select id="estado" name="estado" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem; background: white;">
+                <option value="Disponible">Disponible</option>
+                <option value="En Mantención">En Mantención</option>
+                <option value="Asignado">Asignado</option>
+            </select>
+        </div>
+
+        <div class="form-actions" style="display: flex; gap: 10px;">
+            <button type="submit" class="btn-create" style="background-color: #f97316; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Guardar Equipo TI</button>
+            <a href="{% url 'inventario_ti' %}" class="btn-cancel" style="background-color: #e2e8f0; color: #475569; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 500; display: inline-block;">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

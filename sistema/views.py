@@ -1919,6 +1919,71 @@ def admin_gestion_inventario(request):
 def admin_editar_equipo(request):
     return render(request, 'admin_editar_equipo.html')
 
+from .models import EquipoTi, Insumo, SolicitudInsumo
+
+
+@require_role([1, 4])
+def inventario_ti(request):
+    equipos = EquipoTi.objects.all().order_by('codigo_inventario')
+    
+    total_equipos = equipos.count()
+    # Cambiamos 'Operativo' por 'Disponible' que es como viene en tu base de datos
+    operativos = equipos.filter(estado__iexact='Disponible').count()
+    en_mantencion = equipos.filter(estado__iexact='En Mantención').count()
+
+    return render(request, 'inventario_ti.html', {
+        'equipos': equipos,
+        'total_equipos': total_equipos,
+        'operativos': operativos,
+        'en_mantencion': en_mantencion,
+    })
+
+@require_role([1, 4])
+def crear_equipo_ti(request):
+    if request.method == 'POST':
+        # Lógica para recibir los datos del formulario y guardar el equipo TI
+        codigo_inventario = request.POST.get('codigo_inventario')
+        tipo_equipo = request.POST.get('tipo_equipo')
+        ubicacion = request.POST.get('ubicacion')
+        estado = request.POST.get('estado', 'Disponible')
+
+        EquipoTi.objects.create(
+            codigo_inventario=codigo_inventario,
+            tipo_equipo=tipo_equipo,
+            ubicacion=ubicacion,
+            estado=estado
+        )
+        messages.success(request, 'Equipo tecnológico registrado exitosamente.')
+        return redirect('inventario_ti')
+
+    return render(request, 'crear_equipo_ti.html')
+
+@require_role([1, 5])  # Administrador y Personal de Aseo
+def inventario_aseo(request):
+    # Usamos los nombres reales de los campos de tu base de datos
+    insumos_aseo = Insumo.objects.all().order_by('nombre_item')
+
+    return render(request, 'inventario_aseo.html', {
+        'insumos_aseo': insumos_aseo,
+    })
+
+@require_role([1, 5])
+def crear_insumo_aseo(request):
+    if request.method == 'POST':
+        nombre_item = request.POST.get('nombre_item')
+        stock_actual = request.POST.get('stock_actual', 0)
+        
+        # Guardamos el nuevo insumo en la base de datos
+        Insumo.objects.create(
+            nombre_item=nombre_item,
+            stock_actual=stock_actual
+        )
+        messages.success(request, 'Insumo de aseo registrado exitosamente.')
+        return redirect('inventario_aseo')
+        
+    return render(request, 'crear_insumo_aseo.html')
+
+
 def cambiar_password_obligatorio(request):
     # Seguridad: si no pasó por el login o no tiene la bandera activa, lo devolvemos
     if 'usuario_rut' not in request.session or not request.session.get('debe_cambiar_pass'):
