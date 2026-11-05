@@ -13,6 +13,8 @@ urlpatterns = [
     path('apoderado/asistencia/', views.apoderado_asistencia, name='apoderado_asistencia'),
     path('apoderado/calendario/', views.apoderado_calendario, name='apoderado_calendario'),
     path('apoderado/certificados/', views.apoderado_certificados, name='apoderado_certificados'),
+    path('apoderado/certificados/descargar/',views.apoderado_descargar_certificado,name='apoderado_descargar_certificado'),
+
     # Rutas para el Portal de Profesores
     path('profesor/', views.profesor_inicio, name='profesor_inicio'),
     path('profesor/notas/', views.profesor_notas, name='profesor_notas'),
@@ -22,6 +24,40 @@ urlpatterns = [
     path('profesor/incidencias/detalle/<int:pk>/', views.profesor_detalle_incidencia, name='profesor_detalle_incidencia'),
     path('profesor/alumnos/', views.profesor_alumnos, name='profesor_alumnos'),
     path('profesor/alumnos/perfil/<str:rut>/', views.profesor_perfil_alumno, name='profesor_perfil_alumno'),
+    
+# ============================================================
+# CALENDARIO ESCOLAR
+# ============================================================
+
+# Profesor
+path(
+    'profesor/calendario/',
+    views.profesor_calendario,
+    name='profesor_calendario'
+),
+path(
+    'profesor/calendario/eventos/',
+    views.profesor_calendario_eventos,
+    name='profesor_calendario_eventos'
+),
+path(
+    'profesor/calendario/guardar/',
+    views.profesor_calendario_guardar,
+    name='profesor_calendario_guardar'
+),
+path(
+    'profesor/calendario/eliminar/',
+    views.profesor_calendario_eliminar,
+    name='profesor_calendario_eliminar'
+),
+
+# Apoderado
+path(
+    'apoderado/calendario/eventos/',
+    views.apoderado_calendario_eventos,
+    name='apoderado_calendario_eventos'
+),
+
     # Rutas para el Administrador
     path('administrador/', views.admin_inicio, name='admin_inicio'),
     path('administrador/usuarios/', views.admin_gestion_usuarios, name='admin_gestion_usuarios'),

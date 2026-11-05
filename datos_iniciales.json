@@ -1619,8 +1619,8 @@
   "model": "sistema.usuario",
   "pk": "40.001.020-K",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$fIfmtfIypd78WM7h3YN5VY$7SKBYqa+vmB2cEDAMdO2j5UzvRuV5ov9Zo7+KksWmMg=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$DxFBhWLIW1TaFXJNtS8Y6T$odVpB6c7LVVYQlkT9TXs56Q9UzPYFtV+hI6lrITEQiM=",
     "rol_id_rol": 3,
     "nombre": "Isidora",
     "apellido_paterno": "Contreras",
@@ -2350,8 +2350,8 @@
   "model": "sistema.usuario",
   "pk": "40.003.003-0",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$PVj2CusxqlJiPmerJR3DMV$l13Wtw5ZAPg6LC5Ti9vr6jgMX9u5kbOY+qEZ0uHHBkc=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$5Bq6YrGkXhsIZFniUppq9M$/0RxAWQiQwhrAF/tUYswYbBAt9Jk/WiLAHmSJYc/YpU=",
     "rol_id_rol": 3,
     "nombre": "Agustin",
     "apellido_paterno": "Contreras",
@@ -6260,8 +6260,8 @@
   "model": "sistema.usuario",
   "pk": "40.010.023-3",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$NukUlKp0mi2Ok5FG0Ksxcc$XOmD2nIxm/vWAAHaO3wMpgFABuYe86Wz5R+e6VyaqdM=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$8beqgayUzdKJt6yakzOkJb$NzdNvMnlm0U4PQLYnAAu5DtNApiPBU8bXMBrm6Fdffc=",
     "rol_id_rol": 3,
     "nombre": "Trinidad",
     "apellido_paterno": "Diaz",
@@ -17187,6 +17187,60 @@
 },
 {
   "model": "sistema.asignaturacurso",
+  "pk": 51,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 52,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 8,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 53,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 9,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 54,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 10,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 55,
+  "fields": {
+    "curso_id_curso": 5,
+    "asignatura_id_asignatura": 11,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 56,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 1,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
   "pk": 57,
   "fields": {
     "curso_id_curso": 1,
@@ -17219,6 +17273,24 @@
     "curso_id_curso": 3,
     "asignatura_id_asignatura": 3,
     "usuario_rut": "20.041.350-4"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 61,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 62,
+  "fields": {
+    "curso_id_curso": 6,
+    "asignatura_id_asignatura": 7,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
@@ -17565,6 +17637,42 @@
 },
 {
   "model": "sistema.asignaturacurso",
+  "pk": 101,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 2,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 102,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 3,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 103,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 4,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 104,
+  "fields": {
+    "curso_id_curso": 10,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
   "pk": 105,
   "fields": {
     "curso_id_curso": 15,
@@ -17849,6 +17957,24 @@
     "curso_id_curso": 14,
     "asignatura_id_asignatura": 4,
     "usuario_rut": "20.041.346-6"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 137,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 5,
+    "usuario_rut": "11.111.111-1"
+  }
+},
+{
+  "model": "sistema.asignaturacurso",
+  "pk": 138,
+  "fields": {
+    "curso_id_curso": 13,
+    "asignatura_id_asignatura": 6,
+    "usuario_rut": "11.111.111-1"
   }
 },
 {
@@ -19649,6 +19775,2161 @@
     "curso_id_curso": 26,
     "asignatura_id_asignatura": 19,
     "usuario_rut": "20.041.356-3"
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 1,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 128,
+    "numero_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 2,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 128,
+    "numero_evaluacion": 2
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 3,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 128,
+    "numero_evaluacion": 3
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 4,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 95,
+    "numero_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 5,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 95,
+    "numero_evaluacion": 2
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 6,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 95,
+    "numero_evaluacion": 3
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 7,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 7,
+    "numero_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 8,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 7,
+    "numero_evaluacion": 2
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 9,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 7,
+    "numero_evaluacion": 3
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 10,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 15,
+    "numero_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 11,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 15,
+    "numero_evaluacion": 2
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 12,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 15,
+    "numero_evaluacion": 3
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 13,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 29,
+    "numero_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 14,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 29,
+    "numero_evaluacion": 2
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 15,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 29,
+    "numero_evaluacion": 3
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 1,
+  "fields": {
+    "valor_nota": 1.5,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.018-5",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 2,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.007-K",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 3,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.027-4",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 4,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.001-0",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 5,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.021-5",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 6,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.012-6",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 7,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.019-3",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 8,
+  "fields": {
+    "valor_nota": 6.2,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.028-2",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 9,
+  "fields": {
+    "valor_nota": 5.5,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.008-8",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 10,
+  "fields": {
+    "valor_nota": 2.4,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.015-0",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 11,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.017-7",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 12,
+  "fields": {
+    "valor_nota": 5.5,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.013-4",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 13,
+  "fields": {
+    "valor_nota": 5.6,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.022-3",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 14,
+  "fields": {
+    "valor_nota": 4.2,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.002-9",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 15,
+  "fields": {
+    "valor_nota": 5.3,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.023-1",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 16,
+  "fields": {
+    "valor_nota": 4.6,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.003-7",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 17,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.004-5",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 18,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.024-K",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 19,
+  "fields": {
+    "valor_nota": 6.1,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.020-7",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 20,
+  "fields": {
+    "valor_nota": 6.2,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.010-K",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 21,
+  "fields": {
+    "valor_nota": 6.5,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.026-6",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 22,
+  "fields": {
+    "valor_nota": 4.1,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.006-1",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 23,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.029-0",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 24,
+  "fields": {
+    "valor_nota": 3.2,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.009-6",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 25,
+  "fields": {
+    "valor_nota": 3.5,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "26.759.471-6",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 26,
+  "fields": {
+    "valor_nota": 3.7,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.014-2",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 27,
+  "fields": {
+    "valor_nota": 3.9,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.025-8",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 28,
+  "fields": {
+    "valor_nota": 1.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.005-3",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 29,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.011-8",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 30,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-18",
+    "alumno_rut_alumno": "30.011.016-9",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 31,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-23",
+    "alumno_rut_alumno": "21.439.719-6",
+    "asignatura_curso_id_asig_curso": 95,
+    "evaluacion_id_evaluacion": 4
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 32,
+  "fields": {
+    "valor_nota": 2.5,
+    "fecha_ingreso": "2026-10-23",
+    "alumno_rut_alumno": "21.439.719-6",
+    "asignatura_curso_id_asig_curso": 95,
+    "evaluacion_id_evaluacion": 5
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 33,
+  "fields": {
+    "valor_nota": 4.5,
+    "fecha_ingreso": "2026-10-23",
+    "alumno_rut_alumno": "21.439.719-6",
+    "asignatura_curso_id_asig_curso": 95,
+    "evaluacion_id_evaluacion": 6
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 34,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-23",
+    "alumno_rut_alumno": "26.759.471-6",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 2
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 35,
+  "fields": {
+    "valor_nota": 6.5,
+    "fecha_ingreso": "2026-10-23",
+    "alumno_rut_alumno": "26.759.471-6",
+    "asignatura_curso_id_asig_curso": 128,
+    "evaluacion_id_evaluacion": 3
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 36,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.009-6",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 37,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.029-0",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 38,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.018-5",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 39,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.012-6",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 40,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.003-7",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 41,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.023-1",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 42,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.030-4",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 43,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.010-K",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 44,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.019-3",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 45,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.006-1",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 46,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.026-6",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 47,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.028-2",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 48,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.008-8",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 49,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.004-5",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 50,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.024-K",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 51,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.013-4",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 52,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.014-2",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 53,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.015-0",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 54,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.011-8",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 55,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.021-5",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 56,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.001-0",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 57,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.017-7",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 58,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.020-7",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 59,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.025-8",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 60,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.005-3",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 61,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.016-9",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 62,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.002-9",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 63,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.022-3",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 64,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.027-4",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 65,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.000.007-K",
+    "asignatura_curso_id_asig_curso": 7,
+    "evaluacion_id_evaluacion": 7
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 66,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.028-8",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 67,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.008-3",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 68,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.017-2",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 69,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.011-3",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 70,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.002-4",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 71,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.022-9",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 72,
+  "fields": {
+    "valor_nota": 1.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.009-1",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 73,
+  "fields": {
+    "valor_nota": 1.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.029-6",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 74,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.018-0",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 75,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.025-3",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 76,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.005-9",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 77,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.027-K",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 78,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.007-5",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 79,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.003-2",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 80,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.023-7",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 81,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.012-1",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 82,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.013-K",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 83,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.014-8",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 84,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.030-K",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 85,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.010-5",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 86,
+  "fields": {
+    "valor_nota": 1.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.020-2",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 87,
+  "fields": {
+    "valor_nota": 1.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.016-4",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 88,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.019-9",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 89,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.004-0",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 90,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.024-5",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 91,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.015-6",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 92,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.021-0",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 93,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.001-6",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 94,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.006-7",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 95,
+  "fields": {
+    "valor_nota": 5.5,
+    "fecha_ingreso": "2026-10-24",
+    "alumno_rut_alumno": "30.001.026-1",
+    "asignatura_curso_id_asig_curso": 15,
+    "evaluacion_id_evaluacion": 10
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 96,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.027-5",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 97,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.027-5",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 98,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.027-5",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 99,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.007-0",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 100,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.007-0",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 101,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.007-0",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 102,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.016-K",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 103,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.016-K",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 104,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.016-K",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 105,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.030-5",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 106,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.030-5",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 107,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.030-5",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 108,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.010-0",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 109,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.010-0",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 110,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.010-0",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 111,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.001-1",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 112,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.001-1",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 113,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.001-1",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 114,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.021-6",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 115,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.021-6",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 116,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.021-6",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 117,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.008-9",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 118,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.008-9",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 119,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.008-9",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 120,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.028-3",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 121,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.028-3",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 122,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.028-3",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 123,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.017-8",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 124,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.017-8",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 125,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.017-8",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 126,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.024-0",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 127,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.024-0",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 128,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.024-0",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 129,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.004-6",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 130,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.004-6",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 131,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.004-6",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 132,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.026-7",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 133,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.026-7",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 134,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.026-7",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 135,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.006-2",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 136,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.006-2",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 137,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.006-2",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 138,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.002-K",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 139,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.002-K",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 140,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.002-K",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 141,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.022-4",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 142,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.022-4",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 143,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.022-4",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 144,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.011-9",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 145,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.011-9",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 146,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.011-9",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 147,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.012-7",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 148,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.012-7",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 149,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.012-7",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 150,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.013-5",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 151,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.013-5",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 152,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.013-5",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 153,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.029-1",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 154,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.029-1",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 155,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.029-1",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 156,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.009-7",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 157,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.009-7",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 158,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.009-7",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 159,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.019-4",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 160,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.019-4",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 161,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.019-4",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 162,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.015-1",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 163,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.015-1",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 164,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.015-1",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 165,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.018-6",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 166,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.018-6",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 167,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.018-6",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 168,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.003-8",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 169,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.003-8",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 170,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.003-8",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 171,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.023-2",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 172,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.023-2",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 173,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.023-2",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 174,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.014-3",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 175,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.014-3",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 176,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.014-3",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 177,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.020-8",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 178,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.020-8",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 179,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.020-8",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 180,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.005-4",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 181,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.005-4",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 182,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.005-4",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 183,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.025-9",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 13
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 184,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.025-9",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 14
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 185,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-05",
+    "alumno_rut_alumno": "30.002.025-9",
+    "asignatura_curso_id_asig_curso": 29,
+    "evaluacion_id_evaluacion": 15
   }
 },
 {
@@ -22049,6 +24330,306 @@
     "presente": 1,
     "alumno_rut_alumno": "30.002.025-9",
     "asignatura_curso_id_asig_curso": 28
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 241,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.027-5",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 242,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.007-0",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 243,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.016-K",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 244,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.030-5",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 245,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.010-0",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 246,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.001-1",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 247,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.021-6",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 248,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.008-9",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 249,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.028-3",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 250,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.017-8",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 251,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.024-0",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 252,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.004-6",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 253,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.026-7",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 254,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.006-2",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 255,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.002-K",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 256,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.022-4",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 257,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.011-9",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 258,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.012-7",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 259,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.013-5",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 260,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.029-1",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 261,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.009-7",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 262,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.019-4",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 263,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.015-1",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 264,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.018-6",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 265,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.003-8",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 266,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.023-2",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 267,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.014-3",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 268,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.020-8",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 269,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.005-4",
+    "asignatura_curso_id_asig_curso": 29
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 270,
+  "fields": {
+    "fecha": "2026-11-05",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.025-9",
+    "asignatura_curso_id_asig_curso": 29
   }
 },
 {

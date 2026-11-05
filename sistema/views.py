@@ -210,9 +210,803 @@ def apoderado_inicio(request):
 
 
 
+
 @require_role([3])
 def apoderado_notas(request):
     from django.http import Http404
+    from .models import Alumno, AsignaturaCurso, Calificacion
+
+    rut_apoderado = request.session.get('usuario_rut')
+
+    alumnos = list(
+        Alumno.objects
+        .filter(usuario_rut_id=rut_apoderado)
+        .select_related('curso_id_curso')
+        .order_by('nombre_completo')
+    )
+
+    rut_solicitado = request.GET.get('alumno', '').strip()
+
+    if rut_solicitado:
+        alumno_seleccionado = next(
+            (a for a in alumnos if a.rut_alumno == rut_solicitado),
+            None
+        )
+
+        if alumno_seleccionado is None:
+            raise Http404(
+                'Estudiante no asociado a este apoderado.'
+            )
+    else:
+        alumno_seleccionado = alumnos[0] if alumnos else None
+
+    resumen_notas = []
+    numeros_evaluacion = set()
+
+    if alumno_seleccionado:
+
+        asignaturas = list(
+            AsignaturaCurso.objects
+            .filter(
+                curso_id_curso=alumno_seleccionado.curso_id_curso
+            )
+            .select_related('asignatura_id_asignatura')
+            .order_by(
+                'asignatura_id_asignatura__nombre_asignatura'
+            )
+        )
+
+        calificaciones = (
+            Calificacion.objects
+            .filter(
+                alumno_rut_alumno=alumno_seleccionado,
+                asignatura_curso_id_asig_curso__curso_id_curso=
+                    alumno_seleccionado.curso_id_curso
+            )
+            .select_related('evaluacion_id_evaluacion')
+            .order_by('fecha_ingreso', 'id_calificacion')
+        )
+
+        notas_por_asignatura = {}
+
+        for calificacion in calificaciones:
+
+            id_asignatura = (
+                calificacion.asignatura_curso_id_asig_curso_id
+            )
+
+            evaluacion = calificacion.evaluacion_id_evaluacion
+
+            if evaluacion is None:
+                continue
+
+            numero = evaluacion.numero_evaluacion
+
+            numeros_evaluacion.add(numero)
+
+            if id_asignatura not in notas_por_asignatura:
+                notas_por_asignatura[id_asignatura] = {}
+
+            # Si hay registros repetidos de una misma evaluación,
+            # se muestra el último según el orden de consulta.
+            notas_por_asignatura[id_asignatura][numero] = calificacion
+
+        # Se muestran al menos tres columnas.
+        total_columnas = max(
+            max(numeros_evaluacion, default=0),
+            3
+        )
+
+        columnas_notas = list(range(1, total_columnas + 1))
+
+        for asignatura_curso in asignaturas:
+
+            notas_registradas = notas_por_asignatura.get(
+                asignatura_curso.id_asig_curso,
+                {}
+            )
+
+            notas_ordenadas = []
+
+            for numero in columnas_notas:
+
+                calificacion = notas_registradas.get(numero)
+
+                notas_ordenadas.append({
+                    'numero': numero,
+                    'calificacion': calificacion,
+                })
+
+            valores = [
+                nota.valor_nota
+                for nota in notas_registradas.values()
+                if nota.valor_nota is not None
+            ]
+
+            promedio = (
+                round(sum(valores) / len(valores), 1)
+                if valores else None
+            )
+
+            resumen_notas.append({
+                'nombre_asignatura':
+                    asignatura_curso.asignatura_id_asignatura.nombre_asignatura,
+                'notas_ordenadas': notas_ordenadas,
+                'promedio': promedio,
+            })
+
+    else:
+        columnas_notas = [1, 2, 3]
+
+    return render(request, 'apoderado_notas.html', {
+        'alumnos': alumnos,
+        'alumno_seleccionado': alumno_seleccionado,
+        'resumen_notas': resumen_notas,
+        'columnas_notas': columnas_notas,
+        'total_columnas_tabla': len(columnas_notas) + 2,
+    })
+
+
+
+
+@require_role([3])
+def apoderado_asistencia(request):
+    import calendar
+    from datetime import date, timedelta
+    from django.http import Http404
+    from django.utils import timezone
+
+    from .models import Alumno, RegistroAsistencia
+
+    rut_apoderado = request.session.get('usuario_rut')
+
+    alumnos = list(
+        Alumno.objects
+        .filter(usuario_rut_id=rut_apoderado)
+        .select_related('curso_id_curso')
+        .order_by('nombre_completo')
+    )
+
+    rut_solicitado = request.GET.get('alumno', '').strip()
+
+    if rut_solicitado:
+        alumno_seleccionado = next(
+            (alumno for alumno in alumnos
+             if alumno.rut_alumno == rut_solicitado),
+            None
+        )
+
+        if alumno_seleccionado is None:
+            raise Http404(
+                'Estudiante no asociado a este apoderado.'
+            )
+    else:
+        alumno_seleccionado = alumnos[0] if alumnos else None
+
+    hoy = timezone.localdate()
+
+    try:
+        anio = int(request.GET.get('anio', hoy.year))
+        mes = int(request.GET.get('mes', hoy.month))
+
+        if not (1 <= anio <= 9999 and 1 <= mes <= 12):
+            raise ValueError
+
+    except (ValueError, TypeError):
+        anio = hoy.year
+        mes = hoy.month
+
+    primer_dia = date(anio, mes, 1)
+    ultimo_dia = date(
+        anio, mes, calendar.monthrange(anio, mes)[1]
+    )
+
+    if mes == 1:
+        mes_anterior = 12
+        anio_anterior = anio - 1
+    else:
+        mes_anterior = mes - 1
+        anio_anterior = anio
+
+    if mes == 12:
+        mes_siguiente = 1
+        anio_siguiente = anio + 1
+    else:
+        mes_siguiente = mes + 1
+        anio_siguiente = anio
+
+    nombres_meses = [
+        '', 'Enero', 'Febrero', 'Marzo', 'Abril',
+        'Mayo', 'Junio', 'Julio', 'Agosto',
+        'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ]
+
+    estados_por_fecha = {}
+
+    if alumno_seleccionado:
+        registros = (
+            RegistroAsistencia.objects
+            .filter(
+                alumno_rut_alumno=alumno_seleccionado,
+                fecha__range=(primer_dia, ultimo_dia)
+            )
+            .order_by('-id_asistencia')
+        )
+
+        # Una sola asistencia por día.
+        # Si existen registros antiguos en distintas asignaturas,
+        # se toma el registro con mayor ID.
+        for registro in registros:
+            if registro.fecha not in estados_por_fecha:
+                estados_por_fecha[registro.fecha] = registro.presente
+
+    dias_asistidos = sum(
+        1 for estado in estados_por_fecha.values()
+        if estado == 1
+    )
+
+    inasistencias = sum(
+        1 for estado in estados_por_fecha.values()
+        if estado == 0
+    )
+
+    total_registrados = dias_asistidos + inasistencias
+
+    porcentaje_asistencia = (
+        round(dias_asistidos * 100 / total_registrados, 1)
+        if total_registrados else None
+    )
+
+    # Calendario de lunes a viernes, como el diseño original.
+    semanas = []
+    calendario = calendar.Calendar(firstweekday=0)
+
+    for semana in calendario.monthdatescalendar(anio, mes):
+        dias_semana = []
+
+        for fecha_dia in semana[:5]:
+
+            if fecha_dia.month != mes:
+                dias_semana.append({
+                    'numero': None,
+                    'estado': 'vacio',
+                    'texto': ''
+                })
+                continue
+
+            estado = estados_por_fecha.get(fecha_dia)
+
+            if estado == 1:
+                clase = 'presente'
+                texto = 'ASISTIÓ'
+            elif estado == 0:
+                clase = 'ausente'
+                texto = 'FALTÓ'
+            else:
+                clase = 'sin-registro'
+                texto = 'SIN REGISTRO'
+
+            dias_semana.append({
+                'numero': fecha_dia.day,
+                'estado': clase,
+                'texto': texto,
+                'fecha': fecha_dia
+            })
+
+        semanas.append(dias_semana)
+
+    return render(request, 'apoderado_asistencia.html', {
+        'alumnos': alumnos,
+        'alumno_seleccionado': alumno_seleccionado,
+        'nombre_mes': nombres_meses[mes],
+        'anio': anio,
+        'mes': mes,
+        'anio_anterior': anio_anterior,
+        'mes_anterior': mes_anterior,
+        'anio_siguiente': anio_siguiente,
+        'mes_siguiente': mes_siguiente,
+        'semanas': semanas,
+        'dias_asistidos': dias_asistidos,
+        'inasistencias': inasistencias,
+        'total_registrados': total_registrados,
+        'porcentaje_asistencia': porcentaje_asistencia,
+    })
+
+
+
+# ============================================================
+# CALENDARIO ESCOLAR SGE - MYSQL / FULLCALENDAR
+# ============================================================
+
+import json
+import logging
+from datetime import datetime, timedelta
+
+from django.db import transaction
+from django.db.models import Q
+from django.http import JsonResponse
+from django.shortcuts import render
+from django.utils import timezone
+from django.utils.dateparse import parse_datetime
+from django.views.decorators.http import require_GET, require_POST
+
+from .models import Alumno, AsignaturaCurso, Curso, EventoCalendario
+
+logger_calendario = logging.getLogger(__name__)
+
+COLORES_CALENDARIO = {
+    "evaluacion": "#2563eb",
+    "reunion": "#f97316",
+    "extracurricular": "#8b5cf6",
+    "colegio": "#16a34a",
+    "feriado": "#dc2626",
+}
+
+
+def _cal_error(mensaje, status=400):
+    return JsonResponse({"ok": False, "error": mensaje}, status=status)
+
+
+def _cal_fecha(valor):
+    fecha = parse_datetime(str(valor or ""))
+    if fecha is None:
+        raise ValueError("Fecha u hora inválida.")
+    if timezone.is_naive(fecha):
+        fecha = timezone.make_aware(
+            fecha, timezone.get_current_timezone()
+        )
+    return fecha
+
+
+def _cal_serializar(evento):
+    return {
+        "id": str(evento.id_evento),
+        "title": evento.titulo,
+        "start": evento.fecha_inicio.isoformat(),
+        "end": evento.fecha_fin.isoformat(),
+        "backgroundColor": COLORES_CALENDARIO.get(
+            evento.tipo_evento, "#64748b"
+        ),
+        "borderColor": COLORES_CALENDARIO.get(
+            evento.tipo_evento, "#64748b"
+        ),
+        "extendedProps": {
+            "descripcion": evento.descripcion or "",
+            "lugar": evento.lugar or "",
+            "tipo": evento.tipo_evento,
+            "alcance": evento.alcance,
+            "id_asig_curso": evento.id_asig_curso_id,
+            "id_curso": evento.id_curso_id,
+            "creador": evento.usuario_rut_id,
+        }
+    }
+
+
+def _cal_rango(request):
+    inicio = _cal_fecha(request.GET.get("start"))
+    fin = _cal_fecha(request.GET.get("end"))
+
+    if fin <= inicio or fin - inicio > timedelta(days=400):
+        raise ValueError("Rango de fechas inválido.")
+
+    return inicio, fin
+
+
+def _cal_eventos_rango(inicio, fin):
+    return EventoCalendario.objects.filter(
+        fecha_inicio__lt=fin,
+        fecha_fin__gt=inicio
+    ).order_by("fecha_inicio")
+
+
+def _cal_asignaciones_profesor(request):
+    rut = request.session.get("usuario_rut")
+    return AsignaturaCurso.objects.filter(
+        usuario_rut_id=rut
+    ).select_related(
+        "curso_id_curso", "asignatura_id_asignatura"
+    ).order_by(
+        "curso_id_curso__nombre_curso",
+        "asignatura_id_asignatura__nombre_asignatura"
+    )
+
+
+# ------------------------------------------------------------
+# VISTA PROFESOR
+# ------------------------------------------------------------
+
+@require_role([2])
+def profesor_calendario(request):
+    rut_profesor = request.session.get("usuario_rut")
+
+    asignaciones = list(_cal_asignaciones_profesor(request))
+
+    opciones = [
+        {
+            "id": a.id_asig_curso,
+            "curso_id": a.curso_id_curso_id,
+            "nombre": (
+                f"{a.asignatura_id_asignatura.nombre_asignatura} "
+                f"— {a.curso_id_curso.nombre_curso}"
+            )
+        }
+        for a in asignaciones
+    ]
+
+    # Solamente cursos donde el profesor es jefe.
+    jefaturas = (
+        Curso.objects
+        .filter(usuario_rut_id=rut_profesor)
+        .order_by("nombre_curso")
+    )
+
+    cursos = [
+        {
+            "id": curso.id_curso,
+            "nombre": curso.nombre_curso
+        }
+        for curso in jefaturas
+    ]
+
+    return render(request, "profesor_calendario.html", {
+        "asignaciones": opciones,
+        "cursos": cursos,
+    })
+
+
+
+@require_role([2])
+@require_GET
+def profesor_calendario_eventos(request):
+    try:
+        inicio, fin = _cal_rango(request)
+
+        eventos = _cal_eventos_rango(inicio, fin)
+
+        return JsonResponse(
+            [_cal_serializar(e) for e in eventos],
+            safe=False
+        )
+
+    except ValueError as exc:
+        return _cal_error(str(exc))
+    except Exception:
+        logger_calendario.exception(
+            "Error al consultar calendario profesor"
+        )
+        return _cal_error(
+            "No se pudieron consultar los eventos.", 500
+        )
+
+
+# ------------------------------------------------------------
+# VISTA APODERADO
+# ------------------------------------------------------------
+
+
+@require_role([3])
+def apoderado_calendario(request):
+    from django.http import Http404
+
+    rut_apoderado = request.session.get("usuario_rut")
+
+    alumnos = list(
+        Alumno.objects
+        .filter(usuario_rut_id=rut_apoderado)
+        .select_related("curso_id_curso")
+        .order_by("nombre_completo")
+    )
+
+    rut_solicitado = request.GET.get("alumno", "").strip()
+
+    if rut_solicitado:
+        alumno_seleccionado = next(
+            (
+                alumno for alumno in alumnos
+                if alumno.rut_alumno == rut_solicitado
+            ),
+            None
+        )
+
+        if alumno_seleccionado is None:
+            raise Http404(
+                "Estudiante no asociado a este apoderado."
+            )
+    else:
+        alumno_seleccionado = alumnos[0] if alumnos else None
+
+    estudiantes = [
+        {
+            "rut": alumno.rut_alumno,
+            "nombre": alumno.nombre_completo,
+            "curso": alumno.curso_id_curso.nombre_curso,
+        }
+        for alumno in alumnos
+    ]
+
+    return render(request, "apoderado_calendario.html", {
+        "estudiantes": estudiantes,
+        "alumnos": alumnos,
+        "alumno_seleccionado": alumno_seleccionado,
+        "rut_alumno_seleccionado": (
+            alumno_seleccionado.rut_alumno
+            if alumno_seleccionado else ""
+        ),
+    })
+
+
+
+@require_role([3])
+@require_GET
+def apoderado_calendario_eventos(request):
+    rut_apoderado = request.session.get("usuario_rut")
+    rut_alumno = request.GET.get("alumno", "").strip()
+
+    if not rut_alumno:
+        return _cal_error("Selecciona un estudiante.")
+
+    # La búsqueda impide consultar alumnos de otro apoderado.
+    alumno = Alumno.objects.filter(
+        rut_alumno=rut_alumno,
+        usuario_rut_id=rut_apoderado
+    ).first()
+
+    if alumno is None:
+        return _cal_error(
+            "Estudiante no autorizado.", 403
+        )
+
+    try:
+        inicio, fin = _cal_rango(request)
+        curso_id = alumno.curso_id_curso_id
+
+        asignaciones = AsignaturaCurso.objects.filter(
+            curso_id_curso_id=curso_id
+        ).values_list("id_asig_curso", flat=True)
+
+        eventos = _cal_eventos_rango(inicio, fin).filter(
+            Q(alcance="general")
+            | Q(alcance="curso", id_curso_id=curso_id)
+            | Q(
+                alcance="asignatura",
+                id_asig_curso_id__in=asignaciones
+            )
+        )
+
+        return JsonResponse(
+            [_cal_serializar(e) for e in eventos],
+            safe=False
+        )
+
+    except ValueError as exc:
+        return _cal_error(str(exc))
+    except Exception:
+        logger_calendario.exception(
+            "Error al consultar calendario apoderado"
+        )
+        return _cal_error(
+            "No se pudieron consultar los eventos.", 500
+        )
+
+
+# ------------------------------------------------------------
+# CREAR / EDITAR EVENTO - PROFESOR
+# ------------------------------------------------------------
+
+@require_role([2])
+@require_POST
+def profesor_calendario_guardar(request):
+    rut_profesor = request.session.get("usuario_rut")
+
+    if not rut_profesor:
+        return _cal_error("Sesión no válida.", 403)
+
+    try:
+        datos = json.loads(request.body)
+        if not isinstance(datos, dict):
+            return _cal_error("Solicitud inválida.")
+
+        titulo = str(datos.get("titulo") or "").strip()
+        descripcion = str(datos.get("descripcion") or "").strip()
+        lugar = str(datos.get("lugar") or "").strip()
+        tipo = str(datos.get("tipo_evento") or "").strip()
+        alcance = str(datos.get("alcance") or "").strip()
+
+        inicio = _cal_fecha(datos.get("fecha_inicio"))
+        fin = _cal_fecha(datos.get("fecha_fin"))
+
+        if not titulo or len(titulo) > 150:
+            return _cal_error("Título obligatorio (máximo 150 caracteres).")
+
+        if len(lugar) > 150:
+            return _cal_error("Lugar demasiado largo.")
+
+        if tipo not in COLORES_CALENDARIO:
+            return _cal_error("Tipo de evento inválido.")
+
+        if fin <= inicio:
+            return _cal_error(
+                "La fecha de término debe ser posterior al inicio."
+            )
+
+        if alcance not in ("asignatura", "curso"):
+            return _cal_error(
+                "Los profesores solo pueden publicar eventos "
+                "de sus asignaturas o cursos asignados."
+            )
+
+        asignacion = None
+        curso = None
+
+        if alcance == "asignatura":
+            try:
+                asignacion_id = int(datos.get("id_asig_curso"))
+            except (TypeError, ValueError):
+                return _cal_error("Selecciona una asignatura.")
+
+            asignacion = _cal_asignaciones_profesor(
+                request
+            ).filter(
+                id_asig_curso=asignacion_id
+            ).first()
+
+            if asignacion is None:
+                return _cal_error(
+                    "No tienes asignada esa asignatura y curso.",
+                    403
+                )
+
+
+        elif alcance == "curso":
+            try:
+                curso_id = int(datos.get("id_curso"))
+            except (TypeError, ValueError):
+                return _cal_error("Selecciona un curso.")
+
+            # Solo permite publicar para cursos
+            # donde el profesor es jefe.
+            curso = Curso.objects.filter(
+                id_curso=curso_id,
+                usuario_rut_id=rut_profesor
+            ).first()
+
+            if curso is None:
+                return _cal_error(
+                    "Solo puedes publicar eventos para "
+                    "el curso donde eres profesor jefe.",
+                    403
+                )
+
+
+
+        evento_id = datos.get("id_evento")
+
+        with transaction.atomic():
+            if evento_id:
+                evento = EventoCalendario.objects.select_for_update().filter(
+                    id_evento=evento_id,
+                    usuario_rut_id=rut_profesor
+                ).first()
+
+                if evento is None:
+                    return _cal_error(
+                        "No puedes modificar este evento.", 403
+                    )
+
+                # No permite modificar eventos generales
+                # desde el portal profesor.
+                if evento.alcance == "general":
+                    return _cal_error(
+                        "No puedes modificar eventos generales.", 403
+                    )
+
+            else:
+                evento = EventoCalendario(
+                    usuario_rut_id=rut_profesor
+                )
+
+            evento.titulo = titulo
+            evento.descripcion = descripcion
+            evento.lugar = lugar
+            evento.tipo_evento = tipo
+            evento.alcance = alcance
+            evento.fecha_inicio = inicio
+            evento.fecha_fin = fin
+            evento.id_asig_curso = asignacion
+            evento.id_curso = curso
+
+            # MySQL aplica DEFAULT CURRENT_TIMESTAMP
+            # para los eventos nuevos.
+            if evento_id:
+                evento.save()
+            else:
+                from django.db import connection
+                with connection.cursor() as cursor:
+                    cursor.execute(
+                        """
+                        INSERT INTO evento_calendario
+                        (titulo, descripcion, fecha_inicio, fecha_fin,
+                         tipo_evento, alcance, id_asig_curso, id_curso,
+                         usuario_rut, lugar)
+                        VALUES (%s, %s, %s, %s, %s, %s,
+                                %s, %s, %s, %s)
+                        """,
+                        [
+                            titulo, descripcion, inicio, fin,
+                            tipo, alcance,
+                            asignacion.id_asig_curso if asignacion else None,
+                            curso.id_curso if curso else None,
+                            rut_profesor, lugar
+                        ]
+                    )
+                    evento.id_evento = cursor.lastrowid
+
+        return JsonResponse({
+            "ok": True,
+            "id": evento.id_evento,
+            "mensaje": "Evento guardado correctamente."
+        })
+
+    except (ValueError, TypeError, json.JSONDecodeError):
+        return _cal_error("Revisa los datos del evento.")
+    except Exception:
+        logger_calendario.exception("Error al guardar evento")
+        return _cal_error(
+            "No se pudo guardar el evento.", 500
+        )
+
+
+# ------------------------------------------------------------
+# ELIMINAR EVENTO - PROFESOR
+# ------------------------------------------------------------
+
+@require_role([2])
+@require_POST
+def profesor_calendario_eliminar(request):
+    rut_profesor = request.session.get("usuario_rut")
+
+    if not rut_profesor:
+        return _cal_error("Sesión no válida.", 403)
+
+    try:
+        datos = json.loads(request.body)
+        evento_id = datos.get("id_evento")
+
+        if not evento_id:
+            return _cal_error("Falta el ID del evento.")
+
+        evento = EventoCalendario.objects.filter(
+            id_evento=evento_id,
+            usuario_rut_id=rut_profesor
+        ).exclude(alcance="general").first()
+
+        if evento is None:
+            return _cal_error(
+                "No puedes eliminar este evento.", 403
+            )
+
+        evento.delete()
+
+        return JsonResponse({
+            "ok": True,
+            "mensaje": "Evento eliminado."
+        })
+
+    except (ValueError, TypeError, json.JSONDecodeError):
+        return _cal_error("Solicitud inválida.")
+    except Exception:
+        logger_calendario.exception("Error al eliminar evento")
+        return _cal_error(
+            "No se pudo eliminar el evento.", 500
+        )
+
+
+
+@require_role([3])
+def apoderado_certificados(request):
+    from collections import defaultdict
+    from django.http import Http404
+    from django.utils import timezone
     from .models import Alumno, AsignaturaCurso, Calificacion
 
     rut_apoderado = request.session.get('usuario_rut')
@@ -236,10 +1030,19 @@ def apoderado_notas(request):
     else:
         alumno_seleccionado = alumnos[0] if alumnos else None
 
-    resumen_notas = []
+    tipo_certificado = request.GET.get('tipo', 'regular')
+    if tipo_certificado not in ('regular', 'notas'):
+        tipo_certificado = 'regular'
 
-    if alumno_seleccionado:
-        asignaturas = (
+    # Por ahora se muestran todas las notas registradas.
+    # No se separan por semestre porque todavía no
+    # confirmamos cómo se identifica el semestre en MySQL.
+    resumen_notas = []
+    numeros_evaluacion = set()
+    promedios = []
+
+    if alumno_seleccionado and tipo_certificado == 'notas':
+        asignaturas = list(
             AsignaturaCurso.objects
             .filter(curso_id_curso=alumno_seleccionado.curso_id_curso)
             .select_related('asignatura_id_asignatura')
@@ -257,55 +1060,965 @@ def apoderado_notas(request):
             .order_by('fecha_ingreso', 'id_calificacion')
         )
 
-        notas_por_asignatura = {}
+        por_asignatura = defaultdict(dict)
 
         for calificacion in calificaciones:
-            id_asignatura_curso = (
+            evaluacion = calificacion.evaluacion_id_evaluacion
+
+            if evaluacion is None:
+                continue
+
+            numero = evaluacion.numero_evaluacion
+            asignatura_id = (
                 calificacion.asignatura_curso_id_asig_curso_id
             )
-            notas_por_asignatura.setdefault(
-                id_asignatura_curso, []
-            ).append(calificacion)
 
-        for asignatura_curso in asignaturas:
-            notas = notas_por_asignatura.get(
-                asignatura_curso.id_asig_curso, []
+            # Si una nota fue actualizada y hay duplicados,
+            # se conserva la última según el orden consultado.
+            por_asignatura[asignatura_id][numero] = (
+                calificacion.valor_nota
+            )
+            numeros_evaluacion.add(numero)
+
+        numeros_evaluacion = sorted(numeros_evaluacion)
+
+        for asignatura in asignaturas:
+            notas = por_asignatura.get(
+                asignatura.id_asig_curso, {}
             )
 
-            valores = [nota.valor_nota for nota in notas]
-
+            valores = list(notas.values())
             promedio = (
                 round(sum(valores) / len(valores), 1)
                 if valores else None
             )
 
+            if promedio is not None:
+                promedios.append(
+                    sum(valores) / len(valores)
+                )
+
             resumen_notas.append({
                 'nombre_asignatura':
-                    asignatura_curso.asignatura_id_asignatura.nombre_asignatura,
-                'notas': notas,
-                'promedio': promedio,
+                    asignatura.asignatura_id_asignatura.nombre_asignatura,
+                'notas': [
+                    {'numero': numero, 'valor': notas.get(numero)}
+                    for numero in numeros_evaluacion
+                ],
+                'promedio': promedio
             })
 
-    return render(request, 'apoderado_notas.html', {
+    promedio_general = (
+        round(sum(promedios) / len(promedios), 1)
+        if promedios else None
+    )
+
+    return render(request, 'apoderado_certificados.html', {
         'alumnos': alumnos,
         'alumno_seleccionado': alumno_seleccionado,
+        'tipo_certificado': tipo_certificado,
         'resumen_notas': resumen_notas,
+        'numeros_evaluacion': numeros_evaluacion,
+        'promedio_general': promedio_general,
+        'fecha_emision': timezone.localdate(),
+        'anio_escolar': timezone.localdate().year,
     })
 
 
-@require_role([3])
-def apoderado_asistencia(request):
-    return render(request, 'apoderado_asistencia.html')
 
 @require_role([3])
-def apoderado_calendario(request):
-    return render(request, 'apoderado_calendario.html')
+def apoderado_descargar_certificado(request):
+    from collections import defaultdict
+    from io import BytesIO
+    from html import escape
 
-@require_role([3])
-def apoderado_certificados(request):
-    return render(request, 'apoderado_certificados.html')
+    from django.http import Http404, HttpResponse
+    from django.utils import timezone
 
-# Vistas para el portal de Profesores
+    from reportlab.lib import colors
+    from reportlab.lib.enums import TA_CENTER, TA_LEFT
+    from reportlab.lib.pagesizes import A4, A3, landscape
+    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+    from reportlab.lib.units import cm
+    from reportlab.platypus import (
+        SimpleDocTemplate,
+        Paragraph,
+        Spacer,
+        Table,
+        LongTable,
+        TableStyle,
+        KeepTogether
+    )
+
+    from .models import Alumno, AsignaturaCurso, Calificacion
+
+    # ============================================
+    # 1. VALIDAR APODERADO Y ESTUDIANTE
+    # ============================================
+
+    rut_apoderado = request.session.get('usuario_rut')
+    rut_alumno = request.GET.get('alumno', '').strip()
+    tipo = request.GET.get('tipo', 'regular').strip()
+
+    if tipo not in ('regular', 'notas'):
+        raise Http404('Tipo de certificado inválido.')
+
+    alumno = (
+        Alumno.objects
+        .filter(
+            rut_alumno=rut_alumno,
+            usuario_rut_id=rut_apoderado
+        )
+        .select_related('curso_id_curso')
+        .first()
+    )
+
+    if alumno is None:
+        raise Http404('Estudiante no asociado a este apoderado.')
+
+    # ============================================
+    # 2. COLORES INSTITUCIONALES
+    # ============================================
+
+    AZUL = colors.HexColor('#17365D')
+    AZUL_OSCURO = colors.HexColor('#102A47')
+    AZUL_CLARO = colors.HexColor('#EAF2FB')
+    NARANJA = colors.HexColor('#F97316')
+    NARANJA_CLARO = colors.HexColor('#FFF3E9')
+    GRIS = colors.HexColor('#64748B')
+    GRIS_CLARO = colors.HexColor('#F8FAFC')
+    BORDE = colors.HexColor('#DCE5EF')
+    VERDE = colors.HexColor('#15803D')
+    ROJO = colors.HexColor('#DC2626')
+
+    fecha_emision = timezone.localdate()
+    anio_escolar = fecha_emision.year
+
+    nombre_alumno = escape(str(alumno.nombre_completo))
+    rut_estudiante = escape(str(alumno.rut_alumno))
+    nombre_curso = escape(
+        str(alumno.curso_id_curso.nombre_curso)
+    )
+
+    # ============================================
+    # 3. CONFIGURAR PDF
+    # ============================================
+
+    buffer = BytesIO()
+
+    pagina = landscape(A3) if tipo == 'notas' else A4
+
+    documento = SimpleDocTemplate(
+        buffer,
+        pagesize=pagina,
+        leftMargin=2.1 * cm,
+        rightMargin=2.1 * cm,
+        topMargin=4.3 * cm,
+        bottomMargin=4.0 * cm if tipo == 'regular' else 2.5 * cm,
+        title=(
+            'Certificado de Calificaciones'
+            if tipo == 'notas'
+            else 'Certificado de Alumno Regular'
+        ),
+        author='Sistema de Gestión Escolar - Santa Juliana'
+    )
+
+    ancho_pagina, alto_pagina = pagina
+    ancho_util = (
+        ancho_pagina
+        - documento.leftMargin
+        - documento.rightMargin
+    )
+
+    # ============================================
+    # 4. ESTILOS
+    # ============================================
+
+    estilos = getSampleStyleSheet()
+
+    estilos.add(ParagraphStyle(
+        name='TituloSGE',
+        fontName='Helvetica-Bold',
+        fontSize=18,
+        leading=23,
+        textColor=AZUL_OSCURO,
+        alignment=TA_CENTER,
+        spaceAfter=9
+    ))
+
+    estilos.add(ParagraphStyle(
+        name='SubtituloSGE',
+        fontName='Helvetica',
+        fontSize=10,
+        leading=15,
+        textColor=GRIS,
+        alignment=TA_CENTER,
+        spaceAfter=12
+    ))
+
+    estilos.add(ParagraphStyle(
+        name='TextoSGE',
+        fontName='Helvetica',
+        fontSize=10.5,
+        leading=18,
+        textColor=AZUL_OSCURO,
+        alignment=TA_LEFT,
+        spaceAfter=14
+    ))
+
+    estilos.add(ParagraphStyle(
+        name='EtiquetaSGE',
+        fontName='Helvetica-Bold',
+        fontSize=9.5,
+        leading=14,
+        textColor=AZUL
+    ))
+
+    estilos.add(ParagraphStyle(
+        name='ValorSGE',
+        fontName='Helvetica',
+        fontSize=10,
+        leading=15,
+        textColor=AZUL_OSCURO
+    ))
+
+    estilos.add(ParagraphStyle(
+        name='SeccionSGE',
+        fontName='Helvetica-Bold',
+        fontSize=11,
+        leading=16,
+        textColor=AZUL,
+        spaceBefore=8,
+        spaceAfter=12
+    ))
+
+    estilos.add(ParagraphStyle(
+        name='CeldaSGE',
+        fontName='Helvetica',
+        fontSize=8,
+        leading=11,
+        textColor=AZUL_OSCURO
+    ))
+
+    estilos.add(ParagraphStyle(
+        name='CeldaNegritaSGE',
+        parent=estilos['CeldaSGE'],
+        fontName='Helvetica-Bold'
+    ))
+
+    estilos.add(ParagraphStyle(
+        name='CeldaBlancaSGE',
+        fontName='Helvetica-Bold',
+        fontSize=8,
+        leading=11,
+        textColor=colors.white
+    ))
+
+    estilos.add(ParagraphStyle(
+        name='NotaSGE',
+        fontName='Helvetica',
+        fontSize=8.5,
+        leading=13,
+        textColor=GRIS,
+        spaceAfter=8
+    ))
+
+    # ============================================
+    # 5. ENCABEZADO Y PIE DE PÁGINA
+    # ============================================
+
+    def decorar_pagina(canvas, doc):
+        canvas.saveState()
+
+        # Franja superior azul
+        canvas.setFillColor(AZUL)
+        canvas.rect(
+            0,
+            alto_pagina - 2.75 * cm,
+            ancho_pagina,
+            2.75 * cm,
+            fill=1,
+            stroke=0
+        )
+
+        # Franja naranja
+        canvas.setFillColor(NARANJA)
+        canvas.rect(
+            0,
+            alto_pagina - 2.86 * cm,
+            ancho_pagina,
+            0.11 * cm,
+            fill=1,
+            stroke=0
+        )
+
+        # Logotipo tipográfico SGE
+        canvas.setFillColor(NARANJA)
+        canvas.roundRect(
+            2.0 * cm,
+            alto_pagina - 2.05 * cm,
+            1.25 * cm,
+            1.05 * cm,
+            7,
+            fill=1,
+            stroke=0
+        )
+
+        canvas.setFillColor(colors.white)
+        canvas.setFont('Helvetica-Bold', 13)
+        canvas.drawCentredString(
+            2.625 * cm,
+            alto_pagina - 1.67 * cm,
+            'SGE'
+        )
+
+        canvas.setFillColor(colors.white)
+        canvas.setFont('Helvetica-Bold', 13)
+        canvas.drawString(
+            3.6 * cm,
+            alto_pagina - 1.36 * cm,
+            'LICEO POLIVALENTE SANTA JULIANA'
+        )
+
+        canvas.setFont('Helvetica', 9)
+        canvas.drawString(
+            3.6 * cm,
+            alto_pagina - 1.81 * cm,
+            'Sistema de Gestión Escolar'
+        )
+
+        canvas.setFont('Helvetica-Bold', 9)
+        canvas.drawRightString(
+            ancho_pagina - 2.0 * cm,
+            alto_pagina - 1.48 * cm,
+            f'AÑO ESCOLAR {anio_escolar}'
+        )
+
+        # Marca de agua discreta
+        canvas.saveState()
+        canvas.setFillColor(
+            colors.HexColor('#F1F5F9')
+        )
+        canvas.setFont('Helvetica-Bold', 70)
+        canvas.translate(
+            ancho_pagina / 2,
+            alto_pagina / 2
+        )
+        canvas.rotate(35)
+        canvas.drawCentredString(0, 0, 'SGE')
+        canvas.restoreState()
+
+        # Pie de página
+        canvas.setStrokeColor(BORDE)
+        canvas.setLineWidth(0.7)
+        canvas.line(
+            2 * cm,
+            1.65 * cm,
+            ancho_pagina - 2 * cm,
+            1.65 * cm
+        )
+
+        canvas.setFillColor(AZUL)
+        canvas.setFont('Helvetica-Bold', 8)
+        canvas.drawString(
+            2 * cm,
+            1.30 * cm,
+            'LICEO POLIVALENTE SANTA JULIANA'
+        )
+
+        canvas.setFillColor(GRIS)
+        canvas.setFont('Helvetica', 7.5)
+        canvas.drawString(
+            2 * cm,
+            1.02 * cm,
+            'Documento generado por el Sistema de Gestión Escolar'
+        )
+
+        canvas.drawRightString(
+            ancho_pagina - 2 * cm,
+            1.30 * cm,
+            f'Emitido: {fecha_emision.strftime("%d/%m/%Y")}'
+        )
+
+        canvas.drawRightString(
+            ancho_pagina - 2 * cm,
+            1.02 * cm,
+            f'Página {doc.page}'
+        )
+
+        # Firma decorativa solo en certificado regular
+        if tipo == 'regular' and doc.page == 1:
+
+            firma_x = ancho_pagina - 7.1 * cm
+            firma_y = 5.1 * cm
+
+            # Firma gráfica ilustrativa
+            canvas.setStrokeColor(AZUL)
+            canvas.setLineWidth(1.5)
+
+            trazo = canvas.beginPath()
+            trazo.moveTo(firma_x + 0.1 * cm, firma_y)
+            trazo.curveTo(
+                firma_x + 0.7 * cm, firma_y + 0.8 * cm,
+                firma_x + 0.6 * cm, firma_y - 0.4 * cm,
+                firma_x + 1.7 * cm, firma_y + 0.5 * cm
+            )
+            trazo.curveTo(
+                firma_x + 2.2 * cm, firma_y + 0.9 * cm,
+                firma_x + 1.6 * cm, firma_y - 0.2 * cm,
+                firma_x + 3.0 * cm, firma_y + 0.35 * cm
+            )
+            trazo.curveTo(
+                firma_x + 3.5 * cm, firma_y + 0.7 * cm,
+                firma_x + 3.7 * cm, firma_y - 0.2 * cm,
+                firma_x + 4.4 * cm, firma_y + 0.2 * cm
+            )
+            canvas.drawPath(trazo)
+
+            canvas.setStrokeColor(GRIS)
+            canvas.setLineWidth(0.6)
+            canvas.line(
+                firma_x - 0.2 * cm,
+                firma_y - 0.45 * cm,
+                firma_x + 5 * cm,
+                firma_y - 0.45 * cm
+            )
+
+            canvas.setFillColor(AZUL_OSCURO)
+            canvas.setFont('Helvetica-Bold', 9)
+            canvas.drawCentredString(
+                firma_x + 2.4 * cm,
+                firma_y - 0.85 * cm,
+                'Dirección del Establecimiento'
+            )
+
+            canvas.setFillColor(GRIS)
+            canvas.setFont('Helvetica', 7.5)
+            canvas.drawCentredString(
+                firma_x + 2.4 * cm,
+                firma_y - 1.15 * cm,
+                'Firma ilustrativa - No autorizada'
+            )
+
+        canvas.restoreState()
+
+    # ============================================
+    # 6. CONTENIDO COMPARTIDO
+    # ============================================
+
+    contenido = []
+
+    titulo = (
+        'CERTIFICADO DE CALIFICACIONES'
+        if tipo == 'notas'
+        else 'CERTIFICADO DE ALUMNO REGULAR'
+    )
+
+    contenido.append(
+        Paragraph(titulo, estilos['TituloSGE'])
+    )
+
+    contenido.append(
+        Paragraph(
+            f'Período académico {anio_escolar}',
+            estilos['SubtituloSGE']
+        )
+    )
+
+    contenido.append(Spacer(1, 0.35 * cm))
+
+    contenido.append(
+        Paragraph(
+            'ANTECEDENTES DEL ESTUDIANTE',
+            estilos['SeccionSGE']
+        )
+    )
+
+    datos = [
+        [
+            Paragraph('Nombre completo:', estilos['EtiquetaSGE']),
+            Paragraph(nombre_alumno, estilos['ValorSGE'])
+        ],
+        [
+            Paragraph('R.U.T:', estilos['EtiquetaSGE']),
+            Paragraph(rut_estudiante, estilos['ValorSGE'])
+        ],
+        [
+            Paragraph('Curso:', estilos['EtiquetaSGE']),
+            Paragraph(nombre_curso, estilos['ValorSGE'])
+        ],
+        [
+            Paragraph('Año escolar:', estilos['EtiquetaSGE']),
+            Paragraph(str(anio_escolar), estilos['ValorSGE'])
+        ]
+    ]
+
+    tabla_datos = Table(
+        datos,
+        colWidths=[
+            ancho_util * 0.30,
+            ancho_util * 0.70
+        ],
+        hAlign='LEFT'
+    )
+
+    tabla_datos.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), GRIS_CLARO),
+        ('BACKGROUND', (0, 0), (0, -1), AZUL_CLARO),
+        ('LINEBELOW', (0, 0), (-1, -2), 0.4, BORDE),
+        ('BOX', (0, 0), (-1, -1), 0.6, BORDE),
+        ('LEFTPADDING', (0, 0), (-1, -1), 13),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 12),
+        ('TOPPADDING', (0, 0), (-1, -1), 10),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 10),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE')
+    ]))
+
+    contenido.append(tabla_datos)
+    contenido.append(Spacer(1, 0.75 * cm))
+
+    # ============================================
+    # 7. CERTIFICADO ALUMNO REGULAR
+    # ============================================
+
+    if tipo == 'regular':
+
+        contenido.append(
+            Paragraph(
+                'CERTIFICACIÓN DE MATRÍCULA',
+                estilos['SeccionSGE']
+            )
+        )
+
+        contenido.append(
+            Paragraph(
+                'La Dirección del '
+                '<b>Liceo Polivalente Santa Juliana</b> '
+                'deja constancia de que el estudiante '
+                f'<b>{nombre_alumno}</b>, '
+                f'R.U.T. <b>{rut_estudiante}</b>, '
+                'se encuentra registrado en el '
+                'establecimiento educacional, '
+                f'en el curso <b>{nombre_curso}</b>, '
+                f'correspondiente al año escolar '
+                f'<b>{anio_escolar}</b>.',
+                estilos['TextoSGE']
+            )
+        )
+
+        contenido.append(
+            Paragraph(
+                'El presente documento se emite '
+                'a solicitud del apoderado para '
+                'los fines que estime pertinentes.',
+                estilos['TextoSGE']
+            )
+        )
+
+        contenido.append(Spacer(1, 0.35 * cm))
+
+        recuadro = Table(
+            [[Paragraph(
+                '<b>INFORMACIÓN IMPORTANTE</b><br/>'
+                'Este certificado ha sido generado '
+                'por el Sistema de Gestión Escolar. '
+                'Su validez oficial requiere '
+                'la autorización del establecimiento.',
+                estilos['NotaSGE']
+            )]],
+            colWidths=[ancho_util]
+        )
+
+        recuadro.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, -1), NARANJA_CLARO),
+            ('LINEBEFORE', (0, 0), (0, 0), 3, NARANJA),
+            ('LEFTPADDING', (0, 0), (-1, -1), 14),
+            ('RIGHTPADDING', (0, 0), (-1, -1), 14),
+            ('TOPPADDING', (0, 0), (-1, -1), 12),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 8)
+        ]))
+
+        contenido.append(recuadro)
+
+        contenido.append(Spacer(1, 0.45 * cm))
+
+        contenido.append(
+            Paragraph(
+                f'Santiago, Chile - '
+                f'{fecha_emision.strftime("%d/%m/%Y")}',
+                estilos['TextoSGE']
+            )
+        )
+
+    # ============================================
+    # 8. CERTIFICADO DE CALIFICACIONES
+    # ============================================
+
+    else:
+
+        contenido.append(
+            Paragraph(
+                'DETALLE DE CALIFICACIONES REGISTRADAS',
+                estilos['SeccionSGE']
+            )
+        )
+
+        asignaturas = list(
+            AsignaturaCurso.objects
+            .filter(curso_id_curso=alumno.curso_id_curso)
+            .select_related('asignatura_id_asignatura')
+            .order_by(
+                'asignatura_id_asignatura__nombre_asignatura'
+            )
+        )
+
+        calificaciones = (
+            Calificacion.objects
+            .filter(
+                alumno_rut_alumno=alumno,
+                asignatura_curso_id_asig_curso__curso_id_curso=
+                    alumno.curso_id_curso
+            )
+            .select_related('evaluacion_id_evaluacion')
+            .order_by('fecha_ingreso', 'id_calificacion')
+        )
+
+        notas_por_asignatura = defaultdict(dict)
+        numeros = set()
+
+        for calificacion in calificaciones:
+
+            evaluacion = calificacion.evaluacion_id_evaluacion
+
+            if evaluacion is None:
+                continue
+
+            if calificacion.valor_nota is None:
+                continue
+
+            numero = evaluacion.numero_evaluacion
+
+            asignatura_id = (
+                calificacion.asignatura_curso_id_asig_curso_id
+            )
+
+            notas_por_asignatura[asignatura_id][numero] = (
+                float(calificacion.valor_nota)
+            )
+
+            numeros.add(numero)
+
+        numeros = sorted(numeros)
+
+        # Columnas dinámicas
+        cabecera = [
+            Paragraph('ASIGNATURA', estilos['CeldaBlancaSGE'])
+        ]
+
+        for numero in numeros:
+            cabecera.append(
+                Paragraph(
+                    f'NOTA {numero}',
+                    estilos['CeldaBlancaSGE']
+                )
+            )
+
+        cabecera.append(
+            Paragraph('PROMEDIO', estilos['CeldaBlancaSGE'])
+        )
+
+        filas = [cabecera]
+        promedios = []
+
+        for asignatura in asignaturas:
+
+            notas = notas_por_asignatura.get(
+                asignatura.id_asig_curso, {}
+            )
+
+            valores = list(notas.values())
+
+            promedio = (
+                sum(valores) / len(valores)
+                if valores else None
+            )
+
+            if promedio is not None:
+                promedios.append(promedio)
+
+            nombre = escape(
+                str(
+                    asignatura.asignatura_id_asignatura
+                    .nombre_asignatura
+                )
+            )
+
+            fila = [
+                Paragraph(nombre, estilos['CeldaSGE'])
+            ]
+
+            for numero in numeros:
+
+                valor = notas.get(numero)
+
+                fila.append(
+                    f'{valor:.1f}'
+                    if valor is not None
+                    else '-'
+                )
+
+            fila.append(
+                f'{promedio:.1f}'
+                if promedio is not None
+                else '-'
+            )
+
+            filas.append(fila)
+
+        # Promedio general:
+        # Cada asignatura con notas tiene el mismo peso.
+        promedio_general = (
+            sum(promedios) / len(promedios)
+            if promedios else None
+        )
+
+        filas.append(
+            [
+                Paragraph(
+                    'PROMEDIO GENERAL',
+                    estilos['CeldaNegritaSGE']
+                )
+            ]
+            + [''] * len(numeros)
+            + [
+                f'{promedio_general:.1f}'
+                if promedio_general is not None
+                else '-'
+            ]
+        )
+
+        # Adaptar columnas al tamaño de la página
+        ancho_asignatura = min(
+            8.5 * cm,
+            ancho_util * 0.30
+        )
+
+        cantidad_columnas = len(numeros) + 1
+
+        ancho_nota = (
+            (ancho_util - ancho_asignatura)
+            / cantidad_columnas
+        )
+
+        tabla_notas = LongTable(
+            filas,
+            colWidths=(
+                [ancho_asignatura]
+                + [ancho_nota] * cantidad_columnas
+            ),
+            repeatRows=1,
+            hAlign='LEFT'
+        )
+
+        tamano_fuente = (
+            8 if len(numeros) <= 12
+            else 6 if len(numeros) <= 22
+            else 4.5
+        )
+
+        tabla_notas.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), AZUL),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
+
+            ('ROWBACKGROUNDS', (0, 1), (-1, -2), [
+                colors.white,
+                GRIS_CLARO
+            ]),
+
+            ('BACKGROUND', (0, -1), (-1, -1), AZUL_CLARO),
+
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTNAME', (0, -1), (-1, -1), 'Helvetica-Bold'),
+
+            ('GRID', (0, 0), (-1, -1), 0.35, BORDE),
+
+            ('ALIGN', (1, 0), (-1, -1), 'CENTER'),
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+
+            ('FONTSIZE', (0, 0), (-1, -1), tamano_fuente),
+
+            ('LEFTPADDING', (0, 0), (-1, -1), 5),
+            ('RIGHTPADDING', (0, 0), (-1, -1), 5),
+
+            ('TOPPADDING', (0, 0), (-1, -1), 9),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 9),
+
+            ('LINEABOVE', (0, -1), (-1, -1), 1.5, NARANJA)
+        ]))
+
+        # Colorear notas insuficientes
+        for indice_fila, asignatura in enumerate(
+            asignaturas, start=1
+        ):
+
+            notas = notas_por_asignatura.get(
+                asignatura.id_asig_curso, {}
+            )
+
+            for indice_columna, numero in enumerate(
+                numeros, start=1
+            ):
+
+                valor = notas.get(numero)
+
+                if valor is not None:
+                    tabla_notas.setStyle(TableStyle([
+                        (
+                            'TEXTCOLOR',
+                            (indice_columna, indice_fila),
+                            (indice_columna, indice_fila),
+                            ROJO if valor < 4 else AZUL
+                        )
+                    ]))
+
+            valores = list(notas.values())
+
+            if valores:
+                promedio = sum(valores) / len(valores)
+
+                tabla_notas.setStyle(TableStyle([
+                    (
+                        'TEXTCOLOR',
+                        (-1, indice_fila),
+                        (-1, indice_fila),
+                        ROJO if promedio < 4 else VERDE
+                    ),
+                    (
+                        'FONTNAME',
+                        (-1, indice_fila),
+                        (-1, indice_fila),
+                        'Helvetica-Bold'
+                    )
+                ]))
+
+        if promedio_general is not None:
+            tabla_notas.setStyle(TableStyle([
+                (
+                    'TEXTCOLOR',
+                    (-1, -1),
+                    (-1, -1),
+                    ROJO if promedio_general < 4 else VERDE
+                )
+            ]))
+
+        contenido.append(tabla_notas)
+        contenido.append(Spacer(1, 0.65 * cm))
+
+        # Resumen visual del rendimiento
+        total_asignaturas = len(asignaturas)
+        asignaturas_con_notas = len(promedios)
+
+        resumen = [
+            [
+                Paragraph(
+                    '<b>ASIGNATURAS</b>',
+                    estilos['EtiquetaSGE']
+                ),
+                Paragraph(
+                    '<b>CON CALIFICACIONES</b>',
+                    estilos['EtiquetaSGE']
+                ),
+                Paragraph(
+                    '<b>PROMEDIO GENERAL</b>',
+                    estilos['EtiquetaSGE']
+                )
+            ],
+            [
+                str(total_asignaturas),
+                str(asignaturas_con_notas),
+                (
+                    f'{promedio_general:.1f}'
+                    if promedio_general is not None
+                    else '-'
+                )
+            ]
+        ]
+
+        tabla_resumen = Table(
+            resumen,
+            colWidths=[ancho_util / 3] * 3
+        )
+
+        tabla_resumen.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, -1), AZUL_CLARO),
+            ('BOX', (0, 0), (-1, -1), 0.7, BORDE),
+            ('INNERGRID', (0, 0), (-1, -1), 0.4, BORDE),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+            ('FONTNAME', (0, 1), (-1, 1), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 1), (-1, 1), 17),
+            ('TEXTCOLOR', (0, 1), (-1, 1), AZUL),
+            ('TOPPADDING', (0, 0), (-1, -1), 11),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 11)
+        ]))
+
+        contenido.append(KeepTogether([
+            tabla_resumen,
+            Spacer(1, 0.45 * cm),
+            Paragraph(
+                'El promedio general corresponde al promedio '
+                'de las asignaturas que tienen calificaciones '
+                'registradas. Las asignaturas sin notas no '
+                'participan en este cálculo.',
+                estilos['NotaSGE']
+            ),
+            Paragraph(
+                'Las calificaciones reflejan los registros '
+                'disponibles en el sistema al momento '
+                'de generar el certificado.',
+                estilos['NotaSGE']
+            )
+        ]))
+
+        contenido.append(Spacer(1, 0.25 * cm))
+
+        contenido.append(
+            Paragraph(
+                'Documento informativo generado por SGE. '
+                'Su validez oficial requiere autorización '
+                'del establecimiento.',
+                estilos['NotaSGE']
+            )
+        )
+
+    # ============================================
+    # 9. GENERAR PDF
+    # ============================================
+
+    documento.build(
+        contenido,
+        onFirstPage=decorar_pagina,
+        onLaterPages=decorar_pagina
+    )
+
+    pdf = buffer.getvalue()
+    buffer.close()
+
+    nombre_archivo = (
+        f'certificado_{tipo}_{alumno.rut_alumno}.pdf'
+    )
+
+    respuesta = HttpResponse(
+        pdf,
+        content_type='application/pdf'
+    )
+
+    respuesta['Content-Disposition'] = (
+        f'attachment; filename="{nombre_archivo}"'
+    )
+
+    return respuesta
+
 
 
 @require_role([2])
@@ -416,270 +2129,971 @@ from django.views.decorators.http import require_http_methods
 from django.utils import timezone
 from sistema.models import Curso, Alumno, AsignaturaCurso, Evaluacion, Calificacion
 
+
+
 @require_role([2])
-@require_http_methods(['GET', 'POST'])
+@require_http_methods(["GET", "POST"])
 def profesor_notas(request):
-    if request.method == 'POST':
+    import json
+    from decimal import Decimal, InvalidOperation
+
+    from django.db import connection, transaction
+    from django.db.models import Q
+    from django.http import JsonResponse
+    from django.shortcuts import render
+    from django.utils import timezone
+
+    from .models import (
+        Alumno,
+        Curso,
+        AsignaturaCurso,
+        Evaluacion,
+        Calificacion,
+    )
+
+    rut_profesor = request.session.get("usuario_rut")
+
+    if not rut_profesor:
+        return JsonResponse({
+            "ok": False,
+            "error": "La sesión del profesor no es válida."
+        }, status=403)
+
+    # ==================================================
+    # 1. PERMISOS DEL PROFESOR
+    # ==================================================
+
+    # Puede acceder a:
+    # - Las asignaturas que tiene asignadas.
+    # - Todas las asignaturas de su curso de jefatura.
+
+    relaciones_permitidas = (
+        AsignaturaCurso.objects.filter(
+            Q(usuario_rut_id=rut_profesor)
+            | Q(curso_id_curso__usuario_rut_id=rut_profesor)
+        )
+        .select_related(
+            "curso_id_curso",
+            "asignatura_id_asignatura"
+        )
+        .distinct()
+    )
+
+    # ==================================================
+    # 2. GUARDAR, EDITAR Y ELIMINAR CALIFICACIONES
+    # ==================================================
+
+    if request.method == "POST":
+
         try:
             payload = json.loads(request.body)
-            curso_id = int(payload['curso_id'])
-            relacion_id = int(payload['asignatura_id'])
-            columnas = payload['columnas']
-            notas = payload['notas']
-            if not isinstance(columnas, list) or not columnas or len(columnas) > 40 or not isinstance(notas, dict):
-                raise ValueError('Datos inválidos.')
-            if columnas != list(range(1, len(columnas) + 1)):
-                raise ValueError('Las evaluaciones deben ser consecutivas.')
-        except (ValueError, KeyError, TypeError, json.JSONDecodeError):
-            return JsonResponse({'ok': False, 'error': 'Datos de solicitud inválidos.'}, status=400)
 
-        relacion = AsignaturaCurso.objects.filter(id_asig_curso=relacion_id, curso_id_curso_id=curso_id).first()
-        if not relacion:
-            return JsonResponse({'ok': False, 'error': 'Curso o asignatura inválidos.'}, status=400)
-        ruts_validos = set(Alumno.objects.filter(curso_id_curso_id=curso_id).values_list('rut_alumno', flat=True))
-        if set(notas) != ruts_validos:
-            return JsonResponse({'ok': False, 'error': 'La lista de alumnos no corresponde al curso.'}, status=400)
-        parsed = {}
+            curso_id = int(payload["curso_id"])
+            relacion_id = int(payload["asignatura_id"])
+
+            columnas = payload["columnas"]
+            notas = payload["notas"]
+
+            if (
+                not isinstance(columnas, list)
+                or not columnas
+                or len(columnas) > 40
+                or not isinstance(notas, dict)
+            ):
+                raise ValueError("Datos inválidos.")
+
+            if columnas != list(range(1, len(columnas) + 1)):
+                raise ValueError(
+                    "Las evaluaciones deben ser consecutivas."
+                )
+
+        except (
+            ValueError,
+            KeyError,
+            TypeError,
+            json.JSONDecodeError,
+        ):
+            return JsonResponse({
+                "ok": False,
+                "error": "Datos de solicitud inválidos."
+            }, status=400)
+
+        # Validación de permisos en el servidor.
+        relacion = relaciones_permitidas.filter(
+            id_asig_curso=relacion_id,
+            curso_id_curso_id=curso_id
+        ).first()
+
+        if relacion is None:
+            return JsonResponse({
+                "ok": False,
+                "error": (
+                    "No tienes permiso para modificar "
+                    "esta asignatura o curso."
+                )
+            }, status=403)
+
+        # Obtener alumnos matriculados.
+        ruts_validos = set(
+            Alumno.objects.filter(
+                curso_id_curso_id=curso_id
+            ).values_list("rut_alumno", flat=True)
+        )
+
+        if set(notas.keys()) != ruts_validos:
+            return JsonResponse({
+                "ok": False,
+                "error": (
+                    "La lista de alumnos enviada "
+                    "no corresponde al curso."
+                )
+            }, status=400)
+
+        # ==================================================
+        # 3. VALIDAR LAS NOTAS
+        # ==================================================
+
+        notas_procesadas = {}
+
         for rut, valores in notas.items():
-            if not isinstance(valores, list) or len(valores) != len(columnas):
-                return JsonResponse({'ok': False, 'error': 'Cantidad de notas inválida.'}, status=400)
+
+            if (
+                not isinstance(valores, list)
+                or len(valores) != len(columnas)
+            ):
+                return JsonResponse({
+                    "ok": False,
+                    "error": (
+                        f"Cantidad de notas inválida "
+                        f"para el alumno {rut}."
+                    )
+                }, status=400)
+
             for numero, valor in enumerate(valores, 1):
-                if valor in ('', None):
+
+                if valor is None or valor == "":
                     continue
+
                 try:
-                    numero_nota = Decimal(str(valor).replace(',', '.'))
+                    numero_nota = Decimal(
+                        str(valor).replace(",", ".")
+                    )
+
                 except InvalidOperation:
-                    return JsonResponse({'ok': False, 'error': f'Nota inválida de {rut}.'}, status=400)
-                if not numero_nota.is_finite() or not (Decimal('1.0') <= numero_nota <= Decimal('7.0')) or numero_nota.as_tuple().exponent < -1:
-                    return JsonResponse({'ok': False, 'error': f'Las notas deben estar entre 1.0 y 7.0, con un decimal ({rut}).'}, status=400)
-                parsed[(rut, numero)] = float(numero_nota)
+                    return JsonResponse({
+                        "ok": False,
+                        "error": (
+                            f"Nota inválida para el alumno {rut}."
+                        )
+                    }, status=400)
+
+                if (
+                    not numero_nota.is_finite()
+                    or numero_nota < Decimal("1.0")
+                    or numero_nota > Decimal("7.0")
+                    or numero_nota.as_tuple().exponent < -1
+                ):
+                    return JsonResponse({
+                        "ok": False,
+                        "error": (
+                            "Las notas deben estar entre "
+                            "1.0 y 7.0, con máximo un decimal."
+                        )
+                    }, status=400)
+
+                notas_procesadas[(rut, numero)] = float(
+                    numero_nota
+                )
+
+        # ==================================================
+        # 4. TRANSACCIÓN MYSQL
+        # ==================================================
 
         try:
             with transaction.atomic():
-                # Serializa los guardados de esta asignatura para evitar IDs repetidos.
-                with connection.cursor() as cursor:
-                    cursor.execute('SELECT id_asig_curso FROM asignatura_curso WHERE id_asig_curso = %s FOR UPDATE', [relacion_id])
-                    cursor.execute('SELECT COALESCE(MAX(id_calificacion), 0) FROM calificacion')
-                    max_id = cursor.fetchone()[0]
-                existentes = {e.numero_evaluacion: e for e in Evaluacion.objects.filter(asignatura_curso_id_asig_curso_id=relacion_id)}
-                # Mantener IDs de evaluaciones existentes; crear solo las faltantes.
-                for numero in columnas:
-                    if numero not in existentes:
-                        existentes[numero] = Evaluacion.objects.create(asignatura_curso_id_asig_curso_id=relacion_id, numero_evaluacion=numero)
-                for numero, evaluacion in list(existentes.items()):
-                    if numero not in columnas:
-                        Calificacion.objects.filter(evaluacion_id_evaluacion_id=evaluacion.id_evaluacion).delete()
-                        evaluacion.delete()
-                        del existentes[numero]
-                actuales = {}
-                for c in Calificacion.objects.filter(asignatura_curso_id_asig_curso_id=relacion_id, alumno_rut_alumno_id__in=ruts_validos, evaluacion_id_evaluacion__isnull=False).order_by('id_calificacion'):
-                    clave = (c.alumno_rut_alumno_id, c.evaluacion_id_evaluacion.numero_evaluacion)
-                    if clave in actuales:
-                        raise ValueError('Hay notas duplicadas en la base de datos. Revisar antes de guardar.')
-                    actuales[clave] = c
-                for clave, nota in parsed.items():
-                    if clave in actuales:
-                        c = actuales.pop(clave)
-                        if c.valor_nota != nota:
-                            c.valor_nota = nota
-                            c.fecha_ingreso = timezone.localdate()
-                            c.save(update_fields=['valor_nota', 'fecha_ingreso'])
-                    else:
-                        max_id += 1
-                        Calificacion.objects.create(id_calificacion=max_id, valor_nota=nota, fecha_ingreso=timezone.localdate(), alumno_rut_alumno_id=clave[0], asignatura_curso_id_asig_curso_id=relacion_id, evaluacion_id_evaluacion_id=existentes[clave[1]].id_evaluacion)
-                for c in actuales.values():
-                    c.delete()
-        except Exception as exc:
-            return JsonResponse({'ok': False, 'error': f'No se pudieron guardar las notas: {exc}'}, status=500)
-        return JsonResponse({'ok': True, 'mensaje': 'Calificaciones guardadas correctamente.'})
 
-    cursos = Curso.objects.all().order_by('id_curso')
-    curso_id = request.GET.get('curso', '')
-    asignatura_curso_id = request.GET.get('asignatura', '')
-    curso_seleccionado = cursos.filter(id_curso=int(curso_id)).first() if curso_id.isdigit() else None
-    relaciones = AsignaturaCurso.objects.select_related('asignatura_id_asignatura').order_by('asignatura_id_asignatura__nombre_asignatura')
+                # Bloqueo por asignatura para evitar
+                # guardados simultáneos en la misma relación.
+                with connection.cursor() as cursor:
+
+                    cursor.execute(
+                        """
+                        SELECT id_asig_curso
+                        FROM asignatura_curso
+                        WHERE id_asig_curso = %s
+                        FOR UPDATE
+                        """,
+                        [relacion_id]
+                    )
+
+                    cursor.execute(
+                        """
+                        SELECT COALESCE(
+                            MAX(id_calificacion), 0
+                        )
+                        FROM calificacion
+                        """
+                    )
+
+                    max_id = cursor.fetchone()[0]
+
+                # Obtener evaluaciones existentes.
+                evaluaciones_existentes = {
+                    evaluacion.numero_evaluacion: evaluacion
+                    for evaluacion in Evaluacion.objects.filter(
+                        asignatura_curso_id_asig_curso_id=relacion_id
+                    )
+                }
+
+                # Crear evaluaciones faltantes.
+                for numero in columnas:
+
+                    if numero not in evaluaciones_existentes:
+
+                        nueva_evaluacion = Evaluacion.objects.create(
+                            asignatura_curso_id_asig_curso_id=relacion_id,
+                            numero_evaluacion=numero
+                        )
+
+                        evaluaciones_existentes[numero] = (
+                            nueva_evaluacion
+                        )
+
+                # Eliminar evaluaciones quitadas.
+                for numero, evaluacion in list(
+                    evaluaciones_existentes.items()
+                ):
+
+                    if numero not in columnas:
+
+                        Calificacion.objects.filter(
+                            asignatura_curso_id_asig_curso_id=relacion_id,
+                            evaluacion_id_evaluacion_id=(
+                                evaluacion.id_evaluacion
+                            )
+                        ).delete()
+
+                        evaluacion.delete()
+
+                        del evaluaciones_existentes[numero]
+
+                # Recuperar calificaciones existentes.
+                calificaciones_actuales = {}
+
+                registros = (
+                    Calificacion.objects.filter(
+                        asignatura_curso_id_asig_curso_id=relacion_id,
+                        alumno_rut_alumno_id__in=ruts_validos
+                    )
+                    .select_related("evaluacion_id_evaluacion")
+                    .order_by("id_calificacion")
+                )
+
+                for calificacion in registros:
+
+                    evaluacion = (
+                        calificacion.evaluacion_id_evaluacion
+                    )
+
+                    if evaluacion is None:
+                        continue
+
+                    clave = (
+                        calificacion.alumno_rut_alumno_id,
+                        evaluacion.numero_evaluacion
+                    )
+
+                    if clave in calificaciones_actuales:
+                        raise ValueError(
+                            "Existen calificaciones duplicadas "
+                            "en la base de datos."
+                        )
+
+                    calificaciones_actuales[clave] = (
+                        calificacion
+                    )
+
+                # Crear o actualizar calificaciones.
+                for clave, nota in notas_procesadas.items():
+
+                    rut_alumno, numero = clave
+
+                    if clave in calificaciones_actuales:
+
+                        calificacion = (
+                            calificaciones_actuales.pop(clave)
+                        )
+
+                        if calificacion.valor_nota != nota:
+
+                            calificacion.valor_nota = nota
+                            calificacion.fecha_ingreso = (
+                                timezone.localdate()
+                            )
+
+                            calificacion.save(
+                                update_fields=[
+                                    "valor_nota",
+                                    "fecha_ingreso"
+                                ]
+                            )
+
+                    else:
+
+                        max_id += 1
+
+                        Calificacion.objects.create(
+                            id_calificacion=max_id,
+                            valor_nota=nota,
+                            fecha_ingreso=timezone.localdate(),
+                            alumno_rut_alumno_id=rut_alumno,
+                            asignatura_curso_id_asig_curso_id=relacion_id,
+                            evaluacion_id_evaluacion_id=(
+                                evaluaciones_existentes[
+                                    numero
+                                ].id_evaluacion
+                            )
+                        )
+
+                # Eliminar notas que el profesor dejó vacías.
+                for calificacion in (
+                    calificaciones_actuales.values()
+                ):
+                    calificacion.delete()
+
+        except Exception:
+            return JsonResponse({
+                "ok": False,
+                "error": (
+                    "No se pudieron guardar las notas. "
+                    "Revisa los datos o la conexión con MySQL."
+                )
+            }, status=500)
+
+        return JsonResponse({
+            "ok": True,
+            "mensaje": (
+                "Calificaciones guardadas correctamente."
+            )
+        })
+
+    # ==================================================
+    # 5. CURSOS DE JEFATURA
+    # ==================================================
+
+    cursos_jefatura = list(
+        Curso.objects.filter(
+            usuario_rut_id=rut_profesor
+        ).order_by("nombre_curso")
+    )
+
+    # ==================================================
+    # 6. ASIGNATURAS ASIGNADAS DIRECTAMENTE
+    # ==================================================
+
+    asignaturas_propias = (
+        AsignaturaCurso.objects.filter(
+            usuario_rut_id=rut_profesor
+        )
+        .select_related(
+            "asignatura_id_asignatura"
+        )
+        .order_by(
+            "asignatura_id_asignatura__nombre_asignatura"
+        )
+    )
+
+    asignaturas_propias_por_curso = {}
+
+    for relacion in asignaturas_propias:
+
+        clave = str(relacion.curso_id_curso_id)
+
+        asignaturas_propias_por_curso.setdefault(
+            clave, []
+        ).append({
+            "id": str(relacion.id_asig_curso),
+            "nombre": (
+                relacion.asignatura_id_asignatura.nombre_asignatura
+            )
+        })
+
+    # Cursos donde imparte alguna asignatura.
+    cursos_asignados = Curso.objects.filter(
+        id_curso__in=asignaturas_propias.values_list(
+            "curso_id_curso_id",
+            flat=True
+        )
+    ).order_by("nombre_curso")
+
+    # ==================================================
+    # 7. TODOS LOS CURSOS Y ASIGNATURAS PERMITIDOS
+    # ==================================================
+
+    relaciones = list(
+        relaciones_permitidas.order_by(
+            "curso_id_curso__nombre_curso",
+            "asignatura_id_asignatura__nombre_asignatura"
+        )
+    )
+
+    ids_cursos = {
+        relacion.curso_id_curso_id
+        for relacion in relaciones
+    }
+
+    cursos = Curso.objects.filter(
+        id_curso__in=ids_cursos
+    ).order_by("nombre_curso")
+
     asignaturas_por_curso = {}
+
     for relacion in relaciones:
-        asignaturas_por_curso.setdefault(str(relacion.curso_id_curso_id), []).append({'id': str(relacion.id_asig_curso), 'nombre': relacion.asignatura_id_asignatura.nombre_asignatura})
+
+        clave = str(relacion.curso_id_curso_id)
+
+        asignaturas_por_curso.setdefault(
+            clave, []
+        ).append({
+            "id": str(relacion.id_asig_curso),
+            "nombre": (
+                relacion.asignatura_id_asignatura.nombre_asignatura
+            )
+        })
+
+    # ==================================================
+    # 8. SELECCIÓN DE CURSO Y ASIGNATURA
+    # ==================================================
+
+    curso_id = request.GET.get("curso", "").strip()
+
+    asignatura_curso_id = request.GET.get(
+        "asignatura", ""
+    ).strip()
+
+    modo = request.GET.get("modo", "").strip()
+
+    if modo not in ("asignado", "jefatura"):
+        modo = ""
+
+    # Si no hay curso seleccionado, usar uno inicial.
+    if not curso_id:
+
+        if cursos_jefatura:
+            curso_id = str(
+                cursos_jefatura[0].id_curso
+            )
+
+        else:
+            primer_curso = cursos.first()
+
+            if primer_curso:
+                curso_id = str(
+                    primer_curso.id_curso
+                )
+
+    curso_seleccionado = None
+
+    if curso_id.isdigit():
+
+        curso_seleccionado = cursos.filter(
+            id_curso=int(curso_id)
+        ).first()
+
     asignatura_seleccionada = None
+
     alumnos = []
     columnas = [1, 2, 3]
     notas_guardadas = {}
-    if curso_seleccionado and asignatura_curso_id.isdigit():
-        asignatura_seleccionada = relaciones.filter(curso_id_curso=curso_seleccionado, id_asig_curso=int(asignatura_curso_id)).first()
+
+    # ==================================================
+    # 9. DETERMINAR LAS ASIGNATURAS DISPONIBLES
+    # ==================================================
+
+    if curso_seleccionado:
+
+        es_jefatura = (
+            curso_seleccionado.usuario_rut_id
+            == rut_profesor
+        )
+
+        # Jefatura: todas las asignaturas del curso.
+        # Asignado: solamente las asignaturas propias.
+        if modo == "jefatura" and es_jefatura:
+
+            asignaturas_disponibles = (
+                relaciones_permitidas.filter(
+                    curso_id_curso=curso_seleccionado
+                )
+            )
+
+        elif modo == "asignado":
+
+            asignaturas_disponibles = (
+                relaciones_permitidas.filter(
+                    curso_id_curso=curso_seleccionado,
+                    usuario_rut_id=rut_profesor
+                )
+            )
+
+        else:
+
+            asignaturas_disponibles = (
+                relaciones_permitidas.filter(
+                    curso_id_curso=curso_seleccionado
+                )
+            )
+
+        asignaturas_disponibles = (
+            asignaturas_disponibles.order_by(
+                "asignatura_id_asignatura__nombre_asignatura"
+            )
+        )
+
+        # Seleccionar la asignatura solicitada.
+        if asignatura_curso_id.isdigit():
+
+            asignatura_seleccionada = (
+                asignaturas_disponibles.filter(
+                    id_asig_curso=int(
+                        asignatura_curso_id
+                    )
+                ).first()
+            )
+
+        elif not asignatura_curso_id:
+
+            asignatura_seleccionada = (
+                asignaturas_disponibles.first()
+            )
+
+        # ==================================================
+        # 10. CARGAR ALUMNOS Y EVALUACIONES
+        # ==================================================
+
         if asignatura_seleccionada:
-            alumnos = list(Alumno.objects.filter(curso_id_curso=curso_seleccionado).order_by('nombre_completo', 'rut_alumno'))
-            evaluaciones = list(Evaluacion.objects.filter(asignatura_curso_id_asig_curso=asignatura_seleccionada).order_by('numero_evaluacion'))
+
+            alumnos = list(
+                Alumno.objects.filter(
+                    curso_id_curso=curso_seleccionado
+                ).order_by(
+                    "nombre_completo",
+                    "rut_alumno"
+                )
+            )
+
+            evaluaciones = list(
+                Evaluacion.objects.filter(
+                    asignatura_curso_id_asig_curso=(
+                        asignatura_seleccionada
+                    )
+                ).order_by("numero_evaluacion")
+            )
+
             if evaluaciones:
-                columnas = list(range(1, max(3, max(e.numero_evaluacion for e in evaluaciones)) + 1))
-            numeros = {e.id_evaluacion: e.numero_evaluacion for e in evaluaciones}
-            for calificacion in Calificacion.objects.filter(asignatura_curso_id_asig_curso=asignatura_seleccionada, evaluacion_id_evaluacion_id__in=numeros):
-                notas_guardadas.setdefault(calificacion.alumno_rut_alumno_id, {})[str(numeros[calificacion.evaluacion_id_evaluacion_id])] = f'{calificacion.valor_nota:.1f}'
-    return render(request, 'profesor_notas.html', {'cursos': cursos, 'asignaturas_por_curso': asignaturas_por_curso, 'curso_seleccionado': curso_seleccionado, 'asignatura_seleccionada': asignatura_seleccionada, 'alumnos': alumnos, 'columnas': columnas, 'notas_guardadas': notas_guardadas})
 
+                max_numero = max(
+                    evaluacion.numero_evaluacion
+                    for evaluacion in evaluaciones
+                )
 
+                columnas = list(
+                    range(
+                        1,
+                        max(3, max_numero) + 1
+                    )
+                )
+
+            numeros = {
+                evaluacion.id_evaluacion: (
+                    evaluacion.numero_evaluacion
+                )
+                for evaluacion in evaluaciones
+            }
+
+            # ==================================================
+            # 11. RECUPERAR NOTAS GUARDADAS EN MYSQL
+            # ==================================================
+
+            calificaciones = Calificacion.objects.filter(
+                asignatura_curso_id_asig_curso=(
+                    asignatura_seleccionada
+                ),
+                evaluacion_id_evaluacion_id__in=numeros
+            )
+
+            for calificacion in calificaciones:
+
+                rut_alumno = (
+                    calificacion.alumno_rut_alumno_id
+                )
+
+                numero_evaluacion = numeros[
+                    calificacion.evaluacion_id_evaluacion_id
+                ]
+
+                notas_guardadas.setdefault(
+                    rut_alumno, {}
+                )[
+                    str(numero_evaluacion)
+                ] = f"{calificacion.valor_nota:.1f}"
+
+    # ==================================================
+    # 12. ENVIAR DATOS AL HTML
+    # ==================================================
+
+    return render(
+        request,
+        "profesor_notas.html",
+        {
+            "cursos": cursos,
+            "cursos_asignados": cursos_asignados,
+            "cursos_jefatura": cursos_jefatura,
+
+            "asignaturas_por_curso": (
+                asignaturas_por_curso
+            ),
+
+            "asignaturas_propias_por_curso": (
+                asignaturas_propias_por_curso
+            ),
+
+            "curso_seleccionado": curso_seleccionado,
+
+            "asignatura_seleccionada": (
+                asignatura_seleccionada
+            ),
+
+            "alumnos": alumnos,
+            "columnas": columnas,
+            "notas_guardadas": notas_guardadas,
+            "modo": modo,
+        }
+    )
 
 
 
 @require_role([2])
+@require_http_methods(["GET", "POST"])
 def profesor_asistencia(request):
     import json
     from datetime import date
+
     from django.db import transaction
-    from django.db.models import Max
+    from django.db.models import Q, Max
     from django.http import JsonResponse
+    from django.shortcuts import render
     from django.utils import timezone
-    from .models import RegistroAsistencia
+    from django.contrib import messages
+
+    from .models import (
+        Curso,
+        Alumno,
+        AsignaturaCurso,
+        RegistroAsistencia,
+    )
+
+    rut_profesor = request.session.get("usuario_rut")
+
+    if not rut_profesor:
+        return JsonResponse({
+            "ok": False,
+            "error": "Sesión inválida."
+        }, status=403)
 
     hoy = timezone.localdate()
 
-    # ========================================
-    # GUARDAR ASISTENCIA
-    # ========================================
-    if request.method == 'POST':
+    # ==========================================
+    # 1. PERMISOS
+    # ==========================================
+
+    relaciones_permitidas = (
+        AsignaturaCurso.objects.filter(
+            Q(usuario_rut_id=rut_profesor)
+            | Q(curso_id_curso__usuario_rut_id=rut_profesor)
+        ).distinct()
+    )
+
+    # ==========================================
+    # 2. GUARDAR ASISTENCIA
+    # ==========================================
+
+    if request.method == "POST":
+
         try:
             datos = json.loads(request.body)
 
-            fecha = date.fromisoformat(datos['fecha'])
-            curso_id = int(datos['curso_id'])
-            asignatura_id = int(datos['asignatura_id'])
-            estados = datos['estados']
+            fecha = date.fromisoformat(datos["fecha"])
+            curso_id = int(datos["curso_id"])
+            asignatura_id = int(datos["asignatura_id"])
+            estados = datos["estados"]
 
-            if fecha != timezone.localdate():
+            if fecha != hoy:
                 return JsonResponse({
-                    'ok': False,
-                    'error': 'Solo puedes registrar o modificar la asistencia del día actual.'
+                    "ok": False,
+                    "error": (
+                        "Solo puedes registrar o modificar "
+                        "la asistencia del día actual."
+                    )
                 }, status=400)
 
             if not isinstance(estados, dict):
-                raise ValueError('Formato de asistencia inválido.')
+                raise ValueError(
+                    "Formato de asistencia inválido."
+                )
 
-            asignatura = AsignaturaCurso.objects.filter(
+            # Verificar permisos de la relación.
+            asignatura = relaciones_permitidas.filter(
                 id_asig_curso=asignatura_id,
                 curso_id_curso_id=curso_id
             ).first()
 
             if asignatura is None:
                 return JsonResponse({
-                    'ok': False,
-                    'error': 'La asignatura no pertenece al curso seleccionado.'
-                }, status=400)
+                    "ok": False,
+                    "error": (
+                        "No tienes permiso para registrar "
+                        "asistencia en esta asignatura."
+                    )
+                }, status=403)
 
-            ruts = set(
+            # Alumnos del curso.
+            ruts_validos = set(
                 Alumno.objects.filter(
                     curso_id_curso_id=curso_id
-                ).values_list('rut_alumno', flat=True)
+                ).values_list(
+                    "rut_alumno",
+                    flat=True
+                )
             )
 
-            if not ruts or set(estados.keys()) != ruts:
-                return JsonResponse({
-                    'ok': False,
-                    'error': 'Debes registrar la asistencia de todos los alumnos del curso.'
-                }, status=400)
-
-            if any(
-                type(estado) is not int or estado not in (0, 1)
-                for estado in estados.values()
+            if (
+                not ruts_validos
+                or set(estados.keys()) != ruts_validos
             ):
                 return JsonResponse({
-                    'ok': False,
-                    'error': 'Todos los alumnos deben estar marcados como presentes o ausentes.'
+                    "ok": False,
+                    "error": (
+                        "Debes registrar la asistencia "
+                        "de todos los alumnos del curso."
+                    )
                 }, status=400)
 
+            for estado in estados.values():
+                if type(estado) is not int or estado not in (0, 1):
+                    return JsonResponse({
+                        "ok": False,
+                        "error": (
+                            "Todos los alumnos deben estar "
+                            "marcados como presentes o ausentes."
+                        )
+                    }, status=400)
+
+        except (
+            ValueError,
+            KeyError,
+            TypeError,
+            json.JSONDecodeError,
+        ) as error:
+            return JsonResponse({
+                "ok": False,
+                "error": f"Solicitud inválida: {error}"
+            }, status=400)
+
+        # ==========================================
+        # 3. TRANSACCIÓN MYSQL
+        # ==========================================
+
+        try:
             with transaction.atomic():
 
-                # Bloquear el curso durante el guardado.
+                # Bloqueo del curso para evitar que
+                # dos profesores guarden simultáneamente
+                # la asistencia del mismo curso.
                 Curso.objects.select_for_update().get(
                     id_curso=curso_id
                 )
 
-                # Buscar asistencias de HOY en TODAS
-                # las asignaturas del mismo curso.
+                # La asistencia es por alumno y fecha.
+                # Se revisan todas las asignaturas
+                # del curso, no solamente la elegida.
                 registros = list(
-                    RegistroAsistencia.objects.select_for_update().filter(
+                    RegistroAsistencia.objects
+                    .select_for_update()
+                    .filter(
                         fecha=fecha,
-                        alumno_rut_alumno_id__in=ruts,
+                        alumno_rut_alumno_id__in=ruts_validos,
                         asignatura_curso_id_asig_curso__curso_id_curso_id=curso_id
                     )
+                    .order_by("id_asistencia")
                 )
 
                 registros_por_alumno = {}
 
                 for registro in registros:
+
                     rut = registro.alumno_rut_alumno_id
 
                     registros_por_alumno.setdefault(
                         rut, []
                     ).append(registro)
 
-                siguiente_id = (
+                max_id = (
                     RegistroAsistencia.objects.aggregate(
-                        max_id=Max('id_asistencia')
-                    )['max_id'] or 0
+                        max_id=Max("id_asistencia")
+                    )["max_id"] or 0
                 )
 
-                # Una sola asistencia diaria por alumno
-                # en el flujo nuevo.
+                # Crear o actualizar asistencia.
                 for rut, estado in estados.items():
 
-                    existentes = registros_por_alumno.get(
-                        rut, []
+                    existentes = (
+                        registros_por_alumno.get(rut, [])
                     )
 
                     if existentes:
-                        # Sincronizar los registros antiguos
-                        # que puedan existir en otras asignaturas.
+
                         for registro in existentes:
+
                             if registro.presente != estado:
+
                                 registro.presente = estado
+
                                 registro.save(
-                                    update_fields=['presente']
+                                    update_fields=["presente"]
                                 )
 
                     else:
-                        siguiente_id += 1
+
+                        max_id += 1
 
                         RegistroAsistencia.objects.create(
-                            id_asistencia=siguiente_id,
+                            id_asistencia=max_id,
                             fecha=fecha,
                             presente=estado,
                             alumno_rut_alumno_id=rut,
-                            asignatura_curso_id_asig_curso=asignatura
+                            asignatura_curso_id_asig_curso_id=asignatura_id
                         )
 
             return JsonResponse({
-                'ok': True,
-                'mensaje': 'Asistencia del curso guardada correctamente. Se reflejará en todas las asignaturas.'
+                "ok": True,
+                "mensaje": (
+                    "La asistencia del curso fue guardada "
+                    "correctamente y se reflejará en "
+                    "todas sus asignaturas."
+                )
             })
-
-        except (
-            ValueError,
-            KeyError,
-            TypeError,
-            json.JSONDecodeError
-        ) as error:
-            return JsonResponse({
-                'ok': False,
-                'error': str(error)
-            }, status=400)
 
         except Exception:
             return JsonResponse({
-                'ok': False,
-                'error': 'No fue posible guardar la asistencia. Revisa la conexión o los registros existentes.'
+                "ok": False,
+                "error": (
+                    "No fue posible guardar la asistencia. "
+                    "Revisa la conexión con MySQL."
+                )
             }, status=500)
 
-    # ========================================
-    # CONSULTAR ASISTENCIA
-    # ========================================
-    cursos = Curso.objects.all().order_by('id_curso')
+    # ==========================================
+    # 4. CURSOS DE JEFATURA
+    # ==========================================
 
-    curso_id = request.GET.get('curso', '').strip()
+    cursos_jefatura = list(
+        Curso.objects.filter(
+            usuario_rut_id=rut_profesor
+        ).order_by("nombre_curso")
+    )
+
+    # ==========================================
+    # 5. ASIGNATURAS PROPIAS
+    # ==========================================
+
+    asignaturas_propias = (
+        AsignaturaCurso.objects.filter(
+            usuario_rut_id=rut_profesor
+        )
+        .select_related("asignatura_id_asignatura")
+        .order_by(
+            "asignatura_id_asignatura__nombre_asignatura"
+        )
+    )
+
+    asignaturas_propias_por_curso = {}
+
+    for relacion in asignaturas_propias:
+
+        clave = str(relacion.curso_id_curso_id)
+
+        asignaturas_propias_por_curso.setdefault(
+            clave, []
+        ).append({
+            "id": str(relacion.id_asig_curso),
+            "nombre": (
+                relacion.asignatura_id_asignatura.nombre_asignatura
+            )
+        })
+
+    cursos_asignados = Curso.objects.filter(
+        id_curso__in=asignaturas_propias.values_list(
+            "curso_id_curso_id",
+            flat=True
+        )
+    ).order_by("nombre_curso")
+
+    # ==========================================
+    # 6. ASIGNATURAS PERMITIDAS POR CURSO
+    # ==========================================
+
+    relaciones = list(
+        relaciones_permitidas
+        .select_related(
+            "curso_id_curso",
+            "asignatura_id_asignatura"
+        )
+        .order_by(
+            "curso_id_curso__nombre_curso",
+            "asignatura_id_asignatura__nombre_asignatura"
+        )
+    )
+
+    asignaturas_por_curso = {}
+
+    for relacion in relaciones:
+
+        clave = str(relacion.curso_id_curso_id)
+
+        asignaturas_por_curso.setdefault(
+            clave, []
+        ).append({
+            "id": str(relacion.id_asig_curso),
+            "nombre": (
+                relacion.asignatura_id_asignatura.nombre_asignatura
+            )
+        })
+
+    ids_cursos = {
+        relacion.curso_id_curso_id
+        for relacion in relaciones
+    }
+
+    cursos = Curso.objects.filter(
+        id_curso__in=ids_cursos
+    ).order_by("nombre_curso")
+
+    # ==========================================
+    # 7. FILTROS GET
+    # ==========================================
+
+    curso_id = request.GET.get("curso", "").strip()
     asignatura_id = request.GET.get(
-        'asignatura', ''
+        "asignatura", ""
     ).strip()
 
-    fecha_texto = request.GET.get('fecha', '').strip()
+    modo = request.GET.get("modo", "").strip()
+
+    if modo not in ("asignado", "jefatura"):
+        modo = ""
+
+    fecha_texto = request.GET.get("fecha", "").strip()
 
     try:
         fecha = (
@@ -691,133 +3105,212 @@ def profesor_asistencia(request):
         fecha = hoy
         messages.error(
             request,
-            'La fecha ingresada no es válida.'
+            "La fecha ingresada no es válida."
         )
 
+    # Curso inicial.
+    if not curso_id:
+
+        if cursos_jefatura:
+            curso_id = str(
+                cursos_jefatura[0].id_curso
+            )
+        else:
+            primer_curso = cursos.first()
+
+            if primer_curso:
+                curso_id = str(
+                    primer_curso.id_curso
+                )
+
     curso_seleccionado = None
-    asignatura_seleccionada = None
-
-    asignaturas = AsignaturaCurso.objects.none()
-    alumnos = []
-
-    presentes = 0
-    ausentes = 0
-    asistencia_guardada = False
-    asistencia_completa = False
-    registros_inconsistentes = False
 
     if curso_id.isdigit():
-
         curso_seleccionado = cursos.filter(
             id_curso=int(curso_id)
         ).first()
 
-        if curso_seleccionado:
+    asignatura_seleccionada = None
+    asignaturas = AsignaturaCurso.objects.none()
 
-            asignaturas = (
-                AsignaturaCurso.objects.filter(
+    alumnos = []
+
+    presentes = 0
+    ausentes = 0
+
+    asistencia_guardada = False
+    asistencia_completa = False
+    registros_inconsistentes = False
+
+    # ==========================================
+    # 8. SELECCIONAR ASIGNATURA
+    # ==========================================
+
+    if curso_seleccionado:
+
+        es_jefatura = (
+            curso_seleccionado.usuario_rut_id
+            == rut_profesor
+        )
+
+        if modo == "jefatura" and es_jefatura:
+
+            asignaturas = relaciones_permitidas.filter(
+                curso_id_curso=curso_seleccionado
+            )
+
+        elif modo == "asignado":
+
+            asignaturas = relaciones_permitidas.filter(
+                curso_id_curso=curso_seleccionado,
+                usuario_rut_id=rut_profesor
+            )
+
+        else:
+
+            asignaturas = relaciones_permitidas.filter(
+                curso_id_curso=curso_seleccionado
+            )
+
+        asignaturas = (
+            asignaturas
+            .select_related("asignatura_id_asignatura")
+            .order_by(
+                "asignatura_id_asignatura__nombre_asignatura"
+            )
+        )
+
+        if asignatura_id.isdigit():
+
+            asignatura_seleccionada = (
+                asignaturas.filter(
+                    id_asig_curso=int(asignatura_id)
+                ).first()
+            )
+
+        elif not asignatura_id:
+
+            asignatura_seleccionada = asignaturas.first()
+
+        # ==========================================
+        # 9. CARGAR ALUMNOS Y ASISTENCIA
+        # ==========================================
+
+        if asignatura_seleccionada:
+
+            alumnos = list(
+                Alumno.objects.filter(
                     curso_id_curso=curso_seleccionado
-                )
-                .select_related(
-                    'asignatura_id_asignatura'
-                )
-                .order_by(
-                    'asignatura_id_asignatura__nombre_asignatura'
+                ).order_by(
+                    "nombre_completo",
+                    "rut_alumno"
                 )
             )
 
-            if asignatura_id.isdigit():
-                asignatura_seleccionada = asignaturas.filter(
-                    id_asig_curso=int(asignatura_id)
-                ).first()
+            ruts = [
+                alumno.rut_alumno
+                for alumno in alumnos
+            ]
 
-            if asignatura_seleccionada:
+            registros = (
+                RegistroAsistencia.objects.filter(
+                    fecha=fecha,
+                    alumno_rut_alumno_id__in=ruts,
+                    asignatura_curso_id_asig_curso__curso_id_curso_id=(
+                        curso_seleccionado.id_curso
+                    )
+                )
+                .order_by("-id_asistencia")
+            )
 
-                alumnos = list(
-                    Alumno.objects.filter(
-                        curso_id_curso=curso_seleccionado
-                    ).order_by(
-                        'nombre_completo',
-                        'rut_alumno'
+            estados_guardados = {}
+            estados_encontrados = {}
+
+            for registro in registros:
+
+                rut = registro.alumno_rut_alumno_id
+
+                estados_encontrados.setdefault(
+                    rut, set()
+                ).add(registro.presente)
+
+                # Se conserva el registro más reciente.
+                if rut not in estados_guardados:
+                    estados_guardados[rut] = registro.presente
+
+            registros_inconsistentes = any(
+                len(estados) > 1
+                for estados in estados_encontrados.values()
+            )
+
+            for alumno in alumnos:
+
+                alumno.estado_asistencia = (
+                    estados_guardados.get(
+                        alumno.rut_alumno
                     )
                 )
 
-                ruts = [
-                    alumno.rut_alumno
-                    for alumno in alumnos
-                ]
+                if alumno.estado_asistencia == 1:
+                    presentes += 1
 
-                # Leer TODAS las asignaturas del curso.
-                registros = (
-                    RegistroAsistencia.objects.filter(
-                        fecha=fecha,
-                        alumno_rut_alumno_id__in=ruts,
-                        asignatura_curso_id_asig_curso__curso_id_curso=curso_seleccionado
-                    )
-                    .order_by('-id_asistencia')
-                )
+                elif alumno.estado_asistencia == 0:
+                    ausentes += 1
 
-                estados_guardados = {}
-                estados_encontrados = {}
+            asistencia_guardada = bool(
+                estados_guardados
+            )
 
-                for registro in registros:
-                    rut = registro.alumno_rut_alumno_id
+            asistencia_completa = (
+                len(alumnos) > 0
+                and len(estados_guardados) == len(alumnos)
+                and not registros_inconsistentes
+            )
 
-                    estados_encontrados.setdefault(
-                        rut, set()
-                    ).add(registro.presente)
-
-                    # Si existen registros anteriores
-                    # en varias asignaturas, mostrar
-                    # provisionalmente el de mayor ID.
-                    if rut not in estados_guardados:
-                        estados_guardados[rut] = registro.presente
-
-                registros_inconsistentes = any(
-                    len(estados) > 1
-                    for estados in estados_encontrados.values()
-                )
-
-                for alumno in alumnos:
-                    alumno.estado_asistencia = (
-                        estados_guardados.get(
-                            alumno.rut_alumno
-                        )
-                    )
-
-                    if alumno.estado_asistencia == 1:
-                        presentes += 1
-
-                    elif alumno.estado_asistencia == 0:
-                        ausentes += 1
-
-                asistencia_guardada = bool(
-                    estados_guardados
-                )
-
-                asistencia_completa = (
-                    len(estados_guardados) == len(alumnos)
-                    and len(alumnos) > 0
-                    and not registros_inconsistentes
-                )
+    # ==========================================
+    # 10. RENDERIZAR HTML
+    # ==========================================
 
     return render(
         request,
-        'profesor_asistencia.html',
+        "profesor_asistencia.html",
         {
-            'cursos': cursos,
-            'curso_seleccionado': curso_seleccionado,
-            'asignaturas': asignaturas,
-            'asignatura_seleccionada': asignatura_seleccionada,
-            'fecha_seleccionada': fecha.isoformat(),
-            'fecha_actual': hoy.isoformat(),
-            'alumnos': alumnos,
-            'total_alumnos': len(alumnos),
-            'presentes': presentes,
-            'ausentes': ausentes,
-            'asistencia_guardada': asistencia_guardada,
-            'asistencia_completa': asistencia_completa,
-            'registros_inconsistentes': registros_inconsistentes,
+            "cursos": cursos,
+            "cursos_asignados": cursos_asignados,
+            "cursos_jefatura": cursos_jefatura,
+
+            "asignaturas_por_curso": (
+                asignaturas_por_curso
+            ),
+
+            "asignaturas_propias_por_curso": (
+                asignaturas_propias_por_curso
+            ),
+
+            "curso_seleccionado": curso_seleccionado,
+            "asignaturas": asignaturas,
+
+            "asignatura_seleccionada": (
+                asignatura_seleccionada
+            ),
+
+            "modo": modo,
+
+            "fecha_seleccionada": fecha.isoformat(),
+            "fecha_actual": hoy.isoformat(),
+
+            "alumnos": alumnos,
+            "total_alumnos": len(alumnos),
+
+            "presentes": presentes,
+            "ausentes": ausentes,
+
+            "asistencia_guardada": asistencia_guardada,
+            "asistencia_completa": asistencia_completa,
+
+            "registros_inconsistentes": (
+                registros_inconsistentes
+            ),
         }
     )
 

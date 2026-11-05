@@ -1,89 +1,544 @@
+
 {% extends 'base_apoderado.html' %}
 
 {% block content %}
-<!--PORQUE NO Integrar un iframe de Google Calendar es una opción rápida, 
-pero tiene una gran desventaja: perderías el diseño profesional (colores y tipografías)
- que hemos armado y no podrías conectarlo fácilmente a tu base de datos MySQL más adelante.-->
-<!--PORQUE SI FullCalendar.js. Esta herramienta toma un espacio en blanco y 
-genera un calendario dinámico donde puedes avanzar y retroceder por todos los meses y años.
- Además, cuando conectemos la base de datos, Django le enviará los eventos directamente a 
- este calendario.-->
 
-<!-- Importar FullCalendar (CSS y JS) -->
-<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js'></script>
+<!-- FullCalendar -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js"></script>
 
+<style>
+    .calendar-container {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+        margin-bottom: 25px;
+    }
 
-<!-- SECCIÓN 1: CALENDARIO DINÁMICO (FullCalendar) -->
-<div class="calendar-container">
-    <!-- Este div vacío es donde Javascript dibujará el calendario interactivo -->
-    <div id="calendar"></div>
+    .calendar-header {
+        margin-bottom: 20px;
+    }
+
+    .calendar-header h2 {
+        color: #17365d;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .calendar-header p {
+        color: #64748b;
+        margin-bottom: 0;
+    }
+
+    .calendar-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 22px;
+    }
+
+    .calendar-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.85rem;
+        color: #475569;
+    }
+
+    .calendar-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .fc .fc-button-primary {
+        background-color: #17365d;
+        border-color: #17365d;
+    }
+
+    .fc .fc-button-primary:hover,
+    .fc .fc-button-primary:focus {
+        background-color: #102a4a;
+        border-color: #102a4a;
+    }
+
+    .fc-event {
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .events-list-container {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+
+    .events-list-title {
+        color: #17365d;
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    .event-list-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .event-list-item:last-child {
+        border-bottom: none;
+    }
+
+    .event-date-badge {
+        min-width: 75px;
+        padding: 12px 8px;
+        border-radius: 10px;
+        color: #ffffff;
+        text-align: center;
+        font-weight: 700;
+        font-size: 0.85rem;
+    }
+
+    .event-details {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .event-details h4 {
+        color: #17365d;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .event-details p {
+        color: #64748b;
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+        white-space: pre-wrap;
+    }
+
+    .event-details small {
+        color: #64748b;
+    }
+
+    .calendar-message {
+        color: #64748b;
+        padding: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+        .calendar-container,
+        .events-list-container {
+            padding: 15px;
+        }
+
+        .fc .fc-toolbar {
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .fc .fc-toolbar-title {
+            font-size: 1.15rem;
+        }
+    }
+</style>
+
+<!-- ESTUDIANTE SELECCIONADO DESDE DJANGO -->
+<div id="calendarioDatos"
+     data-alumno="{{ rut_alumno_seleccionado|default:'' }}"
+     hidden>
 </div>
 
-<!-- SECCIÓN 2: LISTA DE PRÓXIMOS EVENTOS -->
+<!-- SECCIÓN 1: CALENDARIO -->
+<div class="calendar-container">
+
+    <div class="calendar-header">
+        <h2>Calendario de Eventos</h2>
+        <p>
+            Consulta las evaluaciones, reuniones y actividades
+            correspondientes al estudiante seleccionado.
+        </p>
+    </div>
+
+    <!-- LEYENDA DE COLORES -->
+    <div class="calendar-legend">
+
+        <span class="calendar-legend-item">
+            <i class="calendar-dot" style="background:#2563eb"></i>
+            Evaluaciones
+        </span>
+
+        <span class="calendar-legend-item">
+            <i class="calendar-dot" style="background:#f97316"></i>
+            Reuniones
+        </span>
+
+        <span class="calendar-legend-item">
+            <i class="calendar-dot" style="background:#8b5cf6"></i>
+            Extracurriculares
+        </span>
+
+        <span class="calendar-legend-item">
+            <i class="calendar-dot" style="background:#16a34a"></i>
+            Colegio
+        </span>
+
+        <span class="calendar-legend-item">
+            <i class="calendar-dot" style="background:#dc2626"></i>
+            Feriados
+        </span>
+
+    </div>
+
+    <div id="calendar"></div>
+
+</div>
+
+<!-- SECCIÓN 2: PRÓXIMOS EVENTOS -->
 <div class="events-list-container">
+
     <h3 class="events-list-title">Próximos Eventos</h3>
 
-    <div class="event-list-item">
-        <div class="event-date-badge date-bg-orange">Lunes 7 Sep</div>
-        <div class="event-details">
-            <h4>Reunión de apoderados</h4>
-            <p>Reunión mensual obligatoria de inicio de semestre para coordinar actividades.</p>
+    <div id="proximosEventos">
+        <p class="calendar-message">Cargando eventos...</p>
+    </div>
+
+</div>
+
+<!-- MODAL DETALLE DEL EVENTO -->
+<div class="modal fade" id="modalDetalleEvento" tabindex="-1"
+     aria-labelledby="detalleEventoTitulo" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="detalleEventoTitulo">
+                    Detalle del evento
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Cerrar">
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <p>
+                    <strong>Fecha de inicio:</strong>
+                    <span id="detalleInicio"></span>
+                </p>
+
+                <p>
+                    <strong>Fecha de término:</strong>
+                    <span id="detalleFin"></span>
+                </p>
+
+                <p>
+                    <strong>Lugar:</strong>
+                    <span id="detalleLugar"></span>
+                </p>
+
+                <p>
+                    <strong>Descripción:</strong>
+                </p>
+
+                <p id="detalleDescripcion"
+                   style="white-space:pre-wrap"></p>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+            </div>
+
         </div>
     </div>
-    <div class="event-list-item">
-        <div class="event-date-badge date-bg-blue">Miércoles 16 Sep</div>
-        <div class="event-details">
-            <h4>Feria de ciencias SGE</h4>
-            <p>Exposición de proyectos tecnológicos y científicos preparados por los alumnos.</p>
-        </div>
-    </div>
+
 </div>
 
 <script>
-    // Inicializar el calendario cuando la página cargue
-    document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+document.addEventListener('DOMContentLoaded', function () {
+
+    const calendarioDatos = document.getElementById('calendarioDatos');
+
+    // El portal ya permite cambiar de estudiante mediante ?alumno=RUT.
+    // Usamos esa selección, sin crear otro selector.
+    const parametrosPagina = new URLSearchParams(window.location.search);
+
+    const rutAlumno = (
+        parametrosPagina.get('alumno') ||
+        calendarioDatos.dataset.alumno ||
+        ''
+    ).trim();
+
+    const urlEventos = "{% url 'apoderado_calendario_eventos' %}";
+
+    const colores = {
+        evaluacion: '#2563eb',
+        reunion: '#f97316',
+        extracurricular: '#8b5cf6',
+        colegio: '#16a34a',
+        feriado: '#dc2626'
+    };
+
+    const contenedorProximos = document.getElementById('proximosEventos');
+
+    function mostrarMensaje(texto) {
+        contenedorProximos.replaceChildren();
+
+        const p = document.createElement('p');
+        p.className = 'calendar-message';
+        p.textContent = texto;
+
+        contenedorProximos.appendChild(p);
+    }
+
+    function formatoFecha(fecha, incluirHora = true) {
+        if (!fecha) {
+            return 'No especificada';
+        }
+
+        const opciones = {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        };
+
+        if (incluirHora) {
+            opciones.hour = '2-digit';
+            opciones.minute = '2-digit';
+        }
+
+        return new Intl.DateTimeFormat('es-CL', opciones).format(fecha);
+    }
+
+    function obtenerColor(evento) {
+        return (
+            evento.backgroundColor ||
+            colores[evento.extendedProps?.tipo] ||
+            colores[evento.extendedProps?.tipo_evento] ||
+            '#64748b'
+        );
+    }
+
+    function mostrarDetalle(evento) {
+        document.getElementById('detalleEventoTitulo').textContent =
+            evento.title;
+
+        document.getElementById('detalleInicio').textContent =
+            formatoFecha(evento.start, !evento.allDay);
+
+        document.getElementById('detalleFin').textContent =
+            formatoFecha(evento.end, !evento.allDay);
+
+        document.getElementById('detalleLugar').textContent =
+            evento.extendedProps.lugar || 'No especificado';
+
+        document.getElementById('detalleDescripcion').textContent =
+            evento.extendedProps.descripcion || 'Sin descripción';
+
+        const modal = new bootstrap.Modal(
+            document.getElementById('modalDetalleEvento')
+        );
+
+        modal.show();
+    }
+
+    // CALENDARIO DINÁMICO
+    const calendar = new FullCalendar.Calendar(
+        document.getElementById('calendar'),
+        {
             initialView: 'dayGridMonth',
-            locale: 'es', // Forzar idioma español
+            locale: 'es',
+            firstDay: 1,
+            height: 'auto',
+
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek'
             },
+
             buttonText: {
                 today: 'Hoy',
                 month: 'Mes',
                 week: 'Semana'
             },
-            height: 550,
-            // Eventos estáticos de prueba (luego vendrán de Django)
-            events: [
-                {
-                    title: 'Reunión Apod.',
-                    start: '2026-09-07',
-                    backgroundColor: '#f97316' // Naranja
-                },
-                {
-                    title: 'Feria Ciencias',
-                    start: '2026-09-16',
-                    backgroundColor: '#3b82f6' // Azul
-                },
-                {
-                    title: 'Sin clases',
-                    start: '2026-09-18',
-                    backgroundColor: '#ef4444' // Rojo
-                },
-                {
-                    title: 'Entrega Inform.',
-                    start: '2026-09-24',
-                    backgroundColor: '#10b981' // Verde
+
+            // Consulta los eventos reales desde Django.
+            events: function(info, successCallback, failureCallback) {
+
+                if (!rutAlumno) {
+                    successCallback([]);
+                    return;
                 }
-            ]
+
+                const parametros = new URLSearchParams({
+                    alumno: rutAlumno,
+                    start: info.startStr,
+                    end: info.endStr
+                });
+
+                fetch(urlEventos + '?' + parametros.toString(), {
+                    credentials: 'same-origin'
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(
+                            'No se pudieron consultar los eventos.'
+                        );
+                    }
+
+                    return response.json();
+                })
+                .then(eventos => {
+                    successCallback(eventos);
+                })
+                .catch(error => {
+                    console.error('Error al cargar calendario:', error);
+                    failureCallback(error);
+                });
+            },
+
+            eventClick: function(info) {
+                mostrarDetalle(info.event);
+            }
+        }
+    );
+
+    calendar.render();
+
+    // LISTA DE PRÓXIMOS EVENTOS
+    async function cargarProximosEventos() {
+
+        if (!rutAlumno) {
+            mostrarMensaje('No hay un estudiante seleccionado.');
+            return;
+        }
+
+        const ahora = new Date();
+        const fechaFin = new Date(ahora);
+
+        fechaFin.setDate(fechaFin.getDate() + 90);
+
+        const parametros = new URLSearchParams({
+            alumno: rutAlumno,
+            start: ahora.toISOString(),
+            end: fechaFin.toISOString()
         });
-        calendar.render();
-    });
+
+        try {
+            const response = await fetch(
+                urlEventos + '?' + parametros.toString(),
+                { credentials: 'same-origin' }
+            );
+
+            if (!response.ok) {
+                throw new Error('Error al consultar próximos eventos.');
+            }
+
+            const eventos = await response.json();
+
+            if (!Array.isArray(eventos)) {
+                throw new Error('Respuesta de eventos inválida.');
+            }
+
+            // Solo eventos futuros, ordenados por fecha.
+            const proximos = eventos
+                .filter(evento => {
+                    const inicio = new Date(evento.start);
+                    const fin = evento.end
+                        ? new Date(evento.end)
+                        : inicio;
+
+                    return fin >= ahora;
+                })
+                .sort((a, b) =>
+                    new Date(a.start) - new Date(b.start)
+                )
+                .slice(0, 10);
+
+            contenedorProximos.replaceChildren();
+
+            if (proximos.length === 0) {
+                mostrarMensaje(
+                    'No hay próximos eventos para este estudiante.'
+                );
+                return;
+            }
+
+            proximos.forEach(evento => {
+
+                const inicio = new Date(evento.start);
+
+                const fila = document.createElement('div');
+                fila.className = 'event-list-item';
+
+                const fechaBadge = document.createElement('div');
+                fechaBadge.className = 'event-date-badge';
+                fechaBadge.style.backgroundColor = obtenerColor(evento);
+
+                fechaBadge.textContent = new Intl.DateTimeFormat(
+                    'es-CL',
+                    {
+                        day: 'numeric',
+                        month: 'short'
+                    }
+                ).format(inicio);
+
+                const detalles = document.createElement('div');
+                detalles.className = 'event-details';
+
+                const titulo = document.createElement('h4');
+                titulo.textContent = evento.title;
+
+                const descripcion = document.createElement('p');
+                descripcion.textContent =
+                    evento.extendedProps?.descripcion ||
+                    'Actividad escolar';
+
+                const fechaTexto = document.createElement('small');
+                fechaTexto.textContent = formatoFecha(inicio);
+
+                detalles.appendChild(titulo);
+                detalles.appendChild(descripcion);
+                detalles.appendChild(fechaTexto);
+
+                fila.appendChild(fechaBadge);
+                fila.appendChild(detalles);
+
+                contenedorProximos.appendChild(fila);
+            });
+
+        } catch (error) {
+            console.error('Error en próximos eventos:', error);
+
+            mostrarMensaje(
+                'No se pudieron cargar los próximos eventos.'
+            );
+        }
+    }
+
+    cargarProximosEventos();
+
+});
 </script>
+
 {% endblock %}

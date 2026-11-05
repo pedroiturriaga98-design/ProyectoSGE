@@ -1,78 +1,358 @@
+
 {% extends 'base_apoderado.html' %}
 
 {% block content %}
+
+{% if alumno_seleccionado %}
+
 <div class="cert-container">
-    
-    <!-- Columna Izquierda: Vista Previa del Documento -->
+
+    <!-- VISTA PREVIA -->
     <div class="preview-section">
         <h3 class="preview-title">Vista previa del documento</h3>
-        
+
         <div class="document-preview">
             <div class="document-paper">
+
                 <div class="doc-header">
                     <h4>Liceo Polivalente Santa Juliana</h4>
-                    <h2>CERTIFICADO DE ALUMNO REGULAR</h2>
+
+                    {% if tipo_certificado == 'notas' %}
+                        <h2>CERTIFICADO DE CALIFICACIONES</h2>
+                    {% else %}
+                        <h2>CERTIFICADO DE ALUMNO REGULAR</h2>
+                    {% endif %}
+
+                    <p>Año Escolar {{ anio_escolar }}</p>
                 </div>
-                
-                <p class="doc-body">
-                    La Dirección del Liceo Polivalente Santa Juliana certifica que el estudiante individualizado a continuación es alumno regular matriculado en nuestro establecimiento para el período académico 2026:
-                </p>
-                
+
                 <div class="doc-data-box">
+
                     <div class="doc-data-row">
-                        <span class="doc-data-label">Nombre completo:</span>
-                        <span class="doc-data-value">Benjamín Dante Méndez</span>
+                        <span class="doc-data-label">
+                            Nombre completo:
+                        </span>
+                        <span class="doc-data-value">
+                            {{ alumno_seleccionado.nombre_completo }}
+                        </span>
                     </div>
+
                     <div class="doc-data-row">
                         <span class="doc-data-label">R.U.T:</span>
-                        <span class="doc-data-value">23.456.789-K</span>
+                        <span class="doc-data-value">
+                            {{ alumno_seleccionado.rut_alumno }}
+                        </span>
                     </div>
+
                     <div class="doc-data-row">
-                        <span class="doc-data-label">Curso correspondiente:</span>
-                        <span class="doc-data-value">Cuarto Año H</span>
+                        <span class="doc-data-label">
+                            Curso correspondiente:
+                        </span>
+                        <span class="doc-data-value">
+                            {{ alumno_seleccionado.curso_id_curso.nombre_curso }}
+                        </span>
                     </div>
+
                 </div>
-                
-                <p class="doc-footer">
-                    Se extiende el presente certificado a petición de la apoderada para los fines pertinentes que estime conveniente.
-                </p>
-                
+
+                {% if tipo_certificado == 'notas' %}
+
+                    <p class="doc-body">
+                        Se presenta el detalle de calificaciones
+                        registradas para el estudiante durante
+                        el año escolar {{ anio_escolar }}.
+                    </p>
+
+                    <div class="cert-notas-scroll">
+                        <table class="cert-notas-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Asignatura</th>
+
+                                    {% for numero in numeros_evaluacion %}
+                                        <th>Nota {{ numero }}</th>
+                                    {% endfor %}
+
+                                    <th>Promedio</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for asignatura in resumen_notas %}
+                                    <tr>
+                                        <td class="cert-asignatura">
+                                            {{ asignatura.nombre_asignatura }}
+                                        </td>
+
+                                        {% for nota in asignatura.notas %}
+                                            <td>
+                                                {% if nota.valor is not None %}
+                                                    <span class="{% if nota.valor < 4 %}cert-nota-roja{% endif %}">
+                                                        {{ nota.valor|floatformat:1 }}
+                                                    </span>
+                                                {% else %}
+                                                    —
+                                                {% endif %}
+                                            </td>
+                                        {% endfor %}
+
+                                        <td class="cert-promedio">
+                                            {% if asignatura.promedio is not None %}
+                                                {{ asignatura.promedio|floatformat:1 }}
+                                            {% else %}
+                                                —
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                        <td colspan="20">
+                                            No hay asignaturas registradas.
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <td colspan="{{ numeros_evaluacion|length|add:1 }}">
+                                        PROMEDIO GENERAL
+                                    </td>
+                                    <td>
+                                        {% if promedio_general is not None %}
+                                            {{ promedio_general|floatformat:1 }}
+                                        {% else %}
+                                            —
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+                    </div>
+
+                    <p class="doc-footer">
+                        Este informe refleja las calificaciones
+                        actualmente registradas en el Sistema
+                        de Gestión Escolar.
+                    </p>
+
+                {% else %}
+
+                    <p class="doc-body">
+                        La Dirección del Liceo Polivalente
+                        Santa Juliana deja constancia de que
+                        el estudiante individualizado se
+                        encuentra registrado en nuestro
+                        establecimiento para el período
+                        académico {{ anio_escolar }}.
+                    </p>
+
+                    <p class="doc-footer">
+                        Se extiende el presente documento
+                        a solicitud del apoderado para
+                        los fines que estime pertinentes.
+                    </p>
+
+                {% endif %}
+
                 <div class="doc-signatures">
+
                     <div>
-                        Código Verificación: 104-D32-SGE<br>
-                        Fecha de emisión: 15/08/2026
+                        Fecha de emisión:
+                        {{ fecha_emision|date:"d/m/Y" }}
+                        <br>
+                        Sistema de Gestión Escolar
                     </div>
+
                     <div class="stamp-box">
-                        <div class="stamp-circle">Sello<br>Oficial</div>
-                        <strong>Secretaría General SGE</strong>
+                        <strong>
+                            Liceo Polivalente<br>
+                            Santa Juliana
+                        </strong>
                     </div>
+
                 </div>
+
+                <p class="cert-disclaimer">
+                    Documento informativo generado por SGE.
+                    Su validez oficial depende de la
+                    autorización del establecimiento.
+                </p>
+
             </div>
         </div>
     </div>
 
-    <!-- Columna Derecha: Opciones de Descarga -->
+    <!-- SELECCIÓN DE CERTIFICADOS -->
     <div class="download-section">
-        <h3 class="download-title">Descargar certificados</h3>
-        
-        <!-- Tarjeta 1 -->
-        <div class="download-card">
+        <h3 class="download-title">
+            Seleccionar certificado
+        </h3>
+
+        <div class="download-card
+            {% if tipo_certificado == 'regular' %}cert-selected{% endif %}">
+
             <h3>Certificado Alumno Regular</h3>
-            <p>Documento oficial que acredita matrícula vigente para asignaciones y trámites.</p>
-            <a href="#" onclick="alert('Generando y descargando el certificado en PDF...'); return false;" class="btn-download">Descargar PDF</a>
+
+            <p>
+                Documento que acredita la información
+                de matrícula y curso del estudiante.
+            </p>
+
+            <a
+                class="cert-select-btn"
+                href="?alumno={{ alumno_seleccionado.rut_alumno|urlencode }}&tipo=regular"
+            >
+                Ver certificado
+            </a>
+
+            {% if tipo_certificado == 'regular' %}
+                <a
+                    class="btn-download"
+                    href="{% url 'apoderado_descargar_certificado' %}?alumno={{ alumno_seleccionado.rut_alumno|urlencode }}&tipo=regular"
+                >
+                    Descargar PDF
+                </a>
+            {% endif %}
+
         </div>
-        
-        <!-- Tarjeta 2 -->
-        <div class="download-card">
+
+        <div class="download-card
+            {% if tipo_certificado == 'notas' %}cert-selected{% endif %}">
+
             <h3>Consolidado de Notas</h3>
-            <p>Informe oficial de calificaciones parciales y promedio acumulado del semestre.</p>
-            <div class="semester-toggle">
-                <button class="semester-btn active">Semestre 1</button>
-                <button class="semester-btn">Semestre 2</button>
-            </div>
-            <a href="#" onclick="alert('Generando y descargando el certificado en PDF...'); return false;" class="btn-download">Descargar PDF</a>
+
+            <p>
+                Calificaciones por asignatura,
+                evaluaciones registradas y promedio
+                general actualizado.
+            </p>
+
+            <a
+                class="cert-select-btn"
+                href="?alumno={{ alumno_seleccionado.rut_alumno|urlencode }}&tipo=notas"
+            >
+                Ver certificado
+            </a>
+
+            {% if tipo_certificado == 'notas' %}
+                <a
+                    class="btn-download"
+                    href="{% url 'apoderado_descargar_certificado' %}?alumno={{ alumno_seleccionado.rut_alumno|urlencode }}&tipo=notas"
+                >
+                    Descargar PDF
+                </a>
+            {% endif %}
+
         </div>
     </div>
 
 </div>
+
+{% else %}
+
+<div class="document-preview">
+    <p>No tienes estudiantes asociados a tu cuenta.</p>
+</div>
+
+{% endif %}
+
+<style>
+    .cert-selected {
+        border: 2px solid #f97316 !important;
+    }
+
+    .cert-select-btn {
+        display: block;
+        padding: 12px;
+        margin: 12px 0;
+        text-align: center;
+        border: 1px solid #f97316;
+        border-radius: 6px;
+        color: #ea580c;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .cert-select-btn:hover {
+        background: #fff7ed;
+    }
+
+    .doc-header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .doc-header p {
+        color: #64748b;
+        font-size: 13px;
+    }
+
+    .cert-notas-scroll {
+        overflow-x: auto;
+        margin: 22px 0;
+        max-width: 100%;
+    }
+
+    .cert-notas-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11px;
+        color: #1e293b;
+    }
+
+    .cert-notas-table th,
+    .cert-notas-table td {
+        padding: 9px 7px;
+        border-bottom: 1px solid #e2e8f0;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .cert-notas-table th {
+        background: #f1f5f9;
+        font-weight: 700;
+    }
+
+    .cert-notas-table th:first-child,
+    .cert-notas-table td:first-child {
+        text-align: left;
+    }
+
+    .cert-asignatura {
+        font-weight: 600;
+    }
+
+    .cert-promedio {
+        font-weight: 700;
+        color: #1d4ed8;
+    }
+
+    .cert-nota-roja {
+        color: #dc2626;
+        font-weight: 700;
+    }
+
+    .cert-notas-table tfoot {
+        background: #eff6ff;
+        font-weight: 700;
+    }
+
+    .cert-disclaimer {
+        margin-top: 20px;
+        font-size: 10px;
+        color: #94a3b8;
+        text-align: center;
+    }
+
+    @media (max-width: 768px) {
+        .cert-container {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+</style>
+
 {% endblock %}

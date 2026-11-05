@@ -1,90 +1,211 @@
+
 {% extends 'base_apoderado.html' %}
 
 {% block content %}
 
+{% if alumno_seleccionado %}
+
 <!-- TARJETAS SUPERIORES -->
 <div class="stats-row">
+
     <div class="stat-card">
         <span class="stat-title">ASISTENCIA DEL MES</span>
+
         <div class="stat-value-container">
-            <span class="stat-number color-orange">92%</span>
-            <span class="stat-sub">Benjamín Dante</span>
+            <span class="stat-number color-orange">
+                {% if porcentaje_asistencia is not None %}
+                    {{ porcentaje_asistencia|floatformat:1 }}%
+                {% else %}
+                    —
+                {% endif %}
+            </span>
+
+            <span class="stat-sub">
+                {{ alumno_seleccionado.nombre_completo }}
+            </span>
         </div>
     </div>
+
     <div class="stat-card">
         <span class="stat-title">DÍAS ASISTIDOS</span>
+
         <div class="stat-value-container">
-            <span class="stat-number color-green">22</span>
-            <span class="stat-sub">Días hábiles</span>
+            <span class="stat-number color-green">
+                {{ dias_asistidos }}
+            </span>
+
+            <span class="stat-sub">
+                Días con asistencia registrada
+            </span>
         </div>
     </div>
+
     <div class="stat-card">
         <span class="stat-title">INASISTENCIAS</span>
+
         <div class="stat-value-container">
-            <span class="stat-number color-red">2</span>
-            <span class="stat-sub">Justificadas: 1</span>
+            <span class="stat-number color-red">
+                {{ inasistencias }}
+            </span>
+
+            <span class="stat-sub">
+                Días ausentes registrados
+            </span>
         </div>
     </div>
+
 </div>
 
 <!-- CALENDARIO DE ASISTENCIA -->
 <div class="calendar-card">
+
     <div class="calendar-header">
         <h3>Control de Asistencia</h3>
-        <div class="month-badge"><span style="display:inline-block; width:12px; height:12px; background:#ea580c; border-radius:3px;"></span> Agosto 2026</div>
+
+        <div class="calendar-navigation">
+
+            <a
+                class="calendar-nav-btn"
+                href="?alumno={{ alumno_seleccionado.rut_alumno|urlencode }}&anio={{ anio_anterior }}&mes={{ mes_anterior }}"
+                aria-label="Mes anterior"
+            >
+                &#10094;
+            </a>
+
+            <div class="month-badge">
+                <span class="month-indicator"></span>
+                {{ nombre_mes }} {{ anio }}
+            </div>
+
+            <a
+                class="calendar-nav-btn"
+                href="?alumno={{ alumno_seleccionado.rut_alumno|urlencode }}&anio={{ anio_siguiente }}&mes={{ mes_siguiente }}"
+                aria-label="Mes siguiente"
+            >
+                &#10095;
+            </a>
+
+        </div>
     </div>
 
     <div class="grid-asistencia">
-        <!-- Cabeceras de Días -->
+
+        <!-- CABECERAS -->
         <div class="grid-header">LUNES</div>
         <div class="grid-header">MARTES</div>
         <div class="grid-header">MIÉRCOLES</div>
         <div class="grid-header">JUEVES</div>
         <div class="grid-header">VIERNES</div>
 
-        <!-- Fila 1 -->
-        <div class="day-box presente"><strong>3</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>4</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>5</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>6</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>7</strong> <span>ASISTIÓ</span></div>
+        <!-- DÍAS REALES -->
+        {% for semana in semanas %}
 
-        <!-- Fila 2 -->
-        <div class="day-box presente"><strong>10</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box ausente"><strong>11</strong> <span>FALTÓ</span></div>
-        <div class="day-box presente"><strong>12</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>13</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>14</strong> <span>ASISTIÓ</span></div>
+            {% for dia in semana %}
 
-        <!-- Fila 3 -->
-        <div class="day-box presente"><strong>17</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>18</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>19</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>20</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>21</strong> <span>ASISTIÓ</span></div>
+                {% if dia.numero %}
 
-        <!-- Fila 4 -->
-        <div class="day-box presente"><strong>24</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>25</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box ausente"><strong>26</strong> <span>FALTÓ</span></div>
-        <div class="day-box presente"><strong>27</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box presente"><strong>28</strong> <span>ASISTIÓ</span></div>
+                    <div class="day-box {{ dia.estado }}">
+                        <strong>{{ dia.numero }}</strong>
+                        <span>{{ dia.texto }}</span>
+                    </div>
 
-        <!-- Fila 5 -->
-        <div class="day-box presente"><strong>31</strong> <span>ASISTIÓ</span></div>
-        <div class="day-box vacio"></div>
-        <div class="day-box vacio"></div>
-        <div class="day-box vacio"></div>
-        <div class="day-box vacio"></div>
+                {% else %}
+
+                    <div class="day-box vacio"></div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        {% endfor %}
+
     </div>
 </div>
 
 <!-- LEYENDA -->
 <div class="leyenda-card">
-    <strong style="font-size: 0.8rem; letter-spacing: 0.5px;">LEYENDA:</strong>
-    <div class="leyenda-item"><div class="dot dot-presente"></div> Presente (Asistió)</div>
-    <div class="leyenda-item"><div class="dot dot-ausente"></div> Ausente (Inasistencia)</div>
-    <div class="leyenda-item"><div class="dot dot-feriado"></div> Fin de semana / Feriado / Suspendido</div>
+
+    <strong style="font-size: 0.8rem; letter-spacing: 0.5px;">
+        LEYENDA:
+    </strong>
+
+    <div class="leyenda-item">
+        <div class="dot dot-presente"></div>
+        Presente (Asistió)
+    </div>
+
+    <div class="leyenda-item">
+        <div class="dot dot-ausente"></div>
+        Ausente (Inasistencia)
+    </div>
+
+    <div class="leyenda-item">
+        <div class="dot dot-sin-registro"></div>
+        Sin asistencia registrada
+    </div>
+
 </div>
+
+{% else %}
+
+<div class="calendar-card">
+    <p>No tienes estudiantes asociados a tu cuenta.</p>
+</div>
+
+{% endif %}
+
+<style>
+    .calendar-navigation {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .calendar-nav-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        color: #334155;
+        background: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background 0.2s;
+    }
+
+    .calendar-nav-btn:hover {
+        background: #f1f5f9;
+    }
+
+    .month-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .month-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background: #ea580c;
+        border-radius: 3px;
+    }
+
+    .day-box.sin-registro {
+        background: #f1f5f9;
+        color: #64748b;
+    }
+
+    .day-box.sin-registro span {
+        font-size: 11px;
+    }
+
+    .dot-sin-registro {
+        background: #94a3b8;
+    }
+</style>
 
 {% endblock %}
