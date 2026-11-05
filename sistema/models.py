@@ -347,18 +347,16 @@ class Usuario(models.Model):
     cambiar_password = models.BooleanField(default=True)
     rut = models.CharField(primary_key=True, max_length=12)
     password_hash = models.CharField(max_length=255)
-    # Llave foránea en minúsculas
     rol_id_rol = models.ForeignKey('Rol', models.DO_NOTHING, db_column='rol_id_rol')
     
-    # Nuevos campos
     nombre = models.CharField(max_length=100, blank=True, null=True)
     apellido_paterno = models.CharField(max_length=100, blank=True, null=True)
     apellido_materno = models.CharField(max_length=100, blank=True, null=True)
     correo = models.CharField(max_length=150, blank=True, null=True)
+    correo_recuperacion = models.CharField(max_length=150, blank=True, null=True) # 📌 El Gmail personal de rescate
     telefono = models.CharField(max_length=20, blank=True, null=True)
     direccion = models.CharField(max_length=255, blank=True, null=True)
     fecha_nacimiento = models.DateField(blank=True, null=True)
-
     activo = models.IntegerField(default=1)
 
     def generar_correo_institucional(self) -> str:
@@ -366,25 +364,16 @@ class Usuario(models.Model):
         nom = normalizar_texto(self.nombre)
         ape_pat = normalizar_texto(self.apellido_paterno)
         ape_mat = normalizar_texto(self.apellido_materno)
-
         if not nom or not ape_pat:
             return self.correo or ""
-
         inicial_nom = nom[0]
-        # Intento 1: inicial_nombre + apellido_paterno (ej: ccolon@santajuliana.cl)
         sugerencia = f"{inicial_nom}{ape_pat}@{dominio}"
-
-        existe = Usuario.objects.filter(correo=sugerencia).exclude(rut=self.rut).exists()
-        if not existe:
+        if not Usuario.objects.filter(correo=sugerencia).exclude(rut=self.rut).exists():
             return sugerencia
-
-        # Intento 2: si ya existe y hay apellido materno, suma su inicial (ej: ccolong@santajuliana.cl)
         if ape_mat:
             sugerencia_mat = f"{inicial_nom}{ape_pat}{ape_mat[0]}@{dominio}"
             if not Usuario.objects.filter(correo=sugerencia_mat).exclude(rut=self.rut).exists():
                 return sugerencia_mat
-
-        # Intento 3: si sigue existiendo, añade un correlativo numérico
         contador = 2
         base = f"{inicial_nom}{ape_pat}{ape_mat[0] if ape_mat else ''}"
         while Usuario.objects.filter(correo=f"{base}{contador}@{dominio}").exclude(rut=self.rut).exists():
@@ -392,33 +381,29 @@ class Usuario(models.Model):
         return f"{base}{contador}@{dominio}"
 
     def save(self, *args, **kwargs):
-        # 1. Estandarizar RUT con puntos y guión (ej: 19.572.314-1)
-            if self.rut:
-                limpio = str(self.rut).replace(".", "").replace("-", "").strip().upper()
-                if len(limpio) >= 2:
-                    cuerpo = limpio[:-1]
-                    dv = limpio[-1]
-                    try:
-                        cuerpo_con_puntos = f"{int(cuerpo):,}".replace(",", ".")
-                        self.rut = f"{cuerpo_con_puntos}-{dv}"
-                    except ValueError:
-                        self.rut = f"{cuerpo}-{dv}"
-
-        # 2. Capitalizar nombres y apellidos a formato título
-            if self.nombre:
-                self.nombre = self.nombre.strip().title()
-            if self.apellido_paterno:
-                self.apellido_paterno = self.apellido_paterno.strip().title()
-            if self.apellido_materno:
-                self.apellido_materno = self.apellido_materno.strip().title()
-
-        # 3. Correo institucional automático o limpieza a minúsculas
-            if not self.correo:
-                self.correo = self.generar_correo_institucional()
-            else:
-                self.correo = self.correo.strip().lower()
-
-            super().save(*args, **kwargs)
+        if self.rut:
+            limpio = str(self.rut).replace(".", "").replace("-", "").strip().upper()
+            if len(limpio) >= 2:
+                cuerpo = limpio[:-1]
+                dv = limpio[-1]
+                try:
+                    cuerpo_con_puntos = f"{int(cuerpo):,}".replace(",", ".")
+                    self.rut = f"{cuerpo_con_puntos}-{dv}"
+                except ValueError:
+                    self.rut = f"{cuerpo}-{dv}"
+        if self.nombre:
+            self.nombre = self.nombre.strip().title()
+        if self.apellido_paterno:
+            self.apellido_paterno = self.apellido_paterno.strip().title()
+        if self.apellido_materno:
+            self.apellido_materno = self.apellido_materno.strip().title()
+        if not self.correo:
+            self.correo = self.generar_correo_institucional()
+        else:
+            self.correo = self.correo.strip().lower()
+        if self.correo_recuperacion:
+            self.correo_recuperacion = self.correo_recuperacion.strip().lower()
+        super().save(*args, **kwargs)
 
     class Meta:
         managed = False

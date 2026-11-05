@@ -147,3 +147,12 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+# Configuración del Servidor SMTP Real (Gmail) para SGE Santa Juliana
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'soporte.sgesantajuliana@gmail.com'          # Tu cuenta central recién creada
+EMAIL_HOST_PASSWORD = 'okrb xxzs tcyr sofe'         # Los 16 caracteres generados (puedes pegarlos sin espacios)
+DEFAULT_FROM_EMAIL = 'SGE Santa Juliana <soporte.sgesantajuliana@gmail.com>'

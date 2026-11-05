@@ -410,7 +410,7 @@ def profesor_inicio(request):
 import json
 from decimal import Decimal, InvalidOperation
 from django.db import transaction, connection
-from django.http import JsonResponse, request
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from django.utils import timezone
@@ -2133,70 +2133,59 @@ def crear_insumo_aseo(request):
     return render(request, 'crear_insumo_aseo.html')
 
 
-def cambiar_password_obligatorio(request):
-    # Seguridad: si no pasó por el login o no tiene la bandera activa, lo devolvemos
-    if 'usuario_rut' not in request.session or not request.session.get('debe_cambiar_pass'):
+from django.contrib.auth.hashers import make_password
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Usuario
+
+def cambiar_password_obligatorio(request):  # Usa el nombre que tengas en tus rutas
+    rut_usuario = request.session.get('usuario_rut')
+    if not rut_usuario:
         return redirect('login')
-
-    if request.method == 'POST':
-        nueva_pass = request.POST.get('nueva_password', '').strip()
-        conf_pass = request.POST.get('conf_password', '').strip()
-
-        # 1. Validar longitud mínima (ej: 6 u 8 caracteres)
-        if not nueva_pass or len(nueva_pass) < 6:
-            messages.error(request, 'La nueva contraseña debe tener al menos 6 caracteres.')
-            return render(request, 'cambiar_password.html')
-
-        # 2. Validar reglas de seguridad (Mayúscula, número y símbolo)
-        tiene_mayuscula = any(c.isupper() for c in nueva_pass)
-        tiene_numero = any(c.isdigit() for c in nueva_pass)
-        tiene_simbolo = any(not c.isalnum() for c in nueva_pass)
-
-        if not (tiene_mayuscula and tiene_numero and tiene_simbolo):
-            messages.error(request, 'La contraseña debe contener al menos una letra mayúscula, un número y un símbolo especial.')
-            return render(request, 'cambiar_password.html')
-
-        # 3. Validar coincidencia
-        if nueva_pass != conf_pass:
-            messages.error(request, 'Las contraseñas ingresadas no coinciden.')
-            return render(request, 'cambiar_password.html')
-
-        try:
-            # Buscamos al usuario y actualizamos su clave encriptada
-            usuario = Usuario.objects.get(rut=request.session['usuario_rut'])
-            usuario.password_hash = make_password(nueva_pass)
-            usuario.cambiar_password = False  # Apagamos la bandera
-            usuario.save(update_fields=['password_hash', 'cambiar_password'])
-
-            # ¡MANTENEMOS LA SESIÓN ACTIVA Y CONFIGURAMOS SU HORA DE ACCESO!
-            request.session['ultimo_acceso'] = datetime.now().strftime('%d/%m/%Y a las %H:%M')
-            request.session['usuario_rut'] = usuario.rut
-            request.session['rol_id'] = usuario.rol_id_rol.id_rol
-            request.session['nombre_usuario'] = usuario.nombre
-            request.session['apellido_usuario'] = usuario.apellido_paterno
-            request.session['rol_nombre'] = usuario.rol_id_rol.nombre_rol
-
-            # Borramos la bandera temporal de cambio obligatorio
-            if 'debe_cambiar_pass' in request.session:
-                del request.session['debe_cambiar_pass']
-
-
-            # REDIRIGIMOS DIRECTO A SU PANEL CORRESPONDIENTE (Adiós al login)
-            rol = usuario.rol_id_rol.id_rol
-            if rol in [1, 4]:
-                return redirect('admin_inicio')
-            elif rol == 2:
-                return redirect('profesor_inicio')
-            elif rol == 3:
-                return redirect('apoderado_inicio')
-            elif rol == 5:
-                return redirect('inicio_supervisor_aseo')
-
-        except Usuario.DoesNotExist:
-            messages.error(request, 'Ocurrió un error al actualizar la cuenta.')
-            return redirect('login')
         
-    return render(request, 'cambiar_password.html')
+    usuario = Usuario.objects.get(rut=rut_usuario)
+    
+    if request.method == 'POST':
+        nueva_pass = request.POST.get('nueva_password')
+        confirma_pass = request.POST.get('conf_password') # 📌 Coincide con tu HTML (conf_password)
+        correo_recup = request.POST.get('correo_recuperacion')
+        
+        if not nueva_pass or nueva_pass != confirma_pass:
+            messages.error(request, "Las contraseñas no coinciden.")
+            return render(request, 'cambiar_password.html', {'usuario': usuario})
+            
+        if not correo_recup:
+            messages.error(request, "Debes ingresar tu correo de recuperación personal.")
+            return render(request, 'cambiar_password.html', {'usuario': usuario})
+            
+        # 1. Guardamos la nueva contraseña cifrada
+        usuario.password_hash = make_password(nueva_pass)
+        
+        # 2. Guardamos el Gmail personal de rescate
+        usuario.correo_recuperacion = correo_recup.strip().lower()
+        
+        # 3. 📌 Apagamos el bloqueo para que el login lo deje pasar libremente en el futuro
+        usuario.cambiar_password = False
+        usuario.save()
+        
+        # Limpiamos la sesión temporal de cambio
+        request.session['debe_cambiar_pass'] = False
+        
+        messages.success(request, "¡Contraseña actualizada con éxito!")
+        
+        # Redirigimos según su rol
+        rol = usuario.rol_id_rol.id_rol
+        if rol in [1, 4]:
+            return redirect('admin_inicio')
+        elif rol == 2:
+            return redirect('profesor_inicio')
+        elif rol == 3:
+            return redirect('apoderado_inicio')
+        elif rol == 5:
+            return redirect('inicio_supervisor_aseo')
+            
+    return render(request, 'cambiar_password.html', {'usuario': usuario})
+
 
 def cambiar_password_perfil(request):
     # Seguridad: verificar que haya iniciado sesión
@@ -2204,25 +2193,26 @@ def cambiar_password_perfil(request):
         messages.error(request, 'Debes iniciar sesión para realizar esta acción.')
         return redirect('login')
 
+    try:
+        usuario = Usuario.objects.get(rut=request.session['usuario_rut'])
+    except Usuario.DoesNotExist:
+        return redirect('login')
+
     if request.method == 'POST':
         pass_actual = request.POST.get('password_actual', '').strip()
         nueva_pass = request.POST.get('nueva_password', '').strip()
         conf_pass = request.POST.get('conf_password', '').strip()
-
-        try:
-            usuario = Usuario.objects.get(rut=request.session['usuario_rut'])
-        except Usuario.DoesNotExist:
-            return redirect('login')
+        correo_recup = request.POST.get('correo_recuperacion', '').strip().lower() # 📌 Capturamos el correo personal
 
         # 1. Validar que la contraseña actual sea correcta
         if not check_password(pass_actual, usuario.password_hash):
             messages.error(request, 'La contraseña actual es incorrecta.')
-            return render(request, 'cambiar_password_perfil.html')
+            return render(request, 'cambiar_password_perfil.html', {'usuario': usuario})
 
         # 2. Validar longitud mínima
         if not nueva_pass or len(nueva_pass) < 6:
             messages.error(request, 'La nueva contraseña debe tener al menos 6 caracteres.')
-            return render(request, 'cambiar_password_perfil.html')
+            return render(request, 'cambiar_password_perfil.html', {'usuario': usuario})
 
         # 3. Validar reglas de seguridad (Mayúscula, número y símbolo)
         tiene_mayuscula = any(c.isupper() for c in nueva_pass)
@@ -2231,18 +2221,22 @@ def cambiar_password_perfil(request):
 
         if not (tiene_mayuscula and tiene_numero and tiene_simbolo):
             messages.error(request, 'La contraseña nueva debe contener al menos una letra mayúscula, un número y un símbolo especial.')
-            return render(request, 'cambiar_password_perfil.html')
+            return render(request, 'cambiar_password_perfil.html', {'usuario': usuario})
 
         # 4. Validar coincidencia
         if nueva_pass != conf_pass:
             messages.error(request, 'Las nuevas contraseñas ingresadas no coinciden.')
-            return render(request, 'cambiar_password_perfil.html')
+            return render(request, 'cambiar_password_perfil.html', {'usuario': usuario})
 
-        # 5. Guardar la nueva contraseña cifrada
+        # 5. Guardar la nueva contraseña cifrada y el correo de recuperación
         usuario.password_hash = make_password(nueva_pass)
-        usuario.save(update_fields=['password_hash'])
+        if correo_recup:
+            usuario.correo_recuperacion = correo_recup
+            
+        # Guardamos ambos campos en la base de datos legacy
+        usuario.save(update_fields=['password_hash', 'correo_recuperacion'])
 
-        messages.success(request, '¡Tu contraseña ha sido actualizada con éxito!')
+        messages.success(request, '¡Tu contraseña y datos de seguridad han sido actualizados con éxito!')
 
         # Redirigir de vuelta a su panel correspondiente según su rol
         rol = usuario.rol_id_rol.id_rol
@@ -2255,7 +2249,8 @@ def cambiar_password_perfil(request):
         elif rol == 5:
             return redirect('inicio_supervisor_aseo')
 
-    return render(request, 'cambiar_password_perfil.html')
+    # Cuando es método GET, enviamos el objeto usuario para que pinte su correo si ya lo tenía guardado
+    return render(request, 'cambiar_password_perfil.html', {'usuario': usuario})
 
 from datetime import date
 from django.contrib import messages
@@ -2422,3 +2417,58 @@ def crear_incidencia_aseo(request):
         return redirect('incidencias_aseo')
 
     return render(request, 'crear_incidencia_aseo.html')
+
+import random
+import string
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.hashers import make_password
+from .models import Usuario
+
+def recuperar_contrasena(request):
+    if request.method == 'POST':
+        correo_ingresado = request.POST.get('correo', '').strip().lower()
+        
+        try:
+            usuario = Usuario.objects.get(correo=correo_ingresado)
+            
+            # Validar que tenga un Gmail personal registrado
+            if not usuario.correo_recuperacion:
+                messages.error(request, "Esta cuenta no tiene asociado un correo de recuperación personal. Contacte a soporte.")
+                return render(request, 'recuperar_contrasena.html')
+            
+            # Generar clave temporal
+            caracteres = string.ascii_letters + string.digits
+            temp_password = "".join(random.choice(caracteres) for _ in range(8))
+            
+            # Guardar hash y activar el flag de cambio obligatorio
+            usuario.password_hash = make_password(temp_password)
+            usuario.cambiar_password = True
+            usuario.save()
+            
+            # Enviar correo real por SMTP a su Gmail personal
+            asunto = "Recuperación de Contraseña - SGE Santa Juliana"
+            mensaje = (
+                f"Hola {usuario.nombre or 'Usuario'},\n\n"
+                f"Has solicitado restablecer tu contraseña.\n"
+                f"Tu contraseña temporal de acceso es: {temp_password}\n\n"
+                f"Al ingresar al sistema deberás cambiarla obligatoriamente.\n\n"
+                f"Atentamente,\nSoporte TI - Colegio Santa Juliana"
+            )
+            
+            send_mail(
+                asunto,
+                mensaje,
+                None,
+                [usuario.correo_recuperacion], # 📌 Envía al Gmail personal
+                fail_silently=False,
+            )
+            
+            messages.success(request, "¡Instrucciones enviadas con éxito a tu correo de recuperación!")
+            return redirect('login')
+            
+        except Usuario.DoesNotExist:
+            messages.error(request, "No se encontró ninguna cuenta asociada a este correo institucional.")
+            
+    return render(request, 'recuperar_contrasena.html')

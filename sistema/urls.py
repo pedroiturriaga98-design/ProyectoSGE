@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     
@@ -41,7 +42,7 @@ urlpatterns = [
     path('administrador/apoderados/editar/', views.admin_editar_apoderado, name='admin_editar_apoderado'),
     path('administrador/profesores/', views.admin_gestion_profesores, name='admin_gestion_profesores'),
     path('administrador/profesores/editar/', views.admin_editar_profesor, name='admin_editar_profesor'),
-path('administrador/inventario/', views.inventario_ti, name='admin_gestion_inventario'),
+    path('administrador/inventario/', views.inventario_ti, name='admin_gestion_inventario'),
     path('administrador/inventario/equipo/', views.admin_editar_equipo, name='admin_editar_equipo'),
     path('inventario/ti/', views.inventario_ti, name='inventario_ti'),
     path('inventario/ti/crear/', views.crear_equipo_ti, name='crear_equipo_ti'),
@@ -53,6 +54,23 @@ path('administrador/inventario/', views.inventario_ti, name='admin_gestion_inven
     path('apoderados/editar/<str:rut>/', views.admin_editar_apoderado, name='admin_editar_apoderado'),
     path('inventario-ti/editar/<str:codigo>/', views.admin_editar_equipo, name='admin_editar_equipo'),
 
-
-
+    #URL DE RECUPERACION DE CONTRASEÑA
+    
+    # 1. Pantalla donde ingresan el correo
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset_form.html'), name='password_reset'),
+    
+    # 2. Pantalla que avisa que el correo fue "enviado"
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
+    
+    # 3. Pantalla donde hacen clic en el link del correo para poner la nueva contraseña
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
+    
+    # 4. Pantalla de éxito final
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
+    path('recuperar-contrasena/', views.recuperar_contrasena, name='recuperar_contrasena'),
+    path('recuperar-contrasena/', views.recuperar_contrasena, name='recuperar_contrasena'),
 ]
+
+
+
+
