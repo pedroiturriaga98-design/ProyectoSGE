@@ -10,23 +10,36 @@
         <div class="table-header">
             <div>
                 <h3>Tabla de notas</h3>
+
                 <p class="notas-alumno-info">
                     {{ alumno_seleccionado.nombre_completo }}
                     -
                     {{ alumno_seleccionado.curso_id_curso.nombre_curso }}
                 </p>
             </div>
-            <span class="periodo-tag">Registro de calificaciones</span>
+
+            <span class="periodo-tag">
+                Registro de calificaciones
+            </span>
         </div>
 
         <div class="notas-table-wrapper">
+
             <table class="notas-table">
 
                 <thead>
                     <tr>
                         <th>ASIGNATURA</th>
-                        <th>EVALUACIONES REGISTRADAS</th>
-                        <th>PROMEDIO</th>
+
+                        {% for numero in columnas_notas %}
+                            <th class="nota-columna">
+                                NOTA {{ numero }}
+                            </th>
+                        {% endfor %}
+
+                        <th class="nota-columna">
+                            PROMEDIO
+                        </th>
                     </tr>
                 </thead>
 
@@ -35,40 +48,37 @@
                     {% for resumen in resumen_notas %}
 
                         <tr>
+
                             <td class="asignatura-col">
                                 {{ resumen.nombre_asignatura }}
                             </td>
 
-                            <td>
-                                <div class="notas-lista">
+                            {% for item in resumen.notas_ordenadas %}
 
-                                    {% for nota in resumen.notas %}
+                                <td class="nota-columna">
 
-                                        <span class="nota-item {% if nota.valor_nota < 4 %}nota-roja{% else %}nota-azul{% endif %}"
-                                              title="Fecha: {{ nota.fecha_ingreso|date:'d/m/Y' }}">
+                                    {% if item.calificacion %}
 
-                                            {% if nota.evaluacion_id_evaluacion %}
-                                                Nota {{ nota.evaluacion_id_evaluacion.numero_evaluacion }}:
-                                            {% else %}
-                                                Nota:
-                                            {% endif %}
-
-                                            {{ nota.valor_nota|floatformat:1 }}
-
+                                        <span
+                                            class="nota-item {% if item.calificacion.valor_nota < 4 %}nota-roja{% else %}nota-azul{% endif %}"
+                                            title="Fecha: {{ item.calificacion.fecha_ingreso|date:'d/m/Y' }}"
+                                        >
+                                            {{ item.calificacion.valor_nota|floatformat:1 }}
                                         </span>
 
-                                    {% empty %}
+                                    {% else %}
 
                                         <span class="nota-vacia">
-                                            Sin notas registradas
+                                            —
                                         </span>
 
-                                    {% endfor %}
+                                    {% endif %}
 
-                                </div>
-                            </td>
+                                </td>
 
-                            <td class="nota-promedio">
+                            {% endfor %}
+
+                            <td class="nota-promedio nota-columna">
 
                                 {% if resumen.promedio is not None %}
 
@@ -78,17 +88,23 @@
 
                                 {% else %}
 
-                                    <span class="nota-vacia">-</span>
+                                    <span class="nota-vacia">
+                                        —
+                                    </span>
 
                                 {% endif %}
 
                             </td>
+
                         </tr>
 
                     {% empty %}
 
                         <tr>
-                            <td colspan="3" class="notas-sin-datos">
+                            <td
+                                colspan="{{ total_columnas_tabla }}"
+                                class="notas-sin-datos"
+                            >
                                 No hay asignaturas registradas para este curso.
                             </td>
                         </tr>
@@ -98,6 +114,7 @@
                 </tbody>
 
             </table>
+
         </div>
 
     {% else %}
@@ -109,5 +126,56 @@
     {% endif %}
 
 </div>
+
+<style>
+    .notas-table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .notas-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 650px;
+    }
+
+    .notas-table th,
+    .notas-table td {
+        padding: 15px 12px;
+        vertical-align: middle;
+    }
+
+    .notas-table .asignatura-col {
+        min-width: 230px;
+        font-weight: 600;
+    }
+
+    .notas-table .nota-columna {
+        text-align: center;
+        min-width: 90px;
+        white-space: nowrap;
+    }
+
+    .notas-table .nota-item {
+        display: inline-block;
+        font-weight: 600;
+    }
+
+    .notas-table .nota-promedio {
+        font-weight: 700;
+    }
+
+    .notas-table .nota-vacia {
+        color: #94a3b8;
+    }
+
+    .notas-table .nota-roja {
+        color: #dc2626;
+    }
+
+    .notas-table .nota-azul {
+        color: #2563eb;
+    }
+</style>
 
 {% endblock %}

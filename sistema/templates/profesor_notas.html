@@ -3,7 +3,6 @@
 
 {% block content %}
 
-
 <!-- ENCABEZADO -->
 <div class="page-header">
     <h2>Libro de Calificaciones</h2>
@@ -17,22 +16,51 @@
 <form method="GET" class="filters-card" id="filters-form">
 
     <div class="filter-group">
-        <label for="curso-select">Curso o Clase</label>
+        <label for="curso-select">
+            Mis asignaturas / Jefatura
+        </label>
 
-        <select id="curso-select" name="curso" required>
-            <option value="">Seleccionar curso</option>
+        <select id="curso-select" required>
+            <option value="">
+                Seleccionar curso o jefatura
+            </option>
 
-            {% for curso in cursos %}
-                <option
-                    value="{{ curso.id_curso }}"
-                    {% if curso_seleccionado.id_curso == curso.id_curso %}
-                        selected
-                    {% endif %}
-                >
-                    {{ curso.nombre_curso }}
-                </option>
-            {% endfor %}
+            <optgroup label="MIS ASIGNATURAS">
+                {% for curso in cursos_asignados %}
+                    <option value="asignado:{{ curso.id_curso }}">
+                        {{ curso.nombre_curso }}
+                    </option>
+                {% endfor %}
+            </optgroup>
+
+            {% if cursos_jefatura %}
+                <optgroup label="JEFATURA">
+                    {% for curso in cursos_jefatura %}
+                        <option value="jefatura:{{ curso.id_curso }}">
+                            Jefatura — {{ curso.nombre_curso }}
+                        </option>
+                    {% endfor %}
+                </optgroup>
+            {% endif %}
         </select>
+
+        <small id="detalle-seleccion" class="selector-help">
+            Selecciona un curso o tu jefatura.
+        </small>
+
+        <input
+            type="hidden"
+            id="curso-id"
+            name="curso"
+            value="{{ curso_seleccionado.id_curso|default:'' }}"
+        >
+
+        <input
+            type="hidden"
+            id="modo-id"
+            name="modo"
+            value="{{ request.GET.modo|default:'' }}"
+        >
     </div>
 
     <div class="filter-group">
@@ -54,6 +82,74 @@
 
 </form>
 
+<style>
+    .selector-help {
+        display: block;
+        margin-top: 6px;
+        font-size: 12px;
+        color: #64748b;
+        line-height: 1.5;
+    }
+
+    .grade-input.invalid {
+        border: 2px solid #dc2626;
+        background-color: #fef2f2;
+    }
+    
+/* ALINEACIÓN DE FILTROS - LIBRO DE CALIFICACIONES */
+
+#filters-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 20px;
+    align-items: start;
+}
+
+#filters-form .filter-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+#filters-form .filter-group label {
+    margin-bottom: 8px;
+}
+
+#filters-form .filter-group select {
+    width: 100%;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+#filters-form .btn-search {
+    align-self: start;
+    margin-top: 26px;
+    height: 44px;
+    white-space: nowrap;
+}
+
+#filters-form .selector-help {
+    margin-top: 7px;
+    min-height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    color: #64748b;
+}
+
+@media (max-width: 900px) {
+    #filters-form {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    #filters-form .btn-search {
+        margin-top: 0;
+        width: 100%;
+    }
+}
+
+</style>
+
 <!-- RESUMEN -->
 <div class="stats-row">
 
@@ -71,9 +167,7 @@
         <div class="stat-icon-circle icon-green">☑️</div>
         <div class="stat-data">
             <p>Notas Ingresadas</p>
-            <h3 id="notas-ingresadas">
-                0 Alumnos
-            </h3>
+            <h3 id="notas-ingresadas">0 Alumnos</h3>
         </div>
     </div>
 
@@ -97,7 +191,7 @@
 
 </div>
 
-<!-- TABLA DE CALIFICACIONES -->
+<!-- LIBRO DE CALIFICACIONES -->
 <div class="table-container">
 
     <div class="table-header">
@@ -123,109 +217,105 @@
 
         {% if alumnos %}
 
-            <table id="grades-table">
-                <thead>
-                    <tr id="table-head-row">
+            <div class="table-scroll">
+                <table id="grades-table">
 
-                        <th style="width: 5%;">N°</th>
+                    <thead>
+                        <tr id="table-head-row">
 
-                        <th style="width: 30%;">
-                            ESTUDIANTE
-                        </th>
+                            <th style="width: 5%;">N°</th>
 
-                        <th style="width: 15%;">
-                            RUT ALUMNO
-                        </th>
-
-                        {% for numero in columnas %}
-                            <th class="col-nota">
-                                NOTA {{ numero }}
+                            <th style="width: 30%;">
+                                ESTUDIANTE
                             </th>
-                        {% endfor %}
 
-                        <th id="th-acciones">
-
-                            <button
-                                type="button"
-                                class="btn-action-col btn-add"
-                                id="btn-add-note"
-                                title="Agregar nota"
-                            >
-                                +
-                            </button>
-
-                            <button
-                                type="button"
-                                class="btn-action-col btn-remove"
-                                id="btn-remove-note"
-                                title="Eliminar última nota"
-                            >
-                                -
-                            </button>
-
-                        </th>
-
-                        <th
-                            style="width: 15%;"
-                            id="th-promedio"
-                        >
-                            PROMEDIO
-                        </th>
-
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    {% for alumno in alumnos %}
-
-                        <tr data-rut="{{ alumno.rut_alumno }}">
-
-                            <td>
-                                {{ forloop.counter }}
-                            </td>
-
-                            <td class="row-student">
-                                <strong>
-                                    {{ alumno.nombre_completo }}
-                                </strong>
-                            </td>
-
-                            <td>
-                                {{ alumno.rut_alumno }}
-                            </td>
+                            <th style="width: 15%;">
+                                RUT ALUMNO
+                            </th>
 
                             {% for numero in columnas %}
-                                <td>
-                                    <input
-                                        type="text"
-                                        class="grade-input"
-                                        inputmode="decimal"
-                                        placeholder="-"
-                                        maxlength="3"
-                                        data-numero="{{ numero }}"
-                                    >
-                                </td>
+                                <th class="col-nota">
+                                    NOTA {{ numero }}
+                                </th>
                             {% endfor %}
 
-                            <td class="td-acciones"></td>
+                            <th id="th-acciones">
+                                <button
+                                    type="button"
+                                    class="btn-action-col btn-add"
+                                    id="btn-add-note"
+                                    title="Agregar evaluación"
+                                >
+                                    +
+                                </button>
 
-                            <td>
-                                <span class="grade-avg grade-empty">
+                                <button
+                                    type="button"
+                                    class="btn-action-col btn-remove"
+                                    id="btn-remove-note"
+                                    title="Eliminar última evaluación"
+                                >
                                     -
-                                </span>
-                            </td>
+                                </button>
+                            </th>
+
+                            <th
+                                style="width: 15%;"
+                                id="th-promedio"
+                            >
+                                PROMEDIO
+                            </th>
 
                         </tr>
+                    </thead>
 
-                    {% endfor %}
+                    <tbody>
+                        {% for alumno in alumnos %}
 
-                </tbody>
-            </table>
+                            <tr data-rut="{{ alumno.rut_alumno }}">
 
-            <!-- BOTÓN GUARDAR HABILITADO -->
+                                <td>{{ forloop.counter }}</td>
+
+                                <td class="row-student">
+                                    <strong>
+                                        {{ alumno.nombre_completo }}
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    {{ alumno.rut_alumno }}
+                                </td>
+
+                                {% for numero in columnas %}
+                                    <td>
+                                        <input
+                                            type="text"
+                                            class="grade-input"
+                                            inputmode="decimal"
+                                            placeholder="-"
+                                            maxlength="3"
+                                            data-numero="{{ numero }}"
+                                        >
+                                    </td>
+                                {% endfor %}
+
+                                <td class="td-acciones"></td>
+
+                                <td>
+                                    <span class="grade-avg grade-empty">
+                                        -
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
             <div class="table-footer">
-
                 <button
                     type="button"
                     class="btn-save"
@@ -233,13 +323,13 @@
                 >
                     💾 Guardar Notas
                 </button>
-
             </div>
 
             <div
                 class="notice-box"
                 id="save-message"
                 role="status"
+                aria-live="polite"
             >
                 Las notas se guardarán en MySQL al presionar
                 Guardar Notas.
@@ -257,9 +347,9 @@
     {% else %}
 
         <div class="empty-message">
-            Selecciona un curso y una asignatura y presiona
-            <strong>Buscar</strong> para mostrar
-            el libro de calificaciones.
+            Selecciona un curso y una asignatura
+            y presiona <strong>Buscar</strong>
+            para mostrar el libro de calificaciones.
         </div>
 
     {% endif %}
@@ -268,14 +358,31 @@
 
 <!-- DATOS ENTREGADOS POR DJANGO -->
 {{ asignaturas_por_curso|json_script:"asignaturas-por-curso-data" }}
+
+{{ asignaturas_propias_por_curso|json_script:"asignaturas-propias-data" }}
+
 {{ notas_guardadas|json_script:"notas-guardadas-data" }}
+
 {{ columnas|json_script:"columnas-iniciales-data" }}
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
+    // ==========================================
+    // SELECTORES
+    // ==========================================
+
+    const formulario = document.getElementById('filters-form');
+
     const cursoSelect = document.getElementById('curso-select');
-    const asignaturaSelect = document.getElementById('asignatura-select');
+    const cursoIdInput = document.getElementById('curso-id');
+    const modoInput = document.getElementById('modo-id');
+
+    const asignaturaSelect =
+        document.getElementById('asignatura-select');
+
+    const detalleSeleccion =
+        document.getElementById('detalle-seleccion');
 
     const asignaturasPorCurso = JSON.parse(
         document.getElementById(
@@ -283,52 +390,175 @@ document.addEventListener('DOMContentLoaded', function () {
         ).textContent
     );
 
+    const asignaturasPropias = JSON.parse(
+        document.getElementById(
+            'asignaturas-propias-data'
+        ).textContent
+    );
+
     const asignaturaInicial =
         asignaturaSelect.dataset.selected || '';
 
-    // CARGAR ASIGNATURAS POR CURSO
+    const cursoInicial = cursoIdInput.value;
+    const modoInicial = modoInput.value;
+
+    // Identificar el curso que se está mostrando.
+    let cursoCargado = cursoInicial;
+    let asignaturaCargada = asignaturaInicial;
+
+    // ==========================================
+    // CARGAR ASIGNATURAS SEGÚN EL MODO
+    // ==========================================
+
     function cargarAsignaturas(mantenerSeleccion = false) {
 
-        const cursoId = cursoSelect.value;
+        const seleccion = cursoSelect.value;
 
-        asignaturaSelect.innerHTML =
-            '<option value="">Seleccionar asignatura</option>';
+        asignaturaSelect.replaceChildren();
 
-        const asignaturas =
-            asignaturasPorCurso[cursoId] || [];
+        const opcionVacia = document.createElement('option');
+        opcionVacia.value = '';
+        opcionVacia.textContent = 'Seleccionar asignatura';
+
+        asignaturaSelect.appendChild(opcionVacia);
+
+        if (!seleccion) {
+            cursoIdInput.value = '';
+            modoInput.value = '';
+
+            detalleSeleccion.textContent =
+                'Selecciona un curso o tu jefatura.';
+
+            return;
+        }
+
+        const partes = seleccion.split(':');
+        const modo = partes[0];
+        const cursoId = partes[1];
+
+        cursoIdInput.value = cursoId;
+        modoInput.value = modo;
+
+        let asignaturas = [];
+
+        if (modo === 'jefatura') {
+
+            asignaturas = asignaturasPorCurso[cursoId] || [];
+
+            detalleSeleccion.textContent =
+                'Curso de jefatura: puedes seleccionar ' +
+                'cualquiera de sus asignaturas.';
+
+        } else {
+
+            asignaturas = asignaturasPropias[cursoId] || [];
+
+            detalleSeleccion.textContent =
+                'Se muestran únicamente las asignaturas ' +
+                'que tienes asignadas en este curso.';
+        }
 
         asignaturas.forEach(function (asignatura) {
 
             const option = document.createElement('option');
 
-            option.value = asignatura.id;
+            option.value = String(asignatura.id);
             option.textContent = asignatura.nombre;
 
             if (
                 mantenerSeleccion &&
-                String(asignatura.id) === String(asignaturaInicial)
+                String(asignatura.id) ===
+                String(asignaturaInicial)
             ) {
                 option.selected = true;
             }
 
             asignaturaSelect.appendChild(option);
         });
+
+        // Seleccionar automáticamente la primera
+        // asignatura si no hay otra seleccionada.
+        if (!asignaturaSelect.value && asignaturas.length > 0) {
+            asignaturaSelect.value =
+                String(asignaturas[0].id);
+        }
     }
+
+    // ==========================================
+    // RESTAURAR SELECCIÓN INICIAL
+    // ==========================================
+
+    if (cursoInicial) {
+
+        let modoRestaurado = modoInicial;
+
+        if (!modoRestaurado) {
+
+            const propias =
+                asignaturasPropias[cursoInicial] || [];
+
+            const esAsignaturaPropia = propias.some(
+                function (asignatura) {
+                    return String(asignatura.id) ===
+                        String(asignaturaInicial);
+                }
+            );
+
+            modoRestaurado = esAsignaturaPropia
+                ? 'asignado'
+                : 'jefatura';
+        }
+
+        let valorInicial =
+            modoRestaurado + ':' + cursoInicial;
+
+        const existeOpcion = Array.from(
+            cursoSelect.options
+        ).some(function (opcion) {
+            return opcion.value === valorInicial;
+        });
+
+        if (!existeOpcion) {
+            valorInicial = 'asignado:' + cursoInicial;
+        }
+
+        cursoSelect.value = valorInicial;
+    }
+
+    cargarAsignaturas(true);
 
     cursoSelect.addEventListener('change', function () {
         cargarAsignaturas(false);
     });
 
-    cargarAsignaturas(true);
+    // ==========================================
+    // VALIDAR FORMULARIO DE BÚSQUEDA
+    // ==========================================
 
-    // TABLA
+    formulario.addEventListener('submit', function (event) {
+
+        if (
+            !cursoIdInput.value ||
+            !asignaturaSelect.value
+        ) {
+            event.preventDefault();
+
+            alert(
+                'Selecciona un curso y una asignatura.'
+            );
+        }
+    });
+
+    // ==========================================
+    // TABLA DE CALIFICACIONES
+    // ==========================================
+
     const tabla = document.getElementById('grades-table');
 
     if (!tabla) {
         return;
     }
 
-    // NOTAS GUARDADAS EN MYSQL
     const notasGuardadas = JSON.parse(
         document.getElementById(
             'notas-guardadas-data'
@@ -348,7 +578,13 @@ document.addEventListener('DOMContentLoaded', function () {
         tabla.querySelectorAll('tbody tr')
     );
 
-    // VALIDAR NOTAS DE 1.0 A 7.0
+    const saveBtn = document.getElementById('btn-save');
+    const mensaje = document.getElementById('save-message');
+
+    // ==========================================
+    // VALIDAR NOTAS
+    // ==========================================
+
     function validarNota(valor) {
 
         if (!/^\d(?:[.,]\d)?$/.test(valor)) {
@@ -362,7 +598,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return numero >= 1 && numero <= 7;
     }
 
+    // ==========================================
     // CALCULAR PROMEDIOS
+    // ==========================================
+
     function calculateAverages() {
 
         let totalPromedios = 0;
@@ -379,7 +618,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     const texto = input.value.trim();
 
                     const invalida =
-                        texto !== '' && !validarNota(texto);
+                        texto !== '' &&
+                        !validarNota(texto);
 
                     input.classList.toggle(
                         'invalid',
@@ -412,10 +652,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 promedioSpan.className = 'grade-avg';
 
                 if (promedio >= 4.0) {
-                    promedioSpan.classList.add('grade-good'); // Azul/Verde (Aprobado: 4.0 a 7.0)
+                    promedioSpan.classList.add(
+                        'grade-good'
+                    );
                 } else {
-
-                promedioSpan.classList.add('grade-bad');  // Rojo (Reprobado: 1.0 a 3.9)
+                    promedioSpan.classList.add(
+                        'grade-bad'
+                    );
                 }
 
                 totalPromedios += promedio;
@@ -455,7 +698,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 : '-';
     }
 
+    // ==========================================
     // RECUPERAR NOTAS DESDE MYSQL
+    // ==========================================
+
     rows.forEach(function (row) {
 
         const rut = row.dataset.rut;
@@ -474,23 +720,30 @@ document.addEventListener('DOMContentLoaded', function () {
         );
     });
 
+    // ==========================================
     // RECALCULAR AL ESCRIBIR
+    // ==========================================
+
     tabla.addEventListener('input', function (event) {
 
         if (
-            event.target.classList.contains('grade-input')
+            event.target.classList.contains(
+                'grade-input'
+            )
         ) {
             calculateAverages();
         }
     });
 
-    // AGREGAR COLUMNA DE NOTA
+    // ==========================================
+    // AGREGAR COLUMNA DE EVALUACIÓN
+    // ==========================================
+
     document.getElementById(
         'btn-add-note'
     ).addEventListener('click', function () {
 
         if (noteCount >= 40) {
-
             alert('Máximo 40 evaluaciones.');
             return;
         }
@@ -538,7 +791,10 @@ document.addEventListener('DOMContentLoaded', function () {
         calculateAverages();
     });
 
-    // ELIMINAR ÚLTIMA COLUMNA
+    // ==========================================
+    // ELIMINAR ÚLTIMA EVALUACIÓN
+    // ==========================================
+
     document.getElementById(
         'btn-remove-note'
     ).addEventListener('click', function () {
@@ -589,32 +845,59 @@ document.addEventListener('DOMContentLoaded', function () {
         calculateAverages();
     });
 
-    // TOKEN CSRF DE DJANGO
+    // ==========================================
+    // OBTENER TOKEN CSRF
+    // ==========================================
+
     function obtenerCSRF() {
 
-        const coincidencia = document.cookie.match(
-            /(?:^|; )csrftoken=([^;]*)/
-        );
+        const cookies = document.cookie.split(';');
 
-        return coincidencia
-            ? decodeURIComponent(coincidencia[1])
-            : '';
+        for (const cookie of cookies) {
+
+            const partes =
+                cookie.trim().split('=');
+
+            if (partes[0] === 'csrftoken') {
+
+                return decodeURIComponent(
+                    partes.slice(1).join('=')
+                );
+            }
+        }
+
+        return '';
     }
 
+    // ==========================================
     // GUARDAR CALIFICACIONES EN MYSQL
-    const saveBtn =
-        document.getElementById('btn-save');
-
-    const mensaje =
-        document.getElementById('save-message');
+    // ==========================================
 
     saveBtn.addEventListener('click', async function () {
 
+        // Evitar guardar notas si se cambió
+        // el selector sin volver a buscar.
+        if (
+            String(cursoIdInput.value) !==
+                String(cursoCargado) ||
+            String(asignaturaSelect.value) !==
+                String(asignaturaCargada)
+        ) {
+
+            alert(
+                'Cambiaste el curso o la asignatura. ' +
+                'Presiona Buscar antes de guardar notas.'
+            );
+
+            return;
+        }
+
         calculateAverages();
 
-        // VALIDAR ANTES DE GUARDAR
         const notasInvalidas =
-            tabla.querySelector('.grade-input.invalid');
+            tabla.querySelector(
+                '.grade-input.invalid'
+            );
 
         if (notasInvalidas) {
 
@@ -629,7 +912,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // PREPARAR NOTAS POR ALUMNO
+        // Preparar notas por alumno.
         const notas = {};
 
         rows.forEach(function (row) {
@@ -646,7 +929,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // PREPARAR COLUMNAS
+        // Preparar columnas consecutivas.
         const columnas = Array.from(
             { length: noteCount },
             function (_, indice) {
@@ -654,13 +937,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         );
 
-        // DESHABILITAR DURANTE EL GUARDADO
         saveBtn.disabled = true;
 
         mensaje.className = 'notice-box';
-
-        mensaje.textContent =
-            'Guardando notas...';
+        mensaje.textContent = 'Guardando notas...';
 
         try {
 
@@ -677,14 +957,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     credentials: 'same-origin',
 
                     body: JSON.stringify({
-
-                        curso_id: cursoSelect.value,
-
-                        asignatura_id:
-                            asignaturaSelect.value,
-
+                        curso_id: cursoCargado,
+                        asignatura_id: asignaturaCargada,
                         columnas: columnas,
-
                         notas: notas
                     })
                 }
@@ -697,13 +972,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 !respuesta.ok ||
                 !resultado.ok
             ) {
+
                 throw new Error(
                     resultado.error ||
                     'No se pudieron guardar las notas.'
                 );
             }
 
-            // GUARDADO CORRECTO
             savedCount = noteCount;
 
             mensaje.className =
@@ -727,7 +1002,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // ==========================================
     // CALCULAR AL CARGAR LA PÁGINA
+    // ==========================================
+
     calculateAverages();
 
 });

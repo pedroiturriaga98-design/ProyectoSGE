@@ -423,3 +423,52 @@ class Usuario(models.Model):
     class Meta:
         managed = False
         db_table = 'usuario'
+
+class EventoCalendario(models.Model):
+    id_evento = models.AutoField(primary_key=True)
+
+    titulo = models.CharField(max_length=150)
+    descripcion = models.TextField(blank=True, null=True)
+
+    fecha_inicio = models.DateTimeField()
+    fecha_fin = models.DateTimeField()
+
+    tipo_evento = models.CharField(max_length=30)
+    alcance = models.CharField(max_length=20)
+
+    id_asig_curso = models.ForeignKey(
+        'AsignaturaCurso',
+        models.DO_NOTHING,
+        db_column='id_asig_curso',
+        blank=True,
+        null=True
+    )
+
+    id_curso = models.ForeignKey(
+        'Curso',
+        models.DO_NOTHING,
+        db_column='id_curso',
+        blank=True,
+        null=True
+    )
+
+    usuario_rut = models.ForeignKey(
+        'Usuario',
+        models.DO_NOTHING,
+        db_column='usuario_rut'
+    )
+
+    lugar = models.CharField(
+        max_length=150,
+        blank=True,
+        null=True
+    )
+
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        managed = False
+        db_table = 'evento_calendario'
+
+    def __str__(self):
+        return self.titulo

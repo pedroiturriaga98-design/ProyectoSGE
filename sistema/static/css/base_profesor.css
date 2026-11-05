@@ -1636,3 +1636,78 @@ td strong {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ======================================================
+   LIBRO DE CALIFICACIONES - FILTROS ALINEADOS
+   ====================================================== */
+
+form#filters-form.filters-card {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        125px;
+    column-gap: 20px;
+    align-items: start;
+    padding: 20px;
+}
+
+form#filters-form .filter-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+form#filters-form .filter-group label {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 0 8px;
+}
+
+form#filters-form .filter-group select {
+    display: block;
+    width: 100%;
+    height: 44px;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+form#filters-form .btn-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 44px;
+    margin: 28px 0 0;
+    padding: 0 12px;
+    white-space: nowrap;
+}
+
+form#filters-form #detalle-seleccion {
+    display: block;
+    margin-top: 7px;
+    font-size: 12px;
+    line-height: 18px;
+    color: #64748b;
+}
+
+@media (max-width: 900px) {
+    form#filters-form.filters-card {
+        grid-template-columns: 1fr;
+        row-gap: 16px;
+    }
+
+    form#filters-form .btn-search {
+        width: 100%;
+        margin-top: 0;
+    }
+}

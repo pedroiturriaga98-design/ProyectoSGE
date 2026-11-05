@@ -61,6 +61,11 @@
                 <a href="{% url 'profesor_asistencia' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_asistencia' %}active-sub{% endif %}">Agregar Asistencia</a>
             </div>
 
+            <a href="{% url 'profesor_calendario' %}"
+            class="nav-link {% if request.resolver_match.url_name == 'profesor_calendario' %}active-menu{% endif %}">
+                <span>Calendario de Eventos</span> 
+            </a>
+
         </nav>
     </aside>
 
