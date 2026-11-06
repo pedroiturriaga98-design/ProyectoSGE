@@ -327,13 +327,13 @@
   "pk": "20.041.339-3",
   "fields": {
     "cambiar_password": false,
-    "password_hash": "pbkdf2_sha256$870000$33JS6dU3R2MCWo5DJMQeKw$fb/mXNT+Oy42HHR/Qh3vD2P4mYd44wZaFmPPUaEE/ro=",
+    "password_hash": "pbkdf2_sha256$870000$8TT7qrtPllgyM8bZNks1p0$yjkLGJmyXWy+xyj4UFvzi646lx8VlFiwhfXcG9ZGn9Y=",
     "rol_id_rol": 1,
     "nombre": "Pedro",
     "apellido_paterno": "Iturriaga",
     "apellido_materno": "Gomez",
     "correo": "piturriaga@santajuliana.cl",
-    "correo_recuperacion": null,
+    "correo_recuperacion": "pedro.iturriaga98@gmail.com",
     "telefono": "+929090909",
     "direccion": "Av. San Carlos 123, Puente Alto",
     "fecha_nacimiento": "1998-10-29",
@@ -1892,14 +1892,14 @@
   "model": "sistema.usuario",
   "pk": "40.001.030-7",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$IGVtHqLfuUVkHKhbt4FfiX$J2EC+FpilgWJ98fVj5dry0P6Vj5ywQxDrT4zqB5BL6o=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$NcO5vuhKogsu6FymnF5c8Z$4+Epvc2VyUStfYuiYcW9Y2C2y/fAiboC/sgnEjQvujY=",
     "rol_id_rol": 3,
     "nombre": "Josefa",
     "apellido_paterno": "Munoz",
     "apellido_materno": "Contreras",
     "correo": "jmunoz@santajuliana.cl",
-    "correo_recuperacion": null,
+    "correo_recuperacion": "pedro.iturriaga98@gmail.com",
     "telefono": "+56923806886",
     "direccion": "Los Álamos 584, Lo Barnechea, Santiago",
     "fecha_nacimiento": "1996-07-31",
@@ -20362,6 +20362,30 @@
   }
 },
 {
+  "model": "sistema.evaluacion",
+  "pk": 16,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 3,
+    "numero_evaluacion": 1
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 17,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 3,
+    "numero_evaluacion": 2
+  }
+},
+{
+  "model": "sistema.evaluacion",
+  "pk": 18,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 3,
+    "numero_evaluacion": 3
+  }
+},
+{
   "model": "sistema.calificacion",
   "pk": 1,
   "fields": {
@@ -22394,6 +22418,182 @@
     "alumno_rut_alumno": "30.002.025-9",
     "asignatura_curso_id_asig_curso": 29,
     "evaluacion_id_evaluacion": 15
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 186,
+  "fields": {
+    "valor_nota": 1.0,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.027-5",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 187,
+  "fields": {
+    "valor_nota": 1.0,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.007-0",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 188,
+  "fields": {
+    "valor_nota": 2.0,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.016-K",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 189,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.030-5",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 190,
+  "fields": {
+    "valor_nota": 4.0,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.010-0",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 191,
+  "fields": {
+    "valor_nota": 5.0,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.001-1",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 192,
+  "fields": {
+    "valor_nota": 6.0,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.021-6",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 193,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.008-9",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 194,
+  "fields": {
+    "valor_nota": 6.4,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.028-3",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 195,
+  "fields": {
+    "valor_nota": 3.0,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.017-8",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 196,
+  "fields": {
+    "valor_nota": 4.6,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.024-0",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 197,
+  "fields": {
+    "valor_nota": 7.0,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.004-6",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 198,
+  "fields": {
+    "valor_nota": 6.4,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.026-7",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 199,
+  "fields": {
+    "valor_nota": 6.4,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.006-2",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 200,
+  "fields": {
+    "valor_nota": 6.4,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.002-K",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
+  }
+},
+{
+  "model": "sistema.calificacion",
+  "pk": 201,
+  "fields": {
+    "valor_nota": 2.9,
+    "fecha_ingreso": "2026-11-06",
+    "alumno_rut_alumno": "30.002.022-4",
+    "asignatura_curso_id_asig_curso": 3,
+    "evaluacion_id_evaluacion": 16
   }
 },
 {
@@ -25097,10 +25297,310 @@
   }
 },
 {
+  "model": "sistema.registroasistencia",
+  "pk": 271,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.027-5",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 272,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.007-0",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 273,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.016-K",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 274,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.030-5",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 275,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.010-0",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 276,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.001-1",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 277,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.021-6",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 278,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.008-9",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 279,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.028-3",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 280,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.017-8",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 281,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.024-0",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 282,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.004-6",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 283,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.026-7",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 284,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.006-2",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 285,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.002-K",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 286,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.022-4",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 287,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.011-9",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 288,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.012-7",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 289,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.013-5",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 290,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.029-1",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 291,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 0,
+    "alumno_rut_alumno": "30.002.009-7",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 292,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.019-4",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 293,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.015-1",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 294,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.018-6",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 295,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.003-8",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 296,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.023-2",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 297,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.014-3",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 298,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.020-8",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 299,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.005-4",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
+  "model": "sistema.registroasistencia",
+  "pk": 300,
+  "fields": {
+    "fecha": "2026-11-06",
+    "presente": 1,
+    "alumno_rut_alumno": "30.002.025-9",
+    "asignatura_curso_id_asig_curso": 3
+  }
+},
+{
   "model": "sistema.equipoti",
   "pk": "EXT-001",
   "fields": {
-    "estado": "Disponible",
+    "estado": "En Mantención",
     "ubicacion": "Sala Profesores"
   }
 },
@@ -25553,6 +26053,62 @@
   }
 },
 {
+  "model": "sistema.ticketsoporte",
+  "pk": 17,
+  "fields": {
+    "fecha_reporte": "2026-11-06",
+    "prioridad": "Media",
+    "observacion": "TA WENO",
+    "estado_ticket": "Resuelta",
+    "usuario_rut": "14.131.328-2",
+    "equipo_ti_codigo_inventario": "MOU-004",
+    "descripcion": "NO JUNCIONA EL MAUS",
+    "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 18,
+  "fields": {
+    "fecha_reporte": "2026-11-06",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "14.131.328-2",
+    "equipo_ti_codigo_inventario": "USB-001",
+    "descripcion": "NO SE VE EL WOR",
+    "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 19,
+  "fields": {
+    "fecha_reporte": "2026-11-06",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "14.131.328-2",
+    "equipo_ti_codigo_inventario": "ROUT-001",
+    "descripcion": "ABABABABABAB",
+    "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 20,
+  "fields": {
+    "fecha_reporte": "2026-11-06",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "14.131.328-2",
+    "equipo_ti_codigo_inventario": "PC-004",
+    "descripcion": "SADADASDASD",
+    "tipo_incidencia": "Mantenimiento"
+  }
+},
+{
   "model": "sistema.insumo",
   "pk": 1,
   "fields": {
@@ -25566,6 +26122,46 @@
   "fields": {
     "nombre_item": "Papel higiénico",
     "stock_actual": 10
+  }
+},
+{
+  "model": "sistema.insumo",
+  "pk": 3,
+  "fields": {
+    "nombre_item": "jabon",
+    "stock_actual": 1
+  }
+},
+{
+  "model": "sistema.insumo",
+  "pk": 4,
+  "fields": {
+    "nombre_item": "plumon negro",
+    "stock_actual": 5
+  }
+},
+{
+  "model": "sistema.insumo",
+  "pk": 5,
+  "fields": {
+    "nombre_item": "resmas tamaño carta",
+    "stock_actual": 10
+  }
+},
+{
+  "model": "sistema.insumo",
+  "pk": 6,
+  "fields": {
+    "nombre_item": "CONFOR",
+    "stock_actual": 7
+  }
+},
+{
+  "model": "sistema.insumo",
+  "pk": 7,
+  "fields": {
+    "nombre_item": "DETERGENTE",
+    "stock_actual": 1
   }
 },
 {
@@ -25588,6 +26184,50 @@
     "usuario_rut": "14.131.328-2",
     "descripcion": "RETIRO",
     "tipo_solicitud": "Solicitud de Reposición"
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 3,
+  "fields": {
+    "fecha": "2026-11-06",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "14.131.328-2",
+    "descripcion": "NECESITO UN LAPI",
+    "tipo_solicitud": "Solicitud de Reposición"
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 4,
+  "fields": {
+    "fecha": "2026-11-06",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "14.131.328-2",
+    "descripcion": "ASDASDASDASDASDASDASD",
+    "tipo_solicitud": "Solicitud de Reposición"
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 5,
+  "fields": {
+    "fecha": "2026-11-06",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "14.131.328-2",
+    "descripcion": "QWEQWEQWEQWEWQEQWEQW",
+    "tipo_solicitud": "Solicitud de Material"
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 6,
+  "fields": {
+    "fecha": "2026-11-06",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "22.222.222-2",
+    "descripcion": "ASDADASDASDAS",
+    "tipo_solicitud": "Solicitud de Material"
   }
 }
 ]
