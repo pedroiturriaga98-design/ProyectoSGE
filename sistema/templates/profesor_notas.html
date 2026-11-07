@@ -1,47 +1,58 @@
 
 {% extends 'base_profesor.html' %}
-
 {% block content %}
 
-<!-- ENCABEZADO -->
 <div class="page-header">
     <h2>Libro de Calificaciones</h2>
-    <p>
-        Consulte y registre las calificaciones de los alumnos
-        por curso y asignatura.
-    </p>
+    <p>Consulte y registre las calificaciones de los alumnos por curso y asignatura.</p>
 </div>
 
-<!-- FILTROS -->
+<!-- ========================================= -->
+<!-- FILTROS                                   -->
+<!-- ========================================= -->
+
 <form method="GET" class="filters-card" id="filters-form">
 
     <div class="filter-group">
+
         <label for="curso-select">
             Mis asignaturas / Jefatura
         </label>
 
         <select id="curso-select" required>
+
             <option value="">
                 Seleccionar curso o jefatura
             </option>
 
             <optgroup label="MIS ASIGNATURAS">
+
                 {% for curso in cursos_asignados %}
-                    <option value="asignado:{{ curso.id_curso }}">
-                        {{ curso.nombre_curso }}
-                    </option>
+
+                <option value="asignado:{{ curso.id_curso }}">
+                    {{ curso.nombre_curso }}
+                </option>
+
                 {% endfor %}
+
             </optgroup>
 
             {% if cursos_jefatura %}
-                <optgroup label="JEFATURA">
-                    {% for curso in cursos_jefatura %}
-                        <option value="jefatura:{{ curso.id_curso }}">
-                            Jefatura — {{ curso.nombre_curso }}
-                        </option>
-                    {% endfor %}
-                </optgroup>
+
+            <optgroup label="JEFATURA">
+
+                {% for curso in cursos_jefatura %}
+
+                <option value="jefatura:{{ curso.id_curso }}">
+                    Jefatura — {{ curso.nombre_curso }}
+                </option>
+
+                {% endfor %}
+
+            </optgroup>
+
             {% endif %}
+
         </select>
 
         <small id="detalle-seleccion" class="selector-help">
@@ -59,12 +70,16 @@
             type="hidden"
             id="modo-id"
             name="modo"
-            value="{{ request.GET.modo|default:'' }}"
+            value="{{ modo|default:'' }}"
         >
+
     </div>
 
     <div class="filter-group">
-        <label for="asignatura-select">Asignatura</label>
+
+        <label for="asignatura-select">
+            Asignatura
+        </label>
 
         <select
             id="asignatura-select"
@@ -72,8 +87,11 @@
             required
             data-selected="{{ asignatura_seleccionada.id_asig_curso|default:'' }}"
         >
-            <option value="">Seleccionar asignatura</option>
+            <option value="">
+                Seleccionar asignatura
+            </option>
         </select>
+
     </div>
 
     <button type="submit" class="btn-search">
@@ -82,333 +100,799 @@
 
 </form>
 
+<!-- ========================================= -->
+<!-- ESTILOS                                  -->
+<!-- ========================================= -->
+
 <style>
+
+    #filters-form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+        gap: 20px;
+        align-items: start;
+    }
+
+    #filters-form .filter-group {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    #filters-form .filter-group label {
+        margin-bottom: 8px;
+    }
+
+    #filters-form .filter-group select {
+        width: 100%;
+        height: 44px;
+        box-sizing: border-box;
+    }
+
+    #filters-form .btn-search {
+        align-self: start;
+        margin-top: 26px;
+        height: 44px;
+        white-space: nowrap;
+    }
+
     .selector-help {
         display: block;
-        margin-top: 6px;
+        margin-top: 7px;
+        min-height: 18px;
         font-size: 12px;
+        line-height: 18px;
         color: #64748b;
-        line-height: 1.5;
     }
 
     .grade-input.invalid {
         border: 2px solid #dc2626;
         background-color: #fef2f2;
     }
-    
-/* ALINEACIÓN DE FILTROS - LIBRO DE CALIFICACIONES */
 
-#filters-form {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
-    gap: 20px;
-    align-items: start;
-}
+    /* ===================================== */
+    /* MENSAJES                              */
+    /* ===================================== */
 
-#filters-form .filter-group {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-}
-
-#filters-form .filter-group label {
-    margin-bottom: 8px;
-}
-
-#filters-form .filter-group select {
-    width: 100%;
-    height: 44px;
-    box-sizing: border-box;
-}
-
-#filters-form .btn-search {
-    align-self: start;
-    margin-top: 26px;
-    height: 44px;
-    white-space: nowrap;
-}
-
-#filters-form .selector-help {
-    margin-top: 7px;
-    min-height: 18px;
-    font-size: 12px;
-    line-height: 18px;
-    color: #64748b;
-}
-
-@media (max-width: 900px) {
-    #filters-form {
-        grid-template-columns: 1fr;
+    .grades-notice {
+        display: none;
+        align-items: flex-start;
+        padding: 20px 24px;
+        margin: 20px 0;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        font-size: 14px;
         gap: 14px;
     }
 
-    #filters-form .btn-search {
-        margin-top: 0;
-        width: 100%;
+    .grades-notice strong {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 5px;
     }
-}
+
+    .grades-notice p {
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .grades-notice.notice-success {
+        background: #ecfdf5;
+        border-color: #a7f3d0;
+        color: #065f46;
+    }
+
+    .grades-notice.notice-info {
+        background: #eff6ff;
+        border-color: #bfdbfe;
+        color: #1e40af;
+    }
+
+    .grades-notice.notice-warning {
+        background: #fffbeb;
+        border-color: #fcd34d;
+        color: #92400e;
+    }
+
+    .grades-notice.notice-error {
+        background: #fef2f2;
+        border-color: #fecaca;
+        color: #991b1b;
+    }
+
+    .grades-notice-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 700;
+        background: rgba(255,255,255,0.65);
+    }
+
+    .grades-notice-content {
+        flex: 1;
+    }
+
+    /* ===================================== */
+    /* CABECERA DE LA TABLA                  */
+    /* ===================================== */
+
+    .grades-table-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .grades-table-header .btn-save {
+        flex-shrink: 0;
+    }
+
+    /* ===================================== */
+    /* VENTANA DE CONFIRMACIÓN               */
+    /* ===================================== */
+
+    .grades-modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(15, 23, 42, 0.62);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .grades-modal-overlay.active {
+        display: flex;
+    }
+
+    .grades-modal {
+        background: #ffffff;
+        width: 100%;
+        max-width: 460px;
+        border-radius: 16px;
+        padding: 28px;
+        box-sizing: border-box;
+        box-shadow: 0 24px 65px rgba(15,23,42,0.25);
+        animation: gradesModalEntrada 0.2s ease;
+    }
+
+    @keyframes gradesModalEntrada {
+        from {
+            opacity: 0;
+            transform: translateY(12px) scale(0.98);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .grades-modal-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: #fff1f2;
+        color: #dc2626;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        margin-bottom: 18px;
+    }
+
+    .grades-modal-icon.info {
+        background: #eff6ff;
+        color: #2563eb;
+    }
+
+    .grades-modal h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 12px;
+    }
+
+    .grades-modal p {
+        color: #64748b;
+        font-size: 14px;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .grades-modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-top: 26px;
+    }
+
+    .grades-modal-btn {
+        border: none;
+        border-radius: 9px;
+        padding: 12px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .grades-modal-btn.cancel {
+        background: #f1f5f9;
+        color: #334155;
+    }
+
+    .grades-modal-btn.cancel:hover {
+        background: #e2e8f0;
+    }
+
+    .grades-modal-btn.danger {
+        background: #dc2626;
+        color: #ffffff;
+    }
+
+    .grades-modal-btn.danger:hover {
+        background: #b91c1c;
+    }
+
+    .grades-modal-btn.primary {
+        background: #f97316;
+        color: #ffffff;
+    }
+
+    .grades-modal-btn.primary:hover {
+        background: #ea580c;
+    }
+
+    @media (max-width: 900px) {
+
+        #filters-form {
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        #filters-form .btn-search {
+            margin-top: 0;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 650px) {
+
+        .grades-table-header {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .grades-modal {
+            padding: 22px;
+        }
+
+        .grades-modal-actions {
+            flex-direction: column-reverse;
+        }
+
+        .grades-modal-btn {
+            width: 100%;
+        }
+    }
 
 </style>
 
-<!-- RESUMEN -->
+<!-- ========================================= -->
+<!-- RESUMEN                                  -->
+<!-- ========================================= -->
+
 <div class="stats-row">
 
     <div class="stat-card-small">
-        <div class="stat-icon-circle icon-gray">👥</div>
+
+        <div class="stat-icon-circle icon-gray">
+            👥
+        </div>
+
         <div class="stat-data">
             <p>Total Alumnos</p>
+
             <h3 id="total-alumnos">
                 {{ alumnos|length }} Alumnos
             </h3>
         </div>
+
     </div>
 
     <div class="stat-card-small">
-        <div class="stat-icon-circle icon-green">☑️</div>
+
+        <div class="stat-icon-circle icon-green">
+            ☑️
+        </div>
+
         <div class="stat-data">
             <p>Notas Ingresadas</p>
-            <h3 id="notas-ingresadas">0 Alumnos</h3>
+
+            <h3 id="notas-ingresadas">
+                0 Alumnos
+            </h3>
         </div>
+
     </div>
 
     <div class="stat-card-small">
-        <div class="stat-icon-circle icon-red">❗</div>
+
+        <div class="stat-icon-circle icon-red">
+            ❗
+        </div>
+
         <div class="stat-data">
             <p>Notas Pendientes</p>
+
             <h3 id="notas-pendientes">
                 {{ alumnos|length }} Alumnos
             </h3>
         </div>
+
     </div>
 
     <div class="stat-card-small">
-        <div class="stat-icon-circle icon-yellow">🕒</div>
+
+        <div class="stat-icon-circle icon-yellow">
+            🕒
+        </div>
+
         <div class="stat-data">
             <p>Promedio Curso</p>
-            <h3 id="curso-avg">-</h3>
+
+            <h3 id="curso-avg">
+                -
+            </h3>
         </div>
+
     </div>
 
 </div>
 
-<!-- LIBRO DE CALIFICACIONES -->
+<!-- ========================================= -->
+<!-- MENSAJES                                 -->
+<!-- ========================================= -->
+
+<div
+    id="save-message"
+    class="grades-notice"
+    role="status"
+    aria-live="polite">
+</div>
+
+<!-- ========================================= -->
+<!-- LIBRO DE CALIFICACIONES                   -->
+<!-- ========================================= -->
+
 <div class="table-container">
 
-    <div class="table-header">
+    <div class="table-header grades-table-header">
+
         <div class="table-title">
+
             <h3>Libro de Calificaciones</h3>
 
             <p>
+
                 {% if asignatura_seleccionada %}
+
                     {{ asignatura_seleccionada.asignatura_id_asignatura.nombre_asignatura }}
-                    ·
-                    {{ curso_seleccionado.nombre_curso }}
-                    ·
-                    {{ alumnos|length }} estudiantes
+                    · {{ curso_seleccionado.nombre_curso }}
+                    · {{ alumnos|length }} estudiantes
+
                 {% else %}
-                    Seleccione un curso y una asignatura
-                    para consultar los alumnos.
+
+                    Seleccione un curso y una asignatura para consultar los alumnos.
+
                 {% endif %}
+
             </p>
+
         </div>
+
+        {% if asignatura_seleccionada and alumnos %}
+
+        <button
+            type="button"
+            class="btn-save"
+            id="btn-save">
+            ✓ Guardar Notas
+        </button>
+
+        {% endif %}
+
     </div>
 
     {% if asignatura_seleccionada %}
 
         {% if alumnos %}
 
-            <div class="table-scroll">
-                <table id="grades-table">
+        <div class="table-scroll">
 
-                    <thead>
-                        <tr id="table-head-row">
+            <table id="grades-table">
 
-                            <th style="width: 5%;">N°</th>
+                <thead>
 
-                            <th style="width: 30%;">
-                                ESTUDIANTE
-                            </th>
+                    <tr id="table-head-row">
 
-                            <th style="width: 15%;">
-                                RUT ALUMNO
-                            </th>
+                        <th style="width:5%;">
+                            N°
+                        </th>
 
-                            {% for numero in columnas %}
-                                <th class="col-nota">
-                                    NOTA {{ numero }}
-                                </th>
-                            {% endfor %}
+                        <th style="width:30%;">
+                            ESTUDIANTE
+                        </th>
 
-                            <th id="th-acciones">
-                                <button
-                                    type="button"
-                                    class="btn-action-col btn-add"
-                                    id="btn-add-note"
-                                    title="Agregar evaluación"
-                                >
-                                    +
-                                </button>
+                        <th style="width:15%;">
+                            RUT ALUMNO
+                        </th>
 
-                                <button
-                                    type="button"
-                                    class="btn-action-col btn-remove"
-                                    id="btn-remove-note"
-                                    title="Eliminar última evaluación"
-                                >
-                                    -
-                                </button>
-                            </th>
+                        {% for numero in columnas %}
 
-                            <th
-                                style="width: 15%;"
-                                id="th-promedio"
-                            >
-                                PROMEDIO
-                            </th>
-
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {% for alumno in alumnos %}
-
-                            <tr data-rut="{{ alumno.rut_alumno }}">
-
-                                <td>{{ forloop.counter }}</td>
-
-                                <td class="row-student">
-                                    <strong>
-                                        {{ alumno.nombre_completo }}
-                                    </strong>
-                                </td>
-
-                                <td>
-                                    {{ alumno.rut_alumno }}
-                                </td>
-
-                                {% for numero in columnas %}
-                                    <td>
-                                        <input
-                                            type="text"
-                                            class="grade-input"
-                                            inputmode="decimal"
-                                            placeholder="-"
-                                            maxlength="3"
-                                            data-numero="{{ numero }}"
-                                        >
-                                    </td>
-                                {% endfor %}
-
-                                <td class="td-acciones"></td>
-
-                                <td>
-                                    <span class="grade-avg grade-empty">
-                                        -
-                                    </span>
-                                </td>
-
-                            </tr>
+                        <th class="col-nota">
+                            NOTA {{ numero }}
+                        </th>
 
                         {% endfor %}
-                    </tbody>
 
-                </table>
-            </div>
+                        <th id="th-acciones">
 
-            <div class="table-footer">
-                <button
-                    type="button"
-                    class="btn-save"
-                    id="btn-save"
-                >
-                    💾 Guardar Notas
-                </button>
-            </div>
+                            <button
+                                type="button"
+                                class="btn-action-col btn-add"
+                                id="btn-add-note"
+                                title="Agregar evaluación">
+                                +
+                            </button>
 
-            <div
-                class="notice-box"
-                id="save-message"
-                role="status"
-                aria-live="polite"
-            >
-                Las notas se guardarán en MySQL al presionar
-                Guardar Notas.
-            </div>
+                            <button
+                                type="button"
+                                class="btn-action-col btn-remove"
+                                id="btn-remove-note"
+                                title="Eliminar última evaluación">
+                                -
+                            </button>
+
+                        </th>
+
+                        <th
+                            style="width:15%;"
+                            id="th-promedio">
+                            PROMEDIO
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for alumno in alumnos %}
+
+                    <tr data-rut="{{ alumno.rut_alumno }}">
+
+                        <td>
+                            {{ forloop.counter }}
+                        </td>
+
+                        <td class="row-student">
+                            <strong>
+                                {{ alumno.nombre_completo }}
+                            </strong>
+                        </td>
+
+                        <td>
+                            {{ alumno.rut_alumno }}
+                        </td>
+
+                        {% for numero in columnas %}
+
+                        <td>
+
+                            <input
+                                type="text"
+                                class="grade-input"
+                                inputmode="decimal"
+                                placeholder="-"
+                                maxlength="3"
+                                data-numero="{{ numero }}"
+                            >
+
+                        </td>
+
+                        {% endfor %}
+
+                        <td class="td-acciones"></td>
+
+                        <td>
+
+                            <span class="grade-avg grade-empty">
+                                -
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
 
         {% else %}
 
-            <div class="empty-message">
-                No se encontraron alumnos matriculados
-                en este curso.
-            </div>
+        <div class="empty-message">
+            No se encontraron alumnos matriculados en este curso.
+        </div>
 
         {% endif %}
 
     {% else %}
 
-        <div class="empty-message">
-            Selecciona un curso y una asignatura
-            y presiona <strong>Buscar</strong>
-            para mostrar el libro de calificaciones.
-        </div>
+    <div class="empty-message">
+        Selecciona un curso y una asignatura y presiona
+        <strong>Buscar</strong> para mostrar el libro de calificaciones.
+    </div>
 
     {% endif %}
 
 </div>
 
-<!-- DATOS ENTREGADOS POR DJANGO -->
+<!-- ========================================= -->
+<!-- MODAL DE CONFIRMACIÓN                     -->
+<!-- ========================================= -->
+
+<div
+    id="grades-modal-overlay"
+    class="grades-modal-overlay"
+    aria-hidden="true"
+>
+
+    <div
+        class="grades-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="grades-modal-title"
+        aria-describedby="grades-modal-description"
+    >
+
+        <div
+            id="grades-modal-icon"
+            class="grades-modal-icon">
+            !
+        </div>
+
+        <h3 id="grades-modal-title">
+            Confirmar acción
+        </h3>
+
+        <p id="grades-modal-description">
+            ¿Deseas continuar?
+        </p>
+
+        <div class="grades-modal-actions">
+
+            <button
+                type="button"
+                class="grades-modal-btn cancel"
+                id="grades-modal-cancel">
+                Cancelar
+            </button>
+
+            <button
+                type="button"
+                class="grades-modal-btn danger"
+                id="grades-modal-confirm">
+                Confirmar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- DATOS DESDE DJANGO                        -->
+<!-- ========================================= -->
+
 {{ asignaturas_por_curso|json_script:"asignaturas-por-curso-data" }}
-
 {{ asignaturas_propias_por_curso|json_script:"asignaturas-propias-data" }}
-
 {{ notas_guardadas|json_script:"notas-guardadas-data" }}
-
 {{ columnas|json_script:"columnas-iniciales-data" }}
 
+<!-- ========================================= -->
+<!-- JAVASCRIPT                               -->
+<!-- ========================================= -->
+
 <script>
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ==========================================
-    // SELECTORES
-    // ==========================================
+    // =====================================
+    // ELEMENTOS PRINCIPALES
+    // =====================================
 
     const formulario = document.getElementById('filters-form');
 
     const cursoSelect = document.getElementById('curso-select');
+
     const cursoIdInput = document.getElementById('curso-id');
+
     const modoInput = document.getElementById('modo-id');
 
-    const asignaturaSelect =
-        document.getElementById('asignatura-select');
+    const asignaturaSelect = document.getElementById('asignatura-select');
 
-    const detalleSeleccion =
-        document.getElementById('detalle-seleccion');
+    const detalleSeleccion = document.getElementById('detalle-seleccion');
 
     const asignaturasPorCurso = JSON.parse(
-        document.getElementById(
-            'asignaturas-por-curso-data'
-        ).textContent
+        document.getElementById('asignaturas-por-curso-data').textContent
     );
 
     const asignaturasPropias = JSON.parse(
-        document.getElementById(
-            'asignaturas-propias-data'
-        ).textContent
+        document.getElementById('asignaturas-propias-data').textContent
     );
 
     const asignaturaInicial =
         asignaturaSelect.dataset.selected || '';
 
     const cursoInicial = cursoIdInput.value;
+
     const modoInicial = modoInput.value;
 
-    // Identificar el curso que se está mostrando.
-    let cursoCargado = cursoInicial;
-    let asignaturaCargada = asignaturaInicial;
+    const cursoCargado = cursoInicial;
 
-    // ==========================================
-    // CARGAR ASIGNATURAS SEGÚN EL MODO
-    // ==========================================
+    const asignaturaCargada = asignaturaInicial;
+
+    // =====================================
+    // MODAL PERSONALIZADO
+    // =====================================
+
+    const modalOverlay = document.getElementById(
+        'grades-modal-overlay'
+    );
+
+    const modalTitulo = document.getElementById(
+        'grades-modal-title'
+    );
+
+    const modalDescripcion = document.getElementById(
+        'grades-modal-description'
+    );
+
+    const modalIcono = document.getElementById(
+        'grades-modal-icon'
+    );
+
+    const modalCancelar = document.getElementById(
+        'grades-modal-cancel'
+    );
+
+    const modalConfirmar = document.getElementById(
+        'grades-modal-confirm'
+    );
+
+    let resolverModal = null;
+
+    function cerrarModal(confirmado) {
+
+        modalOverlay.classList.remove('active');
+
+        modalOverlay.setAttribute(
+            'aria-hidden',
+            'true'
+        );
+
+        document.body.style.overflow = '';
+
+        if (resolverModal) {
+
+            resolverModal(confirmado);
+
+            resolverModal = null;
+        }
+    }
+
+    function confirmarAccion(opciones) {
+
+        return new Promise(function (resolve) {
+
+            resolverModal = resolve;
+
+            modalTitulo.textContent =
+                opciones.titulo || 'Confirmar acción';
+
+            modalDescripcion.textContent =
+                opciones.descripcion || '¿Deseas continuar?';
+
+            modalConfirmar.textContent =
+                opciones.boton || 'Confirmar';
+
+            modalIcono.textContent =
+                opciones.icono || '!';
+
+            modalIcono.className =
+                'grades-modal-icon';
+
+            modalConfirmar.className =
+                'grades-modal-btn';
+
+            if (opciones.tipo === 'danger') {
+
+                modalConfirmar.classList.add('danger');
+
+            } else {
+
+                modalIcono.classList.add('info');
+
+                modalConfirmar.classList.add('primary');
+            }
+
+            modalOverlay.classList.add('active');
+
+            modalOverlay.setAttribute(
+                'aria-hidden',
+                'false'
+            );
+
+            document.body.style.overflow = 'hidden';
+
+            modalCancelar.focus();
+        });
+    }
+
+    modalCancelar.addEventListener(
+        'click',
+        function () {
+            cerrarModal(false);
+        }
+    );
+
+    modalConfirmar.addEventListener(
+        'click',
+        function () {
+            cerrarModal(true);
+        }
+    );
+
+    modalOverlay.addEventListener(
+        'click',
+        function (event) {
+
+            if (event.target === modalOverlay) {
+                cerrarModal(false);
+            }
+        }
+    );
+
+    document.addEventListener(
+        'keydown',
+        function (event) {
+
+            if (
+                event.key === 'Escape' &&
+                modalOverlay.classList.contains('active')
+            ) {
+                cerrarModal(false);
+            }
+        }
+    );
+
+    // =====================================
+    // SELECTORES DE CURSO Y ASIGNATURA
+    // =====================================
 
     function cargarAsignaturas(mantenerSeleccion = false) {
 
@@ -417,13 +901,18 @@ document.addEventListener('DOMContentLoaded', function () {
         asignaturaSelect.replaceChildren();
 
         const opcionVacia = document.createElement('option');
+
         opcionVacia.value = '';
-        opcionVacia.textContent = 'Seleccionar asignatura';
+
+        opcionVacia.textContent =
+            'Seleccionar asignatura';
 
         asignaturaSelect.appendChild(opcionVacia);
 
         if (!seleccion) {
+
             cursoIdInput.value = '';
+
             modoInput.value = '';
 
             detalleSeleccion.textContent =
@@ -432,30 +921,29 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const partes = seleccion.split(':');
-        const modo = partes[0];
-        const cursoId = partes[1];
+        const [modo, cursoId] = seleccion.split(':');
 
         cursoIdInput.value = cursoId;
+
         modoInput.value = modo;
 
         let asignaturas = [];
 
         if (modo === 'jefatura') {
 
-            asignaturas = asignaturasPorCurso[cursoId] || [];
+            asignaturas =
+                asignaturasPorCurso[cursoId] || [];
 
             detalleSeleccion.textContent =
-                'Curso de jefatura: puedes seleccionar ' +
-                'cualquiera de sus asignaturas.';
+                'Curso de jefatura: puedes seleccionar cualquiera de sus asignaturas.';
 
         } else {
 
-            asignaturas = asignaturasPropias[cursoId] || [];
+            asignaturas =
+                asignaturasPropias[cursoId] || [];
 
             detalleSeleccion.textContent =
-                'Se muestran únicamente las asignaturas ' +
-                'que tienes asignadas en este curso.';
+                'Se muestran únicamente las asignaturas que tienes asignadas en este curso.';
         }
 
         asignaturas.forEach(function (asignatura) {
@@ -463,12 +951,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const option = document.createElement('option');
 
             option.value = String(asignatura.id);
+
             option.textContent = asignatura.nombre;
 
             if (
                 mantenerSeleccion &&
-                String(asignatura.id) ===
-                String(asignaturaInicial)
+                String(asignatura.id) === String(asignaturaInicial)
             ) {
                 option.selected = true;
             }
@@ -476,17 +964,19 @@ document.addEventListener('DOMContentLoaded', function () {
             asignaturaSelect.appendChild(option);
         });
 
-        // Seleccionar automáticamente la primera
-        // asignatura si no hay otra seleccionada.
-        if (!asignaturaSelect.value && asignaturas.length > 0) {
+        if (
+            !asignaturaSelect.value &&
+            asignaturas.length > 0
+        ) {
+
             asignaturaSelect.value =
                 String(asignaturas[0].id);
         }
     }
 
-    // ==========================================
-    // RESTAURAR SELECCIÓN INICIAL
-    // ==========================================
+    // =====================================
+    // RESTAURAR CURSO SELECCIONADO
+    // =====================================
 
     if (cursoInicial) {
 
@@ -497,63 +987,88 @@ document.addEventListener('DOMContentLoaded', function () {
             const propias =
                 asignaturasPropias[cursoInicial] || [];
 
-            const esAsignaturaPropia = propias.some(
+            const esPropia = propias.some(
                 function (asignatura) {
-                    return String(asignatura.id) ===
-                        String(asignaturaInicial);
+
+                    return (
+                        String(asignatura.id) ===
+                        String(asignaturaInicial)
+                    );
                 }
             );
 
-            modoRestaurado = esAsignaturaPropia
-                ? 'asignado'
-                : 'jefatura';
+            modoRestaurado =
+                esPropia ? 'asignado' : 'jefatura';
         }
 
-        let valorInicial =
+        let valor =
             modoRestaurado + ':' + cursoInicial;
 
-        const existeOpcion = Array.from(
+        const existe = Array.from(
             cursoSelect.options
         ).some(function (opcion) {
-            return opcion.value === valorInicial;
+
+            return opcion.value === valor;
         });
 
-        if (!existeOpcion) {
-            valorInicial = 'asignado:' + cursoInicial;
+        if (!existe) {
+
+            const opcionJefatura =
+                'jefatura:' + cursoInicial;
+
+            const opcionAsignado =
+                'asignado:' + cursoInicial;
+
+            const existeJefatura = Array.from(
+                cursoSelect.options
+            ).some(function (opcion) {
+
+                return opcion.value === opcionJefatura;
+            });
+
+            valor = existeJefatura
+                ? opcionJefatura
+                : opcionAsignado;
         }
 
-        cursoSelect.value = valorInicial;
+        cursoSelect.value = valor;
     }
 
     cargarAsignaturas(true);
 
-    cursoSelect.addEventListener('change', function () {
-        cargarAsignaturas(false);
-    });
+    cursoSelect.addEventListener(
+        'change',
+        function () {
 
-    // ==========================================
-    // VALIDAR FORMULARIO DE BÚSQUEDA
-    // ==========================================
-
-    formulario.addEventListener('submit', function (event) {
-
-        if (
-            !cursoIdInput.value ||
-            !asignaturaSelect.value
-        ) {
-            event.preventDefault();
-
-            alert(
-                'Selecciona un curso y una asignatura.'
-            );
+            cargarAsignaturas(false);
         }
-    });
+    );
 
-    // ==========================================
+    formulario.addEventListener(
+        'submit',
+        function (event) {
+
+            if (
+                !cursoIdInput.value ||
+                !asignaturaSelect.value
+            ) {
+
+                event.preventDefault();
+
+                alert(
+                    'Selecciona un curso y una asignatura.'
+                );
+            }
+        }
+    );
+
+    // =====================================
     // TABLA DE CALIFICACIONES
-    // ==========================================
+    // =====================================
 
-    const tabla = document.getElementById('grades-table');
+    const tabla = document.getElementById(
+        'grades-table'
+    );
 
     if (!tabla) {
         return;
@@ -572,18 +1087,83 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     let noteCount = columnasIniciales.length;
+
     let savedCount = noteCount;
 
     const rows = Array.from(
         tabla.querySelectorAll('tbody tr')
     );
 
-    const saveBtn = document.getElementById('btn-save');
-    const mensaje = document.getElementById('save-message');
+    const saveBtn = document.getElementById(
+        'btn-save'
+    );
 
-    // ==========================================
+    const mensaje = document.getElementById(
+        'save-message'
+    );
+
+    // =====================================
+    // MENSAJES
+    // =====================================
+
+    function mostrarMensaje(
+        tipo,
+        tituloTexto,
+        descripcionTexto
+    ) {
+
+        mensaje.className =
+            'grades-notice notice-' + tipo;
+
+        mensaje.style.display = 'flex';
+
+        mensaje.replaceChildren();
+
+        const iconos = {
+            success: '✓',
+            info: 'i',
+            warning: '!',
+            error: '×'
+        };
+
+        const icono = document.createElement('div');
+
+        icono.className = 'grades-notice-icon';
+
+        icono.textContent = iconos[tipo] || 'i';
+
+        const contenido = document.createElement('div');
+
+        contenido.className =
+            'grades-notice-content';
+
+        const titulo = document.createElement('strong');
+
+        titulo.textContent = tituloTexto;
+
+        const descripcion = document.createElement('p');
+
+        descripcion.textContent = descripcionTexto;
+
+        contenido.append(
+            titulo,
+            descripcion
+        );
+
+        mensaje.append(
+            icono,
+            contenido
+        );
+
+        mensaje.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }
+
+    // =====================================
     // VALIDAR NOTAS
-    // ==========================================
+    // =====================================
 
     function validarNota(valor) {
 
@@ -595,74 +1175,131 @@ document.addEventListener('DOMContentLoaded', function () {
             valor.replace(',', '.')
         );
 
-        return numero >= 1 && numero <= 7;
+        return (
+            numero >= 1 &&
+            numero <= 7
+        );
     }
 
-    // ==========================================
-    // CALCULAR PROMEDIOS
-    // ==========================================
+    // =====================================
+    // NORMALIZAR NOTAS
+    // =====================================
+
+    function normalizarNota(valor) {
+
+        const texto = String(valor ?? '')
+            .trim()
+            .replace(',', '.');
+
+        if (texto === '') {
+            return '';
+        }
+
+        const numero = Number(texto);
+
+        if (!Number.isFinite(numero)) {
+            return texto;
+        }
+
+        return numero.toFixed(1);
+    }
+
+    // =====================================
+    // CALCULAR PROMEDIOS Y CONTADORES
+    // =====================================
 
     function calculateAverages() {
 
         let totalPromedios = 0;
-        let alumnosConNotas = 0;
+
+        let alumnosConPromedio = 0;
+
+        let alumnosCompletos = 0;
+
+        let alumnosPendientes = 0;
 
         rows.forEach(function (row) {
 
             let suma = 0;
-            let cantidad = 0;
 
-            row.querySelectorAll('.grade-input').forEach(
-                function (input) {
+            let cantidadNotasValidas = 0;
 
-                    const texto = input.value.trim();
+            const inputs = Array.from(
+                row.querySelectorAll('.grade-input')
+            );
 
-                    const invalida =
-                        texto !== '' &&
-                        !validarNota(texto);
+            inputs.forEach(function (input) {
 
-                    input.classList.toggle(
-                        'invalid',
-                        invalida
+                const texto = input.value.trim();
+
+                const esValida =
+                    texto !== '' &&
+                    validarNota(texto);
+
+                input.classList.toggle(
+                    'invalid',
+                    texto !== '' && !esValida
+                );
+
+                if (esValida) {
+
+                    suma += Number(
+                        texto.replace(',', '.')
                     );
 
-                    if (
-                        texto !== '' &&
-                        validarNota(texto)
-                    ) {
-                        suma += Number(
-                            texto.replace(',', '.')
-                        );
-
-                        cantidad++;
-                    }
+                    cantidadNotasValidas++;
                 }
-            );
+            });
+
+            // =====================================
+            // CONTADOR SEGÚN ÚLTIMA COLUMNA
+            // =====================================
+
+            const ultimaNota =
+                inputs[inputs.length - 1];
+
+            const estaCompleto = ultimaNota
+                ? validarNota(
+                    ultimaNota.value.trim()
+                )
+                : false;
+
+            if (estaCompleto) {
+
+                alumnosCompletos++;
+
+            } else {
+
+                alumnosPendientes++;
+            }
+
+            // =====================================
+            // PROMEDIO CON TODAS LAS NOTAS
+            // =====================================
 
             const promedioSpan =
                 row.querySelector('.grade-avg');
 
-            if (cantidad > 0) {
+            if (cantidadNotasValidas > 0) {
 
-                const promedio = suma / cantidad;
+                const promedio =
+                    suma / cantidadNotasValidas;
 
                 promedioSpan.textContent =
                     promedio.toFixed(1);
 
-                promedioSpan.className = 'grade-avg';
+                promedioSpan.className =
+                    'grade-avg';
 
-                if (promedio >= 4.0) {
-                    promedioSpan.classList.add(
-                        'grade-good'
-                    );
-                } else {
-                    promedioSpan.classList.add(
-                        'grade-bad'
-                    );
-                }
+                promedioSpan.classList.add(
+                    promedio >= 4.0
+                        ? 'grade-good'
+                        : 'grade-bad'
+                );
 
                 totalPromedios += promedio;
-                alumnosConNotas++;
+
+                alumnosConPromedio++;
 
             } else {
 
@@ -681,26 +1318,27 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById(
             'notas-ingresadas'
         ).textContent =
-            alumnosConNotas + ' Alumnos';
+            alumnosCompletos + ' Alumnos';
 
         document.getElementById(
             'notas-pendientes'
         ).textContent =
-            (rows.length - alumnosConNotas) + ' Alumnos';
+            alumnosPendientes + ' Alumnos';
 
         document.getElementById(
             'curso-avg'
         ).textContent =
-            alumnosConNotas > 0
+            alumnosConPromedio > 0
                 ? (
-                    totalPromedios / alumnosConNotas
+                    totalPromedios /
+                    alumnosConPromedio
                 ).toFixed(1)
                 : '-';
     }
 
-    // ==========================================
-    // RECUPERAR NOTAS DESDE MYSQL
-    // ==========================================
+    // =====================================
+    // RECUPERAR NOTAS GUARDADAS
+    // =====================================
 
     rows.forEach(function (row) {
 
@@ -709,156 +1347,272 @@ document.addEventListener('DOMContentLoaded', function () {
         const notasAlumno =
             notasGuardadas[rut] || {};
 
-        row.querySelectorAll('.grade-input').forEach(
-            function (input) {
+        row.querySelectorAll(
+            '.grade-input'
+        ).forEach(function (input) {
 
-                const numero = input.dataset.numero;
+            const numero =
+                input.dataset.numero;
 
-                input.value =
-                    notasAlumno[numero] || '';
-            }
-        );
+            input.value =
+                notasAlumno[numero] ?? '';
+        });
     });
 
-    // ==========================================
-    // RECALCULAR AL ESCRIBIR
-    // ==========================================
+    // =====================================
+    // OBTENER ESTADO ACTUAL
+    // =====================================
 
-    tabla.addEventListener('input', function (event) {
+    function obtenerEstadoActual() {
 
-        if (
-            event.target.classList.contains(
-                'grade-input'
-            )
-        ) {
-            calculateAverages();
-        }
-    });
-
-    // ==========================================
-    // AGREGAR COLUMNA DE EVALUACIÓN
-    // ==========================================
-
-    document.getElementById(
-        'btn-add-note'
-    ).addEventListener('click', function () {
-
-        if (noteCount >= 40) {
-            alert('Máximo 40 evaluaciones.');
-            return;
-        }
-
-        noteCount++;
-
-        const thAcciones =
-            document.getElementById('th-acciones');
-
-        const nuevoTh =
-            document.createElement('th');
-
-        nuevoTh.className = 'col-nota';
-
-        nuevoTh.textContent =
-            'NOTA ' + noteCount;
-
-        thAcciones.before(nuevoTh);
+        const notas = {};
 
         rows.forEach(function (row) {
 
-            const tdAcciones =
-                row.querySelector('.td-acciones');
+            const rut = row.dataset.rut;
 
-            const nuevoTd =
-                document.createElement('td');
+            notas[rut] = Array.from(
+                row.querySelectorAll(
+                    '.grade-input'
+                )
+            ).map(function (input) {
 
-            const nuevoInput =
-                document.createElement('input');
-
-            nuevoInput.type = 'text';
-            nuevoInput.className = 'grade-input';
-            nuevoInput.inputMode = 'decimal';
-            nuevoInput.maxLength = 3;
-            nuevoInput.placeholder = '-';
-
-            nuevoInput.dataset.numero =
-                String(noteCount);
-
-            nuevoTd.appendChild(nuevoInput);
-
-            tdAcciones.before(nuevoTd);
+                return normalizarNota(
+                    input.value
+                );
+            });
         });
 
-        calculateAverages();
-    });
+        return {
 
-    // ==========================================
+            columnas: Array.from(
+                { length: noteCount },
+                function (_, indice) {
+                    return indice + 1;
+                }
+            ),
+
+            notas: notas
+        };
+    }
+
+    // =====================================
+    // ESTADO GUARDADO
+    // =====================================
+
+    let estadoGuardado = JSON.stringify(
+        obtenerEstadoActual()
+    );
+
+    function existenCambios() {
+
+        return (
+            JSON.stringify(
+                obtenerEstadoActual()
+            ) !== estadoGuardado
+        );
+    }
+
+    // =====================================
+    // ACTUALIZAR AL ESCRIBIR
+    // =====================================
+
+    tabla.addEventListener(
+        'input',
+        function (event) {
+
+            if (
+                event.target.classList.contains(
+                    'grade-input'
+                )
+            ) {
+
+                calculateAverages();
+            }
+        }
+    );
+
+    // =====================================
+    // AGREGAR EVALUACIÓN
+    // =====================================
+
+    document.getElementById(
+        'btn-add-note'
+    ).addEventListener(
+        'click',
+        function () {
+
+            if (noteCount >= 40) {
+
+                mostrarMensaje(
+                    'warning',
+                    'Límite de evaluaciones',
+                    'Se permite un máximo de 40 evaluaciones.'
+                );
+
+                return;
+            }
+
+            noteCount++;
+
+            const thAcciones =
+                document.getElementById(
+                    'th-acciones'
+                );
+
+            const nuevoTh =
+                document.createElement('th');
+
+            nuevoTh.className =
+                'col-nota';
+
+            nuevoTh.textContent =
+                'NOTA ' + noteCount;
+
+            thAcciones.before(nuevoTh);
+
+            rows.forEach(function (row) {
+
+                const tdAcciones =
+                    row.querySelector(
+                        '.td-acciones'
+                    );
+
+                const nuevoTd =
+                    document.createElement('td');
+
+                const nuevoInput =
+                    document.createElement('input');
+
+                nuevoInput.type = 'text';
+
+                nuevoInput.className =
+                    'grade-input';
+
+                nuevoInput.inputMode =
+                    'decimal';
+
+                nuevoInput.maxLength = 3;
+
+                nuevoInput.placeholder = '-';
+
+                nuevoInput.dataset.numero =
+                    String(noteCount);
+
+                nuevoTd.appendChild(
+                    nuevoInput
+                );
+
+                tdAcciones.before(
+                    nuevoTd
+                );
+            });
+
+            calculateAverages();
+        }
+    );
+
+    // =====================================
     // ELIMINAR ÚLTIMA EVALUACIÓN
-    // ==========================================
+    // =====================================
 
     document.getElementById(
         'btn-remove-note'
-    ).addEventListener('click', function () {
+    ).addEventListener(
+        'click',
+        async function () {
 
-        if (noteCount <= 1) {
+            if (noteCount <= 1) {
 
-            alert(
-                'Debe mantener al menos una columna de notas.'
-            );
+                mostrarMensaje(
+                    'warning',
+                    'No se puede eliminar',
+                    'Debe mantenerse al menos una columna de evaluación.'
+                );
 
-            return;
-        }
+                return;
+            }
 
-        if (noteCount <= savedCount) {
+            const numeroEliminar =
+                noteCount;
 
-            const confirmado = confirm(
-                'Esta evaluación puede contener notas guardadas. ' +
-                'Si guardas después de quitarla, ' +
-                'se eliminarán definitivamente esas notas. ' +
-                '¿Deseas continuar?'
-            );
+            const esGuardada =
+                noteCount <= savedCount;
+
+            let confirmado = true;
+
+            if (esGuardada) {
+
+                confirmado = await confirmarAccion({
+
+                    titulo:
+                        '¿Eliminar Nota ' +
+                        numeroEliminar + '?',
+
+                    descripcion:
+                        'Esta evaluación puede contener calificaciones guardadas. ' +
+                        'Si confirmas y luego guardas los cambios, ' +
+                        'se eliminará definitivamente de la base de datos.',
+
+                    boton:
+                        'Eliminar columna',
+
+                    icono:
+                        '🗑',
+
+                    tipo:
+                        'danger'
+                });
+            }
 
             if (!confirmado) {
                 return;
             }
+
+            const encabezados =
+                tabla.querySelectorAll(
+                    '.col-nota'
+                );
+
+            encabezados[
+                encabezados.length - 1
+            ].remove();
+
+            rows.forEach(function (row) {
+
+                const tdAcciones =
+                    row.querySelector(
+                        '.td-acciones'
+                    );
+
+                tdAcciones
+                    .previousElementSibling
+                    .remove();
+            });
+
+            noteCount--;
+
+            calculateAverages();
         }
+    );
 
-        const encabezados =
-            tabla.querySelectorAll('.col-nota');
-
-        encabezados[
-            encabezados.length - 1
-        ].remove();
-
-        rows.forEach(function (row) {
-
-            const tdAcciones =
-                row.querySelector('.td-acciones');
-
-            const ultimaNota =
-                tdAcciones.previousElementSibling;
-
-            ultimaNota.remove();
-        });
-
-        noteCount--;
-
-        calculateAverages();
-    });
-
-    // ==========================================
-    // OBTENER TOKEN CSRF
-    // ==========================================
+    // =====================================
+    // TOKEN CSRF
+    // =====================================
 
     function obtenerCSRF() {
 
-        const cookies = document.cookie.split(';');
+        const cookies =
+            document.cookie.split(';');
 
         for (const cookie of cookies) {
 
             const partes =
                 cookie.trim().split('=');
 
-            if (partes[0] === 'csrftoken') {
+            if (
+                partes[0] === 'csrftoken'
+            ) {
 
                 return decodeURIComponent(
                     partes.slice(1).join('=')
@@ -869,146 +1623,232 @@ document.addEventListener('DOMContentLoaded', function () {
         return '';
     }
 
-    // ==========================================
-    // GUARDAR CALIFICACIONES EN MYSQL
-    // ==========================================
+    // =====================================
+    // GUARDAR NOTAS
+    // =====================================
 
-    saveBtn.addEventListener('click', async function () {
+    saveBtn.addEventListener(
+        'click',
+        async function () {
 
-        // Evitar guardar notas si se cambió
-        // el selector sin volver a buscar.
-        if (
-            String(cursoIdInput.value) !==
-                String(cursoCargado) ||
-            String(asignaturaSelect.value) !==
-                String(asignaturaCargada)
-        ) {
-
-            alert(
-                'Cambiaste el curso o la asignatura. ' +
-                'Presiona Buscar antes de guardar notas.'
-            );
-
-            return;
-        }
-
-        calculateAverages();
-
-        const notasInvalidas =
-            tabla.querySelector(
-                '.grade-input.invalid'
-            );
-
-        if (notasInvalidas) {
-
-            alert(
-                'Corrige las notas inválidas. ' +
-                'Utiliza valores entre 1.0 y 7.0, ' +
-                'con máximo un decimal.'
-            );
-
-            notasInvalidas.focus();
-
-            return;
-        }
-
-        // Preparar notas por alumno.
-        const notas = {};
-
-        rows.forEach(function (row) {
-
-            const rut = row.dataset.rut;
-
-            notas[rut] = Array.from(
-                row.querySelectorAll('.grade-input')
-            ).map(function (input) {
-
-                return input.value
-                    .trim()
-                    .replace(',', '.');
-            });
-        });
-
-        // Preparar columnas consecutivas.
-        const columnas = Array.from(
-            { length: noteCount },
-            function (_, indice) {
-                return indice + 1;
-            }
-        );
-
-        saveBtn.disabled = true;
-
-        mensaje.className = 'notice-box';
-        mensaje.textContent = 'Guardando notas...';
-
-        try {
-
-            const respuesta = await fetch(
-                window.location.pathname,
-                {
-                    method: 'POST',
-
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': obtenerCSRF()
-                    },
-
-                    credentials: 'same-origin',
-
-                    body: JSON.stringify({
-                        curso_id: cursoCargado,
-                        asignatura_id: asignaturaCargada,
-                        columnas: columnas,
-                        notas: notas
-                    })
-                }
-            );
-
-            const resultado =
-                await respuesta.json();
+            // Evitar guardar si cambiaron
+            // los filtros sin buscar.
 
             if (
-                !respuesta.ok ||
-                !resultado.ok
+                String(cursoIdInput.value) !==
+                String(cursoCargado) ||
+
+                String(asignaturaSelect.value) !==
+                String(asignaturaCargada)
             ) {
 
-                throw new Error(
-                    resultado.error ||
-                    'No se pudieron guardar las notas.'
+                mostrarMensaje(
+                    'warning',
+                    'Filtros modificados',
+                    'Presiona Buscar antes de guardar notas de otra selección.'
                 );
+
+                return;
             }
 
-            savedCount = noteCount;
+            calculateAverages();
 
-            mensaje.className =
-                'notice-box success';
+            // =====================================
+            // VALIDAR CALIFICACIONES
+            // =====================================
 
-            mensaje.textContent =
-                resultado.mensaje ||
-                'Calificaciones guardadas correctamente.';
+            const notasInvalidas =
+                tabla.querySelector(
+                    '.grade-input.invalid'
+                );
 
-        } catch (error) {
+            if (notasInvalidas) {
 
-            mensaje.className =
-                'notice-box error';
+                mostrarMensaje(
+                    'warning',
+                    'Hay notas inválidas',
+                    'Corrige las notas. Utiliza valores entre 1.0 y 7.0, con máximo un decimal.'
+                );
 
-            mensaje.textContent =
-                error.message;
+                notasInvalidas.focus();
 
-        } finally {
+                return;
+            }
 
-            saveBtn.disabled = false;
+            // =====================================
+            // VERIFICAR CAMBIOS
+            // =====================================
+
+            if (!existenCambios()) {
+
+                mostrarMensaje(
+                    'info',
+                    'No se encontraron cambios',
+                    'Las calificaciones ya están actualizadas. No hay modificaciones pendientes por guardar.'
+                );
+
+                return;
+            }
+
+            // Revalidar tras la confirmación.
+            calculateAverages();
+
+            if (tabla.querySelector('.grade-input.invalid')) {
+
+                mostrarMensaje(
+                    'warning',
+                    'Hay notas inválidas',
+                    'Corrige las notas antes de guardar.'
+                );
+
+                return;
+            }
+
+            const estadoActual =
+                obtenerEstadoActual();
+
+            const notas =
+                estadoActual.notas;
+
+            const columnas =
+                estadoActual.columnas;
+
+            saveBtn.disabled = true;
+
+            saveBtn.textContent =
+                'Guardando...';
+
+            mensaje.style.display =
+                'none';
+
+            try {
+
+                const respuesta =
+                    await fetch(
+                        window.location.pathname,
+                        {
+
+                            method: 'POST',
+
+                            headers: {
+
+                                'Content-Type':
+                                    'application/json',
+
+                                'X-CSRFToken':
+                                    obtenerCSRF()
+                            },
+
+                            credentials:
+                                'same-origin',
+
+                            body: JSON.stringify({
+
+                                curso_id:
+                                    cursoCargado,
+
+                                asignatura_id:
+                                    asignaturaCargada,
+
+                                columnas:
+                                    columnas,
+
+                                notas:
+                                    notas
+                            })
+                        }
+                    );
+
+                let resultado;
+
+                try {
+
+                    resultado =
+                        await respuesta.json();
+
+                } catch (error) {
+
+                    throw new Error(
+                        'El servidor devolvió una respuesta inválida.'
+                    );
+                }
+
+                if (
+                    !respuesta.ok ||
+                    !resultado.ok
+                ) {
+
+                    throw new Error(
+                        resultado.error ||
+                        'No se pudieron guardar las notas.'
+                    );
+                }
+
+                // =====================================
+                // ACTUALIZAR ESTADO GUARDADO
+                // =====================================
+
+                estadoGuardado =
+                    JSON.stringify(
+                        estadoActual
+                    );
+
+                savedCount =
+                    noteCount;
+
+                // =====================================
+                // MENSAJE SEGÚN RESPUESTA
+                // =====================================
+
+                if (
+                    resultado.sin_cambios === true ||
+                    resultado.cambios === 0
+                ) {
+
+                    mostrarMensaje(
+                        'info',
+                        'No se encontraron cambios',
+                        resultado.mensaje ||
+                        'Las calificaciones ya están actualizadas.'
+                    );
+
+                } else {
+
+                    mostrarMensaje(
+                        'success',
+                        'Notas guardadas correctamente',
+                        resultado.mensaje ||
+                        'Las calificaciones fueron registradas correctamente.'
+                    );
+                }
+
+            } catch (error) {
+
+                mostrarMensaje(
+                    'error',
+                    'No se pudieron guardar las notas',
+                    error.message
+                );
+
+            } finally {
+
+                saveBtn.disabled =
+                    false;
+
+                saveBtn.textContent =
+                    '✓ Guardar Notas';
+            }
         }
-    });
+    );
 
-    // ==========================================
-    // CALCULAR AL CARGAR LA PÁGINA
-    // ==========================================
+    // =====================================
+    // CÁLCULO INICIAL
+    // =====================================
 
     calculateAverages();
 
 });
+
 </script>
 
 {% endblock %}

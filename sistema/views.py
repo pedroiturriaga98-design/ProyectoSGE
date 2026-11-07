@@ -182,24 +182,69 @@ def validar_rut(rut_str):
 # Vistas para el portal de apoderados
 
 
+
 @require_role([3])
 def apoderado_inicio(request):
     from .models import Alumno
 
-    # Obtener el RUT del apoderado que inició sesión.
     rut_apoderado = request.session.get('usuario_rut')
 
-    # Consultar únicamente los alumnos asociados al apoderado.
-    alumnos = (
+    # Alumnos asociados al apoderado.
+    # También recuperamos al profesor jefe de cada curso.
+    alumnos = list(
         Alumno.objects
         .filter(usuario_rut_id=rut_apoderado)
-        .select_related('curso_id_curso')
+        .select_related(
+            'curso_id_curso',
+            'curso_id_curso__usuario_rut'
+        )
         .order_by('nombre_completo')
     )
 
+    profesores_jefes = []
+    cursos_agregados = set()
+
+    for alumno in alumnos:
+        curso = alumno.curso_id_curso
+
+        # Evitar repetir al profesor si dos hijos
+        # pertenecen al mismo curso.
+        if curso.id_curso in cursos_agregados:
+            continue
+
+        cursos_agregados.add(curso.id_curso)
+
+        profesor = curso.usuario_rut
+
+        if profesor:
+            nombre_completo = ' '.join(
+                parte for parte in [
+                    profesor.nombre,
+                    profesor.apellido_paterno,
+                    profesor.apellido_materno
+                ]
+                if parte
+            )
+
+            profesores_jefes.append({
+                'nombre': nombre_completo or 'Sin nombre',
+                'correo': profesor.correo,
+                'curso': curso.nombre_curso,
+                'alumno': alumno.nombre_completo,
+            })
+        else:
+            profesores_jefes.append({
+                'nombre': 'Profesor jefe no asignado',
+                'correo': None,
+                'curso': curso.nombre_curso,
+                'alumno': alumno.nombre_completo,
+            })
+
     context = {
         'alumnos': alumnos,
-        'total_alumnos': alumnos.count(),
+        'apoderado_alumnos': alumnos,
+        'total_alumnos': len(alumnos),
+        'profesores_jefes': profesores_jefes,
     }
 
     return render(
@@ -2131,6 +2176,7 @@ from sistema.models import Curso, Alumno, AsignaturaCurso, Evaluacion, Calificac
 
 
 
+
 @require_role([2])
 @require_http_methods(["GET", "POST"])
 def profesor_notas(request):
@@ -2159,13 +2205,9 @@ def profesor_notas(request):
             "error": "La sesión del profesor no es válida."
         }, status=403)
 
-    # ==================================================
+    # ==========================================
     # 1. PERMISOS DEL PROFESOR
-    # ==================================================
-
-    # Puede acceder a:
-    # - Las asignaturas que tiene asignadas.
-    # - Todas las asignaturas de su curso de jefatura.
+    # ==========================================
 
     relaciones_permitidas = (
         AsignaturaCurso.objects.filter(
@@ -2179,9 +2221,9 @@ def profesor_notas(request):
         .distinct()
     )
 
-    # ==================================================
-    # 2. GUARDAR, EDITAR Y ELIMINAR CALIFICACIONES
-    # ==================================================
+    # ==========================================
+    # 2. GUARDAR NOTAS Y EVALUACIONES
+    # ==========================================
 
     if request.method == "POST":
 
@@ -2196,8 +2238,7 @@ def profesor_notas(request):
 
             if (
                 not isinstance(columnas, list)
-                or not columnas
-                or len(columnas) > 40
+                or not 1 <= len(columnas) <= 40
                 or not isinstance(notas, dict)
             ):
                 raise ValueError("Datos inválidos.")
@@ -2218,7 +2259,6 @@ def profesor_notas(request):
                 "error": "Datos de solicitud inválidos."
             }, status=400)
 
-        # Validación de permisos en el servidor.
         relacion = relaciones_permitidas.filter(
             id_asig_curso=relacion_id,
             curso_id_curso_id=curso_id
@@ -2233,7 +2273,6 @@ def profesor_notas(request):
                 )
             }, status=403)
 
-        # Obtener alumnos matriculados.
         ruts_validos = set(
             Alumno.objects.filter(
                 curso_id_curso_id=curso_id
@@ -2249,9 +2288,9 @@ def profesor_notas(request):
                 )
             }, status=400)
 
-        # ==================================================
-        # 3. VALIDAR LAS NOTAS
-        # ==================================================
+        # ==========================================
+        # 3. VALIDAR CALIFICACIONES
+        # ==========================================
 
         notas_procesadas = {}
 
@@ -2279,7 +2318,7 @@ def profesor_notas(request):
                         str(valor).replace(",", ".")
                     )
 
-                except InvalidOperation:
+                except (InvalidOperation, ValueError):
                     return JsonResponse({
                         "ok": False,
                         "error": (
@@ -2301,21 +2340,17 @@ def profesor_notas(request):
                         )
                     }, status=400)
 
-                notas_procesadas[(rut, numero)] = float(
-                    numero_nota
-                )
+                notas_procesadas[(rut, numero)] = numero_nota
 
-        # ==================================================
-        # 4. TRANSACCIÓN MYSQL
-        # ==================================================
+        # ==========================================
+        # 4. GUARDAR CAMBIOS EN MYSQL
+        # ==========================================
 
         try:
             with transaction.atomic():
 
-                # Bloqueo por asignatura para evitar
-                # guardados simultáneos en la misma relación.
+                # Bloqueo por asignatura.
                 with connection.cursor() as cursor:
-
                     cursor.execute(
                         """
                         SELECT id_asig_curso
@@ -2337,7 +2372,6 @@ def profesor_notas(request):
 
                     max_id = cursor.fetchone()[0]
 
-                # Obtener evaluaciones existentes.
                 evaluaciones_existentes = {
                     evaluacion.numero_evaluacion: evaluacion
                     for evaluacion in Evaluacion.objects.filter(
@@ -2345,39 +2379,54 @@ def profesor_notas(request):
                     )
                 }
 
-                # Crear evaluaciones faltantes.
+                cambios = 0
+                evaluaciones_creadas = 0
+                evaluaciones_eliminadas = 0
+                notas_creadas = 0
+                notas_actualizadas = 0
+                notas_eliminadas = 0
+
+                # Crear columnas nuevas.
                 for numero in columnas:
 
                     if numero not in evaluaciones_existentes:
 
-                        nueva_evaluacion = Evaluacion.objects.create(
+                        evaluacion = Evaluacion.objects.create(
                             asignatura_curso_id_asig_curso_id=relacion_id,
                             numero_evaluacion=numero
                         )
 
-                        evaluaciones_existentes[numero] = (
-                            nueva_evaluacion
-                        )
+                        evaluaciones_existentes[numero] = evaluacion
 
-                # Eliminar evaluaciones quitadas.
+                        cambios += 1
+                        evaluaciones_creadas += 1
+
+                # Eliminar columnas que ya no existen.
                 for numero, evaluacion in list(
                     evaluaciones_existentes.items()
                 ):
 
                     if numero not in columnas:
 
-                        Calificacion.objects.filter(
-                            asignatura_curso_id_asig_curso_id=relacion_id,
-                            evaluacion_id_evaluacion_id=(
-                                evaluacion.id_evaluacion
-                            )
-                        ).delete()
+                        calificaciones_eliminadas, _ = (
+                            Calificacion.objects.filter(
+                                asignatura_curso_id_asig_curso_id=relacion_id,
+                                evaluacion_id_evaluacion_id=(
+                                    evaluacion.id_evaluacion
+                                )
+                            ).delete()
+                        )
+
+                        notas_eliminadas += calificaciones_eliminadas
 
                         evaluacion.delete()
 
                         del evaluaciones_existentes[numero]
 
-                # Recuperar calificaciones existentes.
+                        cambios += 1
+                        evaluaciones_eliminadas += 1
+
+                # Obtener notas existentes.
                 calificaciones_actuales = {}
 
                 registros = (
@@ -2391,9 +2440,7 @@ def profesor_notas(request):
 
                 for calificacion in registros:
 
-                    evaluacion = (
-                        calificacion.evaluacion_id_evaluacion
-                    )
+                    evaluacion = calificacion.evaluacion_id_evaluacion
 
                     if evaluacion is None:
                         continue
@@ -2405,26 +2452,27 @@ def profesor_notas(request):
 
                     if clave in calificaciones_actuales:
                         raise ValueError(
-                            "Existen calificaciones duplicadas "
-                            "en la base de datos."
+                            "Existen calificaciones duplicadas."
                         )
 
-                    calificaciones_actuales[clave] = (
-                        calificacion
-                    )
+                    calificaciones_actuales[clave] = calificacion
 
-                # Crear o actualizar calificaciones.
+                # Crear o modificar notas.
                 for clave, nota in notas_procesadas.items():
 
                     rut_alumno, numero = clave
 
                     if clave in calificaciones_actuales:
 
-                        calificacion = (
-                            calificaciones_actuales.pop(clave)
+                        calificacion = calificaciones_actuales.pop(clave)
+
+                        valor_actual = (
+                            Decimal(str(calificacion.valor_nota))
+                            if calificacion.valor_nota is not None
+                            else None
                         )
 
-                        if calificacion.valor_nota != nota:
+                        if valor_actual != nota:
 
                             calificacion.valor_nota = nota
                             calificacion.fecha_ingreso = (
@@ -2437,6 +2485,9 @@ def profesor_notas(request):
                                     "fecha_ingreso"
                                 ]
                             )
+
+                            cambios += 1
+                            notas_actualizadas += 1
 
                     else:
 
@@ -2455,11 +2506,16 @@ def profesor_notas(request):
                             )
                         )
 
-                # Eliminar notas que el profesor dejó vacías.
-                for calificacion in (
-                    calificaciones_actuales.values()
-                ):
+                        cambios += 1
+                        notas_creadas += 1
+
+                # Eliminar notas que quedaron vacías.
+                for calificacion in calificaciones_actuales.values():
+
                     calificacion.delete()
+
+                    cambios += 1
+                    notas_eliminadas += 1
 
         except Exception:
             return JsonResponse({
@@ -2470,16 +2526,36 @@ def profesor_notas(request):
                 )
             }, status=500)
 
+        # ==========================================
+        # 5. RESPUESTA SEGÚN LOS CAMBIOS
+        # ==========================================
+
+        if cambios == 0:
+            return JsonResponse({
+                "ok": True,
+                "sin_cambios": True,
+                "cambios": 0,
+                "mensaje": (
+                    "No se encontraron cambios. "
+                    "Las calificaciones ya están actualizadas."
+                )
+            })
+
         return JsonResponse({
             "ok": True,
-            "mensaje": (
-                "Calificaciones guardadas correctamente."
-            )
+            "sin_cambios": False,
+            "cambios": cambios,
+            "evaluaciones_creadas": evaluaciones_creadas,
+            "evaluaciones_eliminadas": evaluaciones_eliminadas,
+            "notas_creadas": notas_creadas,
+            "notas_actualizadas": notas_actualizadas,
+            "notas_eliminadas": notas_eliminadas,
+            "mensaje": "Calificaciones guardadas correctamente."
         })
 
-    # ==================================================
-    # 5. CURSOS DE JEFATURA
-    # ==================================================
+    # ==========================================
+    # 6. CURSOS DE JEFATURA
+    # ==========================================
 
     cursos_jefatura = list(
         Curso.objects.filter(
@@ -2487,17 +2563,15 @@ def profesor_notas(request):
         ).order_by("nombre_curso")
     )
 
-    # ==================================================
-    # 6. ASIGNATURAS ASIGNADAS DIRECTAMENTE
-    # ==================================================
+    # ==========================================
+    # 7. ASIGNATURAS PROPIAS
+    # ==========================================
 
     asignaturas_propias = (
         AsignaturaCurso.objects.filter(
             usuario_rut_id=rut_profesor
         )
-        .select_related(
-            "asignatura_id_asignatura"
-        )
+        .select_related("asignatura_id_asignatura")
         .order_by(
             "asignatura_id_asignatura__nombre_asignatura"
         )
@@ -2518,7 +2592,6 @@ def profesor_notas(request):
             )
         })
 
-    # Cursos donde imparte alguna asignatura.
     cursos_asignados = Curso.objects.filter(
         id_curso__in=asignaturas_propias.values_list(
             "curso_id_curso_id",
@@ -2526,9 +2599,9 @@ def profesor_notas(request):
         )
     ).order_by("nombre_curso")
 
-    # ==================================================
-    # 7. TODOS LOS CURSOS Y ASIGNATURAS PERMITIDOS
-    # ==================================================
+    # ==========================================
+    # 8. CURSOS Y ASIGNATURAS DISPONIBLES
+    # ==========================================
 
     relaciones = list(
         relaciones_permitidas.order_by(
@@ -2561,9 +2634,9 @@ def profesor_notas(request):
             )
         })
 
-    # ==================================================
-    # 8. SELECCIÓN DE CURSO Y ASIGNATURA
-    # ==================================================
+    # ==========================================
+    # 9. SELECCIÓN DEL CURSO
+    # ==========================================
 
     curso_id = request.GET.get("curso", "").strip()
 
@@ -2576,21 +2649,16 @@ def profesor_notas(request):
     if modo not in ("asignado", "jefatura"):
         modo = ""
 
-    # Si no hay curso seleccionado, usar uno inicial.
     if not curso_id:
 
         if cursos_jefatura:
-            curso_id = str(
-                cursos_jefatura[0].id_curso
-            )
+            curso_id = str(cursos_jefatura[0].id_curso)
 
         else:
             primer_curso = cursos.first()
 
             if primer_curso:
-                curso_id = str(
-                    primer_curso.id_curso
-                )
+                curso_id = str(primer_curso.id_curso)
 
     curso_seleccionado = None
 
@@ -2606,19 +2674,16 @@ def profesor_notas(request):
     columnas = [1, 2, 3]
     notas_guardadas = {}
 
-    # ==================================================
-    # 9. DETERMINAR LAS ASIGNATURAS DISPONIBLES
-    # ==================================================
+    # ==========================================
+    # 10. SELECCIÓN DE ASIGNATURA
+    # ==========================================
 
     if curso_seleccionado:
 
         es_jefatura = (
-            curso_seleccionado.usuario_rut_id
-            == rut_profesor
+            curso_seleccionado.usuario_rut_id == rut_profesor
         )
 
-        # Jefatura: todas las asignaturas del curso.
-        # Asignado: solamente las asignaturas propias.
         if modo == "jefatura" and es_jefatura:
 
             asignaturas_disponibles = (
@@ -2650,14 +2715,11 @@ def profesor_notas(request):
             )
         )
 
-        # Seleccionar la asignatura solicitada.
         if asignatura_curso_id.isdigit():
 
             asignatura_seleccionada = (
                 asignaturas_disponibles.filter(
-                    id_asig_curso=int(
-                        asignatura_curso_id
-                    )
+                    id_asig_curso=int(asignatura_curso_id)
                 ).first()
             )
 
@@ -2667,9 +2729,9 @@ def profesor_notas(request):
                 asignaturas_disponibles.first()
             )
 
-        # ==================================================
-        # 10. CARGAR ALUMNOS Y EVALUACIONES
-        # ==================================================
+        # ==========================================
+        # 11. RECUPERAR EVALUACIONES DE MYSQL
+        # ==========================================
 
         if asignatura_seleccionada:
 
@@ -2697,12 +2759,15 @@ def profesor_notas(request):
                     for evaluacion in evaluaciones
                 )
 
-                columnas = list(
-                    range(
-                        1,
-                        max(3, max_numero) + 1
-                    )
-                )
+                # CORRECCIÓN:
+                # Respetar exactamente las evaluaciones
+                # que se encuentran guardadas en MySQL.
+                columnas = list(range(1, max_numero + 1))
+
+            else:
+
+                # Asignatura nueva, sin evaluaciones.
+                columnas = [1, 2, 3]
 
             numeros = {
                 evaluacion.id_evaluacion: (
@@ -2711,9 +2776,9 @@ def profesor_notas(request):
                 for evaluacion in evaluaciones
             }
 
-            # ==================================================
-            # 11. RECUPERAR NOTAS GUARDADAS EN MYSQL
-            # ==================================================
+            # ==========================================
+            # 12. RECUPERAR NOTAS GUARDADAS
+            # ==========================================
 
             calificaciones = Calificacion.objects.filter(
                 asignatura_curso_id_asig_curso=(
@@ -2732,15 +2797,18 @@ def profesor_notas(request):
                     calificacion.evaluacion_id_evaluacion_id
                 ]
 
+                if calificacion.valor_nota is None:
+                    continue
+
                 notas_guardadas.setdefault(
                     rut_alumno, {}
                 )[
                     str(numero_evaluacion)
                 ] = f"{calificacion.valor_nota:.1f}"
 
-    # ==================================================
-    # 12. ENVIAR DATOS AL HTML
-    # ==================================================
+    # ==========================================
+    # 13. ENVIAR INFORMACIÓN AL HTML
+    # ==========================================
 
     return render(
         request,
@@ -2749,28 +2817,20 @@ def profesor_notas(request):
             "cursos": cursos,
             "cursos_asignados": cursos_asignados,
             "cursos_jefatura": cursos_jefatura,
-
-            "asignaturas_por_curso": (
-                asignaturas_por_curso
-            ),
-
+            "asignaturas_por_curso": asignaturas_por_curso,
             "asignaturas_propias_por_curso": (
                 asignaturas_propias_por_curso
             ),
-
             "curso_seleccionado": curso_seleccionado,
-
             "asignatura_seleccionada": (
                 asignatura_seleccionada
             ),
-
             "alumnos": alumnos,
             "columnas": columnas,
             "notas_guardadas": notas_guardadas,
             "modo": modo,
         }
     )
-
 
 
 @require_role([2])

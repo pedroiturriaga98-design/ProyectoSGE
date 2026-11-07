@@ -2,189 +2,442 @@
 {% extends 'base_profesor.html' %}
 
 {% block content %}
+
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js"></script>
 
 <style>
-.cal-box {
-    background: #fff;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 16px rgba(15,23,42,.06);
-}
-.cal-title { color: #17365d; font-weight: 700; }
-.cal-muted { color: #64748b; }
-.fc .fc-button-primary {
-    background: #17365d;
-    border-color: #17365d;
-}
-.fc-event { cursor: pointer; }
-.cal-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin: 18px 0;
-}
-.cal-legend span {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: .85rem;
-}
-.cal-dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    display: inline-block;
-}
+    .cal-box,
+    .events-list-container {
+        background: #fff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, .06);
+    }
+
+    .cal-box {
+        margin-bottom: 25px;
+    }
+
+    .cal-title {
+        color: #17365d;
+        font-weight: 700;
+    }
+
+    .cal-muted {
+        color: #64748b;
+    }
+
+    .fc .fc-button-primary {
+        background: #17365d;
+        border-color: #17365d;
+    }
+
+    .fc .fc-button-primary:hover,
+    .fc .fc-button-primary:focus {
+        background: #102a4a;
+        border-color: #102a4a;
+    }
+
+    .fc-event {
+        cursor: pointer;
+    }
+
+    .cal-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 18px 0;
+    }
+
+    .cal-legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: .85rem;
+    }
+
+    .cal-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    /* PRÓXIMOS EVENTOS */
+
+    .events-list-title {
+        color: #17365d;
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    .event-list-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .event-list-item:last-child {
+        border-bottom: none;
+    }
+
+    .event-date-badge {
+        min-width: 75px;
+        padding: 12px 8px;
+        border-radius: 10px;
+        color: #ffffff;
+        text-align: center;
+        font-weight: 700;
+        font-size: .85rem;
+    }
+
+    .event-details {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .event-details h4 {
+        color: #17365d;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .event-details p {
+        color: #64748b;
+        font-size: .9rem;
+        margin-bottom: 4px;
+        white-space: pre-wrap;
+    }
+
+    .event-details small {
+        color: #64748b;
+    }
+
+    .calendar-message {
+        color: #64748b;
+        padding: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+        .cal-box,
+        .events-list-container {
+            padding: 15px;
+        }
+
+        .fc .fc-toolbar {
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .fc .fc-toolbar-title {
+            font-size: 1.15rem;
+        }
+    }
 </style>
 
+<!-- CALENDARIO -->
+
 <div class="cal-box">
+
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+
         <div>
             <h2 class="cal-title">Calendario de Eventos</h2>
+
             <p class="cal-muted">
                 Consulta las actividades de todos los profesores
                 y publica eventos de tus asignaturas.
             </p>
         </div>
+
         <button class="btn btn-warning fw-bold" id="nuevoEvento">
             + Crear evento
         </button>
+
     </div>
 
     <div class="cal-legend">
-        <span><i class="cal-dot" style="background:#2563eb"></i> Evaluaciones</span>
-        <span><i class="cal-dot" style="background:#f97316"></i> Reuniones</span>
-        <span><i class="cal-dot" style="background:#8b5cf6"></i> Extracurriculares</span>
-        <span><i class="cal-dot" style="background:#16a34a"></i> Colegio</span>
-        <span><i class="cal-dot" style="background:#dc2626"></i> Feriados</span>
+        <span>
+            <i class="cal-dot" style="background:#2563eb"></i>
+            Evaluaciones
+        </span>
+
+        <span>
+            <i class="cal-dot" style="background:#f97316"></i>
+            Reuniones
+        </span>
+
+        <span>
+            <i class="cal-dot" style="background:#8b5cf6"></i>
+            Extracurriculares
+        </span>
+
+        <span>
+            <i class="cal-dot" style="background:#16a34a"></i>
+            Colegio
+        </span>
+
+        <span>
+            <i class="cal-dot" style="background:#dc2626"></i>
+            Feriados
+        </span>
     </div>
 
     <div id="calendar"></div>
+
 </div>
 
+<!-- PRÓXIMOS EVENTOS -->
+
+<div class="events-list-container">
+
+    <h3 class="events-list-title">
+        Próximos Eventos
+    </h3>
+
+    <div id="proximosEventos">
+        <p class="calendar-message">
+            Cargando eventos...
+        </p>
+    </div>
+
+</div>
+
+<!-- MODAL CREAR / EDITAR EVENTO -->
+
 <div class="modal fade" id="modalEvento" tabindex="-1">
+
     <div class="modal-dialog modal-dialog-centered">
+
         <div class="modal-content">
+
             <form id="formEvento">
+
                 {% csrf_token %}
+
                 <div class="modal-header">
-                    <h5 id="modalTitulo" class="modal-title">Crear evento</h5>
-                    <button type="button" class="btn-close"
-                            data-bs-dismiss="modal"></button>
+
+                    <h5 id="modalTitulo" class="modal-title">
+                        Crear evento
+                    </h5>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
+
                 </div>
 
                 <div class="modal-body">
+
                     <input type="hidden" id="eventoId">
 
                     <div class="mb-3">
                         <label class="form-label">Título</label>
-                        <input id="titulo" class="form-control"
-                               maxlength="150" required>
+
+                        <input
+                            id="titulo"
+                            class="form-control"
+                            maxlength="150"
+                            required>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Categoría</label>
+
                         <select id="tipo" class="form-select" required>
-                            <option value="evaluacion">Evaluación / Prueba</option>
-                            <option value="reunion">Reunión de apoderados</option>
-                            <option value="extracurricular">Extracurricular</option>
-                            <option value="colegio">Evento del colegio</option>
-                            <option value="feriado">Feriado / Suspensión</option>
+                            <option value="evaluacion">
+                                Evaluación / Prueba
+                            </option>
+
+                            <option value="reunion">
+                                Reunión de apoderados
+                            </option>
+
+                            <option value="extracurricular">
+                                Extracurricular
+                            </option>
+
+                            <option value="colegio">
+                                Evento del colegio
+                            </option>
+
+                            <option value="feriado">
+                                Feriado / Suspensión
+                            </option>
                         </select>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Dirigido a</label>
+
                         <select id="alcance" class="form-select">
-                            <option value="asignatura">Una asignatura y curso</option>
-                            <option value="curso">Todo el curso</option>
+                            <option value="asignatura">
+                                Una asignatura y curso
+                            </option>
+
+                            <option value="curso">
+                                Todo el curso
+                            </option>
                         </select>
                     </div>
 
                     <div class="mb-3" id="grupoAsignatura">
-                        <label class="form-label">Asignatura y curso</label>
+
+                        <label class="form-label">
+                            Asignatura y curso
+                        </label>
+
                         <select id="asignacion" class="form-select">
                             {% for a in asignaciones %}
-                            <option value="{{ a.id }}">{{ a.nombre }}</option>
+                                <option value="{{ a.id }}">
+                                    {{ a.nombre }}
+                                </option>
                             {% endfor %}
                         </select>
+
                     </div>
 
                     <div class="mb-3 d-none" id="grupoCurso">
+
                         <label class="form-label">Curso</label>
+
                         <select id="curso" class="form-select">
                             {% for curso in cursos %}
-                            <option value="{{ curso.id }}">
-                                {{ curso.nombre }}
-                            </option>
+                                <option value="{{ curso.id }}">
+                                    {{ curso.nombre }}
+                                </option>
                             {% endfor %}
                         </select>
+
                         <small class="text-muted">
-                            Selecciona una asignatura del curso.
-                            Se utilizará únicamente el curso asociado.
+                            Solo puedes publicar eventos para
+                            los cursos donde eres profesor jefe.
                         </small>
+
                     </div>
 
                     <div class="row g-2 mb-3">
+
                         <div class="col-6">
                             <label class="form-label">Inicio</label>
-                            <input id="inicio" type="datetime-local"
-                                   class="form-control" required>
+
+                            <input
+                                id="inicio"
+                                type="datetime-local"
+                                class="form-control"
+                                required>
                         </div>
+
                         <div class="col-6">
                             <label class="form-label">Término</label>
-                            <input id="fin" type="datetime-local"
-                                   class="form-control" required>
+
+                            <input
+                                id="fin"
+                                type="datetime-local"
+                                class="form-control"
+                                required>
                         </div>
+
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Lugar</label>
-                        <input id="lugar" class="form-control"
-                               maxlength="150">
+
+                        <input
+                            id="lugar"
+                            class="form-control"
+                            maxlength="150">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Descripción</label>
-                        <textarea id="descripcion" class="form-control"
-                                  rows="3"></textarea>
+
+                        <textarea
+                            id="descripcion"
+                            class="form-control"
+                            rows="3"></textarea>
                     </div>
 
-                    <div id="mensaje" class="alert alert-danger d-none"></div>
+                    <div
+                        id="mensaje"
+                        class="alert alert-danger d-none">
+                    </div>
+
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" id="eliminar"
-                            class="btn btn-outline-danger me-auto d-none">
+
+                    <button
+                        type="button"
+                        id="eliminar"
+                        class="btn btn-outline-danger me-auto d-none">
                         Eliminar
                     </button>
-                    <button type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" id="guardar"
-                            class="btn btn-warning fw-bold">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="guardar"
+                        class="btn btn-warning fw-bold">
                         Guardar evento
                     </button>
+
                 </div>
+
             </form>
+
         </div>
+
     </div>
+
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
     const $ = id => document.getElementById(id);
+
     const modal = new bootstrap.Modal($('modalEvento'));
-    const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    const csrf = document.querySelector(
+        '[name=csrfmiddlewaretoken]'
+    ).value;
+
     const rutActual = "{{ request.session.usuario_rut|escapejs }}";
+
+    const urlEventos = "{% url 'profesor_calendario_eventos' %}";
+
+    const colores = {
+        evaluacion: '#2563eb',
+        reunion: '#f97316',
+        extracurricular: '#8b5cf6',
+        colegio: '#16a34a',
+        feriado: '#dc2626'
+    };
+
+    const contenedorProximos = $('proximosEventos');
 
     function localInput(fecha) {
         const d = new Date(fecha);
+
         const ajustada = new Date(
             d.getTime() - d.getTimezoneOffset() * 60000
         );
+
         return ajustada.toISOString().slice(0, 16);
     }
 
@@ -195,176 +448,455 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function alternarAlcance() {
         const esCurso = $('alcance').value === 'curso';
-        $('grupoAsignatura').classList.toggle('d-none', esCurso);
-        $('grupoCurso').classList.toggle('d-none', !esCurso);
+
+        $('grupoAsignatura').classList.toggle(
+            'd-none', esCurso
+        );
+
+        $('grupoCurso').classList.toggle(
+            'd-none', !esCurso
+        );
     }
 
-    $('alcance').addEventListener('change', alternarAlcance);
+    $('alcance').addEventListener(
+        'change',
+        alternarAlcance
+    );
 
     function nuevo(fecha = new Date()) {
+
         $('formEvento').reset();
         $('eventoId').value = '';
+
         $('mensaje').classList.add('d-none');
         $('eliminar').classList.add('d-none');
         $('guardar').classList.remove('d-none');
+
         $('modalTitulo').textContent = 'Crear evento';
 
         const comienzo = new Date(fecha);
+
         if (comienzo.getHours() === 0) {
             comienzo.setHours(9, 0, 0, 0);
         }
 
         $('inicio').value = localInput(comienzo);
+
         $('fin').value = localInput(
             new Date(comienzo.getTime() + 3600000)
         );
 
         [...$('formEvento').elements].forEach(el => {
-            if (el.id !== 'eliminar') el.disabled = false;
+            if (el.id !== 'eliminar') {
+                el.disabled = false;
+            }
         });
 
         alternarAlcance();
         modal.show();
     }
 
-    const calendar = new FullCalendar.Calendar($('calendar'), {
-        initialView: 'dayGridMonth',
-        locale: 'es',
-        firstDay: 1,
-        height: 'auto',
-        headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek'
-        },
-        events: {
-            url: "{% url 'profesor_calendario_eventos' %}",
-            failure: () => alert('No se pudieron cargar los eventos.')
-        },
-        dateClick: info => nuevo(info.date),
-        eventClick: info => {
-            const e = info.event;
-            const p = e.extendedProps;
-            const propio = p.creador === rutActual &&
-                           p.alcance !== 'general';
+    // FORMATO DE FECHAS
 
-            $('formEvento').reset();
-            $('mensaje').classList.add('d-none');
-            $('eventoId').value = e.id;
-            $('titulo').value = e.title;
-            $('tipo').value = p.tipo;
-            $('alcance').value = p.alcance === 'general'
-                ? 'curso' : p.alcance;
-            $('asignacion').value = p.id_asig_curso || '';
-            if (p.id_curso) {
-                $('curso').value = String(p.id_curso);
-            }
-            $('inicio').value = localInput(e.start);
-            $('fin').value = localInput(
-                e.end || new Date(e.start.getTime() + 3600000)
+    function formatoFecha(fecha) {
+
+        if (!fecha) {
+            return 'No especificada';
+        }
+
+        return new Intl.DateTimeFormat('es-CL', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        }).format(fecha);
+    }
+
+    function obtenerColor(evento) {
+
+        return (
+            evento.backgroundColor ||
+            colores[evento.extendedProps?.tipo] ||
+            '#64748b'
+        );
+    }
+
+    function mostrarMensajeProximos(texto) {
+
+        contenedorProximos.replaceChildren();
+
+        const p = document.createElement('p');
+        p.className = 'calendar-message';
+        p.textContent = texto;
+
+        contenedorProximos.appendChild(p);
+    }
+
+    // CARGAR PRÓXIMOS EVENTOS
+
+    async function cargarProximosEventos() {
+
+        const ahora = new Date();
+        const fechaFin = new Date(ahora);
+
+        fechaFin.setDate(fechaFin.getDate() + 90);
+
+        const parametros = new URLSearchParams({
+            start: ahora.toISOString(),
+            end: fechaFin.toISOString()
+        });
+
+        try {
+
+            const response = await fetch(
+                urlEventos + '?' + parametros.toString(),
+                { credentials: 'same-origin' }
             );
-            $('lugar').value = p.lugar || '';
-            $('descripcion').value = p.descripcion || '';
 
-            alternarAlcance();
+            if (!response.ok) {
+                throw new Error(
+                    'No se pudieron consultar los eventos.'
+                );
+            }
 
-            $('modalTitulo').textContent = propio
-                ? 'Editar evento' : 'Detalle del evento';
+            const eventos = await response.json();
 
-            $('eliminar').classList.toggle('d-none', !propio);
-            $('guardar').classList.toggle('d-none', !propio);
+            if (!Array.isArray(eventos)) {
+                throw new Error(
+                    'Respuesta de eventos inválida.'
+                );
+            }
 
-            [...$('formEvento').elements].forEach(el => {
-                if (el.type !== 'hidden' && el.type !== 'button') {
-                    el.disabled = !propio;
-                }
+            const proximos = eventos
+                .filter(evento => {
+
+                    const inicio = new Date(evento.start);
+
+                    const fin = evento.end
+                        ? new Date(evento.end)
+                        : inicio;
+
+                    return (
+                        !Number.isNaN(inicio.getTime()) &&
+                        fin >= ahora
+                    );
+                })
+                .sort(
+                    (a, b) =>
+                        new Date(a.start) -
+                        new Date(b.start)
+                )
+                .slice(0, 10);
+
+            contenedorProximos.replaceChildren();
+
+            if (proximos.length === 0) {
+                mostrarMensajeProximos(
+                    'No hay próximos eventos registrados.'
+                );
+                return;
+            }
+
+            proximos.forEach(evento => {
+
+                const inicio = new Date(evento.start);
+
+                const fila = document.createElement('div');
+                fila.className = 'event-list-item';
+
+                const fechaBadge = document.createElement('div');
+                fechaBadge.className = 'event-date-badge';
+
+                fechaBadge.style.backgroundColor =
+                    obtenerColor(evento);
+
+                fechaBadge.textContent =
+                    new Intl.DateTimeFormat('es-CL', {
+                        day: 'numeric',
+                        month: 'short'
+                    }).format(inicio);
+
+                const detalles = document.createElement('div');
+                detalles.className = 'event-details';
+
+                const titulo = document.createElement('h4');
+                titulo.textContent = evento.title;
+
+                const descripcion = document.createElement('p');
+
+                descripcion.textContent =
+                    evento.extendedProps?.descripcion ||
+                    'Actividad escolar';
+
+                const fechaTexto = document.createElement('small');
+
+                fechaTexto.textContent = formatoFecha(inicio);
+
+                detalles.appendChild(titulo);
+                detalles.appendChild(descripcion);
+                detalles.appendChild(fechaTexto);
+
+                fila.appendChild(fechaBadge);
+                fila.appendChild(detalles);
+
+                contenedorProximos.appendChild(fila);
             });
 
-            modal.show();
+        } catch (err) {
+
+            console.error(
+                'Error al cargar próximos eventos:',
+                err
+            );
+
+            mostrarMensajeProximos(
+                'No se pudieron cargar los próximos eventos.'
+            );
         }
-    });
+    }
+
+    // CALENDARIO PRINCIPAL
+
+    const calendar = new FullCalendar.Calendar(
+        $('calendar'),
+        {
+            initialView: 'dayGridMonth',
+            locale: 'es',
+            firstDay: 1,
+            height: 'auto',
+
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek'
+            },
+
+            buttonText: {
+                today: 'Hoy',
+                month: 'Mes',
+                week: 'Semana'
+            },
+
+            events: {
+                url: urlEventos,
+
+                failure: () => {
+                    alert(
+                        'No se pudieron cargar los eventos.'
+                    );
+                }
+            },
+
+            dateClick: info => nuevo(info.date),
+
+            eventClick: info => {
+
+                const e = info.event;
+                const p = e.extendedProps;
+
+                const propio =
+                    p.creador === rutActual &&
+                    p.alcance !== 'general';
+
+                $('formEvento').reset();
+                $('mensaje').classList.add('d-none');
+
+                $('eventoId').value = e.id;
+                $('titulo').value = e.title;
+                $('tipo').value = p.tipo;
+
+                $('alcance').value =
+                    p.alcance === 'general'
+                        ? 'curso'
+                        : p.alcance;
+
+                $('asignacion').value =
+                    p.id_asig_curso || '';
+
+                if (p.id_curso) {
+                    $('curso').value = String(p.id_curso);
+                }
+
+                $('inicio').value = localInput(e.start);
+
+                $('fin').value = localInput(
+                    e.end ||
+                    new Date(e.start.getTime() + 3600000)
+                );
+
+                $('lugar').value = p.lugar || '';
+                $('descripcion').value = p.descripcion || '';
+
+                alternarAlcance();
+
+                $('modalTitulo').textContent = propio
+                    ? 'Editar evento'
+                    : 'Detalle del evento';
+
+                $('eliminar').classList.toggle(
+                    'd-none', !propio
+                );
+
+                $('guardar').classList.toggle(
+                    'd-none', !propio
+                );
+
+                [...$('formEvento').elements].forEach(el => {
+
+                    if (
+                        el.type !== 'hidden' &&
+                        el.type !== 'button'
+                    ) {
+                        el.disabled = !propio;
+                    }
+                });
+
+                modal.show();
+            }
+        }
+    );
 
     calendar.render();
 
-    $('nuevoEvento').addEventListener('click', () => nuevo());
+    // CARGAR LISTA AL ABRIR LA PÁGINA
+    cargarProximosEventos();
 
-    $('formEvento').addEventListener('submit', async e => {
-        e.preventDefault();
-        $('mensaje').classList.add('d-none');
+    $('nuevoEvento').addEventListener(
+        'click',
+        () => nuevo()
+    );
 
-        const inicio = new Date($('inicio').value);
-        const fin = new Date($('fin').value);
+    // GUARDAR EVENTO
 
-        if (fin <= inicio) {
-            error('La fecha de término debe ser posterior al inicio.');
-            return;
-        }
+    $('formEvento').addEventListener(
+        'submit',
+        async e => {
 
-        const datos = {
-            id_evento: $('eventoId').value || null,
-            titulo: $('titulo').value,
-            tipo_evento: $('tipo').value,
-            alcance: $('alcance').value,
-            id_asig_curso: $('asignacion').value,
-            id_curso: $('curso').value,
-            fecha_inicio: inicio.toISOString(),
-            fecha_fin: fin.toISOString(),
-            lugar: $('lugar').value,
-            descripcion: $('descripcion').value
-        };
+            e.preventDefault();
 
-        $('guardar').disabled = true;
+            $('mensaje').classList.add('d-none');
 
-        try {
-            const r = await fetch(
-                "{% url 'profesor_calendario_guardar' %}",
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': csrf
-                    },
-                    body: JSON.stringify(datos)
+            const inicio = new Date($('inicio').value);
+            const fin = new Date($('fin').value);
+
+            if (fin <= inicio) {
+                error(
+                    'La fecha de término debe ser posterior al inicio.'
+                );
+                return;
+            }
+
+            const datos = {
+                id_evento: $('eventoId').value || null,
+                titulo: $('titulo').value,
+                tipo_evento: $('tipo').value,
+                alcance: $('alcance').value,
+                id_asig_curso: $('asignacion').value,
+                id_curso: $('curso').value,
+                fecha_inicio: inicio.toISOString(),
+                fecha_fin: fin.toISOString(),
+                lugar: $('lugar').value,
+                descripcion: $('descripcion').value
+            };
+
+            $('guardar').disabled = true;
+
+            try {
+
+                const r = await fetch(
+                    "{% url 'profesor_calendario_guardar' %}",
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrf
+                        },
+                        body: JSON.stringify(datos)
+                    }
+                );
+
+                const respuesta = await r.json();
+
+                if (!r.ok) {
+                    throw new Error(
+                        respuesta.error ||
+                        'Error al guardar.'
+                    );
                 }
-            );
-            const respuesta = await r.json();
-            if (!r.ok) throw new Error(respuesta.error);
 
-            modal.hide();
-            calendar.refetchEvents();
-        } catch (err) {
-            error(err.message || 'Error al guardar.');
-        } finally {
-            $('guardar').disabled = false;
+                modal.hide();
+
+                calendar.refetchEvents();
+
+                // Actualizar próximos eventos.
+                await cargarProximosEventos();
+
+            } catch (err) {
+
+                error(
+                    err.message || 'Error al guardar.'
+                );
+
+            } finally {
+
+                $('guardar').disabled = false;
+            }
         }
-    });
+    );
 
-    $('eliminar').addEventListener('click', async () => {
-        if (!confirm('¿Eliminar este evento?')) return;
+    // ELIMINAR EVENTO
 
-        try {
-            const r = await fetch(
-                "{% url 'profesor_calendario_eliminar' %}",
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': csrf
-                    },
-                    body: JSON.stringify({
-                        id_evento: $('eventoId').value
-                    })
+    $('eliminar').addEventListener(
+        'click',
+        async () => {
+
+            if (!confirm('¿Eliminar este evento?')) {
+                return;
+            }
+
+            try {
+
+                const r = await fetch(
+                    "{% url 'profesor_calendario_eliminar' %}",
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrf
+                        },
+                        body: JSON.stringify({
+                            id_evento: $('eventoId').value
+                        })
+                    }
+                );
+
+                const respuesta = await r.json();
+
+                if (!r.ok) {
+                    throw new Error(
+                        respuesta.error ||
+                        'Error al eliminar.'
+                    );
                 }
-            );
-            const respuesta = await r.json();
-            if (!r.ok) throw new Error(respuesta.error);
 
-            modal.hide();
-            calendar.refetchEvents();
-        } catch (err) {
-            error(err.message || 'Error al eliminar.');
+                modal.hide();
+
+                calendar.refetchEvents();
+
+                // Actualizar próximos eventos.
+                await cargarProximosEventos();
+
+            } catch (err) {
+
+                error(
+                    err.message || 'Error al eliminar.'
+                );
+            }
         }
-    });
+    );
+
 });
 </script>
+
 {% endblock %}
