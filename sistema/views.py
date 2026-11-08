@@ -1,5 +1,5 @@
 from datetime import datetime
-from .models import TicketSoporte, EquipoTi, Usuario, Rol
+from .models import TicketSoporte, SolicitudInsumo, EquipoTi, Usuario, Rol, Alumno, Curso, AsignaturaCurso
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from functools import wraps # Importante para hacer decoradores
@@ -3387,63 +3387,59 @@ def profesor_asistencia(request):
     )
 
 
-
-from datetime import date
-
-from django.contrib import messages
-from django.db import transaction
-from django.db.models import Max
-from django.shortcuts import render, redirect
-from django.utils import timezone
-
-from .models import (
-    Usuario,
-    EquipoTi,
-    SolicitudInsumo,
-    TicketSoporte,
-)
-
-from django.shortcuts import render as _render, redirect
-
+@require_role([2])
 def profesor_agregar_incidencia(request):
+    from datetime import date as dt_date
+    from django.shortcuts import render as dj_render, redirect as dj_redirect
+    from django.contrib import messages as dj_messages
+    from django.db.models import Max as dj_Max
+    from .models import SolicitudInsumo as Mod_Solicitud, TicketSoporte as Mod_Ticket
+
     if 'usuario_rut' not in request.session:
-        return redirect('login')
+        return dj_redirect('login')
         
     if request.method == 'POST':
-        tipo = request.POST.get('tipo_incidencia')
-        descripcion = request.POST.get('descripcion')
+        tipo = request.POST.get('tipo') or request.POST.get('tipo_incidencia') or ''
+        descripcion = request.POST.get('descripcion', '')
         prioridad = request.POST.get('prioridad', 'Media')
         rut_usuario = request.session.get('usuario_rut')
-        fecha = request.POST.get('fecha')
-        
-        try:
-            if tipo in ['Solicitud de Material', 'Solicitud de Reposición']:
-                SolicitudInsumo.objects.create(
-                    fecha=fecha,
-                    estado_solicitud='Pendiente',
-                    usuario_rut=rut_usuario,
-                    descripcion=descripcion,
-                    tipo_solicitud=tipo
-                )
-                messages.success(request, '¡Solicitud de aseo enviada con éxito!')
-            else:
-                TicketSoporte.objects.create(
-                    fecha_reporte=fecha,
-                    prioridad=prioridad,
-                    estado_ticket='Pendiente',
-                    usuario_rut_id=rut_usuario,
-                    descripcion=descripcion,
-                    tipo_incidencia=tipo,
-                    equipo_ti_codigo_inventario_id='EXT-001'
-                )
-                messages.success(request, '¡Incidencia de TI registrada con éxito!')
-                
-            return redirect('profesor_gestion_incidencias')
-            
-        except Exception as e:
-            messages.error(request, f'No se pudo guardar la incidencia. Revisa la base de datos: {e}')
-            
-    return _render(request, 'profesor_agregar_incidencia.html')
+        fecha = request.POST.get('fecha') or dt_date.today()
+
+        es_aseo = tipo in ['material', 'reposicion', 'Solicitud de Material', 'Solicitud de Reposición']
+
+        if es_aseo:
+            res = Mod_Solicitud.objects.aggregate(max_val=dj_Max('id_solicitud'))
+            nuevo_id = (res.get('max_val') or 0) + 1
+
+            Mod_Solicitud.objects.create(
+                id_solicitud=nuevo_id,
+                fecha=fecha,
+                estado_solicitud='Pendiente',
+                usuario_rut_id=rut_usuario,
+                descripcion=descripcion,
+                tipo_solicitud='Solicitud de Material' if tipo == 'material' else tipo
+            )
+            dj_messages.success(request, '¡Solicitud de aseo enviada con éxito!')
+            return dj_redirect('profesor_gestion_incidencias')
+
+        else:
+            res = Mod_Ticket.objects.aggregate(max_val=dj_Max('id_ticket'))
+            nuevo_id_ticket = (res.get('max_val') or 0) + 1
+
+            Mod_Ticket.objects.create(
+                id_ticket=nuevo_id_ticket,
+                fecha_reporte=fecha,
+                prioridad=prioridad,
+                estado_ticket='Pendiente',
+                usuario_rut_id=rut_usuario,
+                descripcion=descripcion,
+                tipo_incidencia=tipo,
+                equipo_ti_codigo_inventario_id='EXT-001'
+            )
+            dj_messages.success(request, '¡Incidencia de TI registrada con éxito!')
+            return dj_redirect('profesor_gestion_incidencias')
+
+    return dj_render(request, 'profesor_agregar_incidencia.html')
 
     from datetime import date
     from django.contrib import messages
@@ -5044,12 +5040,21 @@ def admin_crear_incidencia(request):
         'fecha_actual': timezone.localdate().isoformat()
     })
 
+from django.core.paginator import Paginator
+
 @require_role([1, 5])
 def inicio_supervisor_aseo(request):
-    # Métricas enfocadas en el área de Aseo y Mantenimiento
     total_articulos = Insumo.objects.count()
-    stock_critico = Insumo.objects.filter(stock_actual__lte=5).count()  # Umbral de ejemplo
-    solicitudes_pendientes = TicketSoporte.objects.filter(estado_ticket='Pendiente').count()
+    stock_critico = Insumo.objects.filter(stock_actual__lte=5).count()
+    
+    # 1. Obtenemos la lista de RUTs de usuarios con Rol 5 (Aseo)
+    ruts_aseo = Usuario.objects.filter(rol_id_rol=5).values_list('rut', flat=True)
+    
+    # 2. Contamos las solicitudes PENDIENTES hechas por esos usuarios
+    solicitudes_pendientes = SolicitudInsumo.objects.filter(
+        usuario_rut__in=ruts_aseo,
+        estado_solicitud='Pendiente'
+    ).count()
 
     context = {
         'total_articulos': total_articulos,
@@ -5059,15 +5064,19 @@ def inicio_supervisor_aseo(request):
     return render(request, 'inicio_supervisor_aseo.html', context)
 
 
-from django.core.paginator import Paginator
-
+@require_role([1, 5])
 def incidencias_aseo(request):
     if 'usuario_rut' not in request.session:
         return redirect('login')
         
-    lista_solicitudes = SolicitudInsumo.objects.all().order_by('-id_solicitud')
+    # 1. Obtenemos la lista de RUTs de usuarios con Rol 5 (Aseo)
+    ruts_aseo = Usuario.objects.filter(rol_id_rol=5).values_list('rut', flat=True)
+
+    # 2. Traemos únicamente las solicitudes asociadas a esos RUTs
+    lista_solicitudes = SolicitudInsumo.objects.filter(
+        usuario_rut__in=ruts_aseo
+    ).order_by('-id_solicitud')
     
-    # Paginación: 10 solicitudes por página
     paginator = Paginator(lista_solicitudes, 10)
     page_number = request.GET.get('page')
     solicitudes = paginator.get_page(page_number)
@@ -5097,35 +5106,49 @@ def inventario_aseo(request):
     return render(request, 'inventario_aseo.html', context)
 
 
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from django.db.models import Max
+from datetime import date
+from .models import SolicitudInsumo, Usuario
+
 @require_role([1, 5])
 def crear_incidencia_aseo(request):
     if 'usuario_rut' not in request.session:
         return redirect('login')
 
     if request.method == 'POST':
-        fecha = request.POST.get('fecha_incidencia')
         tipo_solicitud = request.POST.get('tipo_incidencia')
         descripcion = request.POST.get('descripcion')
-        rut_usuario = request.session.get('usuario_rut') # El RUT guardado en sesión
+        fecha_incidencia = request.POST.get('fecha_incidencia') or date.today()
+        rut_sesion = request.session.get('usuario_rut')
 
-        # 📌 Creamos la incidencia usando 'usuario_rut' (sin el _id al final)
-        SolicitudInsumo.objects.create(
-            fecha=fecha,
-            tipo_solicitud=tipo_solicitud,
-            descripcion=descripcion,
-            estado_solicitud='Pendiente', # Estado inicial por defecto
-            usuario_rut=rut_usuario        # 👈 ¡Exactamente así, sin _id!
-        )
+        try:
+            usuario_obj = get_object_or_404(Usuario, pk=rut_sesion)
 
-        messages.success(request, '¡Solicitud de aseo registrada con éxito!')
-        return redirect('incidencias_aseo')
+            max_id = SolicitudInsumo.objects.aggregate(Max('id_solicitud'))['id_solicitud__max']
+            nuevo_id = (max_id or 0) + 1
+
+            SolicitudInsumo.objects.create(
+                id_solicitud=nuevo_id,
+                fecha=fecha_incidencia,
+                tipo_solicitud=tipo_solicitud,
+                descripcion=descripcion,
+                estado_solicitud='Pendiente',
+                usuario_rut=usuario_obj
+            )
+
+            messages.success(request, '¡Solicitud de aseo registrada con éxito!')
+            return redirect('incidencias_aseo')
+
+        except Exception as e:
+            messages.error(request, f'Ocurrió un error al guardar la solicitud: {str(e)}')
+            return render(request, 'crear_incidencia_aseo.html')
 
     return render(request, 'crear_incidencia_aseo.html')
 
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib import messages
-from .models import SolicitudInsumo
 
+@require_role([1, 5])
 def resolver_solicitud_aseo(request, id_solicitud):
     if 'usuario_rut' not in request.session:
         return redirect('login')
@@ -5133,21 +5156,27 @@ def resolver_solicitud_aseo(request, id_solicitud):
     solicitud = get_object_or_404(SolicitudInsumo, id_solicitud=id_solicitud)
     
     if request.method == 'POST':
-        nuevo_estado = request.POST.get('estado_solicitud', 'Resuelto')
-        observaciones = request.POST.get('observaciones', '')
-        
-        solicitud.estado_solicitud = nuevo_estado
-        solicitud.observaciones = observaciones  # 📌 Guardamos las observaciones
-        solicitud.save()
-        
-        messages.success(request, f'¡Solicitud #{id_solicitud} actualizada correctamente!')
-        return redirect('incidencias_aseo')
+        try:
+            nuevo_estado = request.POST.get('estado_solicitud', 'Resuelto')
+            observaciones = request.POST.get('observaciones', '')
+            
+            solicitud.estado_solicitud = nuevo_estado
+            solicitud.observaciones = observaciones
+            solicitud.save()
+            
+            messages.success(request, f'¡Solicitud #{id_solicitud} actualizada correctamente!')
+            return redirect('incidencias_aseo')
+
+        except Exception as e:
+            messages.error(request, f'Error al actualizar la solicitud: {str(e)}')
         
     context = {
         'solicitud': solicitud
     }
     return render(request, 'resolver_solicitud_aseo.html', context)
 
+
+@require_role([1, 5])
 def ajustar_stock_insumo(request, id_insumo):
     if 'usuario_rut' not in request.session:
         return redirect('login')
@@ -5156,21 +5185,28 @@ def ajustar_stock_insumo(request, id_insumo):
     
     if request.method == 'POST':
         accion = request.POST.get('accion') # 'sumar', 'restar', 'fijar'
+        
         try:
             cantidad = int(request.POST.get('cantidad', 0))
+            if cantidad < 0:
+                messages.warning(request, 'La cantidad debe ser un número positivo.')
+                return render(request, 'ajustar_stock_insumo.html', {'insumo': insumo})
+                
+            if accion == 'sumar':
+                insumo.stock_actual += cantidad
+            elif accion == 'restar':
+                insumo.stock_actual = max(0, insumo.stock_actual - cantidad)
+            elif accion == 'fijar':
+                insumo.stock_actual = max(0, cantidad)
+                
+            insumo.save()
+            messages.success(request, f'¡Stock de "{insumo.nombre_item}" actualizado con éxito!')
+            return redirect('inventario_aseo')
+
         except ValueError:
-            cantidad = 0
-            
-        if accion == 'sumar':
-            insumo.stock_actual += cantidad
-        elif accion == 'restar':
-            insumo.stock_actual = max(0, insumo.stock_actual - cantidad)
-        elif accion == 'fijar':
-            insumo.stock_actual = max(0, cantidad)
-            
-        insumo.save()
-        messages.success(request, f'¡Stock de "{insumo.nombre_item}" actualizado con éxito!')
-        return redirect('inventario_aseo')
+            messages.error(request, 'Por favor ingrese una cantidad numérica válida.')
+        except Exception as e:
+            messages.error(request, f'Error al guardar en base de datos: {str(e)}')
         
     context = {
         'insumo': insumo

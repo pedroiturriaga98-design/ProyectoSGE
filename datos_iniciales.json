@@ -144,16 +144,34 @@
 },
 {
   "model": "sistema.usuario",
+  "pk": "18.124.146-2",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$r9cS6QolbSNUaS3n8yBkaM$bmkR+ETQUY4NN8tAxvoSiU0gw5Kw6rC4XsDMdkCGzCQ=",
+    "rol_id_rol": 5,
+    "nombre": "Cony",
+    "apellido_paterno": "Petek",
+    "apellido_materno": "",
+    "correo": "cpetek@santajuliana.cl",
+    "correo_recuperacion": null,
+    "telefono": "+569 49504944",
+    "direccion": "Padre Orellana 1656",
+    "fecha_nacimiento": "2000-02-16",
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
   "pk": "19.572.314-1",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "195723141",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$rlu2c8d94PBTu9UUD1pkiN$9VJVK9zG+Dl3h8A+X0We4z90mw6x/Aefl3ZsTNB/IxY=",
     "rol_id_rol": 1,
     "nombre": "Franco",
     "apellido_paterno": "González",
     "apellido_materno": "Gaete",
     "correo": "fgonzalez@santajuliana.cl",
-    "correo_recuperacion": null,
+    "correo_recuperacion": "francogonzalez3a@gmail.com",
     "telefono": "+929090909",
     "direccion": "Av. San Carlos 123, Puente Alto",
     "fecha_nacimiento": "1997-02-19",
@@ -8383,6 +8401,24 @@
     "telefono": "+56 9 12457878",
     "direccion": "av. tobalaba",
     "fecha_nacimiento": "1989-10-11",
+    "activo": 1
+  }
+},
+{
+  "model": "sistema.usuario",
+  "pk": "44.444.444-4",
+  "fields": {
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$VqgFefvHWtj0X18Krx5oyX$pJ32wNuF49Z5blGBjUgkat+LbzeZLUl2AlgKdQOgWuI=",
+    "rol_id_rol": 2,
+    "nombre": "Nicolas",
+    "apellido_paterno": "Caamaño",
+    "apellido_materno": "",
+    "correo": "ncaamano@santajuliana.cl",
+    "correo_recuperacion": null,
+    "telefono": "+569 49504944",
+    "direccion": "Padre Orellana 1656",
+    "fecha_nacimiento": "1999-06-24",
     "activo": 1
   }
 },
@@ -27222,7 +27258,7 @@
   "pk": 2,
   "fields": {
     "nombre_item": "Papel higiénico",
-    "stock_actual": 10
+    "stock_actual": 6
   }
 },
 {
@@ -27362,11 +27398,11 @@
   "pk": 6,
   "fields": {
     "fecha": "2026-11-06",
-    "estado_solicitud": "Pendiente",
+    "estado_solicitud": "Resuelto",
     "usuario_rut": "22.222.222-2",
     "descripcion": "ASDADASDASDAS",
     "tipo_solicitud": "Solicitud de Material",
-    "observaciones": null
+    "observaciones": "JESJESJESJES"
   }
 },
 {
@@ -27422,9 +27458,81 @@
   "pk": 11,
   "fields": {
     "fecha": "2026-11-07",
-    "estado_solicitud": "Pendiente",
+    "estado_solicitud": "Rechazado",
     "usuario_rut": "22.222.222-2",
     "descripcion": "falta cerveza",
+    "tipo_solicitud": "Solicitud de Reposición",
+    "observaciones": "Este es un establecimiento educacional, el alcohol no está permitido"
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 12,
+  "fields": {
+    "fecha": "2026-11-08",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "18.124.146-2",
+    "descripcion": "aaaaaaaaaaaah",
+    "tipo_solicitud": "Solicitud de Reposición",
+    "observaciones": null
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 13,
+  "fields": {
+    "fecha": "2026-11-08",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "12.345.678-5",
+    "descripcion": "Necesito una resma de papel para evaluación nr2",
+    "tipo_solicitud": "Solicitud de Material",
+    "observaciones": null
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 14,
+  "fields": {
+    "fecha": "2026-11-08",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "12.345.678-5",
+    "descripcion": "Necesito una resma de papel para evaluación nr2",
+    "tipo_solicitud": "Solicitud de Material",
+    "observaciones": null
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 15,
+  "fields": {
+    "fecha": "2026-11-08",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "12.345.678-5",
+    "descripcion": "quiero resma",
+    "tipo_solicitud": "Solicitud de Material",
+    "observaciones": null
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 16,
+  "fields": {
+    "fecha": "2026-11-12",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "12.345.678-5",
+    "descripcion": "faltan safradas",
+    "tipo_solicitud": "reposicion",
+    "observaciones": null
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 17,
+  "fields": {
+    "fecha": "2026-11-08",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "18.124.146-2",
+    "descripcion": "Faltan safraaaaaaaaaaaadas",
     "tipo_solicitud": "Solicitud de Reposición",
     "observaciones": null
   }

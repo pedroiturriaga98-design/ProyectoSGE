@@ -285,19 +285,6 @@ class Rol(models.Model):
 
 
 
-class SolicitudInsumo(models.Model):
-    id_solicitud = models.AutoField(primary_key=True)
-    fecha = models.DateField()
-    estado_solicitud = models.CharField(max_length=20)
-    usuario_rut = models.CharField(max_length=12, db_column='USUARIO_rut')
-    descripcion = models.TextField()
-    tipo_solicitud = models.CharField(max_length=50)
-    observaciones = models.TextField(blank=True, null=True)  # 📌 Nuevo campo añadido
-
-    class Meta:
-        managed = False
-        db_table = 'solicitud_insumo'
-
 
 class TicketSoporte(models.Model):
     id_ticket = models.IntegerField(primary_key=True)
@@ -399,6 +386,20 @@ class Usuario(models.Model):
     class Meta:
         managed = False
         db_table = 'usuario'
+
+class SolicitudInsumo(models.Model):
+    id_solicitud = models.IntegerField(primary_key=True)
+    fecha = models.DateField()
+    estado_solicitud = models.CharField(max_length=20)
+    # Cambia max_length a 20 (o si es ForeignKey, asegúrate que no restrinja)
+    usuario_rut = models.ForeignKey(Usuario, models.DO_NOTHING, db_column='USUARIO_rut')
+    descripcion = models.TextField(blank=True, null=True)
+    tipo_solicitud = models.CharField(max_length=50, blank=True, null=True)
+    observaciones = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'solicitud_insumo'
 
 class EventoCalendario(models.Model):
     id_evento = models.AutoField(primary_key=True)
