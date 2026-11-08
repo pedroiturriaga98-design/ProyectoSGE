@@ -1,0 +1,59 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold text-dark" style="font-size: 1.8rem; margin: 0;">Mis Solicitudes e Incidencias de Aseo</h2>
+        <p class="text-muted" style="margin: 4px 0 0 0;">Envía requerimientos de material o reposición y revisa la respuesta de administración.</p>
+    </div>
+    <a href="{% url 'crear_incidencia_aseo' %}" class="btn btn-warning fw-semibold text-white px-4 py-2" style="background-color: #ff6b00; border: none;">
+        + Registrar Incidencia
+    </a>
+</div>
+
+<div class="card shadow-sm border-0 p-4" style="border-radius: 12px;">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>FECHA</th>
+                    <th>TIPO</th>
+                    <th>DESCRIPCIÓN</th>
+                    <th>RESPUESTA / OBSERVACIONES ADMIN</th>
+                    <th>ESTADO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in solicitudes %}
+                <tr>
+                    <td class="fw-bold text-primary">#{{ s.id_solicitud }}</td>
+                    <td>{{ s.fecha }}</td>
+                    <td><span class="badge bg-secondary">{{ s.tipo_solicitud }}</span></td>
+                    <td>{{ s.descripcion }}</td>
+                    <td class="text-muted">{{ s.observaciones|default:"Sin observaciones aún" }}</td>
+                    <td>
+                        {% if s.estado_solicitud == 'Resuelto' or s.estado_solicitud == 'Aprobado' %}
+                            <span class="badge bg-success">{{ s.estado_solicitud }}</span>
+                        {% elif s.estado_solicitud == 'Rechazado' %}
+                            <span class="badge bg-danger">{{ s.estado_solicitud }}</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">{{ s.estado_solicitud }}</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center text-muted py-4">
+                        No hay solicitudes registradas.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

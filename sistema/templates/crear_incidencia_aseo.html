@@ -6,7 +6,7 @@
 <!-- Titular del Formulario -->
 <div style="margin-bottom: 25px;">
     <h1 style="font-size: 1.8rem; font-weight: bold; color: #0f172a; margin: 0;">Agregar Incidencia</h1>
-    <p style="color: #64748b; margin-top: 4px;">Complete el formulario para reportar una necesidad de material o problema con equipos.</p>
+    <p style="color: #64748b; margin-top: 4px;">Complete el formulario para reportar una solicitud de material o reposición de aseo.</p>
 </div>
 
 <!-- Card Contenedora del Formulario -->
@@ -28,19 +28,18 @@
             </div>
             <div>
                 <label style="display: block; font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 0.9rem;">Tipo de Incidencia *</label>
+                <!-- 📌 Opciones acotadas estrictamente a Aseo e Insumos -->
                 <select name="tipo_incidencia" required style="width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; color: #334155; background-color: white;">
                     <option value="" disabled selected>Seleccione una opción...</option>
                     <option value="Solicitud de Material">Solicitud de Material</option>
-                    <option value="Problema con Equipos / Maquinaria">Problema con Equipos / Maquinaria</option>
-                    <option value="Daño en Infraestructura">Daño en Infraestructura</option>
-                    <option value="Otro">Otro</option>
+                    <option value="Solicitud de Reposición">Solicitud de Reposición</option>
                 </select>
             </div>
         </div>
 
         <div style="margin-bottom: 30px;">
             <label style="display: block; font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 0.9rem;">Comentario / Descripción Detallada *</label>
-            <textarea name="descripcion" rows="5" placeholder="Describa el material que necesita o el problema encontrado..." required style="width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 8px; color: #334155; resize: vertical;"></textarea>
+            <textarea name="descripcion" rows="5" placeholder="Describa el material que necesita o el requerimiento de reposición..." required style="width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 8px; color: #334155; resize: vertical;"></textarea>
         </div>
 
         <div style="display: flex; justify-content: flex-end; gap: 12px;">

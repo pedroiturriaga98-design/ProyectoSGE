@@ -2023,6 +2023,18 @@ def apoderado_descargar_certificado(request):
 
 @require_role([2])
 def profesor_inicio(request):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    # Permitimos el acceso si es profesor (rol 2 o 3) o administrador (rol 1)
+    rol = request.session.get('rol_id')
+    if rol not in [1, 2, 3]:
+        messages.error(request, 'No tienes permisos para acceder a este portal.')
+        return redirect('login')
+        
+    # El resto de tu lógica de inicio de profesor...
+    return render(request, 'profesor_inicio.html')
+
     from django.db.models import Count 
     from django.utils import timezone 
     from .models import Calificacion
@@ -2087,7 +2099,7 @@ def profesor_inicio(request):
 
     # 5. Incidencias realizadas por el profesor
     solicitudes = SolicitudInsumo.objects.filter(
-        usuario_rut_id=rut_profesor
+        usuario_rut=rut_profesor
     )
 
     tickets = TicketSoporte.objects.filter(
@@ -3331,10 +3343,48 @@ from .models import (
     TicketSoporte,
 )
 
+from django.shortcuts import render as _render, redirect
 
-
-@require_role([1, 2, 4])
 def profesor_agregar_incidencia(request):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    if request.method == 'POST':
+        tipo = request.POST.get('tipo_incidencia')
+        descripcion = request.POST.get('descripcion')
+        prioridad = request.POST.get('prioridad', 'Media')
+        rut_usuario = request.session.get('usuario_rut')
+        fecha = request.POST.get('fecha')
+        
+        try:
+            if tipo in ['Solicitud de Material', 'Solicitud de Reposición']:
+                SolicitudInsumo.objects.create(
+                    fecha=fecha,
+                    estado_solicitud='Pendiente',
+                    usuario_rut=rut_usuario,
+                    descripcion=descripcion,
+                    tipo_solicitud=tipo
+                )
+                messages.success(request, '¡Solicitud de aseo enviada con éxito!')
+            else:
+                TicketSoporte.objects.create(
+                    fecha_reporte=fecha,
+                    prioridad=prioridad,
+                    estado_ticket='Pendiente',
+                    usuario_rut_id=rut_usuario,
+                    descripcion=descripcion,
+                    tipo_incidencia=tipo,
+                    equipo_ti_codigo_inventario_id='EXT-001'
+                )
+                messages.success(request, '¡Incidencia de TI registrada con éxito!')
+                
+            return redirect('profesor_gestion_incidencias')
+            
+        except Exception as e:
+            messages.error(request, f'No se pudo guardar la incidencia. Revisa la base de datos: {e}')
+            
+    return _render(request, 'profesor_agregar_incidencia.html')
+
     from datetime import date
     from django.contrib import messages
     from django.db import transaction
@@ -3488,11 +3538,20 @@ def profesor_agregar_incidencia(request):
 
 @require_role([2]) # Rol 2: Profesor
 def profesor_gestion_incidencias(request):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
     rut_profesor = request.session.get('usuario_rut')
-    incidencias = TicketSoporte.objects.filter(usuario_rut__rut=rut_profesor).order_by('-fecha_reporte', '-id_ticket')
+    
+    # 1. Incidencias de TI usando el modelo TicketSoporte
+    incidencias_ti = TicketSoporte.objects.filter(usuario_rut_id=rut_profesor).order_by('-id_ticket')
+    
+    # 2. Solicitudes de Aseo usando el modelo SolicitudInsumo
+    solicitudes_aseo = SolicitudInsumo.objects.filter(usuario_rut=rut_profesor).order_by('-id_solicitud')
     
     context = {
-        'incidencias': incidencias
+        'incidencias_ti': incidencias_ti,
+        'solicitudes_aseo': solicitudes_aseo,
     }
     return render(request, 'profesor_gestion_incidencias.html', context)
 
@@ -4264,6 +4323,37 @@ def admin_detalle_incidencia(request, pk):
     ticket = get_object_or_404(TicketSoporte, pk=pk)
     return render(request, 'admin_detalle_incidencia.html', {'ticket': ticket})
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import SolicitudInsumo
+
+def admin_solicitudes_material(request):
+    # Seguridad básica de sesión de administrador
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    # Filtramos estrictamente las solicitudes de tipo 'Solicitud de Material'
+    solicitudes = SolicitudInsumo.objects.filter(tipo_solicitud='Solicitud de Material').order_by('-fecha')
+    
+    context = {
+        'solicitudes': solicitudes,
+        'titulo': 'Solicitudes de Material (Aseo)'
+    }
+    return render(request, 'admin_gestion_solicitudes.html', context)
+
+def admin_solicitudes_reposicion(request):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    # Filtramos estrictamente las solicitudes de tipo 'Solicitud de Reposición'
+    solicitudes = SolicitudInsumo.objects.filter(tipo_solicitud='Solicitud de Reposición').order_by('-fecha')
+    
+    context = {
+        'solicitudes': solicitudes,
+        'titulo': 'Solicitudes de Reposición (Aseo)'
+    }
+    return render(request, 'admin_gestion_solicitudes.html', context)
+
 
 
 from django.contrib import messages
@@ -4594,13 +4684,47 @@ def crear_equipo_ti(request):
     return render(request, 'crear_equipo_ti.html')
 
 @require_role([1, 5])  # Administrador y Personal de Aseo
-def inventario_aseo(request):
-    # Usamos los nombres reales de los campos de tu base de datos
-    insumos_aseo = Insumo.objects.all().order_by('nombre_item')
 
-    return render(request, 'inventario_aseo.html', {
-        'insumos_aseo': insumos_aseo,
-    })
+def incidencias_personal_aseo(request):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    # Mostramos las solicitudes de aseo ordenadas de la más reciente a la más antigua
+    solicitudes = SolicitudInsumo.objects.all().order_by('-id_solicitud')
+    return render(request, 'incidencias_personal_aseo.html', {'solicitudes': solicitudes})
+
+
+def inventario_personal_aseo(request):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    items = Insumo.objects.all()
+    return render(request, 'inventario_personal_aseo.html', {'items': items})
+
+
+def retirar_stock_aseo(request, id_insumo):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    insumo = get_object_or_404(Insumo, pk=id_insumo)
+    
+    if request.method == 'POST':
+        try:
+            cantidad = int(request.POST.get('cantidad', 0))
+        except ValueError:
+            cantidad = 0
+            
+        if cantidad <= 0:
+            messages.error(request, 'Debes ingresar una cantidad mayor a 0.')
+        elif cantidad > insumo.stock_actual:
+            messages.error(request, f'No puedes retirar {cantidad} unidades. Solo hay {insumo.stock_actual} disponibles.')
+        else:
+            insumo.stock_actual -= cantidad
+            insumo.save()
+            messages.success(request, f'Retiraste {cantidad} unidades de "{insumo.nombre_item}".')
+            return redirect('inventario_aseo')
+            
+    return render(request, 'retirar_stock_aseo.html', {'insumo': insumo})
 
 from django.db.models import Max
 
@@ -4874,42 +4998,124 @@ def inicio_supervisor_aseo(request):
     }
     return render(request, 'inicio_supervisor_aseo.html', context)
 
-@require_role([1, 5])
+
+from django.core.paginator import Paginator
+
 def incidencias_aseo(request):
-    rut_usuario = request.session.get('usuario_rut')
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    lista_solicitudes = SolicitudInsumo.objects.all().order_by('-id_solicitud')
     
-    # Consulta directo a SolicitudInsumo filtrando por el RUT de sesión
-    incidencias = SolicitudInsumo.objects.filter(usuario_rut=rut_usuario).order_by('-id_solicitud')
+    # Paginación: 10 solicitudes por página
+    paginator = Paginator(lista_solicitudes, 10)
+    page_number = request.GET.get('page')
+    solicitudes = paginator.get_page(page_number)
     
-    return render(request, 'incidencias_aseo.html', {'incidencias': incidencias})
+    context = {
+        'solicitudes': solicitudes,
+        'rol_id': request.session.get('rol_id')
+    }
+    return render(request, 'incidencias_aseo.html', context)
+
+
+def inventario_aseo(request):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    lista_items = Insumo.objects.all().order_by('id_insumo')
+    
+    # Paginación: 10 insumos por página
+    paginator = Paginator(lista_items, 10)
+    page_number = request.GET.get('page')
+    items = paginator.get_page(page_number)
+    
+    context = {
+        'items': items,
+        'rol_id': request.session.get('rol_id')
+    }
+    return render(request, 'inventario_aseo.html', context)
 
 
 @require_role([1, 5])
 def crear_incidencia_aseo(request):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+
     if request.method == 'POST':
+        fecha = request.POST.get('fecha_incidencia')
         tipo_solicitud = request.POST.get('tipo_incidencia')
         descripcion = request.POST.get('descripcion')
-        fecha_incidencia = request.POST.get('fecha_incidencia') or date.today()
-        rut_usuario = request.session.get('usuario_rut')
+        rut_usuario = request.session.get('usuario_rut') # El RUT guardado en sesión
 
-        # Buscar el ID máximo actual y sumarle 1 (si la tabla está vacía, parte en 1)
-        max_id = SolicitudInsumo.objects.aggregate(Max('id_solicitud'))['id_solicitud__max']
-        nuevo_id = (max_id or 0) + 1
-
-        # Guardamos la solicitud pasándole el id_solicitud calculado explícitamente
+        # 📌 Creamos la incidencia usando 'usuario_rut' (sin el _id al final)
         SolicitudInsumo.objects.create(
-            id_solicitud=nuevo_id,
-            fecha=fecha_incidencia,
-            estado_solicitud='Pendiente',
-            usuario_rut_id=rut_usuario,
+            fecha=fecha,
+            tipo_solicitud=tipo_solicitud,
             descripcion=descripcion,
-            tipo_solicitud=tipo_solicitud
+            estado_solicitud='Pendiente', # Estado inicial por defecto
+            usuario_rut=rut_usuario        # 👈 ¡Exactamente así, sin _id!
         )
 
-        messages.success(request, 'Solicitud de insumos enviada con éxito.')
+        messages.success(request, '¡Solicitud de aseo registrada con éxito!')
         return redirect('incidencias_aseo')
 
     return render(request, 'crear_incidencia_aseo.html')
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from .models import SolicitudInsumo
+
+def resolver_solicitud_aseo(request, id_solicitud):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    solicitud = get_object_or_404(SolicitudInsumo, id_solicitud=id_solicitud)
+    
+    if request.method == 'POST':
+        nuevo_estado = request.POST.get('estado_solicitud', 'Resuelto')
+        observaciones = request.POST.get('observaciones', '')
+        
+        solicitud.estado_solicitud = nuevo_estado
+        solicitud.observaciones = observaciones  # 📌 Guardamos las observaciones
+        solicitud.save()
+        
+        messages.success(request, f'¡Solicitud #{id_solicitud} actualizada correctamente!')
+        return redirect('incidencias_aseo')
+        
+    context = {
+        'solicitud': solicitud
+    }
+    return render(request, 'resolver_solicitud_aseo.html', context)
+
+def ajustar_stock_insumo(request, id_insumo):
+    if 'usuario_rut' not in request.session:
+        return redirect('login')
+        
+    insumo = get_object_or_404(Insumo, pk=id_insumo)
+    
+    if request.method == 'POST':
+        accion = request.POST.get('accion') # 'sumar', 'restar', 'fijar'
+        try:
+            cantidad = int(request.POST.get('cantidad', 0))
+        except ValueError:
+            cantidad = 0
+            
+        if accion == 'sumar':
+            insumo.stock_actual += cantidad
+        elif accion == 'restar':
+            insumo.stock_actual = max(0, insumo.stock_actual - cantidad)
+        elif accion == 'fijar':
+            insumo.stock_actual = max(0, cantidad)
+            
+        insumo.save()
+        messages.success(request, f'¡Stock de "{insumo.nombre_item}" actualizado con éxito!')
+        return redirect('inventario_aseo')
+        
+    context = {
+        'insumo': insumo
+    }
+    return render(request, 'ajustar_stock_insumo.html', context)
 
 import random
 import string
@@ -4965,3 +5171,4 @@ def recuperar_contrasena(request):
             messages.error(request, "No se encontró ninguna cuenta asociada a este correo institucional.")
             
     return render(request, 'recuperar_contrasena.html')
+

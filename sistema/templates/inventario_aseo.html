@@ -11,9 +11,11 @@
         <div class="search-box">
             <input type="text" placeholder="Buscar insumo de aseo...">
         </div>
-        <a class="btn-create" href="{% url 'crear_insumo_aseo' %}">
-            + Nuevo Insumo
-        </a>
+        {% if request.session.rol_id == 1 %}
+            <a href="{% url 'crear_insumo_aseo' %}" class="btn fw-semibold text-white px-4 py-2" style="background-color: #ff6b00; border: none; border-radius: 8px; text-decoration: none;">
+                + Nuevo Insumo
+            </a>
+        {% endif %}
     </div>
 
     <table>
@@ -28,33 +30,89 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in insumos_aseo %}
-            <tr>
-                <td><strong>{{ item.id_insumo }}</strong></td>
-                <td>{{ item.nombre_item }}</td>
-                <td>Aseo General</td>
-                <td>{{ item.stock_actual }} unidades</td>
-                <td>
-                    {% if item.stock_actual > 5 %}
-                        <span class="badge" style="background-color: #dcfce7; color: #16a34a;">Disponible</span>
-                    {% else %}
-                        <span class="badge" style="background-color: #fee2e2; color: #dc2626;">Stock Crítico</span>
-                    {% endif %}
-                </td>
-                <td>
-                    <div class="action-btns">
-                        <a class="btn-icon" href="#" title="Editar stock">✎</a>
-                    </div>
-                </td>
-            </tr>
+
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.id_insumo }}</td>
+                    <td>{{ item.nombre_item }}</td>
+                    <td>Aseo General</td>
+                    <td>{{ item.stock_actual }} unidades</td>
+                    <td>
+                        {% if item.stock_actual > 5 %}
+                            <span class="badge" style="background-color: #dcfce7; color: #16a34a;">Disponible</span>
+                        {% elif item.stock_actual > 0 %}
+                            <span class="badge" style="background-color: #fee2e2; color: #dc2626;">Stock Crítico</span>
+                        {% else %}
+                            <span class="badge bg-secondary" style="background-color: #64748b; color: white;">Agotado</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="action-btns">
+                            {% if request.session.rol_id == 1 %}
+                                <a class="btn-icon" href="{% url 'ajustar_stock_insumo' item.pk %}" title="Editar stock">✎</a>
+                            {% else %}
+                                {% if item.stock_actual > 0 %}
+                                    <a class="btn btn-sm btn-outline-danger fw-semibold" href="{% url 'retirar_stock_aseo' item.pk %}" title="Retirar material">
+                                        Retirar
+                                    </a>
+                                {% else %}
+                                    <span class="badge bg-secondary">Agotado</span>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
             {% empty %}
-            <tr>
-                <td colspan="6" style="text-align: center; padding: 25px; color: #64748b;">
-                    No hay insumos de aseo registrados en el sistema.
-                </td>
-            </tr>
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 25px; color: #64748b;">
+                        No hay insumos de aseo registrados en el sistema.
+                    </td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+{% if items.has_other_pages %}
+<div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+    <span class="text-muted" style="font-size: 0.9rem;">
+        Mostrando página <strong>{{ items.number }}</strong> de <strong>{{ items.paginator.num_pages }}</strong> (Total: {{ items.paginator.count }} insumos)
+    </span>
+    
+    <nav aria-label="Navegación de inventario">
+        <ul class="pagination pagination-sm mb-0" style="gap: 5px;">
+            {% if items.has_previous %}
+                <li class="page-item">
+                    <a class="page-link rounded text-dark" href="?page={{ items.previous_page_number }}">« Anterior</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link rounded text-muted">« Anterior</span>
+                </li>
+            {% endif %}
+
+            {% for num in items.paginator.page_range %}
+                {% if items.number == num %}
+                    <li class="page-item active">
+                        <span class="page-link rounded fw-bold" style="background-color: #ff6b00; border-color: #ff6b00; color: white;">{{ num }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link rounded text-dark" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if items.has_next %}
+                <li class="page-item">
+                    <a class="page-link rounded text-dark" href="?page={{ items.next_page_number }}">Siguiente »</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <span class="page-link rounded text-muted">Siguiente »</span>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endif %}
 {% endblock %}      

@@ -28,49 +28,69 @@
         </div>
 
         <nav class="nav-menu">
-            <!-- INICIO DINÁMICO -->
+            <!-- 1. MENÚ PARA SUPERVISOR DE ASEO (Rol 5) -->
             {% if request.session.rol_id == 5 %}
                 <a href="{% url 'inicio_supervisor_aseo' %}" class="nav-link {% if request.resolver_match.url_name == 'inicio_supervisor_aseo' %}active-menu{% endif %}">Inicio</a>
+                
+                <a href="javascript:void(0);" class="nav-link toggle-menu" data-target="submenu-aseo">
+                    <span>Gestión Aseo</span>
+                </a>
+                <div class="sub-menu" id="submenu-aseo" style="display: {% if 'aseo' in request.path or 'inventario/aseo' in request.path %}flex{% else %}none{% endif %};">
+                    <a href="{% url 'incidencias_aseo' %}" class="sub-link {% if 'aseo/incidencias' in request.path or 'aseo/solicitudes' in request.path %}active-sub{% endif %}">Incidencias Aseo</a>
+                    <a href="{% url 'inventario_aseo' %}" class="sub-link {% if 'inventario/aseo' in request.path or 'aseo/inventario' in request.path %}active-sub{% endif %}">Inventario Aseo</a>
+                </div>
+
+            <!-- 2. MENÚ PARA PROFESORES (Roles 2 y 3) -->
+
+            {% elif request.session.rol_id == 2 or request.session.rol_id == 3 %}
+                <a href="{% url 'profesor_inicio' %}" class="nav-link {% if request.resolver_match.url_name == 'profesor_inicio' %}active-menu{% endif %}">Inicio</a>
+                
+                <!-- 📌 Menú Desplegable: Incidencias del Profesor -->
+                <a href="javascript:void(0);" class="nav-link toggle-menu" data-target="submenu-profesor-inc">
+                    <span>Incidencias ▾</span>
+                </a>
+                <div class="sub-menu" id="submenu-profesor-inc" style="display: {% if 'profesor/incidencias' in request.path %}flex{% else %}none{% endif %};">
+                    <a href="{% url 'profesor_agregar_incidencia' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_agregar_incidencia' %}active-sub{% endif %}">Agregar Incidencia</a>
+                    <a href="{% url 'profesor_gestion_incidencias' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_gestion_incidencias' %}active-sub{% endif %}">Mis Incidencias</a>
+                </div>
+
+                <a href="{% url 'profesor_calendario' %}" class="nav-link {% if 'profesor/calendario' in request.path %}active-menu{% endif %}">Calendario de Eventos</a>
+
+            <!-- 3. MENÚ PARA ADMINISTRADOR Y TI (Roles 1 y 4) -->
             {% else %}
                 <a href="{% url 'admin_inicio' %}" class="nav-link {% if request.resolver_match.url_name == 'admin_inicio' %}active-menu{% endif %}">Inicio</a>
-            {% endif %}
 
-            <!-- EXCLUSIVO ADMINISTRADOR (Rol 1) / TI (4) -->
-            {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
-                <a href="{% url 'admin_gestion_usuarios' %}" class="nav-link {% if 'usuarios' in request.path %}active-menu{% endif %}">Gestión de Usuarios</a>
-                <a href="{% url 'admin_gestion_incidencias' %}" class="nav-link {% if 'incidencias' in request.path %}active-menu{% endif %}">Incidencias</a>
-            {% endif %}
+                {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
+                    <a href="{% url 'admin_gestion_usuarios' %}" class="nav-link {% if 'usuarios' in request.path %}active-menu{% endif %}">Gestión de Usuarios</a>
+                {% endif %}
 
-            <!-- INCIDENCIAS DESPLEGABLE ASEO (Rol 5) -->
-            {% if request.session.rol_id == 5 %}
-                <a href="javascript:void(0);" class="nav-link toggle-menu {% if 'incidencias' in request.path %}active-menu{% endif %}" data-target="submenu-incidencias">
-                    <span>Incidencias</span>
-                </a>
-                <div class="sub-menu" id="submenu-incidencias" style="display: none;">
-                    <a href="{% url 'crear_incidencia_aseo' %}" class="sub-link {% if request.resolver_match.url_name == 'crear_incidencia_aseo' %}active-sub{% endif %}">Agregar Incidencia</a>
-                    <a href="{% url 'incidencias_aseo' %}" class="sub-link {% if request.resolver_match.url_name == 'incidencias_aseo' %}active-sub{% endif %}">Mis Incidencias</a>
-                </div>
-            {% endif %}
+                {% if request.session.rol_id == 1 %}
+                    <a href="{% url 'admin_alumnos' %}" class="nav-link {% if 'alumnos' in request.path %}active-menu{% endif %}">Alumnos</a>
+                    <a href="{% url 'admin_gestion_apoderados' %}" class="nav-link {% if 'apoderados' in request.path %}active-menu{% endif %}">Apoderados</a>
+                    <a href="{% url 'admin_gestion_profesores' %}" class="nav-link {% if 'profesores' in request.path %}active-menu{% endif %}">Profesores</a>
+                {% endif %}
 
-            <!-- EXCLUSIVO ADMINISTRADOR (Rol 1) -->
-            {% if request.session.rol_id == 1 %}
-                <a href="{% url 'admin_alumnos' %}" class="nav-link {% if 'alumnos' in request.path %}active-menu{% endif %}">Alumnos</a>
-                <a href="{% url 'admin_gestion_apoderados' %}" class="nav-link {% if 'apoderados' in request.path %}active-menu{% endif %}">Apoderados</a>
-                <a href="{% url 'admin_gestion_profesores' %}" class="nav-link {% if 'profesores' in request.path %}active-menu{% endif %}">Profesores</a>
-            {% endif %}
+                <!-- 📌 GESTIÓN TI -->
+                {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
+                    <a href="javascript:void(0);" class="nav-link toggle-menu" data-target="submenu-ti">
+                        <span>Gestión TI</span>
+                    </a>
+                    <div class="sub-menu" id="submenu-ti" style="display: none;">
+                        <a href="{% url 'admin_gestion_incidencias' %}" class="sub-link {% if 'administrador/incidencias' in request.path %}active-sub{% endif %}">Incidencias TI</a>
+                        <a href="{% url 'inventario_ti' %}" class="sub-link {% if 'inventario/ti' in request.path or 'inventario-ti' in request.path or 'administrador/inventario' in request.path %}active-sub{% endif %}">Inventario TI</a>
+                    </div>
+                {% endif %}
 
-            <!-- INVENTARIO TI (Admin 1 y TI 4) -->
-            {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
-                <a href="{% url 'inventario_ti' %}" class="nav-link {% if request.resolver_match.url_name == 'inventario_ti' %}active-menu{% endif %}">
-                    Inventario "TI" 
-                </a>
-            {% endif %}
-
-            <!-- INVENTARIO ASEO (Admin 1 y Aseo 5) -->
-            {% if request.session.rol_id == 1 or request.session.rol_id == 5 %}
-                <a href="{% url 'inventario_aseo' %}" class="nav-link {% if request.resolver_match.url_name == 'inventario_aseo' %}active-menu{% endif %}">
-                    Inventario "Aseo e Insumos"
-                </a>
+                <!-- 📌 GESTIÓN ASEO -->
+                {% if request.session.rol_id == 1 or request.session.rol_id == 5 %}
+                    <a href="javascript:void(0);" class="nav-link toggle-menu" data-target="submenu-aseo">
+                        <span>Gestión Aseo</span>
+                    </a>
+                    <div class="sub-menu" id="submenu-aseo" style="display: none;">
+                        <a href="{% url 'incidencias_aseo' %}" class="sub-link {% if 'aseo/incidencias' in request.path or 'aseo/solicitudes' in request.path %}active-sub{% endif %}">Incidencias Aseo</a>
+                        <a href="{% url 'inventario_aseo' %}" class="sub-link {% if 'inventario/aseo' in request.path or 'aseo/inventario' in request.path %}active-sub{% endif %}">Inventario Aseo</a>
+                    </div>
+                {% endif %}
             {% endif %}
         </nav>
     </aside>
@@ -129,7 +149,7 @@
         </div>
     </main>
 
-    <!-- SCRIPT DE ACORDEÓN (Exacto al del Profesor) -->
+    <!-- SCRIPT DE ACORDEÓN MEJORADO -->
     <script>
         const toggleButtons = document.querySelectorAll('.toggle-menu');
 
@@ -154,11 +174,37 @@
             });
         });
 
+        // Auto-abrir los submenús según la ruta actual
+        // Auto-abrir los submenús según la ruta actual
         document.addEventListener("DOMContentLoaded", function() {
-            const currentUrl = window.location.href;
-            if (currentUrl.includes("incidencias")) {
-                const subInc = document.getElementById('submenu-incidencias');
-                if (subInc) subInc.style.display = 'flex';
+            const currentUrl = window.location.pathname;
+            
+            // 1. Mantener abierto Gestión TI
+            if (
+                (currentUrl.includes("incidencias") && !currentUrl.includes("aseo") && !currentUrl.includes("profesor")) ||
+                currentUrl.includes("inventario/ti") ||
+                currentUrl.includes("inventario-ti") ||
+                currentUrl.includes("administrador/inventario")
+            ) {
+                const subTi = document.getElementById('submenu-ti');
+                if (subTi) subTi.style.display = 'flex';
+            }
+            
+            // 2. Mantener abierto Gestión Aseo
+            if (
+                currentUrl.includes("aseo") ||
+                currentUrl.includes("solicitudes")
+            ) {
+                const subAseo = document.getElementById('submenu-aseo');
+                if (subAseo) subAseo.style.display = 'flex';
+            }
+
+            // 3. 📌 Mantener abierto el submenú de Incidencias del Profesor
+            if (
+                currentUrl.includes("profesor/incidencias")
+            ) {
+                const subProfInc = document.getElementById('submenu-profesor-inc');
+                if (subProfInc) subProfInc.style.display = 'flex';
             }
         });
     </script>

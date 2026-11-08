@@ -1,0 +1,49 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style="margin-bottom: 25px;">
+    <h1 style="font-size: 1.8rem; font-weight: bold; color: #0f172a; margin: 0;">Gestionar Solicitud #{{ solicitud.id_solicitud }}</h1>
+    <p style="color: #64748b; margin-top: 4px;">Revisa el detalle de la solicitud de aseo, agrega observaciones y actualiza su estado.</p>
+</div>
+
+<div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 30px; max-width: 850px; margin: 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    
+    <div class="mb-4">
+        <p><strong>Fecha de Solicitud:</strong> {{ solicitud.fecha }}</p>
+        <p><strong>Tipo de Requerimiento:</strong> {{ solicitud.tipo_solicitud }}</p>
+        <p><strong>RUT del Solicitante:</strong> {{ solicitud.usuario_rut }}</p>
+        <div class="p-3 bg-light rounded border mb-3">
+            <strong>Descripción del Pedido:</strong>
+            <p class="mb-0 mt-1 text-dark">{{ solicitud.descripcion }}</p>
+        </div>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- 📌 Nuevo campo de Observaciones -->
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-dark">Observaciones / Notas de Resolución</label>
+            <textarea name="observaciones" rows="4" class="form-control" placeholder="Ingrese observaciones sobre la resolución de la solicitud...">{{ solicitud.observaciones|default:"" }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-dark">Actualizar Estado / Resolución *</label>
+            <select name="estado_solicitud" class="form-select" required>
+                <option value="Pendiente" {% if solicitud.estado_solicitud == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+                <option value="Aprobado" {% if solicitud.estado_solicitud == 'Aprobado' %}selected{% endif %}>Aprobado / En proceso</option>
+                <option value="Resuelto" {% if solicitud.estado_solicitud == 'Resuelto' %}selected{% endif %}>Resuelto / Entregado</option>
+                <option value="Rechazado" {% if solicitud.estado_solicitud == 'Rechazado' %}selected{% endif %}>Rechazado</option>
+            </select>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px;">
+            <a href="{% url 'incidencias_aseo' %}" class="btn btn-outline-secondary px-4">Volver</a>
+            <button type="submit" class="btn btn-success px-4 fw-bold">Guardar Resolución</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

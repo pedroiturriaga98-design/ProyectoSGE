@@ -1,0 +1,41 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style="margin-bottom: 25px;">
+    <h1 style="font-size: 1.8rem; font-weight: bold; color: #0f172a; margin: 0;">Gestionar Stock: {{ insumo.nombre_item }}</h1>
+    <p style="color: #64748b; margin-top: 4px;">Actualiza el inventario sumando nuevas unidades recibidas o ajustando el stock disponible.</p>
+</div>
+
+<div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 30px; max-width: 650px; margin: 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    
+    <div class="mb-4 p-3 bg-light rounded border">
+        <p class="mb-0"><strong>Stock Actual en Sistema:</strong> <span class="badge bg-primary fs-6">{{ insumo.stock_actual }} unidades</span></p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-dark">Acción a realizar *</label>
+            <select name="accion" class="form-select" required>
+                <option value="sumar">Agregar unidades (Llegada de pedido / Compra)</option>
+                <option value="restar">Retirar unidades (Merma o uso extraordinario)</option>
+                <option value="fijar">Establecer stock exacto</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-dark">Cantidad *</label>
+            <input type="number" name="cantidad" class="form-control" min="0" value="1" required placeholder="Ingrese la cantidad">
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px;">
+            <a href="{% url 'inventario_aseo' %}" class="btn btn-outline-secondary px-4">Volver</a>
+            <button type="submit" class="btn btn-success px-4 fw-bold">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

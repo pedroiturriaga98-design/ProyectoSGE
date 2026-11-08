@@ -1,0 +1,33 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style="margin-bottom: 25px;">
+    <h1 style="font-size: 1.8rem; font-weight: bold; color: #0f172a; margin: 0;">Retirar Material: {{ insumo.nombre_item }}</h1>
+    <p style="color: #64748b; margin-top: 4px;">Indica cuántas unidades vas a sacar de bodega.</p>
+</div>
+
+<div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 30px; max-width: 600px; margin: 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+    
+    <div class="mb-4 p-3 bg-light rounded border">
+        <p class="mb-0"><strong>Stock Disponible:</strong> <span class="badge bg-primary fs-6">{{ insumo.stock_actual }} unidades</span></p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-dark">Cantidad a retirar *</label>
+            <input type="number" name="cantidad" class="form-control" min="1" max="{{ insumo.stock_actual }}" value="1" required>
+            <small class="text-muted">Máximo disponible para retiro: {{ insumo.stock_actual }} unidades.</small>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px;">
+            <a href="{% url 'inventario_aseo' %}" class="btn btn-outline-secondary px-4">Cancelar</a>
+            <button type="submit" class="btn btn-danger px-4 fw-bold">Confirmar Retiro</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
