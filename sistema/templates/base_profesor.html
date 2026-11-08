@@ -1,108 +1,193 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Agregar CSS de Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Portal Profesor - SGE</title>
-    <link rel="stylesheet" href="{% static 'css/base_profesor.css' %}">
-</head>
-<body>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base_profesor.css' %}">
+
+    <style>
+        .sidebar-left .year-static {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 38px;
+            padding: 10px 14px;
+            box-sizing: border-box;
+            border-radius: 6px;
+            background: #2d394e;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 400;
+            cursor: default;
+        }
+    </style>
+</head>
+
+<body>
     <aside class="sidebar-left">
+
         <div class="logo-area">
             <span class="logo-badge">SGE</span>
             <div>
                 <strong>Sistema de Gestión</strong>
-                <div style="font-size: 0.7rem; color: #9ca3af;">Colegio Santa Juliana</div>
+                <div style="font-size: 0.7rem; color: #9ca3af;">
+                    Colegio Santa Juliana
+                </div>
             </div>
         </div>
 
+        <!-- AÑO ESCOLAR FIJO -->
         <div class="sidebar-controls">
-            <select class="select-year">
-                <option>Año Escolar 2026</option>
-            </select>
-            <input type="text" class="search-bar" placeholder="Buscar alumno, profesor...">
+            <div class="year-static">Año Escolar 2026</div>
         </div>
 
         <nav class="nav-menu">
-            
-            <!-- Botón Inicio Independiente -->
-            <a href="{% url 'profesor_inicio' %}" class="nav-link {% if request.resolver_match.url_name == 'profesor_inicio' %}active-menu{% endif %}">Inicio</a>
 
-            <!-- Menú Incidencias (Desplegable) -->
-            <a href="javascript:void(0);" class="nav-link toggle-menu" data-target="submenu-incidencias">
-                <span>Incidencias</span> 
+            <a href="{% url 'profesor_inicio' %}"
+               class="nav-link {% if request.resolver_match.url_name == 'profesor_inicio' %}active-menu{% endif %}">
+                Inicio
+            </a>
+
+            <!-- INCIDENCIAS -->
+            <a href="javascript:void(0);"
+               class="nav-link toggle-menu"
+               data-target="submenu-incidencias">
+                <span>Incidencias</span>
                 <span class="arrow-icon">⌃</span>
             </a>
+
             <div class="sub-menu" id="submenu-incidencias" style="display: none;">
-                <a href="{% url 'profesor_agregar_incidencia' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_agregar_incidencia' %}active-sub{% endif %}">Agregar Incidencia</a>
-                <a href="{% url 'profesor_gestion_incidencias' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_gestion_incidencias' or request.resolver_match.url_name == 'profesor_detalle_incidencia' %}active-sub{% endif %}">Mis Incidencias</a>
+                <a href="{% url 'profesor_agregar_incidencia' %}"
+                   class="sub-link {% if request.resolver_match.url_name == 'profesor_agregar_incidencia' %}active-sub{% endif %}">
+                    Agregar Incidencia
+                </a>
+
+                <a href="{% url 'profesor_gestion_incidencias' %}"
+                   class="sub-link {% if request.resolver_match.url_name == 'profesor_gestion_incidencias' or request.resolver_match.url_name == 'profesor_detalle_incidencia' %}active-sub{% endif %}">
+                    Mis Incidencias
+                </a>
             </div>
 
-            <!-- Menú Alumnos (Desplegable) -->
-            <a href="javascript:void(0);" class="nav-link toggle-menu" data-target="submenu-alumnos">
-                <span>Alumnos</span> 
+            <!-- ALUMNOS -->
+            <a href="javascript:void(0);"
+               class="nav-link toggle-menu"
+               data-target="submenu-alumnos">
+                <span>Alumnos</span>
                 <span class="arrow-icon">⌃</span>
             </a>
+
             <div class="sub-menu" id="submenu-alumnos" style="display: none;">
-                <a href="{% url 'profesor_alumnos' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_alumnos' %}active-sub{% endif %}">Listado de Alumnos</a>
-            </div>
-            
-            <!-- Menú Profesores (Desplegable) -->
-            <a href="javascript:void(0);" class="nav-link toggle-menu" data-target="submenu-profesores">
-                <span>Profesores</span> 
-                <span class="arrow-icon">⌃</span>
-            </a>
-            <div class="sub-menu" id="submenu-profesores" style="display: none;">
-                <a href="{% url 'profesor_notas' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_notas' %}active-sub{% endif %}">Agregar Nota</a>
-                <a href="{% url 'profesor_asistencia' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_asistencia' %}active-sub{% endif %}">Agregar Asistencia</a>
+                <a href="{% url 'profesor_alumnos' %}"
+                   class="sub-link {% if request.resolver_match.url_name == 'profesor_alumnos' %}active-sub{% endif %}">
+                    Listado de Alumnos
+                </a>
             </div>
 
+            <!-- PROFESORES -->
+            <a href="javascript:void(0);"
+               class="nav-link toggle-menu"
+               data-target="submenu-profesores">
+                <span>Profesores</span>
+                <span class="arrow-icon">⌃</span>
+            </a>
+
+            <div class="sub-menu" id="submenu-profesores" style="display: none;">
+                <a href="{% url 'profesor_notas' %}"
+                   class="sub-link {% if request.resolver_match.url_name == 'profesor_notas' %}active-sub{% endif %}">
+                    Agregar Nota
+                </a>
+
+                <a href="{% url 'profesor_asistencia' %}"
+                   class="sub-link {% if request.resolver_match.url_name == 'profesor_asistencia' %}active-sub{% endif %}">
+                    Agregar Asistencia
+                </a>
+            </div>
+
+            <!-- CALENDARIO -->
             <a href="{% url 'profesor_calendario' %}"
-            class="nav-link {% if request.resolver_match.url_name == 'profesor_calendario' %}active-menu{% endif %}">
-                <span>Calendario de Eventos</span> 
+               class="nav-link {% if request.resolver_match.url_name == 'profesor_calendario' %}active-menu{% endif %}">
+                Calendario de Eventos
             </a>
 
         </nav>
     </aside>
 
     <main class="main-content">
+
         <header class="top-header">
-            <div class="last-access"><span>Último acceso: {{ request.session.ultimo_acceso|default:"Primer ingreso" }}</span></div>
+
+            <div class="last-access">
+                <span>
+                    Último acceso:
+                    {{ request.session.ultimo_acceso|default:"Primer ingreso" }}
+                </span>
+            </div>
+
             <div class="user-profile dropdown">
-                <!-- Botón desplegable -->
-                <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    
-                    <!-- Contenedor en columna (Nombre arriba, Rol abajo) -->
-                    <div class="me-2 text-end" style="display: flex; flex-direction: column; align-items: flex-end;">
-                        <span class="fw-bold text-dark" style="font-size: 0.95rem; line-height: 1.2;">{{ request.session.nombre_usuario }} {{ request.session.apellido_usuario }}</span>
-                        <span class="text-muted" style="font-size: 0.75rem; line-height: 1.2;">{{ request.session.rol_nombre }}</span>
+
+                <a href="#"
+                   class="d-flex align-items-center text-decoration-none dropdown-toggle"
+                   id="dropdownUser1"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">
+
+                    <div class="me-2 text-end"
+                         style="display:flex; flex-direction:column; align-items:flex-end;">
+
+                        <span class="fw-bold text-dark"
+                              style="font-size:0.95rem; line-height:1.2;">
+                            {{ request.session.nombre_usuario }}
+                            {{ request.session.apellido_usuario }}
+                        </span>
+
+                        <span class="text-muted"
+                              style="font-size:0.75rem; line-height:1.2;">
+                            {{ request.session.rol_nombre }}
+                        </span>
                     </div>
 
-                    <!-- Avatar con iniciales -->
-                    <img src="https://ui-avatars.com/api/?name={{ request.session.nombre_usuario }}+{{ request.session.apellido_usuario }}&background=e2e8f0&color=0f172a" alt="Avatar" class="rounded-circle" width="40" height="40">
+                    <img
+                        src="https://ui-avatars.com/api/?name={{ request.session.nombre_usuario|urlencode }}+{{ request.session.apellido_usuario|urlencode }}&background=e2e8f0&color=0f172a"
+                        alt="Avatar"
+                        class="rounded-circle"
+                        width="40"
+                        height="40">
                 </a>
 
-                <!-- Menú desplegable flotante -->
-                <ul class="dropdown-menu dropdown-menu-end shadow p-2" aria-labelledby="dropdownUser1" style="min-width: 220px;">
+                <ul class="dropdown-menu dropdown-menu-end shadow p-2"
+                    aria-labelledby="dropdownUser1"
+                    style="min-width:220px;">
+
                     <li class="px-3 py-2 border-bottom mb-2">
-                        <span class="d-block fw-bold text-dark">{{ request.session.nombre_usuario }}</span>
-                        <span class="d-block text-muted small">Rol: {{ request.session.rol_nombre }}</span>
+                        <span class="d-block fw-bold text-dark">
+                            {{ request.session.nombre_usuario }}
+                        </span>
+                        <span class="d-block text-muted small">
+                            Rol: {{ request.session.rol_nombre }}
+                        </span>
                     </li>
+
                     <li>
-                        <a class="dropdown-item rounded py-2" href="{% url 'cambiar_password_perfil' %}">
+                        <a class="dropdown-item rounded py-2"
+                           href="{% url 'cambiar_password_perfil' %}">
                             🔒 Cambiar Información de Seguridad
                         </a>
                     </li>
+
                     <li><hr class="dropdown-divider"></li>
+
                     <li>
-                        <a class="dropdown-item rounded py-2 text-danger fw-semibold" href="{% url 'login' %}">
+                        <a class="dropdown-item rounded py-2 text-danger fw-semibold"
+                           href="{% url 'login' %}">
                             ⍈ Cerrar sesión
                         </a>
                     </li>
+
                 </ul>
             </div>
         </header>
@@ -111,53 +196,85 @@
             {% block content %}
             {% endblock %}
         </div>
+
     </main>
 
-    <!-- Script de Acordeón para menús desplegables -->
     <script>
-        const toggleButtons = document.querySelectorAll('.toggle-menu');
+        document.addEventListener('DOMContentLoaded', function () {
 
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('data-target');
-                const targetSubmenu = document.getElementById(targetId);
-                const targetArrow = this.querySelector('.arrow-icon');
-                
-                const isAlreadyOpen = targetSubmenu.style.display === 'flex';
+            const toggleButtons = document.querySelectorAll('.toggle-menu');
 
-                document.querySelectorAll('.sub-menu').forEach(menu => {
-                    menu.style.display = 'none';
+            toggleButtons.forEach(function (button) {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('data-target');
+                    const targetSubmenu = document.getElementById(targetId);
+                    const targetArrow = this.querySelector('.arrow-icon');
+
+                    if (!targetSubmenu) return;
+
+                    const isAlreadyOpen =
+                        targetSubmenu.style.display === 'flex';
+
+                    document.querySelectorAll('.sub-menu').forEach(function (menu) {
+                        menu.style.display = 'none';
+                    });
+
+                    document.querySelectorAll('.arrow-icon').forEach(function (arrow) {
+                        arrow.style.transform = 'rotate(0deg)';
+                    });
+
+                    if (!isAlreadyOpen) {
+                        targetSubmenu.style.display = 'flex';
+
+                        if (targetArrow) {
+                            targetArrow.style.transform = 'rotate(180deg)';
+                        }
+                    }
                 });
-                document.querySelectorAll('.arrow-icon').forEach(arrow => {
-                    arrow.style.transform = 'rotate(0deg)';
-                });
-
-                if (!isAlreadyOpen) {
-                    targetSubmenu.style.display = 'flex';
-                    targetArrow.style.transform = 'rotate(180deg)';
-                }
             });
-        });
 
-        document.addEventListener("DOMContentLoaded", function() {
             const currentUrl = window.location.href;
-            
-            if(currentUrl.includes("notas") || currentUrl.includes("asistencia")) {
-                document.getElementById('submenu-profesores').style.display = 'flex';
-                document.querySelector('[data-target="submenu-profesores"] .arrow-icon').style.transform = 'rotate(180deg)';
-            } else if (currentUrl.includes("incidencias")) {
-                document.getElementById('submenu-incidencias').style.display = 'flex';
-                document.querySelector('[data-target="submenu-incidencias"] .arrow-icon').style.transform = 'rotate(180deg)';
-            } else if (currentUrl.includes("alumnos")) {
-                document.getElementById('submenu-alumnos').style.display = 'flex';
-                document.querySelector('[data-target="submenu-alumnos"] .arrow-icon').style.transform = 'rotate(180deg)';
+            let submenuActivo = null;
+
+            if (
+                currentUrl.includes('/profesor/notas') ||
+                currentUrl.includes('/profesor/asistencia')
+            ) {
+                submenuActivo = 'submenu-profesores';
+
+            } else if (
+                currentUrl.includes('incidencias') ||
+                currentUrl.includes('incidencia')
+            ) {
+                submenuActivo = 'submenu-incidencias';
+
+            } else if (currentUrl.includes('alumnos')) {
+                submenuActivo = 'submenu-alumnos';
             }
+
+            if (submenuActivo) {
+                const menu = document.getElementById(submenuActivo);
+                const boton = document.querySelector(
+                    '[data-target="' + submenuActivo + '"]'
+                );
+
+                if (menu && boton) {
+                    menu.style.display = 'flex';
+
+                    const arrow = boton.querySelector('.arrow-icon');
+
+                    if (arrow) {
+                        arrow.style.transform = 'rotate(180deg)';
+                    }
+                }
+            }
+
         });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
 </body>
 </html>
