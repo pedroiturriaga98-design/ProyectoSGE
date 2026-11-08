@@ -20378,6 +20378,14 @@
   }
 },
 {
+  "model": "sistema.evaluacion",
+  "pk": 18,
+  "fields": {
+    "asignatura_curso_id_asig_curso": 3,
+    "numero_evaluacion": 3
+  }
+},
+{
   "model": "sistema.calificacion",
   "pk": 1,
   "fields": {
@@ -27174,6 +27182,34 @@
   }
 },
 {
+  "model": "sistema.ticketsoporte",
+  "pk": 21,
+  "fields": {
+    "fecha_reporte": "2026-11-08",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.332-6",
+    "equipo_ti_codigo_inventario": "PC-001",
+    "descripcion": "NO FUNCIONA",
+    "tipo_incidencia": "Problema con Equipo"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 22,
+  "fields": {
+    "fecha_reporte": "2026-11-08",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.332-6",
+    "equipo_ti_codigo_inventario": "NOTE-001",
+    "descripcion": "no funciona el pc y hay prueba",
+    "tipo_incidencia": "Mantenimiento"
+  }
+},
+{
   "model": "sistema.insumo",
   "pk": 1,
   "fields": {
@@ -27230,6 +27266,38 @@
   }
 },
 {
+  "model": "sistema.insumo",
+  "pk": 8,
+  "fields": {
+    "nombre_item": "Cif Crema",
+    "stock_actual": 9
+  }
+},
+{
+  "model": "sistema.insumo",
+  "pk": 9,
+  "fields": {
+    "nombre_item": "Quix ",
+    "stock_actual": 15
+  }
+},
+{
+  "model": "sistema.insumo",
+  "pk": 10,
+  "fields": {
+    "nombre_item": "Café",
+    "stock_actual": 10
+  }
+},
+{
+  "model": "sistema.insumo",
+  "pk": 11,
+  "fields": {
+    "nombre_item": "Poett",
+    "stock_actual": 16
+  }
+},
+{
   "model": "sistema.solicitudinsumo",
   "pk": 1,
   "fields": {
@@ -27237,7 +27305,8 @@
     "estado_solicitud": "Pendiente",
     "usuario_rut": "14.131.328-2",
     "descripcion": "Necesito tres plumones \r\ncolores: Azul - rojo - negro",
-    "tipo_solicitud": "Solicitud de Material"
+    "tipo_solicitud": "Solicitud de Material",
+    "observaciones": null
   }
 },
 {
@@ -27248,7 +27317,8 @@
     "estado_solicitud": "Pendiente",
     "usuario_rut": "14.131.328-2",
     "descripcion": "RETIRO",
-    "tipo_solicitud": "Solicitud de Reposición"
+    "tipo_solicitud": "Solicitud de Reposición",
+    "observaciones": null
   }
 },
 {
@@ -27259,7 +27329,8 @@
     "estado_solicitud": "Pendiente",
     "usuario_rut": "14.131.328-2",
     "descripcion": "NECESITO UN LAPI",
-    "tipo_solicitud": "Solicitud de Reposición"
+    "tipo_solicitud": "Solicitud de Reposición",
+    "observaciones": null
   }
 },
 {
@@ -27270,7 +27341,8 @@
     "estado_solicitud": "Pendiente",
     "usuario_rut": "14.131.328-2",
     "descripcion": "ASDASDASDASDASDASDASD",
-    "tipo_solicitud": "Solicitud de Reposición"
+    "tipo_solicitud": "Solicitud de Reposición",
+    "observaciones": null
   }
 },
 {
@@ -27281,7 +27353,8 @@
     "estado_solicitud": "Pendiente",
     "usuario_rut": "14.131.328-2",
     "descripcion": "QWEQWEQWEQWEWQEQWEQW",
-    "tipo_solicitud": "Solicitud de Material"
+    "tipo_solicitud": "Solicitud de Material",
+    "observaciones": null
   }
 },
 {
@@ -27292,7 +27365,68 @@
     "estado_solicitud": "Pendiente",
     "usuario_rut": "22.222.222-2",
     "descripcion": "ASDADASDASDAS",
-    "tipo_solicitud": "Solicitud de Material"
+    "tipo_solicitud": "Solicitud de Material",
+    "observaciones": null
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 7,
+  "fields": {
+    "fecha": "2026-11-07",
+    "estado_solicitud": "Resuelto",
+    "usuario_rut": "20.041.339-3",
+    "descripcion": "NO HAY CONFOR Y TOY QUE ME CAGO",
+    "tipo_solicitud": "Solicitud de Material",
+    "observaciones": null
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 8,
+  "fields": {
+    "fecha": "2026-11-13",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "22.222.222-2",
+    "descripcion": "falta cafe ",
+    "tipo_solicitud": "Solicitud de Material",
+    "observaciones": null
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 9,
+  "fields": {
+    "fecha": "2026-11-07",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "22.222.222-2",
+    "descripcion": "no hay limpia pisos",
+    "tipo_solicitud": "Solicitud de Reposición",
+    "observaciones": null
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 10,
+  "fields": {
+    "fecha": "2026-11-07",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "22.222.222-2",
+    "descripcion": "mas nova",
+    "tipo_solicitud": "Solicitud de Reposición",
+    "observaciones": null
+  }
+},
+{
+  "model": "sistema.solicitudinsumo",
+  "pk": 11,
+  "fields": {
+    "fecha": "2026-11-07",
+    "estado_solicitud": "Pendiente",
+    "usuario_rut": "22.222.222-2",
+    "descripcion": "falta cerveza",
+    "tipo_solicitud": "Solicitud de Reposición",
+    "observaciones": null
   }
 },
 {
