@@ -5094,6 +5094,14 @@ def inventario_aseo(request):
         
     lista_items = Insumo.objects.all().order_by('id_insumo')
     
+    # Capturar término de búsqueda
+    query = request.GET.get('q', '').strip()
+    if query:
+        # Filtra por nombre del item o por ID de insumo
+        lista_items = lista_items.filter(
+            Q(nombre_item__icontains=query) | Q(id_insumo__icontains=query)
+        )
+    
     # Paginación: 10 insumos por página
     paginator = Paginator(lista_items, 10)
     page_number = request.GET.get('page')
@@ -5101,6 +5109,7 @@ def inventario_aseo(request):
     
     context = {
         'items': items,
+        'query': query,  # Pasamos query para mantener el término en el input y en los links
         'rol_id': request.session.get('rol_id')
     }
     return render(request, 'inventario_aseo.html', context)

@@ -4,52 +4,52 @@
 {% block content %}
 
 <div class="mb-4">
-    <h2 class="fw-bold text-dark" style="font-size: 1.8rem; margin: 0;">Inventario de Aseo e Insumos</h2>
-    <p class="text-muted" style="margin: 4px 0 0 0;">Consulta la disponibilidad en bodega y registra el retiro de materiales para tus labores.</p>
+    <h2 class="fw-bold text-dark m-0">Inventario de Aseo e Insumos</h2>
+    <p class="text-muted mt-1 mb-0">Consulta la disponibilidad en bodega y registra el retiro de materiales para tus labores.</p>
 </div>
 
-<div class="card shadow-sm border-0 p-4" style="border-radius: 12px;">
+<div class="card shadow-sm border-0 p-4 rounded-3">
     <div class="table-responsive">
         <table class="table table-hover align-middle">
             <thead class="table-light">
                 <tr>
-                    <th>CÓDIGO / ID</th>
-                    <th>NOMBRE INSUMO</th>
-                    <th>CATEGORÍA</th>
-                    <th>STOCK DISPONIBLE</th>
-                    <th>ESTADO</th>
-                    <th class="text-center">RETIRAR</th>
+                    <th class="text-uppercase small text-muted">CÓDIGO / ID</th>
+                    <th class="text-uppercase small text-muted">NOMBRE INSUMO</th>
+                    <th class="text-uppercase small text-muted">CATEGORÍA</th>
+                    <th class="text-uppercase small text-muted">STOCK DISPONIBLE</th>
+                    <th class="text-uppercase small text-muted">ESTADO</th>
+                    <th class="text-uppercase small text-muted text-center">RETIRAR</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in items %}
                 <tr>
-                    <td class="fw-bold">{{ item.id_insumo }}</td>
-                    <td>{{ item.nombre_item }}</td>
+                    <td class="fw-bold text-secondary">#{{ item.id_insumo }}</td>
+                    <td class="fw-semibold text-dark">{{ item.nombre_item }}</td>
                     <td>Aseo General</td>
                     <td>{{ item.stock_actual }} unidades</td>
                     <td>
                         {% if item.stock_actual > 5 %}
-                            <span class="badge" style="background-color: #dcfce7; color: #16a34a;">Disponible</span>
+                            <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-semibold">Disponible</span>
                         {% elif item.stock_actual > 0 %}
-                            <span class="badge" style="background-color: #fee2e2; color: #dc2626;">Stock Crítico</span>
+                            <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill fw-semibold">Stock Crítico</span>
                         {% else %}
-                            <span class="badge bg-secondary">Sin Stock</span>
+                            <span class="badge bg-secondary px-3 py-2 rounded-pill fw-semibold">Sin Stock</span>
                         {% endif %}
                     </td>
                     <td class="text-center">
                         {% if item.stock_actual > 0 %}
-                            <a href="{% url 'retirar_stock_aseo' item.pk %}" class="btn btn-sm btn-outline-danger fw-semibold" title="Retirar stock">
-                                ➖ Retirar Material
+                            <a href="{% url 'retirar_stock_aseo' item.pk %}" class="btn btn-sm btn-outline-danger fw-semibold px-3" title="Retirar stock">
+                                Retirar Material
                             </a>
                         {% else %}
-                            <button class="btn btn-sm btn-light text-muted" disabled>Agotado</button>
+                            <button class="btn btn-sm btn-light text-muted border-0" disabled>Agotado</button>
                         {% endif %}
                     </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="6" style="text-align: center; padding: 25px; color: #64748b;">
+                    <td colspan="6" class="text-center text-muted py-4">
                         No hay insumos de aseo registrados en el sistema.
                     </td>
                 </tr>
