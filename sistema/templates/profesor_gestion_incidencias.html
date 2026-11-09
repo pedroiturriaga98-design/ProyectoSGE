@@ -34,23 +34,28 @@
             <tbody>
                 {% for inc in incidencias_ti %}
                 <tr>
-                    <td class="fw-bold text-primary">#{{ inc.id }}</td>
-                    <td>{{ inc.fecha }}</td>
-                    <td>{{ inc.ubicacion_o_equipo|default:"N/A" }}</td>
+                    <!-- 📌 Corregido a id_ticket -->
+                    <td class="fw-bold text-primary">#{{ inc.id_ticket }}</td>
+                    <!-- 📌 Corregido a fecha_reporte -->
+                    <td>{{ inc.fecha_reporte }}</td>
+                    <!-- 📌 Corregido a equipo_ti_codigo_inventario_id -->
+                    <td>{{ inc.equipo_ti_codigo_inventario_id|default:"N/A" }}</td>
                     <td>
                         <span class="badge bg-secondary">{{ inc.prioridad|default:"Normal" }}</span>
                     </td>
                     <td>
-                        {% if inc.estado == 'Resuelto' %}
+                        <!-- 📌 Corregido a estado_ticket -->
+                        {% if inc.estado_ticket == 'Resuelto' %}
                             <span class="badge bg-success">Resuelto</span>
-                        {% elif inc.estado == 'Rechazado' %}
+                        {% elif inc.estado_ticket == 'Rechazado' %}
                             <span class="badge bg-danger">Rechazado</span>
                         {% else %}
-                            <span class="badge bg-warning text-dark">{{ inc.estado|default:"Pendiente" }}</span>
+                            <span class="badge bg-warning text-dark">{{ inc.estado_ticket|default:"Pendiente" }}</span>
                         {% endif %}
                     </td>
                     <td class="text-center">
-                        <a href="{% url 'profesor_detalle_incidencia' inc.pk %}" class="btn btn-sm btn-outline-primary fw-semibold">
+                        <!-- 📌 Corregido a inc.id_ticket para el enlace de detalle -->
+                        <a href="{% url 'profesor_detalle_incidencia' inc.id_ticket %}" class="btn btn-sm btn-outline-primary fw-semibold">
                             Ver Detalle
                         </a>
                     </td>

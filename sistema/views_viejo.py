@@ -5069,13 +5069,8 @@ def incidencias_aseo(request):
     if 'usuario_rut' not in request.session:
         return redirect('login')
         
-    # 1. Obtenemos la lista de RUTs de usuarios con Rol 5 (Aseo)
-    ruts_aseo = Usuario.objects.filter(rol_id_rol=5).values_list('rut', flat=True)
-
-    # 2. Traemos únicamente las solicitudes asociadas a esos RUTs
-    lista_solicitudes = SolicitudInsumo.objects.filter(
-        usuario_rut__in=ruts_aseo
-    ).order_by('-id_solicitud')
+    # 📌 Quitamos el filtro restrictivo de roles y traemos todas las solicitudes de aseo e insumos
+    lista_solicitudes = SolicitudInsumo.objects.all().order_by('-id_solicitud')
     
     paginator = Paginator(lista_solicitudes, 10)
     page_number = request.GET.get('page')

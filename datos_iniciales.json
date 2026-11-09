@@ -144,34 +144,16 @@
 },
 {
   "model": "sistema.usuario",
-  "pk": "18.124.146-2",
-  "fields": {
-    "cambiar_password": false,
-    "password_hash": "pbkdf2_sha256$870000$r9cS6QolbSNUaS3n8yBkaM$bmkR+ETQUY4NN8tAxvoSiU0gw5Kw6rC4XsDMdkCGzCQ=",
-    "rol_id_rol": 5,
-    "nombre": "Cony",
-    "apellido_paterno": "Petek",
-    "apellido_materno": "",
-    "correo": "cpetek@santajuliana.cl",
-    "correo_recuperacion": null,
-    "telefono": "+569 49504944",
-    "direccion": "Padre Orellana 1656",
-    "fecha_nacimiento": "2000-02-16",
-    "activo": 1
-  }
-},
-{
-  "model": "sistema.usuario",
   "pk": "19.572.314-1",
   "fields": {
-    "cambiar_password": false,
-    "password_hash": "pbkdf2_sha256$870000$rlu2c8d94PBTu9UUD1pkiN$9VJVK9zG+Dl3h8A+X0We4z90mw6x/Aefl3ZsTNB/IxY=",
+    "cambiar_password": true,
+    "password_hash": "195723141",
     "rol_id_rol": 1,
     "nombre": "Franco",
     "apellido_paterno": "González",
     "apellido_materno": "Gaete",
     "correo": "fgonzalez@santajuliana.cl",
-    "correo_recuperacion": "francogonzalez3a@gmail.com",
+    "correo_recuperacion": null,
     "telefono": "+929090909",
     "direccion": "Av. San Carlos 123, Puente Alto",
     "fecha_nacimiento": "1997-02-19",
@@ -218,14 +200,14 @@
   "model": "sistema.usuario",
   "pk": "20.041.332-6",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$qSQtsDvPO8SIMwoscxWVgv$I+ueQcJXnJTklwMy9LMzgHpw0zjB4w6UIVDTXyYRHSE=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$kE3rp0livDK5ccykLkFFBV$E/k5mZX+McAwVHQONADMge8mSx2sNUjj6NIE4zXcC2I=",
     "rol_id_rol": 2,
     "nombre": "Javiera Ignacio",
     "apellido_paterno": "Contreras",
     "apellido_materno": "Silva",
     "correo": "jcontreras@santajuliana.cl",
-    "correo_recuperacion": null,
+    "correo_recuperacion": "pedro.iturriaga98@gmail.com",
     "telefono": "+56 9 12457878",
     "direccion": "av pajaritos 123",
     "fecha_nacimiento": "1999-10-10",
@@ -5132,14 +5114,14 @@
   "model": "sistema.usuario",
   "pk": "40.007.029-6",
   "fields": {
-    "cambiar_password": true,
-    "password_hash": "pbkdf2_sha256$870000$7W0RWcsM6K6QnJ50eYSkbL$Cw1VTeqO+xG3xMNloSpE9dTUrlH0Snzk525MmaQcEtw=",
+    "cambiar_password": false,
+    "password_hash": "pbkdf2_sha256$870000$HZRkWqwrRGg67B37liw5hr$Fm1u0yNKzVWyQBY9t7qRnGGfi9ozKfY28FMYIKqekfs=",
     "rol_id_rol": 3,
     "nombre": "Diego",
     "apellido_paterno": "Contreras",
     "apellido_materno": "Rodriguez",
     "correo": "dcontreras2@santajuliana.cl",
-    "correo_recuperacion": null,
+    "correo_recuperacion": "pedro.iturriaga98@gmail.com",
     "telefono": "+56961302021",
     "direccion": "Los Aromos 3191, Las Condes, Santiago",
     "fecha_nacimiento": "1973-01-30",
@@ -8401,24 +8383,6 @@
     "telefono": "+56 9 12457878",
     "direccion": "av. tobalaba",
     "fecha_nacimiento": "1989-10-11",
-    "activo": 1
-  }
-},
-{
-  "model": "sistema.usuario",
-  "pk": "44.444.444-4",
-  "fields": {
-    "cambiar_password": false,
-    "password_hash": "pbkdf2_sha256$870000$VqgFefvHWtj0X18Krx5oyX$pJ32wNuF49Z5blGBjUgkat+LbzeZLUl2AlgKdQOgWuI=",
-    "rol_id_rol": 2,
-    "nombre": "Nicolas",
-    "apellido_paterno": "Caamaño",
-    "apellido_materno": "",
-    "correo": "ncaamano@santajuliana.cl",
-    "correo_recuperacion": null,
-    "telefono": "+569 49504944",
-    "direccion": "Padre Orellana 1656",
-    "fecha_nacimiento": "1999-06-24",
     "activo": 1
   }
 },
@@ -27246,11 +27210,81 @@
   }
 },
 {
+  "model": "sistema.ticketsoporte",
+  "pk": 23,
+  "fields": {
+    "fecha_reporte": "2026-11-08",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.332-6",
+    "equipo_ti_codigo_inventario": "EXT-001",
+    "descripcion": "NO HAY JABON EN EL BAÑO",
+    "tipo_incidencia": null
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 24,
+  "fields": {
+    "fecha_reporte": "2026-11-08",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.332-6",
+    "equipo_ti_codigo_inventario": "EXT-001",
+    "descripcion": "NO HAY JABON",
+    "tipo_incidencia": null
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 25,
+  "fields": {
+    "fecha_reporte": "2026-11-08",
+    "prioridad": "Baja",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.332-6",
+    "equipo_ti_codigo_inventario": "EXT-001",
+    "descripcion": "no hay cafe",
+    "tipo_incidencia": null
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 26,
+  "fields": {
+    "fecha_reporte": "2026-11-09",
+    "prioridad": "Media",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.332-6",
+    "equipo_ti_codigo_inventario": "NOTE-003",
+    "descripcion": "el hdmi no funciona bien",
+    "tipo_incidencia": "mantenimiento"
+  }
+},
+{
+  "model": "sistema.ticketsoporte",
+  "pk": 27,
+  "fields": {
+    "fecha_reporte": "2026-11-09",
+    "prioridad": "Alta",
+    "observacion": null,
+    "estado_ticket": "Pendiente",
+    "usuario_rut": "20.041.332-6",
+    "equipo_ti_codigo_inventario": "PROY-003",
+    "descripcion": "el proyector no proyecta",
+    "tipo_incidencia": "equipo"
+  }
+},
+{
   "model": "sistema.insumo",
   "pk": 1,
   "fields": {
     "nombre_item": "Cloro",
-    "stock_actual": 2
+    "stock_actual": 0
   }
 },
 {
@@ -27258,7 +27292,7 @@
   "pk": 2,
   "fields": {
     "nombre_item": "Papel higiénico",
-    "stock_actual": 6
+    "stock_actual": 10
   }
 },
 {
@@ -27398,11 +27432,11 @@
   "pk": 6,
   "fields": {
     "fecha": "2026-11-06",
-    "estado_solicitud": "Resuelto",
+    "estado_solicitud": "Pendiente",
     "usuario_rut": "22.222.222-2",
     "descripcion": "ASDADASDASDAS",
     "tipo_solicitud": "Solicitud de Material",
-    "observaciones": "JESJESJESJES"
+    "observaciones": null
   }
 },
 {
@@ -27458,11 +27492,11 @@
   "pk": 11,
   "fields": {
     "fecha": "2026-11-07",
-    "estado_solicitud": "Rechazado",
+    "estado_solicitud": "Resuelto",
     "usuario_rut": "22.222.222-2",
     "descripcion": "falta cerveza",
     "tipo_solicitud": "Solicitud de Reposición",
-    "observaciones": "Este es un establecimiento educacional, el alcohol no está permitido"
+    "observaciones": "te pusimos un sixpack sangre"
   }
 },
 {
@@ -27471,9 +27505,9 @@
   "fields": {
     "fecha": "2026-11-08",
     "estado_solicitud": "Pendiente",
-    "usuario_rut": "18.124.146-2",
-    "descripcion": "aaaaaaaaaaaah",
-    "tipo_solicitud": "Solicitud de Reposición",
+    "usuario_rut": "20.041.332-6",
+    "descripcion": "AAAAA",
+    "tipo_solicitud": "Solicitud de Material",
     "observaciones": null
   }
 },
@@ -27483,8 +27517,8 @@
   "fields": {
     "fecha": "2026-11-08",
     "estado_solicitud": "Pendiente",
-    "usuario_rut": "12.345.678-5",
-    "descripcion": "Necesito una resma de papel para evaluación nr2",
+    "usuario_rut": "20.041.332-6",
+    "descripcion": "CONFORTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "tipo_solicitud": "Solicitud de Material",
     "observaciones": null
   }
@@ -27495,8 +27529,8 @@
   "fields": {
     "fecha": "2026-11-08",
     "estado_solicitud": "Pendiente",
-    "usuario_rut": "12.345.678-5",
-    "descripcion": "Necesito una resma de papel para evaluación nr2",
+    "usuario_rut": "20.041.332-6",
+    "descripcion": "traingan cafeeeeee",
     "tipo_solicitud": "Solicitud de Material",
     "observaciones": null
   }
@@ -27505,36 +27539,12 @@
   "model": "sistema.solicitudinsumo",
   "pk": 15,
   "fields": {
-    "fecha": "2026-11-08",
-    "estado_solicitud": "Pendiente",
-    "usuario_rut": "12.345.678-5",
-    "descripcion": "quiero resma",
+    "fecha": "2026-11-09",
+    "estado_solicitud": "Resuelto",
+    "usuario_rut": "20.041.332-6",
+    "descripcion": "faltan plumones rojos",
     "tipo_solicitud": "Solicitud de Material",
-    "observaciones": null
-  }
-},
-{
-  "model": "sistema.solicitudinsumo",
-  "pk": 16,
-  "fields": {
-    "fecha": "2026-11-12",
-    "estado_solicitud": "Pendiente",
-    "usuario_rut": "12.345.678-5",
-    "descripcion": "faltan safradas",
-    "tipo_solicitud": "reposicion",
-    "observaciones": null
-  }
-},
-{
-  "model": "sistema.solicitudinsumo",
-  "pk": 17,
-  "fields": {
-    "fecha": "2026-11-08",
-    "estado_solicitud": "Pendiente",
-    "usuario_rut": "18.124.146-2",
-    "descripcion": "Faltan safraaaaaaaaaaaadas",
-    "tipo_solicitud": "Solicitud de Reposición",
-    "observaciones": null
+    "observaciones": "se pusieron 4 plumones"
   }
 },
 {
