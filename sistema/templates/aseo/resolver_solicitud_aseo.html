@@ -23,7 +23,6 @@
     <form method="POST">
         {% csrf_token %}
         
-        <!-- 📌 Nuevo campo de Observaciones -->
         <div class="mb-3">
             <label class="form-label fw-semibold text-dark">Observaciones / Notas de Resolución</label>
             <textarea name="observaciones" rows="4" class="form-control" placeholder="Ingrese observaciones sobre la resolución de la solicitud...">{{ solicitud.observaciones|default:"" }}</textarea>
@@ -41,7 +40,7 @@
 
         <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px;">
             <a href="{% url 'incidencias_aseo' %}" class="btn btn-outline-secondary px-4">Volver</a>
-            <button type="submit" class="btn btn-success px-4 fw-bold">Guardar Resolución</button>
+            <button type="submit" class="btn fw-semibold text-white px-4 py-2 border-0" style="background-color: #f97316; border-radius: 8px;">Guardar Resolución</button>
         </div>
     </form>
 </div>

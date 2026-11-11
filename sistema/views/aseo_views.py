@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import Max
+from django.db import IntegrityError
 
 from sistema.models import SolicitudInsumo, Insumo, Usuario
 from .auth_views import require_role
@@ -14,7 +15,7 @@ def incidencias_personal_aseo(request):
         return redirect('login')
         
     solicitudes = SolicitudInsumo.objects.all().order_by('-id_solicitud')
-    return render(request, 'incidencias_personal_aseo.html', {'solicitudes': solicitudes})
+    return render(request, 'aseo/incidencias_personal_aseo.html', {'solicitudes': solicitudes})
 
 
 def inventario_personal_aseo(request):
@@ -22,7 +23,7 @@ def inventario_personal_aseo(request):
         return redirect('login')
         
     items = Insumo.objects.all()
-    return render(request, 'inventario_personal_aseo.html', {'items': items})
+    return render(request, 'aseo/inventario_personal_aseo.html', {'items': items})
 
 
 def retirar_stock_aseo(request, id_insumo):
@@ -47,7 +48,7 @@ def retirar_stock_aseo(request, id_insumo):
             messages.success(request, f'Retiraste {cantidad} unidades de "{insumo.nombre_item}".')
             return redirect('inventario_aseo')
             
-    return render(request, 'retirar_stock_aseo.html', {'insumo': insumo})
+    return render(request, 'aseo/retirar_stock_aseo.html', {'insumo': insumo})
 
 
 @require_role([1, 5])
@@ -67,7 +68,7 @@ def inicio_supervisor_aseo(request):
         'stock_critico': stock_critico,
         'solicitudes_pendientes': solicitudes_pendientes,
     }
-    return render(request, 'inicio_supervisor_aseo.html', context)
+    return render(request, 'aseo/inicio_supervisor_aseo.html', context)
 
 
 @require_role([1, 4, 5])
@@ -78,7 +79,6 @@ def incidencias_aseo(request):
     rol_id = request.session.get('rol_id')
     rut_usuario = request.session.get('usuario_rut')
 
-    # Si es Administrador (1 o 4) ve todas; si es Personal de Aseo (5), solo las suyas
     if rol_id in [1, 4]:
         lista_solicitudes = SolicitudInsumo.objects.all().order_by('-id_solicitud')
     else:
@@ -92,7 +92,7 @@ def incidencias_aseo(request):
         'solicitudes': solicitudes,
         'rol_id': rol_id
     }
-    return render(request, 'incidencias_aseo.html', context)
+    return render(request, 'aseo/incidencias_aseo.html', context)
 
 
 def inventario_aseo(request):
@@ -109,7 +109,7 @@ def inventario_aseo(request):
         'items': items,
         'rol_id': request.session.get('rol_id')
     }
-    return render(request, 'inventario_aseo.html', context)
+    return render(request, 'aseo/inventario_aseo.html', context)
 
 
 @require_role([1, 5])
@@ -129,7 +129,7 @@ def crear_insumo_aseo(request):
         messages.success(request, 'Insumo de aseo registrado exitosamente.')
         return redirect('inventario_aseo')
         
-    return render(request, 'crear_insumo_aseo.html')
+    return render(request, 'aseo/crear_insumo_aseo.html')
 
 
 @require_role([1, 5])
@@ -163,9 +163,20 @@ def crear_incidencia_aseo(request):
 
         except Exception as e:
             messages.error(request, f'Ocurrió un error al guardar la solicitud: {str(e)}')
-            return render(request, 'crear_incidencia_aseo.html')
+            return render(request, 'aseo/crear_incidencia_aseo.html')
 
-    return render(request, 'crear_incidencia_aseo.html')
+    return render(request, 'aseo/crear_incidencia_aseo.html')
+
+@require_role([1, 4])
+def admin_eliminar_solicitud_aseo(request, pk):
+    solicitud = get_object_or_404(SolicitudInsumo, id_solicitud=pk)
+    try:
+        solicitud.delete()
+        messages.success(request, f"Solicitud de aseo #{pk} eliminada correctamente.")
+    except IntegrityError:
+        messages.error(request, f"No se puede eliminar la solicitud #{pk} porque tiene registros relacionados asociados.")
+    
+    return redirect('incidencias_aseo')
 
 
 @require_role([1, 5])
@@ -193,7 +204,7 @@ def resolver_solicitud_aseo(request, id_solicitud):
     context = {
         'solicitud': solicitud
     }
-    return render(request, 'resolver_solicitud_aseo.html', context)
+    return render(request, 'aseo/resolver_solicitud_aseo.html', context)
 
 
 @require_role([1, 5])
@@ -210,7 +221,7 @@ def ajustar_stock_insumo(request, id_insumo):
             cantidad = int(request.POST.get('cantidad', 0))
             if cantidad < 0:
                 messages.warning(request, 'La cantidad debe ser un número positivo.')
-                return render(request, 'ajustar_stock_insumo.html', {'insumo': insumo})
+                return render(request, 'aseo/ajustar_stock_insumo.html', {'insumo': insumo})
                 
             if accion == 'sumar':
                 insumo.stock_actual += cantidad
@@ -231,4 +242,15 @@ def ajustar_stock_insumo(request, id_insumo):
     context = {
         'insumo': insumo
     }
-    return render(request, 'ajustar_stock_insumo.html', context)
+    return render(request, 'aseo/ajustar_stock_insumo,html' if False else 'aseo/ajustar_stock_insumo.html', context)
+
+@require_role([1, 4])
+def admin_eliminar_insumo_aseo(request, pk):
+    insumo = get_object_or_404(Insumo, pk=pk) 
+    try:
+        insumo.delete()
+        messages.success(request, f"Insumo #{pk} eliminado correctamente del inventario.")
+    except IntegrityError:
+        messages.error(request, f"No se puede eliminar el insumo #{pk} porque tiene solicitudes o registros asociados.")
+    
+    return redirect('inventario_aseo') 

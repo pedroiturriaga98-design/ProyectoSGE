@@ -1,4 +1,3 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
@@ -8,7 +7,7 @@
     <title>Portal Profesor - SGE</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/base_profesor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base_profesor.css' %}?v=2.2">
 
     <style>
         .sidebar-left .year-static {
@@ -58,7 +57,6 @@
                class="nav-link toggle-menu"
                data-target="submenu-incidencias">
                 <span>Incidencias</span>
-                <span class="arrow-icon">⌃</span>
             </a>
 
             <div class="sub-menu" id="submenu-incidencias" style="display: none;">
@@ -78,12 +76,11 @@
                class="nav-link toggle-menu"
                data-target="submenu-alumnos">
                 <span>Alumnos</span>
-                <span class="arrow-icon">⌃</span>
             </a>
 
             <div class="sub-menu" id="submenu-alumnos" style="display: none;">
                 <a href="{% url 'profesor_alumnos' %}"
-                   class="sub-link {% if request.resolver_match.url_name == 'profesor_alumnos' %}active-sub{% endif %}">
+                   class="sub-link {% if request.resolver_match.url_name == 'profesor_alumnos' or request.resolver_match.url_name == 'profesor_perfil_alumno' %}active-sub{% endif %}">
                     Listado de Alumnos
                 </a>
             </div>
@@ -93,7 +90,6 @@
                class="nav-link toggle-menu"
                data-target="submenu-profesores">
                 <span>Profesores</span>
-                <span class="arrow-icon">⌃</span>
             </a>
 
             <div class="sub-menu" id="submenu-profesores" style="display: none;">
@@ -202,6 +198,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
+            // 1. Manejo del clic en los botones desplegables (Acordeón limpio)
             const toggleButtons = document.querySelectorAll('.toggle-menu');
 
             toggleButtons.forEach(function (button) {
@@ -210,67 +207,41 @@
 
                     const targetId = this.getAttribute('data-target');
                     const targetSubmenu = document.getElementById(targetId);
-                    const targetArrow = this.querySelector('.arrow-icon');
 
                     if (!targetSubmenu) return;
 
-                    const isAlreadyOpen =
-                        targetSubmenu.style.display === 'flex';
+                    const isAlreadyOpen = targetSubmenu.style.display === 'flex';
 
+                    // Cierra todos los demás submenús
                     document.querySelectorAll('.sub-menu').forEach(function (menu) {
                         menu.style.display = 'none';
                     });
 
-                    document.querySelectorAll('.arrow-icon').forEach(function (arrow) {
-                        arrow.style.transform = 'rotate(0deg)';
-                    });
-
+                    // Si no estaba abierto, lo abrimos
                     if (!isAlreadyOpen) {
                         targetSubmenu.style.display = 'flex';
-
-                        if (targetArrow) {
-                            targetArrow.style.transform = 'rotate(180deg)';
-                        }
                     }
                 });
             });
 
-            const currentUrl = window.location.href;
+            // 2. Apertura automática basada en la ruta actual
+            const path = window.location.pathname;
             let submenuActivo = null;
 
-            if (
-                currentUrl.includes('/profesor/notas') ||
-                currentUrl.includes('/profesor/asistencia')
-            ) {
+            if (path.includes('/profesor/notas') || path.includes('/profesor/asistencia')) {
                 submenuActivo = 'submenu-profesores';
-
-            } else if (
-                currentUrl.includes('incidencias') ||
-                currentUrl.includes('incidencia')
-            ) {
+            } else if (path.includes('incidencia') || path.includes('gestion') || path.includes('ticket')) {
                 submenuActivo = 'submenu-incidencias';
-
-            } else if (currentUrl.includes('alumnos')) {
+            } else if (path.includes('alumno')) {
                 submenuActivo = 'submenu-alumnos';
             }
 
             if (submenuActivo) {
                 const menu = document.getElementById(submenuActivo);
-                const boton = document.querySelector(
-                    '[data-target="' + submenuActivo + '"]'
-                );
-
-                if (menu && boton) {
+                if (menu) {
                     menu.style.display = 'flex';
-
-                    const arrow = boton.querySelector('.arrow-icon');
-
-                    if (arrow) {
-                        arrow.style.transform = 'rotate(180deg)';
-                    }
                 }
             }
-
         });
     </script>
 

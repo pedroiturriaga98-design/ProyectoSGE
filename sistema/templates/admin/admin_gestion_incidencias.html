@@ -1,0 +1,121 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2>Gestión de Incidencias</h2>
+    <p>Monitorea, aprueba y resuelve reportes de fallas técnicas.</p>
+</div>
+
+<div class="table-container">
+    <form method="GET" action="" class="table-toolbar" style="display: flex; gap: 15px; align-items: center; width: 100%; justify-content: space-between; margin-bottom: 20px;">
+    <div class="filters-left" style="display: flex; gap: 15px; align-items: center;">
+        <select name="estado" class="filter-select" onchange="this.form.submit()" style="width: 180px; padding: 9px 32px 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: white url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'14\' height=\'14\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23000000\' stroke-width=\'3\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><polyline points=\'6 9 12 15 18 9\'></polyline></svg>') no-repeat right 12px center; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer;">
+            <option value="Todos" {% if estado_filtro == 'Todos' or not estado_filtro %}selected{% endif %}>Estado: Todos</option>
+            <option value="Pendiente" {% if estado_filtro == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+            <option value="Aprobada (En proceso)" {% if estado_filtro == 'Aprobada (En proceso)' %}selected{% endif %}>Aprobada (En proceso)</option>
+            <option value="Resuelta" {% if estado_filtro == 'Resuelta' %}selected{% endif %}>Resuelta</option>
+            <option value="Rechazada" {% if estado_filtro == 'Rechazada' %}selected{% endif %}>Rechazada</option>
+        </select>
+
+        <select name="prioridad" class="filter-select" onchange="this.form.submit()" style="width: 180px; padding: 9px 32px 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: white url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'14\' height=\'14\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23000000\' stroke-width=\'3\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><polyline points=\'6 9 12 15 18 9\'></polyline></svg>') no-repeat right 12px center; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer;">
+            <option value="Todas" {% if prioridad_filtro == 'Todas' or not prioridad_filtro %}selected{% endif %}>Prioridad: Todas</option>
+            <option value="Baja" {% if prioridad_filtro == 'Baja' %}selected{% endif %}>Baja</option>
+            <option value="Media" {% if prioridad_filtro == 'Media' %}selected{% endif %}>Media</option>
+            <option value="Alta" {% if prioridad_filtro == 'Alta' %}selected{% endif %}>Alta</option>
+            <option value="Crítica" {% if prioridad_filtro == 'Crítica' %}selected{% endif %}>Crítica</option>
+        </select>
+    </div>
+
+    <div>
+        <a class="btn-create" href="{% url 'admin_crear_incidencia' %}" style="padding: 9px 18px; background: #f97316; color: white; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.95rem; white-space: nowrap;">
+            + Registrar Incidencia
+        </a>
+    </div>
+    </form>
+
+    <table id="incidencias-table">
+        <thead>
+            <tr>
+                <th style="width: 12%;">ID TICKET</th>
+                <th style="width: 12%;">FECHA</th>
+                <th style="width: 20%;">UBICACIÓN / EQUIPO</th>
+                <th style="width: 20%;">REPORTANTE</th>
+                <th style="width: 10%;">PRIORIDAD</th>
+                <th style="width: 12%;">ESTADO</th>
+                <th style="width: 14%;">ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in incidencias %}
+            <tr>
+                <td class="ticket-id">INC-2026-{{ t.id_ticket|stringformat:"03d" }}</td>
+                <td>{{ t.fecha_reporte|date:"d/m/Y" }}</td>
+                <td>{{ t.equipo_ti_codigo_inventario.ubicacion }} - {{ t.equipo_ti_codigo_inventario.codigo_inventario }}</td>
+                <td>{{ t.usuario_rut.nombre }} {{ t.usuario_rut.apellido_paterno }} ({{ t.usuario_rut.rol_id_rol.nombre_rol }})</td>
+                <td>
+                    <span class="badge 
+                        {% if t.prioridad == 'Alta' %}bg-alta
+                        {% elif t.prioridad == 'Media' %}bg-media
+                        {% else %}bg-critica{% endif %}">
+                        {{ t.prioridad }}
+                    </span>
+                </td>
+                <td>
+                    <span class="badge badge-rounded 
+                        {% if t.estado_ticket == 'Resuelta' %}bg-success
+                        {% elif t.estado_ticket == 'Aprobada (En proceso)' %}bg-primary
+                        {% elif t.estado_ticket == 'Rechazada' %}bg-danger
+                        {% else %}bg-revisar{% endif %}">
+                        {{ t.estado_ticket }}
+                    </span>
+                </td>
+                <td>
+                    <div class="action-btns">
+                        <a class="btn-icon" href="{% url 'admin_editar_incidencia' t.id_ticket %}" title="Evaluar/Editar">✎</a>
+                        <a class="btn-icon" href="{% url 'admin_detalle_incidencia' t.id_ticket %}" title="Ver detalles">📄</a>
+                        <a class="btn-icon delete" href="{% url 'admin_eliminar_incidencia' t.id_ticket %}" title="Eliminar" style="background: #fef2f2; color: #ef4444; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;" onclick="return confirm('¿Estás seguro de que deseas eliminar la incidencia {{ t.id_ticket }}?');">🗑</a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" class="text-center py-4 text-muted">No hay incidencias registradas que coincidan con los filtros seleccionados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 15px 10px; border-top: 1px solid #e2e8f0; font-size: 0.9rem; color: #64748b;">
+        <div class="pagination-info">
+            Mostrando del <strong>{{ incidencias.start_index }}</strong> al <strong>{{ incidencias.end_index }}</strong> de <strong>{{ incidencias.paginator.count }}</strong> resultados
+        </div>
+        
+        <div class="pagination-controls" style="display: flex; gap: 5px; align-items: center;">
+            {% if incidencias.has_previous %}
+                <a href="?page=1&estado={{ estado_filtro }}&prioridad={{ prioridad_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Primera</a>
+                <a href="?page={{ incidencias.previous_page_number }}&estado={{ estado_filtro }}&prioridad={{ prioridad_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Anterior</a>
+            {% endif %}
+
+            <span style="padding: 6px 12px; border: 1px solid #f97316; border-radius: 6px; background-color: #f97316; color: white; font-weight: 500;">
+                {{ incidencias.number }} de {{ incidencias.paginator.num_pages }}
+            </span>
+
+            {% if incidencias.has_next %}
+                <a href="?page={{ incidencias.next_page_number }}&estado={{ estado_filtro }}&prioridad={{ prioridad_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Siguiente</a>
+                <a href="?page={{ incidencias.paginator.num_pages }}&estado={{ estado_filtro }}&prioridad={{ prioridad_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Última</a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function eliminarIncidencia(boton) {
+        if (confirm("¿Eliminar este reporte de incidencia?")) {
+            boton.closest('tr').remove();
+        }
+    }
+</script>
+
+{% endblock %}

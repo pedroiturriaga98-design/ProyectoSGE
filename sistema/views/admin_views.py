@@ -1,7 +1,7 @@
 from datetime import date
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
-from django.db.models import Q, Max
+from django.db.models import Q, Max, Count
 from django.db import transaction, IntegrityError
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
@@ -22,46 +22,71 @@ from sistema.models import (
 )
 from .auth_views import require_role, validar_rut
 
-
-@require_role([1, 4])
 def admin_inicio(request):
-    return render(request, 'admin_inicio.html')
+    if request.session.get('rol_id') != 1 and request.session.get('rol_id') != 4:
+        return redirect('login')
+
+    total_usuarios_activos = Usuario.objects.filter(activo=True).count()
+    total_alumnos = Alumno.objects.count()
+    
+    total_apoderados = Usuario.objects.filter(rol_id_rol=3).count() if hasattr(Usuario, 'rol_id_rol') else 980
+    
+    cuentas_inactivas = Usuario.objects.filter(activo=False).count()
+    
+    incidencias_revisar = TicketSoporte.objects.filter(estado_ticket='Pendiente').count()
+    incidencias_resuelta = TicketSoporte.objects.filter(estado_ticket='Resuelta').count()
+    total_equipos_ti = EquipoTi.objects.count()
+
+    context = {
+        'total_usuarios_activos': total_usuarios_activos,
+        'total_alumnos': total_alumnos,
+        'total_apoderados': total_apoderados,
+        'cuentas_inactivas': cuentas_inactivas,
+        'incidencias_revisar': incidencias_revisar,
+        'incidencias_resuelta': incidencias_resuelta,
+        'cursos_configurados': Curso.objects.count(),
+        'total_equipos_ti': total_equipos_ti,
+    }
+    
+    return render(request, 'admin/admin_inicio.html', context)
 
 
 @require_role([1, 4])
 def admin_gestion_usuarios(request):
-    lista_usuarios = Usuario.objects.select_related('rol_id_rol').all().order_by('apellido_paterno', 'nombre')
+    lista_usuarios = Usuario.objects.all().order_by('rut')
     
     query = request.GET.get('q', '').strip()
     rol_filtro = request.GET.get('rol', '').strip()
+    estado_filtro = request.GET.get('estado', '').strip()
 
     if query:
-        palabras = query.split()
-        for palabra in palabras:
-            lista_usuarios = lista_usuarios.filter(
-                Q(nombre__icontains=palabra) |
-                Q(apellido_paterno__icontains=palabra) |
-                Q(apellido_materno__icontains=palabra) |
-                Q(correo__icontains=palabra) |
-                Q(rut__icontains=palabra)
-            )
+        lista_usuarios = lista_usuarios.filter(
+            Q(rut__icontains=query) | 
+            Q(nombre__icontains=query) | 
+            Q(apellido_paterno__icontains=query) | 
+            Q(correo__icontains=query)
+        )
+        
+    if rol_filtro and rol_filtro != 'Todos':
+        lista_usuarios = lista_usuarios.filter(rol_id_rol=rol_filtro)
 
-    if rol_filtro:
-        lista_usuarios = lista_usuarios.filter(rol_id_rol_id=rol_filtro)
-
-    roles = Rol.objects.all()
+    if estado_filtro and estado_filtro != 'Todos':
+        es_activo = True if estado_filtro == 'Activo' else False
+        lista_usuarios = lista_usuarios.filter(activo=es_activo)
 
     paginator = Paginator(lista_usuarios, 10)
     page_number = request.GET.get('page')
     usuarios = paginator.get_page(page_number)
 
-    context = {
+    roles = Rol.objects.all()
+
+    return render(request, 'admin/admin_gestion_usuarios.html', {
         'usuarios': usuarios,
-        'roles': roles,
         'query': query,
         'rol_filtro': rol_filtro,
-    }
-    return render(request, 'admin_gestion_usuarios.html', context)
+        'estado_filtro': estado_filtro,
+        'roles': roles,
+    })
 
 
 @require_role([1, 4])
@@ -81,7 +106,7 @@ def admin_crear_usuario(request):
 
         if not validar_rut(rut_form):
             messages.error(request, 'El RUN ingresado no es válido. Verifique los dígitos e intente nuevamente.')
-            return render(request, 'admin_crear_usuario.html', {'roles': roles})
+            return render(request, 'admin/admin_crear_usuario.html', {'roles': roles})
 
         rut_limpio = rut_form.replace(".", "").replace("-", "").strip().upper()
         if len(rut_limpio) >= 2:
@@ -97,11 +122,11 @@ def admin_crear_usuario(request):
 
         if Usuario.objects.filter(rut=rut_estandar).exists():
             messages.error(request, f'El RUT {rut_estandar} ya se encuentra registrado en el sistema.')
-            return render(request, 'admin_crear_usuario.html', {'roles': roles})
+            return render(request, 'admin/admin_crear_usuario.html', {'roles': roles})
 
         if correo_form and Usuario.objects.filter(correo=correo_form.lower()).exists():
             messages.error(request, f'El correo {correo_form} ya pertenece a otro usuario.')
-            return render(request, 'admin_crear_usuario.html', {'roles': roles})
+            return render(request, 'admin/admin_crear_usuario.html', {'roles': roles})
 
         password_defecto = make_password(rut_limpio)
 
@@ -125,10 +150,9 @@ def admin_crear_usuario(request):
 
         except IntegrityError:
             messages.error(request, 'Error de integridad: El usuario o un dato único ya existe en el sistema.')
-            return render(request, 'admin_crear_usuario.html', {'roles': roles})
+            return render(request, 'admin/admin_crear_usuario.html', {'roles': roles})
 
-    return render(request, 'admin_crear_usuario.html', {'roles': roles})
-
+    return render(request, 'admin/admin_crear_usuario.html', {'roles': roles})
 
 @require_role([1, 4])
 def admin_editar_usuario(request, rut):
@@ -162,7 +186,7 @@ def admin_editar_usuario(request, rut):
             existe_correo = Usuario.objects.filter(correo=correo_lower).exclude(rut=usuario.rut).exists()
             if existe_correo:
                 messages.error(request, f'El correo {correo_form} ya pertenece a otro usuario registrado.')
-                return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
+                return render(request, 'admin/admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 
         try:
             usuario.nombre = nombre_form
@@ -181,10 +205,9 @@ def admin_editar_usuario(request, rut):
 
         except IntegrityError:
             messages.error(request, 'Error de integridad al intentar actualizar los datos.')
-            return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
+            return render(request, 'admin/admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 
-    return render(request, 'admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
-
+    return render(request, 'admin/admin_editar_usuario.html', {'usuario': usuario, 'roles': roles})
 
 @require_role([1, 4])
 def admin_eliminar_usuario(request, rut):
@@ -269,7 +292,7 @@ def admin_alumnos(request):
         'query': query,
     }
 
-    return render(request, 'admin_alumnos.html', context)
+    return render(request, 'admin/admin_alumnos.html', context)
 
 
 @require_role([1])
@@ -296,7 +319,7 @@ def admin_crear_alumno(request):
 
         if not validar_rut(rut_form):
             messages.error(request, 'El RUT del alumno no es válido.')
-            return render(request, 'admin_crear_alumno.html', context)
+            return render(request, 'admin/admin_crear_alumno.html', context)
 
         rut_limpio = rut_form.replace('.', '').replace('-', '').upper()
         cuerpo = rut_limpio[:-1]
@@ -306,25 +329,25 @@ def admin_crear_alumno(request):
 
         if Alumno.objects.filter(rut_alumno=rut_estandar).exists():
             messages.error(request, 'Este alumno ya está registrado.')
-            return render(request, 'admin_crear_alumno.html', context)
+            return render(request, 'admin/admin_crear_alumno.html', context)
 
         if not nombre:
             messages.error(request, 'Debes ingresar el nombre completo.')
-            return render(request, 'admin_crear_alumno.html', context)
+            return render(request, 'admin/admin_crear_alumno.html', context)
 
         curso = Curso.objects.filter(id_curso=curso_id).first() if curso_id.isdigit() else None
 
         if curso is None:
             messages.error(request, 'Debes seleccionar un curso válido.')
-            return render(request, 'admin_crear_alumno.html', context)
+            return render(request, 'admin/admin_crear_alumno.html', context)
 
         if estado not in ['Activo', 'Inactivo']:
             messages.error(request, 'Selecciona un estado de matrícula válido.')
-            return render(request, 'admin_crear_alumno.html', context)
+            return render(request, 'admin/admin_crear_alumno.html', context)
 
         if not apoderado_rut:
             messages.error(request, 'Debes seleccionar un apoderado para el alumno.')
-            return render(request, 'admin_crear_alumno.html', context)
+            return render(request, 'admin/admin_crear_alumno.html', context)
 
         apoderado = Usuario.objects.filter(
             rut=apoderado_rut,
@@ -333,7 +356,7 @@ def admin_crear_alumno(request):
 
         if apoderado is None:
             messages.error(request, 'El apoderado seleccionado no es válido.')
-            return render(request, 'admin_crear_alumno.html', context)
+            return render(request, 'admin/admin_crear_alumno.html', context)
 
         try:
             with transaction.atomic():
@@ -358,7 +381,7 @@ def admin_crear_alumno(request):
                 'No se pudo registrar el alumno. Verifica que sus datos no estén duplicados.'
             )
 
-    return render(request, 'admin_crear_alumno.html', context)
+    return render(request, 'admin/admin_crear_alumno.html', context)
 
 
 @require_role([1])
@@ -409,7 +432,7 @@ def admin_editar_alumno(request, rut):
             )
             return render(
                 request,
-                'admin_editar_alumno.html',
+                'admin/admin_editar_alumno.html',
                 context
             )
 
@@ -428,7 +451,7 @@ def admin_editar_alumno(request, rut):
             )
             return render(
                 request,
-                'admin_editar_alumno.html',
+                'admin/admin_editar_alumno.html',
                 context
             )
 
@@ -439,7 +462,7 @@ def admin_editar_alumno(request, rut):
             )
             return render(
                 request,
-                'admin_editar_alumno.html',
+                'admin/admin_editar_alumno.html',
                 context
             )
 
@@ -458,7 +481,7 @@ def admin_editar_alumno(request, rut):
                 )
                 return render(
                     request,
-                    'admin_editar_alumno.html',
+                    'admin/admin_editar_alumno.html',
                     context
                 )
 
@@ -469,7 +492,7 @@ def admin_editar_alumno(request, rut):
             )
             return render(
                 request,
-                'admin_editar_alumno.html',
+                'admin/admin_editar_alumno.html',
                 context
             )
 
@@ -503,39 +526,38 @@ def admin_editar_alumno(request, rut):
 
     return render(
         request,
-        'admin_editar_alumno.html',
+        'admin/admin_editar_alumno.html',
         context
     )
+
+@require_role([1])
+def admin_eliminar_alumno(request, rut):
+    alumno = get_object_or_404(Alumno, rut_alumno=rut)
+    nombre = alumno.nombre_completo
+    alumno.delete()
+    messages.success(request, f'El alumno {nombre} fue eliminado correctamente del sistema.')
+    return redirect('admin_alumnos')
 
 
 @require_role([1, 4])
 def admin_gestion_incidencias(request):
-    lista_incidencias = TicketSoporte.objects.all().order_by('-fecha_reporte', '-id_ticket')
-    
-    query = request.GET.get('q', '').strip()
-    estado_filtro = request.GET.get('estado', '').strip()
-    prioridad_filtro = request.GET.get('prioridad', '').strip()
+    estado_filtro = request.GET.get('estado', 'Todos').strip()
+    prioridad_filtro = request.GET.get('prioridad', 'Todas').strip()
 
-    if query:
-        lista_incidencias = lista_incidencias.filter(
-            Q(equipo_ti_codigo_inventario__ubicacion__icontains=query) | 
-            Q(equipo_ti_codigo_inventario__codigo_inventario__icontains=query) | 
-            Q(id_ticket__icontains=query)
-        )
-        
+    incidencias_qs = TicketSoporte.objects.all().order_by('-id_ticket')
+
     if estado_filtro and estado_filtro != 'Todos':
-        lista_incidencias = lista_incidencias.filter(estado_ticket=estado_filtro)
-        
+        incidencias_qs = incidencias_qs.filter(estado_ticket__iexact=estado_filtro)
+
     if prioridad_filtro and prioridad_filtro != 'Todas':
-        lista_incidencias = lista_incidencias.filter(prioridad=prioridad_filtro)
+        incidencias_qs = incidencias_qs.filter(prioridad__iexact=prioridad_filtro)
 
-    paginator = Paginator(lista_incidencias, 10)
+    paginator = Paginator(incidencias_qs, 10)
     page_number = request.GET.get('page')
-    incidencias = paginator.get_page(page_number)
+    incidencias_paginadas = paginator.get_page(page_number)
 
-    return render(request, 'admin_gestion_incidencias.html', {
-        'incidencias': incidencias,
-        'query': query,
+    return render(request, 'admin/admin_gestion_incidencias.html', {
+        'incidencias': incidencias_paginadas,
         'estado_filtro': estado_filtro,
         'prioridad_filtro': prioridad_filtro,
     })
@@ -559,13 +581,23 @@ def admin_editar_incidencia(request, pk):
             return redirect('admin_gestion_incidencias')
 
     context = {'ticket': ticket}
-    return render(request, 'admin_editar_incidencia.html', context)
+    return render(request, 'admin/admin_editar_incidencia.html', context)
 
+@require_role([1, 4])
+def admin_eliminar_incidencia(request, pk):
+    incidencia = get_object_or_404(TicketSoporte, id_ticket=pk)
+    try:
+        incidencia.delete()
+        messages.success(request, f"Incidencia {pk} eliminada correctamente.")
+    except IntegrityError:
+        messages.error(request, f"No se puede eliminar la incidencia {pk} porque tiene registros relacionados asociados.")
+    
+    return redirect('admin_gestion_incidencias')
 
 @require_role([1, 4])
 def admin_detalle_incidencia(request, pk):
     ticket = get_object_or_404(TicketSoporte, pk=pk)
-    return render(request, 'admin_detalle_incidencia.html', {'ticket': ticket})
+    return render(request, 'admin/admin_detalle_incidencia.html', {'ticket': ticket})
 
 
 @require_role([1, 4])
@@ -579,7 +611,7 @@ def admin_solicitudes_material(request):
         'solicitudes': solicitudes,
         'titulo': 'Solicitudes de Material (Aseo)'
     }
-    return render(request, 'admin_gestion_solicitudes.html', context)
+    return render(request, 'admin/admin_gestion_solicitudes.html', context)
 
 
 @require_role([1, 4])
@@ -593,7 +625,7 @@ def admin_solicitudes_reposicion(request):
         'solicitudes': solicitudes,
         'titulo': 'Solicitudes de Reposición (Aseo)'
     }
-    return render(request, 'admin_gestion_solicitudes.html', context)
+    return render(request, 'admin/admin_gestion_solicitudes.html', context)
 
 
 @require_role([1, 4])
@@ -647,7 +679,7 @@ def admin_gestion_profesores(request):
 
     asignaturas_disponibles = Asignatura.objects.all().order_by('nombre_asignatura')
 
-    return render(request, 'admin_gestion_profesores.html', {
+    return render(request, 'admin/admin_gestion_profesores.html', {
         'profesores': pagina_profesores,
         'asignaturas_disponibles': asignaturas_disponibles,
         'query': query,
@@ -727,7 +759,7 @@ def admin_editar_profesor(request):
     if rut_seleccionado:
         asignaciones_actuales = asignaciones_actuales.filter(usuario_rut_id=rut_seleccionado)
 
-    return render(request, 'admin_editar_profesor.html', {
+    return render(request, 'admin/admin_editar_profesor.html', {
         'profesores': profesores,
         'cursos': cursos,
         'asignaturas': asignaturas,
@@ -774,7 +806,7 @@ def admin_gestion_apoderados(request):
 
     apoderados_paginados.object_list = lista_procesada
 
-    return render(request, 'admin_gestion_apoderados.html', {
+    return render(request, 'admin/admin_gestion_apoderados.html', {
         'apoderados': apoderados_paginados,
         'query': query,
     })
@@ -798,7 +830,7 @@ def admin_editar_apoderado(request, rut):
         messages.success(request, f"Apoderado {apoderado.nombre} actualizado correctamente.")
         return redirect('admin_gestion_apoderados')
 
-    return render(request, 'admin_editar_apoderado.html', {
+    return render(request, 'admin/admin_editar_apoderado.html', {
         'apoderado': apoderado,
         'pupilos': pupilos
     })
@@ -904,7 +936,7 @@ def admin_crear_incidencia(request):
         messages.success(request, f'{nombre_tipo} registrada correctamente.')
         return redirect('admin_gestion_incidencias')
 
-    return render(request, 'admin_agregar_incidencia.html', {
+    return render(request, 'admin/admin_agregar_incidencia.html', {
         'equipos': equipos,
         'fecha_actual': timezone.localdate().isoformat()
     })

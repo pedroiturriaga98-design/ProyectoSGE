@@ -78,13 +78,18 @@ body {
     color: #6b7280;
 }
 
-/* Menú de Navegación */
+/* ==========================================================================
+   MENÚ DE NAVEGACIÓN Y DESPLEGABLES (SIDEBAR PROFESOR)
+   ========================================================================== */
+
 .nav-menu { 
     padding: 20px 0; 
     display: flex; 
     flex-direction: column; 
+    gap: 5px;
 }
 
+/* Menú Principal */
 .nav-link { 
     padding: 12px 20px; 
     color: #cbd5e1; 
@@ -94,6 +99,8 @@ body {
     align-items: center; 
     transition: all 0.2s ease; 
     font-size: 0.95rem; 
+    margin: 0 10px;
+    border-radius: 6px;
 }
 
 .nav-link:hover { 
@@ -101,40 +108,56 @@ body {
     background-color: #2d3748; 
 }
 
+/* Estado Activo para Enlaces Planos (Ej: Inicio, Calendario) */
 .nav-link.active-menu { 
-    background-color: #2d3748; 
-    color: white; 
+    background-color: #f97316 !important; 
+    color: white !important; 
     font-weight: 600; 
-    border-left: 4px solid #f97316; 
 }
 
-/* Submenús Desplegables */
+/* Comportamiento específico para Menús Desplegables Principales (Ej: Incidencias) */
+.nav-link.toggle-menu {
+    background-color: transparent !important;
+    color: #cbd5e1 !important;
+}
+
+.nav-link.toggle-menu:hover {
+    background-color: #2d3748 !important;
+    color: white !important;
+}
+
+/* Contenedor de Submenús Desplegables */
 .sub-menu { 
-    background-color: #111827; 
-    padding: 10px 0; 
+    background-color: transparent; 
+    padding: 5px 0; 
     display: flex; 
     flex-direction: column; 
-    transition: all 0.3s ease; 
+    gap: 3px;
 }
 
 .sub-link { 
-    padding: 8px 20px 8px 30px; 
-    color: #9ca3af; 
+    padding: 10px 15px 10px 35px; 
+    color: #94a3b8; 
     text-decoration: none; 
-    font-size: 0.85rem; 
-    transition: all 0.2s ease; 
+    font-size: 0.88rem; 
+    display: block; 
+    transition: all 0.2s ease;
+    margin: 0 10px;
+    border-radius: 6px;
 }
 
 .sub-link:hover { 
     color: white; 
+    background-color: #2d3748;
 }
 
+/* Estado Activo Submenú (Fondo naranja completo con márgenes y bordes redondeados) */
 .sub-link.active-sub { 
-    color: white; 
-    background-color: #f97316; 
+    background-color: #f97316 !important; 
+    color: white !important; 
+    font-weight: 600;
     margin: 0 10px; 
     border-radius: 6px; 
-    padding-left: 20px; 
 }
 
 .arrow-icon { 

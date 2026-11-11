@@ -124,7 +124,7 @@ def profesor_calendario(request):
         for curso in jefaturas
     ]
 
-    return render(request, "profesor_calendario.html", {
+    return render(request, "profesor/profesor_calendario.html", {
         "asignaciones": opciones,
         "cursos": cursos,
     })
@@ -189,7 +189,7 @@ def apoderado_calendario(request):
         for alumno in alumnos
     ]
 
-    return render(request, "apoderado_calendario.html", {
+    return render(request, "apoderado/apoderado_calendario.html", {
         "estudiantes": estudiantes,
         "alumnos": alumnos,
         "alumno_seleccionado": alumno_seleccionado,

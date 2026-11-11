@@ -14,18 +14,6 @@
 </div>
 
 <div class="card shadow-sm border-0 p-4" style="border-radius: 12px;">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-    <form method="GET" class="col-12 col-md-5">
-        <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Buscar insumo de aseo..." value="{{ query }}">
-            <button type="submit" class="btn btn-outline-secondary">🔍</button>
-            {% if query %}
-                <a href="{% url 'inventario_aseo' %}" class="btn btn-outline-secondary" title="Limpiar búsqueda">✕</a>
-            {% endif %}
-        </div>
-    </form>
-    </div>
-
     <div class="table-responsive">
         <table class="table table-hover align-middle">
             <thead class="table-light">
@@ -35,7 +23,7 @@
                     <th>CATEGORÍA</th>
                     <th>STOCK DISPONIBLE</th>
                     <th>ESTADO</th>
-                    <th>ACCIONES</th>
+                    <th class="text-center">ACCIONES</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,10 +42,14 @@
                                 <span class="badge bg-secondary">Agotado</span>
                             {% endif %}
                         </td>
-                        <td class="text-nowrap">
-                            <div class="action-btns">
+                        <td class="text-center text-nowrap">
+                            <div class="action-btns" style="display: inline-flex; gap: 5px; align-items: center;">
                                 {% if request.session.rol_id == 1 %}
-                                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'ajustar_stock_insumo' item.pk %}" title="Editar stock">✎</a>
+                                    <!-- Botón de editar stock con el lápiz -->
+                                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'ajustar_stock_insumo' item.pk %}" title="Editar stock" style="padding: 5px 8px; border-radius: 4px; text-decoration: none;">✎</a>
+                                    
+                                    <!-- Botón de eliminar con cajita roja y confirmación -->
+                                    <a class="btn btn-sm" href="{% url 'admin_eliminar_insumo_aseo' item.pk %}" title="Eliminar insumo" style="padding: 5px 8px; background: #fef2f2; color: #ef4444; border: 1px solid #fecaca; border-radius: 4px; text-decoration: none;" onclick="return confirm('¿Estás seguro de que deseas eliminar este insumo del inventario?');">🗑</a>
                                 {% else %}
                                     {% if item.stock_actual > 0 %}
                                         <a class="btn btn-sm btn-outline-danger fw-semibold px-3" href="{% url 'retirar_stock_aseo' item.pk %}" title="Retirar material">
@@ -125,5 +117,4 @@
         </nav>
     </div>
     {% endif %}
-</div>
 {% endblock %}

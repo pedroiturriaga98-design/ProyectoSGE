@@ -11,8 +11,14 @@
         {% csrf_token %}
         
         <div class="form-group" style="margin-bottom: 20px;">
-            <label for="codigo_inventario" style="display: block; font-weight: 500; margin-bottom: 8px; color: #1e293b;">Código de Inventario *</label>
-            <input type="text" id="codigo_inventario" name="codigo_inventario" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;" placeholder="Ej. PC-LAB1-025, PROY-09...">
+            <label for="codigo_inventario" style="display: block; font-weight: 500; margin-bottom: 8px; color: #1e293b;">Código de Inventario o Prefijo *</label>
+            <input type="text" id="codigo_inventario" name="codigo_inventario" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;" placeholder="Ej. HDMI, MOUSE, TEC (o código único)...">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="cantidad" style="display: block; font-weight: 500; margin-bottom: 8px; color: #1e293b;">Cantidad a Generar (Stock en Lote) *</label>
+            <input type="number" id="cantidad" name="cantidad" value="1" min="1" max="200" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;">
+            <small style="color: #64748b; font-size: 0.85rem; display: block; margin-top: 5px;">Si pones más de 1 (ej. 10), el sistema creará automáticamente los códigos correlativos desde el -001 al -010.</small>
         </div>
 
         <div class="form-group" style="margin-bottom: 20px;">

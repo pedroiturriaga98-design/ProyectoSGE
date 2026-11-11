@@ -23,7 +23,6 @@
         <div class="form-grid">
             <div class="form-group">
                 <label>Nombre <span>*</span></label>
-                <!-- Atributo name es clave. Y el value trae lo de la base de datos -->
                 <input type="text" class="form-control" name="nombre" value="{{ usuario.nombre|default_if_none:'' }}" required>
             </div>
             <div class="form-group">
@@ -65,9 +64,8 @@
 
             <div class="form-group">
                 <label>R.U.T. <span>*</span></label>
-                <!-- Mostrar el rut de verdad, y no dejar que lo edite -->
                 <input type="text" class="form-control" value="{{ usuario.rut }}" disabled style="background-color: #f1f5f9; cursor: not-allowed;" title="El RUT no se puede modificar">
-                <!-- Se envía oculto para que no dé problemas -->
+
                 <input type="hidden" name="rut" value="{{ usuario.rut }}">
             </div>
             <div class="form-group">
@@ -85,10 +83,10 @@
         </div>
 
         <div class="form-footer">
-            <div class="required-note">ID de Usuario: #{{ usuario.rut }}</div> <!-- Un detalle coqueto -->
+            <div class="required-note">ID de Usuario: #{{ usuario.rut }}</div>
             <div class="btn-group">
                 <button type="button" class="btn-cancel" onclick="window.history.back()">Cancelar</button>
-                <!-- Botón de tipo submit para que envíe el formulario. Y le quité el onclick con el alert falso. -->
+                
                 <button type="submit" class="btn-submit">Actualizar Usuario</button>
             </div>
         </div>

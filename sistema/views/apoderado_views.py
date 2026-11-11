@@ -33,7 +33,7 @@ def apoderado_inicio(request):
     context = {
         'alumnos': alumnos,
     }
-    return render(request, 'apoderado_inicio.html', context)
+    return render(request, 'apoderado/apoderado_inicio.html', context)
 
 
 @require_role([3])
@@ -137,7 +137,7 @@ def apoderado_certificados(request):
         if promedios else None
     )
 
-    return render(request, 'apoderado_certificados.html', {
+    return render(request, 'apoderado/apoderado_certificados.html', {
         'alumnos': alumnos,
         'alumno_seleccionado': alumno_seleccionado,
         'tipo_certificado': tipo_certificado,
@@ -914,7 +914,7 @@ def apoderado_notas(request):
     else:
         columnas_notas = [1, 2, 3]
 
-    return render(request, 'apoderado_notas.html', {
+    return render(request, 'apoderado/apoderado_notas.html', {
         'alumnos': alumnos,
         'alumno_seleccionado': alumno_seleccionado,
         'resumen_notas': resumen_notas,
@@ -1062,7 +1062,7 @@ def apoderado_asistencia(request):
 
         semanas.append(dias_semana)
 
-    return render(request, 'apoderado_asistencia.html', {
+    return render(request, 'apoderado/apoderado_asistencia.html', {
         'alumnos': alumnos,
         'alumno_seleccionado': alumno_seleccionado,
         'nombre_mes': nombres_meses[mes],

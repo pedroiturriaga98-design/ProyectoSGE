@@ -245,6 +245,7 @@ class DjangoSession(models.Model):
 
 class EquipoTi(models.Model):
     codigo_inventario = models.CharField(primary_key=True, max_length=50)
+    tipo_equipo = models.CharField(max_length=100, blank=True, null=True, db_column='tipo_equipo') # <--- Clave para que Django lo lea y guarde
     estado = models.CharField(max_length=20)
     ubicacion = models.CharField(max_length=100)
 

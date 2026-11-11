@@ -53,7 +53,7 @@
                 {% endfor %}
             </select>
 
-            <button type="submit" style="padding: 9px 18px; background-color: #0f172a; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem;">
+            <button type="submit" style="padding: 9px 20px; background-color: #f97316; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 500;">
                 Filtrar
             </button>
 
@@ -119,7 +119,9 @@
                     <td>
                         <div class="action-btns" style="display: flex; gap: 5px;">
                             <a href="{% url 'admin_editar_alumno' alumno.rut_alumno %}" class="btn-icon" title="Editar" style="padding: 5px 8px; background: #f1f5f9; border-radius: 4px; text-decoration: none;">✎</a>
-                            <a href="#" class="btn-icon delete" title="Eliminar" style="padding: 5px 8px; background: #fee2e2; color: #991b1b; border-radius: 4px; text-decoration: none;">🗑</a>
+                            
+                            <!-- 🗑️ BOTÓN DE ELIMINAR CORREGIDO -->
+                            <a href="{% url 'admin_eliminar_alumno' alumno.rut_alumno %}" class="btn-icon delete" title="Eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminar a este alumno? Esta acción es permanente.');" style="padding: 5px 8px; background: #fee2e2; color: #991b1b; border-radius: 4px; text-decoration: none;">🗑</a>
                         </div>
                     </td>
 

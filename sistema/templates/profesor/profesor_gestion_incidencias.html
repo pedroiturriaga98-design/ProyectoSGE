@@ -1,4 +1,5 @@
-{% extends 'base_admin.html' %}
+{% extends 'base_profesor.html' %}
+
 {% load static %}
 
 {% block content %}
@@ -9,7 +10,7 @@
         <p class="text-muted" style="margin: 4px 0 0 0;">Consulta el estado de tus solicitudes enviadas a los departamentos de TI y Aseo.</p>
     </div>
     <a href="{% url 'profesor_agregar_incidencia' %}" class="btn fw-semibold text-white px-4 py-2" style="background-color: #ff6b00; border: none; border-radius: 8px; text-decoration: none;">
-        + Registrar Incidencia TI
+        + Registrar Incidencia
     </a>
 </div>
 
@@ -34,28 +35,34 @@
             <tbody>
                 {% for inc in incidencias_ti %}
                 <tr>
-                    <!-- 📌 Corregido a id_ticket -->
+
                     <td class="fw-bold text-primary">#{{ inc.id_ticket }}</td>
-                    <!-- 📌 Corregido a fecha_reporte -->
-                    <td>{{ inc.fecha_reporte }}</td>
-                    <!-- 📌 Corregido a equipo_ti_codigo_inventario_id -->
-                    <td>{{ inc.equipo_ti_codigo_inventario_id|default:"N/A" }}</td>
+
+                    <td class="text-nowrap">{{ inc.fecha_reporte }}</td>
+
+                    <td>{{ inc.equipo_ti_codigo_inventario_id|default:"General" }}</td>
                     <td>
-                        <span class="badge bg-secondary">{{ inc.prioridad|default:"Normal" }}</span>
-                    </td>
-                    <td>
-                        <!-- 📌 Corregido a estado_ticket -->
-                        {% if inc.estado_ticket == 'Resuelto' %}
-                            <span class="badge bg-success">Resuelto</span>
-                        {% elif inc.estado_ticket == 'Rechazado' %}
-                            <span class="badge bg-danger">Rechazado</span>
+                        {% if inc.prioridad == 'Alta' or inc.prioridad == 'Urgente' %}
+                            <span class="badge bg-danger px-3 py-2" style="font-size: 0.85rem;">{{ inc.prioridad }}</span>
+                        {% elif inc.prioridad == 'Media' %}
+                            <span class="badge bg-warning text-dark px-3 py-2" style="font-size: 0.85rem;">{{ inc.prioridad }}</span>
                         {% else %}
-                            <span class="badge bg-warning text-dark">{{ inc.estado_ticket|default:"Pendiente" }}</span>
+                            <span class="badge bg-secondary px-3 py-2" style="font-size: 0.85rem;">{{ inc.prioridad|default:"Normal" }}</span>
                         {% endif %}
                     </td>
-                    <td class="text-center">
-                        <!-- 📌 Corregido a inc.id_ticket para el enlace de detalle -->
-                        <a href="{% url 'profesor_detalle_incidencia' inc.id_ticket %}" class="btn btn-sm btn-outline-primary fw-semibold">
+                    <td>
+
+                        {% if inc.estado_ticket == 'Resuelto' %}
+                            <span class="badge bg-success px-3 py-2" style="font-size: 0.85rem;">Resuelto</span>
+                        {% elif inc.estado_ticket == 'Rechazado' %}
+                            <span class="badge bg-danger px-3 py-2" style="font-size: 0.85rem;">Rechazado</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark px-3 py-2" style="font-size: 0.85rem;">{{ inc.estado_ticket|default:"Pendiente" }}</span>
+                        {% endif %}
+                    </td>
+                    <td class="text-center text-nowrap">
+
+                        <a href="{% url 'profesor_detalle_incidencia' inc.id_ticket %}" class="btn btn-sm btn-outline-primary fw-semibold px-3">
                             Ver Detalle
                         </a>
                     </td>
@@ -93,20 +100,22 @@
             <tbody>
                 {% for sol in solicitudes_aseo %}
                 <tr>
-                    <td class="fw-bold text-primary">#{{ sol.id_solicitud }}</td>
-                    <td>{{ sol.fecha }}</td>
+                    <td class="fw-bold text-primary text-nowrap">#{{ sol.id_solicitud }}</td>
+                    <td class="text-nowrap">{{ sol.fecha }}</td>
                     <td>
-                        <span class="badge bg-secondary">{{ sol.tipo_solicitud }}</span>
+                        <span class="text-dark fw-semibold text-nowrap" style="font-size: 0.9rem;">
+                            {{ sol.tipo_solicitud }}
+                        </span>
                     </td>
                     <td>{{ sol.descripcion }}</td>
                     <td class="text-muted">{{ sol.observaciones|default:"Sin observaciones aún" }}</td>
                     <td>
                         {% if sol.estado_solicitud == 'Resuelto' or sol.estado_solicitud == 'Aprobado' %}
-                            <span class="badge bg-success">{{ sol.estado_solicitud }}</span>
+                            <span class="badge bg-success px-3 py-2" style="font-size: 0.85rem;">{{ sol.estado_solicitud }}</span>
                         {% elif sol.estado_solicitud == 'Rechazado' %}
-                            <span class="badge bg-danger">{{ sol.estado_solicitud }}</span>
+                            <span class="badge bg-danger px-3 py-2" style="font-size: 0.85rem;">{{ sol.estado_solicitud }}</span>
                         {% else %}
-                            <span class="badge bg-warning text-dark">{{ sol.estado_solicitud }}</span>
+                            <span class="badge bg-warning text-dark px-3 py-2" style="font-size: 0.85rem;">{{ sol.estado_solicitud }}</span>
                         {% endif %}
                     </td>
                 </tr>

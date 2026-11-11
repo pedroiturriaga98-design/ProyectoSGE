@@ -1,0 +1,123 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Gestión de Inventario Tecnológico</h2>
+    <p>Administración y control de equipos tecnológicos del establecimiento.</p>
+</div>
+
+<div class="metrics-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 25px;">
+    <div class="metric-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <span style="color: #64748b; font-size: 0.85rem;">Total Equipos</span>
+        <h3 style="margin: 5px 0 0 0; font-size: 1.8rem; color: #1e293b;">{{ total_equipos }}</h3>
+    </div>
+    <div class="metric-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <span style="color: #64748b; font-size: 0.85rem;">Disponibles</span>
+        <h3 style="margin: 5px 0 0 0; font-size: 1.8rem; color: #3b82f6;">{{ disponibles }}</h3>
+    </div>
+    <div class="metric-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <span style="color: #64748b; font-size: 0.85rem;">Operativos</span>
+        <h3 style="margin: 5px 0 0 0; font-size: 1.8rem; color: #16a34a;">{{ operativos }}</h3>
+    </div>
+    <div class="metric-card" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+        <span style="color: #64748b; font-size: 0.85rem;">En Mantención</span>
+        <h3 style="margin: 5px 0 0 0; font-size: 1.8rem; color: #d97706;">{{ en_mantencion }}</h3>
+    </div>
+</div>
+
+<div class="table-container">
+    
+    <div class="table-toolbar" style="margin-bottom: 20px;">
+        <form method="GET" action="" class="filter-form" style="display: flex; gap: 15px; align-items: center; width: 100%; justify-content: space-between; flex-wrap: wrap;">
+            
+            <!-- Buscador por texto -->
+            <div style="display: flex; gap: 10px; flex: 1; min-width: 280px;">
+                <input type="text" name="q" value="{{ busqueda }}" placeholder="Buscar por código, dispositivo o ubicación..." class="form-control" style="width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.95rem;">
+                <button type="submit" style="padding: 9px 18px; background: #f97316; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">Buscar</button>
+                {% if busqueda %}
+                    <a href="{% url 'inventario_ti' %}" style="padding: 9px 14px; background: #e2e8f0; color: #334155; border-radius: 6px; text-decoration: none; display: flex; align-items: center;" title="Limpiar búsqueda">✕</a>
+                {% endif %}
+            </div>
+
+            <!-- Filtros y botón nuevo -->
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <select name="estado" class="filter-select form-control" onchange="this.form.submit()" style="width: 200px; padding: 9px 32px 9px 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: white url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'14\' height=\'14\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23000000\' stroke-width=\'3\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><polyline points=\'6 9 12 15 18 9\'></polyline></svg>') no-repeat right 12px center; -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; font-size: 0.95rem;">
+                    <option value="Todos" {% if not estado_filtro or estado_filtro == 'Todos' %}selected{% endif %}>Todos los estados</option>
+                    <option value="Disponible" {% if estado_filtro == 'Disponible' %}selected{% endif %}>Disponible</option>
+                    <option value="Operativo" {% if estado_filtro == 'Operativo' %}selected{% endif %}>Operativo</option>
+                    <option value="En Mantención" {% if estado_filtro == 'En Mantención' %}selected{% endif %}>En Mantención</option>
+                    <option value="Asignado" {% if estado_filtro == 'Asignado' %}selected{% endif %}>Asignado</option>
+                </select>
+
+                <a class="btn-create" href="{% url 'crear_equipo_ti' %}" style="padding: 9px 18px; background: #f97316; color: white; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.95rem; white-space: nowrap;">
+                    + Nuevo Equipo
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>CÓDIGO</th>
+                <th>DISPOSITIVO</th>
+                <th>UBICACIÓN</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipo in equipos %}
+            <tr>
+                <td><strong>{{ equipo.codigo_inventario }}</strong></td>
+                <td>{{ equipo.tipo_equipo }}</td>
+                <td>{{ equipo.ubicacion|default:"Sin asignar" }}</td>
+                <td>
+                    {% if equipo.estado == 'Operativo' or equipo.estado == 'Disponible' %}
+                        <span class="badge" style="background-color: #dcfce7; color: #16a34a; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">{{ equipo.estado }}</span>
+                    {% else %}
+                        <span class="badge" style="background-color: #fef3c7; color: #d97706; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">{{ equipo.estado }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="action-btns" style="display: flex; gap: 5px;">
+                        <a class="btn-icon" href="{% url 'admin_editar_equipo' equipo.codigo_inventario %}" title="Editar equipo" style="padding: 5px 8px; background: #f1f5f9; border-radius: 4px; text-decoration: none;">✎</a>
+                        
+                        <a class="btn-icon" href="{% url 'admin_eliminar_equipo' equipo.codigo_inventario %}" title="Eliminar equipo" style="padding: 5px 8px; background: #fef2f2; color: #ef4444; border-radius: 4px; text-decoration: none;" onclick="return confirm('¿Estás seguro de que deseas eliminar el equipo {{ equipo.codigo_inventario }}?');">🗑</a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" style="text-align: center; padding: 25px; color: #64748b; font-style: italic;">
+                    No hay equipos tecnológicos que coincidan con el filtro seleccionado.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 15px 10px; border-top: 1px solid #e2e8f0; font-size: 0.9rem; color: #64748b;">
+        <div class="pagination-info">
+            Mostrando del <strong>{{ equipos.start_index|default:0 }}</strong> al <strong>{{ equipos.end_index|default:0 }}</strong> de <strong>{{ equipos.paginator.count }}</strong> resultados
+        </div>
+        
+        <div class="pagination-controls" style="display: flex; gap: 5px; align-items: center;">
+            {% if equipos.has_previous %}
+                <a href="?page=1&estado={{ estado_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Primera</a>
+                <a href="?page={{ equipos.previous_page_number }}&estado={{ estado_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Anterior</a>
+            {% endif %}
+
+            <span style="padding: 6px 12px; border: 1px solid #f97316; border-radius: 6px; background-color: #f97316; color: white; font-weight: 500;">
+                {{ equipos.number }} de {{ equipos.paginator.num_pages|default:1 }}
+            </span>
+
+            {% if equipos.has_next %}
+                <a href="?page={{ equipos.next_page_number }}&estado={{ estado_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Siguiente</a>
+                <a href="?page={{ equipos.paginator.num_pages }}&estado={{ estado_filtro }}" style="padding: 6px 12px; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; color: #334155; background: white;">Última</a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

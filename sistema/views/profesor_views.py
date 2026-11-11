@@ -98,7 +98,7 @@ def profesor_inicio(request):
         ).count()
     )
 
-    return render(request, 'profesor_inicio.html', {
+    return render(request, 'profesor/profesor_inicio.html', {
         'total_cursos': total_cursos,
         'total_alumnos': total_alumnos,
         'porcentaje_asistencia': porcentaje_asistencia,
@@ -625,7 +625,7 @@ def profesor_notas(request):
 
     return render(
         request,
-        "profesor_notas.html",
+        "profesor/profesor_notas.html",
         {
             "cursos": cursos,
             "cursos_asignados": cursos_asignados,
@@ -1056,7 +1056,7 @@ def profesor_asistencia(request):
 
     return render(
         request,
-        "profesor_asistencia.html",
+        "profesor/profesor_asistencia.html",
         {
             "cursos": cursos,
             "cursos_asignados": cursos_asignados,
@@ -1130,7 +1130,7 @@ def profesor_agregar_incidencia(request):
 
         if not descripcion:
             messages.error(request, 'Debes ingresar una descripción.')
-            return redirect('profesor_agregar_incidencia')
+            return redirect('profesor/profesor_agregar_incidencia')
 
         if es_aseo:
             res = SolicitudInsumo.objects.aggregate(max_val=Max('id_solicitud'))
@@ -1145,8 +1145,7 @@ def profesor_agregar_incidencia(request):
                 tipo_solicitud='Solicitud de Material' if tipo == 'material' else tipo
             )
             messages.success(request, '¡Solicitud de aseo enviada con éxito!')
-            return redirect('profesor_gestion_incidencias')
-
+            return redirect('profesor_gestion_incidencias') 
         else:
             equipo_obj = None
             if codigo_equipo:
@@ -1173,9 +1172,9 @@ def profesor_agregar_incidencia(request):
                 equipo_ti_codigo_inventario=equipo_obj
             )
             messages.success(request, '¡Incidencia de TI registrada con éxito!')
-            return redirect('profesor_gestion_incidencias')
+            return redirect('profesor_gestion_incidencias') 
 
-    return render(request, 'profesor_agregar_incidencia.html', {
+    return render(request, 'profesor/profesor_agregar_incidencia.html', {
         'equipos': equipos,
         'fecha_actual': timezone.localdate().isoformat()
     })
@@ -1195,7 +1194,7 @@ def profesor_gestion_incidencias(request):
         'incidencias_ti': incidencias_ti,
         'solicitudes_aseo': solicitudes_aseo,
     }
-    return render(request, 'profesor_gestion_incidencias.html', context)
+    return render(request, 'profesor/profesor_gestion_incidencias.html', context)
 
 
 @require_role([2])
@@ -1206,7 +1205,7 @@ def profesor_detalle_incidencia(request, pk):
     context = {
         'ticket': ticket
     }
-    return render(request, 'profesor_detalle_incidencia.html', context)
+    return render(request, 'profesor/profesor_detalle_incidencia.html', context)
 
 
 @require_role([2])
@@ -1274,7 +1273,7 @@ def profesor_alumnos(request):
             'El curso seleccionado no es válido.'
         )
 
-    return render(request, 'profesor_alumnos.html', {
+    return render(request, 'profesor/profesor_alumnos.html', {
         'cursos': cursos,
         'curso_seleccionado': curso_seleccionado,
         'asignaturas': asignaturas,
@@ -1330,7 +1329,7 @@ def profesor_perfil_alumno(request, rut):
         profesor_jefe.nombre, profesor_jefe.apellido_paterno, profesor_jefe.apellido_materno
     ])) if profesor_jefe else ''
 
-    return render(request, 'profesor_perfil_alumno.html', {
+    return render(request, 'profesor/profesor_perfil_alumno.html', {
         'alumno': alumno,
         'apoderado': apoderado,
         'nombre_apoderado': nombre_apoderado,

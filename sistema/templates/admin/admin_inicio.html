@@ -1,0 +1,110 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="welcome-card">
+    <h1>¡Bienvenido(a), {{ request.session.nombre_usuario }}!</h1>
+    <p>Aquí podrás administrar cuentas, configurar el año escolar y gestionar el soporte de la plataforma.</p>
+    <span class="badge-role">👤 Estás en la vista: Administrador</span>
+</div>
+
+<div class="section-title">Estado de la Plataforma</div>
+<div class="section-desc">Métricas consolidadas de usuarios y registros del sistema.</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon icon-green">👥</div>
+        <div class="stat-info">
+            <p>Usuarios Activos</p>
+            <h3>{{ total_usuarios_activos }}</h3>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon icon-purple">🎓</div>
+        <div class="stat-info">
+            <p>Alumnos Activos</p>
+            <h3>{{ total_alumnos }}</h3>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon icon-orange">👨‍👩‍👧</div>
+        <div class="stat-info">
+            <p>Apoderados Vinculados</p>
+            <h3>{{ total_apoderados }}</h3>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon icon-red">🚫</div>
+        <div class="stat-info">
+            <p>Cuentas Inactivas</p>
+            <h3>{{ cuentas_inactivas }}</h3>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon icon-yellow">⚠️</div>
+        <div class="stat-info">
+            <p>Incidencias por Revisar</p>
+            <h3>{{ incidencias_revisar }}</h3>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon icon-green">✅</div>
+        <div class="stat-info">
+            <p>Incidencias Resueltas</p>
+            <h3>{{ incidencias_resuelta }}</h3>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon icon-purple">📚</div>
+        <div class="stat-info">
+            <p>Cursos Configurados</p>
+            <h3>{{ cursos_configurados }}</h3>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon icon-gray">💻</div>
+        <div class="stat-info">
+            <p>Total Equipos TI</p>
+            <h3>{{ total_equipos_ti }}</h3>
+        </div>
+    </div>
+</div>
+
+<div class="section-title" style="margin-top: 40px;">Accesos rápidos</div>
+<div class="section-desc">Ingresa directamente a los módulos de gestión más utilizados.</div>
+
+<div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+    
+    <a href="{% url 'admin_gestion_usuarios' %}" class="stat-card" style="text-decoration: none; color: inherit;">
+        <div class="stat-icon icon-orange">👤</div>
+        <div class="stat-info">
+            <p>Gestión</p>
+            <h3 style="font-size: 1.1rem; color: #f97316;">Crear y Administrar Usuarios</h3>
+        </div>
+    </a>
+
+    <a href="{% url 'admin_gestion_incidencias' %}" class="stat-card" style="text-decoration: none; color: inherit;">
+        <div class="stat-icon icon-yellow">🛠️</div>
+        <div class="stat-info">
+            <p>Soporte TI</p>
+            <h3 style="font-size: 1.1rem; color: #f97316;">Revisar Incidencias TI</h3>
+        </div>
+    </a>
+
+    <a href="{% url 'inventario_ti' %}" class="stat-card" style="text-decoration: none; color: inherit;">
+        <div class="stat-icon icon-purple">📦</div>
+        <div class="stat-info">
+            <p>Inventario</p>
+            <h3 style="font-size: 1.1rem; color: #f97316;">Control de Equipos TI</h3>
+        </div>
+    </a>
+
+</div>
+
+{% endblock %}

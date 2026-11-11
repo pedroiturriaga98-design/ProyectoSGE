@@ -12,11 +12,10 @@
 
 <div class="table-container">
     
-    <!-- BUSCADOR INTELIGENTE Y FILTROS -->
+    <!-- BUSCADOR Y FILTROS -->
     <div class="table-toolbar" style="margin-bottom: 20px;">
         <form method="GET" action="" class="filter-form" style="display: flex; gap: 15px; align-items: center; width: 100%;">
 
-            <!-- Input de búsqueda con lupa -->
             <div class="search-box" style="flex: 1; position: relative; display: flex; align-items: center;">
                 <span style="position: absolute; left: 12px; font-size: 0.95rem; pointer-events: none;">🔍</span>
                 <input
@@ -30,7 +29,7 @@
                 >
             </div>
 
-            <button type="submit" style="padding: 9px 18px; background-color: #0f172a; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem;">
+            <button type="submit" class="btn" style="background-color: #f97316; color: white; padding: 10px 20px; border: none; border-radius: 6px; font-weight: 500; cursor: pointer;">
                 Filtrar
             </button>
 
@@ -59,7 +58,7 @@
                 <tr>
                     <td>
                         <div class="user-info" style="display: flex; align-items: center; gap: 10px;">
-                            <div class="avatar" style="width: 32px; height: 32px; background: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem;">
+                            <div class="avatar" style="width: 32px; height: 32px; background: #e2e8f0; color: #475569; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem;">
                                 {{ apoderado.nombre|slice:":1" }}{{ apoderado.apellido_paterno|slice:":1" }}
                             </div>
                             <strong>{{ apoderado.nombre }} {{ apoderado.apellido_paterno }} {{ apoderado.apellido_materno|default:"" }}</strong>
@@ -83,7 +82,7 @@
                     </td>
                     <td>
                         <div class="action-btns" style="display: flex; gap: 5px;">
-                            <!-- 📌 Enlace de edición apuntando al RUT real del apoderado -->
+  
                             <a class="btn-icon" href="{% url 'admin_editar_apoderado' apoderado.rut %}" title="Editar apoderado" style="padding: 5px 8px; background: #f1f5f9; border-radius: 4px; text-decoration: none;">✎</a>
                             <button class="btn-icon delete" onclick="eliminarApoderado(this)" title="Eliminar" style="padding: 5px 8px; background: #fee2e2; color: #991b1b; border: none; border-radius: 4px; cursor: pointer;">🗑</button>
                         </div>
@@ -100,7 +99,7 @@
         </table>
     </div>
 
-    <!-- 📌 BARRA DE PAGINACIÓN ESTANDARIZADA -->
+
     <div class="pagination-container" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding: 15px 10px; border-top: 1px solid #e2e8f0; font-size: 0.9rem; color: #64748b;">
         <div class="pagination-info">
             Mostrando del <strong>{{ apoderados.start_index|default:0 }}</strong> al <strong>{{ apoderados.end_index|default:0 }}</strong> de <strong>{{ apoderados.paginator.count }}</strong> resultados

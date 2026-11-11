@@ -52,14 +52,17 @@ urlpatterns = [
     path('administrador/apoderados/editar/', views.admin_editar_apoderado, name='admin_editar_apoderado'),
     path('administrador/apoderados/editar/<str:rut>/', views.admin_editar_apoderado, name='admin_editar_apoderado'),
     path('apoderados/editar/<str:rut>/', views.admin_editar_apoderado, name='admin_editar_apoderado'),
+    path('administrador/alumnos/eliminar/<str:rut>/', views.admin_eliminar_alumno, name='admin_eliminar_alumno'),
 
     # Gestión TI (Incidencias e Inventario TI)
     path('administrador/incidencias/', views.admin_gestion_incidencias, name='admin_gestion_incidencias'),
     path('administrador/incidencias/crear/', views.admin_crear_incidencia, name='admin_crear_incidencia'),
     path('administrador/incidencias/editar/<int:pk>/', views.admin_editar_incidencia, name='admin_editar_incidencia'),
     path('administrador/incidencias/detalle/<int:pk>/', views.admin_detalle_incidencia, name='admin_detalle_incidencia'),
+    path('administrador/incidencias/eliminar/<int:pk>/', views.admin_eliminar_incidencia, name='admin_eliminar_incidencia'),
     path('administrador/inventario/', views.inventario_ti, name='admin_gestion_inventario'),
     path('administrador/inventario/equipo/', views.admin_editar_equipo, name='admin_editar_equipo'),
+    path('inventario/ti/eliminar/<str:codigo>/', views.admin_eliminar_equipo, name='admin_eliminar_equipo'),
     path('inventario/ti/', views.inventario_ti, name='inventario_ti'),
     path('inventario/ti/crear/', views.crear_equipo_ti, name='crear_equipo_ti'),
     path('inventario-ti/editar/<str:codigo>/', views.admin_editar_equipo, name='admin_editar_equipo'),
@@ -77,4 +80,6 @@ urlpatterns = [
     path('personal-aseo/inventario/', views.inventario_personal_aseo, name='inventario_personal_aseo'),
     path('admin/solicitudes/material/', views.admin_solicitudes_material, name='admin_solicitudes_material'),
     path('admin/solicitudes/reposicion/', views.admin_solicitudes_reposicion, name='admin_solicitudes_reposicion'),
+    path('aseo/eliminar/<int:pk>/', views.admin_eliminar_solicitud_aseo, name='admin_eliminar_solicitud_aseo'),
+    path('aseo/inventario/eliminar/<int:pk>/', views.admin_eliminar_insumo_aseo, name='admin_eliminar_insumo_aseo'),
 ]

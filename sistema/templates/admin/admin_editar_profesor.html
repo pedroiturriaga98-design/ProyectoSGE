@@ -23,16 +23,30 @@
 
         <div class="form-row">
             <div class="form-group">
-                <label>Profesor *</label>
-                <select name="profesor_rut" class="form-control" required onchange="window.location.href='?rut=' + this.value">
-                    <option value="">Seleccione un profesor...</option>
-                    {% for prof in profesores %}
-                        <option value="{{ prof.rut }}" {% if prof.rut == rut_seleccionado %}selected{% endif %}>
-                            {{ prof.nombre }} {{ prof.apellido_paterno }} ({{ prof.rut }})
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
+    <label class="fw-semibold mb-1">Profesor *</label>
+    
+
+    <input class="form-control" list="profesoresOptions" id="profesorInput" name="profesor_rut" placeholder="Escribe para buscar profesor..." value="{{ rut_seleccionado }}" autocomplete="off" required>
+    
+
+    <datalist id="profesoresOptions">
+        {% for prof in profesores %}
+            <!-- El value guarda el RUT para que el backend lo reciba perfectamente, pero muestra el nombre -->
+            <option value="{{ prof.rut }}" label="{{ prof.nombre }} {{ prof.apellido_paterno }} ({{ prof.rut }})">
+        {% endfor %}
+    </datalist>
+</div>
+
+
+<script>
+    document.getElementById('profesorInput').addEventListener('change', function() {
+        let valor = this.value;
+
+        if (valor) {
+            window.location.href = '?rut=' + encodeURIComponent(valor);
+        }
+    });
+</script>
 
             <div class="form-group">
                 <label>Curso *</label>

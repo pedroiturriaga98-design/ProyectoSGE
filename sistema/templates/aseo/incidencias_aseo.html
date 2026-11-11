@@ -61,9 +61,13 @@
                     </td>
                     {% if request.session.rol_id == 1 %}
                     <td class="text-center text-nowrap">
-                        <a href="{% url 'resolver_solicitud_aseo' s.id_solicitud %}" class="btn btn-sm btn-outline-primary fw-semibold">
-                            Gestionar
-                        </a>
+                        <div class="action-btns" style="display: inline-flex; gap: 5px; align-items: center;">
+                            <!-- Botón del lápiz para gestionar -->
+                            <a class="btn-icon" href="{% url 'resolver_solicitud_aseo' s.id_solicitud %}" title="Gestionar solicitud" style="padding: 5px 8px; background: #f1f5f9; border-radius: 4px; text-decoration: none; color: #334155; font-size: 0.9rem;">✎</a>
+                            
+                            <!-- Botón de eliminar con cajita roja y confirmación -->
+                            <a class="btn-icon" href="{% url 'admin_eliminar_solicitud_aseo' s.id_solicitud %}" title="Eliminar solicitud" style="padding: 5px 8px; background: #fef2f2; color: #ef4444; border-radius: 4px; text-decoration: none; font-size: 0.9rem;" onclick="return confirm('¿Estás seguro de que deseas eliminar la solicitud #{{ s.id_solicitud }}?');">🗑</a>
+                        </div>
                     </td>
                     {% endif %}
                 </tr>

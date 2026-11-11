@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Administración - SGE</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/base_admin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base_admin.css' %}?v=3.0">
 </head>
 
 <body>
@@ -21,10 +21,7 @@
         </div>
 
         <div class="sidebar-controls">
-            <select class="select-year">
-                <option>Año Escolar 2026</option>
-            </select>
-            <input type="text" class="search-bar" placeholder="Buscar alumno, profesor...">
+            <div class="year-static" style="display: flex; align-items: center; width: 100%; min-height: 38px; padding: 10px 14px; box-sizing: border-box; border-radius: 6px; background: #2d394e; color: #ffffff; font-size: 13px; font-weight: 400; cursor: default;">Año Escolar 2026</div>
         </div>
 
         <nav class="nav-menu">
@@ -41,13 +38,11 @@
                 </div>
 
             <!-- 2. MENÚ PARA PROFESORES (Roles 2 y 3) -->
-
             {% elif request.session.rol_id == 2 or request.session.rol_id == 3 %}
                 <a href="{% url 'profesor_inicio' %}" class="nav-link {% if request.resolver_match.url_name == 'profesor_inicio' %}active-menu{% endif %}">Inicio</a>
                 
-                <!-- 📌 Menú Desplegable: Incidencias del Profesor -->
                 <a href="javascript:void(0);" class="nav-link toggle-menu" data-target="submenu-profesor-inc">
-                    <span>Incidencias ▾</span>
+                    <span>Incidencias</span>
                 </a>
                 <div class="sub-menu" id="submenu-profesor-inc" style="display: {% if 'profesor/incidencias' in request.path %}flex{% else %}none{% endif %};">
                     <a href="{% url 'profesor_agregar_incidencia' %}" class="sub-link {% if request.resolver_match.url_name == 'profesor_agregar_incidencia' %}active-sub{% endif %}">Agregar Incidencia</a>
@@ -70,23 +65,23 @@
                     <a href="{% url 'admin_gestion_profesores' %}" class="nav-link {% if 'profesores' in request.path %}active-menu{% endif %}">Profesores</a>
                 {% endif %}
 
-                <!-- 📌 GESTIÓN TI -->
+                <!-- GESTIÓN TI -->
                 {% if request.session.rol_id == 1 or request.session.rol_id == 4 %}
                     <a href="javascript:void(0);" class="nav-link toggle-menu" data-target="submenu-ti">
                         <span>Gestión TI</span>
                     </a>
-                    <div class="sub-menu" id="submenu-ti" style="display: none;">
+                    <div class="sub-menu" id="submenu-ti" style="display: {% if 'administrador/incidencias' in request.path or 'inventario/ti' in request.path or 'inventario-ti' in request.path or 'administrador/inventario' in request.path %}flex{% else %}none{% endif %};">
                         <a href="{% url 'admin_gestion_incidencias' %}" class="sub-link {% if 'administrador/incidencias' in request.path %}active-sub{% endif %}">Incidencias TI</a>
                         <a href="{% url 'inventario_ti' %}" class="sub-link {% if 'inventario/ti' in request.path or 'inventario-ti' in request.path or 'administrador/inventario' in request.path %}active-sub{% endif %}">Inventario TI</a>
                     </div>
                 {% endif %}
 
-                <!-- 📌 GESTIÓN ASEO -->
+                <!-- GESTIÓN ASEO -->
                 {% if request.session.rol_id == 1 or request.session.rol_id == 5 %}
                     <a href="javascript:void(0);" class="nav-link toggle-menu" data-target="submenu-aseo">
                         <span>Gestión Aseo</span>
                     </a>
-                    <div class="sub-menu" id="submenu-aseo" style="display: none;">
+                    <div class="sub-menu" id="submenu-aseo" style="display: {% if 'aseo' in request.path or 'inventario/aseo' in request.path %}flex{% else %}none{% endif %};">
                         <a href="{% url 'incidencias_aseo' %}" class="sub-link {% if 'aseo/incidencias' in request.path or 'aseo/solicitudes' in request.path %}active-sub{% endif %}">Incidencias Aseo</a>
                         <a href="{% url 'inventario_aseo' %}" class="sub-link {% if 'inventario/aseo' in request.path or 'aseo/inventario' in request.path %}active-sub{% endif %}">Inventario Aseo</a>
                     </div>
@@ -128,7 +123,7 @@
         </header>
 
         {% if messages %}
-            <div style="margin-bottom: 15px;">
+            <div style="margin: 20px 30px 0 30px;">
                 {% for message in messages %}
                     {% if 'success' in message.tags %}
                         <div style="padding: 10px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; background-color: #d1fae5; color: #047857; border: 1px solid #6ee7b7; margin-bottom: 8px;">
@@ -149,63 +144,31 @@
         </div>
     </main>
 
-    <!-- SCRIPT DE ACORDEÓN MEJORADO -->
+    <!-- SCRIPT DE ACORDEÓN LIMPIO -->
     <script>
-        const toggleButtons = document.querySelectorAll('.toggle-menu');
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButtons = document.querySelectorAll('.toggle-menu');
 
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('data-target');
-                const targetSubmenu = document.getElementById(targetId);
-                
-                if (!targetSubmenu) return;
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('data-target');
+                    const targetSubmenu = document.getElementById(targetId);
+                    
+                    if (!targetSubmenu) return;
 
-                const isAlreadyOpen = targetSubmenu.style.display === 'flex';
+                    const isAlreadyOpen = targetSubmenu.style.display === 'flex';
 
-                document.querySelectorAll('.sub-menu').forEach(menu => {
-                    menu.style.display = 'none';
+                    document.querySelectorAll('.sub-menu').forEach(menu => {
+                        menu.style.display = 'none';
+                    });
+
+                    if (!isAlreadyOpen) {
+                        targetSubmenu.style.display = 'flex';
+                    }
                 });
-
-                if (!isAlreadyOpen) {
-                    targetSubmenu.style.display = 'flex';
-                }
             });
-        });
-
-        // Auto-abrir los submenús según la ruta actual
-        // Auto-abrir los submenús según la ruta actual
-        document.addEventListener("DOMContentLoaded", function() {
-            const currentUrl = window.location.pathname;
-            
-            // 1. Mantener abierto Gestión TI
-            if (
-                (currentUrl.includes("incidencias") && !currentUrl.includes("aseo") && !currentUrl.includes("profesor")) ||
-                currentUrl.includes("inventario/ti") ||
-                currentUrl.includes("inventario-ti") ||
-                currentUrl.includes("administrador/inventario")
-            ) {
-                const subTi = document.getElementById('submenu-ti');
-                if (subTi) subTi.style.display = 'flex';
-            }
-            
-            // 2. Mantener abierto Gestión Aseo
-            if (
-                currentUrl.includes("aseo") ||
-                currentUrl.includes("solicitudes")
-            ) {
-                const subAseo = document.getElementById('submenu-aseo');
-                if (subAseo) subAseo.style.display = 'flex';
-            }
-
-            // 3. 📌 Mantener abierto el submenú de Incidencias del Profesor
-            if (
-                currentUrl.includes("profesor/incidencias")
-            ) {
-                const subProfInc = document.getElementById('submenu-profesor-inc');
-                if (subProfInc) subProfInc.style.display = 'flex';
-            }
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

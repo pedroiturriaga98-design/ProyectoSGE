@@ -191,7 +191,7 @@
 
         {% if asignatura_seleccionada and fecha_seleccionada == fecha_actual %}
         <button type="button" class="btn-save" id="guardar-asistencia">
-            ✓ Guardar Asistencia
+            Guardar Asistencia
         </button>
         {% endif %}
     </div>
@@ -697,7 +697,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             } finally {
                 botonGuardar.disabled = false;
-                botonGuardar.textContent = '✓ Guardar Asistencia';
+                botonGuardar.textContent = 'Guardar Asistencia';
             }
         });
     }
