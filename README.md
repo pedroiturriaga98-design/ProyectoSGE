@@ -16,7 +16,7 @@ Plataforma web desarrollada en **Django**, **Bootstrap 5** y **MySQL** para la a
 2. **Crear y activar entorno virtual (Windows)**:
      python -m venv venv
     .\venv\Scripts\activate
-3. **Instalar dependencias:*
+3. **Instalar dependencias:**
     pip install -r requirements.txt
 4. **Configurar Base de Datos:**
    * Crea una base de datos vacía en MySQL llamada `mydb`.
@@ -24,7 +24,7 @@ Plataforma web desarrollada en **Django**, **Bootstrap 5** y **MySQL** para la a
 5. **Migraciones y carga de datos**
     python manage.py migrate
    .\sistema\importar_bd.bat (si no se cargan datos)
-6. ** Ejecutar Servidor**
+6. **Ejecutar Servidor**:
     python manage.py runserver
 7.  **Datos de prueba**
     Admin        :  fgonzalez@santajuliana.cl
